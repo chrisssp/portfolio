@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+   :root {
+      /* --- Primitives (Static Constants) --- */
+      --color-slate-900: #171c28;
+      --color-slate-800: #1f2633;
+      --color-slate-700: #2f3a53;
+      --color-slate-200: #c5cddb;
+      --color-slate-100: #eaecf2;
+      --color-white-off: #f5f7fa;
+
+      --color-cyan-600: #0284c7;
+      --color-cyan-400: #38bdf8;
+
+      --color-red: #e53935;
+      --color-green: #66bb6a;
+
+      /* --- Semantic Mapping (Light Mode / Default) --- */
+      --bg-page: var(--color-white-off);
+      --bg-surface: var(--color-slate-100);
+
+      --text-body: var(--color-slate-700);
+
+      --border-subtle: var(--color-slate-200);
+
+      --brand-primary: var(--color-cyan-600);
+   }
+
+   /* --- Semantic Mapping (Dark Mode - System Preference) --- */
+   @media (prefers-color-scheme: dark) {
+      :root {
+         --bg-page: var(--color-slate-900);
+         --bg-surface: var(--color-slate-800);
+
+         --text-body: var(--color-white-off);
+
+         --border-subtle: var(--color-slate-700);
+
+         --brand-primary: var(--color-cyan-400);
+      }
+   }
+
+   /* --- Semantic Mapping (Dark Mode - Manual Toggle) --- */
+   .dark {
+      --bg-page: var(--color-slate-900);
+      --bg-surface: var(--color-slate-800);
+      --text-body: var(--color-white-off);
+      --border-subtle: var(--color-slate-700);
+      --brand-primary: var(--color-cyan-400);
+   }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+   /* Structural */
+   --color-page: var(--bg-page);
+   --color-surface: var(--bg-surface);
+
+   /* Typography */
+   --color-body: var(--text-body);
+
+   /* Borders */
+   --color-subtle: var(--border-subtle);
+
+   /* Brand & Action */
+   --color-primary: var(--brand-primary);
+
+   /* Utility */
+   --color-error: var(--color-red);
+   --color-success: var(--color-green);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+   background-color: var(--bg-page);
+   color: var(--text-body);
+   font-family: var(--font-sans);
+   /* Smooth transition for theme toggling */
+   transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
 }
