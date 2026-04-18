@@ -76,7 +76,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
       router.push(newPath);
    };
 
-   if (!mounted) return <div className="h-[56px] md:h-[72px]" />;
+   if (!mounted) return <div className="h-[64px] md:h-[84px]" />;
 
    const navLinks = [
       { id: "experience", label: dict.nav.experience },
@@ -87,7 +87,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
    return (
       <>
          <header 
-            className={`sticky top-0 z-[60] w-full bg-page/80 backdrop-blur-md h-[56px] md:h-[72px] flex items-center justify-center border-b border-subtle/50 md:border-none transition-transform duration-300 ${
+            className={`sticky top-0 z-[60] w-full bg-page/80 backdrop-blur-md h-[64px] md:h-[84px] flex items-center justify-center border-b border-subtle/50 md:border-none transition-transform duration-300 ${
                visible ? "translate-y-0" : "-translate-y-full md:translate-y-0"
             }`}
          >
