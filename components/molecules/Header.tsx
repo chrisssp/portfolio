@@ -93,7 +93,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
          >
             <div className="flex items-center justify-between w-full max-w-[1440px] px-4 xs:px-6 md:px-20">
                
-               <div className="flex items-center gap-4 xs:gap-6 w-full">
+               <div className="flex items-center gap-4 xs:gap-6">
                   <Link href={`/${lang}`} className="relative h-8 xs:h-10 w-8 xs:h-10 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0">
                      {/* Logo para modo claro */}
                      <Image
@@ -113,15 +113,15 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      />
                   </Link>
 
-                  {showBack ? (
-                     <div className="flex-1 flex justify-end">
-                        <Link href={`/${lang}`}>
-                           <Button variant="outline" icon={<MdArrowBack />} className="!px-3 xs:!px-4 !py-1.5 xs:!py-2 !text-[13px] xs:!text-[14px]">
-                              {dict.nav.goBack}
-                           </Button>
-                        </Link>
-                     </div>
-                  ) : (
+                  {showBack && (
+                     <Link href={`/${lang}`}>
+                        <Button variant="outline" icon={<MdArrowBack />} className="!px-3 xs:!px-4 !py-1.5 xs:!py-2 !text-[13px] xs:!text-[14px]">
+                           {dict.nav.goBack}
+                        </Button>
+                     </Link>
+                  )}
+
+                  {!showBack && (
                      <>
                         <nav className="hidden md:flex bg-page border border-subtle items-center rounded-2xl p-1 shadow-sm">
                            {navLinks.map((link) => (
