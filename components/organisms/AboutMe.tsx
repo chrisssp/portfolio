@@ -25,7 +25,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   <Typography variant="body">{dict.about.p1}</Typography>
                   <Typography variant="body">{dict.about.p2}</Typography>
                   <Typography variant="body">
-                     {dict.about.philosophy}<span className="font-bold">{dict.about.quote}</span>.
+                     {dict.about.philosophy}<span className="font-bold italic">{dict.about.quote}</span>
                   </Typography>
                </div>
             </div>
