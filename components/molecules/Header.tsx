@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/types";
@@ -99,7 +100,16 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      </Button>
                   </Link>
                ) : (
-                  <>
+                  <div className="flex items-center gap-6">
+                     <Link href={`/${lang}`} className="relative h-8 xs:h-10 w-8 xs:h-10 hover:scale-110 active:scale-95 transition-all duration-300">
+                        <Image
+                           src={resolvedTheme === "dark" ? "/assets/images/profile/isotipo-white-nobg.png" : "/assets/images/profile/isotipo-black-nobg.png"}
+                           alt="Logo"
+                           fill
+                           className="object-contain"
+                           priority
+                        />
+                     </Link>
                      <nav className="hidden md:flex bg-page border border-subtle items-center rounded-2xl p-1 shadow-sm">
                         {navLinks.map((link) => (
                            <Link
@@ -121,7 +131,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      >
                         <MdMenu className="size-6" />
                      </button>
-                  </>
+                  </div>
                )}
 
                <div className="bg-page border border-subtle flex items-center rounded-lg xs:rounded-xl p-0.5 xs:p-1 shadow-sm">

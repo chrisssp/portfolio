@@ -14,6 +14,14 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
    title: "Christian Serrano's Portfolio",
    description: "Mobile & Full Stack Developer",
+   icons: {
+      icon: [
+         { url: "/assets/images/profile/isotipo-black.png", media: "(prefers-color-scheme: light)" },
+         { url: "/assets/images/profile/isotipo-white.png", media: "(prefers-color-scheme: dark)" },
+      ],
+      shortcut: "/assets/images/profile/isotipo-black.png",
+      apple: "/assets/images/profile/isotipo-black.png",
+   },
 };
 
 type Props = {
