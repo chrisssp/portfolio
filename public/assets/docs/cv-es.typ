@@ -34,7 +34,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       top-left: [*Seven D Construction*],
       top-right: [Enero 2026 -- Abril 2026],
       bottom-left: [Ingeniero de software intern (Remoto)],
-      bottom-right: [Chicago, IL / México],
+      bottom-right: [Chicago, IL, USA / México],
     ),
     list-items: (
       [Lideré la evolución de #link("https://7d-compass.com/")[*7D-Compass*] (Angular/Node.js/PostgreSQL) automatizando la conciliación de pagos y reduciendo el tiempo operativo en un *95%*.],
@@ -47,7 +47,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       top-left: [*Banco Azteca (Talent Land 2026)*],
       top-right: [Abril 2026],
       bottom-left: [Participante de hackathon y líder de equipo],
-      bottom-right: [CDMX, Santa Fe],
+      bottom-right: [Santa Fe, CDMX, México],
     ),
     list-items: (
       [Lideré la desarrollo de #link("https://azkali-landing.vercel.app/")[*Azkali*] en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
@@ -60,7 +60,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       top-left: [*Coppel (Talent Land 2025)*],
       top-right: [Abril 2025],
       bottom-left: [4to lugar y líder de equipo],
-      bottom-right: [Guadalajara, Jalisco],
+      bottom-right: [Guadalajara, Jalisco, México],
     ),
     list-items: (
       [Construí un ecosistema de referidos gamificado en un sprint de 4 días (React Native/Node.js).],
@@ -72,7 +72,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       top-left: [*PepsiCo*],
       top-right: [Mayo 2024 -- Agosto 2024],
       bottom-left: [Ingeniero de software intern (Remoto)],
-      bottom-right: [CDMX, Azcapotzalco],
+      bottom-right: [Azcapotzalco, CDMX, México],
     ),
     list-items: (
       [Desarrollé una Web App centralizada (Angular/MongoDB) reemplazando flujos legacy en Excel.],
@@ -144,7 +144,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [Abril 2026],
       bottom-left: [Ingeniería en desarrollo y gestión de software],
-      bottom-right: [Cuitláhuac, Veracruz],
+      bottom-right: [Cuitláhuac, Veracruz, México],
     )
   ),
   (
@@ -152,7 +152,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [Agosto 2024],
       bottom-left: [TSU en desarrollo de software multiplataforma],
-      bottom-right: [Cuitláhuac, Veracruz],
+      bottom-right: [Cuitláhuac, Veracruz, México],
     ),
     list-items: (
       [_Graduado como 1er lugar de la generación (Promedio final: 9.82/10)_],

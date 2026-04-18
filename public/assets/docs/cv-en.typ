@@ -34,7 +34,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*Seven D Construction*],
       top-right: [January 2026 -- April 2026],
       bottom-left: [Software Engineer Intern (Remote)],
-      bottom-right: [Chicago, IL / Mexico],
+      bottom-right: [Chicago, IL, USA / Mexico],
     ),
     list-items: (
       [Led the evolution of #link("https://7d-compass.com/")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by *95%*.],
@@ -47,7 +47,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*Banco Azteca (Talent Land 2026)*],
       top-right: [April 2026],
       bottom-left: [Hackathon Participant & Team Lead],
-      bottom-right: [CDMX, Santa Fe],
+      bottom-right: [Santa Fe, CDMX, Mexico],
     ),
     list-items: (
       [Led the development of #link("https://azkali-landing.vercel.app/")[*Azkali*] during a *48-hour* sprint, creating a behavioral AI copilot to mitigate impulsive spending in Gen Z using *Design Thinking* methodology.],
@@ -60,7 +60,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*Coppel (Talent Land 2025)*],
       top-right: [April 2025],
       bottom-left: [4th Place & Team Lead],
-      bottom-right: [Guadalajara, Jalisco],
+      bottom-right: [Guadalajara, Jalisco, Mexico],
     ),
     list-items: (
       [Built a gamified referral ecosystem in a 4-day sprint (React Native/Node.js).],
@@ -72,7 +72,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*PepsiCo*],
       top-right: [May 2024 -- August 2024],
       bottom-left: [Software Engineer Intern (Remote)],
-      bottom-right: [CDMX, Azcapotzalco],
+      bottom-right: [Azcapotzalco, CDMX, Mexico],
     ),
     list-items: (
       [Developed a centralized Web App (Angular/MongoDB) replacing legacy Excel workflows.],
@@ -85,7 +85,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*Flack's Barber Shop*],
       top-right: [October 2022 -- April 2024],
       bottom-left: [Full Stack Developer - Freelancer],
-      bottom-right: [Córdoba, Veracruz, México],
+      bottom-right: [Córdoba, Veracruz, Mexico],
     ),
     list-items: (
       [Deployed a complete digital ecosystem (Web & Mobile), automating 100% of appointments.],
@@ -144,7 +144,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [April 2026],
       bottom-left: [B.E. in Software Development and Management],
-      bottom-right: [Cuitláhuac, Veracruz],
+      bottom-right: [Cuitláhuac, Veracruz, Mexico],
     )
   ),
   (
@@ -152,7 +152,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [August 2024],
       bottom-left: [Associate Degree (TSU) in Multiplatform Software Development],
-      bottom-right: [Cuitláhuac, Veracruz],
+      bottom-right: [Cuitláhuac, Veracruz, Mexico],
     ),
     list-items: (
       [_Graduated 1st in Class (Final GPA: 9.82/10)_],
