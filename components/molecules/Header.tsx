@@ -102,11 +102,20 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                ) : (
                   <div className="flex items-center gap-6">
                      <Link href={`/${lang}`} className="relative h-8 xs:h-10 w-8 xs:h-10 hover:scale-110 active:scale-95 transition-all duration-300">
+                        {/* Logo para modo claro */}
                         <Image
-                           src={resolvedTheme === "dark" ? "/assets/images/profile/isotipo-white-nobg.png" : "/assets/images/profile/isotipo-black-nobg.png"}
+                           src="/assets/images/profile/isotipo-black-nobg.png"
                            alt="Logo"
                            fill
-                           className="object-contain"
+                           className="object-contain dark:hidden"
+                           priority
+                        />
+                        {/* Logo para modo oscuro */}
+                        <Image
+                           src="/assets/images/profile/isotipo-white-nobg.png"
+                           alt="Logo"
+                           fill
+                           className="object-contain hidden dark:block"
                            priority
                         />
                      </Link>
@@ -157,9 +166,25 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
          {mobileMenuOpen && (
             <div className="fixed inset-0 z-[999] flex flex-col bg-page w-full h-full">
                <div className="flex justify-between items-center p-5 xs:p-6 border-b border-subtle bg-page">
-                  <div className="flex flex-col text-left">
-                     <span className="text-[18px] xs:text-[20px] font-bold text-body">Christian Serrano</span>
-                     <span className="text-[10px] xs:text-[11px] text-primary font-bold uppercase tracking-widest">Menu</span>
+                  <div className="flex items-center gap-4">
+                     <div className="relative h-10 w-10">
+                        <Image
+                           src="/assets/images/profile/isotipo-black-nobg.png"
+                           alt="Logo"
+                           fill
+                           className="object-contain dark:hidden"
+                        />
+                        <Image
+                           src="/assets/images/profile/isotipo-white-nobg.png"
+                           alt="Logo"
+                           fill
+                           className="object-contain hidden dark:block"
+                        />
+                     </div>
+                     <div className="flex flex-col text-left">
+                        <span className="text-[18px] xs:text-[20px] font-bold text-body">Christian Serrano</span>
+                        <span className="text-[10px] xs:text-[11px] text-primary font-bold uppercase tracking-widest">Menu</span>
+                     </div>
                   </div>
                   <button 
                      onClick={() => setMobileMenuOpen(false)}
