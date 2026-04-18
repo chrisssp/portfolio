@@ -69,7 +69,7 @@ export const en: Dictionary = {
          view_details: "View details",
          read_paper: "Read paper",
          tab_featured: "Featured",
-         tab_all: "Others"
+         tab_all: "See more projects"
       },
    },
    cta: cta.en,
