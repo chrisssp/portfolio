@@ -57,7 +57,7 @@ export const experience = {
       title: "Experiencia",
       items: [
          {
-            role: "Pasante de Ingeniería de Software",
+            role: "Pasante de ingeniería de software",
             company: "Seven D Construction",
             location: "Chicago, IL / México",
             remote: "Remoto",
@@ -67,7 +67,7 @@ export const experience = {
             description: "Lideré la evolución de 7D-Compass (Angular/Node.js/PostgreSQL), automatizando la conciliación de pagos y reduciendo el tiempo operativo en un 95%. Implementé un motor de auditoría centralizado para $2.3M USD en transacciones, detectando discrepancias financieras críticas mediante lógica de validación compleja.",
          },
          {
-            role: "Líder de Equipo de Hackathon",
+            role: "Líder de equipo de hackathon",
             company: "Banco Azteca (Talent Land 2026)",
             location: "CDMX, Santa Fe",
             product: "Azkali",
@@ -77,7 +77,7 @@ export const experience = {
             link: { url: "#", label: "Ver certificado de participación" }
          },
          {
-            role: "4to Lugar y Líder de Equipo",
+            role: "4to lugar y líder de equipo",
             company: "Coppel (Talent Land 2025)",
             location: "Guadalajara, Jalisco",
             product: "Coppel Nexus",
@@ -87,7 +87,7 @@ export const experience = {
             link: { url: "https://www.talent-network.org/cv/MTMwMDE=", label: "Ver certificado de participación" }
          },
          {
-            role: "Pasante de Ingeniería de Software",
+            role: "Pasante de ingeniería de software",
             company: "PepsiCo",
             location: "Azcapotzalco, CDMX",
             remote: "Remoto",
@@ -97,13 +97,13 @@ export const experience = {
             description: "Diseñé una aplicación web centralizada (Angular/MongoDB) para reemplazar flujos heredados en Excel, automatizando el procesamiento de +100k registros y reduciendo los errores manuales a cero, optimizando el tiempo de procesamiento en un 70%.",
          },
          {
-            role: "Desarrollador Full Stack",
+            role: "Desarrollador full stack",
             company: "Flack's Barber Shop",
             location: "Veracruz, México",
             product: "Flack's Cut & Connect",
             projectId: "flacks",
             date: "Oct 2022 — Abr 2024",
-            description: "Desplegué un ecosistema digital integral (Web y Móvil) que automatiza el 100% de la programación de citas y el seguimiento de inventario. Desarrollé una API REST con Node.js y PostgreSQL para centralizar el negocio.",
+            description: "Desplegué un ecosistema digital integral (Web y móvil) que automatiza el 100% de la programación de citas y el seguimiento de inventario. Desarrollé una API REST con Node.js y PostgreSQL para centralizar el negocio.",
          }
       ],
    }

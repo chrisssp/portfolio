@@ -58,9 +58,9 @@ export const projectIapex = {
    },
    es: {
       title: "IAPEX (Encuéntrame)",
-      subtitle: "Ecosistema Híbrido de IA para Identificación de Pacientes",
+      subtitle: "Ecosistema híbrido de IA para identificación de pacientes",
       description: "Sistema biométrico impulsado por IA que identifica pacientes inconscientes en segundos, reduciendo los retrasos en la identificación de emergencias en más del 90% frente a protocolos manuales.",
-      fullDescription: "Una plataforma centralizada que cierra la brecha entre los pacientes hospitalizados no identificados y las familias buscadoras utilizando un motor de Fusión de Información Híbrida (Facial + Textual) para maximizar la precisión bajo estrictos protocolos de privacidad.",
+      fullDescription: "Una plataforma centralizada que cierra la brecha entre los pacientes hospitalizados no identificados y las familias buscadoras utilizando un motor de fusión de información híbrida (facial + textual) para maximizar la precisión bajo estrictos protocolos de privacidad.",
       challenge: {
          description: "Los hospitales dependen de protocolos manuales y aislados para registrar a personas desconocidas, creando una desconexión de datos crítica con las familias que buscan a ciegas en morgues y salas de emergencia.",
          solution: "Un ecosistema enfocado en la privacidad que conecta datos institucionales con consultas públicas a través de un núcleo seguro de coincidencia biométrica, reduciendo el tiempo de identificación de días a segundos."
@@ -68,17 +68,17 @@ export const projectIapex = {
       ecosystem: {
          items: [
             {
-               title: "Núcleo Neural",
+               title: "Núcleo neural",
                description: "El corazón de IAPEX. Fusiona embeddings de FaceNet (distancia euclidiana) con filtros de texto para clasificar candidatos, reduciendo significativamente los falsos positivos comparado con el reconocimiento estándar.",
                link: { label: "Ver código" }
             },
             {
-               title: "Cliente Móvil",
+               title: "Cliente móvil",
                description: "Interfaz segura para que las familias ingresen descripciones y visualicen posibles coincidencias basadas en puntajes de similitud, protegiendo la privacidad hasta la verificación.",
                link: { label: "Ver código" }
             },
             {
-               title: "Portal Web Institucional",
+               title: "Portal web institucional",
                description: "Portal web seguro para que el personal médico registre pacientes utilizando rasgos morfológicos y fotografías bajo un estricto control de acceso basado en roles (RBAC).",
                link: { label: "Ver código" }
             }

@@ -55,7 +55,7 @@ export const projectAzkali = {
    },
    es: {
       title: "Azkali",
-      subtitle: "Copiloto Financiero con IA Conductual para la Gen Z",
+      subtitle: "Copiloto financiero con IA conductual para la Gen Z",
       description: "Copiloto financiero impulsado por IA que genera fricción cognitiva en compras impulsivas al mostrar costos en horas de trabajo, redirigiendo capital al ahorro.",
       fullDescription: "Azkali es un ecosistema multiplataforma que aprovecha Gemini 2.5 Flash-Lite para analizar hábitos de gasto en tiempo real. Construido en un sprint de 48h durante Talent Land 2026, transforma a usuarios informales en clientes bancarizados al traducir costos monetarios en horas de trabajo.",
       challenge: {
@@ -65,12 +65,12 @@ export const projectAzkali = {
       ecosystem: {
          items: [
             {
-               title: "Landing Page del Producto",
+               title: "Landing page del producto",
                description: "Página de aterrizaje de alta conversión construida con Astro y React. Sirve como el principal punto de contacto para los usuarios, explicando el motor de IA conductual y la propuesta de valor.",
                link: { label: "Visitar landing" }
             },
             {
-               title: "Experiencia Móvil con IA",
+               title: "Experiencia móvil con IA",
                description: "Aplicación en React Native con una interfaz de IA conversacional. Utiliza Nativewind para el estilo y Expo para una integración perfecta, proporcionando una UX fluida para la Gen Z."
             },
             {

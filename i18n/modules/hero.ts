@@ -10,7 +10,7 @@ export const hero = {
       },
    },
    es: {
-      role: "Ingeniero de Software | Desarrollador Full-Stack y Móvil",
+      role: "Ingeniero de software | Desarrollador full-stack y móvil",
       description: "Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles y automatización de procesos.",
       actions: {
          cv: "CV",

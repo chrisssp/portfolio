@@ -66,9 +66,9 @@ export const projectDabetai = {
    },
    es: {
       title: "dabetai",
-      subtitle: "Ecosistema Preventivo Impulsado por Wearables para Complicaciones de la Diabetes",
+      subtitle: "Ecosistema preventivo impulsado por wearables para complicaciones de la diabetes",
       description: "Ecosistema preventivo de complicaciones de la diabetes que conecta wearables con tableros médicos, permitiendo la predicción de riesgos y mejorando la eficiencia en ~40%.",
-      fullDescription: "Una plataforma de salud integral que va más allá del simple monitoreo hacia la prevención activa. dabetai aprovecha la tecnología wearable y la IA para predecir complicaciones críticas como Retinopatía y Nefropatía antes de que sean irreversibles.",
+      fullDescription: "Una plataforma de salud integral que va más allá del simple monitoreo hacia la prevención activa. dabetai aprovecha la tecnología wearable y la IA para predecir complicaciones críticas como retinopatía y nefropatía antes de que sean irreversibles.",
       challenge: {
          description: "La gestión de la diabetes suele ser reactiva. Los pacientes carecen de visibilidad sobre la progresión silenciosa de complicaciones, mientras que los médicos sufren por la falta de datos continuos en tiempo real.",
          solution: "Un ecosistema interconectado que fusiona datos biológicos en tiempo real con supervisión clínica, utilizando modelos predictivos para alertar sobre riesgos específicos."
@@ -76,22 +76,22 @@ export const projectDabetai = {
       ecosystem: {
          items: [
             /* {
-               title: "Landing Page del Producto",
+               title: "Landing page del producto",
                description: "Página de aterrizaje educativa y de marketing enfocada en explicar el ecosistema preventivo y la integración de hardware con wearables.",
                link: { label: "Visitar landing" }
             }, */
             {
-               title: "Núcleo de Predicción (IA)",
-               description: "El corazón del sistema. Procesa datos de usuarios y sensores para pronosticar el riesgo de complicaciones específicas: Retinopatía, Nefropatía, Neuropatía y Pie Diabético.",
+               title: "Núcleo de predicción (IA)",
+               description: "El corazón del sistema. Procesa datos de usuarios y sensores para pronosticar el riesgo de complicaciones específicas: retinopatía, nefropatía, neuropatía y pie diabético.",
                link: { label: "Ver código" }
             },
             {
-               title: "App Móvil (Patient Hub)",
+               title: "App móvil (Patient Hub)",
                description: "Actúa como el centro neurálgico para el paciente. Sincroniza con wearables para extraer biomarcadores como frecuencia cardíaca y calidad del sueño en tiempo real.",
                link: { label: "Ver código" }
             },
             {
-               title: "Portal Médico (Supervisión)",
+               title: "Portal médico (supervisión)",
                description: "Permite a los médicos vincularse con pacientes para supervisión remota, transformando datos diarios en conocimientos clínicos y alertas tempranas.",
                link: { label: "Ver código" }
             }

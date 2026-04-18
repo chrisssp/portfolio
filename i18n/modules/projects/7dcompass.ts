@@ -51,7 +51,7 @@ export const project7dCompass = {
    },
    es: {
       title: "7D-Compass",
-      subtitle: "Plataforma Fintech de Auditoría y Conciliación para Construcción",
+      subtitle: "Plataforma fintech de auditoría y conciliación para construcción",
       description: "Plataforma de conciliación financiera para la industria de la construcción, automatizando auditorías de $2.3M USD en transacciones y reduciendo el tiempo operativo en un 95%.",
       fullDescription: "7D-Compass es un ecosistema de auditoría de alto rendimiento diseñado para Seven D Construction (Chicago). Automatiza el 95% de la conciliación financiera al centralizar registros bancarios y datos operativos mediante una arquitectura robusta en Angular/Node.js.",
       challenge: {
@@ -61,15 +61,15 @@ export const project7dCompass = {
       ecosystem: {
          items: [
             {
-               title: "Portal Web Administrativo",
+               title: "Portal web administrativo",
                description: "Panel centralizado para el personal de oficina que permite gestionar datos financieros, visualizar analíticas predictivas y supervisar resultados de auditoría con RBAC granular."
             },
             {
-               title: "App Móvil On-site",
+               title: "App móvil on-site",
                description: "Cliente móvil multiplataforma para trabajadores de campo que registra datos operativos en tiempo real, asegurando un flujo de datos continuo desde la obra hasta el motor de auditoría."
             },
             {
-               title: "Motor de Auditoría Node.js",
+               title: "Motor de auditoría Node.js",
                description: "Backend de alto rendimiento que procesa $2.3M USD en transacciones, realizando conciliaciones complejas entre múltiples fuentes de datos de forma automatizada."
             }
          ]

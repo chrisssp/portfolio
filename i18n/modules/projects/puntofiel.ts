@@ -22,7 +22,7 @@ export const projectPuntoFiel = {
       title: "PuntoFiel",
       subtitle: "Plataforma de lealtad offline-first para negocios locales",
       description: "Plataforma de lealtad que digitaliza la retención de clientes para negocios locales, eliminando las tarjetas físicas y aumentando el compromiso mediante recompensas.",
-      fullDescription: "Una solución móvil robusta que utiliza Supabase and PostgreSQL RLS para gestionar recompensas y cupones basados en códigos QR, centrada en la productividad del comerciante y la agilidad del cliente.",
+      fullDescription: "Una solución móvil robusta que utiliza Supabase y PostgreSQL RLS para gestionar recompensas y cupones basados en códigos QR, centrada en la productividad del comerciante y la agilidad del cliente.",
       challenge: {
          description: "Los negocios locales luchan por competir con cadenas que tienen sistemas de lealtad complejos, mientras que los clientes odian cargar múltiples tarjetas físicas de sellos.",
          solution: "Un sistema de recompensas digitales escalable basado en QR que funciona offline-first, asegurando alta disponibilidad en cualquier entorno comercial."
