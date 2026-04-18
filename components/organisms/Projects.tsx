@@ -56,15 +56,15 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             </div>
             
             {/* Segmented Control - Ajustado ancho para evitar desbordamiento en español */}
-            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-1 rounded-2xl flex relative shadow-sm w-full lg:w-auto min-w-[240px]">
+            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-0.5 xs:p-1 rounded-xl xs:rounded-2xl flex relative shadow-sm w-full lg:w-auto min-w-[200px] xs:min-w-[240px]">
                <div 
-                  className={`absolute top-1 bottom-1 bg-primary rounded-xl transition-all duration-300 ease-in-out ${
-                     filter === "featured" ? "left-1 w-[calc(50%-4px)]" : "left-[calc(50%+2px)] w-[calc(50%-4px)]"
+                  className={`absolute top-0.5 xs:top-1 bottom-0.5 xs:bottom-1 bg-primary rounded-lg xs:rounded-xl transition-all duration-300 ease-in-out ${
+                     filter === "featured" ? "left-0.5 xs:left-1 w-[calc(50%-2px)] xs:w-[calc(50%-4px)]" : "left-[calc(50%+1px)] xs:left-[calc(50%+2px)] w-[calc(50%-2px)] xs:w-[calc(50%-4px)]"
                   }`}
                />
                <button 
                   onClick={() => setFilter("featured")}
-                  className={`relative z-10 flex-1 px-4 py-2.5 font-bold text-[14px] transition-colors duration-300 text-center ${
+                  className={`relative z-10 flex-1 px-3 xs:px-4 py-1.5 xs:py-2.5 font-bold text-[12px] xs:text-[14px] transition-colors duration-300 text-center ${
                      filter === "featured" ? "text-primary-contrast" : "text-body hover:text-primary"
                   }`}
                >
@@ -72,7 +72,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                </button>
                <button 
                   onClick={() => setFilter("others")}
-                  className={`relative z-10 flex-1 px-4 py-2.5 font-bold text-[14px] transition-colors duration-300 text-center ${
+                  className={`relative z-10 flex-1 px-3 xs:px-4 py-1.5 xs:py-2.5 font-bold text-[12px] xs:text-[14px] transition-colors duration-300 text-center ${
                      filter === "others" ? "text-primary-contrast" : "text-body hover:text-primary"
                   }`}
                >

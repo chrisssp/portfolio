@@ -135,10 +135,10 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
 
                      <button 
                         onClick={() => setMobileMenuOpen(true)}
-                        className="md:hidden flex items-center justify-center p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
+                        className="md:hidden flex items-center justify-center p-2 xs:p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
                         aria-label="Open menu"
                      >
-                        <MdMenu className="size-6" />
+                        <MdMenu className="size-5 xs:size-6" />
                      </button>
                   </div>
                )}
