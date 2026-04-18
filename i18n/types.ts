@@ -82,6 +82,7 @@ export interface Dictionary {
       description: string;
       actions: {
          cv: string;
+         cvLink: string;
          email: string;
          linkedin: string;
          github: string;

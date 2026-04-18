@@ -32,7 +32,7 @@ export const Hero = ({ dict }: HeroProps) => {
             </div>
 
             <div className="flex flex-wrap justify-start gap-3 md:gap-4">
-               <a href={PROFESSIONAL_LINKS.cv} target="_blank" rel="noopener noreferrer">
+               <a href={dict.hero.actions.cvLink} target="_blank" rel="noopener noreferrer">
                   <Button variant="primary" icon={<MdDescription />} className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]">
                      {dict.hero.actions.cv}
                   </Button>
