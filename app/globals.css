@@ -95,4 +95,11 @@ body {
       -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
       mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
    }
+
+   /* Utilidades para el Logo (Evitan conflictos con el sistema operativo) */
+   .logo-light { display: block; }
+   .logo-dark { display: none; }
+
+   .dark .logo-light { display: none; }
+   .dark .logo-dark { display: block; }
 }

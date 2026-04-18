@@ -104,18 +104,18 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      <Link href={`/${lang}`} className="relative h-8 xs:h-10 w-8 xs:h-10 hover:scale-110 active:scale-95 transition-all duration-300">
                         {/* Logo para modo claro */}
                         <Image
-                           src="/assets/images/profile/isotipo-black-nobg.png"
+                           src="/assets/images/profile/isotipo-white-nobg.png"
                            alt="Logo"
                            fill
-                           className="object-contain block dark:hidden"
+                           className="object-contain logo-light"
                            priority
                         />
                         {/* Logo para modo oscuro */}
                         <Image
-                           src="/assets/images/profile/isotipo-white-nobg.png"
+                           src="/assets/images/profile/isotipo-black-nobg.png"
                            alt="Logo"
                            fill
-                           className="object-contain hidden dark:block"
+                           className="object-contain logo-dark"
                            priority
                         />
                      </Link>
@@ -169,16 +169,16 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   <div className="flex items-center gap-4">
                      <div className="relative h-10 w-10">
                         <Image
-                           src="/assets/images/profile/isotipo-black-nobg.png"
-                           alt="Logo"
-                           fill
-                           className="object-contain block dark:hidden"
-                        />
-                        <Image
                            src="/assets/images/profile/isotipo-white-nobg.png"
                            alt="Logo"
                            fill
-                           className="object-contain hidden dark:block"
+                           className="object-contain logo-light"
+                        />
+                        <Image
+                           src="/assets/images/profile/isotipo-black-nobg.png"
+                           alt="Logo"
+                           fill
+                           className="object-contain logo-dark"
                         />
                      </div>
                      <div className="flex flex-col text-left">
