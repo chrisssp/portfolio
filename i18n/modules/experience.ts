@@ -5,7 +5,7 @@ export const experience = {
          {
             role: "Software Engineer Intern",
             company: "Seven D Construction",
-            location: "Chicago, IL / Mexico",
+            location: "Chicago, IL, USA / México",
             remote: "Remote",
             product: "7D-Compass",
             projectId: "7dcompass",
@@ -15,7 +15,7 @@ export const experience = {
          {
             role: "Hackathon Team Lead",
             company: "Banco Azteca (Talent Land 2026)",
-            location: "CDMX, Santa Fe",
+            location: "Santa Fe, CDMX, México",
             product: "Azkali",
             projectId: "azkali",
             date: "April 2026",
@@ -25,7 +25,7 @@ export const experience = {
          {
             role: "4th Place & Team Lead",
             company: "Coppel (Talent Land 2025)",
-            location: "Guadalajara, Jalisco",
+            location: "Guadalajara, Jalisco, México",
             product: "Coppel Nexus",
             projectId: "coppel-nexus",
             date: "April 2025",
@@ -35,7 +35,7 @@ export const experience = {
          {
             role: "Software Engineer Intern",
             company: "PepsiCo",
-            location: "CDMX, Azcapotzalco",
+            location: "Azcapotzalco, CDMX, México",
             remote: "Remote",
             product: "Master Template Rutas",
             projectId: "mtrpa",
@@ -45,7 +45,7 @@ export const experience = {
          {
             role: "Full Stack Developer",
             company: "Flack's Barber Shop",
-            location: "Veracruz, Mexico",
+            location: "Veracruz, México",
             product: "Flack's Cut & Connect",
             projectId: "flacks",
             date: "Oct 2022 — Apr 2024",
@@ -59,7 +59,7 @@ export const experience = {
          {
             role: "Pasante de ingeniería de software",
             company: "Seven D Construction",
-            location: "Chicago, IL / México",
+            location: "Chicago, IL, USA / México",
             remote: "Remoto",
             product: "7D-Compass",
             projectId: "7dcompass",
@@ -69,17 +69,17 @@ export const experience = {
          {
             role: "Líder de equipo de hackathon",
             company: "Banco Azteca (Talent Land 2026)",
-            location: "CDMX, Santa Fe",
+            location: "Santa Fe, CDMX, México",
             product: "Azkali",
             projectId: "azkali",
             date: "Abril 2026",
-            description: "Desarrollé 'Azkali' en 48h: un copiloto de IA conductual para mitigar gastos impulsivos usando Gemini 2.5 Flash-Lite. Construido bajo metodología Design Thinking, traduce costos monetarios a costos de oportunidad operativos, logrando un alto impacto en Talent Land 2026.",
+            description: "Desarrollé 'Azkali' en 48h: un copiloto de IA conductual para mitigar gastos impulsivos usando Gemini 2.5 Flash-Lite. Construido bajo metodología Design Thinking, traduce costos monetarios a costo de oportunidad operativos, logrando un alto impacto en Talent Land 2026.",
             link: { url: "#", label: "Ver certificado de participación" }
          },
          {
             role: "4to lugar y líder de equipo",
             company: "Coppel (Talent Land 2025)",
-            location: "Guadalajara, Jalisco",
+            location: "Guadalajara, Jalisco, México",
             product: "Coppel Nexus",
             projectId: "coppel-nexus",
             date: "Abril 2025",
@@ -89,7 +89,7 @@ export const experience = {
          {
             role: "Pasante de ingeniería de software",
             company: "PepsiCo",
-            location: "CDMX, Azcapotzalco",
+            location: "Azcapotzalco, CDMX, México",
             remote: "Remoto",
             product: "Master Template Rutas",
             projectId: "mtrpa",
