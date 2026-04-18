@@ -10,7 +10,9 @@
     secondary-info: [
       #link("https://linkedin.com/in/chrisssp")[linkedin.com/in/chrisssp] | #link("https://github.com/chrisssp")[github.com/chrisssp]
     ],
-    tertiary-info: "Córdoba, Veracruz, México",
+    tertiary-info: [
+      Córdoba, Veracruz, México | #link("https://chrisssp.vercel.app")[chrisssp.vercel.app]
+    ],
   ),
   author-position: center
 )

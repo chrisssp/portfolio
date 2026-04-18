@@ -10,7 +10,9 @@
     secondary-info: [
       #link("https://linkedin.com/in/chrisssp")[linkedin.com/in/chrisssp] | #link("https://github.com/chrisssp")[github.com/chrisssp]
     ],
-    tertiary-info: "Córdoba, Veracruz, México",
+    tertiary-info: [
+      Córdoba, Veracruz, México | #link("https://chrisssp.vercel.app")[chrisssp.vercel.app]
+    ],
   ),
   author-position: center
 )
@@ -33,7 +35,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Seven D Construction*],
       top-right: [Enero 2026 -- Abril 2026],
-      bottom-left: [Software Engineer Intern (Remoto)],
+      bottom-left: [Ingeniero de Software Intern (Remoto)],
       bottom-right: [Chicago, IL / México],
     ),
     list-items: (
@@ -46,7 +48,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Banco Azteca (Talent Land 2026)*],
       top-right: [Abril 2026],
-      bottom-left: [Hackathon Participant & Team Lead],
+      bottom-left: [Participante de Hackathon y Líder de Equipo],
       bottom-right: [CDMX, Santa Fe],
     ),
     list-items: (
@@ -59,7 +61,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Coppel (Talent Land 2025)*],
       top-right: [Abril 2025],
-      bottom-left: [4th Place & Team Lead],
+      bottom-left: [4to Lugar y Líder de Equipo],
       bottom-right: [Guadalajara, Jalisco],
     ),
     list-items: (
@@ -71,7 +73,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*PepsiCo*],
       top-right: [Mayo 2024 -- Agosto 2024],
-      bottom-left: [Software Engineer Intern (Remoto)],
+      bottom-left: [Ingeniero de Software Intern (Remoto)],
       bottom-right: [Veracruz, México],
     ),
     list-items: (
@@ -84,7 +86,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Flack's Barber Shop*],
       top-right: [Octubre 2022 -- Abril 2024],
-      bottom-left: [Full Stack Developer - Freelancer],
+      bottom-left: [Desarrollador Full Stack - Freelancer],
       bottom-right: [Veracruz, México],
     ),
     list-items: (
@@ -100,7 +102,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [#link("https://github.com/aescobar80/IAPEX_APP-WEB")[*IAPEX*]],
       top-right: [],
-      bottom-left: [_Angular, Ionic, Spring Boot, Django, PostgreSQL, AI_],
+      bottom-left: [_Angular, Ionic, Spring Boot, Django, PostgreSQL, IA_],
       bottom-right: [],
     ),
     list-items: (
