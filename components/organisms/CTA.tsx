@@ -66,8 +66,8 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
             >
                <Button 
                   variant="primary" 
-                  className="w-full lg:w-auto !px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-white dark:text-slate-900"
-                  icon={<FaWhatsapp className="size-5 text-white dark:text-slate-900" />}
+                  className="w-full lg:w-auto !px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-primary-contrast"
+                  icon={<FaWhatsapp className="size-5 text-primary-contrast" />}
                >
                   {dict.cta.actions.talk}
                </Button>
@@ -97,19 +97,19 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
                         </div>
                         <div className="flex flex-col text-left">
                            <span className="text-[13px] font-bold text-body">Send email</span>
-                           <span className="text-[10px] text-slate-500">Open your mail app</span>
+                           <span className="text-[10px] text-body opacity-60">Open mail app</span>
                         </div>
                      </a>
                      <button 
                         className="w-full flex items-center gap-3 px-4 py-3 hover:bg-surface transition-colors"
                         onClick={handleCopyEmail}
                      >
-                        <div className="p-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-body">
+                        <div className="p-1.5 bg-surface rounded-lg text-body border border-subtle">
                            <MdContentCopy className="size-4" />
                         </div>
                         <div className="flex flex-col text-left overflow-hidden">
                            <span className="text-[13px] font-bold text-body">Copy address</span>
-                           <span className="text-[10px] text-slate-500 truncate w-full">{PROFESSIONAL_LINKS.email}</span>
+                           <span className="text-[10px] text-body opacity-60 truncate w-full">{PROFESSIONAL_LINKS.email}</span>
                         </div>
                      </button>
                   </div>
