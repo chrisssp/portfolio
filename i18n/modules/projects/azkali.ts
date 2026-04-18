@@ -4,7 +4,7 @@ export const projectAzkali = {
       featured: true,
       imagePath: "/assets/images/projects/azkali/general.png",
       heroImagePath: "/assets/images/projects/azkali/hero.png",
-      techStack: ["reactnative", "fastapi", "supabase", "tailwindcss", "expo", "postgresql"],
+      techStack: ["react", "reactnative", "fastapi", "supabase", "tailwindcss", "expo", "postgresql", "gemini"],
       links: [
          { type: "demo", url: "https://azkali-landing.vercel.app/" },
          { type: "github", url: "https://github.com/chrisssp/azkali" }
@@ -12,11 +12,16 @@ export const projectAzkali = {
       ecosystem: [
          {
             imagePath: "/assets/images/projects/azkali/specific1.png",
-            techStack: ["reactnative", "expo", "tailwindcss"]
+            techStack: ["astro", "tailwindcss", "react"],
+            link: { type: "demo", url: "https://azkali-landing.vercel.app/" }
          },
          {
             imagePath: "/assets/images/projects/azkali/specific2.png",
-            techStack: ["fastapi", "supabase", "postgresql"]
+            techStack: ["reactnative", "expo", "tailwindcss", "gluestack"]
+         },
+         {
+            imagePath: "/assets/images/projects/azkali/specific3.png",
+            techStack: ["fastapi", "supabase", "postgresql", "gemini"]
          }
       ]
    },
@@ -31,6 +36,11 @@ export const projectAzkali = {
       },
       ecosystem: {
          items: [
+            {
+               title: "Product Landing Page",
+               description: "High-conversion landing page built with Astro and React. It serves as the primary touchpoint for users, explaining the behavioral AI engine and value proposition.",
+               link: { label: "Visit landing" }
+            },
             {
                title: "AI Mobile Experience",
                description: "React Native application featuring a conversational AI interface. It uses Nativewind for styling and Expo for seamless hardware integration, providing a fluid UX for Gen Z."
@@ -53,6 +63,11 @@ export const projectAzkali = {
       },
       ecosystem: {
          items: [
+            {
+               title: "Landing Page del Producto",
+               description: "Página de aterrizaje de alta conversión construida con Astro y React. Sirve como el principal punto de contacto para los usuarios, explicando el motor de IA conductual y la propuesta de valor.",
+               link: { label: "Visitar landing" }
+            },
             {
                title: "Experiencia Móvil con IA",
                description: "Aplicación en React Native con una interfaz de IA conversacional. Utiliza Nativewind para el estilo y Expo para una integración perfecta, proporcionando una UX fluida para la Gen Z."

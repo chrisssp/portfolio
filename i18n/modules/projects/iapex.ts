@@ -4,7 +4,7 @@ export const projectIapex = {
       featured: true,
       imagePath: "/assets/images/projects/iapex/general.png",
       heroImagePath: "/assets/images/projects/iapex/hero.png",
-      techStack: ["angular", "ionic", "springboot", "django", "postgresql"],
+      techStack: ["angular", "ionic", "springboot", "django", "postgresql", "python"],
       links: [
          { type: "github", url: "https://github.com/aescobar80/IAPEX_APP-WEB" }
       ],
@@ -12,15 +12,17 @@ export const projectIapex = {
          {
             imagePath: "/assets/images/projects/iapex/specific1.png",
             techStack: ["django", "postgresql", "scikitlearn", "python"],
-            link: { type: "paper", url: "#" }
+            link: { type: "github", url: "https://github.com/aescobar80/API-REST-IAPEX" }
          },
          {
             imagePath: "/assets/images/projects/iapex/specific2.png",
-            techStack: ["angular", "ionic", "tailwindcss"]
+            techStack: ["angular", "ionic", "tailwindcss"],
+            link: { type: "github", url: "https://github.com/aescobar80/IAPEX-MOBILE-APP" }
          },
          {
             imagePath: "/assets/images/projects/iapex/specific3.png",
-            techStack: ["angular", "bootstrap", "springboot"]
+            techStack: ["angular", "bootstrap", "springboot"],
+            link: { type: "github", url: "https://github.com/aescobar80/IAPEX_APP-WEB" }
          }
       ]
    },
@@ -38,15 +40,17 @@ export const projectIapex = {
             {
                title: "Neural Core",
                description: "The heart of IAPEX. Fuses FaceNet embeddings (Euclidean distance) with text filters to rank candidates, significantly reducing false positives compared to standard recognition.",
-               link: { label: "Read paper" }
+               link: { label: "Go to code" }
             },
             {
                title: "The Mobile Client (Family Side)",
-               description: "Secure interface for families to input descriptions. It displays potential matches based on similarity scores, protecting patient privacy until verification."
+               description: "Secure interface for families to input descriptions. It displays potential matches based on similarity scores, protecting patient privacy until verification.",
+               link: { label: "Go to code" }
             },
             {
                title: "The Web Portal (Institutional Side)",
-               description: "Secure web portal for medical staff to register patients using morphological traits and photographs under strict RBAC (Role-Based Access Control)."
+               description: "Secure web portal for medical staff to register patients using morphological traits and photographs under strict RBAC (Role-Based Access Control).",
+               link: { label: "Go to code" }
             }
          ]
       }
@@ -65,15 +69,17 @@ export const projectIapex = {
             {
                title: "Núcleo Neural",
                description: "El corazón de IAPEX. Fusiona embeddings de FaceNet (distancia euclidiana) con filtros de texto para clasificar candidatos, reduciendo significativamente los falsos positivos comparado con el reconocimiento estándar.",
-               link: { label: "Leer artículo" }
+               link: { label: "Ver código" }
             },
             {
                title: "Cliente Móvil",
-               description: "Interfaz segura para que las familias ingresen descripciones y visualicen posibles coincidencias basadas en puntajes de similitud, protegiendo la privacidad hasta la verificación."
+               description: "Interfaz segura para que las familias ingresen descripciones y visualicen posibles coincidencias basadas en puntajes de similitud, protegiendo la privacidad hasta la verificación.",
+               link: { label: "Ver código" }
             },
             {
                title: "Portal Web Institucional",
-               description: "Portal web seguro para que el personal médico registre pacientes utilizando rasgos morfológicos y fotografías bajo un estricto control de acceso basado en roles (RBAC)."
+               description: "Portal web seguro para que el personal médico registre pacientes utilizando rasgos morfológicos y fotografías bajo un estricto control de acceso basado en roles (RBAC).",
+               link: { label: "Ver código" }
             }
          ]
       }

@@ -23,7 +23,8 @@ import {
   SiPython,
   SiScikitlearn,
   SiDjango,
-  SiReactquery
+  SiReactquery,
+  SiGooglegemini
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -183,5 +184,10 @@ export const TECHNOLOGIES: Record<string, TechConfig> = {
       name: "XGBoost",
       icon: SiPython,
       bgColor: "#3776ab",
+   },
+   gemini: {
+      name: "Gemini AI",
+      icon: SiGooglegemini,
+      bgColor: "#1a73e8",
    }
 };

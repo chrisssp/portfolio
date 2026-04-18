@@ -9,18 +9,24 @@ export const projectDabetai = {
          { type: "github", url: "https://github.com/dabetai-org" }
       ],
       ecosystem: [
+         /* {
+            imagePath: "/assets/images/projects/dabetai/general.png",
+            techStack: ["astro", "tailwindcss", "react"]
+         }, */
          {
             imagePath: "/assets/images/projects/dabetai/specific1.png",
             techStack: ["fastapi", "mongodb", "postgresql", "scikitlearn", "xgboost"],
-            link: { type: "paper", url: "#" }
+            link: { type: "github", url: "https://github.com/dabetai-org/dabetai-aiapi" }
          },
          {
             imagePath: "/assets/images/projects/dabetai/specific2.png",
-            techStack: ["reactnative", "expo", "tailwindcss"]
+            techStack: ["reactnative", "expo", "tailwindcss"],
+            link: { type: "github", url: "https://github.com/dabetai-org/dabetai-mobileapp" }
          },
          {
             imagePath: "/assets/images/projects/dabetai/specific3.png",
-            techStack: ["angular", "tailwindcss"]
+            techStack: ["angular", "tailwindcss"],
+            link: { type: "github", url: "https://github.com/dabetai-org/dabetai-webapp" }
          }
       ]
    },
@@ -35,18 +41,25 @@ export const projectDabetai = {
       },
       ecosystem: {
          items: [
+            /* {
+               title: "Product Landing Page",
+               description: "Educational and marketing landing page focused on explaining the preventive ecosystem and hardware integration with wearables.",
+               link: { label: "Visit landing" }
+            }, */
             {
                title: "Complication Prediction Core (AI)",
                description: "The system's heart. It processes user and sensor data to forecast the risk of specific complications: Retinopathy, Nephropathy, Neuropathy, and Diabetic Foot.",
-               link: { label: "Read paper" }
+               link: { label: "Go to code" }
             },
             {
                title: "Mobile App (Patient Hub)",
-               description: "Acts as the central hub for the patient. Beyond standard logging (glucose/food), it syncs with wearables (CGMs) to extract biomarkers like heart rate and sleep quality in real-time."
+               description: "Acts as the central hub for the patient. Beyond standard logging (glucose/food), it syncs with wearables (CGMs) to extract biomarkers like heart rate and sleep quality in real-time.",
+               link: { label: "Go to code" }
             },
             {
                title: "Medical Portal (Oversight)",
-               description: "Allows physicians to link with patient accounts for remote supervision. It transforms raw daily data into clinical insights, enabling doctors to receive alerts and intervene remotely."
+               description: "Allows physicians to link with patient accounts for remote supervision. It transforms raw daily data into clinical insights, enabling doctors to receive alerts and intervene remotely.",
+               link: { label: "Go to code" }
             }
          ]
       }
@@ -62,18 +75,25 @@ export const projectDabetai = {
       },
       ecosystem: {
          items: [
+            /* {
+               title: "Landing Page del Producto",
+               description: "Página de aterrizaje educativa y de marketing enfocada en explicar el ecosistema preventivo y la integración de hardware con wearables.",
+               link: { label: "Visitar landing" }
+            }, */
             {
                title: "Núcleo de Predicción (IA)",
                description: "El corazón del sistema. Procesa datos de usuarios y sensores para pronosticar el riesgo de complicaciones específicas: Retinopatía, Nefropatía, Neuropatía y Pie Diabético.",
-               link: { label: "Leer artículo" }
+               link: { label: "Ver código" }
             },
             {
                title: "App Móvil (Patient Hub)",
-               description: "Actúa como el centro neurálgico para el paciente. Sincroniza con wearables para extraer biomarcadores como frecuencia cardíaca y calidad del sueño en tiempo real."
+               description: "Actúa como el centro neurálgico para el paciente. Sincroniza con wearables para extraer biomarcadores como frecuencia cardíaca y calidad del sueño en tiempo real.",
+               link: { label: "Ver código" }
             },
             {
                title: "Portal Médico (Supervisión)",
-               description: "Permite a los médicos vincularse con pacientes para supervisión remota, transformando datos diarios en conocimientos clínicos y alertas tempranas."
+               description: "Permite a los médicos vincularse con pacientes para supervisión remota, transformando datos diarios en conocimientos clínicos y alertas tempranas.",
+               link: { label: "Ver código" }
             }
          ]
       }
