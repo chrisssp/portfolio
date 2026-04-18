@@ -7,6 +7,10 @@
 export interface ExperienceItem {
    role: string;
    company: string;
+   location: string;
+   remote?: string;
+   product?: string;
+   projectId?: string; // ID del proyecto para scroll
    date: string;
    description: string;
    link?: {
@@ -115,6 +119,8 @@ export interface Dictionary {
          view_video: string;
          view_details: string;
          read_paper: string;
+         tab_featured: string;
+         tab_all: string;
       };
    };
 
