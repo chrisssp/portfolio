@@ -20,7 +20,7 @@ export const experience = {
             projectId: "azkali",
             date: "April 2026",
             description: "Developed 'Azkali' in 48h: an AI copilot to mitigate impulsive spending using Gemini 2.5 Flash-Lite. Built under Design Thinking methodology, it translates monetary costs into operating opportunity costs, achieving high engagement during Talent Land 2026.",
-            link: { url: "#", label: "View certificate of participation" }
+            link: { url: "/assets/docs/Certificado_TalentLand_2026_Christian_Serrano.pdf", label: "View certificate of participation" }
          },
          {
             role: "4th Place & Team Lead",
@@ -30,7 +30,7 @@ export const experience = {
             projectId: "coppel-nexus",
             date: "April 2025",
             description: "Architected a gamified referral ecosystem for Coppel (React Native/Node.js) in a 72-hour sprint. Led the team by strictly applying XP and Kanban methodologies, securing a podium place among national competitors.",
-            link: { url: "https://www.talent-network.org/cv/MTMwMDE=", label: "View certificate of participation" }
+            link: { url: "/assets/docs/Certificado_TalentLand_2025_Christian_Serrano.pdf", label: "View certificate of participation" }
          },
          {
             role: "Software Engineer Intern",
@@ -74,7 +74,7 @@ export const experience = {
             projectId: "azkali",
             date: "Abril 2026",
             description: "Desarrollé 'Azkali' en 48h: un copiloto de IA conductual para mitigar gastos impulsivos usando Gemini 2.5 Flash-Lite. Construido bajo metodología Design Thinking, traduce costos monetarios a costo de oportunidad operativos, logrando un alto impacto en Talent Land 2026.",
-            link: { url: "#", label: "Ver certificado de participación" }
+            link: { url: "/assets/docs/Certificado_TalentLand_2026_Christian_Serrano.pdf", label: "Ver certificado de participación" }
          },
          {
             role: "4to lugar y líder de equipo",
@@ -84,7 +84,7 @@ export const experience = {
             projectId: "coppel-nexus",
             date: "Abril 2025",
             description: "Arquitecturé un ecosistema de referidos gamificado para Coppel (React Native/Node.js) en un sprint de 72 horas. Dirigí al equipo aplicando estrictamente metodologías XP y Kanban, asegurando un lugar en el podio nacional.",
-            link: { url: "https://www.talent-network.org/cv/MTMwMDE=", label: "Ver certificado de participación" }
+            link: { url: "/assets/docs/Certificado_TalentLand_2025_Christian_Serrano.pdf", label: "Ver certificado de participación" }
          },
          {
             role: "Pasante de ingeniería de software",
