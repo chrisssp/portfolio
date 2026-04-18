@@ -16,11 +16,11 @@ export const metadata: Metadata = {
    description: "Mobile & Full Stack Developer",
    icons: {
       icon: [
-         { url: "/assets/images/profile/isotipo-black.png", media: "(prefers-color-scheme: light)" },
-         { url: "/assets/images/profile/isotipo-white.png", media: "(prefers-color-scheme: dark)" },
+         { url: "/assets/images/profile/isotipo-black-round.png", media: "(prefers-white-scheme: light)" },
+         { url: "/assets/images/profile/isotipo-black-round.png", media: "(prefers-color-scheme: dark)" },
       ],
-      shortcut: "/assets/images/profile/isotipo-black.png",
-      apple: "/assets/images/profile/isotipo-black.png",
+      shortcut: "/assets/images/profile/isotipo-black-round.png",
+      apple: "/assets/images/profile/isotipo-black-round.png",
    },
 };
 
