@@ -50,7 +50,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       bottom-right: [CDMX, Santa Fe],
     ),
     list-items: (
-      [Lideré el desarrollo de #link("https://azkali-landing.vercel.app/")[*Azkali*] en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
+      [Lideré la desarrollo de #link("https://azkali-landing.vercel.app/")[*Azkali*] en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
       [Implementé un motor de análisis de impulsividad en tiempo real utilizando *Gemini 2.5 Flash-Lite*, traduciendo costos monetarios a costo de oportunidad operativo.],
       [Arquitecté el ecosistema multiplataforma integrando *React Native*, *FastAPI* y *Supabase*, incorporando mecánicas de gamificación.],
     )
@@ -144,7 +144,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [Abril 2026],
       bottom-left: [Ingeniería en desarrollo y gestión de software],
-      bottom-right: [Cuitláhuac, Ver.],
+      bottom-right: [Cuitláhuac, Veracruz],
     )
   ),
   (
@@ -152,7 +152,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [Agosto 2024],
       bottom-left: [TSU en desarrollo de software multiplataforma],
-      bottom-right: [Cuitláhuac, Ver.],
+      bottom-right: [Cuitláhuac, Veracruz],
     ),
     list-items: (
       [_Graduado como 1er lugar de la generación (Promedio final: 9.82/10)_],

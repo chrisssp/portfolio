@@ -144,7 +144,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [April 2026],
       bottom-left: [B.E. in Software Development and Management],
-      bottom-right: [Cuitláhuac, Ver.],
+      bottom-right: [Cuitláhuac, Veracruz],
     )
   ),
   (
@@ -152,7 +152,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [August 2024],
       bottom-left: [Associate Degree (TSU) in Multiplatform Software Development],
-      bottom-right: [Cuitláhuac, Ver.],
+      bottom-right: [Cuitláhuac, Veracruz],
     ),
     list-items: (
       [_Graduated 1st in Class (Final GPA: 9.82/10)_],
