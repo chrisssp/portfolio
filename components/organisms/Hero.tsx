@@ -76,7 +76,7 @@ export const Hero = ({ dict }: HeroProps) => {
                <div className="relative" ref={menuRef}>
                   <Button 
                      variant="primary" 
-                     icon={copied ? <MdCheck className="text-slate-900" /> : <MdEmail />} 
+                     icon={copied ? <MdCheck className="text-body" /> : <MdEmail />} 
                      className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]"
                      onClick={() => setShowEmailMenu(!showEmailMenu)}
                   >

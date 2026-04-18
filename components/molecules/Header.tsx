@@ -93,32 +93,35 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
          >
             <div className="flex items-center justify-between w-full max-w-[1440px] px-4 xs:px-6 md:px-20">
                
-               {showBack ? (
-                  <Link href={`/${lang}`}>
-                     <Button variant="outline" icon={<MdArrowBack />} className="!px-3 xs:!px-4 !py-1.5 xs:!py-2 !text-[13px] xs:!text-[14px]">
-                        {dict.nav.goBack}
-                     </Button>
-                  </Link>
-               ) : (
-                  <div className="flex items-center gap-6">
-                     <Link href={`/${lang}`} className="relative h-8 xs:h-10 w-8 xs:h-10 hover:scale-110 active:scale-95 transition-all duration-300">
-                        {/* Logo para modo claro */}
-                        <Image
-                           src="/assets/images/profile/isotipo-white-nobg.png"
-                           alt="Logo"
-                           fill
-                           className="object-contain logo-light"
-                           priority
-                        />
-                        {/* Logo para modo oscuro */}
-                        <Image
-                           src="/assets/images/profile/isotipo-black-nobg.png"
-                           alt="Logo"
-                           fill
-                           className="object-contain logo-dark"
-                           priority
-                        />
+               <div className="flex items-center gap-4 xs:gap-6">
+                  {showBack && (
+                     <Link href={`/${lang}`}>
+                        <Button variant="outline" icon={<MdArrowBack />} className="!px-3 xs:!px-4 !py-1.5 xs:!py-2 !text-[13px] xs:!text-[14px]">
+                           {dict.nav.goBack}
+                        </Button>
                      </Link>
+                  )}
+                  
+                  <Link href={`/${lang}`} className="relative h-8 xs:h-10 w-8 xs:h-10 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0">
+                     {/* Logo para modo claro */}
+                     <Image
+                        src="/assets/images/profile/isotipo-white-nobg.png"
+                        alt="Logo"
+                        fill
+                        className="object-contain logo-light"
+                        priority
+                     />
+                     {/* Logo para modo oscuro */}
+                     <Image
+                        src="/assets/images/profile/isotipo-black-nobg.png"
+                        alt="Logo"
+                        fill
+                        className="object-contain logo-dark"
+                        priority
+                     />
+                  </Link>
+
+                  {!showBack && (
                      <nav className="hidden md:flex bg-page border border-subtle items-center rounded-2xl p-1 shadow-sm">
                         {navLinks.map((link) => (
                            <Link
@@ -132,7 +135,9 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            </Link>
                         ))}
                      </nav>
+                  )}
 
+                  {!showBack && (
                      <button 
                         onClick={() => setMobileMenuOpen(true)}
                         className="md:hidden flex items-center justify-center p-2 xs:p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
@@ -140,8 +145,8 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      >
                         <MdMenu className="size-5 xs:size-6" />
                      </button>
-                  </div>
-               )}
+                  )}
+               </div>
 
                <div className="bg-page border border-subtle flex items-center rounded-lg xs:rounded-xl p-0.5 xs:p-1 shadow-sm">
                   <button 
