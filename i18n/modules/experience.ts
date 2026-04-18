@@ -35,7 +35,7 @@ export const experience = {
          {
             role: "Software Engineer Intern",
             company: "PepsiCo",
-            location: "Azcapotzalco, CDMX",
+            location: "CDMX, Azcapotzalco",
             remote: "Remote",
             product: "Master Template Rutas",
             projectId: "mtrpa",
@@ -89,7 +89,7 @@ export const experience = {
          {
             role: "Pasante de ingeniería de software",
             company: "PepsiCo",
-            location: "Azcapotzalco, CDMX",
+            location: "CDMX, Azcapotzalco",
             remote: "Remoto",
             product: "Master Template Rutas",
             projectId: "mtrpa",

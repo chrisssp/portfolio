@@ -8,11 +8,9 @@
       +52 271 266 73 65 | #link("mailto:christian.serrano.puertos@gmail.com")[christian.serrano.puertos\@gmail.com]
     ],
     secondary-info: [
-      #link("https://linkedin.com/in/chrisssp")[linkedin.com/in/chrisssp] | #link("https://github.com/chrisssp")[github.com/chrisssp]
+      #link("https://chrisssp.vercel.app")[chrisssp.vercel.app] | #link("https://linkedin.com/in/chrisssp")[linkedin.com/in/chrisssp] | #link("https://github.com/chrisssp")[github.com/chrisssp]
     ],
-    tertiary-info: [
-      Córdoba, Veracruz, México | #link("https://chrisssp.vercel.app")[chrisssp.vercel.app]
-    ],
+    tertiary-info: "Córdoba, Veracruz, Mexico",
   ),
   author-position: center
 )
@@ -74,7 +72,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*PepsiCo*],
       top-right: [May 2024 -- August 2024],
       bottom-left: [Software Engineer Intern (Remote)],
-      bottom-right: [Veracruz, Mexico],
+      bottom-right: [CDMX, Azcapotzalco],
     ),
     list-items: (
       [Developed a centralized Web App (Angular/MongoDB) replacing legacy Excel workflows.],
