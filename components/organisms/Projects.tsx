@@ -5,6 +5,7 @@ import { Typography } from "../atoms/Typography";
 import { ProjectCard } from "../molecules/ProjectCard";
 import { Button } from "../atoms/Button";
 import { MdCode, MdArrowForward } from "react-icons/md";
+import { FaGithub } from "react-icons/fa";
 import { Locale } from "@/i18n/config";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { useState, useMemo, useEffect } from "react";
@@ -106,15 +107,15 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             <a 
                href="https://github.com/chrisssp?tab=repositories" 
                target="_blank" 
-               rel="noopener noreferrer"
+               rel="noopener noreferrer" 
                className="w-full lg:w-auto"
             >
                <Button 
                   variant="outline" 
-                  icon={<MdArrowForward className="rotate-[-45deg]" />} 
+                  icon={<FaGithub className="size-5" />} 
                   className="!rounded-xl w-full lg:w-auto"
                >
-                  {dict.projects.actions.tab_all}
+                  {dict.projects.actions.see_more}
                </Button>
             </a>
          </div>

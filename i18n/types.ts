@@ -123,6 +123,7 @@ export interface Dictionary {
          read_paper: string;
          tab_featured: string;
          tab_all: string;
+         see_more: string;
       };
    };
 

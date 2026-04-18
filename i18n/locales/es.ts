@@ -69,7 +69,8 @@ export const es: Dictionary = {
          view_details: "Ver detalles",
          read_paper: "Leer artículo",
          tab_featured: "Destacados",
-         tab_all: "Ver más proyectos"
+         tab_all: "Otros",
+         see_more: "Ver más proyectos"
       },
    },
    cta: cta.es,
