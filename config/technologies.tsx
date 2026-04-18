@@ -15,7 +15,15 @@ import {
   SiPrisma,
   SiFirebase,
   SiLaravel,
-  SiAndroid
+  SiAndroid,
+  SiNodedotjs,
+  SiTypescript,
+  SiExpress,
+  SiCapacitor,
+  SiPython,
+  SiScikitlearn,
+  SiDjango,
+  SiReactquery
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -126,4 +134,54 @@ export const TECHNOLOGIES: Record<string, TechConfig> = {
       icon: SiAndroid,
       bgColor: "#8bc34a",
    },
+   nodejs: {
+      name: "Node.js",
+      icon: SiNodedotjs,
+      bgColor: "#339933",
+   },
+   typescript: {
+      name: "TypeScript",
+      icon: SiTypescript,
+      bgColor: "#3178c6",
+   },
+   express: {
+      name: "Express",
+      icon: SiExpress,
+      bgColor: "#000000",
+   },
+   capacitor: {
+      name: "Capacitor",
+      icon: SiCapacitor,
+      bgColor: "#119eff",
+   },
+   python: {
+      name: "Python",
+      icon: SiPython,
+      bgColor: "#3776ab",
+   },
+   scikitlearn: {
+      name: "scikit-learn",
+      icon: SiScikitlearn,
+      bgColor: "#f7931e",
+   },
+   django: {
+      name: "Django",
+      icon: SiDjango,
+      bgColor: "#092e20",
+   },
+   tanstackquery: {
+      name: "TanStack Query",
+      icon: SiReactquery,
+      bgColor: "#ff4154",
+   },
+   zustand: {
+      name: "Zustand",
+      icon: SiReact,
+      bgColor: "#666666",
+   },
+   xgboost: {
+      name: "XGBoost",
+      icon: SiPython,
+      bgColor: "#3776ab",
+   }
 };
