@@ -50,6 +50,10 @@
    --color-primary: var(--brand-primary);
    --color-primary-contrast: var(--contrast-primary);
    --color-white-off: #f5f7fa;
+
+   /* Custom Breakpoints */
+   --breakpoint-xs: 375px;
+   --breakpoint-desktop: 1200px;
 }
 
 body {

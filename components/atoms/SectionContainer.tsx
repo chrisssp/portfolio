@@ -3,8 +3,8 @@ import { ReactNode } from "react";
 interface SectionContainerProps {
    children: ReactNode;
    id?: string;
-   className?: string; // Para el color de fondo de la sección (bg-surface, bg-page, etc)
-   innerClassName?: string; // Para layouts específicos (flex, grid, etc)
+   className?: string; // Para el color de fondo de la sección
+   innerClassName?: string; // Para layouts específicos
    showGrid?: boolean;
    paddingY?: string;
 }
@@ -15,14 +15,15 @@ export const SectionContainer = ({
    className = "", 
    innerClassName = "",
    showGrid = true,
-   paddingY = "py-[120px]"
+   paddingY = "py-10 sm:py-16 lg:py-[120px]"
 }: SectionContainerProps) => {
    return (
-      <section id={id} className={`relative flex justify-center w-full overflow-clip ${className}`}>
+      <section id={id} className={`relative flex justify-center w-full overflow-hidden ${className}`}>
          {showGrid && (
             <div className="absolute inset-0 bg-grid-pattern pointer-events-none mask-grid-fade" />
          )}
-         <div className={`w-full max-w-[1440px] px-20 relative z-10 ${paddingY} ${innerClassName}`}>
+         {/* Regresamos a px-20 para LG para respetar el diseño original de 1440px con 80px de padding */}
+         <div className={`w-full max-w-[1440px] px-6 sm:px-10 lg:px-20 relative z-10 ${paddingY} ${innerClassName}`}>
             {children}
          </div>
       </section>
