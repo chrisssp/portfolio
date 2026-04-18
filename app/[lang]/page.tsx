@@ -23,7 +23,7 @@ export default async function Home({ params }: Props) {
          <main className="flex-1">
             <Hero dict={dict} />
             <Experience dict={dict} />
-            <Projects dict={dict} />
+            <Projects dict={dict} lang={locale} />
             <CTA dict={dict} />
             <AboutMe dict={dict} />
          </main>
