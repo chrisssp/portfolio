@@ -76,7 +76,7 @@ export const Hero = ({ dict }: HeroProps) => {
                <div className="relative" ref={menuRef}>
                   <Button 
                      variant="primary" 
-                     icon={copied ? <MdCheck className="text-green-300" /> : <MdEmail />} 
+                     icon={copied ? <MdCheck className="text-slate-900" /> : <MdEmail />} 
                      className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]"
                      onClick={() => setShowEmailMenu(!showEmailMenu)}
                   >
@@ -85,30 +85,30 @@ export const Hero = ({ dict }: HeroProps) => {
                   </Button>
 
                   {showEmailMenu && (
-                     <div className="absolute top-full left-0 mt-2 bg-page border border-subtle rounded-2xl shadow-xl z-20 min-w-[220px] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                     <div className="absolute top-full left-0 mt-2 bg-page border border-subtle rounded-2xl shadow-xl z-[100] min-w-[240px] xs:min-w-[280px] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                         <a 
                            href={`mailto:${PROFESSIONAL_LINKS.email}`}
-                           className="flex items-center gap-3 px-5 py-4 hover:bg-surface transition-colors border-b border-subtle"
+                           className="flex items-center gap-3 px-4 py-3 hover:bg-surface transition-colors border-b border-subtle"
                            onClick={() => setShowEmailMenu(false)}
                         >
-                           <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                              <MdEmail className="size-5" />
+                           <div className="p-1.5 bg-primary/10 rounded-lg text-primary">
+                              <MdEmail className="size-4" />
                            </div>
                            <div className="flex flex-col text-left">
-                              <span className="text-[14px] font-bold text-body">Send email</span>
-                              <span className="text-[11px] text-slate-500">Open mail app</span>
+                              <span className="text-[13px] font-bold text-body">Send email</span>
+                              <span className="text-[10px] text-slate-500">Open mail app</span>
                            </div>
                         </a>
                         <button 
-                           className="w-full flex items-center gap-3 px-5 py-4 hover:bg-surface transition-colors"
+                           className="w-full flex items-center gap-3 px-4 py-3 hover:bg-surface transition-colors"
                            onClick={handleCopyEmail}
                         >
-                           <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-body">
-                              <MdContentCopy className="size-5" />
+                           <div className="p-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-body">
+                              <MdContentCopy className="size-4" />
                            </div>
-                           <div className="flex flex-col text-left">
-                              <span className="text-[14px] font-bold text-body">Copy address</span>
-                              <span className="text-[11px] text-slate-500">{PROFESSIONAL_LINKS.email}</span>
+                           <div className="flex flex-col text-left overflow-hidden">
+                              <span className="text-[13px] font-bold text-body">Copy address</span>
+                              <span className="text-[10px] text-slate-500 truncate w-full">{PROFESSIONAL_LINKS.email}</span>
                            </div>
                         </button>
                      </div>
