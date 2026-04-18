@@ -7,7 +7,8 @@ export const projectAzkali = {
       techStack: ["react", "reactnative", "fastapi", "supabase", "tailwindcss", "expo", "postgresql", "gemini"],
       links: [
          { type: "demo", url: "https://azkali-landing.vercel.app/" },
-         { type: "github", url: "https://github.com/chrisssp/azkali" }
+         { type: "github", url: "https://github.com/chrisssp/azkali" },
+         { type: "video", url: "https://youtu.be/orvfws_kxcc" }
       ],
       ecosystem: [
          {

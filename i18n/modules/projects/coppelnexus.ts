@@ -4,7 +4,8 @@ export const projectCoppelNexus = {
       imagePath: "/assets/images/projects/coppel-nexus/general.png",
       techStack: ["react", "reactnative", "tailwindcss", "nodejs", "firebase", "expo"],
       links: [
-         { type: "github", url: "https://github.com/chrisssp/coppel-nexus-web" }
+         { type: "github", url: "https://github.com/chrisssp/coppel-nexus-web" },
+         { type: "video", url: "https://youtu.be/QOrzY2dIhsw" }
       ],
    },
    en: {

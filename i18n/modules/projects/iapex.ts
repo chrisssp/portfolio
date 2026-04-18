@@ -6,7 +6,8 @@ export const projectIapex = {
       heroImagePath: "/assets/images/projects/iapex/hero.png",
       techStack: ["angular", "ionic", "springboot", "django", "postgresql", "python"],
       links: [
-         { type: "github", url: "https://github.com/aescobar80/IAPEX_APP-WEB" }
+         { type: "github", url: "https://github.com/aescobar80/IAPEX_APP-WEB" },
+         { type: "video", url: "https://youtu.be/WPlo9SK-dgw" }
       ],
       ecosystem: [
          {

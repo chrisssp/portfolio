@@ -29,6 +29,7 @@ export default async function ProjectPage({ params }: Props) {
          <main className="flex-1">
             <ProjectDetailHero project={project} />
             <ProjectChallenge project={project} labels={dict.projects.sections} />
+            
             <ProjectEcosystem 
                project={project} 
                labels={dict.projects.sections} 
