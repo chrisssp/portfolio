@@ -4,10 +4,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/types";
-import { MdLanguage, MdDarkMode, MdLightMode, MdArrowBack } from "react-icons/md";
+import { MdLanguage, MdDarkMode, MdLightMode, MdArrowBack, MdMenu, MdClose } from "react-icons/md";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "../atoms/Button";
+import { Typography } from "../atoms/Typography";
 
 type HeaderProps = {
    dict: Dictionary;
@@ -19,14 +20,20 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
    const { theme, setTheme, resolvedTheme } = useTheme();
    const [mounted, setMounted] = useState(false);
    const [activeSection, setActiveSection] = useState<string>("");
+   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+   const [visible, setVisible] = useState(true);
+   const lastScrollY = useRef(0);
+   
    const pathname = usePathname();
    const router = useRouter();
 
    useEffect(() => {
       setMounted(true);
 
-      if (!showBack) {
-         const handleScroll = () => {
+      const handleScroll = () => {
+         const currentScrollY = window.scrollY;
+
+         if (!showBack) {
             const sections = ["experience", "projects", "about"];
             const current = sections.find((section) => {
                const element = document.getElementById(section);
@@ -37,12 +44,30 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                return false;
             });
             setActiveSection(current || "");
-         };
+         }
 
-         window.addEventListener("scroll", handleScroll);
-         return () => window.removeEventListener("scroll", handleScroll);
+         if (!mobileMenuOpen) {
+            if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+               setVisible(false);
+            } else {
+               setVisible(true);
+            }
+         }
+         
+         lastScrollY.current = currentScrollY;
+      };
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
+   }, [showBack, mobileMenuOpen]);
+
+   useEffect(() => {
+      if (mobileMenuOpen) {
+         document.body.style.overflow = 'hidden';
+      } else {
+         document.body.style.overflow = 'unset';
       }
-   }, [showBack]);
+   }, [mobileMenuOpen]);
 
    const toggleLanguage = () => {
       const newLang = lang === "en" ? "es" : "en";
@@ -50,7 +75,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
       router.push(newPath);
    };
 
-   if (!mounted) return <div className="h-[108px]" />;
+   if (!mounted) return <div className="h-[72px] md:h-[108px]" />;
 
    const navLinks = [
       { id: "experience", label: dict.nav.experience },
@@ -59,50 +84,108 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
    ];
 
    return (
-      <header className="sticky top-0 z-50 w-full bg-page/80 backdrop-blur-md h-[108px] flex items-center justify-center">
-         <div className="flex items-center justify-between w-full max-w-[1440px] px-20">
-            
-            {showBack ? (
-               <Link href={`/${lang}`}>
-                  <Button variant="outline" icon={<MdArrowBack />}>
-                     {dict.nav.goBack}
-                  </Button>
-               </Link>
-            ) : (
-               <nav className="bg-page border border-subtle flex items-center rounded-2xl p-1 shadow-sm">
-                  {navLinks.map((link) => (
-                     <Link
-                        key={link.id}
-                        href={`/${lang}#${link.id}`}
-                        className={`px-6 py-2.5 font-bold text-[16px] transition-all rounded-xl hover:bg-surface ${
-                           activeSection === link.id ? "text-primary bg-surface/50 shadow-inner" : "text-body"
-                        }`}
-                     >
-                        {link.label}
-                     </Link>
-                  ))}
-               </nav>
-            )}
+      <>
+         <header 
+            className={`sticky top-0 z-[60] w-full bg-page/80 backdrop-blur-md h-[72px] md:h-[108px] flex items-center justify-center border-b border-subtle/50 md:border-none transition-transform duration-300 ${
+               visible ? "translate-y-0" : "-translate-y-full md:translate-y-0"
+            }`}
+         >
+            <div className="flex items-center justify-between w-full max-w-[1440px] px-4 xs:px-6 md:px-20">
+               
+               {showBack ? (
+                  <Link href={`/${lang}`}>
+                     <Button variant="outline" icon={<MdArrowBack />} className="!px-3 xs:!px-4 !py-1.5 xs:!py-2 !text-[13px] xs:!text-[14px]">
+                        {dict.nav.goBack}
+                     </Button>
+                  </Link>
+               ) : (
+                  <>
+                     <nav className="hidden md:flex bg-page border border-subtle items-center rounded-2xl p-1 shadow-sm">
+                        {navLinks.map((link) => (
+                           <Link
+                              key={link.id}
+                              href={`/${lang}#${link.id}`}
+                              className={`px-6 py-2.5 font-bold text-[16px] transition-all rounded-xl hover:bg-surface ${
+                                 activeSection === link.id ? "text-primary bg-surface/50 shadow-inner" : "text-body"
+                              }`}
+                           >
+                              {link.label}
+                           </Link>
+                        ))}
+                     </nav>
 
-            {/* Acciones (Compartido para Home y Detalle) */}
-            <div className="bg-page border border-subtle flex items-center rounded-2xl p-1 shadow-sm">
-               <button 
-                  onClick={toggleLanguage}
-                  className="flex items-center justify-center px-5 py-2.5 text-body hover:text-primary transition-colors rounded-xl hover:bg-surface group"
-                  title={lang === "en" ? "Cambiar a Español" : "Switch to English"}
-               >
-                  <MdLanguage className="size-5" />
-                  <span className="ml-2 text-[14px] font-bold uppercase">{lang}</span>
-               </button>
-               <div className="w-[1px] h-6 bg-subtle mx-1" />
-               <button 
-                  onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                  className="flex items-center justify-center px-5 py-2.5 text-body hover:text-primary transition-colors rounded-xl hover:bg-surface"
-               >
-                  {resolvedTheme === "dark" ? <MdLightMode className="size-5" /> : <MdDarkMode className="size-5" />}
-               </button>
+                     <button 
+                        onClick={() => setMobileMenuOpen(true)}
+                        className="md:hidden flex items-center justify-center p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
+                        aria-label="Open menu"
+                     >
+                        <MdMenu className="size-6" />
+                     </button>
+                  </>
+               )}
+
+               <div className="bg-page border border-subtle flex items-center rounded-lg xs:rounded-xl p-0.5 xs:p-1 shadow-sm">
+                  <button 
+                     onClick={toggleLanguage}
+                     className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
+                  >
+                     <MdLanguage className="size-4 xs:size-5" />
+                     <span className="ml-1.5 xs:ml-2 text-[12px] xs:text-[14px] font-bold uppercase">{lang}</span>
+                  </button>
+                  <div className="w-[1px] h-4 xs:h-6 bg-subtle mx-0.5 xs:mx-1" />
+                  <button 
+                     onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                     className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
+                  >
+                     {resolvedTheme === "dark" ? <MdLightMode className="size-4 xs:size-5" /> : <MdDarkMode className="size-4 xs:size-5" />}
+                  </button>
+               </div>
             </div>
-         </div>
-      </header>
+         </header>
+
+         {/* Mobile Menu Overlay - Botones más compactos */}
+         {mobileMenuOpen && (
+            <div className="fixed inset-0 z-[999] flex flex-col bg-page w-full h-full">
+               <div className="flex justify-between items-center p-5 xs:p-6 border-b border-subtle bg-page">
+                  <div className="flex flex-col text-left">
+                     <span className="text-[18px] xs:text-[20px] font-bold text-body">Christian Serrano</span>
+                     <span className="text-[10px] xs:text-[11px] text-primary font-bold uppercase tracking-widest">Menu</span>
+                  </div>
+                  <button 
+                     onClick={() => setMobileMenuOpen(false)}
+                     className="p-2.5 bg-surface rounded-xl border border-subtle text-body active:scale-95 transition-all"
+                  >
+                     <MdClose className="size-6" />
+                  </button>
+               </div>
+
+               <div className="flex-1 flex flex-col p-5 xs:p-6 gap-3 overflow-y-auto bg-page">
+                  <nav className="flex flex-col gap-3 mt-2">
+                     {navLinks.map((link, idx) => (
+                        <Link
+                           key={link.id}
+                           href={`/${lang}#${link.id}`}
+                           onClick={() => setMobileMenuOpen(false)}
+                           className={`flex items-center justify-between p-4 xs:p-5 rounded-[16px] xs:rounded-[20px] border transition-all duration-200 ${
+                              activeSection === link.id 
+                                 ? "bg-primary text-primary-contrast border-primary shadow-md" 
+                                 : "bg-surface border-subtle text-body"
+                           }`}
+                        >
+                           <span className="text-[18px] xs:text-[22px] font-bold">{link.label}</span>
+                           <span className={`text-[12px] xs:text-[14px] font-black opacity-30`}>0{idx + 1}</span>
+                        </Link>
+                     ))}
+                  </nav>
+                  
+                  <div className="mt-auto py-6 text-center border-t border-subtle bg-page">
+                     <Typography variant="small" className="text-slate-500 font-medium !text-[10px] xs:!text-[12px]">
+                        {dict.footer.rights}
+                     </Typography>
+                  </div>
+               </div>
+            </div>
+         )}
+      </>
    );
 };
