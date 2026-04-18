@@ -1,11 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import { Dictionary } from "@/i18n/types";
 import { Typography } from "../atoms/Typography";
 import { Button } from "../atoms/Button";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { MdEmail, MdDescription } from "react-icons/md";
+import { MdEmail, MdDescription, MdArrowDropDown, MdContentCopy, MdCheck } from "react-icons/md";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { PROFESSIONAL_LINKS } from "@/config/links";
+import { useState, useRef, useEffect } from "react";
 
 interface HeroProps {
    dict: Dictionary;
@@ -13,6 +16,27 @@ interface HeroProps {
 
 export const Hero = ({ dict }: HeroProps) => {
    const profileImg = "/assets/images/profile/me.png";
+   const [showEmailMenu, setShowEmailMenu] = useState(false);
+   const [copied, setCopied] = useState(false);
+   const menuRef = useRef<HTMLDivElement>(null);
+
+   const handleCopyEmail = (e?: React.MouseEvent) => {
+      e?.stopPropagation();
+      navigator.clipboard.writeText(PROFESSIONAL_LINKS.email);
+      setCopied(true);
+      setShowEmailMenu(false);
+      setTimeout(() => setCopied(false), 2000);
+   };
+
+   useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+         if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+            setShowEmailMenu(false);
+         }
+      };
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+   }, []);
 
    return (
       <SectionContainer className="bg-surface" innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
@@ -32,7 +56,7 @@ export const Hero = ({ dict }: HeroProps) => {
             </div>
 
             <div className="flex flex-wrap justify-start gap-3 md:gap-4">
-               <a href={dict.hero.actions.cvLink} target="_blank" rel="noopener noreferrer">
+               <a href={dict.hero.actions.cvLink} download target="_blank" rel="noopener noreferrer">
                   <Button variant="primary" icon={<MdDescription />} className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]">
                      {dict.hero.actions.cv}
                   </Button>
@@ -47,11 +71,49 @@ export const Hero = ({ dict }: HeroProps) => {
                      {dict.hero.actions.linkedin}
                   </Button>
                </a>
-               <a href={`mailto:${PROFESSIONAL_LINKS.email}`}>
-                  <Button variant="primary" icon={<MdEmail />} className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]">
-                     {dict.hero.actions.email}
+               
+               {/* Smart Email Button */}
+               <div className="relative" ref={menuRef}>
+                  <Button 
+                     variant="primary" 
+                     icon={copied ? <MdCheck className="text-green-300" /> : <MdEmail />} 
+                     className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]"
+                     onClick={() => setShowEmailMenu(!showEmailMenu)}
+                  >
+                     {copied ? "Copied!" : dict.hero.actions.email}
+                     <MdArrowDropDown className={`ml-1 size-5 transition-transform duration-300 ${showEmailMenu ? 'rotate-180' : ''}`} />
                   </Button>
-               </a>
+
+                  {showEmailMenu && (
+                     <div className="absolute top-full left-0 mt-2 bg-page border border-subtle rounded-2xl shadow-xl z-20 min-w-[220px] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                        <a 
+                           href={`mailto:${PROFESSIONAL_LINKS.email}`}
+                           className="flex items-center gap-3 px-5 py-4 hover:bg-surface transition-colors border-b border-subtle"
+                           onClick={() => setShowEmailMenu(false)}
+                        >
+                           <div className="p-2 bg-primary/10 rounded-lg text-primary">
+                              <MdEmail className="size-5" />
+                           </div>
+                           <div className="flex flex-col text-left">
+                              <span className="text-[14px] font-bold text-body">Send email</span>
+                              <span className="text-[11px] text-slate-500">Open mail app</span>
+                           </div>
+                        </a>
+                        <button 
+                           className="w-full flex items-center gap-3 px-5 py-4 hover:bg-surface transition-colors"
+                           onClick={handleCopyEmail}
+                        >
+                           <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-body">
+                              <MdContentCopy className="size-5" />
+                           </div>
+                           <div className="flex flex-col text-left">
+                              <span className="text-[14px] font-bold text-body">Copy address</span>
+                              <span className="text-[11px] text-slate-500">{PROFESSIONAL_LINKS.email}</span>
+                           </div>
+                        </button>
+                     </div>
+                  )}
+               </div>
             </div>
          </div>
 

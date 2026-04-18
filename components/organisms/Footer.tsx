@@ -16,7 +16,7 @@ export const Footer = ({ dict }: FooterProps) => {
                {dict.footer.rights}
             </Typography>
             <div className="flex gap-6 items-center">
-               <a href={dict.hero.actions.cvLink} download target="_blank" rel="noopener noreferrer" title="CV">
+               <a href={dict.hero.actions.cvLink} target="_blank" rel="noopener noreferrer" title="CV">
                   <MdDescription className="size-5 text-body cursor-pointer hover:text-primary transition-colors" />
                </a>
                <a href={PROFESSIONAL_LINKS.github} target="_blank" rel="noopener noreferrer" title="GitHub">
