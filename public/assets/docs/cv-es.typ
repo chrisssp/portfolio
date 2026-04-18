@@ -4,7 +4,7 @@
   author-info: (
     name: "Christian Serrano",
     primary-info: [
-      Software Engineer | Full-Stack & Mobile Developer \
+      Ingeniero de software | Desarrollador full-stack y móvil \
       +52 271 266 73 65 | #link("mailto:christian.serrano.puertos@gmail.com")[christian.serrano.puertos\@gmail.com]
     ],
     secondary-info: [
@@ -22,10 +22,10 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
 
 == Habilidades técnicas
 #multi-line-list(
-  single-line-entry([*Frontend & Mobile:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS], []),
+  single-line-entry([*Frontend y móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS], []),
   single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
-  single-line-entry([*Datos & Infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
-  single-line-entry([*Herramientas & OS:*], [Git, Linux, Figma], []),
+  single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
+  single-line-entry([*Herramientas y OS:*], [Git, Linux, Figma], []),
   single-line-entry([*Familiarizado con:*], [Kotlin, Python (Django, FastAPI), MySQL, Firebase], [])
 )
 
@@ -35,7 +35,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Seven D Construction*],
       top-right: [Enero 2026 -- Abril 2026],
-      bottom-left: [Ingeniero de Software Intern (Remoto)],
+      bottom-left: [Ingeniero de software intern (Remoto)],
       bottom-right: [Chicago, IL / México],
     ),
     list-items: (
@@ -48,7 +48,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Banco Azteca (Talent Land 2026)*],
       top-right: [Abril 2026],
-      bottom-left: [Participante de Hackathon y Líder de Equipo],
+      bottom-left: [Participante de hackathon y líder de equipo],
       bottom-right: [CDMX, Santa Fe],
     ),
     list-items: (
@@ -61,7 +61,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Coppel (Talent Land 2025)*],
       top-right: [Abril 2025],
-      bottom-left: [4to Lugar y Líder de Equipo],
+      bottom-left: [4to lugar y líder de equipo],
       bottom-right: [Guadalajara, Jalisco],
     ),
     list-items: (
@@ -73,7 +73,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*PepsiCo*],
       top-right: [Mayo 2024 -- Agosto 2024],
-      bottom-left: [Ingeniero de Software Intern (Remoto)],
+      bottom-left: [Ingeniero de software intern (Remoto)],
       bottom-right: [Veracruz, México],
     ),
     list-items: (
@@ -86,11 +86,11 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Flack's Barber Shop*],
       top-right: [Octubre 2022 -- Abril 2024],
-      bottom-left: [Desarrollador Full Stack - Freelancer],
+      bottom-left: [Desarrollador full stack - Freelancer],
       bottom-right: [Veracruz, México],
     ),
     list-items: (
-      [Desplegué un ecosistema digital completo (Web & Mobile) automatizando el 100% de las citas.],
+      [Desplegué un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
       [Desarrollé una API REST con Node.js y PostgreSQL para centralizar inventario y ventas.],
     )
   )
@@ -145,7 +145,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [Abril 2026],
-      bottom-left: [Ingeniería en Desarrollo y Gestión de Software],
+      bottom-left: [Ingeniería en desarrollo y gestión de software],
       bottom-right: [Cuitláhuac, Ver.],
     )
   ),
@@ -153,7 +153,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Universidad Tecnológica del Centro de Veracruz*],
       top-right: [Agosto 2024],
-      bottom-left: [TSU en Desarrollo de Software Multiplataforma],
+      bottom-left: [TSU en desarrollo de software multiplataforma],
       bottom-right: [Cuitláhuac, Ver.],
     ),
     list-items: (
