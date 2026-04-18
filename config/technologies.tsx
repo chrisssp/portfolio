@@ -12,8 +12,12 @@ import {
   SiTailwindcss, 
   SiNestjs, 
   SiSupabase, 
-  SiPrisma
+  SiPrisma,
+  SiFirebase,
+  SiLaravel,
+  SiAndroid
 } from "react-icons/si";
+import { FaJava } from "react-icons/fa";
 
 export interface TechConfig {
    name: string;
@@ -101,5 +105,25 @@ export const TECHNOLOGIES: Record<string, TechConfig> = {
       name: "gluestack-ui",
       icon: SiReact,
       bgColor: "#4e4e4e",
+   },
+   firebase: {
+      name: "Firebase",
+      icon: SiFirebase,
+      bgColor: "#e89d1f",
+   },
+   laravel: {
+      name: "Laravel",
+      icon: SiLaravel,
+      bgColor: "#ff5252",
+   },
+   java: {
+      name: "Java",
+      icon: FaJava,
+      bgColor: "#e53935",
+   },
+   android: {
+      name: "Android",
+      icon: SiAndroid,
+      bgColor: "#8bc34a",
    },
 };
