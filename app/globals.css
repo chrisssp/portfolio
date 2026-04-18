@@ -2,7 +2,7 @@
 
 @layer base {
    :root {
-      /* --- Primitives (Static Constants) --- */
+      /* --- Primitives --- */
       --color-slate-900: #171c28;
       --color-slate-800: #1f2633;
       --color-slate-700: #2f3a53;
@@ -16,32 +16,18 @@
       --color-red: #e53935;
       --color-green: #66bb6a;
 
-      /* --- Semantic Mapping (Light Mode / Default) --- */
+      /* --- Semantic Mapping (Light) --- */
       --bg-page: var(--color-white-off);
       --bg-surface: var(--color-slate-100);
-
       --text-body: var(--color-slate-700);
-
       --border-subtle: var(--color-slate-200);
-
       --brand-primary: var(--color-cyan-600);
+      --contrast-primary: var(--color-white-off);
+      
+      /* Color de rejilla más sutil para modo claro */
+      --grid-line-color: rgba(23, 28, 40, 0.07);
    }
 
-   /* --- Semantic Mapping (Dark Mode - System Preference) --- */
-   @media (prefers-color-scheme: dark) {
-      :root {
-         --bg-page: var(--color-slate-900);
-         --bg-surface: var(--color-slate-800);
-
-         --text-body: var(--color-white-off);
-
-         --border-subtle: var(--color-slate-700);
-
-         --brand-primary: var(--color-cyan-400);
-      }
-   }
-
-   /* --- Semantic Mapping (Dark Mode - Manual Toggle) --- */
    .dark {
       --bg-page: var(--color-slate-900);
       --bg-surface: var(--color-slate-800);
@@ -49,44 +35,28 @@
       --border-subtle: var(--color-slate-700);
       --brand-primary: var(--color-cyan-400);
       --contrast-primary: var(--color-slate-900);
-   }
 
-   :root {
-      --contrast-primary: var(--color-white-off);
+      /* Color de rejilla sutil para modo oscuro */
+      --grid-line-color: rgba(245, 247, 250, 0.05);
    }
 }
 
 @theme {
    --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
-
-   /* Structural */
    --color-page: var(--bg-page);
    --color-surface: var(--bg-surface);
-
-   /* Typography */
    --color-body: var(--text-body);
-   --color-white-off: var(--color-white-off);
-
-   /* Borders */
    --color-subtle: var(--border-subtle);
-
-   /* Brand & Action */
    --color-primary: var(--brand-primary);
    --color-primary-contrast: var(--contrast-primary);
-
-   /* Utility */
-   --color-error: var(--color-red);
-   --color-success: var(--color-green);
+   --color-white-off: #f5f7fa;
 }
 
 body {
    background-color: var(--bg-page);
    color: var(--text-body);
    font-family: var(--font-sans);
-   /* Smooth transition for theme toggling */
-   transition:
-      background-color 0.3s ease,
-      color 0.3s ease;
+   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer utilities {
@@ -95,22 +65,18 @@ body {
       background-image:
          linear-gradient(
             to right,
-            var(--color-subtle) 1px,
+            var(--grid-line-color) 1px,
             transparent 1px
          ),
          linear-gradient(
             to bottom,
-            var(--color-subtle) 1px,
+            var(--grid-line-color) 1px,
             transparent 1px
          );
    }
 
-   /* Esto crea un efecto de viñeta para que el fondo se desvanezca en los bordes */
-   .mask-radial-faded {
-      mask-image: radial-gradient(
-         circle at center,
-         black 40%,
-         transparent 100%
-      );
+   .mask-grid-fade {
+      -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+      mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
    }
 }

@@ -15,12 +15,12 @@ export const Button = ({
    onClick,
    className = "" 
 }: ButtonProps) => {
-   const baseStyles = "flex items-center justify-center gap-2 px-6 py-3 rounded-2xl font-bold font-sans transition-all active:scale-95 whitespace-nowrap";
+   const baseStyles = "flex items-center justify-center gap-2 px-6 py-3 rounded-2xl font-bold font-sans transition-all active:scale-95 hover:scale-[1.02] hover:shadow-md whitespace-nowrap leading-none cursor-pointer";
    
    const variants = {
-      primary: "bg-primary text-primary-contrast border border-subtle",
-      secondary: "bg-surface text-primary border border-subtle",
-      outline: "bg-page text-primary border border-subtle",
+      primary: "bg-primary text-primary-contrast border border-subtle hover:bg-primary/90",
+      secondary: "bg-surface text-primary border border-subtle hover:bg-surface/80",
+      outline: "bg-page/50 text-primary border border-subtle hover:bg-page/80 backdrop-blur-sm",
    };
 
    return (
@@ -29,8 +29,8 @@ export const Button = ({
          onClick={onClick}
          className={`${baseStyles} ${variants[variant]} ${className}`}
       >
-         {icon && <span className="size-5">{icon}</span>}
-         {children}
+         {icon && <span className="flex items-center justify-center size-5 shrink-0">{icon}</span>}
+         <span className="flex items-center mt-[1px]">{children}</span>
       </button>
    );
 };
