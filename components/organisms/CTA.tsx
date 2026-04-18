@@ -66,8 +66,8 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
             >
                <Button 
                   variant="primary" 
-                  className="w-full lg:w-auto !px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-white"
-                  icon={<FaWhatsapp className="size-5" />}
+                  className="w-full lg:w-auto !px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-white dark:text-slate-900"
+                  icon={<FaWhatsapp className="size-5 text-white dark:text-slate-900" />}
                >
                   {dict.cta.actions.talk}
                </Button>
@@ -79,7 +79,7 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
                   variant="outline" 
                   className={`w-full lg:w-auto min-w-[180px] transition-all ${showEmailMenu ? 'bg-surface shadow-inner' : ''}`}
                   onClick={() => setShowEmailMenu(!showEmailMenu)}
-                  icon={copied ? <MdCheck className="text-body" /> : <MdEmail />}
+                  icon={copied ? <MdCheck className="text-primary" /> : <MdEmail />}
                >
                   {copied ? "Copied!" : "Email"}
                   <MdArrowDropDown className={`ml-1 size-5 transition-transform duration-300 ${showEmailMenu ? 'rotate-180' : ''}`} />

@@ -93,15 +93,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
          >
             <div className="flex items-center justify-between w-full max-w-[1440px] px-4 xs:px-6 md:px-20">
                
-               <div className="flex items-center gap-4 xs:gap-6">
-                  {showBack && (
-                     <Link href={`/${lang}`}>
-                        <Button variant="outline" icon={<MdArrowBack />} className="!px-3 xs:!px-4 !py-1.5 xs:!py-2 !text-[13px] xs:!text-[14px]">
-                           {dict.nav.goBack}
-                        </Button>
-                     </Link>
-                  )}
-                  
+               <div className="flex items-center gap-4 xs:gap-6 w-full">
                   <Link href={`/${lang}`} className="relative h-8 xs:h-10 w-8 xs:h-10 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0">
                      {/* Logo para modo claro */}
                      <Image
@@ -121,30 +113,38 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      />
                   </Link>
 
-                  {!showBack && (
-                     <nav className="hidden md:flex bg-page border border-subtle items-center rounded-2xl p-1 shadow-sm">
-                        {navLinks.map((link) => (
-                           <Link
-                              key={link.id}
-                              href={`/${lang}#${link.id}`}
-                              className={`px-6 py-2.5 font-bold text-[16px] transition-all rounded-xl hover:bg-surface ${
-                                 activeSection === link.id ? "text-primary bg-surface/50 shadow-inner" : "text-body"
-                              }`}
-                           >
-                              {link.label}
-                           </Link>
-                        ))}
-                     </nav>
-                  )}
+                  {showBack ? (
+                     <div className="flex-1 flex justify-end">
+                        <Link href={`/${lang}`}>
+                           <Button variant="outline" icon={<MdArrowBack />} className="!px-3 xs:!px-4 !py-1.5 xs:!py-2 !text-[13px] xs:!text-[14px]">
+                              {dict.nav.goBack}
+                           </Button>
+                        </Link>
+                     </div>
+                  ) : (
+                     <>
+                        <nav className="hidden md:flex bg-page border border-subtle items-center rounded-2xl p-1 shadow-sm">
+                           {navLinks.map((link) => (
+                              <Link
+                                 key={link.id}
+                                 href={`/${lang}#${link.id}`}
+                                 className={`px-6 py-2.5 font-bold text-[16px] transition-all rounded-xl hover:bg-surface ${
+                                    activeSection === link.id ? "text-primary bg-surface/50 shadow-inner" : "text-body"
+                                 }`}
+                              >
+                                 {link.label}
+                              </Link>
+                           ))}
+                        </nav>
 
-                  {!showBack && (
-                     <button 
-                        onClick={() => setMobileMenuOpen(true)}
-                        className="md:hidden flex items-center justify-center p-2 xs:p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
-                        aria-label="Open menu"
-                     >
-                        <MdMenu className="size-5 xs:size-6" />
-                     </button>
+                        <button 
+                           onClick={() => setMobileMenuOpen(true)}
+                           className="md:hidden flex items-center justify-center p-2 xs:p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
+                           aria-label="Open menu"
+                        >
+                           <MdMenu className="size-5 xs:size-6" />
+                        </button>
+                     </>
                   )}
                </div>
 
