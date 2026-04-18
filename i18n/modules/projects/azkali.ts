@@ -13,7 +13,7 @@ export const projectAzkali = {
       ecosystem: [
          {
             imagePath: "/assets/images/projects/azkali/specific1.png",
-            techStack: ["astro", "tailwindcss", "react"],
+            techStack: ["react", "tailwindcss"],
             link: { type: "demo", url: "https://azkali-landing.vercel.app/" }
          },
          {
@@ -39,7 +39,7 @@ export const projectAzkali = {
          items: [
             {
                title: "Product Landing Page",
-               description: "High-conversion landing page built with Astro and React. It serves as the primary touchpoint for users, explaining the behavioral AI engine and value proposition.",
+               description: "High-conversion landing page built with React. It serves as the primary touchpoint for users, explaining the behavioral AI engine and value proposition.",
                link: { label: "Visit landing" }
             },
             {
@@ -66,7 +66,7 @@ export const projectAzkali = {
          items: [
             {
                title: "Landing page del producto",
-               description: "Página de aterrizaje de alta conversión construida con Astro y React. Sirve como el principal punto de contacto para los usuarios, explicando el motor de IA conductual y la propuesta de valor.",
+               description: "Página de aterrizaje de alta conversión construida con React. Sirve como el principal punto de contacto para los usuarios, explicando el motor de IA conductual y la propuesta de valor.",
                link: { label: "Visitar landing" }
             },
             {
