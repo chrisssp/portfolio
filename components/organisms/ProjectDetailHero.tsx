@@ -12,11 +12,11 @@ export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
       <SectionContainer className="bg-surface" innerClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-20">
          <div className="flex flex-col gap-6 lg:gap-8 max-w-[760px] text-left">
             <div className="flex flex-col gap-4">
-               <Typography variant="hero" className="!text-[32px] md:!text-[48px] lg:!text-[64px]">
+               <Typography variant="hero" className="!text-[32px] md:!text-[40px] lg:!text-[48px]">
                   {project.title}
                </Typography>
                {project.subtitle && (
-                  <Typography variant="hero-sub" className="text-primary !text-[20px] md:!text-[28px] lg:!text-[32px]">
+                  <Typography variant="hero-sub" className="text-primary !text-[18px] md:!text-[22px] lg:!text-[24px]">
                      {project.subtitle}
                   </Typography>
                )}
