@@ -14,10 +14,10 @@ export const Hero = ({ dict }: HeroProps) => {
    const profileImg = "/assets/images/profile/me.png";
 
    return (
-      <SectionContainer className="bg-surface" innerClassName="flex items-center justify-between gap-24">
-         <div className="flex flex-col gap-12 max-w-[760px]">
-            <div className="flex flex-col gap-8">
-               <div className="flex flex-col gap-4">
+      <SectionContainer className="bg-surface" innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
+         <div className="flex flex-col gap-8 md:gap-12 max-w-[760px] order-2 lg:order-1">
+            <div className="flex flex-col gap-6 md:gap-8 text-left">
+               <div className="flex flex-col gap-2 md:gap-4">
                   <Typography variant="hero">
                      Christian Serrano
                   </Typography>
@@ -30,7 +30,7 @@ export const Hero = ({ dict }: HeroProps) => {
                </Typography>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-wrap justify-start gap-3 md:gap-4">
                <Button variant="primary" icon={<MdDescription />}>
                   {dict.hero.actions.cv}
                </Button>
@@ -46,7 +46,7 @@ export const Hero = ({ dict }: HeroProps) => {
             </div>
          </div>
 
-         <div className="relative size-[360px] rounded-full border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-xl hover:scale-105 transition-transform duration-500 cursor-pointer">
+         <div className="relative size-[280px] sm:size-[320px] lg:size-[360px] rounded-full border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-xl hover:scale-105 transition-transform duration-500 cursor-pointer order-1 lg:order-2">
             <Image 
                src={profileImg} 
                alt="Christian Serrano" 

@@ -25,17 +25,17 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
    }, [filter, dict.projects.items]);
 
    return (
-      <SectionContainer id="projects" className="bg-surface" innerClassName="flex flex-col gap-16">
-         <div className="flex justify-between items-center w-full">
-            <div className="flex gap-6 items-center">
+      <SectionContainer id="projects" className="bg-surface" innerClassName="flex flex-col gap-8 lg:gap-16">
+         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6">
+            <div className="flex gap-4 md:gap-6 items-center">
                <MdCode className="size-8 text-body" />
                <Typography variant="section">
                   {dict.projects.title}
                </Typography>
             </div>
             
-            {/* Segmented Control Corregido */}
-            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-1 rounded-2xl flex relative shadow-sm min-w-[200px]">
+            {/* Segmented Control */}
+            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-1 rounded-2xl flex relative shadow-sm w-full lg:w-auto lg:min-w-[200px]">
                <div 
                   className={`absolute top-1 bottom-1 bg-primary rounded-xl transition-all duration-300 ease-in-out ${
                      filter === "featured" ? "left-1 w-[calc(50%-4px)]" : "left-[calc(50%+2px)] w-[calc(50%-4px)]"
@@ -60,7 +60,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             </div>
          </div>
 
-         <div className="flex flex-col gap-[120px] w-full transition-all duration-500 min-h-[400px]">
+         <div className="flex flex-col gap-16 lg:gap-[120px] w-full transition-all duration-500 min-h-[400px]">
             {filteredProjects.map((project, index) => (
                <div 
                   key={project.id} 
@@ -77,14 +77,14 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             ))}
          </div>
 
-         <div className="flex justify-between items-center w-full mt-16">
+         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full mt-8 lg:mt-16 gap-6">
             <Typography variant="body" className="font-medium text-slate-500">
                {dict.projects.subtitle}
             </Typography>
             <Button 
                variant="outline" 
                icon={<MdArrowForward className="rotate-[-45deg]" />} 
-               className="!rounded-xl"
+               className="!rounded-xl w-full lg:w-auto"
                onClick={() => setFilter("others")}
             >
                See more projects

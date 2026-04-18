@@ -13,11 +13,11 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
    const img2 = "/assets/images/about/mouredev.jpg"; 
 
    return (
-      <SectionContainer id="about" className="bg-surface" innerClassName="flex items-center justify-between gap-24">
-         <div className="flex flex-col gap-12 max-w-[640px]">
+      <SectionContainer id="about" className="bg-surface" innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
+         <div className="flex flex-col gap-10 md:gap-12 max-w-[640px]">
             {/* About Me Text */}
             <div className="flex flex-col gap-6">
-               <div className="flex gap-6 items-center">
+               <div className="flex gap-4 md:gap-6 items-center">
                   <MdPerson className="size-8 text-body" />
                   <Typography variant="section">{dict.about.title}</Typography>
                </div>
@@ -31,7 +31,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
             </div>
 
             {/* Academic Background */}
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6 md:gap-8">
                <div className="flex flex-col gap-2">
                   <Typography variant="project">{dict.about.educationTitle}</Typography>
                   <Typography variant="body" className="font-medium">
@@ -58,11 +58,11 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
          </div>
 
          {/* Circular Images */}
-         <div className="relative w-[500px] h-[500px] shrink-0">
-            <div className="absolute top-0 right-0 size-[333px] rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer">
+         <div className="relative w-full max-w-[400px] lg:max-w-none lg:w-[500px] aspect-square shrink-0 mt-8 lg:mt-0">
+            <div className="absolute top-0 right-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer">
                <Image src={img1} alt="Community" fill className="object-cover" unoptimized />
             </div>
-            <div className="absolute bottom-0 left-0 size-[333px] rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer">
+            <div className="absolute bottom-0 left-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer">
                <Image src={img2} alt="Me" fill className="object-cover" unoptimized />
             </div>
          </div>
