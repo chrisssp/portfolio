@@ -85,7 +85,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       top-left: [*Flack's Barber Shop*],
       top-right: [October 2022 -- April 2024],
       bottom-left: [Full Stack Developer - Freelancer],
-      bottom-right: [Veracruz, Mexico],
+      bottom-right: [Córdoba, Veracruz, México],
     ),
     list-items: (
       [Deployed a complete digital ecosystem (Web & Mobile), automating 100% of appointments.],

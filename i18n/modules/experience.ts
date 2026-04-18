@@ -45,7 +45,7 @@ export const experience = {
          {
             role: "Full Stack Developer",
             company: "Flack's Barber Shop",
-            location: "Veracruz, México",
+            location: "Córdoba, Veracruz, México",
             product: "Flack's Cut & Connect",
             projectId: "flacks",
             date: "Oct 2022 — Apr 2024",
@@ -99,7 +99,7 @@ export const experience = {
          {
             role: "Desarrollador full stack",
             company: "Flack's Barber Shop",
-            location: "Veracruz, México",
+            location: "Córdoba, Veracruz, México",
             product: "Flack's Cut & Connect",
             projectId: "flacks",
             date: "Oct 2022 — Abr 2024",

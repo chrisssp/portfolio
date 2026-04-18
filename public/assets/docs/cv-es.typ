@@ -85,7 +85,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       top-left: [*Flack's Barber Shop*],
       top-right: [Octubre 2022 -- Abril 2024],
       bottom-left: [Desarrollador full stack - Freelancer],
-      bottom-right: [Veracruz, México],
+      bottom-right: [Córdoba, Veracruz, México],
     ),
     list-items: (
       [Desplegué un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
