@@ -25,7 +25,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   <Typography variant="body">{dict.about.p1}</Typography>
                   <Typography variant="body">{dict.about.p2}</Typography>
                   <Typography variant="body">
-                     My philosophy is simple: <span className="font-bold">{dict.about.quote}</span>.
+                     {dict.about.philosophy}<span className="font-bold">{dict.about.quote}</span>.
                   </Typography>
                </div>
             </div>
@@ -47,7 +47,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                         {edu.achievement && (
                            <ul className="list-disc ml-6 mt-1">
                               <li className="text-body text-[16px]">
-                                 Graduated Top of Class with a <span className="font-bold text-primary">9.82</span> GPA.
+                                 {edu.achievement}.
                               </li>
                            </ul>
                         )}

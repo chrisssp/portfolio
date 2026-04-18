@@ -92,6 +92,7 @@ export interface Dictionary {
       title: string;
       p1: string;
       p2: string;
+      philosophy: string;
       quote: string;
       educationTitle: string;
       education: EducationItem[];
