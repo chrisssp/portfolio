@@ -66,7 +66,7 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
             >
                <Button 
                   variant="primary" 
-                  className="w-full lg:w-auto !px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-white"
+                  className="w-full lg:w-auto !px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-white dark:text-slate-900"
                   icon={<FaWhatsapp className="size-5" />}
                >
                   {dict.cta.actions.talk}
@@ -79,37 +79,37 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
                   variant="outline" 
                   className={`w-full lg:w-auto min-w-[180px] transition-all ${showEmailMenu ? 'bg-surface shadow-inner' : ''}`}
                   onClick={() => setShowEmailMenu(!showEmailMenu)}
-                  icon={copied ? <MdCheck className="text-green-500" /> : <MdEmail />}
+                  icon={copied ? <MdCheck className="text-primary" /> : <MdEmail />}
                >
                   {copied ? "Copied!" : "Email"}
                   <MdArrowDropDown className={`ml-1 size-5 transition-transform duration-300 ${showEmailMenu ? 'rotate-180' : ''}`} />
                </Button>
 
                {showEmailMenu && (
-                  <div className="absolute bottom-full lg:bottom-auto lg:top-full left-0 right-0 mb-2 lg:mb-0 lg:mt-2 bg-page border border-subtle rounded-2xl shadow-xl z-20 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="absolute bottom-full lg:bottom-auto lg:top-full left-0 right-0 mb-2 lg:mb-0 lg:mt-2 bg-page border border-subtle rounded-2xl shadow-xl z-[100] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                      <a 
                         href={`mailto:${PROFESSIONAL_LINKS.email}`}
-                        className="flex items-center gap-3 px-5 py-4 hover:bg-surface transition-colors border-b border-subtle"
+                        className="flex items-center gap-3 px-4 py-3 hover:bg-surface transition-colors border-b border-subtle"
                         onClick={() => setShowEmailMenu(false)}
                      >
-                        <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                           <MdEmail className="size-5" />
+                        <div className="p-1.5 bg-primary/10 rounded-lg text-primary">
+                           <MdEmail className="size-4" />
                         </div>
                         <div className="flex flex-col text-left">
-                           <span className="text-[14px] font-bold text-body">Send email</span>
-                           <span className="text-[11px] text-slate-500">Open mail app</span>
+                           <span className="text-[13px] font-bold text-body">Send email</span>
+                           <span className="text-[10px] text-slate-500">Open your mail app</span>
                         </div>
                      </a>
                      <button 
-                        className="w-full flex items-center gap-3 px-5 py-4 hover:bg-surface transition-colors"
+                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-surface transition-colors"
                         onClick={handleCopyEmail}
                      >
-                        <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-body">
-                           <MdContentCopy className="size-5" />
+                        <div className="p-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-body">
+                           <MdContentCopy className="size-4" />
                         </div>
-                        <div className="flex flex-col text-left">
-                           <span className="text-[14px] font-bold text-body">Copy address</span>
-                           <span className="text-[11px] text-slate-500">{PROFESSIONAL_LINKS.email}</span>
+                        <div className="flex flex-col text-left overflow-hidden">
+                           <span className="text-[13px] font-bold text-body">Copy address</span>
+                           <span className="text-[10px] text-slate-500 truncate w-full">{PROFESSIONAL_LINKS.email}</span>
                         </div>
                      </button>
                   </div>

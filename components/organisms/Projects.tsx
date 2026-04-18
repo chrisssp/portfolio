@@ -103,14 +103,20 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             <Typography variant="body" className="font-medium text-slate-500">
                {dict.projects.subtitle}
             </Typography>
-            <Button 
-               variant="outline" 
-               icon={<MdArrowForward className="rotate-[-45deg]" />} 
-               className="!rounded-xl w-full lg:w-auto"
-               onClick={() => setFilter("others")}
+            <a 
+               href="https://github.com/chrisssp?tab=repositories" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               className="w-full lg:w-auto"
             >
-               See more projects
-            </Button>
+               <Button 
+                  variant="outline" 
+                  icon={<MdArrowForward className="rotate-[-45deg]" />} 
+                  className="!rounded-xl w-full lg:w-auto"
+               >
+                  {dict.projects.actions.tab_all}
+               </Button>
+            </a>
          </div>
       </SectionContainer>
    );

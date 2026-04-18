@@ -20,7 +20,7 @@ export const SectionContainer = ({
    return (
       <section 
          id={id} 
-         className={`relative flex justify-center w-full overflow-hidden scroll-mt-header ${className}`}
+         className={`relative flex justify-center w-full scroll-mt-header ${className}`}
       >
          {showGrid && (
             <div className="absolute inset-0 bg-grid-pattern pointer-events-none mask-grid-fade" />
