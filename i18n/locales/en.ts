@@ -76,7 +76,7 @@ export const en: Dictionary = {
          {
             title: "IAPEX (Encuéntrame)",
             description: "AI-powered biometric system that identifies unconscious patients in seconds, aiming to reduce emergency identification delays by over 90% compared to manual protocols.",
-            imagePath: "/assets/images/projects/iapex.png",
+            imagePath: "/assets/images/projects/iapex/general.png",
             techStack: ["angular", "bootstrap", "react", "ionic", "springboot", "postgresql", "fastapi", "mongodb"],
             links: [
                { type: "video", url: "#" },
@@ -86,7 +86,7 @@ export const en: Dictionary = {
          {
             title: "dabetai",
             description: "Diabetes complications preventive ecosystem connecting wearables with medical dashboards, enabling real-time risk prediction and improving patient-doctor response efficiency by ~40%.",
-            imagePath: "/assets/images/projects/dabetai.png",
+            imagePath: "/assets/images/projects/dabetai/general.png",
             techStack: ["astro", "angular", "reactnative", "expo", "tailwindcss", "nestjs", "postgresql", "fastapi", "mongodb"],
             links: [
                { type: "video", url: "#" },
@@ -96,7 +96,7 @@ export const en: Dictionary = {
          {
             title: "PuntoFiel",
             description: "Offline-first loyalty platform that digitizes customer retention for local businesses, eliminating physical cards and increasing user engagement through gamified rewards.",
-            imagePath: "/assets/images/projects/puntofiel.png",
+            imagePath: "/assets/images/projects/puntofiel/general.png",
             techStack: ["reactnative", "tailwindcss", "expo", "gluestack", "supabase", "postgresql", "prisma"],
             links: [
                { type: "github", url: "#" },

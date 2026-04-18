@@ -76,7 +76,7 @@ export const es: Dictionary = {
          {
             title: "IAPEX (Encuéntrame)",
             description: "Sistema biométrico impulsado por IA que identifica pacientes inconscientes en segundos, con el objetivo de reducir los retrasos en la identificación de emergencias en más del 90% en comparación con los protocolos manuales.",
-            imagePath: "/assets/images/projects/iapex.png",
+            imagePath: "/assets/images/projects/iapex/general.png",
             techStack: ["angular", "bootstrap", "react", "ionic", "springboot", "postgresql", "fastapi", "mongodb"],
             links: [
                { type: "video", url: "#" },
@@ -86,7 +86,7 @@ export const es: Dictionary = {
          {
             title: "dabetai",
             description: "Ecosistema preventivo de complicaciones de la diabetes que conecta wearables con tableros médicos, permitiendo la predicción de riesgos en tiempo real y mejorando la eficiencia de respuesta médico-paciente en ~40%.",
-            imagePath: "/assets/images/projects/dabetai.png",
+            imagePath: "/assets/images/projects/dabetai/general.png",
             techStack: ["astro", "angular", "reactnative", "expo", "tailwindcss", "nestjs", "postgresql", "fastapi", "mongodb"],
             links: [
                { type: "video", url: "#" },
@@ -96,7 +96,7 @@ export const es: Dictionary = {
          {
             title: "PuntoFiel",
             description: "Plataforma de lealtad offline-first que digitaliza la retención de clientes para negocios locales, eliminando las tarjetas físicas y aumentando el compromiso del usuario mediante recompensas gamificadas.",
-            imagePath: "/assets/images/projects/puntofiel.png",
+            imagePath: "/assets/images/projects/puntofiel/general.png",
             techStack: ["reactnative", "tailwindcss", "expo", "gluestack", "supabase", "postgresql", "prisma"],
             links: [
                { type: "github", url: "#" },

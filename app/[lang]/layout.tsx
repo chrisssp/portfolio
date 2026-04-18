@@ -24,11 +24,11 @@ export default async function RootLayout({ children, params }: Props) {
    const { lang } = await params;
    const locale = lang as Locale;
    return (
-      <html lang={locale} className={spaceGrotesk.variable}>
-         <body className="antialiased font-sans bg-page text-body">
+      <html lang={locale} className={spaceGrotesk.variable} suppressHydrationWarning>
+         <body className="antialiased font-sans bg-page text-body selection:bg-primary selection:text-primary-contrast">
             <ThemeProvider>
                {/* Capa del fondo */}
-               <div className="fixed inset-0 -z-10 h-full w-full">
+               <div className="fixed inset-0 -z-10 h-full w-full pointer-events-none">
                   <div className="absolute h-full w-full bg-grid-pattern opacity-40 dark:opacity-10" />
                   <div className="absolute inset-0 bg-page [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
                </div>

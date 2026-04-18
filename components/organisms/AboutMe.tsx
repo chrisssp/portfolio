@@ -8,8 +8,8 @@ interface AboutMeProps {
 }
 
 export const AboutMe = ({ dict }: AboutMeProps) => {
-   const img1 = "/assets/images/about/community.png"; 
-   const img2 = "/assets/images/about/me-alt.png"; 
+   const img1 = "/assets/images/about/midudev.jpg"; 
+   const img2 = "/assets/images/about/mouredev.jpg"; 
 
    return (
       <section id="about" className="bg-surface flex items-center justify-center gap-[120px] px-20 py-[64px] w-full">
@@ -17,7 +17,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
             {/* About Me Text */}
             <div className="flex flex-col gap-6">
                <div className="flex gap-6 items-center">
-                  <MdPerson className="size-8 text-slate-700 dark:text-white-off" />
+                  <MdPerson className="size-8 text-primary" />
                   <Typography variant="section">{dict.about.title}</Typography>
                </div>
                <div className="flex flex-col gap-3">

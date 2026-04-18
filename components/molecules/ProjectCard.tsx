@@ -51,12 +51,13 @@ export const ProjectCard = ({ project, actions, reverse }: ProjectCardProps) => 
          </div>
 
          {/* Mockup Image */}
-         <div className="w-[630px] h-[350px] rounded-2xl border border-subtle relative overflow-hidden bg-page">
+         <div className="w-[630px] h-[350px] rounded-2xl border border-subtle relative overflow-hidden bg-page shrink-0 shadow-lg group">
             <Image 
                src={project.imagePath} 
                alt={project.title} 
                fill 
-               className="object-cover"
+               className="object-cover group-hover:scale-105 transition-transform duration-500"
+               unoptimized
             />
          </div>
       </div>
