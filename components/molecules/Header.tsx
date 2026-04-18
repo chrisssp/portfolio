@@ -107,7 +107,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            src="/assets/images/profile/isotipo-black-nobg.png"
                            alt="Logo"
                            fill
-                           className="object-contain dark:hidden"
+                           className="object-contain block dark:hidden"
                            priority
                         />
                         {/* Logo para modo oscuro */}
@@ -172,7 +172,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            src="/assets/images/profile/isotipo-black-nobg.png"
                            alt="Logo"
                            fill
-                           className="object-contain dark:hidden"
+                           className="object-contain block dark:hidden"
                         />
                         <Image
                            src="/assets/images/profile/isotipo-white-nobg.png"
