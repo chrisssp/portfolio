@@ -129,6 +129,7 @@ export interface Dictionary {
    cta: {
       title: string;
       description: string;
+      projectDescription: string;
       actions: {
          talk: string;
          copy: string;

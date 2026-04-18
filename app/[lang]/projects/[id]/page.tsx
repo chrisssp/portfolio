@@ -35,7 +35,7 @@ export default async function ProjectPage({ params }: Props) {
                labels={dict.projects.sections} 
                actions={dict.projects.actions} 
             />
-            <CTA dict={dict} />
+            <CTA dict={dict} projectTitle={project.title} />
          </main>
 
          <Footer dict={dict} />

@@ -7,13 +7,14 @@ import { SectionContainer } from "../atoms/SectionContainer";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import { useState, useRef, useEffect } from "react";
 import { MdCheck, MdContentCopy, MdEmail, MdArrowDropDown } from "react-icons/md";
-import { FaLinkedin } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
 interface CTAProps {
    dict: Dictionary;
+   projectTitle?: string;
 }
 
-export const CTA = ({ dict }: CTAProps) => {
+export const CTA = ({ dict, projectTitle }: CTAProps) => {
    const [copied, setCopied] = useState(false);
    const [showEmailMenu, setShowEmailMenu] = useState(false);
    const menuRef = useRef<HTMLDivElement>(null);
@@ -26,7 +27,6 @@ export const CTA = ({ dict }: CTAProps) => {
       setTimeout(() => setCopied(false), 2000);
    };
 
-   // Close menu when clicking outside
    useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
          if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -36,6 +36,10 @@ export const CTA = ({ dict }: CTAProps) => {
       document.addEventListener("mousedown", handleClickOutside);
       return () => document.removeEventListener("mousedown", handleClickOutside);
    }, []);
+
+   const description = projectTitle 
+      ? dict.cta.projectDescription.replace("{project}", projectTitle)
+      : dict.cta.description;
 
    return (
       <SectionContainer 
@@ -48,22 +52,22 @@ export const CTA = ({ dict }: CTAProps) => {
                {dict.cta.title}
             </Typography>
             <Typography variant="body" className="opacity-90 text-pretty">
-               {dict.cta.description}
+               {description}
             </Typography>
          </div>
          
          <div className="flex flex-col xs:flex-row gap-4 w-full lg:w-auto items-center">
-            {/* Botón Principal: LinkedIn (Conexión directa) */}
+            {/* Botón Principal: WhatsApp (Conexión directa) */}
             <a 
-               href={PROFESSIONAL_LINKS.linkedin} 
+               href={PROFESSIONAL_LINKS.whatsapp} 
                target="_blank" 
                rel="noopener noreferrer"
                className="w-full lg:w-auto"
             >
                <Button 
                   variant="primary" 
-                  className="w-full lg:w-auto !px-8"
-                  icon={<FaLinkedin />}
+                  className="w-full lg:w-auto !px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-white"
+                  icon={<FaWhatsapp className="size-5" />}
                >
                   {dict.cta.actions.talk}
                </Button>
@@ -93,7 +97,7 @@ export const CTA = ({ dict }: CTAProps) => {
                         </div>
                         <div className="flex flex-col text-left">
                            <span className="text-[14px] font-bold text-body">Send email</span>
-                           <span className="text-[11px] text-slate-500">Open your mail app</span>
+                           <span className="text-[11px] text-slate-500">Open mail app</span>
                         </div>
                      </a>
                      <button 
