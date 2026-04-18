@@ -18,11 +18,13 @@ export const SectionContainer = ({
    paddingY = "py-10 sm:py-16 lg:py-[120px]"
 }: SectionContainerProps) => {
    return (
-      <section id={id} className={`relative flex justify-center w-full overflow-hidden ${className}`}>
+      <section 
+         id={id} 
+         className={`relative flex justify-center w-full overflow-hidden scroll-mt-header ${className}`}
+      >
          {showGrid && (
             <div className="absolute inset-0 bg-grid-pattern pointer-events-none mask-grid-fade" />
          )}
-         {/* Regresamos a px-20 para LG para respetar el diseño original de 1440px con 80px de padding */}
          <div className={`w-full max-w-[1440px] px-6 sm:px-10 lg:px-20 relative z-10 ${paddingY} ${innerClassName}`}>
             {children}
          </div>

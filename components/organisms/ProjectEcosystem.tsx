@@ -26,13 +26,15 @@ export const ProjectEcosystem = ({ project, labels, actions }: ProjectEcosystemP
          <div className="flex flex-col gap-32">
             {project.ecosystem.items.map((item, index) => {
                const itemActions = item.link ? (
-                  <Button 
-                     variant="outline" 
-                     icon={item.link.type === 'paper' ? <MdDescription /> : <MdCode />}
-                     className="w-fit"
-                  >
-                     {item.link.type === 'paper' ? actions.read_paper : item.link.type === 'github' ? actions.view_code : actions.view_demo}
-                  </Button>
+                  <a href={item.link.url} target="_blank" rel="noopener noreferrer">
+                     <Button 
+                        variant="outline" 
+                        icon={item.link.type === 'paper' ? <MdDescription /> : <MdCode />}
+                        className="w-fit"
+                     >
+                        {item.link.type === 'paper' ? actions.read_paper : item.link.type === 'github' ? actions.view_code : actions.view_demo}
+                     </Button>
+                  </a>
                ) : undefined;
 
                return (

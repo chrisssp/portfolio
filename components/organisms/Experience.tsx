@@ -1,3 +1,5 @@
+"use client";
+
 import { Dictionary } from "@/i18n/types";
 import { Typography } from "../atoms/Typography";
 import { TimelineItem } from "../molecules/TimelineItem";

@@ -59,10 +59,10 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
 
          {/* Circular Images */}
          <div className="relative w-full max-w-[400px] lg:max-w-none lg:w-[500px] aspect-square shrink-0 mt-8 lg:mt-0">
-            <div className="absolute top-0 right-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer">
+            <div className="absolute top-0 right-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500">
                <Image src={img1} alt="Community" fill className="object-cover" unoptimized />
             </div>
-            <div className="absolute bottom-0 left-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer">
+            <div className="absolute bottom-0 left-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500">
                <Image src={img2} alt="Me" fill className="object-cover" unoptimized />
             </div>
          </div>

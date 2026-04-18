@@ -5,6 +5,7 @@ import { Button } from "../atoms/Button";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail, MdDescription } from "react-icons/md";
 import { SectionContainer } from "../atoms/SectionContainer";
+import { PROFESSIONAL_LINKS } from "@/config/links";
 
 interface HeroProps {
    dict: Dictionary;
@@ -31,22 +32,30 @@ export const Hero = ({ dict }: HeroProps) => {
             </div>
 
             <div className="flex flex-wrap justify-start gap-3 md:gap-4">
-               <Button variant="primary" icon={<MdDescription />}>
-                  {dict.hero.actions.cv}
-               </Button>
-               <Button variant="primary" icon={<FaGithub />}>
-                  {dict.hero.actions.github}
-               </Button>
-               <Button variant="primary" icon={<FaLinkedin />}>
-                  {dict.hero.actions.linkedin}
-               </Button>
-               <Button variant="primary" icon={<MdEmail />}>
-                  {dict.hero.actions.email}
-               </Button>
+               <a href={PROFESSIONAL_LINKS.cv} target="_blank" rel="noopener noreferrer">
+                  <Button variant="primary" icon={<MdDescription />} className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]">
+                     {dict.hero.actions.cv}
+                  </Button>
+               </a>
+               <a href={PROFESSIONAL_LINKS.github} target="_blank" rel="noopener noreferrer">
+                  <Button variant="primary" icon={<FaGithub />} className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]">
+                     {dict.hero.actions.github}
+                  </Button>
+               </a>
+               <a href={PROFESSIONAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer">
+                  <Button variant="primary" icon={<FaLinkedin />} className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]">
+                     {dict.hero.actions.linkedin}
+                  </Button>
+               </a>
+               <a href={`mailto:${PROFESSIONAL_LINKS.email}`}>
+                  <Button variant="primary" icon={<MdEmail />} className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]">
+                     {dict.hero.actions.email}
+                  </Button>
+               </a>
             </div>
          </div>
 
-         <div className="relative size-[280px] sm:size-[320px] lg:size-[360px] rounded-full border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-xl hover:scale-105 transition-transform duration-500 cursor-pointer order-1 lg:order-2">
+         <div className="relative size-[280px] sm:size-[320px] lg:size-[360px] rounded-full border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-xl hover:scale-105 transition-transform duration-500 order-1 lg:order-2">
             <Image 
                src={profileImg} 
                alt="Christian Serrano" 

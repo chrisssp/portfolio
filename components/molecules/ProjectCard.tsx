@@ -28,9 +28,11 @@ export const ProjectCard = ({ project, actions, reverse, lang }: ProjectCardProp
             const label = link.type === "video" ? actions.view_video : link.type === "github" ? actions.view_code : actions.view_demo;
             
             return (
-               <Button key={idx} variant="outline" icon={icon}>
-                  {label}
-               </Button>
+               <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" icon={icon}>
+                     {label}
+                  </Button>
+               </a>
             );
          })}
       </>

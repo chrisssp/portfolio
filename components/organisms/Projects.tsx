@@ -7,7 +7,7 @@ import { Button } from "../atoms/Button";
 import { MdCode, MdArrowForward } from "react-icons/md";
 import { Locale } from "@/i18n/config";
 import { SectionContainer } from "../atoms/SectionContainer";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 interface ProjectsProps {
    dict: Dictionary;
@@ -24,6 +24,27 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       return dict.projects.items.filter(p => !p.featured);
    }, [filter, dict.projects.items]);
 
+   // Escuchar evento para cambiar de pestaña y hacer scroll
+   useEffect(() => {
+      const handleSwitch = (e: any) => {
+         const { projectId } = e.detail;
+         const project = dict.projects.items.find(p => p.id === projectId);
+         if (project) {
+            setFilter(project.featured ? "featured" : "others");
+            // Esperar al re-render para que el ID exista en el DOM
+            setTimeout(() => {
+               const el = document.getElementById(`project-${projectId}`);
+               if (el) {
+                  el.scrollIntoView({ behavior: "smooth", block: "center" });
+               }
+            }, 100);
+         }
+      };
+
+      window.addEventListener("switch-project-tab" as any, handleSwitch);
+      return () => window.removeEventListener("switch-project-tab" as any, handleSwitch);
+   }, [dict.projects.items]);
+
    return (
       <SectionContainer id="projects" className="bg-surface" innerClassName="flex flex-col gap-8 lg:gap-16">
          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6">
@@ -34,8 +55,8 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                </Typography>
             </div>
             
-            {/* Segmented Control */}
-            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-1 rounded-2xl flex relative shadow-sm w-full lg:w-auto lg:min-w-[200px]">
+            {/* Segmented Control - Ajustado ancho para evitar desbordamiento en español */}
+            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-1 rounded-2xl flex relative shadow-sm w-full lg:w-auto min-w-[240px]">
                <div 
                   className={`absolute top-1 bottom-1 bg-primary rounded-xl transition-all duration-300 ease-in-out ${
                      filter === "featured" ? "left-1 w-[calc(50%-4px)]" : "left-[calc(50%+2px)] w-[calc(50%-4px)]"
@@ -64,7 +85,8 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             {filteredProjects.map((project, index) => (
                <div 
                   key={project.id} 
-                  className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both"
+                  id={`project-${project.id}`}
+                  className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both scroll-mt-32"
                   style={{ animationDelay: `${index * 100}ms` }}
                >
                   <ProjectCard 
