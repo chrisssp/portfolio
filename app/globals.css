@@ -48,6 +48,11 @@
       --text-body: var(--color-white-off);
       --border-subtle: var(--color-slate-700);
       --brand-primary: var(--color-cyan-400);
+      --contrast-primary: var(--color-slate-900);
+   }
+
+   :root {
+      --contrast-primary: var(--color-white-off);
    }
 }
 
@@ -60,12 +65,14 @@
 
    /* Typography */
    --color-body: var(--text-body);
+   --color-white-off: var(--color-white-off);
 
    /* Borders */
    --color-subtle: var(--border-subtle);
 
    /* Brand & Action */
    --color-primary: var(--brand-primary);
+   --color-primary-contrast: var(--contrast-primary);
 
    /* Utility */
    --color-error: var(--color-red);
@@ -84,17 +91,16 @@ body {
 
 @layer utilities {
    .bg-grid-pattern {
-      /* Esto crea una rejilla usando gradientes CSS. No requiere descarga de imágenes */
       background-size: 40px 40px;
       background-image:
          linear-gradient(
             to right,
-            var(--border-color, rgba(128, 128, 128, 0.4)) 1px,
+            var(--color-subtle) 1px,
             transparent 1px
          ),
          linear-gradient(
             to bottom,
-            var(--border-color, rgba(128, 128, 128, 0.4)) 1px,
+            var(--color-subtle) 1px,
             transparent 1px
          );
    }

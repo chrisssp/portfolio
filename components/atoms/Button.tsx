@@ -18,7 +18,7 @@ export const Button = ({
    const baseStyles = "flex items-center justify-center gap-2 px-6 py-3 rounded-2xl font-bold font-sans transition-all active:scale-95 whitespace-nowrap";
    
    const variants = {
-      primary: "bg-primary text-white-off border border-subtle",
+      primary: "bg-primary text-primary-contrast border border-subtle",
       secondary: "bg-surface text-primary border border-subtle",
       outline: "bg-page text-primary border border-subtle",
    };

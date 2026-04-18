@@ -10,14 +10,14 @@ interface HeroProps {
 }
 
 export const Hero = ({ dict }: HeroProps) => {
-   const profileImg = "/assets/images/profile/me.png"; // Sustituir por tu imagen real en esta ruta
+   const profileImg = "/assets/images/profile/me.png";
 
    return (
       <section className="bg-surface flex items-center justify-center gap-[120px] px-20 py-[120px] w-full overflow-clip">
          <div className="flex flex-col gap-12 max-w-[700px]">
             <div className="flex flex-col gap-8">
                <div className="flex flex-col gap-4">
-                  <Typography variant="hero" className="text-slate-700 dark:text-white-off">
+                  <Typography variant="hero">
                      Christian Serrano
                   </Typography>
                   <Typography variant="hero-sub" className="text-primary">
@@ -45,13 +45,14 @@ export const Hero = ({ dict }: HeroProps) => {
             </div>
          </div>
 
-         <div className="relative size-[360px] rounded-full border-3 border-subtle overflow-hidden bg-page">
+         <div className="relative size-[360px] rounded-full border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-xl">
             <Image 
                src={profileImg} 
                alt="Christian Serrano" 
                fill
                className="object-cover"
                priority
+               unoptimized // Por si la imagen no existe aún y evitar errores de optimización
             />
          </div>
       </section>
