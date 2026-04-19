@@ -3,7 +3,8 @@ import { Space_Grotesk } from "next/font/google";
 import { Locale } from "@/i18n/config";
 import { ThemeProvider } from "@/components/ThemeContext";
 import { ScrollToTop } from "@/components/atoms/ScrollToTop";
-import "@/app/globals.css";
+import { Analytics } from "@vercel/analytics/react";
+import "./../globals.css";
 
 const spaceGrotesk = Space_Grotesk({
    variable: "--font-space-grotesk",
@@ -51,6 +52,7 @@ export default async function RootLayout({ children, params }: Props) {
             <ThemeProvider>
                {children}
                <ScrollToTop />
+               <Analytics />
             </ThemeProvider>
          </body>
       </html>
