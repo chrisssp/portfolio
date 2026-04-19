@@ -4,6 +4,7 @@ import { Locale } from "@/i18n/config";
 import { ThemeProvider } from "@/components/ThemeContext";
 import { ScrollToTop } from "@/components/atoms/ScrollToTop";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./../globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -53,6 +54,7 @@ export default async function RootLayout({ children, params }: Props) {
                {children}
                <ScrollToTop />
                <Analytics />
+               <SpeedInsights />
             </ThemeProvider>
          </body>
       </html>
