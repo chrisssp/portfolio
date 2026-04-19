@@ -36,32 +36,33 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
             </Typography>
          </div>
          
-         {/* Contenedor con flex-wrap para que fluyan en una línea */}
-         <div className="flex flex-wrap items-center gap-3 xs:gap-4 w-full lg:w-auto">
+         {/* Contenedor con flex-wrap en móvil y col-fit en escritorio para anchos iguales */}
+         <div className="flex flex-wrap lg:flex-col items-center lg:items-stretch gap-3 xs:gap-4 w-full lg:w-fit lg:min-w-[220px]">
             {/* Botón Principal: WhatsApp */}
             <a 
                href={PROFESSIONAL_LINKS.whatsapp} 
                target="_blank" 
                rel="noopener noreferrer"
-               className="w-auto"
+               className="w-auto lg:w-full"
             >
                <Button 
                   variant="primary" 
-                  className="!px-5 xs:!px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-primary-contrast"
+                  className="w-full !px-5 xs:!px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-primary-contrast"
                   icon={<FaWhatsapp className="size-5 text-primary-contrast" />}
                >
                   {dict.cta.actions.talk}
                </Button>
             </a>
 
-            {/* Botón de Email Inteligente sin ancho forzado */}
+            {/* Botón de Email Inteligente adaptado al ancho del padre en escritorio */}
             <SmartEmailButton 
                label={dict.hero.actions.email}
                menuLabels={dict.hero.actions.emailMenu}
                variant="outline"
                align="right"
                checkmarkClassName="text-primary"
-               className="w-auto"
+               className="w-auto lg:w-full"
+               buttonClassName="lg:w-full"
                onOpenChange={setIsMenuOpen}
             />
          </div>

@@ -61,7 +61,7 @@ export const Hero = ({ dict }: HeroProps) => {
                   menuLabels={dict.hero.actions.emailMenu}
                   variant="primary"
                   checkmarkClassName="text-primary-contrast"
-                  className="w-full xs:w-auto"
+                  className="w-auto"
                   onOpenChange={setIsMenuOpen}
                />
             </div>

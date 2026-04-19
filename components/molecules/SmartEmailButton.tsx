@@ -10,6 +10,7 @@ interface SmartEmailButtonProps {
    variant?: "primary" | "outline";
    checkmarkClassName?: string;
    className?: string;
+   buttonClassName?: string;
    align?: "left" | "right";
    onOpenChange?: (isOpen: boolean) => void;
    menuLabels: {
@@ -26,6 +27,7 @@ export const SmartEmailButton = ({
    variant = "primary",
    checkmarkClassName,
    className = "",
+   buttonClassName = "",
    align = "left",
    onOpenChange,
    menuLabels
@@ -42,7 +44,19 @@ export const SmartEmailButton = ({
       setTimeout(() => setCopied(false), 2000);
    };
 
-   // Notify parent about state changes (useful for Z-index handling in SectionContainer)
+   // Prevent scrolling when menu is open on mobile
+   useEffect(() => {
+      if (showEmailMenu && window.innerWidth < 1024) {
+         document.body.style.overflow = 'hidden';
+      } else {
+         document.body.style.overflow = 'unset';
+      }
+      return () => {
+         document.body.style.overflow = 'unset';
+      };
+   }, [showEmailMenu]);
+
+   // Notify parent about state changes
    useEffect(() => {
       onOpenChange?.(showEmailMenu);
    }, [showEmailMenu, onOpenChange]);
@@ -66,7 +80,7 @@ export const SmartEmailButton = ({
          <Button 
             variant={variant} 
             icon={copied ? <MdCheck className={checkmarkClassName} /> : <MdEmail />} 
-            className="w-full lg:w-auto"
+            className={`w-auto ${buttonClassName}`}
             onClick={() => setShowEmailMenu(!showEmailMenu)}
          >
             {copied ? menuLabels.copied : label}
@@ -83,32 +97,32 @@ export const SmartEmailButton = ({
                   lg:absolute lg:top-full lg:translate-x-0 lg:translate-y-0 
                   ${alignmentClasses}
                   mt-2 bg-page border border-subtle rounded-2xl shadow-2xl 
-                  z-[10000] min-w-[280px] xs:min-w-[320px] overflow-hidden 
+                  z-[10000] min-w-[260px] xs:min-w-[300px] overflow-hidden 
                   animate-in fade-in zoom-in-95 duration-200"
                `}>
                   <a 
                      href={`mailto:${PROFESSIONAL_LINKS.email}`}
-                     className="flex items-center gap-4 px-6 py-4 hover:bg-surface transition-colors border-b border-subtle"
+                     className="flex items-center gap-3 xs:gap-4 px-4 xs:px-6 py-3 xs:py-4 hover:bg-surface transition-colors border-b border-subtle"
                      onClick={() => setShowEmailMenu(false)}
                   >
-                     <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                        <MdEmail className="size-5" />
+                     <div className="p-1.5 xs:p-2 bg-primary/10 rounded-lg text-primary">
+                        <MdEmail className="size-4 xs:size-5" />
                      </div>
                      <div className="flex flex-col text-left">
-                        <span className="text-[15px] font-bold text-body">{menuLabels.send}</span>
-                        <span className="text-[12px] text-body opacity-60">{menuLabels.sendSub}</span>
+                        <span className="text-[13px] xs:text-[15px] font-bold text-body">{menuLabels.send}</span>
+                        <span className="text-[10px] xs:text-[12px] text-body opacity-60">{menuLabels.sendSub}</span>
                      </div>
                   </a>
                   <button 
-                     className="w-full flex items-center gap-4 px-6 py-4 hover:bg-surface transition-colors"
+                     className="w-full flex items-center gap-3 xs:gap-4 px-4 xs:px-6 py-3 xs:py-4 hover:bg-surface transition-colors"
                      onClick={handleCopyEmail}
                   >
-                     <div className="p-2 bg-surface rounded-lg text-body border border-subtle">
-                        <MdContentCopy className="size-5" />
+                     <div className="p-1.5 xs:p-2 bg-surface rounded-lg text-body border border-subtle">
+                        <MdContentCopy className="size-4 xs:size-5" />
                      </div>
                      <div className="flex flex-col text-left overflow-hidden">
-                        <span className="text-[15px] font-bold text-body">{menuLabels.copy}</span>
-                        <span className="text-[12px] text-body opacity-60 truncate w-full">{PROFESSIONAL_LINKS.email}</span>
+                        <span className="text-[13px] xs:text-[15px] font-bold text-body">{menuLabels.copy}</span>
+                        <span className="text-[10px] xs:text-[12px] text-body opacity-60 truncate w-full">{PROFESSIONAL_LINKS.email}</span>
                      </div>
                   </button>
                </div>
