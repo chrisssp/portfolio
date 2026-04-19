@@ -1,4 +1,4 @@
-# 🚀 Professional Portfolio | Christian Serrano
+# Professional Portfolio | Christian Serrano
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
@@ -7,32 +7,32 @@
 
 High-performance, multi-language professional portfolio built with a focus on clean architecture, accessibility, and modern user experience.
 
-**🌐 Live Demo:** [chrisssp.vercel.app](https://chrisssp.vercel.app)
+**Live Demo:** [chrisssp.vercel.app](https://chrisssp.vercel.app)
 
 ---
 
-## ✨ Key Features
+## Key Features
 
--   **🌍 Full Internationalization (i18n):** Native support for English and Spanish with automated route detection and localized metadata.
--   **🖼️ Dynamic Open Graph Images:** Automated generation of social preview images (OG) using Edge Functions, customized for both the home page and individual projects.
--   **⚡ Performance First:** Optimized Core Web Vitals, featuring real-time monitoring with Vercel Speed Insights.
--   **🎨 Modern UI/UX:** Responsive, mobile-first design with dark/light mode support, featuring a custom "Smart Email Button" and blurred context-aware overlays.
--   **📈 Business Impact:** Showcasing technical solutions with real-world metrics (e.g., $2.3M USD reconciled, 95% process optimization).
-
----
-
-## 🛠️ Tech Stack
-
--   **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
--   **Language:** [TypeScript](https://www.typescriptlang.org/)
--   **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
--   **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
--   **Fonts:** [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
--   **Deployment & Analytics:** [Vercel](https://vercel.com/) (Analytics & Speed Insights)
+- **Full Internationalization (i18n):** Native support for English and Spanish with automated route detection and localized metadata.
+- **Dynamic Open Graph Images:** Automated generation of social preview images (OG) using Edge Functions, customized for both the home page and individual projects.
+- **Performance First:** Optimized Core Web Vitals, featuring real-time monitoring with Vercel Speed Insights.
+- **Modern UI/UX:** Responsive, mobile-first design with dark/light mode support, featuring a custom "Smart Email Button" and blurred context-aware overlays.
+- **Business Impact:** Showcasing technical solutions with real-world metrics (e.g., $2.3M USD reconciled, 95% process optimization).
 
 ---
 
-## 📁 Project Structure
+## Tech Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
+- **Fonts:** [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
+- **Deployment & Analytics:** [Vercel](https://vercel.com/) (Analytics & Speed Insights)
+
+---
+
+## Project Structure
 
 ```text
 ├── app/               # Next.js App Router (Layouts, Pages, OG Images)
@@ -45,7 +45,7 @@ High-performance, multi-language professional portfolio built with a focus on cl
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  **Clone the repository:**
     ```bash
@@ -66,7 +66,7 @@ High-performance, multi-language professional portfolio built with a focus on cl
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
@@ -75,5 +75,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ---
 
 <p align="center">
-  Built with ❤️ by <a href="https://github.com/chrisssp">Christian Serrano</a>
+    0 errors, 14 warnings, 100% by Christian Serrano 🤓👆
 </p>
