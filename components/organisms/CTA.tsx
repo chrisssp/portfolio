@@ -5,9 +5,9 @@ import { Typography } from "../atoms/Typography";
 import { Button } from "../atoms/Button";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { PROFESSIONAL_LINKS } from "@/config/links";
-import { useState, useRef, useEffect } from "react";
-import { MdCheck, MdContentCopy, MdEmail, MdArrowDropDown } from "react-icons/md";
+import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import { SmartEmailButton } from "../molecules/SmartEmailButton";
 
 interface CTAProps {
    dict: Dictionary;
@@ -15,27 +15,7 @@ interface CTAProps {
 }
 
 export const CTA = ({ dict, projectTitle }: CTAProps) => {
-   const [copied, setCopied] = useState(false);
-   const [showEmailMenu, setShowEmailMenu] = useState(false);
-   const menuRef = useRef<HTMLDivElement>(null);
-
-   const handleCopyEmail = (e?: React.MouseEvent) => {
-      e?.stopPropagation();
-      navigator.clipboard.writeText(PROFESSIONAL_LINKS.email);
-      setCopied(true);
-      setShowEmailMenu(false);
-      setTimeout(() => setCopied(false), 2000);
-   };
-
-   useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-         if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-            setShowEmailMenu(false);
-         }
-      };
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-   }, []);
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
    const description = projectTitle 
       ? dict.cta.projectDescription.replace("{project}", projectTitle)
@@ -43,7 +23,7 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
 
    return (
       <SectionContainer 
-         className="bg-page" 
+         className={`bg-page transition-all duration-300 ${isMenuOpen ? 'z-[100]' : 'z-10'}`} 
          paddingY="py-12 xs:py-16 lg:py-[120px]"
          innerClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 xs:gap-10 md:gap-24"
       >
@@ -56,65 +36,34 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
             </Typography>
          </div>
          
-         <div className="flex flex-col xs:flex-row gap-4 w-full lg:w-auto items-center">
-            {/* Botón Principal: WhatsApp (Conexión directa) */}
+         {/* Contenedor con flex-wrap para que fluyan en una línea */}
+         <div className="flex flex-wrap items-center gap-3 xs:gap-4 w-full lg:w-auto">
+            {/* Botón Principal: WhatsApp */}
             <a 
                href={PROFESSIONAL_LINKS.whatsapp} 
                target="_blank" 
                rel="noopener noreferrer"
-               className="w-full lg:w-auto"
+               className="w-auto"
             >
                <Button 
                   variant="primary" 
-                  className="w-full lg:w-auto !px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-primary-contrast"
+                  className="!px-5 xs:!px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-primary-contrast"
                   icon={<FaWhatsapp className="size-5 text-primary-contrast" />}
                >
                   {dict.cta.actions.talk}
                </Button>
             </a>
 
-            {/* Botón de Email Inteligente con Dropdown */}
-            <div className="relative w-full lg:w-auto" ref={menuRef}>
-               <Button 
-                  variant="outline" 
-                  className={`w-full lg:w-auto min-w-[180px] transition-all ${showEmailMenu ? 'bg-surface shadow-inner' : ''}`}
-                  onClick={() => setShowEmailMenu(!showEmailMenu)}
-                  icon={copied ? <MdCheck className="text-primary" /> : <MdEmail />}
-               >
-                  {copied ? "Copied!" : "Email"}
-                  <MdArrowDropDown className={`ml-1 size-5 transition-transform duration-300 ${showEmailMenu ? 'rotate-180' : ''}`} />
-               </Button>
-
-               {showEmailMenu && (
-                  <div className="absolute bottom-full lg:bottom-auto lg:top-full left-0 right-0 mb-2 lg:mb-0 lg:mt-2 bg-page border border-subtle rounded-2xl shadow-xl z-[100] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
-                     <a 
-                        href={`mailto:${PROFESSIONAL_LINKS.email}`}
-                        className="flex items-center gap-3 px-4 py-3 hover:bg-surface transition-colors border-b border-subtle"
-                        onClick={() => setShowEmailMenu(false)}
-                     >
-                        <div className="p-1.5 bg-primary/10 rounded-lg text-primary">
-                           <MdEmail className="size-4" />
-                        </div>
-                        <div className="flex flex-col text-left">
-                           <span className="text-[13px] font-bold text-body">Send email</span>
-                           <span className="text-[10px] text-body opacity-60">Open mail app</span>
-                        </div>
-                     </a>
-                     <button 
-                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-surface transition-colors"
-                        onClick={handleCopyEmail}
-                     >
-                        <div className="p-1.5 bg-surface rounded-lg text-body border border-subtle">
-                           <MdContentCopy className="size-4" />
-                        </div>
-                        <div className="flex flex-col text-left overflow-hidden">
-                           <span className="text-[13px] font-bold text-body">Copy address</span>
-                           <span className="text-[10px] text-body opacity-60 truncate w-full">{PROFESSIONAL_LINKS.email}</span>
-                        </div>
-                     </button>
-                  </div>
-               )}
-            </div>
+            {/* Botón de Email Inteligente sin ancho forzado */}
+            <SmartEmailButton 
+               label={dict.hero.actions.email}
+               menuLabels={dict.hero.actions.emailMenu}
+               variant="outline"
+               align="right"
+               checkmarkClassName="text-primary"
+               className="w-auto"
+               onOpenChange={setIsMenuOpen}
+            />
          </div>
       </SectionContainer>
    );
