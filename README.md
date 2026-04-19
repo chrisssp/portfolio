@@ -28,9 +28,6 @@ High-performance, multi-language professional portfolio built with a focus on cl
 - **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
-- **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
-- **Fonts:** [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
-- **Deployment & Analytics:** [Vercel](https://vercel.com/) (Analytics & Speed Insights)
 
 ---
 
