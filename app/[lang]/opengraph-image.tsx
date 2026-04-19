@@ -3,7 +3,6 @@ import { getDictionary, Locale } from "@/i18n/config";
 
 export const runtime = "edge";
 
-export const alt = "Christian Serrano | Software Engineer";
 export const size = {
    width: 1200,
    height: 630,
@@ -14,8 +13,11 @@ export default async function Image({ params }: { params: { lang: string } }) {
    const { lang } = await params;
    const dict = await getDictionary(lang as Locale);
 
-   // Usamos una URL absoluta para la imagen de perfil (requerido por Satori/Next/OG)
-   // En desarrollo usaremos un placeholder o la ruta local si el entorno lo permite
+   // Cargar fuentes
+   const fontRegular = await fetch(
+      new URL("https://github.com/google/fonts/raw/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf")
+   ).then((res) => res.arrayBuffer());
+
    const profileImageUrl = `https://chrisssp.vercel.app/assets/images/profile/me.png`;
 
    return new ImageResponse(
@@ -28,12 +30,11 @@ export default async function Image({ params }: { params: { lang: string } }) {
                flexDirection: "row",
                alignItems: "center",
                justifyContent: "center",
-               backgroundColor: "#171c28", // var(--bg-page) en dark mode
+               backgroundColor: "#171c28",
                padding: "80px",
-               fontFamily: "sans-serif",
+               fontFamily: "Space Grotesk",
             }}
          >
-            {/* Contenedor Izquierdo: Textos */}
             <div
                style={{
                   display: "flex",
@@ -44,22 +45,22 @@ export default async function Image({ params }: { params: { lang: string } }) {
             >
                <h1
                   style={{
-                     fontSize: "72px",
-                     fontWeight: "bold",
+                     fontSize: "80px",
+                     fontWeight: 700,
                      color: "white",
                      margin: 0,
-                     marginBottom: "16px",
+                     marginBottom: "12px",
                   }}
                >
                   Christian Serrano
                </h1>
                <h2
                   style={{
-                     fontSize: "32px",
-                     fontWeight: "600",
-                     color: "#38bdf8", // var(--brand-primary) en dark mode
+                     fontSize: "34px",
+                     fontWeight: 600,
+                     color: "#38bdf8",
                      margin: 0,
-                     marginBottom: "24px",
+                     marginBottom: "32px",
                   }}
                >
                   {dict.hero.role}
@@ -67,8 +68,9 @@ export default async function Image({ params }: { params: { lang: string } }) {
                <p
                   style={{
                      fontSize: "24px",
-                     color: "#c5cddb", // var(--color-slate-200)
-                     lineHeight: 1.4,
+                     fontWeight: 400,
+                     color: "#c5cddb",
+                     lineHeight: 1.5,
                      maxWidth: "600px",
                      margin: 0,
                   }}
@@ -77,7 +79,6 @@ export default async function Image({ params }: { params: { lang: string } }) {
                </p>
             </div>
 
-            {/* Contenedor Derecho: Foto de Perfil */}
             <div
                style={{
                   display: "flex",
@@ -94,10 +95,9 @@ export default async function Image({ params }: { params: { lang: string } }) {
                      display: "flex",
                   }}
                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                      src={profileImageUrl}
-                     alt="Christian Serrano"
+                     alt="Profile"
                      style={{
                         width: "100%",
                         height: "100%",
@@ -107,7 +107,6 @@ export default async function Image({ params }: { params: { lang: string } }) {
                </div>
             </div>
             
-            {/* Marca de agua / URL */}
             <div
                style={{
                   position: "absolute",
@@ -115,7 +114,7 @@ export default async function Image({ params }: { params: { lang: string } }) {
                   left: "80px",
                   fontSize: "20px",
                   color: "#2f3a53",
-                  fontWeight: "bold",
+                  fontWeight: 700,
                }}
             >
                chrisssp.vercel.app
@@ -124,6 +123,13 @@ export default async function Image({ params }: { params: { lang: string } }) {
       ),
       {
          ...size,
+         fonts: [
+            {
+               name: "Space Grotesk",
+               data: fontRegular,
+               style: "normal",
+            },
+         ],
       }
    );
 }
