@@ -6,7 +6,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-   // Cargar fuente local
+   // Cargar fuente local (Ruta corregida: 1 nivel arriba para llegar a la raíz)
    const fontData = await fetch(
       new URL("../public/assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf", import.meta.url)
    ).then((res) => res.arrayBuffer());
