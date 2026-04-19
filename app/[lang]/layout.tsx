@@ -3,7 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import { Locale } from "@/i18n/config";
 import { ThemeProvider } from "@/components/ThemeContext";
 import { ScrollToTop } from "@/components/atoms/ScrollToTop";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./../globals.css";
 
