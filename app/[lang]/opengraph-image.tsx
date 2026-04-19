@@ -3,6 +3,7 @@ import { getDictionary, Locale } from "@/i18n/config";
 
 export const runtime = "edge";
 
+export const alt = "Christian Serrano | Software Engineer";
 export const size = {
    width: 1200,
    height: 630,
@@ -13,9 +14,9 @@ export default async function Image({ params }: { params: { lang: string } }) {
    const { lang } = await params;
    const dict = await getDictionary(lang as Locale);
 
-   // Cargar fuentes
-   const fontRegular = await fetch(
-      new URL("https://github.com/google/fonts/raw/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf")
+   // Cargar fuente local
+   const fontData = await fetch(
+      new URL("../../../public/assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf", import.meta.url)
    ).then((res) => res.arrayBuffer());
 
    const profileImageUrl = `https://chrisssp.vercel.app/assets/images/profile/me.png`;
@@ -126,7 +127,7 @@ export default async function Image({ params }: { params: { lang: string } }) {
          fonts: [
             {
                name: "Space Grotesk",
-               data: fontRegular,
+               data: fontData,
                style: "normal",
             },
          ],

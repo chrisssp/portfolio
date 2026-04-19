@@ -6,9 +6,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-   // Cargar fuente
-   const fontRegular = await fetch(
-      new URL("https://github.com/google/fonts/raw/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf")
+   // Cargar fuente local
+   const fontData = await fetch(
+      new URL("../public/assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf", import.meta.url)
    ).then((res) => res.arrayBuffer());
 
    const profileImageUrl = `https://chrisssp.vercel.app/assets/images/profile/me.png`;
@@ -49,7 +49,7 @@ export default async function Image() {
       ),
       {
          ...size,
-         fonts: [{ name: "Space Grotesk", data: fontRegular, style: "normal" }],
+         fonts: [{ name: "Space Grotesk", data: fontData, style: "normal" }],
       }
    );
 }
