@@ -5,11 +5,13 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/types";
-import { MdLanguage, MdDarkMode, MdLightMode, MdArrowBack, MdMenu, MdClose } from "react-icons/md";
+import { MdLanguage, MdDarkMode, MdLightMode, MdArrowBack, MdMenu, MdClose, MdEmail, MdDescription } from "react-icons/md";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useTheme } from "next-themes";
 import { useEffect, useState, useRef } from "react";
 import { Button } from "../atoms/Button";
 import { Typography } from "../atoms/Typography";
+import { PROFESSIONAL_LINKS } from "@/config/links";
 
 type HeaderProps = {
    dict: Dictionary;
@@ -218,8 +220,22 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      ))}
                   </nav>
                   
-                  <div className="mt-auto py-6 text-center border-t border-subtle bg-page">
-                     <Typography variant="small" className="text-slate-500 font-medium !text-[10px] xs:!text-[12px]">
+                  <div className="mt-auto py-8 flex flex-col gap-6 items-center border-t border-subtle bg-page">
+                     <div className="flex gap-8 items-center">
+                        <a href={dict.hero.actions.cvLink} download target="_blank" rel="noopener noreferrer" title="CV">
+                           <MdDescription className="size-6 text-body hover:text-primary transition-colors" />
+                        </a>
+                        <a href={PROFESSIONAL_LINKS.github} target="_blank" rel="noopener noreferrer" title="GitHub">
+                           <FaGithub className="size-6 text-body hover:text-primary transition-colors" />
+                        </a>
+                        <a href={PROFESSIONAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                           <FaLinkedin className="size-6 text-body hover:text-primary transition-colors" />
+                        </a>
+                        <a href={`mailto:${PROFESSIONAL_LINKS.email}`} title="Email">
+                           <MdEmail className="size-6 text-body hover:text-primary transition-colors" />
+                        </a>
+                     </div>
+                     <Typography variant="small" className="text-slate-500 font-medium !text-[12px]">
                         {dict.footer.rights}
                      </Typography>
                   </div>
