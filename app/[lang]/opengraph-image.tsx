@@ -14,9 +14,9 @@ export default async function Image({ params }: { params: { lang: string } }) {
    const { lang } = await params;
    const dict = await getDictionary(lang as Locale);
 
-   // Cargar fuente local
+   // Cargar fuente local (Ruta corregida: 2 niveles arriba para llegar a la raíz)
    const fontData = await fetch(
-      new URL("../../../public/assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf", import.meta.url)
+      new URL("../../public/assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf", import.meta.url)
    ).then((res) => res.arrayBuffer());
 
    const profileImageUrl = `https://chrisssp.vercel.app/assets/images/profile/me.png`;

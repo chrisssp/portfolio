@@ -16,7 +16,7 @@ export default async function Image({ params }: { params: { lang: string; id: st
 
    if (!project) return new Response("Not Found", { status: 404 });
 
-   // Cargar fuente local
+   // Cargar fuente local (Ruta corregida: 4 niveles arriba para llegar a la raíz)
    const fontData = await fetch(
       new URL("../../../../public/assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf", import.meta.url)
    ).then((res) => res.arrayBuffer());
