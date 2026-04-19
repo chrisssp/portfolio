@@ -16,11 +16,24 @@ export const metadata: Metadata = {
    description: "Mobile & Full Stack Developer",
    icons: {
       icon: [
-         { url: "/assets/images/profile/isotipo-black-round.png", media: "(prefers-white-scheme: light)" },
-         { url: "/assets/images/profile/isotipo-black-round.png", media: "(prefers-color-scheme: dark)" },
+         { url: "/assets/images/profile/isotipo-black-round.png", media: "(prefers-color-scheme: light)" },
+         { url: "/assets/images/profile/isotipo-white-round.png", media: "(prefers-color-scheme: dark)" },
       ],
       shortcut: "/assets/images/profile/isotipo-black-round.png",
       apple: "/assets/images/profile/isotipo-black-round.png",
+   },
+   openGraph: {
+      title: "Christian Serrano | Software Engineer",
+      description: "Mobile & Full Stack Developer specializing in efficient ecosystems.",
+      url: "https://chrisssp.vercel.app",
+      siteName: "Christian Serrano Portfolio",
+      locale: "en_US",
+      type: "website",
+   },
+   twitter: {
+      card: "summary_large_image",
+      title: "Christian Serrano | Software Engineer",
+      description: "Mobile & Full Stack Developer specializing in efficient ecosystems.",
    },
 };
 
