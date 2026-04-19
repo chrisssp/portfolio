@@ -16,7 +16,11 @@ export default async function Image({ params }: { params: { lang: string; id: st
 
    if (!project) return new Response("Not Found", { status: 404 });
 
-   // URL de la imagen del proyecto
+   // Cargar fuentes
+   const fontRegular = await fetch(
+      new URL("https://github.com/google/fonts/raw/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf")
+   ).then((res) => res.arrayBuffer());
+
    const projectImageUrl = `https://chrisssp.vercel.app${project.imagePath}`;
 
    return new ImageResponse(
@@ -29,10 +33,9 @@ export default async function Image({ params }: { params: { lang: string; id: st
                flexDirection: "row",
                backgroundColor: "#171c28",
                padding: "60px",
-               fontFamily: "sans-serif",
+               fontFamily: "Space Grotesk",
             }}
          >
-            {/* Mitad Izquierda: Información del Proyecto */}
             <div
                style={{
                   display: "flex",
@@ -43,14 +46,14 @@ export default async function Image({ params }: { params: { lang: string; id: st
                }}
             >
                <div style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
-                  <span style={{ color: "#38bdf8", fontSize: "24px", fontWeight: "bold", marginRight: "12px" }}>Project</span>
+                  <span style={{ color: "#38bdf8", fontSize: "24px", fontWeight: 700, marginRight: "12px" }}>Project</span>
                   <div style={{ height: "2px", flex: 1, backgroundColor: "#2f3a53" }} />
                </div>
 
                <h1
                   style={{
                      fontSize: "64px",
-                     fontWeight: "bold",
+                     fontWeight: 700,
                      color: "white",
                      margin: 0,
                      marginBottom: "16px",
@@ -62,6 +65,7 @@ export default async function Image({ params }: { params: { lang: string; id: st
                <p
                   style={{
                      fontSize: "24px",
+                     fontWeight: 400,
                      color: "#c5cddb",
                      lineHeight: 1.5,
                      margin: 0,
@@ -71,7 +75,6 @@ export default async function Image({ params }: { params: { lang: string; id: st
                   {project.description}
                </p>
 
-               {/* Tech Stack Badges */}
                <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
                   {project.techStack.slice(0, 6).map((tech) => (
                      <div
@@ -82,7 +85,7 @@ export default async function Image({ params }: { params: { lang: string; id: st
                            borderRadius: "12px",
                            color: "white",
                            fontSize: "18px",
-                           fontWeight: "bold",
+                           fontWeight: 700,
                            textTransform: "capitalize",
                         }}
                      >
@@ -92,15 +95,32 @@ export default async function Image({ params }: { params: { lang: string; id: st
                </div>
             </div>
 
-            {/* Mitad Derecha: Mockup / Imagen del Proyecto */}
             <div
                style={{
                   display: "flex",
                   flex: 1,
+                  flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
                }}
             >
+               {/* Nueva ubicación del branding: arriba a la derecha */}
+               <div
+                  style={{
+                     display: "flex",
+                     alignItems: "center",
+                     color: "#38bdf8",
+                     fontSize: "18px",
+                     fontWeight: 700,
+                     marginBottom: "20px",
+                     alignSelf: "flex-end",
+                     paddingRight: "20px",
+                  }}
+               >
+                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", backgroundColor: "#38bdf8", marginRight: "10px" }} />
+                  Christian Serrano Portfolio
+               </div>
+
                <div
                   style={{
                      width: "550px",
@@ -112,7 +132,6 @@ export default async function Image({ params }: { params: { lang: string; id: st
                      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
                   }}
                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                      src={projectImageUrl}
                      alt={project.title}
@@ -124,27 +143,17 @@ export default async function Image({ params }: { params: { lang: string; id: st
                   />
                </div>
             </div>
-
-            {/* Footer de la imagen */}
-            <div
-               style={{
-                  position: "absolute",
-                  bottom: "40px",
-                  left: "60px",
-                  display: "flex",
-                  alignItems: "center",
-                  color: "#38bdf8",
-                  fontSize: "18px",
-                  fontWeight: "bold",
-               }}
-            >
-               <div style={{ width: "12px", height: "12px", borderRadius: "50%", backgroundColor: "#38bdf8", marginRight: "10px" }} />
-               Christian Serrano Portfolio
-            </div>
          </div>
       ),
       {
          ...size,
+         fonts: [
+            {
+               name: "Space Grotesk",
+               data: fontRegular,
+               style: "normal",
+            },
+         ],
       }
    );
 }
