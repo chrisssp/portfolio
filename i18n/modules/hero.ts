@@ -6,6 +6,13 @@ export const hero = {
          cv: "CV",
          cvLink: "/assets/docs/CV_Christian_Serrano_Software_Engineer.pdf",
          email: "Email",
+         emailMenu: {
+            send: "Send email",
+            sendSub: "Open mail app",
+            copy: "Copy address",
+            copySub: "Copy to clipboard",
+            copied: "Copied!"
+         },
          linkedin: "LinkedIn",
          github: "GitHub",
       },
@@ -17,6 +24,13 @@ export const hero = {
          cv: "CV",
          cvLink: "/assets/docs/CV_Christian_Serrano_Ingeniero_de_Software.pdf",
          email: "Correo",
+         emailMenu: {
+            send: "Enviar correo",
+            sendSub: "Abrir aplicación",
+            copy: "Copiar dirección",
+            copySub: "Al portapapeles",
+            copied: "¡Copiado!"
+         },
          linkedin: "LinkedIn",
          github: "GitHub",
       },

@@ -84,6 +84,13 @@ export interface Dictionary {
          cv: string;
          cvLink: string;
          email: string;
+         emailMenu: {
+            send: string;
+            sendSub: string;
+            copy: string;
+            copySub: string;
+            copied: string;
+         };
          linkedin: string;
          github: string;
       };
