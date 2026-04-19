@@ -16,9 +16,9 @@ export default async function Image({ params }: { params: { lang: string; id: st
 
    if (!project) return new Response("Not Found", { status: 404 });
 
-   // Cargar fuentes
-   const fontRegular = await fetch(
-      new URL("https://github.com/google/fonts/raw/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf")
+   // Cargar fuente local
+   const fontData = await fetch(
+      new URL("../../../../public/assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf", import.meta.url)
    ).then((res) => res.arrayBuffer());
 
    const projectImageUrl = `https://chrisssp.vercel.app${project.imagePath}`;
@@ -104,7 +104,6 @@ export default async function Image({ params }: { params: { lang: string; id: st
                   justifyContent: "center",
                }}
             >
-               {/* Nueva ubicación del branding: arriba a la derecha */}
                <div
                   style={{
                      display: "flex",
@@ -150,7 +149,7 @@ export default async function Image({ params }: { params: { lang: string; id: st
          fonts: [
             {
                name: "Space Grotesk",
-               data: fontRegular,
+               data: fontData,
                style: "normal",
             },
          ],
