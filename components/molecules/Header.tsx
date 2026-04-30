@@ -40,8 +40,10 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
    const router = useRouter();
 
    useEffect(() => {
-      setMounted(true);
+      setTimeout(() => setMounted(true), 0);
+   }, []);
 
+   useEffect(() => {
       const handleScroll = () => {
          const currentScrollY = window.scrollY;
 
@@ -87,7 +89,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
       router.push(newPath);
    };
 
-   if (!mounted) return <div className="h-[64px] md:h-[84px]" />;
+   if (!mounted) return <div className="h-16 md:h-21" />;
 
    const navLinks = [
       { id: "experience", label: dict.nav.experience },
@@ -98,15 +100,15 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
    return (
       <>
          <header
-            className={`sticky top-0 z-[60] w-full bg-page/80 backdrop-blur-md h-[64px] md:h-[84px] flex items-center justify-center border-b border-subtle/50 md:border-none transition-transform duration-300 ${
+            className={`sticky top-0 z-60 w-full bg-page/80 backdrop-blur-md h-16 md:h-21 flex items-center justify-center border-b border-subtle/50 md:border-none transition-transform duration-300 ${
                visible ? "translate-y-0" : "-translate-y-full md:translate-y-0"
             }`}
          >
-            <div className="flex items-center justify-between w-full max-w-[1440px] px-4 xs:px-6 md:px-20">
+            <div className="flex items-center justify-between w-full max-w-360 px-4 xs:px-6 md:px-20">
                <div className="flex items-center gap-4 xs:gap-6">
                   <Link
                      href={`/${lang}`}
-                     className="relative h-8 xs:h-10 w-8 xs:h-10 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0"
+                     className="relative h-10 w-10 sm:h-12 sm:w-12 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0"
                   >
                      {/* Logo para modo claro */}
                      <Image
@@ -131,7 +133,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                         <Button
                            variant="outline"
                            icon={<MdArrowBack />}
-                           className="!px-3 xs:!px-4 !py-1.5 xs:!py-2 !text-[13px] xs:!text-[14px]"
+                           className="px-3! xs:px-4! py-1.5! xs:py-2! text-[13px]! xs:text-sm!"
                         >
                            {dict.nav.goBack}
                         </Button>
@@ -145,7 +147,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                               <Link
                                  key={link.id}
                                  href={`/${lang}#${link.id}`}
-                                 className={`px-6 py-2.5 font-bold text-[16px] transition-all rounded-xl hover:bg-surface ${
+                                 className={`px-6 py-2.5 font-bold text-base transition-all rounded-xl hover:bg-surface ${
                                     activeSection === link.id
                                        ? "text-primary bg-surface/50 shadow-inner"
                                        : "text-body"
@@ -159,44 +161,44 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                         <button
                            type="button"
                            onClick={() => setMobileMenuOpen(true)}
-                           className="md:hidden flex items-center justify-center p-2 xs:p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
+                           className="md:hidden flex items-center justify-center p-2 sm:p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
                            aria-label="Open menu"
                         >
-                           <MdMenu className="size-5 xs:size-6" />
+                           <MdMenu className="size-5 sm:size-6" />
                         </button>
                      </>
                   )}
                </div>
 
-               <div className="bg-page border border-subtle flex items-center rounded-lg xs:rounded-xl p-0.5 xs:p-1 shadow-sm">
+               <div className="bg-page border border-subtle flex items-center rounded-xl sm:rounded-2xl p-1 shadow-sm">
                   <button
                      type="button"
                      onClick={toggleLanguage}
-                     className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
+                     className="flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl"
                      aria-label={
                         lang === "en" ? "Switch language" : "Cambiar idioma"
                      }
                   >
-                     <MdLanguage className="size-4 xs:size-5" />
-                     <span className="ml-1.5 xs:ml-2 text-[12px] xs:text-[14px] font-bold uppercase">
+                     <MdLanguage className="size-4 sm:size-5" />
+                     <span className="ml-2 text-xs sm:text-sm font-bold uppercase">
                         {lang}
                      </span>
                   </button>
-                  <div className="w-[1px] h-4 xs:h-6 bg-subtle mx-0.5 xs:mx-1" />
+                  <div className="w-px h-4 sm:h-6 bg-subtle mx-1" />
                   <button
                      type="button"
                      onClick={() =>
                         setTheme(resolvedTheme === "dark" ? "light" : "dark")
                      }
-                     className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
+                     className="flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl"
                      aria-label={
                         resolvedTheme === "dark" ? "Light mode" : "Dark mode"
                      }
                   >
                      {resolvedTheme === "dark" ? (
-                        <MdLightMode className="size-4 xs:size-5" />
+                        <MdLightMode className="size-4 sm:size-5" />
                      ) : (
-                        <MdDarkMode className="size-4 xs:size-5" />
+                        <MdDarkMode className="size-4 sm:size-5" />
                      )}
                   </button>
                </div>
@@ -205,10 +207,10 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
 
          {/* Mobile Menu Overlay - Botones más compactos */}
          {mobileMenuOpen && (
-            <div className="fixed inset-0 z-[60] flex flex-col bg-page w-full h-full">
-               <div className="flex justify-between items-center p-5 xs:p-6 border-b border-subtle bg-page">
-                  <div className="flex items-center gap-4">
-                     <div className="relative h-10 w-10">
+            <div className="fixed inset-0 z-60 flex flex-col bg-page w-full h-full">
+               <div className="flex justify-between items-center p-4 sm:p-5 border-b border-subtle bg-page">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                     <div className="relative h-10 w-10 sm:h-12 sm:w-12">
                         <Image
                            src="/assets/images/profile/isotipo-white-nobg.png"
                            alt="Logo"
@@ -223,10 +225,10 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                         />
                      </div>
                      <div className="flex flex-col text-left">
-                        <span className="text-[18px] xs:text-[20px] font-bold text-body">
+                        <span className="text-base sm:text-lg font-bold text-body">
                            Christian Serrano
                         </span>
-                        <span className="text-[10px] xs:text-[11px] text-primary font-bold uppercase tracking-widest">
+                        <span className="text-xs text-primary font-bold uppercase tracking-widest">
                            Menu
                         </span>
                      </div>
@@ -234,31 +236,31 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   <button
                      type="button"
                      onClick={() => setMobileMenuOpen(false)}
-                     className="p-2.5 bg-surface rounded-xl border border-subtle text-body active:scale-95 transition-all"
+                     className="p-1.5 sm:p-2 bg-surface rounded-lg sm:rounded-xl border border-subtle text-body active:scale-95 transition-all"
                      aria-label={lang === "en" ? "Close menu" : "Cerrar menú"}
                   >
-                     <MdClose className="size-6" />
+                     <MdClose className="size-5" />
                   </button>
                </div>
 
-               <div className="flex-1 flex flex-col p-5 xs:p-6 gap-3 overflow-y-auto bg-page">
-                  <nav className="flex flex-col gap-3 mt-2">
+               <div className="flex-1 flex flex-col p-4 sm:p-5 gap-2 overflow-y-auto bg-page">
+                  <nav className="flex flex-col gap-2 mt-2">
                      {navLinks.map((link, idx) => (
                         <Link
                            key={link.id}
                            href={`/${lang}#${link.id}`}
                            onClick={() => setMobileMenuOpen(false)}
-                           className={`flex items-center justify-between p-4 xs:p-5 rounded-2xl xs:rounded-3xl border transition-all duration-200 ${
+                           className={`flex items-center justify-between p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-200 ${
                               activeSection === link.id
                                  ? "bg-primary text-primary-contrast border-primary shadow-md"
                                  : "bg-surface border-subtle text-body"
                            }`}
                         >
-                           <span className="text-[18px] xs:text-[22px] font-bold">
+                           <span className="text-base sm:text-lg font-bold">
                               {link.label}
                            </span>
                            <span
-                              className={`text-[12px] xs:text-[14px] font-black opacity-50`}
+                              className={`text-xs sm:text-sm font-black opacity-50`}
                            >
                               0{idx + 1}
                            </span>
@@ -266,8 +268,8 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      ))}
                   </nav>
 
-                  <div className="mt-auto py-8 flex flex-col gap-6 items-center border-t border-subtle bg-page">
-                     <div className="flex gap-8 items-center">
+                  <div className="mt-auto py-6 sm:py-8 flex flex-col gap-4 sm:gap-6 items-center border-t border-subtle bg-page">
+                     <div className="flex gap-4 sm:gap-6 items-center">
                         <a
                            href={dict.hero.actions.cvLink}
                            download
@@ -276,7 +278,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            title="CV"
                            aria-label={dict.hero.actions.cv}
                         >
-                           <MdDescription className="size-6 text-body hover:text-primary transition-colors" />
+                           <MdDescription className="size-5 sm:size-6 text-body hover:text-primary transition-colors" />
                         </a>
                         <a
                            href={PROFESSIONAL_LINKS.github}
@@ -285,7 +287,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            title="GitHub"
                            aria-label="GitHub"
                         >
-                           <FaGithub className="size-6 text-body hover:text-primary transition-colors" />
+                           <FaGithub className="size-5 sm:size-6 text-body hover:text-primary transition-colors" />
                         </a>
                         <a
                            href={PROFESSIONAL_LINKS.linkedin}
@@ -294,19 +296,19 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            title="LinkedIn"
                            aria-label="LinkedIn"
                         >
-                           <FaLinkedin className="size-6 text-body hover:text-primary transition-colors" />
+                           <FaLinkedin className="size-5 sm:size-6 text-body hover:text-primary transition-colors" />
                         </a>
                         <a
                            href={`mailto:${PROFESSIONAL_LINKS.email}`}
                            title="Email"
                            aria-label="Email"
                         >
-                           <MdEmail className="size-6 text-body hover:text-primary transition-colors" />
+                           <MdEmail className="size-5 sm:size-6 text-body hover:text-primary transition-colors" />
                         </a>
                      </div>
                      <Typography
                         variant="small"
-                        className="text-slate-600 dark:text-slate-400 font-medium !text-[12px]"
+                        className="text-slate-600 dark:text-slate-400 font-medium text-xs!"
                      >
                         {dict.footer.rights}
                      </Typography>

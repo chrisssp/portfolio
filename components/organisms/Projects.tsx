@@ -27,8 +27,9 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
 
    // Escuchar evento para cambiar de pestaña y hacer scroll
    useEffect(() => {
-      const handleSwitch = (e: any) => {
-         const { projectId } = e.detail;
+      const handleSwitch = (e: Event) => {
+         const customEvent = e as CustomEvent<{ projectId: string }>;
+         const { projectId } = customEvent.detail;
          const project = dict.projects.items.find((p) => p.id === projectId);
          if (project) {
             setFilter(project.featured ? "featured" : "others");
@@ -42,9 +43,15 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
          }
       };
 
-      window.addEventListener("switch-project-tab" as any, handleSwitch);
+      window.addEventListener(
+         "switch-project-tab",
+         handleSwitch as EventListener,
+      );
       return () =>
-         window.removeEventListener("switch-project-tab" as any, handleSwitch);
+         window.removeEventListener(
+            "switch-project-tab",
+            handleSwitch as EventListener,
+         );
    }, [dict.projects.items]);
 
    return (
@@ -59,19 +66,19 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                <Typography variant="section">{dict.projects.title}</Typography>
             </div>
 
-            {/* Segmented Control - Ajustado ancho para evitar desbordamiento en español */}
-            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-0.5 xs:p-1 rounded-xl xs:rounded-2xl flex relative shadow-sm w-full lg:w-auto min-w-[200px] xs:min-w-[240px]">
+            {/* Segmented Control */}
+            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-1 sm:p-1.5 rounded-xl sm:rounded-2xl flex relative shadow-sm w-full lg:w-auto">
                <div
-                  className={`absolute top-0.5 xs:top-1 bottom-0.5 xs:bottom-1 bg-primary rounded-lg xs:rounded-xl transition-all duration-300 ease-in-out ${
+                  className={`absolute top-1 sm:top-1.5 bottom-1 sm:bottom-1.5 bg-primary rounded-lg sm:rounded-xl transition-all duration-300 ease-in-out ${
                      filter === "featured"
-                        ? "left-0.5 xs:left-1 w-[calc(50%-2px)] xs:w-[calc(50%-4px)]"
-                        : "left-[calc(50%+1px)] xs:left-[calc(50%+2px)] w-[calc(50%-2px)] xs:w-[calc(50%-4px)]"
+                        ? "left-1 sm:left-1.5 w-[calc(50%-4px)] sm:w-[calc(50%-6px)]"
+                        : "left-[calc(50%+2px)] sm:left-[calc(50%+3px)] w-[calc(50%-4px)] sm:w-[calc(50%-6px)]"
                   }`}
                />
                <button
                   type="button"
                   onClick={() => setFilter("featured")}
-                  className={`relative z-10 flex-1 px-3 xs:px-4 py-1.5 xs:py-2.5 font-bold text-[12px] xs:text-[14px] transition-colors duration-300 text-center ${
+                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-colors duration-300 text-center whitespace-nowrap ${
                      filter === "featured"
                         ? "text-primary-contrast"
                         : "text-body hover:text-primary"
@@ -82,7 +89,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                <button
                   type="button"
                   onClick={() => setFilter("others")}
-                  className={`relative z-10 flex-1 px-3 xs:px-4 py-1.5 xs:py-2.5 font-bold text-[12px] xs:text-[14px] transition-colors duration-300 text-center ${
+                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-colors duration-300 text-center whitespace-nowrap ${
                      filter === "others"
                         ? "text-primary-contrast"
                         : "text-body hover:text-primary"
@@ -93,7 +100,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             </div>
          </div>
 
-         <div className="flex flex-col gap-16 lg:gap-[120px] w-full transition-all duration-500 min-h-[400px]">
+         <div className="flex flex-col gap-16 lg:gap-30 w-full transition-all duration-500 min-h-100">
             {filteredProjects.map((project, index) => (
                <div
                   key={project.id}
@@ -127,7 +134,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                <Button
                   variant="outline"
                   icon={<FaGithub className="size-5" />}
-                  className="!rounded-xl w-full lg:w-auto"
+                  className="rounded-xl! w-full lg:w-auto"
                >
                   {dict.projects.actions.see_more}
                </Button>
