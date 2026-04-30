@@ -95,7 +95,7 @@ export const TimelineItem = ({
 
                <Typography
                   variant="small"
-                  className="text-slate-500 font-medium !text-[11px] xs:!text-[12px] sm:!text-[13px] md:!text-[14px]"
+                  className="text-slate-600 dark:text-slate-400 font-medium !text-[11px] xs:!text-[12px] sm:!text-[13px] md:!text-[14px]"
                >
                   {item.date}
                </Typography>

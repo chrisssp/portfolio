@@ -298,7 +298,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      </div>
                      <Typography
                         variant="small"
-                        className="text-slate-500 font-medium !text-[12px]"
+                        className="text-slate-600 dark:text-slate-400 font-medium !text-[12px]"
                      >
                         {dict.footer.rights}
                      </Typography>
