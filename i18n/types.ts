@@ -65,6 +65,64 @@ export interface EducationItem {
    achievement?: string;
 }
 
+export interface ProjectModule {
+   data: {
+      id: string;
+      featured?: boolean;
+      imagePath: string;
+      heroImagePath?: string;
+      techStack: string[];
+      links: { type: string; url: string }[];
+      ecosystem?: {
+         imagePath: string;
+         techStack: string[];
+         link?: {
+            type: string;
+            url: string;
+            label?: string;
+         };
+      }[];
+   };
+   en: {
+      title: string;
+      subtitle: string;
+      description: string;
+      fullDescription: string;
+      challenge?: {
+         description: string;
+         solution: string;
+      };
+      ecosystem?: {
+         items: {
+            title: string;
+            description: string;
+            link?: {
+               label: string;
+            };
+         }[];
+      };
+   };
+   es: {
+      title: string;
+      subtitle: string;
+      description: string;
+      fullDescription: string;
+      challenge?: {
+         description: string;
+         solution: string;
+      };
+      ecosystem?: {
+         items: {
+            title: string;
+            description: string;
+            link?: {
+               label: string;
+            };
+         }[];
+      };
+   };
+}
+
 // --------------------------------------------------------
 // 2. Interfaz Principal del Diccionario
 // --------------------------------------------------------

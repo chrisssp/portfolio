@@ -33,7 +33,7 @@ export const ProjectCard = ({
             </Link>
          )}
 
-         {project.links.map((link, idx) => {
+         {project.links.map((link) => {
             const icon =
                link.type === "video" ? (
                   <MdPlayArrow />
@@ -51,7 +51,7 @@ export const ProjectCard = ({
 
             return (
                <a
-                  key={idx}
+                  key={link.url}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"

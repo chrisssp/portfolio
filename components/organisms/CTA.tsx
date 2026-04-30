@@ -23,11 +23,11 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
 
    return (
       <SectionContainer
-         className={`bg-page transition-all duration-300 ${isMenuOpen ? "z-[100]" : "z-10"}`}
-         paddingY="py-12 xs:py-16 lg:py-[120px]"
+         className={`bg-page transition-all duration-300 ${isMenuOpen ? "z-100" : "z-10"}`}
+         paddingY="py-12 xs:py-16 lg:py-30"
          innerClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 xs:gap-10 md:gap-24"
       >
-         <div className="flex flex-col gap-4 max-w-[896px] text-left">
+         <div className="flex flex-col gap-4 max-w-4xl text-left">
             <Typography variant="section">{dict.cta.title}</Typography>
             <Typography variant="body" className="opacity-90 text-pretty">
                {description}
@@ -35,7 +35,7 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
          </div>
 
          {/* Contenedor con flex-wrap en móvil y col-fit en escritorio para anchos iguales */}
-         <div className="flex flex-wrap lg:flex-col items-center lg:items-stretch gap-3 xs:gap-4 w-full lg:w-fit lg:min-w-[220px]">
+         <div className="flex flex-wrap lg:flex-col items-center lg:items-stretch gap-3 xs:gap-4 w-full lg:w-fit lg:min-w-55">
             {/* Botón Principal: WhatsApp */}
             <a
                href={PROFESSIONAL_LINKS.whatsapp}
@@ -45,7 +45,7 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
             >
                <Button
                   variant="primary"
-                  className="w-full !px-5 xs:!px-8 bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-primary-contrast"
+                  className="w-full px-5! xs:px-8! bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-primary-contrast"
                   icon={<FaWhatsapp className="size-5 text-primary-contrast" />}
                >
                   {dict.cta.actions.talk}

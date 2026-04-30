@@ -25,34 +25,27 @@ export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
          className="bg-surface"
          innerClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-20"
       >
-         <div className="flex flex-col gap-6 lg:gap-8 max-w-[760px] text-left">
+         <div className="flex flex-col gap-6 lg:gap-8 max-w-190 text-left">
             <div className="flex flex-col gap-4">
-               <Typography
-                  variant="hero"
-                  as="h1"
-                  className="!text-[32px] md:!text-[40px] lg:!text-[48px]"
-               >
+               <Typography variant="project-hero" as="h1">
                   {project.title}
                </Typography>
                {project.subtitle && (
-                  <Typography
-                     variant="hero-sub"
-                     className="text-primary !text-[18px] md:!text-[22px] lg:!text-[24px]"
-                  >
+                  <Typography variant="project-hero-sub" className="text-primary">
                      {project.subtitle}
                   </Typography>
                )}
             </div>
             <Typography
                variant="body"
-               className="opacity-90 max-w-[600px] text-pretty"
+               className="opacity-90 max-w-150 text-pretty"
             >
                {project.fullDescription}
             </Typography>
          </div>
 
          {/* Contenedor Visual (Video o Imagen) */}
-         <div className="relative w-full lg:w-[630px] aspect-[630/354] rounded-2xl border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-2xl mt-8 lg:mt-0">
+         <div className="relative w-full lg:w-157.5 aspect-630/354 rounded-2xl border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-2xl mt-8 lg:mt-0">
             {videoLink ? (
                <iframe
                   src={getEmbedUrl(videoLink.url)}

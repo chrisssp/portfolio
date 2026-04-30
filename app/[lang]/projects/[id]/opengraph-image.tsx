@@ -162,9 +162,10 @@ export default async function Image({
                   boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
                }}
             >
+               {/* biome-ignore lint/performance/noImgElement: Required for Next.js ImageResponse (Satori) */}
                <img
                   src={projectImageUrl}
-                  alt={project.title}
+                  alt="Project"
                   style={{
                      width: "100%",
                      height: "100%",

@@ -19,7 +19,7 @@ export const Button = ({
 }: ButtonProps) => {
    // Padding responsivo: más compacto en móviles pequeños
    const baseStyles =
-      "flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl font-bold font-sans transition-all active:scale-95 hover:scale-[1.02] hover:shadow-md whitespace-nowrap leading-none cursor-pointer text-[14px] sm:text-[16px]";
+      "flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl font-bold font-sans transition-all active:scale-95 hover:scale-[1.02] hover:shadow-md whitespace-nowrap leading-none cursor-pointer text-sm sm:text-base";
 
    const variants = {
       primary:
@@ -42,7 +42,7 @@ export const Button = ({
                {icon}
             </span>
          )}
-         <span className="flex items-center mt-[1px]">{children}</span>
+         <span className="flex items-center mt-px">{children}</span>
       </button>
    );
 };

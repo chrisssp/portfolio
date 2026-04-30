@@ -21,10 +21,10 @@ export const Hero = ({ dict }: HeroProps) => {
 
    return (
       <SectionContainer
-         className={`bg-surface transition-all duration-300 ${isMenuOpen ? "z-[100]" : "z-10"}`}
+         className={`bg-surface transition-all duration-300 ${isMenuOpen ? "z-100" : "z-10"}`}
          innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24"
       >
-         <div className="flex flex-col gap-8 md:gap-12 max-w-[760px] order-2 lg:order-1">
+         <div className="flex flex-col gap-8 md:gap-12 max-w-190 order-2 lg:order-1">
             <div className="flex flex-col gap-6 md:gap-8 text-left">
                <div className="flex flex-col gap-2 md:gap-4">
                   <Typography variant="hero">Christian Serrano</Typography>
@@ -45,7 +45,7 @@ export const Hero = ({ dict }: HeroProps) => {
                   <Button
                      variant="primary"
                      icon={<MdDescription />}
-                     className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]"
+                     className="px-3! xs:px-4! sm:px-6! py-2! sm:py-3! text-sm! sm:text-base!"
                      ariaLabel={dict.hero.actions.cv}
                   >
                      {dict.hero.actions.cv}
@@ -59,7 +59,7 @@ export const Hero = ({ dict }: HeroProps) => {
                   <Button
                      variant="primary"
                      icon={<FaGithub />}
-                     className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]"
+                     className="px-3! xs:px-4! sm:px-6! py-2! sm:py-3! text-sm! sm:text-base!"
                      ariaLabel="GitHub"
                   >
                      {dict.hero.actions.github}
@@ -73,7 +73,7 @@ export const Hero = ({ dict }: HeroProps) => {
                   <Button
                      variant="primary"
                      icon={<FaLinkedin />}
-                     className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]"
+                     className="px-3! xs:px-4! sm:px-6! py-2! sm:py-3! text-sm! sm:text-base!"
                      ariaLabel="LinkedIn"
                   >
                      {dict.hero.actions.linkedin}
@@ -90,7 +90,7 @@ export const Hero = ({ dict }: HeroProps) => {
             </div>
          </div>
 
-         <div className="relative size-[280px] sm:size-[320px] lg:size-[360px] rounded-full border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-xl hover:scale-105 transition-transform duration-500 order-1 lg:order-2">
+         <div className="relative size-70 sm:size-80 lg:size-90 rounded-full border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-xl hover:scale-105 transition-transform duration-500 order-1 lg:order-2">
             <Image
                src={profileImg}
                alt="Christian Serrano"

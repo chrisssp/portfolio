@@ -18,7 +18,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
          className="bg-surface"
          innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24"
       >
-         <div className="flex flex-col gap-10 md:gap-12 max-w-[640px]">
+         <div className="flex flex-col gap-10 md:gap-12 max-w-160">
             {/* About Me Text */}
             <div className="flex flex-col gap-6">
                <div className="flex gap-4 md:gap-6 items-center">
@@ -48,8 +48,8 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   </Typography>
                </div>
                <div className="flex flex-col gap-4">
-                  {dict.about.education.map((edu, idx) => (
-                     <div key={idx} className="flex flex-col">
+                  {dict.about.education.map((edu) => (
+                     <div key={edu.degree} className="flex flex-col">
                         <Typography variant="body">
                            <span className="font-medium">{edu.degree}</span> (
                            {edu.date})
@@ -70,7 +70,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
          </div>
 
          {/* Circular Images */}
-         <div className="relative w-full max-w-[400px] lg:max-w-none lg:w-[500px] aspect-square shrink-0 mt-8 lg:mt-0">
+         <div className="relative w-full max-w-100 lg:max-w-none lg:w-125 aspect-square shrink-0 mt-8 lg:mt-0">
             <div className="absolute top-0 right-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500">
                <Image
                   src={img1}

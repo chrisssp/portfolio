@@ -13,17 +13,17 @@ import { projectFlacks } from "../modules/projects/flacks";
 import { projectIapex } from "../modules/projects/iapex";
 import { projectMtrpa } from "../modules/projects/mtrpa";
 import { projectPuntoFiel } from "../modules/projects/puntofiel";
-import type { Dictionary } from "../types";
+import type { Dictionary, ProjectItem, ProjectModule } from "../types";
 
-const projectModules = [
-   project7dCompass,
-   projectAzkali,
-   projectIapex,
-   projectDabetai,
-   projectMtrpa,
-   projectPuntoFiel,
-   projectCoppelNexus,
-   projectFlacks,
+const projectModules: ProjectModule[] = [
+   project7dCompass as unknown as ProjectModule,
+   projectAzkali as unknown as ProjectModule,
+   projectIapex as unknown as ProjectModule,
+   projectDabetai as unknown as ProjectModule,
+   projectMtrpa as unknown as ProjectModule,
+   projectPuntoFiel as unknown as ProjectModule,
+   projectCoppelNexus as unknown as ProjectModule,
+   projectFlacks as unknown as ProjectModule,
 ];
 
 export const en: Dictionary = {
@@ -41,14 +41,17 @@ export const en: Dictionary = {
          ecosystem: "Ecosystem",
       },
       items: projectModules.map((m) => {
-         const lang = (m as any).en;
+         const lang = m.en;
          return {
             ...m.data,
             ...lang,
             ecosystem: lang.ecosystem
                ? {
-                    items: lang.ecosystem.items.map((item: any, i: number) => {
-                       const dataItem = (m.data as any).ecosystem?.[i] || {};
+                    items: lang.ecosystem.items.map((item, i) => {
+                       const dataItem = m.data.ecosystem?.[i] || {
+                          imagePath: "",
+                          techStack: [],
+                       };
                        return {
                           ...dataItem,
                           ...item,
@@ -63,8 +66,8 @@ export const en: Dictionary = {
                     }),
                  }
                : undefined,
-         } as any;
-      }),
+         };
+      }) as ProjectItem[],
       actions: {
          view_code: "Go to code",
          view_demo: "See in action",
