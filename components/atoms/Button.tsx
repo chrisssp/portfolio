@@ -6,6 +6,7 @@ interface ButtonProps {
    icon?: ReactNode;
    onClick?: () => void;
    className?: string;
+   ariaLabel?: string;
 }
 
 export const Button = ({
@@ -14,6 +15,7 @@ export const Button = ({
    icon,
    onClick,
    className = "",
+   ariaLabel,
 }: ButtonProps) => {
    // Padding responsivo: más compacto en móviles pequeños
    const baseStyles =
@@ -33,6 +35,7 @@ export const Button = ({
          type="button"
          onClick={onClick}
          className={`${baseStyles} ${variants[variant]} ${className}`}
+         aria-label={ariaLabel}
       >
          {icon && (
             <span className="flex items-center justify-center size-4 sm:size-5 shrink-0">
