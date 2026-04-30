@@ -33,16 +33,16 @@ export const TimelineItem = ({
          {/* Center Line Dot */}
          <div className="absolute left-0 md:left-1/2 top-0 -translate-x-1/2 flex flex-col items-center h-full z-20">
             <div className="size-3 xs:size-4 rounded-full border-2 border-primary bg-page shrink-0" />
-            {!isLast && <div className="w-[2px] h-full bg-subtle" />}
+            {!isLast && <div className="w-0.5 h-full bg-subtle" />}
          </div>
 
          {/* Content Container */}
          <div
-            className={`flex w-full items-start pl-8 md:pl-0 pb-12 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
+            className={`flex w-full items-start pl-8 pr-2 xs:pr-4 md:px-0 pb-12 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
          >
             {/* Content Side */}
             <div
-               className={`flex-1 flex flex-col gap-3 ${isEven ? "md:items-end md:text-right md:pr-12" : "md:items-start md:text-left md:pl-12"}`}
+               className={`flex-1 flex flex-col gap-3 min-w-0 ${isEven ? "md:items-end md:text-right md:pr-12" : "md:items-start md:text-left md:pl-12"}`}
             >
                <div className="flex flex-col gap-2">
                   <div
@@ -51,7 +51,7 @@ export const TimelineItem = ({
                      <Typography
                         variant="project"
                         as="h4"
-                        className="!text-[16px] xs:!text-[18px] md:!text-[20px] leading-tight"
+                        className="text-lg md:text-xl leading-tight text-balance"
                      >
                         {item.role}
                      </Typography>
@@ -62,7 +62,7 @@ export const TimelineItem = ({
                   >
                      <Typography
                         variant="body"
-                        className="font-bold !text-[13px] xs:!text-[14px] sm:!text-[15px] md:!text-[16px]"
+                        className="font-bold text-base md:text-lg"
                      >
                         {item.company}
                      </Typography>
@@ -96,16 +96,16 @@ export const TimelineItem = ({
 
                <Typography
                   variant="small"
-                  className="text-slate-600 dark:text-slate-400 font-medium !text-[11px] xs:!text-[12px] sm:!text-[13px] md:!text-[14px]"
+                  className="text-slate-600 dark:text-slate-400 font-medium text-sm"
                >
                   {item.date}
                </Typography>
                <div
-                  className={`max-w-full md:max-w-[520px] ${isEven ? "md:ml-auto" : "md:mr-auto"}`}
+                  className={`max-w-full md:max-w-130 ${isEven ? "md:ml-auto" : "md:mr-auto"}`}
                >
                   <Typography
                      variant="body"
-                     className="opacity-90 !text-[13px] xs:!text-[14px] sm:!text-[15px] md:!text-[16px] leading-relaxed text-pretty"
+                     className="opacity-90 text-sm md:text-base leading-relaxed text-pretty"
                   >
                      {item.description}
                   </Typography>
@@ -119,7 +119,7 @@ export const TimelineItem = ({
                      <Button
                         variant="outline"
                         icon={<MdDescription />}
-                        className="mt-2 !text-[11px] xs:!text-[12px] md:!text-[14px] !px-3 xs:!px-4 !py-1.5 xs:!py-2 w-fit"
+                        className="mt-2 text-xs md:text-sm px-4 py-2 w-fit"
                      >
                         {item.link.label}
                      </Button>
