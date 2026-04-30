@@ -56,8 +56,10 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                         </Typography>
                         {edu.achievement && (
                            <ul className="list-disc ml-6 mt-1">
-                              <li className="text-body text-[16px]">
-                                 {edu.achievement}.
+                              <li>
+                                 <Typography variant="body" as="span">
+                                    {edu.achievement}.
+                                 </Typography>
                               </li>
                            </ul>
                         )}
