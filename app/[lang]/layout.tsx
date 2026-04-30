@@ -16,6 +16,14 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
    title: "Christian Serrano's Portfolio",
    description: "Mobile & Full Stack Developer",
+   metadataBase: new URL("https://chrisssp.vercel.app"),
+   alternates: {
+      canonical: "/",
+      languages: {
+         en: "/en",
+         es: "/es",
+      },
+   },
    verification: {
       google: "C7-Eo1l4pm2SWrZBbFBqYuqbg8SQtfoVO-ZSyV-EYFs",
    },
