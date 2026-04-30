@@ -95,7 +95,7 @@ export const Hero = ({ dict }: HeroProps) => {
                fill
                className="object-cover"
                priority
-               unoptimized
+               sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 360px"
             />
          </div>
       </SectionContainer>
