@@ -29,6 +29,7 @@ export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
             <div className="flex flex-col gap-4">
                <Typography
                   variant="hero"
+                  as="h1"
                   className="!text-[32px] md:!text-[40px] lg:!text-[48px]"
                >
                   {project.title}
@@ -67,7 +68,7 @@ export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
                   fill
                   className="object-cover"
                   priority
-                  unoptimized
+                  sizes="(max-width: 1024px) 100vw, 630px"
                />
             )}
          </div>
