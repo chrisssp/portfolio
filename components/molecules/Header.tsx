@@ -171,7 +171,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   <button
                      onClick={toggleLanguage}
                      className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
-                     aria-label={lang === "en" ? "Cambiar a español" : "Switch to English"}
+                     aria-label={lang === "en" ? "Switch language" : "Cambiar idioma"}
                   >
                      <MdLanguage className="size-4 xs:size-5" />
                      <span className="ml-1.5 xs:ml-2 text-[12px] xs:text-[14px] font-bold uppercase">
@@ -184,7 +184,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                         setTheme(resolvedTheme === "dark" ? "light" : "dark")
                      }
                      className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
-                     aria-label={resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                     aria-label={resolvedTheme === "dark" ? "Light mode" : "Dark mode"}
                   >
                      {resolvedTheme === "dark" ? (
                         <MdLightMode className="size-4 xs:size-5" />

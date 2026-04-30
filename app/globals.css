@@ -33,7 +33,7 @@
       --bg-surface: var(--color-slate-800);
       --text-body: var(--color-white-off);
       --border-subtle: var(--color-slate-700);
-      --brand-primary: var(--color-cyan-400);
+      --brand-primary: #52d1ff; /* Brighter cyan for dark mode accessibility */
       --contrast-primary: var(--color-slate-900);
 
       /* Color de rejilla sutil para modo oscuro */

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
    description: "Mobile & Full Stack Developer",
    metadataBase: new URL("https://chrisssp.vercel.app"),
    alternates: {
-      canonical: "/",
+      canonical: "https://chrisssp.vercel.app",
       languages: {
          en: "/en",
          es: "/es",
