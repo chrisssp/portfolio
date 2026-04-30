@@ -61,12 +61,16 @@ html {
 }
 
 body {
-   background-color: var(--bg-page);
+   background-color: #f5f7fa; /* Fallback for light mode */
    color: var(--text-body);
    font-family: var(--font-sans);
    transition:
       background-color 0.3s ease,
       color 0.3s ease;
+}
+
+.dark body {
+   background-color: #171c28; /* Fallback for dark mode */
 }
 
 @layer utilities {
