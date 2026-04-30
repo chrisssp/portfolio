@@ -135,6 +135,7 @@ export const SmartEmailButton = ({
                      </div>
                   </a>
                   <button
+                     type="button"
                      className="w-full flex items-center gap-3 xs:gap-4 px-4 xs:px-6 py-3 xs:py-4 hover:bg-surface transition-colors"
                      onClick={handleCopyEmail}
                   >

@@ -29,7 +29,7 @@ type HeaderProps = {
 };
 
 export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
-   const { theme, setTheme, resolvedTheme } = useTheme();
+   const { setTheme, resolvedTheme } = useTheme();
    const [mounted, setMounted] = useState(false);
    const [activeSection, setActiveSection] = useState<string>("");
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -157,6 +157,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                         </nav>
 
                         <button
+                           type="button"
                            onClick={() => setMobileMenuOpen(true)}
                            className="md:hidden flex items-center justify-center p-2 xs:p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
                            aria-label="Open menu"
@@ -169,9 +170,12 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
 
                <div className="bg-page border border-subtle flex items-center rounded-lg xs:rounded-xl p-0.5 xs:p-1 shadow-sm">
                   <button
+                     type="button"
                      onClick={toggleLanguage}
                      className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
-                     aria-label={lang === "en" ? "Switch language" : "Cambiar idioma"}
+                     aria-label={
+                        lang === "en" ? "Switch language" : "Cambiar idioma"
+                     }
                   >
                      <MdLanguage className="size-4 xs:size-5" />
                      <span className="ml-1.5 xs:ml-2 text-[12px] xs:text-[14px] font-bold uppercase">
@@ -180,11 +184,14 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   </button>
                   <div className="w-[1px] h-4 xs:h-6 bg-subtle mx-0.5 xs:mx-1" />
                   <button
+                     type="button"
                      onClick={() =>
                         setTheme(resolvedTheme === "dark" ? "light" : "dark")
                      }
                      className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
-                     aria-label={resolvedTheme === "dark" ? "Light mode" : "Dark mode"}
+                     aria-label={
+                        resolvedTheme === "dark" ? "Light mode" : "Dark mode"
+                     }
                   >
                      {resolvedTheme === "dark" ? (
                         <MdLightMode className="size-4 xs:size-5" />
@@ -225,6 +232,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      </div>
                   </div>
                   <button
+                     type="button"
                      onClick={() => setMobileMenuOpen(false)}
                      className="p-2.5 bg-surface rounded-xl border border-subtle text-body active:scale-95 transition-all"
                      aria-label={lang === "en" ? "Close menu" : "Cerrar menú"}

@@ -77,6 +77,7 @@ export const TimelineItem = ({
                         )}
                         {item.product && (
                            <button
+                              type="button"
                               onClick={handleProjectClick}
                               className="cursor-pointer active:scale-95 transition-transform"
                            >

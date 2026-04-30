@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/molecules/Header";
 import { CTA } from "@/components/organisms/CTA";
@@ -6,7 +7,6 @@ import { ProjectChallenge } from "@/components/organisms/ProjectChallenge";
 import { ProjectDetailHero } from "@/components/organisms/ProjectDetailHero";
 import { ProjectEcosystem } from "@/components/organisms/ProjectEcosystem";
 import { getDictionary, type Locale } from "@/i18n/config";
-import type { Metadata } from "next";
 
 type Props = {
    params: Promise<{ lang: string; id: string }>;
@@ -41,7 +41,7 @@ export default async function ProjectPage({ params }: Props) {
 
    const project = dict.projects.items.find((p) => p.id === id);
 
-   if (!project || !project.fullDescription) {
+   if (!project?.fullDescription) {
       notFound();
    }
 

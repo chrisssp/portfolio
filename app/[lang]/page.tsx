@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/molecules/Header";
 import { AboutMe } from "@/components/organisms/AboutMe";
 import { CTA } from "@/components/organisms/CTA";
@@ -6,7 +7,6 @@ import { Footer } from "@/components/organisms/Footer";
 import { Hero } from "@/components/organisms/Hero";
 import { Projects } from "@/components/organisms/Projects";
 import { getDictionary, type Locale } from "@/i18n/config";
-import type { Metadata } from "next";
 
 type Props = {
    params: Promise<{ lang: string }>;
@@ -15,7 +15,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
    const { lang } = await params;
    const locale = lang as Locale;
-   
+
    const titles = {
       en: "Christian Serrano | Software Engineer | Full-Stack & Mobile Developer",
       es: "Christian Serrano | Ingeniero de Software | Desarrollador Full-Stack y Móvil",
@@ -45,22 +45,24 @@ export default async function Home({ params }: Props) {
    const jsonLd = {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Christian Serrano",
-      "url": "https://chrisssp.vercel.app",
-      "jobTitle": "Software Engineer",
-      "sameAs": [
+      name: "Christian Serrano",
+      url: "https://chrisssp.vercel.app",
+      jobTitle: "Software Engineer",
+      sameAs: [
          "https://github.com/chrisssp",
-         "https://linkedin.com/in/christian-serrano"
+         "https://linkedin.com/in/christian-serrano",
       ],
-      "description": locale === "en" 
-         ? "Software Engineer focused on building efficient web and mobile ecosystems."
-         : "Ingeniero de Software enfocado en la construcción de ecosistemas web y móviles eficientes."
+      description:
+         locale === "en"
+            ? "Software Engineer focused on building efficient web and mobile ecosystems."
+            : "Ingeniero de Software enfocado en la construcción de ecosistemas web y móviles eficientes.",
    };
 
    return (
       <div className="flex flex-col min-h-screen">
          <script
             type="application/ld+json"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD is safe here
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
          />
          <Header dict={dict} lang={locale} />

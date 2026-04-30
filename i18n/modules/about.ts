@@ -26,7 +26,7 @@ export const about = {
       p2: "Creo en el poder de la comunidad. Participo activamente en Hackathons y eventos tecnológicos, buscando constantemente aprender de los mejores y compartir conocimientos.",
       philosophy: "Mi filosofía es simple: ",
       quote: "“Talk is cheap. Show me the code.” — Linus Torvalds",
-      educationTitle: "Formación Académica",
+      educationTitle: "Formación académica",
       education: [
          {
             institution: "Universidad Tecnológica del Centro de Veracruz.",

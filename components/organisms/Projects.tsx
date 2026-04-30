@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { FaGithub } from "react-icons/fa";
-import { MdArrowForward, MdCode } from "react-icons/md";
+import { MdCode } from "react-icons/md";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
 import { Button } from "../atoms/Button";
@@ -69,6 +69,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                   }`}
                />
                <button
+                  type="button"
                   onClick={() => setFilter("featured")}
                   className={`relative z-10 flex-1 px-3 xs:px-4 py-1.5 xs:py-2.5 font-bold text-[12px] xs:text-[14px] transition-colors duration-300 text-center ${
                      filter === "featured"
@@ -79,6 +80,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                   {dict.projects.actions.tab_featured}
                </button>
                <button
+                  type="button"
                   onClick={() => setFilter("others")}
                   className={`relative z-10 flex-1 px-3 xs:px-4 py-1.5 xs:py-2.5 font-bold text-[12px] xs:text-[14px] transition-colors duration-300 text-center ${
                      filter === "others"
@@ -110,7 +112,10 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
          </div>
 
          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full mt-8 lg:mt-16 gap-6">
-            <Typography variant="body" className="font-medium text-slate-600 dark:text-slate-400">
+            <Typography
+               variant="body"
+               className="font-medium text-slate-600 dark:text-slate-400"
+            >
                {dict.projects.subtitle}
             </Typography>
             <a
