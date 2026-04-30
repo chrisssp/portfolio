@@ -50,12 +50,12 @@ export const Hero = ({ dict }: HeroProps) => {
                   >
                      {dict.hero.actions.cv}
                   </Button>
-                  </a>
-                  <a
+               </a>
+               <a
                   href={PROFESSIONAL_LINKS.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  >
+               >
                   <Button
                      variant="primary"
                      icon={<FaGithub />}
@@ -64,12 +64,12 @@ export const Hero = ({ dict }: HeroProps) => {
                   >
                      {dict.hero.actions.github}
                   </Button>
-                  </a>
-                  <a
+               </a>
+               <a
                   href={PROFESSIONAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  >
+               >
                   <Button
                      variant="primary"
                      icon={<FaLinkedin />}
@@ -78,7 +78,7 @@ export const Hero = ({ dict }: HeroProps) => {
                   >
                      {dict.hero.actions.linkedin}
                   </Button>
-                  </a>
+               </a>
                <SmartEmailButton
                   label={dict.hero.actions.email}
                   menuLabels={dict.hero.actions.emailMenu}

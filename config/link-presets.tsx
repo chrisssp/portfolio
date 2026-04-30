@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiDownload, HiExternalLink, HiMail } from "react-icons/hi";
 
 // Definimos la estructura de un Preset
