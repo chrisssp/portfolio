@@ -205,7 +205,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
 
          {/* Mobile Menu Overlay - Botones más compactos */}
          {mobileMenuOpen && (
-            <div className="fixed inset-0 z-[999] flex flex-col bg-page w-full h-full">
+            <div className="fixed inset-0 z-[60] flex flex-col bg-page w-full h-full">
                <div className="flex justify-between items-center p-5 xs:p-6 border-b border-subtle bg-page">
                   <div className="flex items-center gap-4">
                      <div className="relative h-10 w-10">
@@ -248,7 +248,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            key={link.id}
                            href={`/${lang}#${link.id}`}
                            onClick={() => setMobileMenuOpen(false)}
-                           className={`flex items-center justify-between p-4 xs:p-5 rounded-[16px] xs:rounded-[20px] border transition-all duration-200 ${
+                           className={`flex items-center justify-between p-4 xs:p-5 rounded-2xl xs:rounded-3xl border transition-all duration-200 ${
                               activeSection === link.id
                                  ? "bg-primary text-primary-contrast border-primary shadow-md"
                                  : "bg-surface border-subtle text-body"
@@ -258,7 +258,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                               {link.label}
                            </span>
                            <span
-                              className={`text-[12px] xs:text-[14px] font-black opacity-30`}
+                              className={`text-[12px] xs:text-[14px] font-black opacity-50`}
                            >
                               0{idx + 1}
                            </span>
