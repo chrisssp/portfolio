@@ -9,7 +9,7 @@ export const Badge = ({ tech }: BadgeProps) => {
 
    return (
       <div
-         className="flex items-center gap-2 px-[10px] py-[4px] rounded-[999px] shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 hover:shadow-sm cursor-default select-none border border-transparent hover:border-white-off/20"
+         <div\n         className="flex items-center gap-2 px-2.5 py-1 rounded-full shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 hover:shadow-sm cursor-default select-none border border-transparent hover:border-white-off/20"
          style={{ backgroundColor: tech.bgColor }}
       >
          <Icon className="size-[14px] text-white-off" />
