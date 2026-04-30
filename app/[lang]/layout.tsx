@@ -16,6 +16,9 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
    title: "Christian Serrano's Portfolio",
    description: "Mobile & Full Stack Developer",
+   verification: {
+      google: "C7-Eo1l4pm2SWrZBbFBqYuqbg8SQtfoVO-ZSyV-EYFs",
+   },
    icons: {
       icon: [
          {
