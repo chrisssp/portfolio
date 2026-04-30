@@ -1,11 +1,11 @@
-import { getDictionary, Locale } from "@/i18n/config";
-import { Header } from "@/components/molecules/Header";
-import { Footer } from "@/components/organisms/Footer";
-import { ProjectDetailHero } from "@/components/organisms/ProjectDetailHero";
-import { ProjectChallenge } from "@/components/organisms/ProjectChallenge";
-import { ProjectEcosystem } from "@/components/organisms/ProjectEcosystem";
-import { CTA } from "@/components/organisms/CTA";
 import { notFound } from "next/navigation";
+import { Header } from "@/components/molecules/Header";
+import { CTA } from "@/components/organisms/CTA";
+import { Footer } from "@/components/organisms/Footer";
+import { ProjectChallenge } from "@/components/organisms/ProjectChallenge";
+import { ProjectDetailHero } from "@/components/organisms/ProjectDetailHero";
+import { ProjectEcosystem } from "@/components/organisms/ProjectEcosystem";
+import { getDictionary, type Locale } from "@/i18n/config";
 
 type Props = {
    params: Promise<{ lang: string; id: string }>;
@@ -28,12 +28,15 @@ export default async function ProjectPage({ params }: Props) {
 
          <main className="flex-1">
             <ProjectDetailHero project={project} />
-            <ProjectChallenge project={project} labels={dict.projects.sections} />
-            
-            <ProjectEcosystem 
-               project={project} 
-               labels={dict.projects.sections} 
-               actions={dict.projects.actions} 
+            <ProjectChallenge
+               project={project}
+               labels={dict.projects.sections}
+            />
+
+            <ProjectEcosystem
+               project={project}
+               labels={dict.projects.sections}
+               actions={dict.projects.actions}
             />
             <CTA dict={dict} projectTitle={project.title} />
          </main>

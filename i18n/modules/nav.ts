@@ -10,5 +10,5 @@ export const nav = {
       projects: "Proyectos",
       about: "Sobre mí",
       goBack: "Volver",
-   }
+   },
 };

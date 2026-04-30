@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
-import { HiExternalLink, HiDownload, HiMail } from "react-icons/hi";
+import { HiDownload, HiExternalLink, HiMail } from "react-icons/hi";
 
 // Definimos la estructura de un Preset
 export interface LinkPreset {

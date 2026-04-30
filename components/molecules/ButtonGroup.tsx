@@ -1,4 +1,4 @@
-import { Dictionary } from "@/i18n/types";
+import type { Dictionary } from "@/i18n/types";
 import { Button } from "../atoms/Button";
 
 type ButtonGroupProps = {

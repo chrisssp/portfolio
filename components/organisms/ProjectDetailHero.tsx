@@ -1,14 +1,14 @@
 import Image from "next/image";
-import { ProjectItem } from "@/i18n/types";
-import { Typography } from "../atoms/Typography";
+import type { ProjectItem } from "@/i18n/types";
 import { SectionContainer } from "../atoms/SectionContainer";
+import { Typography } from "../atoms/Typography";
 
 interface ProjectDetailHeroProps {
    project: ProjectItem;
 }
 
 export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
-   const videoLink = project.links.find(l => l.type === "video");
+   const videoLink = project.links.find((l) => l.type === "video");
 
    const getEmbedUrl = (url: string) => {
       let videoId = "";
@@ -21,19 +21,31 @@ export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
    };
 
    return (
-      <SectionContainer className="bg-surface" innerClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-20">
+      <SectionContainer
+         className="bg-surface"
+         innerClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-20"
+      >
          <div className="flex flex-col gap-6 lg:gap-8 max-w-[760px] text-left">
             <div className="flex flex-col gap-4">
-               <Typography variant="hero" className="!text-[32px] md:!text-[40px] lg:!text-[48px]">
+               <Typography
+                  variant="hero"
+                  className="!text-[32px] md:!text-[40px] lg:!text-[48px]"
+               >
                   {project.title}
                </Typography>
                {project.subtitle && (
-                  <Typography variant="hero-sub" className="text-primary !text-[18px] md:!text-[22px] lg:!text-[24px]">
+                  <Typography
+                     variant="hero-sub"
+                     className="text-primary !text-[18px] md:!text-[22px] lg:!text-[24px]"
+                  >
                      {project.subtitle}
                   </Typography>
                )}
             </div>
-            <Typography variant="body" className="opacity-90 max-w-[600px] text-pretty">
+            <Typography
+               variant="body"
+               className="opacity-90 max-w-[600px] text-pretty"
+            >
                {project.fullDescription}
             </Typography>
          </div>
@@ -49,9 +61,9 @@ export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
                   allowFullScreen
                />
             ) : (
-               <Image 
-                  src={project.heroImagePath || project.imagePath} 
-                  alt={project.title} 
+               <Image
+                  src={project.heroImagePath || project.imagePath}
+                  alt={project.title}
                   fill
                   className="object-cover"
                   priority

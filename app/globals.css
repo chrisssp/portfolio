@@ -23,7 +23,7 @@
       --border-subtle: var(--color-slate-200);
       --brand-primary: var(--color-cyan-600);
       --contrast-primary: var(--color-white-off);
-      
+
       /* Color de rejilla más sutil para modo claro */
       --grid-line-color: rgba(23, 28, 40, 0.07);
    }
@@ -64,7 +64,9 @@ body {
    background-color: var(--bg-page);
    color: var(--text-body);
    font-family: var(--font-sans);
-   transition: background-color 0.3s ease, color 0.3s ease;
+   transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
 }
 
 @layer utilities {
@@ -79,27 +81,31 @@ body {
    .bg-grid-pattern {
       background-size: 40px 40px;
       background-image:
-         linear-gradient(
-            to right,
-            var(--grid-line-color) 1px,
-            transparent 1px
-         ),
-         linear-gradient(
-            to bottom,
-            var(--grid-line-color) 1px,
-            transparent 1px
-         );
+         linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+         linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
    }
 
    .mask-grid-fade {
-      -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+      -webkit-mask-image: radial-gradient(
+         circle at center,
+         black 0%,
+         transparent 80%
+      );
       mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
    }
 
    /* Utilidades para el Logo (Evitan conflictos con el sistema operativo) */
-   .logo-light { display: block; }
-   .logo-dark { display: none; }
+   .logo-light {
+      display: block;
+   }
+   .logo-dark {
+      display: none;
+   }
 
-   .dark .logo-light { display: none; }
-   .dark .logo-dark { display: block; }
+   .dark .logo-light {
+      display: none;
+   }
+   .dark .logo-dark {
+      display: block;
+   }
 }

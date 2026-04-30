@@ -1,14 +1,14 @@
 "use client";
 
-import { Dictionary } from "@/i18n/types";
+import { useEffect, useMemo, useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { MdArrowForward, MdCode } from "react-icons/md";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/types";
+import { Button } from "../atoms/Button";
+import { SectionContainer } from "../atoms/SectionContainer";
 import { Typography } from "../atoms/Typography";
 import { ProjectCard } from "../molecules/ProjectCard";
-import { Button } from "../atoms/Button";
-import { MdCode, MdArrowForward } from "react-icons/md";
-import { FaGithub } from "react-icons/fa";
-import { Locale } from "@/i18n/config";
-import { SectionContainer } from "../atoms/SectionContainer";
-import { useState, useMemo, useEffect } from "react";
 
 interface ProjectsProps {
    dict: Dictionary;
@@ -20,16 +20,16 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
 
    const filteredProjects = useMemo(() => {
       if (filter === "featured") {
-         return dict.projects.items.filter(p => p.featured);
+         return dict.projects.items.filter((p) => p.featured);
       }
-      return dict.projects.items.filter(p => !p.featured);
+      return dict.projects.items.filter((p) => !p.featured);
    }, [filter, dict.projects.items]);
 
    // Escuchar evento para cambiar de pestaña y hacer scroll
    useEffect(() => {
       const handleSwitch = (e: any) => {
          const { projectId } = e.detail;
-         const project = dict.projects.items.find(p => p.id === projectId);
+         const project = dict.projects.items.find((p) => p.id === projectId);
          if (project) {
             setFilter(project.featured ? "featured" : "others");
             // Esperar al re-render para que el ID exista en el DOM
@@ -43,38 +43,47 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       };
 
       window.addEventListener("switch-project-tab" as any, handleSwitch);
-      return () => window.removeEventListener("switch-project-tab" as any, handleSwitch);
+      return () =>
+         window.removeEventListener("switch-project-tab" as any, handleSwitch);
    }, [dict.projects.items]);
 
    return (
-      <SectionContainer id="projects" className="bg-surface" innerClassName="flex flex-col gap-8 lg:gap-16">
+      <SectionContainer
+         id="projects"
+         className="bg-surface"
+         innerClassName="flex flex-col gap-8 lg:gap-16"
+      >
          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6">
             <div className="flex gap-4 md:gap-6 items-center">
                <MdCode className="size-8 text-body" />
-               <Typography variant="section">
-                  {dict.projects.title}
-               </Typography>
+               <Typography variant="section">{dict.projects.title}</Typography>
             </div>
-            
+
             {/* Segmented Control - Ajustado ancho para evitar desbordamiento en español */}
             <div className="bg-page/50 backdrop-blur-sm border border-subtle p-0.5 xs:p-1 rounded-xl xs:rounded-2xl flex relative shadow-sm w-full lg:w-auto min-w-[200px] xs:min-w-[240px]">
-               <div 
+               <div
                   className={`absolute top-0.5 xs:top-1 bottom-0.5 xs:bottom-1 bg-primary rounded-lg xs:rounded-xl transition-all duration-300 ease-in-out ${
-                     filter === "featured" ? "left-0.5 xs:left-1 w-[calc(50%-2px)] xs:w-[calc(50%-4px)]" : "left-[calc(50%+1px)] xs:left-[calc(50%+2px)] w-[calc(50%-2px)] xs:w-[calc(50%-4px)]"
+                     filter === "featured"
+                        ? "left-0.5 xs:left-1 w-[calc(50%-2px)] xs:w-[calc(50%-4px)]"
+                        : "left-[calc(50%+1px)] xs:left-[calc(50%+2px)] w-[calc(50%-2px)] xs:w-[calc(50%-4px)]"
                   }`}
                />
-               <button 
+               <button
                   onClick={() => setFilter("featured")}
                   className={`relative z-10 flex-1 px-3 xs:px-4 py-1.5 xs:py-2.5 font-bold text-[12px] xs:text-[14px] transition-colors duration-300 text-center ${
-                     filter === "featured" ? "text-primary-contrast" : "text-body hover:text-primary"
+                     filter === "featured"
+                        ? "text-primary-contrast"
+                        : "text-body hover:text-primary"
                   }`}
                >
                   {dict.projects.actions.tab_featured}
                </button>
-               <button 
+               <button
                   onClick={() => setFilter("others")}
                   className={`relative z-10 flex-1 px-3 xs:px-4 py-1.5 xs:py-2.5 font-bold text-[12px] xs:text-[14px] transition-colors duration-300 text-center ${
-                     filter === "others" ? "text-primary-contrast" : "text-body hover:text-primary"
+                     filter === "others"
+                        ? "text-primary-contrast"
+                        : "text-body hover:text-primary"
                   }`}
                >
                   {dict.projects.actions.tab_all}
@@ -84,14 +93,14 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
 
          <div className="flex flex-col gap-16 lg:gap-[120px] w-full transition-all duration-500 min-h-[400px]">
             {filteredProjects.map((project, index) => (
-               <div 
-                  key={project.id} 
+               <div
+                  key={project.id}
                   id={`project-${project.id}`}
                   className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both scroll-mt-32"
                   style={{ animationDelay: `${index * 100}ms` }}
                >
-                  <ProjectCard 
-                     project={project} 
+                  <ProjectCard
+                     project={project}
                      actions={dict.projects.actions}
                      reverse={index % 2 !== 0}
                      lang={lang}
@@ -104,15 +113,15 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             <Typography variant="body" className="font-medium text-slate-500">
                {dict.projects.subtitle}
             </Typography>
-            <a 
-               href="https://github.com/chrisssp?tab=repositories" 
-               target="_blank" 
-               rel="noopener noreferrer" 
+            <a
+               href="https://github.com/chrisssp?tab=repositories"
+               target="_blank"
+               rel="noopener noreferrer"
                className="w-full lg:w-auto"
             >
-               <Button 
-                  variant="outline" 
-                  icon={<FaGithub className="size-5" />} 
+               <Button
+                  variant="outline"
+                  icon={<FaGithub className="size-5" />}
                   className="!rounded-xl w-full lg:w-auto"
                >
                   {dict.projects.actions.see_more}

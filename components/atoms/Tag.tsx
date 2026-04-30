@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface TagProps {
    children: ReactNode;
@@ -7,11 +7,11 @@ interface TagProps {
    className?: string;
 }
 
-export const Tag = ({ 
-   children, 
-   variant = "secondary", 
+export const Tag = ({
+   children,
+   variant = "secondary",
    icon,
-   className = "" 
+   className = "",
 }: TagProps) => {
    const variants = {
       primary: "bg-primary text-primary-contrast border-transparent",
@@ -20,7 +20,9 @@ export const Tag = ({
    };
 
    return (
-      <div className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg border text-[12px] font-bold transition-all ${variants[variant]} ${className}`}>
+      <div
+         className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg border text-[12px] font-bold transition-all ${variants[variant]} ${className}`}
+      >
          {icon && <span className="shrink-0">{icon}</span>}
          <span className="whitespace-nowrap">{children}</span>
       </div>

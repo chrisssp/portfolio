@@ -1,32 +1,32 @@
-import { 
-  SiAngular, 
-  SiBootstrap, 
-  SiReact, 
-  SiIonic, 
-  SiSpringboot, 
-  SiPostgresql, 
-  SiFastapi, 
-  SiMongodb, 
-  SiAstro, 
-  SiExpo, 
-  SiTailwindcss, 
-  SiNestjs, 
-  SiSupabase, 
-  SiPrisma,
-  SiFirebase,
-  SiLaravel,
-  SiAndroid,
-  SiNodedotjs,
-  SiTypescript,
-  SiExpress,
-  SiCapacitor,
-  SiPython,
-  SiScikitlearn,
-  SiDjango,
-  SiReactquery,
-  SiGooglegemini
-} from "react-icons/si";
 import { FaJava } from "react-icons/fa";
+import {
+   SiAndroid,
+   SiAngular,
+   SiAstro,
+   SiBootstrap,
+   SiCapacitor,
+   SiDjango,
+   SiExpo,
+   SiExpress,
+   SiFastapi,
+   SiFirebase,
+   SiGooglegemini,
+   SiIonic,
+   SiLaravel,
+   SiMongodb,
+   SiNestjs,
+   SiNodedotjs,
+   SiPostgresql,
+   SiPrisma,
+   SiPython,
+   SiReact,
+   SiReactquery,
+   SiScikitlearn,
+   SiSpringboot,
+   SiSupabase,
+   SiTailwindcss,
+   SiTypescript,
+} from "react-icons/si";
 
 export interface TechConfig {
    name: string;
@@ -189,5 +189,5 @@ export const TECHNOLOGIES: Record<string, TechConfig> = {
       name: "Gemini AI",
       icon: SiGooglegemini,
       bgColor: "#1a73e8",
-   }
+   },
 };

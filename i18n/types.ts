@@ -47,7 +47,7 @@ export interface ProjectItem {
    heroImagePath?: string; // Imagen para el hero del detalle (hero.png)
    techStack: string[];
    links: ProjectLink[];
-   
+
    // Campos específicos para el detalle
    challenge?: {
       description: string;

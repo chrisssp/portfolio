@@ -1,19 +1,23 @@
 import Image from "next/image";
-import { Dictionary } from "@/i18n/types";
-import { Typography } from "../atoms/Typography";
 import { MdPerson } from "react-icons/md";
+import type { Dictionary } from "@/i18n/types";
 import { SectionContainer } from "../atoms/SectionContainer";
+import { Typography } from "../atoms/Typography";
 
 interface AboutMeProps {
    dict: Dictionary;
 }
 
 export const AboutMe = ({ dict }: AboutMeProps) => {
-   const img1 = "/assets/images/about/midudev.jpg"; 
-   const img2 = "/assets/images/about/mouredev.jpg"; 
+   const img1 = "/assets/images/about/midudev.jpg";
+   const img2 = "/assets/images/about/mouredev.jpg";
 
    return (
-      <SectionContainer id="about" className="bg-surface" innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
+      <SectionContainer
+         id="about"
+         className="bg-surface"
+         innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24"
+      >
          <div className="flex flex-col gap-10 md:gap-12 max-w-[640px]">
             {/* About Me Text */}
             <div className="flex flex-col gap-6">
@@ -25,7 +29,10 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   <Typography variant="body">{dict.about.p1}</Typography>
                   <Typography variant="body">{dict.about.p2}</Typography>
                   <Typography variant="body">
-                     {dict.about.philosophy}<span className="font-bold italic">{dict.about.quote}</span>
+                     {dict.about.philosophy}
+                     <span className="font-bold italic">
+                        {dict.about.quote}
+                     </span>
                   </Typography>
                </div>
             </div>
@@ -33,7 +40,9 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
             {/* Academic Background */}
             <div className="flex flex-col gap-6 md:gap-8">
                <div className="flex flex-col gap-2">
-                  <Typography variant="project">{dict.about.educationTitle}</Typography>
+                  <Typography variant="project">
+                     {dict.about.educationTitle}
+                  </Typography>
                   <Typography variant="body" className="font-medium">
                      {dict.about.education[0].institution}
                   </Typography>
@@ -42,7 +51,8 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   {dict.about.education.map((edu, idx) => (
                      <div key={idx} className="flex flex-col">
                         <Typography variant="body">
-                           <span className="font-medium">{edu.degree}</span> ({edu.date})
+                           <span className="font-medium">{edu.degree}</span> (
+                           {edu.date})
                         </Typography>
                         {edu.achievement && (
                            <ul className="list-disc ml-6 mt-1">
@@ -60,10 +70,22 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
          {/* Circular Images */}
          <div className="relative w-full max-w-[400px] lg:max-w-none lg:w-[500px] aspect-square shrink-0 mt-8 lg:mt-0">
             <div className="absolute top-0 right-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500">
-               <Image src={img1} alt="Community" fill className="object-cover" unoptimized />
+               <Image
+                  src={img1}
+                  alt="Community"
+                  fill
+                  className="object-cover"
+                  unoptimized
+               />
             </div>
             <div className="absolute bottom-0 left-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500">
-               <Image src={img2} alt="Me" fill className="object-cover" unoptimized />
+               <Image
+                  src={img2}
+                  alt="Me"
+                  fill
+                  className="object-cover"
+                  unoptimized
+               />
             </div>
          </div>
       </SectionContainer>
