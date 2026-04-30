@@ -28,7 +28,7 @@ export const FeatureCard = ({
          className={`flex flex-col lg:flex-row gap-8 lg:gap-16 items-start w-full ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"}`}
       >
          {/* Content Side */}
-         <div className="flex-1 flex flex-col gap-6 md:gap-8 w-full lg:max-w-[600px]">
+         <div className="flex-1 flex flex-col gap-6 md:gap-8 w-full lg:max-w-150">
             <div className="flex flex-col gap-3 md:gap-4">
                <Typography variant="project">{title}</Typography>
                <Typography variant="body" className="opacity-90 text-pretty">
@@ -56,7 +56,7 @@ export const FeatureCard = ({
 
          {/* Image Side - Volvemos a LG para restaurar la vista normal */}
          <div
-            className={`w-full lg:w-[630px] aspect-[630/350] rounded-2xl border border-subtle relative overflow-hidden shrink-0 shadow-lg group ${imageClassName}`}
+            className={`w-full lg:w-157.5 aspect-630/350 rounded-2xl border border-subtle relative overflow-hidden shrink-0 shadow-lg group ${imageClassName}`}
          >
             <Image
                src={imagePath}

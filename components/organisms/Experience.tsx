@@ -26,7 +26,7 @@ export const Experience = ({ dict }: ExperienceProps) => {
          <div className="flex flex-col w-full">
             {dict.experience.items.map((item, index) => (
                <TimelineItem
-                  key={index}
+                  key={`${item.role}-${item.company}-${item.date}`}
                   item={item}
                   index={index}
                   isLast={index === dict.experience.items.length - 1}

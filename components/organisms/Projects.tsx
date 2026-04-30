@@ -67,7 +67,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             </div>
 
             {/* Segmented Control */}
-            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-1 sm:p-1.5 rounded-xl sm:rounded-2xl flex relative shadow-sm w-full lg:w-auto">
+            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-1 sm:p-1.5 rounded-xl sm:rounded-2xl grid grid-cols-2 relative shadow-sm w-full lg:w-auto">
                <div
                   className={`absolute top-1 sm:top-1.5 bottom-1 sm:bottom-1.5 bg-primary rounded-lg sm:rounded-xl transition-all duration-300 ease-in-out ${
                      filter === "featured"

@@ -102,8 +102,10 @@ export const SmartEmailButton = ({
          {showEmailMenu && (
             <>
                {/* Backdrop for mobile to focus on the centered menu */}
-               <div
-                  className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] lg:hidden"
+               <button
+                  type="button"
+                  aria-label="Close menu"
+                  className="fixed inset-0 bg-black/20 backdrop-blur-sm z-9998 lg:hidden"
                   onClick={() => setShowEmailMenu(false)}
                />
 
@@ -113,7 +115,7 @@ export const SmartEmailButton = ({
                   lg:absolute lg:top-full lg:translate-x-0 lg:translate-y-0 
                   ${alignmentClasses}
                   mt-2 bg-page border border-subtle rounded-2xl shadow-2xl 
-                  z-[10000] min-w-[260px] xs:min-w-[300px] overflow-hidden 
+                  z-10000 min-w-65 xs:min-w-75 overflow-hidden 
                   animate-in fade-in zoom-in-95 duration-200"
                `}
                >
@@ -126,10 +128,10 @@ export const SmartEmailButton = ({
                         <MdEmail className="size-4 xs:size-5" />
                      </div>
                      <div className="flex flex-col text-left">
-                        <span className="text-[13px] xs:text-[15px] font-bold text-body">
+                        <span className="text-sm sm:text-base font-bold text-body">
                            {menuLabels.send}
                         </span>
-                        <span className="text-[10px] xs:text-[12px] text-body opacity-60">
+                        <span className="text-xs sm:text-sm text-body opacity-60">
                            {menuLabels.sendSub}
                         </span>
                      </div>
@@ -143,10 +145,10 @@ export const SmartEmailButton = ({
                         <MdContentCopy className="size-4 xs:size-5" />
                      </div>
                      <div className="flex flex-col text-left overflow-hidden">
-                        <span className="text-[13px] xs:text-[15px] font-bold text-body">
+                        <span className="text-sm sm:text-base font-bold text-body">
                            {menuLabels.copy}
                         </span>
-                        <span className="text-[10px] xs:text-[12px] text-body opacity-60 truncate w-full">
+                        <span className="text-xs sm:text-sm text-body opacity-60 truncate w-full">
                            {PROFESSIONAL_LINKS.email}
                         </span>
                      </div>

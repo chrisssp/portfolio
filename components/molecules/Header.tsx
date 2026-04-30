@@ -108,7 +108,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                <div className="flex items-center gap-4 xs:gap-6">
                   <Link
                      href={`/${lang}`}
-                     className="relative h-10 w-10 sm:h-12 sm:w-12 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0"
+                     className="relative h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0"
                   >
                      {/* Logo para modo claro */}
                      <Image
@@ -133,7 +133,6 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                         <Button
                            variant="outline"
                            icon={<MdArrowBack />}
-                           className="px-3! xs:px-4! py-1.5! xs:py-2! text-[13px]! xs:text-sm!"
                         >
                            {dict.nav.goBack}
                         </Button>
@@ -147,7 +146,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                               <Link
                                  key={link.id}
                                  href={`/${lang}#${link.id}`}
-                                 className={`px-6 py-2.5 font-bold text-base transition-all rounded-xl hover:bg-surface ${
+                                 className={`px-4 lg:px-6 py-2.5 font-bold text-base leading-none transition-all rounded-xl hover:bg-surface flex items-center ${
                                     activeSection === link.id
                                        ? "text-primary bg-surface/50 shadow-inner"
                                        : "text-body"
@@ -161,10 +160,10 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                         <button
                            type="button"
                            onClick={() => setMobileMenuOpen(true)}
-                           className="md:hidden flex items-center justify-center p-2 sm:p-2.5 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
+                           className="md:hidden flex items-center justify-center p-2 sm:p-3 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
                            aria-label="Open menu"
                         >
-                           <MdMenu className="size-5 sm:size-6" />
+                           <MdMenu className="size-4 sm:size-5" />
                         </button>
                      </>
                   )}
@@ -174,13 +173,13 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   <button
                      type="button"
                      onClick={toggleLanguage}
-                     className="flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl"
+                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl leading-none"
                      aria-label={
                         lang === "en" ? "Switch language" : "Cambiar idioma"
                      }
                   >
-                     <MdLanguage className="size-4 sm:size-5" />
-                     <span className="ml-2 text-xs sm:text-sm font-bold uppercase">
+                     <MdLanguage className="size-4 sm:size-5 shrink-0" />
+                     <span className="ml-2 text-sm sm:text-base font-bold uppercase leading-none">
                         {lang}
                      </span>
                   </button>
@@ -190,15 +189,15 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      onClick={() =>
                         setTheme(resolvedTheme === "dark" ? "light" : "dark")
                      }
-                     className="flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl"
+                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl leading-none"
                      aria-label={
                         resolvedTheme === "dark" ? "Light mode" : "Dark mode"
                      }
                   >
                      {resolvedTheme === "dark" ? (
-                        <MdLightMode className="size-4 sm:size-5" />
+                        <MdLightMode className="size-4 sm:size-5 shrink-0" />
                      ) : (
-                        <MdDarkMode className="size-4 sm:size-5" />
+                        <MdDarkMode className="size-4 sm:size-5 shrink-0" />
                      )}
                   </button>
                </div>
@@ -210,7 +209,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
             <div className="fixed inset-0 z-60 flex flex-col bg-page w-full h-full">
                <div className="flex justify-between items-center p-4 sm:p-5 border-b border-subtle bg-page">
                   <div className="flex items-center gap-3 sm:gap-4">
-                     <div className="relative h-10 w-10 sm:h-12 sm:w-12">
+                     <div className="relative h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12">
                         <Image
                            src="/assets/images/profile/isotipo-white-nobg.png"
                            alt="Logo"

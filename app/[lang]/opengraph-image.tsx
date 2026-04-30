@@ -98,6 +98,7 @@ export default async function Image({ params }: { params: { lang: string } }) {
                   display: "flex",
                }}
             >
+               {/* biome-ignore lint/performance/noImgElement: Required for Next.js ImageResponse (Satori) */}
                <img
                   src={profileImageUrl}
                   alt="Profile"

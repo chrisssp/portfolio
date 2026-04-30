@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 interface TypographyProps {
-  variant?: "hero" | "hero-sub" | "section" | "project" | "body" | "small";
+  variant?: "hero" | "hero-sub" | "project-hero" | "project-hero-sub" | "section" | "project" | "body" | "small";
   children: ReactNode;
   className?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
@@ -19,6 +19,8 @@ export const Typography = ({
     // Muy pequeño: 18px | Tablet: ~36px | Desktop: 48px
     "hero-sub":
       "text-lg md:text-4xl lg:text-5xl font-bold leading-tight",
+    "project-hero": "text-3xl md:text-5xl lg:text-6xl font-bold leading-tight",
+    "project-hero-sub": "text-lg md:text-3xl lg:text-4xl font-bold leading-tight",
     // Muy pequeño: 20px | Tablet: ~30px | Desktop: ~36px
     section:
       "text-xl md:text-3xl lg:text-4xl font-bold leading-tight",
@@ -31,7 +33,7 @@ export const Typography = ({
 
   const Tag =
     as ||
-    (variant === "hero"
+    (variant === "hero" || variant === "project-hero"
       ? "h1"
       : variant === "section"
         ? "h2"

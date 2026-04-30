@@ -28,7 +28,7 @@ export const ProjectEcosystem = ({
             <Typography variant="section">{labels.ecosystem}</Typography>
          </div>
 
-         <div className="flex flex-col gap-32">
+         <div className="flex flex-col gap-16 lg:gap-30 w-full transition-all duration-500">
             {project.ecosystem.items.map((item, index) => {
                const itemActions = item.link ? (
                   <a
@@ -58,7 +58,7 @@ export const ProjectEcosystem = ({
 
                return (
                   <FeatureCard
-                     key={index}
+                     key={item.title}
                      title={item.title}
                      description={item.description}
                      imagePath={item.imagePath}

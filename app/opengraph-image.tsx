@@ -74,6 +74,7 @@ export default async function Image() {
                   display: "flex",
                }}
             >
+               {/* biome-ignore lint/performance/noImgElement: Required for Next.js ImageResponse (Satori) */}
                <img
                   src={profileImageUrl}
                   alt="Profile"
