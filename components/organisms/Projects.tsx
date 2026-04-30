@@ -110,7 +110,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
          </div>
 
          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full mt-8 lg:mt-16 gap-6">
-            <Typography variant="body" className="font-medium text-slate-500">
+            <Typography variant="body" className="font-medium text-slate-600 dark:text-slate-400">
                {dict.projects.subtitle}
             </Typography>
             <a
