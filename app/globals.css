@@ -19,9 +19,9 @@
       /* --- Semantic Mapping (Light) --- */
       --bg-page: var(--color-white-off);
       --bg-surface: var(--color-slate-100);
-      --text-body: var(--color-slate-700);
+      --text-body: var(--color-slate-900);
       --border-subtle: var(--color-slate-200);
-      --brand-primary: var(--color-cyan-600);
+      --brand-primary: #0271b1;
       --contrast-primary: var(--color-white-off);
 
       /* Color de rejilla más sutil para modo claro */

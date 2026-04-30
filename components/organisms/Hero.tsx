@@ -46,37 +46,39 @@ export const Hero = ({ dict }: HeroProps) => {
                      variant="primary"
                      icon={<MdDescription />}
                      className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]"
+                     ariaLabel={dict.hero.actions.cv}
                   >
                      {dict.hero.actions.cv}
                   </Button>
-               </a>
-               <a
+                  </a>
+                  <a
                   href={PROFESSIONAL_LINKS.github}
                   target="_blank"
                   rel="noopener noreferrer"
-               >
+                  >
                   <Button
                      variant="primary"
                      icon={<FaGithub />}
                      className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]"
+                     ariaLabel="GitHub"
                   >
                      {dict.hero.actions.github}
                   </Button>
-               </a>
-               <a
+                  </a>
+                  <a
                   href={PROFESSIONAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-               >
+                  >
                   <Button
                      variant="primary"
                      icon={<FaLinkedin />}
                      className="!px-3 xs:!px-4 sm:!px-6 !py-2 sm:!py-3 !text-[14px] sm:!text-[16px]"
+                     ariaLabel="LinkedIn"
                   >
                      {dict.hero.actions.linkedin}
                   </Button>
-               </a>
-
+                  </a>
                <SmartEmailButton
                   label={dict.hero.actions.email}
                   menuLabels={dict.hero.actions.emailMenu}
