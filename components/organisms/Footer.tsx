@@ -24,6 +24,7 @@ export const Footer = ({ dict }: FooterProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="CV"
+                  aria-label={dict.hero.actions.cv}
                >
                   <MdDescription className="size-5 text-body cursor-pointer hover:text-primary transition-colors" />
                </a>
@@ -32,6 +33,7 @@ export const Footer = ({ dict }: FooterProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="GitHub"
+                  aria-label="GitHub"
                >
                   <FaGithub className="size-5 text-body cursor-pointer hover:text-primary transition-colors" />
                </a>
@@ -40,10 +42,15 @@ export const Footer = ({ dict }: FooterProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="LinkedIn"
+                  aria-label="LinkedIn"
                >
                   <FaLinkedin className="size-5 text-body cursor-pointer hover:text-primary transition-colors" />
                </a>
-               <a href={`mailto:${PROFESSIONAL_LINKS.email}`} title="Email">
+               <a
+                  href={`mailto:${PROFESSIONAL_LINKS.email}`}
+                  title="Email"
+                  aria-label="Email"
+               >
                   <MdEmail className="size-5 text-body cursor-pointer hover:text-primary transition-colors" />
                </a>
             </div>

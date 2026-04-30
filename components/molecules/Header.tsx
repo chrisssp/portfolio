@@ -171,6 +171,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   <button
                      onClick={toggleLanguage}
                      className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
+                     aria-label={lang === "en" ? "Cambiar a español" : "Switch to English"}
                   >
                      <MdLanguage className="size-4 xs:size-5" />
                      <span className="ml-1.5 xs:ml-2 text-[12px] xs:text-[14px] font-bold uppercase">
@@ -183,6 +184,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                         setTheme(resolvedTheme === "dark" ? "light" : "dark")
                      }
                      className="flex items-center justify-center px-2 xs:px-4 py-1.5 xs:py-2 text-body hover:text-primary transition-colors rounded-md xs:rounded-lg"
+                     aria-label={resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
                   >
                      {resolvedTheme === "dark" ? (
                         <MdLightMode className="size-4 xs:size-5" />
@@ -225,6 +227,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   <button
                      onClick={() => setMobileMenuOpen(false)}
                      className="p-2.5 bg-surface rounded-xl border border-subtle text-body active:scale-95 transition-all"
+                     aria-label={lang === "en" ? "Close menu" : "Cerrar menú"}
                   >
                      <MdClose className="size-6" />
                   </button>
@@ -263,6 +266,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            target="_blank"
                            rel="noopener noreferrer"
                            title="CV"
+                           aria-label={dict.hero.actions.cv}
                         >
                            <MdDescription className="size-6 text-body hover:text-primary transition-colors" />
                         </a>
@@ -271,6 +275,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            target="_blank"
                            rel="noopener noreferrer"
                            title="GitHub"
+                           aria-label="GitHub"
                         >
                            <FaGithub className="size-6 text-body hover:text-primary transition-colors" />
                         </a>
@@ -279,12 +284,14 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            target="_blank"
                            rel="noopener noreferrer"
                            title="LinkedIn"
+                           aria-label="LinkedIn"
                         >
                            <FaLinkedin className="size-6 text-body hover:text-primary transition-colors" />
                         </a>
                         <a
                            href={`mailto:${PROFESSIONAL_LINKS.email}`}
                            title="Email"
+                           aria-label="Email"
                         >
                            <MdEmail className="size-6 text-body hover:text-primary transition-colors" />
                         </a>

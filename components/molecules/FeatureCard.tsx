@@ -63,7 +63,7 @@ export const FeatureCard = ({
                alt={title}
                fill
                className="object-cover group-hover:scale-105 transition-transform duration-700"
-               unoptimized
+               sizes="(max-width: 1024px) 100vw, 630px"
             />
          </div>
       </div>
