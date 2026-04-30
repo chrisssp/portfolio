@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface SectionContainerProps {
    children: ReactNode;
@@ -9,23 +9,25 @@ interface SectionContainerProps {
    paddingY?: string;
 }
 
-export const SectionContainer = ({ 
-   children, 
-   id, 
-   className = "", 
+export const SectionContainer = ({
+   children,
+   id,
+   className = "",
    innerClassName = "",
    showGrid = true,
-   paddingY = "py-10 sm:py-16 lg:py-[120px]"
+   paddingY = "py-10 sm:py-16 lg:py-[120px]",
 }: SectionContainerProps) => {
    return (
-      <section 
-         id={id} 
+      <section
+         id={id}
          className={`relative flex justify-center w-full scroll-mt-header ${className}`}
       >
          {showGrid && (
             <div className="absolute inset-0 bg-grid-pattern pointer-events-none mask-grid-fade" />
          )}
-         <div className={`w-full max-w-[1440px] px-6 sm:px-10 lg:px-20 relative z-10 ${paddingY} ${innerClassName}`}>
+         <div
+            className={`w-full max-w-[1440px] px-6 sm:px-10 lg:px-20 relative z-10 ${paddingY} ${innerClassName}`}
+         >
             {children}
          </div>
       </section>

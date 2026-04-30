@@ -1,20 +1,19 @@
-import { Dictionary } from "../types";
-import { nav } from "../modules/nav";
-import { hero } from "../modules/hero";
 import { about } from "../modules/about";
-import { experience } from "../modules/experience";
 import { cta } from "../modules/cta";
+import { experience } from "../modules/experience";
 import { footer } from "../modules/footer";
-
+import { hero } from "../modules/hero";
+import { nav } from "../modules/nav";
 // Projects
 import { project7dCompass } from "../modules/projects/7dcompass";
 import { projectAzkali } from "../modules/projects/azkali";
-import { projectIapex } from "../modules/projects/iapex";
+import { projectCoppelNexus } from "../modules/projects/coppelnexus";
 import { projectDabetai } from "../modules/projects/dabetai";
+import { projectFlacks } from "../modules/projects/flacks";
+import { projectIapex } from "../modules/projects/iapex";
 import { projectMtrpa } from "../modules/projects/mtrpa";
 import { projectPuntoFiel } from "../modules/projects/puntofiel";
-import { projectCoppelNexus } from "../modules/projects/coppelnexus";
-import { projectFlacks } from "../modules/projects/flacks";
+import type { Dictionary } from "../types";
 
 const projectModules = [
    project7dCompass,
@@ -24,7 +23,7 @@ const projectModules = [
    projectMtrpa,
    projectPuntoFiel,
    projectCoppelNexus,
-   projectFlacks
+   projectFlacks,
 ];
 
 export const es: Dictionary = {
@@ -41,24 +40,29 @@ export const es: Dictionary = {
          solutionTitle: "Solución",
          ecosystem: "Ecosistema",
       },
-      items: projectModules.map(m => {
+      items: projectModules.map((m) => {
          const lang = (m as any).es;
          return {
             ...m.data,
             ...lang,
-            ecosystem: lang.ecosystem ? {
-               items: lang.ecosystem.items.map((item: any, i: number) => {
-                  const dataItem = (m.data as any).ecosystem?.[i] || {};
-                  return {
-                     ...dataItem,
-                     ...item,
-                     link: item.link || dataItem.link ? {
-                        ...dataItem.link,
-                        ...item.link
-                     } : undefined
-                  };
-               })
-            } : undefined
+            ecosystem: lang.ecosystem
+               ? {
+                    items: lang.ecosystem.items.map((item: any, i: number) => {
+                       const dataItem = (m.data as any).ecosystem?.[i] || {};
+                       return {
+                          ...dataItem,
+                          ...item,
+                          link:
+                             item.link || dataItem.link
+                                ? {
+                                     ...dataItem.link,
+                                     ...item.link,
+                                  }
+                                : undefined,
+                       };
+                    }),
+                 }
+               : undefined,
          } as any;
       }),
       actions: {
@@ -70,7 +74,7 @@ export const es: Dictionary = {
          read_paper: "Leer artículo",
          tab_featured: "Destacados",
          tab_all: "Otros",
-         see_more: "Ver más proyectos"
+         see_more: "Ver más proyectos",
       },
    },
    cta: cta.es,

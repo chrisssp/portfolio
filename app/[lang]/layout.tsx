@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
-import { Locale } from "@/i18n/config";
-import { ThemeProvider } from "@/components/ThemeContext";
-import { ScrollToTop } from "@/components/atoms/ScrollToTop";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata } from "next";
+import { Space_Grotesk } from "next/font/google";
+import { ScrollToTop } from "@/components/atoms/ScrollToTop";
+import { ThemeProvider } from "@/components/ThemeContext";
+import type { Locale } from "@/i18n/config";
 import "./../globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -18,15 +18,22 @@ export const metadata: Metadata = {
    description: "Mobile & Full Stack Developer",
    icons: {
       icon: [
-         { url: "/assets/images/profile/isotipo-black-round.png", media: "(prefers-color-scheme: light)" },
-         { url: "/assets/images/profile/isotipo-white-round.png", media: "(prefers-color-scheme: dark)" },
+         {
+            url: "/assets/images/profile/isotipo-black-round.png",
+            media: "(prefers-color-scheme: light)",
+         },
+         {
+            url: "/assets/images/profile/isotipo-white-round.png",
+            media: "(prefers-color-scheme: dark)",
+         },
       ],
       shortcut: "/assets/images/profile/isotipo-black-round.png",
       apple: "/assets/images/profile/isotipo-black-round.png",
    },
    openGraph: {
       title: "Christian Serrano | Software Engineer",
-      description: "Mobile & Full Stack Developer specializing in efficient ecosystems.",
+      description:
+         "Mobile & Full Stack Developer specializing in efficient ecosystems.",
       url: "https://chrisssp.vercel.app",
       siteName: "Christian Serrano Portfolio",
       locale: "en_US",
@@ -35,7 +42,8 @@ export const metadata: Metadata = {
    twitter: {
       card: "summary_large_image",
       title: "Christian Serrano | Software Engineer",
-      description: "Mobile & Full Stack Developer specializing in efficient ecosystems.",
+      description:
+         "Mobile & Full Stack Developer specializing in efficient ecosystems.",
    },
 };
 
@@ -48,7 +56,11 @@ export default async function RootLayout({ children, params }: Props) {
    const { lang } = await params;
    const locale = lang as Locale;
    return (
-      <html lang={locale} className={spaceGrotesk.variable} suppressHydrationWarning>
+      <html
+         lang={locale}
+         className={spaceGrotesk.variable}
+         suppressHydrationWarning
+      >
          <body className="antialiased font-sans bg-page text-body selection:bg-primary selection:text-primary-contrast min-h-screen relative">
             <ThemeProvider>
                {children}
