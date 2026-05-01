@@ -25,13 +25,11 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
    const projectActions = (
       <>
-         {project.fullDescription && (
-            <Link href={`/${lang}/projects/${project.id}`}>
-               <Button variant="primary" icon={<MdArrowForward />}>
-                  {actions.view_details}
-               </Button>
-            </Link>
-         )}
+         <Link href={`/${lang}/projects/${project.id}`}>
+            <Button variant="primary" icon={<MdArrowForward />}>
+               {actions.view_details}
+            </Button>
+         </Link>
 
          {project.links.map((link) => {
             const icon =
