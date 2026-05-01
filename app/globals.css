@@ -91,22 +91,19 @@ body {
 
    .mask-grid-fade {
       /**
-       * --gx / --gy are set on :root by GridMouseTracker.
-       * Falls back to "center" when the user hasn't moved the mouse yet
-       * (page load, touch devices, etc.).
+       * --gx / --gy are set per-element by GridMouseTracker (element-relative px).
+       * Fallback 50% / 50% = center of the element, identical to original behavior.
        */
       -webkit-mask-image: radial-gradient(
-         600px circle at var(--gx, 50%) var(--gy, 50%),
+         800px circle at var(--gx, 50%) var(--gy, 50%),
          black 0%,
          transparent 80%
       );
       mask-image: radial-gradient(
-         600px circle at var(--gx, 50%) var(--gy, 50%),
+         800px circle at var(--gx, 50%) var(--gy, 50%),
          black 0%,
          transparent 80%
       );
-      /* Smooth mask repositioning as the mouse moves */
-      transition: -webkit-mask-position 0.1s ease, mask-position 0.1s ease;
    }
 
    /* Utilidades para el Logo (Evitan conflictos con el sistema operativo) */
