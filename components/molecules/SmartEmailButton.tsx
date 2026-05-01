@@ -43,10 +43,30 @@ export const SmartEmailButton = ({
 
    const handleCopyEmail = (e?: React.MouseEvent) => {
       e?.stopPropagation();
-      navigator.clipboard.writeText(PROFESSIONAL_LINKS.email);
-      setCopied(true);
-      setShowEmailMenu(false);
-      setTimeout(() => setCopied(false), 2000);
+
+      const copyToClipboard = (text: string) => {
+         // Modern Clipboard API — requires HTTPS or localhost
+         if (navigator.clipboard?.writeText) {
+            return navigator.clipboard.writeText(text);
+         }
+
+         // Legacy fallback: works on HTTP and older mobile browsers
+         const textarea = document.createElement("textarea");
+         textarea.value = text;
+         textarea.style.cssText = "position:fixed;top:-9999px;left:-9999px;opacity:0";
+         document.body.appendChild(textarea);
+         textarea.focus();
+         textarea.select();
+         document.execCommand("copy");
+         document.body.removeChild(textarea);
+         return Promise.resolve();
+      };
+
+      copyToClipboard(PROFESSIONAL_LINKS.email).finally(() => {
+         setCopied(true);
+         setShowEmailMenu(false);
+         setTimeout(() => setCopied(false), 2000);
+      });
    };
 
    // Prevent scrolling when menu is open on mobile
