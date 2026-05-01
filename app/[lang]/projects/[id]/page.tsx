@@ -41,7 +41,7 @@ export default async function ProjectPage({ params }: Props) {
 
    const project = dict.projects.items.find((p) => p.id === id);
 
-   if (!project?.fullDescription) {
+   if (!project) {
       notFound();
    }
 
