@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { MdPerson } from "react-icons/md";
 import type { Dictionary } from "@/i18n/types";
+import { AnimatedSection } from "../atoms/AnimatedSection";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { Typography } from "../atoms/Typography";
 
@@ -18,7 +19,12 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
          className="bg-surface"
          innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24"
       >
-         <div className="flex flex-col gap-10 md:gap-12 max-w-160">
+         {/* Text content — slides in from left */}
+         <AnimatedSection
+            variant="fade-right"
+            duration="duration-700"
+            className="flex flex-col gap-10 md:gap-12 max-w-160"
+         >
             {/* About Me Text */}
             <div className="flex flex-col gap-6">
                <div className="flex gap-4 md:gap-6 items-center">
@@ -67,11 +73,16 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   ))}
                </div>
             </div>
-         </div>
+         </AnimatedSection>
 
-         {/* Circular Images */}
-         <div className="relative w-full max-w-100 lg:max-w-none lg:w-125 aspect-square shrink-0 mt-8 lg:mt-0">
-            <div className="absolute top-0 right-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500">
+         {/* Circular Images — slide in from right with slight stagger */}
+         <AnimatedSection
+            variant="fade-left"
+            delay={150}
+            duration="duration-700"
+            className="relative w-full max-w-100 lg:max-w-none lg:w-125 aspect-square shrink-0 mt-8 lg:mt-0"
+         >
+            <div className="absolute top-0 right-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500">
                <Image
                   src={img1}
                   alt="Christian Serrano community"
@@ -80,7 +91,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   sizes="(max-width: 1024px) 260px, 330px"
                />
             </div>
-            <div className="absolute bottom-0 left-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500">
+            <div className="absolute bottom-0 left-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500">
                <Image
                   src={img2}
                   alt="Christian Serrano"
@@ -89,7 +100,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   sizes="(max-width: 1024px) 260px, 330px"
                />
             </div>
-         </div>
+         </AnimatedSection>
       </SectionContainer>
    );
 };

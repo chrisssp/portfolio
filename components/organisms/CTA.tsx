@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import type { Dictionary } from "@/i18n/types";
+import { AnimatedSection } from "../atoms/AnimatedSection";
 import { Button } from "../atoms/Button";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { Typography } from "../atoms/Typography";
@@ -27,16 +28,26 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
          paddingY="py-12 xs:py-16 lg:py-30"
          innerClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 xs:gap-10 md:gap-24"
       >
-         <div className="flex flex-col gap-4 max-w-4xl text-left">
+         {/* Text — fades in from left */}
+         <AnimatedSection
+            variant="fade-right"
+            duration="duration-700"
+            className="flex flex-col gap-4 max-w-4xl text-left"
+         >
             <Typography variant="section">{dict.cta.title}</Typography>
             <Typography variant="body" className="opacity-90 text-pretty">
                {description}
             </Typography>
-         </div>
+         </AnimatedSection>
 
-         {/* Contenedor con flex-wrap en móvil y col-fit en escritorio para anchos iguales */}
-         <div className="flex flex-wrap lg:flex-col items-center lg:items-stretch gap-3 xs:gap-4 w-full lg:w-fit lg:min-w-55">
-            {/* Botón Principal: WhatsApp */}
+         {/* Buttons — fades in from right with delay */}
+         <AnimatedSection
+            variant="fade-left"
+            delay={150}
+            duration="duration-700"
+            className="flex flex-wrap lg:flex-col items-center lg:items-stretch gap-3 xs:gap-4 w-full lg:w-fit lg:min-w-55"
+         >
+            {/* Primary button: WhatsApp */}
             <a
                href={PROFESSIONAL_LINKS.whatsapp}
                target="_blank"
@@ -52,7 +63,6 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
                </Button>
             </a>
 
-            {/* Botón de Email Inteligente adaptado al ancho del padre en escritorio */}
             <SmartEmailButton
                label={dict.hero.actions.email}
                menuLabels={dict.hero.actions.emailMenu}
@@ -63,7 +73,7 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
                buttonClassName="lg:w-full"
                onOpenChange={setIsMenuOpen}
             />
-         </div>
+         </AnimatedSection>
       </SectionContainer>
    );
 };

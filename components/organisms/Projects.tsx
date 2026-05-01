@@ -5,6 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import { MdCode } from "react-icons/md";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
+import { AnimatedSection } from "../atoms/AnimatedSection";
 import { Button } from "../atoms/Button";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { Typography } from "../atoms/Typography";
@@ -122,19 +123,23 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
 
          <div className="flex flex-col gap-16 lg:gap-30 w-full transition-all duration-500 min-h-100">
             {filteredProjects.map((project, index) => (
-               <div
+               <AnimatedSection
                   key={project.id}
-                  id={`project-${project.id}`}
-                  className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both scroll-mt-32"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  variant="fade-up"
+                  delay={index * 80}
+                  threshold={0.05}
+                  className="scroll-mt-32"
+                  as="div"
                >
-                  <ProjectCard
-                     project={project}
-                     actions={dict.projects.actions}
-                     reverse={index % 2 !== 0}
-                     lang={lang}
-                  />
-               </div>
+                  <div id={`project-${project.id}`}>
+                     <ProjectCard
+                        project={project}
+                        actions={dict.projects.actions}
+                        reverse={index % 2 !== 0}
+                        lang={lang}
+                     />
+                  </div>
+               </AnimatedSection>
             ))}
          </div>
 
