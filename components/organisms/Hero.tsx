@@ -90,7 +90,7 @@ export const Hero = ({ dict }: HeroProps) => {
             </div>
          </div>
 
-         <div className="relative size-70 sm:size-80 lg:size-90 rounded-full border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-xl hover:scale-105 transition-transform duration-500 order-1 lg:order-2">
+         <div className="relative size-70 sm:size-80 lg:size-90 rounded-full border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-xl hover:scale-[1.02] transition-transform duration-500 order-1 lg:order-2">
             <Image
                src={profileImg}
                alt="Christian Serrano"
