@@ -78,10 +78,10 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                <button
                   type="button"
                   onClick={() => setFilter("featured")}
-                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-colors duration-300 text-center whitespace-nowrap cursor-pointer ${
+                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
                      filter === "featured"
                         ? "text-primary-contrast"
-                        : "text-body hover:text-primary"
+                        : "text-body hover:text-primary hover:bg-surface/50"
                   }`}
                >
                   {dict.projects.actions.tab_featured}
@@ -89,10 +89,10 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                <button
                   type="button"
                   onClick={() => setFilter("others")}
-                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-colors duration-300 text-center whitespace-nowrap cursor-pointer ${
+                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
                      filter === "others"
                         ? "text-primary-contrast"
-                        : "text-body hover:text-primary"
+                        : "text-body hover:text-primary hover:bg-surface/50"
                   }`}
                >
                   {dict.projects.actions.tab_all}

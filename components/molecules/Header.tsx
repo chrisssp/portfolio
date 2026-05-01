@@ -146,7 +146,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                               <Link
                                  key={link.id}
                                  href={`/${lang}#${link.id}`}
-                                 className={`px-4 lg:px-6 py-2.5 font-bold text-base leading-none transition-all rounded-xl hover:bg-surface flex items-center ${
+                                 className={`px-4 lg:px-6 py-2.5 font-bold text-base leading-none transition-all duration-300 rounded-xl hover:bg-surface hover:text-primary hover:scale-[1.02] active:scale-95 flex items-center ${
                                     activeSection === link.id
                                        ? "text-primary bg-surface/50 shadow-inner"
                                        : "text-body"
@@ -173,7 +173,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   <button
                      type="button"
                      onClick={toggleLanguage}
-                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl leading-none cursor-pointer"
+                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary hover:bg-surface transition-all duration-300 rounded-lg sm:rounded-xl leading-none cursor-pointer hover:scale-[1.02] active:scale-95"
                      aria-label={
                         lang === "en" ? "Switch language" : "Cambiar idioma"
                      }
@@ -189,7 +189,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      onClick={() =>
                         setTheme(resolvedTheme === "dark" ? "light" : "dark")
                      }
-                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl leading-none cursor-pointer"
+                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary hover:bg-surface transition-all duration-300 rounded-lg sm:rounded-xl leading-none cursor-pointer hover:scale-[1.02] active:scale-95"
                      aria-label={
                         resolvedTheme === "dark" ? "Light mode" : "Dark mode"
                      }
@@ -252,7 +252,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            className={`flex items-center justify-between p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-200 ${
                               activeSection === link.id
                                  ? "bg-primary text-primary-contrast border-primary shadow-md"
-                                 : "bg-surface border-subtle text-body"
+                                 : "bg-surface border-subtle text-body hover:text-primary hover:border-primary/50"
                            }`}
                         >
                            <span className="text-base sm:text-lg font-bold">
@@ -277,7 +277,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            title="CV"
                            aria-label={dict.hero.actions.cv}
                         >
-                           <MdDescription className="size-5 sm:size-6 text-body hover:text-primary transition-colors" />
+                           <MdDescription className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>
                         <a
                            href={PROFESSIONAL_LINKS.github}
@@ -286,7 +286,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            title="GitHub"
                            aria-label="GitHub"
                         >
-                           <FaGithub className="size-5 sm:size-6 text-body hover:text-primary transition-colors" />
+                           <FaGithub className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>
                         <a
                            href={PROFESSIONAL_LINKS.linkedin}
@@ -295,14 +295,14 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                            title="LinkedIn"
                            aria-label="LinkedIn"
                         >
-                           <FaLinkedin className="size-5 sm:size-6 text-body hover:text-primary transition-colors" />
+                           <FaLinkedin className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>
                         <a
                            href={`mailto:${PROFESSIONAL_LINKS.email}`}
                            title="Email"
                            aria-label="Email"
                         >
-                           <MdEmail className="size-5 sm:size-6 text-body hover:text-primary transition-colors" />
+                           <MdEmail className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>
                      </div>
                      <Typography

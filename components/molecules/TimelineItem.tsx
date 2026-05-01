@@ -79,7 +79,7 @@ export const TimelineItem = ({
                            <button
                               type="button"
                               onClick={handleProjectClick}
-                              className="flex cursor-pointer active:scale-95 transition-transform"
+                              className="flex cursor-pointer hover:scale-[1.02] active:scale-95 transition-all duration-300"
                            >
                               <Tag
                                  variant="primary"

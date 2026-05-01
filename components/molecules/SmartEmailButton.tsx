@@ -121,7 +121,7 @@ export const SmartEmailButton = ({
                >
                   <a
                      href={`mailto:${PROFESSIONAL_LINKS.email}`}
-                     className="flex items-center gap-3 xs:gap-4 px-4 xs:px-6 py-3 xs:py-4 hover:bg-surface transition-colors border-b border-subtle"
+                     className="flex items-center gap-3 xs:gap-4 px-4 xs:px-6 py-3 xs:py-4 hover:bg-surface transition-all duration-300 border-b border-subtle hover:scale-[1.01] active:scale-95"
                      onClick={() => setShowEmailMenu(false)}
                   >
                      <div className="p-1.5 xs:p-2 bg-primary/10 rounded-lg text-primary">
@@ -138,7 +138,7 @@ export const SmartEmailButton = ({
                   </a>
                   <button
                      type="button"
-                     className="w-full flex items-center gap-3 xs:gap-4 px-4 xs:px-6 py-3 xs:py-4 hover:bg-surface transition-colors"
+                     className="w-full flex items-center gap-3 xs:gap-4 px-4 xs:px-6 py-3 xs:py-4 hover:bg-surface transition-all duration-300 hover:scale-[1.01] active:scale-95"
                      onClick={handleCopyEmail}
                   >
                      <div className="p-1.5 xs:p-2 bg-surface rounded-lg text-body border border-subtle">
