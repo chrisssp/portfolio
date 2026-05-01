@@ -19,8 +19,8 @@ export const Typography = ({
     // Muy pequeño: 18px | Tablet: ~36px | Desktop: 48px
     "hero-sub":
       "text-lg md:text-4xl lg:text-5xl font-bold leading-tight",
-    "project-hero": "text-3xl md:text-5xl lg:text-6xl font-bold leading-tight",
-    "project-hero-sub": "text-lg md:text-3xl lg:text-4xl font-bold leading-tight",
+    "project-hero": "text-2xl md:text-4xl lg:text-5xl font-bold leading-tight",
+    "project-hero-sub": "text-base md:text-2xl lg:text-3xl font-bold leading-tight",
     // Muy pequeño: 20px | Tablet: ~30px | Desktop: ~36px
     section:
       "text-xl md:text-3xl lg:text-4xl font-bold leading-tight",
