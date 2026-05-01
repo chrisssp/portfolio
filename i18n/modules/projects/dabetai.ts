@@ -114,7 +114,7 @@ export const projectDabetai = {
          items: [
             /* {
                title: "Landing page del producto",
-               description: "Página de aterrizaje educativa y de marketing enfocada en explicar el ecosistema preventivo y la integración de hardware con wearables.",
+               description: "Landing page educativa y de marketing enfocada en explicar el ecosistema preventivo y la integración de hardware con wearables.",
                link: { label: "Visitar landing" }
             }, */
             {

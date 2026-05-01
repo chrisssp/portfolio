@@ -54,6 +54,56 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
          );
    }, [dict.projects.items]);
 
+   const FilterPills = ({ className = "" }: { className?: string }) => (
+      <div
+         className={`bg-page/50 backdrop-blur-sm border border-subtle p-1 sm:p-1.5 rounded-xl sm:rounded-2xl grid grid-cols-2 relative shadow-sm w-full lg:w-auto ${className}`}
+      >
+         <div
+            className={`absolute top-1 sm:top-1.5 bottom-1 sm:bottom-1.5 bg-primary rounded-lg sm:rounded-xl transition-all duration-300 ease-in-out ${
+               filter === "featured"
+                  ? "left-1 sm:left-1.5 w-[calc(50%-4px)] sm:w-[calc(50%-6px)]"
+                  : "left-[calc(50%+2px)] sm:left-[calc(50%+3px)] w-[calc(50%-4px)] sm:w-[calc(50%-6px)]"
+            }`}
+         />
+         <button
+            type="button"
+            onClick={() => {
+               setFilter("featured");
+               if (window.scrollY > 500) {
+                  document
+                     .getElementById("projects")
+                     ?.scrollIntoView({ behavior: "smooth" });
+               }
+            }}
+            className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
+               filter === "featured"
+                  ? "text-primary-contrast"
+                  : "text-body hover:text-primary hover:bg-surface/50"
+            }`}
+         >
+            {dict.projects.actions.tab_featured}
+         </button>
+         <button
+            type="button"
+            onClick={() => {
+               setFilter("others");
+               if (window.scrollY > 500) {
+                  document
+                     .getElementById("projects")
+                     ?.scrollIntoView({ behavior: "smooth" });
+               }
+            }}
+            className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
+               filter === "others"
+                  ? "text-primary-contrast"
+                  : "text-body hover:text-primary hover:bg-surface/50"
+            }`}
+         >
+            {dict.projects.actions.tab_all}
+         </button>
+      </div>
+   );
+
    return (
       <SectionContainer
          id="projects"
@@ -66,38 +116,8 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                <Typography variant="section">{dict.projects.title}</Typography>
             </div>
 
-            {/* Segmented Control */}
-            <div className="bg-page/50 backdrop-blur-sm border border-subtle p-1 sm:p-1.5 rounded-xl sm:rounded-2xl grid grid-cols-2 relative shadow-sm w-full lg:w-auto">
-               <div
-                  className={`absolute top-1 sm:top-1.5 bottom-1 sm:bottom-1.5 bg-primary rounded-lg sm:rounded-xl transition-all duration-300 ease-in-out ${
-                     filter === "featured"
-                        ? "left-1 sm:left-1.5 w-[calc(50%-4px)] sm:w-[calc(50%-6px)]"
-                        : "left-[calc(50%+2px)] sm:left-[calc(50%+3px)] w-[calc(50%-4px)] sm:w-[calc(50%-6px)]"
-                  }`}
-               />
-               <button
-                  type="button"
-                  onClick={() => setFilter("featured")}
-                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
-                     filter === "featured"
-                        ? "text-primary-contrast"
-                        : "text-body hover:text-primary hover:bg-surface/50"
-                  }`}
-               >
-                  {dict.projects.actions.tab_featured}
-               </button>
-               <button
-                  type="button"
-                  onClick={() => setFilter("others")}
-                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
-                     filter === "others"
-                        ? "text-primary-contrast"
-                        : "text-body hover:text-primary hover:bg-surface/50"
-                  }`}
-               >
-                  {dict.projects.actions.tab_all}
-               </button>
-            </div>
+            {/* Segmented Control Top */}
+            <FilterPills />
          </div>
 
          <div className="flex flex-col gap-16 lg:gap-30 w-full transition-all duration-500 min-h-100">
@@ -118,27 +138,34 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             ))}
          </div>
 
-         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full mt-8 lg:mt-16 gap-6">
-            <Typography
-               variant="body"
-               className="font-medium text-slate-600 dark:text-slate-400"
-            >
-               {dict.projects.subtitle}
-            </Typography>
-            <a
-               href="https://github.com/chrisssp?tab=repositories"
-               target="_blank"
-               rel="noopener noreferrer"
-               className="w-full lg:w-auto"
-            >
-               <Button
-                  variant="outline"
-                  icon={<FaGithub className="size-5" />}
-                  className="rounded-xl! w-full lg:w-auto"
+         {/* Segmented Control Bottom & Footer */}
+         <div className="flex flex-col gap-8 mt-8 lg:mt-16">
+            <div className="flex justify-center lg:justify-end">
+               <FilterPills className="max-w-md" />
+            </div>
+
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6 pt-8 border-t border-subtle/30">
+               <Typography
+                  variant="body"
+                  className="font-medium text-slate-600 dark:text-slate-400"
                >
-                  {dict.projects.actions.see_more}
-               </Button>
-            </a>
+                  {dict.projects.subtitle}
+               </Typography>
+               <a
+                  href="https://github.com/chrisssp?tab=repositories"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full lg:w-auto"
+               >
+                  <Button
+                     variant="outline"
+                     icon={<FaGithub className="size-5" />}
+                     className="rounded-xl! w-full lg:w-auto"
+                  >
+                     {dict.projects.actions.see_more}
+                  </Button>
+               </a>
+            </div>
          </div>
       </SectionContainer>
    );
