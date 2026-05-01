@@ -113,3 +113,63 @@ body {
       display: block;
    }
 }
+
+/* ─── Page Transition (template.tsx) ─────────────────────────────────────── */
+@keyframes page-enter {
+   from {
+      opacity: 0;
+      transform: translateY(12px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+@layer utilities {
+   .animate-page-enter {
+      animation: page-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+   }
+}
+
+/* ─── Spotlight Card Effect ───────────────────────────────────────────────── */
+@layer utilities {
+   /**
+    * The spotlight gradient tracks the mouse via --x and --y CSS custom
+    * properties that are set by the SpotlightCard component's JS.
+    * Falls back to invisible when the vars are not set.
+    */
+   .spotlight-card {
+      position: relative;
+      overflow: hidden;
+   }
+
+   .spotlight-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(
+         600px circle at var(--x, -9999px) var(--y, -9999px),
+         rgba(82, 209, 255, 0.07),
+         transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      border-radius: inherit;
+   }
+
+   .dark .spotlight-card::before {
+      background: radial-gradient(
+         600px circle at var(--x, -9999px) var(--y, -9999px),
+         rgba(82, 209, 255, 0.09),
+         transparent 70%
+      );
+   }
+
+   .spotlight-card:hover::before {
+      opacity: 1;
+   }
+}
+

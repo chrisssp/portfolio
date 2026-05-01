@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { TECHNOLOGIES } from "@/config/technologies";
 import { Badge } from "../atoms/Badge";
+import { SpotlightCard } from "../atoms/SpotlightCard";
 import { Typography } from "../atoms/Typography";
 
 interface FeatureCardProps {
@@ -24,8 +27,8 @@ export const FeatureCard = ({
    imageClassName = "bg-page",
 }: FeatureCardProps) => {
    return (
-      <div
-         className={`flex flex-col lg:flex-row gap-8 lg:gap-16 items-start w-full ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"}`}
+      <SpotlightCard
+         className={`flex flex-col lg:flex-row gap-8 lg:gap-16 items-start w-full rounded-2xl p-4 lg:p-6 -mx-4 lg:-mx-6 transition-colors duration-300 ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"}`}
       >
          {/* Content Side */}
          <div className="flex-1 flex flex-col gap-6 md:gap-8 w-full lg:max-w-150">
@@ -54,7 +57,7 @@ export const FeatureCard = ({
             </div>
          </div>
 
-         {/* Image Side - Volvemos a LG para restaurar la vista normal */}
+         {/* Image Side */}
          <div
             className={`w-full lg:w-157.5 aspect-630/350 rounded-2xl border border-subtle relative overflow-hidden shrink-0 shadow-lg group ${imageClassName}`}
          >
@@ -66,6 +69,6 @@ export const FeatureCard = ({
                sizes="(max-width: 1024px) 100vw, 630px"
             />
          </div>
-      </div>
+      </SpotlightCard>
    );
 };
