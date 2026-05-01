@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import type { ProjectItem } from "@/i18n/types";
+import { AnimatedSection } from "../atoms/AnimatedSection";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { Typography } from "../atoms/Typography";
 
@@ -25,7 +28,13 @@ export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
          className="bg-surface"
          innerClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-20"
       >
-         <div className="flex flex-col gap-6 lg:gap-8 max-w-190 text-left">
+         {/* Text — fades in from the right */}
+         <AnimatedSection
+            variant="fade-right"
+            delay={100}
+            duration="duration-700"
+            className="flex flex-col gap-6 lg:gap-8 max-w-190 text-left"
+         >
             <div className="flex flex-col gap-4">
                <Typography variant="project-hero" as="h1">
                   {project.title}
@@ -42,29 +51,36 @@ export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
             >
                {project.fullDescription}
             </Typography>
-         </div>
+         </AnimatedSection>
 
-         {/* Contenedor Visual (Video o Imagen) */}
-         <div className="relative w-full lg:w-157.5 aspect-630/354 rounded-2xl border-3 border-subtle overflow-hidden bg-page shrink-0 shadow-2xl mt-8 lg:mt-0">
-            {videoLink ? (
-               <iframe
-                  src={getEmbedUrl(videoLink.url)}
-                  title={`${project.title} Demo`}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-               />
-            ) : (
-               <Image
-                  src={project.heroImagePath || project.imagePath}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 630px"
-               />
-            )}
-         </div>
+         {/* Visual (video or image) — fades in from the left with a slight delay */}
+         <AnimatedSection
+            variant="fade-left"
+            delay={250}
+            duration="duration-700"
+            className="relative w-full lg:w-157.5 aspect-630/354 shrink-0 mt-8 lg:mt-0"
+         >
+            <div className="relative w-full h-full rounded-2xl border-3 border-subtle overflow-hidden bg-page shadow-2xl">
+               {videoLink ? (
+                  <iframe
+                     src={getEmbedUrl(videoLink.url)}
+                     title={`${project.title} Demo`}
+                     className="w-full h-full"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowFullScreen
+                  />
+               ) : (
+                  <Image
+                     src={project.heroImagePath || project.imagePath}
+                     alt={project.title}
+                     fill
+                     className="object-cover"
+                     priority
+                     sizes="(max-width: 1024px) 100vw, 630px"
+                  />
+               )}
+            </div>
+         </AnimatedSection>
       </SectionContainer>
    );
 };
