@@ -23,7 +23,12 @@ export const SectionContainer = ({
          className={`relative flex justify-center w-full scroll-mt-header ${className}`}
       >
          {showGrid && (
-            <div className="absolute inset-0 bg-grid-pattern pointer-events-none mask-grid-fade" />
+            <>
+               {/* Base layer: always visible, very subtle and slightly blurred */}
+               <div className="absolute inset-0 bg-grid-pattern pointer-events-none opacity-[0.18] blur-[0.4px]" />
+               {/* Spotlight layer: sharp, brightness follows mouse via .mask-grid-fade */}
+               <div className="absolute inset-0 bg-grid-pattern pointer-events-none mask-grid-fade" />
+            </>
          )}
          <div
             className={`w-full max-w-[1440px] px-6 sm:px-10 lg:px-20 relative z-10 ${paddingY} ${innerClassName}`}
