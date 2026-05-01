@@ -112,7 +112,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   >
                      {/* Logo para modo claro */}
                      <Image
-                        src="/assets/images/profile/isotipo-white-nobg.png"
+                        src="/assets/images/profile/isotipo-white-nobg-center.png"
                         alt="Logo"
                         fill
                         className="object-contain logo-light"
@@ -120,7 +120,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      />
                      {/* Logo para modo oscuro */}
                      <Image
-                        src="/assets/images/profile/isotipo-black-nobg.png"
+                        src="/assets/images/profile/isotipo-black-nobg-center.png"
                         alt="Logo"
                         fill
                         className="object-contain logo-dark"
@@ -160,7 +160,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                         <button
                            type="button"
                            onClick={() => setMobileMenuOpen(true)}
-                           className="md:hidden flex items-center justify-center p-2 sm:p-3 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all"
+                           className="md:hidden flex items-center justify-center p-2 sm:p-3 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all cursor-pointer"
                            aria-label="Open menu"
                         >
                            <MdMenu className="size-4 sm:size-5" />
@@ -173,7 +173,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   <button
                      type="button"
                      onClick={toggleLanguage}
-                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl leading-none"
+                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl leading-none cursor-pointer"
                      aria-label={
                         lang === "en" ? "Switch language" : "Cambiar idioma"
                      }
@@ -189,7 +189,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                      onClick={() =>
                         setTheme(resolvedTheme === "dark" ? "light" : "dark")
                      }
-                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl leading-none"
+                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary transition-colors rounded-lg sm:rounded-xl leading-none cursor-pointer"
                      aria-label={
                         resolvedTheme === "dark" ? "Light mode" : "Dark mode"
                      }
@@ -235,7 +235,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   <button
                      type="button"
                      onClick={() => setMobileMenuOpen(false)}
-                     className="p-1.5 sm:p-2 bg-surface rounded-lg sm:rounded-xl border border-subtle text-body active:scale-95 transition-all"
+                     className="p-1.5 sm:p-2 bg-surface rounded-lg sm:rounded-xl border border-subtle text-body active:scale-95 transition-all cursor-pointer"
                      aria-label={lang === "en" ? "Close menu" : "Cerrar menú"}
                   >
                      <MdClose className="size-5" />

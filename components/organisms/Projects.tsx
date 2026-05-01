@@ -78,7 +78,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                <button
                   type="button"
                   onClick={() => setFilter("featured")}
-                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-colors duration-300 text-center whitespace-nowrap ${
+                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-colors duration-300 text-center whitespace-nowrap cursor-pointer ${
                      filter === "featured"
                         ? "text-primary-contrast"
                         : "text-body hover:text-primary"
@@ -89,7 +89,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                <button
                   type="button"
                   onClick={() => setFilter("others")}
-                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-colors duration-300 text-center whitespace-nowrap ${
+                  className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-colors duration-300 text-center whitespace-nowrap cursor-pointer ${
                      filter === "others"
                         ? "text-primary-contrast"
                         : "text-body hover:text-primary"
