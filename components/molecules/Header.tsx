@@ -101,7 +101,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
       <>
          <header
             className={`sticky top-0 z-60 w-full bg-page/80 backdrop-blur-md h-16 md:h-21 flex items-center justify-center border-b border-subtle/50 md:border-none transition-transform duration-300 ${
-               visible ? "translate-y-0" : "-translate-y-full md:translate-y-0"
+               visible ? "translate-y-0" : "md:-translate-y-full"
             }`}
          >
             <div className="flex items-center justify-between w-full max-w-360 px-4 xs:px-6 md:px-20">
