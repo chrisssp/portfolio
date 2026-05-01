@@ -3,16 +3,16 @@
 import { useEffect } from "react";
 
 /**
- * Mounts a single global mousemove listener that updates --gx / --gy
- * CSS custom properties on :root. Every .mask-grid-fade element on the
- * page reads those vars to position its radial mask, making the grid's
- * brightest point follow the cursor.
+ * Single global mousemove listener that calculates mouse position
+ * RELATIVE TO EACH .mask-grid-fade element and sets --gx / --gy
+ * directly on that element.
  *
- * Uses requestAnimationFrame to throttle updates to the GPU render cycle,
- * keeping the CPU overhead negligible even on large monitors.
+ * This is necessary because CSS mask-image coordinates are element-relative,
+ * not viewport-relative. A single root-level variable breaks on tall sections
+ * because the element may be scrolled far from the viewport origin.
  *
- * On touch/pointer-less devices the vars are never set, so the CSS fallback
- * (center) kicks in automatically.
+ * Performance: One listener + rAF throttle. Querying the DOM on every frame
+ * is acceptable given there are only ~5–8 grid sections per page.
  */
 export function GridMouseTracker() {
    useEffect(() => {
@@ -21,8 +21,14 @@ export function GridMouseTracker() {
       const handleMouseMove = (e: MouseEvent) => {
          cancelAnimationFrame(rafId);
          rafId = requestAnimationFrame(() => {
-            document.documentElement.style.setProperty("--gx", `${e.clientX}px`);
-            document.documentElement.style.setProperty("--gy", `${e.clientY}px`);
+            // Set per-element relative coordinates so the mask is always correct
+            // regardless of scroll position or section height.
+            const gridEls = document.querySelectorAll<HTMLElement>(".mask-grid-fade");
+            for (const el of gridEls) {
+               const rect = el.getBoundingClientRect();
+               el.style.setProperty("--gx", `${e.clientX - rect.left}px`);
+               el.style.setProperty("--gy", `${e.clientY - rect.top}px`);
+            }
          });
       };
 
@@ -34,6 +40,5 @@ export function GridMouseTracker() {
       };
    }, []);
 
-   // Renders nothing — purely a side-effect component
    return null;
 }
