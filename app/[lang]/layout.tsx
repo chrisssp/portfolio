@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { GridMouseTracker } from "@/components/atoms/GridMouseTracker";
 import { ScrollToTop } from "@/components/atoms/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeContext";
 import type { Locale } from "@/i18n/config";
@@ -76,6 +77,7 @@ export default async function RootLayout({ children, params }: Props) {
          <body className="antialiased font-sans bg-page text-body selection:bg-primary selection:text-primary-contrast min-h-screen relative">
             <ThemeProvider>
                {children}
+               <GridMouseTracker />
                <ScrollToTop />
                <Analytics />
                <SpeedInsights />
