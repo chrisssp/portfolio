@@ -206,7 +206,7 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
 
          {/* Mobile Menu Overlay - Botones más compactos */}
          {mobileMenuOpen && (
-            <div className="fixed inset-0 z-60 flex flex-col bg-page w-full h-full">
+            <div className="fixed inset-0 z-60 flex flex-col bg-page w-full h-dvh max-h-dvh overflow-hidden">
                <div className="flex justify-between items-center p-4 sm:p-5 border-b border-subtle bg-page">
                   <div className="flex items-center gap-3 sm:gap-4">
                      <div className="relative h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12">
