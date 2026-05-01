@@ -87,7 +87,7 @@ export const projectAzkali = {
             {
                title: "Landing page del producto",
                description:
-                  "Página de aterrizaje de alta conversión construida con React. Sirve como el principal punto de contacto para los usuarios, explicando el motor de IA conductual y la propuesta de valor.",
+                  "Landing page de alta conversión construida con React. Sirve como el principal punto de contacto para los usuarios, explicando el motor de IA conductual y la propuesta de valor.",
                link: { label: "Visitar landing" },
             },
             {

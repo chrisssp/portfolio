@@ -3,7 +3,7 @@ export const projectMtrpa = {
       id: "mtrpa",
       imagePath: "/assets/images/projects/mtrpa/general.png",
       techStack: ["angular", "bootstrap", "mongodb"],
-      links: [{ type: "demo", url: "#" }],
+      links: [],
    },
    en: {
       title: "Master Template Rutas (PepsiCo)",

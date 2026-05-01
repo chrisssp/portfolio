@@ -9,7 +9,7 @@ export const projectFlacks = {
          "postgresql",
          "tailwindcss",
       ],
-      links: [{ type: "github", url: "#" }],
+      links: [],
    },
    en: {
       title: "Flack’s Cut & Connect",
@@ -27,7 +27,7 @@ export const projectFlacks = {
    },
    es: {
       title: "Flack’s Cut & Connect",
-      subtitle: "Panel B2B y Gestión Digital de Citas",
+      subtitle: "Panel B2B y gestión digital de citas",
       description:
          "Transformación digital completa para un negocio local, automatizando el 100% de la programación de citas y el seguimiento de inventario para reducir drásticamente la carga operativa.",
       fullDescription:
