@@ -26,7 +26,7 @@ export const Footer = ({ dict }: FooterProps) => {
                   title="CV"
                   aria-label={dict.hero.actions.cv}
                >
-                  <MdDescription className="size-5 text-body cursor-pointer hover:text-primary transition-colors" />
+                  <MdDescription className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>
                <a
                   href={PROFESSIONAL_LINKS.github}
@@ -35,7 +35,7 @@ export const Footer = ({ dict }: FooterProps) => {
                   title="GitHub"
                   aria-label="GitHub"
                >
-                  <FaGithub className="size-5 text-body cursor-pointer hover:text-primary transition-colors" />
+                  <FaGithub className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>
                <a
                   href={PROFESSIONAL_LINKS.linkedin}
@@ -44,14 +44,14 @@ export const Footer = ({ dict }: FooterProps) => {
                   title="LinkedIn"
                   aria-label="LinkedIn"
                >
-                  <FaLinkedin className="size-5 text-body cursor-pointer hover:text-primary transition-colors" />
+                  <FaLinkedin className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>
                <a
                   href={`mailto:${PROFESSIONAL_LINKS.email}`}
                   title="Email"
                   aria-label="Email"
                >
-                  <MdEmail className="size-5 text-body cursor-pointer hover:text-primary transition-colors" />
+                  <MdEmail className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>
             </div>
          </div>
