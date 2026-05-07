@@ -24,7 +24,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
   single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
   single-line-entry([*Data & Infrastructure:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
   single-line-entry([*Tools & OS:*], [Git, Linux, Figma], []),
-  single-line-entry([*Familiar with:*], [Kotlin, Python (Django, FastAPI), MySQL, Firebase], [])
+  single-line-entry([*Familiar with:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase], [])
 )
 
 == Professional Experience
@@ -37,33 +37,33 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       bottom-right: [Chicago, IL, USA / Mexico],
     ),
     list-items: (
-      [Led the evolution of #link("https://7d-compass.com/")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by *95%*.],
+      [Led the evolution of #link("https://chrisssp.vercel.app/en/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by *95%*.],
       [Implemented a centralized audit engine to reconcile *\$2.3M USD* in transactions, detecting critical financial discrepancies through validation logic.],
       [Optimized frontend performance (*3.2x* TTI) and strengthened system security using *JWT/Bcrypt* following *OWASP* standards.],
     )
   ),
   (
     entry-header-args: (
-      top-left: [*Banco Azteca (Talent Land 2026)*],
+      top-left: [*Banco Azteca (Hackathon Talent Land 2026)*],
       top-right: [April 2026],
       bottom-left: [Hackathon Participant & Team Lead],
       bottom-right: [Santa Fe, CDMX, Mexico],
     ),
     list-items: (
-      [Led the development of #link("https://azkali-landing.vercel.app/")[*Azkali*] during a *48-hour* sprint, creating a behavioral AI copilot to mitigate impulsive spending in Gen Z using *Design Thinking* methodology.],
+      [Led the development of #link("https://chrisssp.vercel.app/en/projects/azkali")[*Azkali*] during a *48-hour* sprint, creating a behavioral AI copilot to mitigate impulsive spending in Gen Z using *Design Thinking* methodology.],
       [Implemented a real-time impulsivity analysis engine using *Gemini 2.5 Flash-Lite*, translating monetary costs into operational opportunity costs.],
-      [Architected the multi-platform ecosystem integrating *React Native*, *FastAPI*, and *Supabase*, incorporating gamification mechanics.],
+      [Architected the multi-platform ecosystem integrating *React Native* and *Supabase*, incorporating gamification mechanics.],
     )
   ),
   (
     entry-header-args: (
-      top-left: [*Coppel (Talent Land 2025)*],
+      top-left: [*Coppel (Hackathon Talent Land 2025)*],
       top-right: [April 2025],
       bottom-left: [4th Place & Team Lead],
       bottom-right: [Guadalajara, Jalisco, Mexico],
     ),
     list-items: (
-      [Built a gamified referral ecosystem in a 4-day sprint (React Native/Node.js).],
+      [Built #link("https://chrisssp.vercel.app/en/projects/coppel-nexus")[*Coppel Nexus*], a gamified referral ecosystem for corporate expansion (React Native/Node.js).],
       [Managed the team by strictly implementing *XP* and *Kanban* methodologies.],
     )
   ),
@@ -75,7 +75,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       bottom-right: [Azcapotzalco, CDMX, Mexico],
     ),
     list-items: (
-      [Developed a centralized Web App (Angular/MongoDB) replacing legacy Excel workflows.],
+      [Developed #link("https://chrisssp.vercel.app/en/projects/mtrpa")[*Master Template Rutas*], a centralized Web App (Angular/MongoDB) replacing legacy Excel workflows.],
       [Automated processing of *+100k records*, reducing manual errors to zero.],
       [Designed the "Master Template Rutas" solution, optimizing processing time by 70%.],
     )
@@ -88,7 +88,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       bottom-right: [Córdoba, Veracruz, Mexico],
     ),
     list-items: (
-      [Deployed a complete digital ecosystem (Web & Mobile), automating 100% of appointments.],
+      [Deployed #link("https://chrisssp.vercel.app/en/projects/flacks")[*Flack's Cut & Connect*], a complete digital ecosystem (Web & Mobile), automating 100% of appointments.],
       [Developed a REST API with Node.js and PostgreSQL to centralize inventory and sales.],
     )
   )
@@ -98,7 +98,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
 #r2c2-entry-list(
   (
     entry-header-args: (
-      top-left: [#link("https://github.com/aescobar80/IAPEX_APP-WEB")[*IAPEX*]],
+      top-left: [#link("https://chrisssp.vercel.app/en/projects/iapex")[*IAPEX*]],
       top-right: [],
       bottom-left: [_Angular, Ionic, Spring Boot, Django, PostgreSQL, AI_],
       bottom-right: [],
@@ -111,7 +111,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
   ),
   (
     entry-header-args: (
-      top-left: [#link("https://github.com/dabetai-org/dabetai-mobileapp")[*dabetai*]],
+      top-left: [#link("https://chrisssp.vercel.app/en/projects/dabetai")[*dabetai*]],
       top-right: [],
       bottom-left: [_React Native, NestJS, Expo, Python, Wearables_],
       bottom-right: [],
@@ -124,7 +124,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
   ),
   (
     entry-header-args: (
-      top-left: [#link("https://github.com/chrisssp/puntofiel-mobileapp")[*Punto Fiel*]],
+      top-left: [#link("https://chrisssp.vercel.app/en/projects/puntofiel")[*Punto Fiel*]],
       top-right: [],
       bottom-left: [_React Native, Expo, Supabase, TanStack Query, Zustand_],
       bottom-right: [],

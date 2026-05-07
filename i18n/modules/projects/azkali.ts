@@ -7,7 +7,6 @@ export const projectAzkali = {
       techStack: [
          "react",
          "reactnative",
-         "fastapi",
          "supabase",
          "tailwindcss",
          "expo",
@@ -31,7 +30,7 @@ export const projectAzkali = {
          },
          {
             imagePath: "/assets/images/projects/azkali/specific3.png",
-            techStack: ["fastapi", "supabase", "postgresql", "gemini"],
+            techStack: ["supabase", "postgresql", "gemini"],
          },
       ],
    },
@@ -64,7 +63,7 @@ export const projectAzkali = {
             {
                title: "AI & Supabase Backend",
                description:
-                  "Robust backend using FastAPI to orchestrate Gemini AI logic. It leverages Supabase for real-time storage, RLS-protected database, and authentication.",
+                  "Robust backend orchestrating Gemini AI logic. It leverages Supabase for real-time storage, RLS-protected database, and authentication.",
             },
          ],
       },
@@ -98,7 +97,7 @@ export const projectAzkali = {
             {
                title: "Backend con IA y Supabase",
                description:
-                  "Backend robusto que utiliza FastAPI para orquestar la lógica de Gemini AI. Aprovecha Supabase para almacenamiento en tiempo real, base de datos protegida con RLS y autenticación.",
+                  "Backend robusto que orquesta la lógica de Gemini AI. Aprovecha Supabase para almacenamiento en tiempo real, base de datos protegida con RLS y autenticación.",
             },
          ],
       },

@@ -24,7 +24,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
   single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
   single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
   single-line-entry([*Herramientas y OS:*], [Git, Linux, Figma], []),
-  single-line-entry([*Familiarizado con:*], [Kotlin, Python (Django, FastAPI), MySQL, Firebase], [])
+  single-line-entry([*Familiarizado con:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase], [])
 )
 
 == Experiencia profesional
@@ -37,33 +37,33 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       bottom-right: [Chicago, IL, USA / México],
     ),
     list-items: (
-      [Lideré la evolución de #link("https://7d-compass.com/")[*7D-Compass*] (Angular/Node.js/PostgreSQL) automatizando la conciliación de pagos y reduciendo el tiempo operativo en un *95%*.],
+      [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL) automatizando la conciliación de pagos y reduciendo el tiempo operativo en un *95%*.],
       [Implementé un motor de auditoría centralizado para conciliar *\$2.3M USD* en transacciones, detectando discrepancias financieras críticas mediante lógica de validación.],
       [Optimicé el rendimiento del frontend (*3.2x* TTI) y fortalecí la seguridad del sistema mediante *JWT/Bcrypt* siguiendo estándares *OWASP*.],
     )
   ),
   (
     entry-header-args: (
-      top-left: [*Banco Azteca (Talent Land 2026)*],
+      top-left: [*Banco Azteca (Hackathon Talent Land 2026)*],
       top-right: [Abril 2026],
       bottom-left: [Participante de hackathon y líder de equipo],
       bottom-right: [Santa Fe, CDMX, México],
     ),
     list-items: (
-      [Lideré la desarrollo de #link("https://azkali-landing.vercel.app/")[*Azkali*] en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
+      [Lideré la desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*] en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
       [Implementé un motor de análisis de impulsividad en tiempo real utilizando *Gemini 2.5 Flash-Lite*, traduciendo costos monetarios a costo de oportunidad operativo.],
-      [Arquitecté el ecosistema multiplataforma integrando *React Native*, *FastAPI* y *Supabase*, incorporando mecánicas de gamificación.],
+      [Arquitecté el ecosistema multiplataforma integrando *React Native* y *Supabase*, incorporando mecánicas de gamificación.],
     )
   ),
   (
     entry-header-args: (
-      top-left: [*Coppel (Talent Land 2025)*],
+      top-left: [*Coppel (Hackathon Talent Land 2025)*],
       top-right: [Abril 2025],
       bottom-left: [4to lugar y líder de equipo],
       bottom-right: [Guadalajara, Jalisco, México],
     ),
     list-items: (
-      [Construí un ecosistema de referidos gamificado en un sprint de 4 días (React Native/Node.js).],
+      [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema de referidos gamificado para expansión corporativa en un sprint de 4 días (React Native/Node.js).],
       [Dirigí al equipo implementando estrictamente metodologías *XP* y *Kanban*.],
     )
   ),
@@ -75,7 +75,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       bottom-right: [Azcapotzalco, CDMX, México],
     ),
     list-items: (
-      [Desarrollé una Web App centralizada (Angular/MongoDB) reemplazando flujos legacy en Excel.],
+      [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas*], una Web App centralizada (Angular/MongoDB) reemplazando flujos legacy en Excel.],
       [Automaticé el procesamiento de *+100k registros*, reduciendo errores manuales a cero.],
       [Diseñé la solución "Master Template Rutas", optimizando el tiempo de procesamiento en un 70%.],
     )
@@ -88,7 +88,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       bottom-right: [Córdoba, Veracruz, México],
     ),
     list-items: (
-      [Desplegué un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
+      [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks")[*Flack's Cut & Connect*], un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
       [Desarrollé una API REST con Node.js y PostgreSQL para centralizar inventario y ventas.],
     )
   )
@@ -98,7 +98,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
 #r2c2-entry-list(
   (
     entry-header-args: (
-      top-left: [#link("https://github.com/aescobar80/IAPEX_APP-WEB")[*IAPEX*]],
+      top-left: [#link("https://chrisssp.vercel.app/es/projects/iapex")[*IAPEX*]],
       top-right: [],
       bottom-left: [_Angular, Ionic, Spring Boot, Django, PostgreSQL, IA_],
       bottom-right: [],
@@ -111,7 +111,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
   ),
   (
     entry-header-args: (
-      top-left: [#link("https://github.com/dabetai-org/dabetai-mobileapp")[*dabetai*]],
+      top-left: [#link("https://chrisssp.vercel.app/es/projects/dabetai")[*dabetai*]],
       top-right: [],
       bottom-left: [_React Native, NestJS, Expo, Python, Wearables_],
       bottom-right: [],
@@ -124,7 +124,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
   ),
   (
     entry-header-args: (
-      top-left: [#link("https://github.com/chrisssp/puntofiel-mobileapp")[*Punto Fiel*]],
+      top-left: [#link("https://chrisssp.vercel.app/es/projects/puntofiel")[*Punto Fiel*]],
       top-right: [],
       bottom-left: [_React Native, Expo, Supabase, TanStack Query, Zustand_],
       bottom-right: [],

@@ -15,7 +15,7 @@ export const experience = {
          },
          {
             role: "Hackathon Team Lead",
-            company: "Banco Azteca (Talent Land 2026)",
+            company: "Banco Azteca (Hackathon Talent Land 2026)",
             location: "Santa Fe, CDMX, México",
             product: "Azkali",
             projectId: "azkali",
@@ -29,13 +29,13 @@ export const experience = {
          },
          {
             role: "4th Place & Team Lead",
-            company: "Coppel (Talent Land 2025)",
+            company: "Coppel (Hackathon Talent Land 2025)",
             location: "Guadalajara, Jalisco, México",
             product: "Coppel Nexus",
             projectId: "coppel-nexus",
             date: "April 2025",
             description:
-               "Architected a gamified referral ecosystem for Coppel (React Native/Node.js) in a 72-hour sprint. Led the team by strictly applying XP and Kanban methodologies, securing a podium place among national competitors.",
+               "Architected 'Coppel Nexus', a gamified referral ecosystem for Coppel (React Native/Node.js) in a 72-hour sprint. Led the team by strictly applying XP and Kanban methodologies, securing a fourth place on the podium.",
             link: {
                url: "/assets/docs/Certificado_TalentLand_2025_Christian_Serrano.pdf",
                label: "View certificate of participation",
@@ -50,7 +50,7 @@ export const experience = {
             projectId: "mtrpa",
             date: "May 2024 — Aug 2024",
             description:
-               "Developed a centralized Web App (Angular/MongoDB) to replace legacy Excel workflows, automating processing of +100k records and reducing manual errors to zero while optimizing processing time by 70%.",
+               "Developed 'Master Template Rutas', a centralized Web App (Angular/MongoDB) to replace legacy Excel workflows, automating processing of +100k records and reducing manual errors to zero while optimizing processing time by 70%.",
          },
          {
             role: "Full Stack Developer",
@@ -60,7 +60,7 @@ export const experience = {
             projectId: "flacks",
             date: "Oct 2022 — Apr 2024",
             description:
-               "Deployed a full digital ecosystem (Web & Mobile) automating 100% of appointment scheduling and inventory tracking. Developed a REST API with Node.js and PostgreSQL to centralize inventory and sales for the business.",
+               "Developed 'Flack's Cut & Connect', a full digital ecosystem (Web & Mobile) automating 100% of appointment scheduling and inventory tracking. Developed a REST API with Node.js and PostgreSQL to centralize inventory and sales for the business.",
          },
       ],
    },
@@ -80,7 +80,7 @@ export const experience = {
          },
          {
             role: "Líder de equipo de hackathon",
-            company: "Banco Azteca (Talent Land 2026)",
+            company: "Banco Azteca (Hackathon Talent Land 2026)",
             location: "Santa Fe, CDMX, México",
             product: "Azkali",
             projectId: "azkali",
@@ -94,13 +94,13 @@ export const experience = {
          },
          {
             role: "4to lugar y líder de equipo",
-            company: "Coppel (Talent Land 2025)",
+            company: "Coppel (Hackathon Talent Land 2025)",
             location: "Guadalajara, Jalisco, México",
             product: "Coppel Nexus",
             projectId: "coppel-nexus",
             date: "Abril 2025",
             description:
-               "Arquitecturé un ecosistema de referidos gamificado para Coppel (React Native/Node.js) en un sprint de 72 horas. Dirigí al equipo aplicando estrictamente metodologías XP y Kanban, asegurando un lugar en el podio nacional.",
+               "Arquitecturé 'Coppel Nexus', un ecosistema de referidos gamificado para Coppel (React Native/Node.js) en un sprint de 72 horas. Dirigí al equipo aplicando estrictamente metodologías XP y Kanban, asegurando el 4to lugar en el podio.",
             link: {
                url: "/assets/docs/Certificado_TalentLand_2025_Christian_Serrano.pdf",
                label: "Ver certificado de participación",
@@ -115,7 +115,7 @@ export const experience = {
             projectId: "mtrpa",
             date: "Mayo 2024 — Ago 2024",
             description:
-               "Diseñé una aplicación web centralizada (Angular/MongoDB) para reemplazar flujos heredados en Excel, automatizando el procesamiento de +100k registros y reduciendo los errores manuales a cero, optimizando el tiempo de procesamiento en un 70%.",
+               "Diseñé 'Master Template Rutas', una aplicación web centralizada (Angular/MongoDB) para reemplazar flujos heredados en Excel, automatizando el procesamiento de +100k registros y reduciendo los errores manuales a cero, optimizando el tiempo de procesamiento en un 70%.",
          },
          {
             role: "Desarrollador full stack",
@@ -125,7 +125,7 @@ export const experience = {
             projectId: "flacks",
             date: "Oct 2022 — Abr 2024",
             description:
-               "Desplegué un ecosistema digital integral (Web y móvil) que automatiza el 100% de la programación de citas y el seguimiento de inventario. Desarrollé una API REST con Node.js y PostgreSQL para centralizar el negocio.",
+               "Desarrollé 'Flack's Cut & Connect', un ecosistema digital integral (Web y móvil) que automatiza el 100% de la programación de citas y el seguimiento de inventario. Desarrollé una API REST con Node.js y PostgreSQL para centralizar el negocio.",
          },
       ],
    },
