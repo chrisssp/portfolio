@@ -75,9 +75,9 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       bottom-right: [Azcapotzalco, CDMX, México],
     ),
     list-items: (
-      [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas*], una Web App centralizada (Angular/MongoDB) reemplazando flujos legacy en Excel.],
+      [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*], una Web App centralizada (Angular/MongoDB) reemplazando flujos legacy en Excel.],
       [Automaticé el procesamiento de *+100k registros*, reduciendo errores manuales a cero.],
-      [Diseñé la solución "Master Template Rutas", optimizando el tiempo de procesamiento en un 70%.],
+      [Diseñé la solución "Master Template Rutas Power App", optimizando el tiempo de procesamiento en un 70%.],
     )
   ),
   (

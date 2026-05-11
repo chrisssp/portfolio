@@ -75,9 +75,9 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       bottom-right: [Azcapotzalco, CDMX, Mexico],
     ),
     list-items: (
-      [Developed #link("https://chrisssp.vercel.app/en/projects/mtrpa")[*Master Template Rutas*], a centralized Web App (Angular/MongoDB) replacing legacy Excel workflows.],
+      [Developed #link("https://chrisssp.vercel.app/en/projects/mtrpa")[*Master Template Rutas Power App*], a centralized Web App (Angular/MongoDB) replacing legacy Excel workflows.],
       [Automated processing of *+100k records*, reducing manual errors to zero.],
-      [Designed the "Master Template Rutas" solution, optimizing processing time by 70%.],
+      [Designed the "Master Template Rutas Power App" solution, optimizing processing time by 70%.],
     )
   ),
   (

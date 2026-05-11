@@ -2,6 +2,7 @@ export const projectFlacks = {
    data: {
       id: "flacks",
       imagePath: "/assets/images/projects/flacks/general.png",
+      heroImagePath: "/assets/images/projects/flacks/hero.png",
       techStack: [
          "react",
          "reactnative",

@@ -46,11 +46,11 @@ export const experience = {
             company: "PepsiCo",
             location: "Azcapotzalco, CDMX, México",
             remote: "Remote",
-            product: "Master Template Rutas",
+            product: "Master Template Rutas Power App",
             projectId: "mtrpa",
             date: "May 2024 — Aug 2024",
             description:
-               "Developed Master Template Rutas, a centralized Web App (Angular/MongoDB) to replace legacy Excel workflows, automating processing of +100k records and reducing manual errors to zero while optimizing processing time by 70%.",
+               "Developed Master Template Rutas Power App, a centralized Web App (Angular/MongoDB) to replace legacy Excel workflows, automating processing of +100k records and reducing manual errors to zero while optimizing processing time by 70%.",
          },
          {
             role: "Full Stack Developer",
@@ -111,11 +111,11 @@ export const experience = {
             company: "PepsiCo",
             location: "Azcapotzalco, CDMX, México",
             remote: "Remoto",
-            product: "Master Template Rutas",
+            product: "Master Template Rutas Power App",
             projectId: "mtrpa",
             date: "Mayo 2024 — Ago 2024",
             description:
-               "Diseñé Master Template Rutas, una aplicación web centralizada (Angular/MongoDB) para reemplazar flujos heredados en Excel, automatizando el procesamiento de +100k registros y reduciendo los errores manuales a cero, optimizando el tiempo de procesamiento en un 70%.",
+               "Diseñé Master Template Rutas Power App, una aplicación web centralizada (Angular/MongoDB) para reemplazar flujos heredados en Excel, automatizando el procesamiento de +100k registros y reduciendo los errores manuales a cero, optimizando el tiempo de procesamiento en un 70%.",
          },
          {
             role: "Desarrollador full stack",
