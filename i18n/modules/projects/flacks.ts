@@ -1,43 +1,126 @@
 export const projectFlacks = {
    data: {
-      id: "flacks",
-      imagePath: "/assets/images/projects/flacks/general.png",
-      heroImagePath: "/assets/images/projects/flacks/hero.png",
+      id: "flacks-cc",
+      imagePath: "/assets/images/projects/flacks-cc/general.png",
+      heroImagePath: "/assets/images/projects/flacks-cc/hero.png",
       techStack: [
-         "react",
-         "reactnative",
-         "nodejs",
+         "angular",
+         "bootstrap",
+         "ionic",
+         "java",
+         "springboot",
          "postgresql",
-         "tailwindcss",
       ],
-      links: [],
+      links: [{ type: "github", url: "https://github.com/flacks-cc-org" }],
+      ecosystem: [
+         {
+            imagePath: "/assets/images/projects/flacks-cc/specific1.png",
+            techStack: ["angular", "bootstrap"],
+            link: {
+               type: "github",
+               url: "https://github.com/flacks-cc-org/FLACKS_WEB-APP",
+            },
+         },
+         {
+            imagePath: "/assets/images/projects/flacks-cc/specific2.png",
+            techStack: ["angular", "ionic", "typescript"],
+            link: {
+               type: "github",
+               url: "https://github.com/flacks-cc-org/FLACKS_HYBRID-MOBILE-APP",
+            },
+         },
+         {
+            imagePath: "/assets/images/projects/flacks-cc/specific3.png",
+            techStack: ["java", "android"],
+            link: {
+               type: "github",
+               url: "https://github.com/flacks-cc-org/FLACKS_NATIVE-MOBILE-APP",
+            },
+         },
+         {
+            imagePath: "/assets/images/projects/flacks-cc/specific4.png",
+            techStack: ["java", "springboot", "postgresql"],
+            link: {
+               type: "github",
+               url: "https://github.com/flacks-cc-org/FLACKS_API-REST",
+            },
+         },
+      ],
    },
    en: {
-      title: "Flack’s Cut & Connect",
-      subtitle: "B2B Dashboard & Digital Appointment Management",
+      title: "Flack's Cut & Connect",
+      subtitle: "Multiplatform booking and commerce ecosystem",
       description:
-         "Full-cycle digital transformation for a local business, automating 100% of appointment scheduling and inventory tracking to drastically reduce overhead.",
+         "A complete booking-and-sales ecosystem for a barber shop, designed to reduce friction for clients and keep operations tidy.",
       fullDescription:
-         "Flack's Cut & Connect is a comprehensive management platform designed for the beauty and wellness industry. It streamlines the entire customer journey, from real-time appointment booking to backend inventory control, empowering local businesses with enterprise-grade operational efficiency.",
+         "It brings together reservations, catalog, and sales into a single, consistent flow for staff and clients. The experience keeps the shop organized, reduces missed appointments, and makes the day-to-day operation feel lighter without losing the personal touch.",
       challenge: {
          description:
-            "Managing a growing customer base with pen-and-paper or basic calendars led to double-bookings and lost revenue. Inventory tracking was reactive, often resulting in stock-outs during peak hours.",
+            "Manual scheduling, scattered customer data, and disconnected sales channels caused double bookings, lost revenue, and low visibility into customer behavior.",
          solution:
-            "A cloud-based real-time scheduling engine integrated with an inventory management system that automatically updates stock levels as services are performed.",
+            "A unified ecosystem that centralizes reservations, catalog, sales, and staff management, with role-based flows for admins, employees, and customers across web and mobile.",
+      },
+      ecosystem: {
+         items: [
+            {
+               title: "Web app (Landing + Admin)",
+               description:
+                  "Landing page plus an administrative panel to manage CRUD operations, appointment scheduling, and reservation management for the business.",
+            },
+            {
+               title: "Hybrid mobile app (PWA)",
+               description:
+                  "Customer-facing app to browse catalogs, reserve services/products, manage a cart, authenticate (email or Google), post reviews, and track history.",
+            },
+            {
+               title: "Native mobile app (Android)",
+               description:
+                  "Native Android build mirroring the hybrid app features for better device integration and performance.",
+            },
+            {
+               title: "Backend API",
+               description:
+                  "Spring Boot backend with PostgreSQL to centralize data, appointments, reservations, products, and user roles.",
+            },
+         ],
       },
    },
    es: {
-      title: "Flack’s Cut & Connect",
-      subtitle: "Panel B2B y gestión digital de citas",
+      title: "Flack's Cut & Connect",
+      subtitle: "Ecosistema multiplataforma de reservas y comercio",
       description:
-         "Transformación digital completa para un negocio local, automatizando el 100% de la programación de citas y el seguimiento de inventario para reducir drásticamente la carga operativa.",
+         "Ecosistema integral para una barbería, pensado para reducir fricción en reservas y mantener la operación ordenada.",
       fullDescription:
-         "Flack's Cut & Connect es una plataforma de gestión integral diseñada para la industria del bienestar y la belleza. Optimiza todo el recorrido del cliente, desde la reserva de citas en tiempo real hasta el control de inventario, empoderando a los negocios locales con eficiencia operativa de nivel empresarial.",
+         "Reúne citas, catálogo y ventas en un solo flujo coherente para clientes y equipo de trabajo. La experiencia mantiene la barbería ordenada, reduce ausencias y hace más ligera la operación sin perder el trato cercano.",
       challenge: {
          description:
-            "Gestionar una base de clientes creciente con lápiz y papel o calendarios básicos provocaba duplicidad de citas y pérdida de ingresos. El seguimiento del inventario era reactivo, resultando en falta de stock en horas pico.",
+            "La gestión manual de citas y ventas generaba duplicidad, baja trazabilidad y poca visibilidad sobre el comportamiento del cliente.",
          solution:
-            "Un motor de programación en tiempo real basado en la nube integrado con un sistema de gestión de inventario que actualiza automáticamente los niveles de stock a medida que se realizan los servicios.",
+            "Un ecosistema unificado con flujos por roles que centraliza reservaciones, catálogo, ventas y administración en web y móvil.",
+      },
+      ecosystem: {
+         items: [
+            {
+               title: "Aplicación web (landing + admin)",
+               description:
+                  "Landing page y panel administrativo para CRUD, programación de citas y gestión de reservaciones.",
+            },
+            {
+               title: "App móvil híbrida (PWA)",
+               description:
+                  "App para clientes con catálogos, reservas de servicios/productos, carrito, autenticación (correo o Google), reseñas e historial.",
+            },
+            {
+               title: "App móvil nativa (Android)",
+               description:
+                  "Versión Android nativa que replica la estructura de la híbrida con mejor integración del dispositivo.",
+            },
+            {
+               title: "Backend API",
+               description:
+                  "Backend en Spring Boot con PostgreSQL para centralizar datos, roles, citas, reservaciones y ventas.",
+            },
+         ],
       },
    },
 };

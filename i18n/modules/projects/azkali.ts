@@ -38,9 +38,9 @@ export const projectAzkali = {
       title: "Azkali",
       subtitle: "Behavioral AI Financial Copilot for Gen Z",
       description:
-         "AI-powered financial copilot that generates cognitive friction on impulsive purchases by showing costs in work hours, redirecting capital to savings.",
+         "Behavioral financial copilot that generates cognitive friction on impulsive purchases by showing costs in work hours, redirecting capital to savings.",
       fullDescription:
-         "Azkali is a cross-platform ecosystem that leverages Gemini 2.5 Flash-Lite to analyze spending habits in real-time. Built in a 48h sprint during Talent Land 2026, it transforms informal users into banked clients by translating monetary costs into work-hour opportunity costs.",
+         "Azkali is a cross-platform ecosystem built in a 48h sprint during Talent Land 2026. It analyzes spending habits in real time and helps informal users build saving behavior by translating monetary costs into work-hour opportunity costs.",
       challenge: {
          description:
             "Gen Z faces high levels of impulsive spending and low financial literacy. Traditional banking apps feel rigid and fail to engage younger informal workers who lack saving habits.",
@@ -72,9 +72,9 @@ export const projectAzkali = {
       title: "Azkali",
       subtitle: "Copiloto financiero con IA conductual para la Gen Z",
       description:
-         "Copiloto financiero impulsado por IA que genera fricción cognitiva en compras impulsivas al mostrar costos en horas de trabajo, redirigiendo capital al ahorro.",
+         "Copiloto financiero conductual que genera fricción cognitiva en compras impulsivas al mostrar costos en horas de trabajo, redirigiendo capital al ahorro.",
       fullDescription:
-         "Azkali es un ecosistema multiplataforma que aprovecha Gemini 2.5 Flash-Lite para analizar hábitos de gasto en tiempo real. Construido en un sprint de 48h durante Talent Land 2026, transforma a usuarios informales en clientes bancarizados al traducir costos monetarios en horas de trabajo.",
+         "Azkali es un ecosistema multiplataforma construido en un sprint de 48h durante Talent Land 2026. Analiza hábitos de gasto en tiempo real y ayuda a crear hábitos de ahorro al traducir costos monetarios en horas de trabajo.",
       challenge: {
          description:
             "La Gen Z enfrenta altos niveles de gasto impulsivo y baja educación financiera. Las apps bancarias tradicionales se sienten rígidas y no logran atraer a trabajadores informales jóvenes sin hábitos de ahorro.",

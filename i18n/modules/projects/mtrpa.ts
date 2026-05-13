@@ -3,35 +3,87 @@ export const projectMtrpa = {
       id: "mtrpa",
       imagePath: "/assets/images/projects/mtrpa/general.png",
       heroImagePath: "/assets/images/projects/mtrpa/hero.png",
-      techStack: ["angular", "bootstrap", "mongodb"],
-      links: [],
+      techStack: ["angular", "bootstrap", "mongodb", "springboot", "java"],
+      links: [
+         { type: "github", url: "https://github.com/chrisssp/MTRPA_APP-WEB" },
+      ],
+      ecosystem: [
+         {
+            imagePath: "/assets/images/projects/mtrpa/specific1.png",
+            techStack: ["angular", "bootstrap"],
+            link: {
+               type: "github",
+               url: "https://github.com/chrisssp/MTRPA_APP-WEB",
+            },
+         },
+         {
+            imagePath: "/assets/images/projects/mtrpa/specific2.png",
+            techStack: ["mongodb", "springboot", "java"],
+            link: {
+               type: "github",
+               url: "https://github.com/chrisssp/MTRPA_API-REST",
+            },
+         },
+      ],
    },
    en: {
       title: "Master Template Rutas Power App (PepsiCo)",
-      subtitle: "Enterprise Automation & Database Migration Platform",
+      subtitle: "Logistics operations centralization platform",
       description:
-         "Enterprise automation tool migrating 100k+ records from Excel to MongoDB, cutting processing time by ~70% and eliminating manual entry errors.",
+         "Centralized operations hub for PepsiCo's supply chain, replacing fragmented Excel workflows and manual follow-ups.",
       fullDescription:
-         "Master Template Rutas Power App is a mission-critical tool developed for PepsiCo to handle massive logistics data. It automates the validation, transformation, and migration of over 100,000 monthly records from legacy spreadsheets to a robust MongoDB instance, ensuring data integrity across the supply chain.",
+         "Routes, approvals, and reporting live in one role-based flow with clearer oversight. It replaces scattered documents with a shared operational view, making handoffs smoother and decisions faster across the supply chain area.",
       challenge: {
          description:
-            "Logistics route data was handled via complex, disconnected Excel files prone to human error. Manual migration to the central system took weeks and often resulted in corrupted data.",
+            "Logistics operations relied on manual Excel workflows across teams, causing delays, duplicated work, and inconsistent data quality.",
          solution:
-            "An Angular-based automation engine that performs pre-flight data validation and batch migration, reducing the entire process from several work-weeks to just a few hours.",
+            "A centralized web app with role-based access and automated validation, backed by a Spring Boot API and MongoDB for reliable, auditable data management.",
+      },
+      ecosystem: {
+         items: [
+            {
+               title: "Web app (operations hub)",
+               description:
+                  "Angular + Bootstrap interface that centralizes logistics routes, approvals, and reporting for multiple roles.",
+               link: { label: "View code" },
+            },
+            {
+               title: "Backend API",
+               description:
+                  "Spring Boot + MongoDB backend providing validation, auditing, and secure data access for all workflows.",
+               link: { label: "View code" },
+            },
+         ],
       },
    },
    es: {
       title: "Master Template Rutas Power App (PepsiCo)",
-      subtitle: "Plataforma de automatización empresarial y migración de datos",
+      subtitle: "Plataforma de centralización operativa en logística",
       description:
-         "Herramienta de automatización empresarial que migra +100k registros de Excel a MongoDB, reduciendo el tiempo de procesamiento en un ~70% y eliminando errores manuales.",
+         "Hub operativo para la cadena de suministro de PepsiCo, sustituyendo flujos dispersos en Excel y seguimientos manuales.",
       fullDescription:
-         "Master Template Rutas Power App es una herramienta de misión crítica desarrollada para PepsiCo para manejar datos logísticos masivos. Automatiza la validación, transformación y migración de más de 100,000 registros mensuales desde hojas de cálculo heredadas a una instancia robusta de MongoDB.",
+         "Rutas, aprobaciones y reportes viven en un flujo por roles con mayor control. Sustituye documentos dispersos por una visión operativa compartida, agilizando traspasos y decisiones en la cadena de suministro.",
       challenge: {
          description:
-            "Los datos de rutas logísticas se manejaban a través de archivos Excel complejos y desconectados propensos a errores humanos. La migración manual tomaba semanas y a menudo resultaba en datos corruptos.",
+            "La logística se gestionaba en archivos Excel desconectados, con alta fricción y errores humanos frecuentes.",
          solution:
-            "Un motor de automatización basado en Angular que realiza validación de datos previa y migración por lotes, reduciendo el proceso completo de varias semanas a solo unas pocas horas.",
+            "Una web app centralizada con acceso por roles y validaciones automáticas, respaldada por una API Spring Boot con MongoDB.",
+      },
+      ecosystem: {
+         items: [
+            {
+               title: "App web (hub operativo)",
+               description:
+                  "Interfaz Angular + Bootstrap que centraliza rutas, aprobaciones y reportes para múltiples roles.",
+               link: { label: "Ver código" },
+            },
+            {
+               title: "Backend API",
+               description:
+                  "Backend Spring Boot + MongoDB con validaciones, auditoría y acceso seguro para los flujos críticos.",
+               link: { label: "Ver código" },
+            },
+         ],
       },
    },
 };

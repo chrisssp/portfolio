@@ -27,7 +27,7 @@ export const project7dCompass = {
       description:
          "Financial reconciliation platform for the construction industry, automating audits for $2.3M USD in transactions and reducing operational time by 95%.",
       fullDescription:
-         "7D-Compass is a high-performance auditing ecosystem designed for Seven D Construction (Chicago). It automates 95% of financial reconciliation by centralizing bank records and operational data through a robust Angular/Node.js architecture.",
+         "7D-Compass is a high-performance auditing ecosystem designed for Seven D Construction (Chicago). It automates 95% of financial reconciliation by centralizing bank records and operational data into a single audit workflow.",
       challenge: {
          description:
             "Manual reconciliation of millions in construction transactions was error-prone and took hundreds of work hours monthly. Discrepancies often went undetected for billing cycles.",
@@ -61,7 +61,7 @@ export const project7dCompass = {
       description:
          "Plataforma de conciliación financiera para la industria de la construcción, automatizando auditorías de $2.3M USD en transacciones y reduciendo el tiempo operativo en un 95%.",
       fullDescription:
-         "7D-Compass es un ecosistema de auditoría de alto rendimiento diseñado para Seven D Construction (Chicago). Automatiza el 95% de la conciliación financiera al centralizar registros bancarios y datos operativos mediante una arquitectura robusta en Angular/Node.js.",
+         "7D-Compass es un ecosistema de auditoría de alto rendimiento diseñado para Seven D Construction (Chicago). Automatiza el 95% de la conciliación financiera al centralizar registros bancarios y datos operativos en un solo flujo de auditoría.",
       challenge: {
          description:
             "La conciliación manual de millones en transacciones de construcción era propensa a errores y consumía cientos de horas mensuales. Las discrepancias a menudo no se detectaban durante ciclos de facturación completos.",

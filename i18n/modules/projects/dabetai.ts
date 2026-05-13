@@ -61,7 +61,7 @@ export const projectDabetai = {
       description:
          "Preventive ecosystem connecting wearables with medical dashboards, enabling real-time risk prediction and improving response efficiency by ~40%.",
       fullDescription:
-         "A comprehensive health platform moving beyond simple monitoring to active prevention. dabetai leverages wearable technology and AI to predict critical complications like Retinopathy and Nephropathy before they become irreversible.",
+         "A comprehensive health platform moving beyond simple monitoring to active prevention. dabetai predicts critical complications like Retinopathy and Nephropathy before they become irreversible.",
       challenge: {
          description:
             "Diabetes management is often reactive. Patients lack visibility into the silent progression of dangerous complications, while doctors suffer from a lack of continuous, real-time data.",
@@ -103,7 +103,7 @@ export const projectDabetai = {
       description:
          "Ecosistema preventivo de complicaciones de la diabetes que conecta wearables con tableros médicos, permitiendo la predicción de riesgos y mejorando la eficiencia en ~40%.",
       fullDescription:
-         "Una plataforma de salud integral que va más allá del simple monitoreo hacia la prevención activa. dabetai aprovecha la tecnología wearable y la IA para predecir complicaciones críticas como retinopatía y nefropatía antes de que sean irreversibles.",
+         "Una plataforma de salud integral que va más allá del simple monitoreo hacia la prevención activa. dabetai predice complicaciones críticas como retinopatía y nefropatía antes de que sean irreversibles.",
       challenge: {
          description:
             "La gestión de la diabetes suele ser reactiva. Los pacientes carecen de visibilidad sobre la progresión silenciosa de complicaciones, mientras que los médicos sufren por la falta de datos continuos en tiempo real.",

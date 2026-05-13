@@ -57,7 +57,7 @@ export const experience = {
             company: "Flack's Barber Shop",
             location: "Córdoba, Veracruz, México",
             product: "Flack's Cut & Connect",
-            projectId: "flacks",
+            projectId: "flacks-cc",
             date: "Oct 2022 — Apr 2024",
             description:
                "Developed Flack's Cut & Connect, a full digital ecosystem (Web & Mobile) automating 100% of appointment scheduling and inventory tracking. Developed a REST API with Node.js and PostgreSQL to centralize inventory and sales for the business.",
@@ -122,7 +122,7 @@ export const experience = {
             company: "Flack's Barber Shop",
             location: "Córdoba, Veracruz, México",
             product: "Flack's Cut & Connect",
-            projectId: "flacks",
+            projectId: "flacks-cc",
             date: "Oct 2022 — Abr 2024",
             description:
                "Desarrollé Flack's Cut & Connect, un ecosistema digital integral (Web y móvil) que automatiza el 100% de la programación de citas y el seguimiento de inventario. Desarrollé una API REST con Node.js y PostgreSQL para centralizar el negocio.",

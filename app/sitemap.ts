@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "azkali",
       "coppelnexus",
       "dabetai",
-      "flacks",
+      "flacks-cc",
       "iapex",
       "mtrpa",
       "puntofiel",

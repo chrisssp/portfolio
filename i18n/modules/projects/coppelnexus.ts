@@ -3,47 +3,118 @@ export const projectCoppelNexus = {
       id: "coppel-nexus",
       imagePath: "/assets/images/projects/coppel-nexus/general.png",
       techStack: [
-         "react",
          "reactnative",
-         "tailwindcss",
-         "nodejs",
-         "firebase",
          "expo",
+         "react",
+         "tailwindcss",
+         "mongodb",
+         "firebase",
+         "express",
       ],
       links: [
          {
             type: "github",
-            url: "https://github.com/chrisssp/coppel-nexus-web",
+            url: "https://github.com/karl262/CoppelNexus-MobileApp",
          },
          { type: "video", url: "https://youtu.be/QOrzY2dIhsw" },
+      ],
+      ecosystem: [
+         {
+            imagePath: "/assets/images/projects/coppel-nexus/specific1.png",
+            techStack: ["reactnative", "expo", "tailwindcss"],
+            link: {
+               type: "github",
+               url: "https://github.com/karl262/CoppelNexus-MobileApp",
+            },
+         },
+         {
+            imagePath: "/assets/images/projects/coppel-nexus/specific2.png",
+            techStack: ["react", "tailwindcss"],
+            link: {
+               type: "github",
+               url: "https://github.com/chrisssp/coppel-nexus-web",
+            },
+         },
+         {
+            imagePath: "/assets/images/projects/coppel-nexus/specific3.png",
+            techStack: ["mongodb", "firebase", "express"],
+            link: {
+               type: "github",
+               url: "https://github.com/VivianaVM07/apiCoppelNexus",
+            },
+         },
       ],
    },
    en: {
       title: "Coppel Nexus",
-      subtitle: "Gamified Referral Ecosystem for Corporate Expansion",
+      subtitle: "Referral ecosystem for field acquisition teams",
       description:
-         "Top-ranked fintech referral system for Coppel, designed to scale corporate partnerships with micro-businesses through a gamified experience, built in under 72 hours.",
+         "Referral ecosystem for Coppel that makes field onboarding of micro-businesses faster and easier.",
       fullDescription:
-         "Coppel Nexus is a high-impact referral platform built for Mexico's largest retailer. It digitizes and gamifies the process of acquiring new corporate partners, transforming complex B2B onboarding into an intuitive, reward-driven mobile experience.",
+         "It turns referrals into a single, trackable flow that keeps collaborators and internal teams aligned. The result is a faster, clearer path for micro-businesses to join Coppel Emprende and for teams to follow progress without losing momentum.",
       challenge: {
          description:
-            "Expanding corporate partnerships with thousands of micro-businesses was a manual, slow, and fragmented process. There was no centralized way to track referrals or incentivize existing partners.",
+            "Onboarding micro-businesses across multiple locations required manual tracking, inconsistent follow-up, and lacked visibility on collaborator performance.",
          solution:
-            "A comprehensive mobile and web ecosystem that leverages real-time gamification and automated tracking, allowing partners to refer and monitor growth instantly.",
+            "A unified ecosystem with a field-ready mobile app, a management web portal, and a backend that tracks referrals, progress, and collaborator routes in real time.",
+      },
+      ecosystem: {
+         items: [
+            {
+               title: "Mobile app (field collaborators)",
+               description:
+                  "React Native + Expo app for collection collaborators to visit micro-businesses and refer them to Coppel Emprende.",
+               link: { label: "View code" },
+            },
+            {
+               title: "Web app (admin and tracking)",
+               description:
+                  "Web platform to register micro-businesses, track course progress, and manage collaborator routes and workload.",
+               link: { label: "View code" },
+            },
+            {
+               title: "Backend API",
+               description:
+                  "MongoDB + Firebase backend with Express for user, referral, and progress tracking.",
+               link: { label: "View code" },
+            },
+         ],
       },
    },
    es: {
       title: "Coppel Nexus",
-      subtitle: "Ecosistema de referidos gamificado para expansión corporativa",
+      subtitle: "Ecosistema de referidos para equipos en campo",
       description:
-         "Sistema de referidos fintech de alto nivel para Coppel, diseñado para escalar alianzas corporativas con microempresas mediante una experiencia gamificada en menos de 72 horas.",
+         "Ecosistema de referidos para Coppel que facilita y acelera el registro de microempresas en campo.",
       fullDescription:
-         "Coppel Nexus es una plataforma de referidos de alto impacto construida para el minorista más grande de México. Digitaliza y gamifica el proceso de adquisición de nuevos socios corporativos, transformando el complejo onboarding B2B en una experiencia móvil intuitiva y motivada por recompensas.",
+         "Convierte los referidos en un flujo único y trazable que alinea a colaboradores y equipos internos. El resultado es un camino más rápido y claro para que las microempresas se sumen a Coppel Emprende y se pueda dar seguimiento sin fricción.",
       challenge: {
          description:
-            "Expandir las alianzas corporativas con miles de microempresas era un proceso manual, lento y fragmentado. No existía una forma centralizada de rastrear referidos o incentivar a los socios existentes.",
+            "El alta de microempresas era manual y fragmentado, con poca visibilidad sobre el progreso de cursos y el trabajo de los colaboradores.",
          solution:
-            "Un ecosistema web y móvil integral que aprovecha la gamificación en tiempo real y el seguimiento automatizado, permitiendo a los socios referir y monitorear el crecimiento al instante.",
+            "Un ecosistema web y móvil con app en campo, portal administrativo y backend centralizado para seguimiento de referidos y rutas.",
+      },
+      ecosystem: {
+         items: [
+            {
+               title: "App móvil (colaboradores en campo)",
+               description:
+                  "App en React Native + Expo para colaboradores de cobranza que visitan microempresas y generan referidos a Coppel Emprende.",
+               link: { label: "Ver código" },
+            },
+            {
+               title: "App web (administración y seguimiento)",
+               description:
+                  "Plataforma web para registrar microempresas, dar seguimiento a cursos y gestionar rutas de trabajo.",
+               link: { label: "Ver código" },
+            },
+            {
+               title: "Backend API",
+               description:
+                  "Backend en MongoDB + Firebase con Express para usuarios, referidos y progreso.",
+               link: { label: "Ver código" },
+            },
+         ],
       },
    },
 };

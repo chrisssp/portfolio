@@ -49,7 +49,7 @@ export const projectIapex = {
       description:
          "Biometric system identifying unconscious patients in seconds, reducing emergency ID delays by over 90% compared to manual protocols.",
       fullDescription:
-         "A centralized platform bridging the gap between unidentified hospital patients and searching families using a Hybrid Information Fusion engine (Facial + Textual) to maximize identification accuracy under strict privacy protocols.",
+         "A centralized platform bridging the gap between unidentified hospital patients and searching families using a hybrid fusion of facial and textual signals to maximize identification accuracy under strict privacy protocols.",
       challenge: {
          description:
             "Hospitals rely on isolated, manual protocols to register 'John Does,' creating a critical data disconnect with families who search blindly in morgues and ERs.",
@@ -83,9 +83,9 @@ export const projectIapex = {
       title: "IAPEX (Encuéntrame)",
       subtitle: "Ecosistema híbrido de IA para identificación de pacientes",
       description:
-         "Sistema biométrico impulsado por IA que identifica pacientes inconscientes en segundos, reduciendo los retrasos en la identificación de emergencias en más del 90% frente a protocolos manuales.",
+         "Sistema biométrico que identifica pacientes inconscientes en segundos, reduciendo los retrasos en la identificación de emergencias en más del 90% frente a protocolos manuales.",
       fullDescription:
-         "Una plataforma centralizada que cierra la brecha entre los pacientes hospitalizados no identificados y las familias buscadoras utilizando un motor de fusión de información híbrida (facial + textual) para maximizar la precisión bajo estrictos protocolos de privacidad.",
+         "Una plataforma centralizada que cierra la brecha entre los pacientes hospitalizados no identificados y las familias buscadoras utilizando una fusión híbrida de señales faciales y textuales para maximizar la precisión bajo estrictos protocolos de privacidad.",
       challenge: {
          description:
             "Los hospitales dependen de protocolos manuales y aislados para registrar a personas desconocidas, creando una desconexión de datos crítica con las familias que buscan a ciegas en morgues y salas de emergencia.",

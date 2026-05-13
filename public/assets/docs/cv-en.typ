@@ -88,7 +88,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
       bottom-right: [Córdoba, Veracruz, Mexico],
     ),
     list-items: (
-      [Deployed #link("https://chrisssp.vercel.app/en/projects/flacks")[*Flack's Cut & Connect*], a complete digital ecosystem (Web & Mobile), automating 100% of appointments.],
+      [Deployed #link("https://chrisssp.vercel.app/en/projects/flacks-cc")[*Flack's Cut & Connect*], a complete digital ecosystem (Web & Mobile), automating 100% of appointments.],
       [Developed a REST API with Node.js and PostgreSQL to centralize inventory and sales.],
     )
   )

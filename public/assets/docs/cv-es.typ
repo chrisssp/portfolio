@@ -88,7 +88,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
       bottom-right: [Córdoba, Veracruz, México],
     ),
     list-items: (
-      [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks")[*Flack's Cut & Connect*], un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
+      [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
       [Desarrollé una API REST con Node.js y PostgreSQL para centralizar inventario y ventas.],
     )
   )
