@@ -12,11 +12,50 @@ export function proxy(request: NextRequest) {
          pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
    );
 
-   if (pathNameHasLocale) return NextResponse.next();
+   if (pathNameHasLocale) {
+      const langMatch = pathname.match(/^\/(es|en)(\/|$)/);
+      if (langMatch) {
+         const response = NextResponse.next();
+         response.cookies.set("NEXT_LOCALE", langMatch[1], {
+            maxAge: 365 * 24 * 60 * 60,
+            path: "/",
+         });
+         return response;
+      }
+      return NextResponse.next();
+   }
 
-   const url = new URL(`/${defaultLocale}${pathname}`, request.url);
+   // Redirigir desde "/" o rutas sin idioma
+   // Intentar leer cookie de preferencia previa
+   const preferredLang = request.cookies.get("NEXT_LOCALE")?.value;
 
-   return NextResponse.redirect(url);
+   if (preferredLang && locales.includes(preferredLang)) {
+      const url = new URL(`/${preferredLang}${pathname}`, request.url);
+      return NextResponse.redirect(url);
+   }
+
+   // Detectar del header Accept-Language
+   const acceptLanguage = request.headers.get("accept-language") || "";
+   const languages = acceptLanguage
+      .split(",")
+      .map((lang) => lang.split(";")[0].trim().toLowerCase());
+
+   let targetLang = defaultLocale;
+
+   if (languages.some((lang) => lang.startsWith("es"))) {
+      targetLang = "es";
+   } else if (languages.some((lang) => lang.startsWith("en"))) {
+      targetLang = "en";
+   }
+
+   const url = new URL(`/${targetLang}${pathname}`, request.url);
+   const response = NextResponse.redirect(url);
+   response.cookies.set("NEXT_LOCALE", targetLang, {
+      maxAge: 365 * 24 * 60 * 60,
+      path: "/",
+   });
+
+   return response;
 }
 
 export const config = {
