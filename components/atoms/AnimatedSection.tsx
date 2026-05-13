@@ -14,6 +14,7 @@ type AnimationVariant =
 interface AnimatedSectionProps {
    children: ReactNode;
    className?: string;
+   id?: string;
    /** Animation style. Default: "fade-up" */
    variant?: AnimationVariant;
    /** Delay before animation starts (ms). Useful for staggered sequences. */
@@ -26,7 +27,10 @@ interface AnimatedSectionProps {
    threshold?: number;
 }
 
-const variantStyles: Record<AnimationVariant, { hidden: string; visible: string }> = {
+const variantStyles: Record<
+   AnimationVariant,
+   { hidden: string; visible: string }
+> = {
    "fade-up": {
       hidden: "opacity-0 translate-y-8",
       visible: "opacity-100 translate-y-0",
@@ -66,6 +70,7 @@ const variantStyles: Record<AnimationVariant, { hidden: string; visible: string 
 export const AnimatedSection = ({
    children,
    className = "",
+   id,
    variant = "fade-up",
    delay = 0,
    duration = "duration-700",
@@ -78,6 +83,7 @@ export const AnimatedSection = ({
    return (
       <Tag
          ref={ref}
+         id={id}
          className={`transition-all ease-out motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:translate-x-0 motion-reduce:scale-100 ${duration} ${
             isVisible ? styles.visible : styles.hidden
          } ${className}`}

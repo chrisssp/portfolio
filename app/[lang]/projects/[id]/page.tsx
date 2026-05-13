@@ -38,6 +38,7 @@ export default async function ProjectPage({ params }: Props) {
    const { lang, id } = await params;
    const locale = lang as Locale;
    const dict = await getDictionary(locale);
+   const backHref = `/${lang}#project-${id}`;
 
    const project = dict.projects.items.find((p) => p.id === id);
 
@@ -47,7 +48,12 @@ export default async function ProjectPage({ params }: Props) {
 
    return (
       <div className="flex flex-col min-h-screen">
-         <Header dict={dict} lang={locale} showBack={true} />
+         <Header
+            dict={dict}
+            lang={locale}
+            showBack={true}
+            backHref={backHref}
+         />
 
          <main className="flex-1">
             <ProjectDetailHero project={project} />

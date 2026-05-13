@@ -26,9 +26,15 @@ type HeaderProps = {
    dict: Dictionary;
    lang: Locale;
    showBack?: boolean;
+   backHref?: string;
 };
 
-export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
+export const Header = ({
+   dict,
+   lang,
+   showBack = false,
+   backHref,
+}: HeaderProps) => {
    const { setTheme, resolvedTheme } = useTheme();
    const [mounted, setMounted] = useState(false);
    const [activeSection, setActiveSection] = useState<string>("");
@@ -136,11 +142,8 @@ export const Header = ({ dict, lang, showBack = false }: HeaderProps) => {
                   </Link>
 
                   {showBack && (
-                     <Link href={`/${lang}`}>
-                        <Button
-                           variant="outline"
-                           icon={<MdArrowBack />}
-                        >
+                     <Link href={backHref ?? `/${lang}`}>
+                        <Button variant="outline" icon={<MdArrowBack />}>
                            {dict.nav.goBack}
                         </Button>
                      </Link>

@@ -23,9 +23,19 @@ export const ProjectCard = ({
    reverse,
    lang,
 }: ProjectCardProps) => {
+   const handleViewDetails = () => {
+      if (typeof window === "undefined") return;
+      const basePath = `/${lang}`;
+      const hash = `#project-${project.id}`;
+      window.history.replaceState(null, "", `${basePath}${hash}`);
+   };
+
    const projectActions = (
       <>
-         <Link href={`/${lang}/projects/${project.id}`}>
+         <Link
+            href={`/${lang}/projects/${project.id}`}
+            onClick={handleViewDetails}
+         >
             <Button variant="primary" icon={<MdArrowForward />}>
                {actions.view_details}
             </Button>

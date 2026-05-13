@@ -21,6 +21,9 @@ export const TimelineItem = ({
 
    const handleProjectClick = () => {
       if (item.projectId) {
+         if (typeof window !== "undefined") {
+            window.location.hash = `project-${item.projectId}`;
+         }
          const event = new CustomEvent("switch-project-tab", {
             detail: { projectId: item.projectId },
          });

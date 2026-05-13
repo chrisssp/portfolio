@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { MdCode } from "react-icons/md";
 import type { Locale } from "@/i18n/config";
@@ -18,6 +18,7 @@ interface ProjectsProps {
 
 export const Projects = ({ dict, lang }: ProjectsProps) => {
    const [filter, setFilter] = useState<"featured" | "others">("featured");
+   const pendingProjectIdRef = useRef<string | null>(null);
 
    const filteredProjects = useMemo(() => {
       if (filter === "featured") {
@@ -26,21 +27,36 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       return dict.projects.items.filter((p) => !p.featured);
    }, [filter, dict.projects.items]);
 
+   const queueProjectScroll = useCallback(
+      (projectId: string) => {
+         pendingProjectIdRef.current = projectId;
+         const project = dict.projects.items.find((p) => p.id === projectId);
+         if (project) {
+            setFilter(project.featured ? "featured" : "others");
+         }
+      },
+      [dict.projects.items],
+   );
+
+   const scrollToProject = useCallback(
+      (projectId: string, behavior: ScrollBehavior) => {
+         const el = document.getElementById(`project-${projectId}`);
+         if (el) {
+            el.scrollIntoView({ behavior, block: "start" });
+            return true;
+         }
+         return false;
+      },
+      [],
+   );
+
    // Escuchar evento para cambiar de pestaña y hacer scroll
    useEffect(() => {
       const handleSwitch = (e: Event) => {
          const customEvent = e as CustomEvent<{ projectId: string }>;
          const { projectId } = customEvent.detail;
-         const project = dict.projects.items.find((p) => p.id === projectId);
-         if (project) {
-            setFilter(project.featured ? "featured" : "others");
-            // Esperar al re-render para que el ID exista en el DOM
-            setTimeout(() => {
-               const el = document.getElementById(`project-${projectId}`);
-               if (el) {
-                  el.scrollIntoView({ behavior: "smooth", block: "center" });
-               }
-            }, 100);
+         if (projectId) {
+            queueProjectScroll(projectId);
          }
       };
 
@@ -53,7 +69,48 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             "switch-project-tab",
             handleSwitch as EventListener,
          );
-   }, [dict.projects.items]);
+   }, [queueProjectScroll]);
+
+   // Detectar hash (navegacion nativa back/forward) y seleccionar el tab correcto
+   useEffect(() => {
+      if (typeof window === "undefined") return;
+
+      const handleHash = () => {
+         const hash = window.location.hash;
+         if (!hash) return;
+
+         if (hash.startsWith("#project-")) {
+            const projectId = hash.replace("#project-", "");
+            if (projectId) {
+               queueProjectScroll(projectId);
+            }
+         }
+      };
+
+      handleHash();
+      window.addEventListener("hashchange", handleHash);
+      return () => window.removeEventListener("hashchange", handleHash);
+   }, [queueProjectScroll]);
+
+   // Ejecutar el scroll cuando el filtro ya renderizo la lista correcta
+   useEffect(() => {
+      const projectId = pendingProjectIdRef.current;
+      if (!projectId) return;
+      if (filteredProjects.length === 0) return;
+
+      pendingProjectIdRef.current = null;
+
+      requestAnimationFrame(() => {
+         requestAnimationFrame(() => {
+            const didScroll = scrollToProject(projectId, "auto");
+            if (!didScroll) {
+               document
+                  .getElementById("projects")
+                  ?.scrollIntoView({ behavior: "auto", block: "start" });
+            }
+         });
+      });
+   }, [filteredProjects, scrollToProject]);
 
    const FilterPills = ({ className = "" }: { className?: string }) => (
       <div
@@ -128,17 +185,16 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                   variant="fade-up"
                   delay={index * 80}
                   threshold={0.05}
-                  className="scroll-mt-32"
+                  id={`project-${project.id}`}
+                  className="scroll-mt-header"
                   as="div"
                >
-                  <div id={`project-${project.id}`}>
-                     <ProjectCard
-                        project={project}
-                        actions={dict.projects.actions}
-                        reverse={index % 2 !== 0}
-                        lang={lang}
-                     />
-                  </div>
+                  <ProjectCard
+                     project={project}
+                     actions={dict.projects.actions}
+                     reverse={index % 2 !== 0}
+                     lang={lang}
+                  />
                </AnimatedSection>
             ))}
          </div>
