@@ -5,7 +5,7 @@ export const hero = {
          "Focused on building efficient web and mobile ecosystems. Knowledgeable in Linux environments, prioritizing scalability, clean code, and performance. Skilled in translating business requirements into maintainable architectures and process automation.",
       actions: {
          cv: "CV",
-         cvLink: "/assets/docs/CV_Christian_Serrano_Software_Engineer.pdf",
+         cvLink: "/assets/docs/cvs/CV_Christian_Serrano_Software_Engineer.pdf",
          email: "Email",
          emailMenu: {
             send: "Send email",
@@ -24,7 +24,8 @@ export const hero = {
          "Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles y automatización de procesos.",
       actions: {
          cv: "CV",
-         cvLink: "/assets/docs/CV_Christian_Serrano_Ingeniero_de_Software.pdf",
+         cvLink:
+            "/assets/docs/cvs/CV_Christian_Serrano_Ingeniero_de_Software.pdf",
          email: "Correo",
          emailMenu: {
             send: "Enviar correo",

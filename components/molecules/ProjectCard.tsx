@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
    MdArrowForward,
+   MdArticle,
    MdCode,
    MdPlayArrow,
    MdVisibility,
@@ -47,6 +48,8 @@ export const ProjectCard = ({
                   <MdPlayArrow />
                ) : link.type === "github" ? (
                   <MdCode />
+               ) : link.type === "paper" ? (
+                  <MdArticle />
                ) : (
                   <MdVisibility />
                );
@@ -55,7 +58,9 @@ export const ProjectCard = ({
                   ? actions.view_video
                   : link.type === "github"
                     ? actions.view_code
-                    : actions.view_demo;
+                    : link.type === "paper"
+                      ? actions.read_paper
+                      : actions.view_demo;
 
             return (
                <a

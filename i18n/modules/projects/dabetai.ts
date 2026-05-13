@@ -16,7 +16,13 @@ export const projectDabetai = {
          "mongodb",
          "python",
       ],
-      links: [{ type: "github", url: "https://github.com/dabetai-org" }],
+      links: [
+         { type: "github", url: "https://github.com/dabetai-org" },
+         {
+            type: "paper",
+            url: "/assets/docs/papers/Prevención-de-Riesgos-de-la-Diabetes-Mediante-una-Plataforma-Inteligente-de-Monitorización-y-Predicción-de-Complicaciones-con-Inteligencia-Artificial.pdf",
+         },
+      ],
       ecosystem: [
          /* {
             imagePath: "/assets/images/projects/dabetai/general.png",

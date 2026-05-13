@@ -15,6 +15,10 @@ export const projectIapex = {
       links: [
          { type: "github", url: "https://github.com/aescobar80/IAPEX_APP-WEB" },
          { type: "video", url: "https://youtu.be/WPlo9SK-dgw" },
+         {
+            type: "paper",
+            url: "https://virtual.cuautitlan.unam.mx/intar/wp-content/uploads/sites/19/2025/12/166-A-Hybrid-Artificial-Intelligent-System-for-Missing-JORGE-CHRISTIAN-SERRANO-PUERTOS.pdf",
+         },
       ],
       ecosystem: [
          {
