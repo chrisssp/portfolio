@@ -35,6 +35,7 @@ export interface EcosystemItem {
 export interface ProjectItem {
    id: string;
    featured?: boolean;
+   title: string;
    subtitle?: string;
    description: string;
    fullDescription?: string;
