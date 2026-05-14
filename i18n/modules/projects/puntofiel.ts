@@ -16,14 +16,15 @@ export const projectPuntoFiel = {
             type: "github",
             url: "https://github.com/chrisssp/puntofiel-mobileapp",
          },
+         { type: "video", url: "https://youtu.be/k2Ea1Mi4Ou8" },
       ],
       ecosystem: [
          {
             imagePath: "/assets/images/projects/puntofiel/general.png",
             techStack: ["reactnative", "expo", "tanstackquery", "zustand"],
             link: {
-               type: "github",
-               url: "https://github.com/chrisssp/puntofiel-mobileapp",
+               type: "video",
+               url: "https://youtu.be/k2Ea1Mi4Ou8",
             },
          },
          {
