@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import type { Dictionary } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
@@ -47,17 +47,17 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
             duration="duration-700"
             className="flex flex-wrap lg:flex-col items-center lg:items-stretch gap-3 xs:gap-4 w-full lg:w-fit lg:min-w-55"
          >
-            {/* Primary button: WhatsApp */}
+            {/* Primary button: LinkedIn */}
             <a
-               href={PROFESSIONAL_LINKS.whatsapp}
+               href={PROFESSIONAL_LINKS.linkedin}
                target="_blank"
                rel="noopener noreferrer"
                className="w-auto lg:w-full"
             >
                <Button
                   variant="primary"
-                  className="w-full px-5! xs:px-8! bg-[#25D366] hover:bg-[#20ba56] border-[#25D366] text-primary-contrast"
-                  icon={<FaWhatsapp className="size-5 text-primary-contrast" />}
+                  className="w-full px-5! xs:px-8! bg-[#0A66C2] hover:bg-[#084a8c] border-[#0A66C2] text-primary-contrast"
+                  icon={<FaLinkedin className="size-5 text-primary-contrast" />}
                >
                   {dict.cta.actions.talk}
                </Button>
