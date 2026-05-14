@@ -1,13 +1,13 @@
 export const cta = {
    en: {
-      title: "Ready to build something extraordinary?",
+      title: "Ready to Build Something Extraordinary?",
       description:
          "I'm currently available for full-time roles and challenging projects. Let's discuss how I can help your team scale.",
       projectDescription:
          "Interested in the impact of {project}? Let's talk about how I can bring similar technical excellence to your next big idea.",
       actions: {
-         talk: "Let's talk",
-         copy: "Copy email",
+         talk: "Let's Talk",
+         copy: "Copy Email",
       },
    },
    es: {

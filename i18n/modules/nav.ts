@@ -2,8 +2,8 @@ export const nav = {
    en: {
       experience: "Experience",
       projects: "Projects",
-      about: "About me",
-      goBack: "Go back",
+      about: "About Me",
+      goBack: "Go Back",
    },
    es: {
       experience: "Experiencia",
