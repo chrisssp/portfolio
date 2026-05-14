@@ -24,7 +24,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
   single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
   single-line-entry([*Data & Infrastructure:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
   single-line-entry([*Tools & OS:*], [Git, Linux, Figma], []),
-  single-line-entry([*Familiar with:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase], [])
+  single-line-entry([*Familiar with:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase, SQL Server], [])
 )
 
 == Professional Experience
@@ -124,7 +124,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
   ),
   (
     entry-header-args: (
-      top-left: [#link("https://chrisssp.vercel.app/en/projects/puntofiel")[*Punto Fiel*]],
+      top-left: [#link("https://chrisssp.vercel.app/en/projects/puntofiel")[*PuntoFiel*]],
       top-right: [],
       bottom-left: [_React Native, Expo, Supabase, TanStack Query, Zustand_],
       bottom-right: [],

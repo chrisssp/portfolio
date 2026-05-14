@@ -23,8 +23,8 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
   single-line-entry([*Frontend y móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS], []),
   single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
   single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
-  single-line-entry([*Herramientas y OS:*], [Git, Linux, Figma], []),
-  single-line-entry([*Familiarizado con:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase], [])
+  single-line-entry([*Herramientas y OS:*], [Git, Linux, Linux, Figma], []),
+  single-line-entry([*Familiarizado con:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase, SQL Server], [])
 )
 
 == Experiencia profesional
@@ -124,7 +124,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
   ),
   (
     entry-header-args: (
-      top-left: [#link("https://chrisssp.vercel.app/es/projects/puntofiel")[*Punto Fiel*]],
+      top-left: [#link("https://chrisssp.vercel.app/es/projects/puntofiel")[*PuntoFiel*]],
       top-right: [],
       bottom-left: [_React Native, Expo, Supabase, TanStack Query, Zustand_],
       bottom-right: [],
