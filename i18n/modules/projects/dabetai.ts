@@ -24,10 +24,6 @@ export const projectDabetai = {
          },
       ],
       ecosystem: [
-         /* {
-            imagePath: "/assets/images/projects/dabetai/general.png",
-            techStack: ["astro", "tailwindcss", "react"]
-         }, */
          {
             imagePath: "/assets/images/projects/dabetai/specific1.png",
             techStack: [
@@ -37,26 +33,36 @@ export const projectDabetai = {
                "scikitlearn",
                "xgboost",
             ],
-            link: {
-               type: "github",
-               url: "https://github.com/dabetai-org/dabetai-aiapi",
-            },
+            links: [
+               {
+                  type: "paper",
+                  url: "/assets/docs/papers/Prevención-de-Riesgos-de-la-Diabetes-Mediante-una-Plataforma-Inteligente-de-Monitorización-y-Predicción-de-Complicaciones-con-Inteligencia-Artificial.pdf",
+               },
+               {
+                  type: "github",
+                  url: "https://github.com/dabetai-org/dabetai-aimodels",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/dabetai/specific2.png",
             techStack: ["reactnative", "expo", "tailwindcss"],
-            link: {
-               type: "github",
-               url: "https://github.com/dabetai-org/dabetai-mobileapp",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/dabetai-org/dabetai-mobileapp",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/dabetai/specific3.png",
             techStack: ["angular", "tailwindcss"],
-            link: {
-               type: "github",
-               url: "https://github.com/dabetai-org/dabetai-webapp",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/dabetai-org/dabetai-webapp",
+               },
+            ],
          },
       ],
    },
@@ -85,19 +91,16 @@ export const projectDabetai = {
                title: "Complication Prediction Core (AI)",
                description:
                   "The system's heart. It processes user and sensor data to forecast the risk of specific complications: Retinopathy, Nephropathy, Neuropathy, and Diabetic Foot.",
-               link: { label: "Go to code" },
             },
             {
                title: "Mobile App (Patient Hub)",
                description:
                   "Acts as the central hub for the patient. Beyond standard logging (glucose/food), it syncs with wearables (CGMs) to extract biomarkers like heart rate and sleep quality in real-time.",
-               link: { label: "Go to code" },
             },
             {
                title: "Medical Portal (Oversight)",
                description:
                   "Allows physicians to link with patient accounts for remote supervision. It transforms raw daily data into clinical insights, enabling doctors to receive alerts and intervene remotely.",
-               link: { label: "Go to code" },
             },
          ],
       },
@@ -127,19 +130,16 @@ export const projectDabetai = {
                title: "Núcleo de predicción (IA)",
                description:
                   "El corazón del sistema. Procesa datos de usuarios y sensores para pronosticar el riesgo de complicaciones específicas: retinopatía, nefropatía, neuropatía y pie diabético.",
-               link: { label: "Ver código" },
             },
             {
                title: "App móvil (Patient Hub)",
                description:
                   "Actúa como el centro neurálgico para el paciente. Sincroniza con wearables para extraer biomarcadores como frecuencia cardíaca y calidad del sueño en tiempo real.",
-               link: { label: "Ver código" },
             },
             {
                title: "Portal médico (supervisión)",
                description:
                   "Permite a los médicos vincularse con pacientes para supervisión remota, transformando datos diarios en conocimientos clínicos y alertas tempranas.",
-               link: { label: "Ver código" },
             },
          ],
       },

@@ -22,15 +22,24 @@ export const projectAzkali = {
          {
             imagePath: "/assets/images/projects/azkali/specific1.png",
             techStack: ["react", "tailwindcss"],
-            link: { type: "demo", url: "https://azkali-landing.vercel.app/" },
+            links: [
+               { type: "demo", url: "https://azkali-landing.vercel.app/" },
+               { type: "github", url: "https://github.com/chrisssp/azkali" },
+            ],
          },
          {
             imagePath: "/assets/images/projects/azkali/specific2.png",
             techStack: ["reactnative", "expo", "tailwindcss", "gluestack"],
+            links: [
+               { type: "github", url: "https://github.com/chrisssp/azkali" },
+            ],
          },
          {
             imagePath: "/assets/images/projects/azkali/specific3.png",
             techStack: ["supabase", "postgresql", "gemini"],
+            links: [
+               { type: "github", url: "https://github.com/chrisssp/azkali" },
+            ],
          },
       ],
    },
@@ -53,7 +62,6 @@ export const projectAzkali = {
                title: "Product Landing Page",
                description:
                   "High-conversion landing page built with React. It serves as the primary touchpoint for users, explaining the behavioral AI engine and value proposition.",
-               link: { label: "Visit landing" },
             },
             {
                title: "AI Mobile Experience",
@@ -87,7 +95,6 @@ export const projectAzkali = {
                title: "Landing page del producto",
                description:
                   "Landing page de alta conversión construida con React. Sirve como el principal punto de contacto para los usuarios, explicando el motor de IA conductual y la propuesta de valor.",
-               link: { label: "Visitar landing" },
             },
             {
                title: "Experiencia móvil con IA",

@@ -42,7 +42,7 @@ export const project7dCompass = {
                   "Centralized dashboard for office staff to manage financial data, visualize predictive analytics, and oversee automated audit results with granular RBAC.",
             },
             {
-               title: "On-site Mobile App",
+               title: "On-Site Mobile App",
                description:
                   "Cross-platform mobile client for field workers to log real-time operational data, ensuring seamless data flow from the job site to the auditing engine.",
             },

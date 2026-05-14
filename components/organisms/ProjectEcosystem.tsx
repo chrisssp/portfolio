@@ -1,7 +1,13 @@
 "use client";
 
-import { MdCode, MdDescription } from "react-icons/md";
-import type { Dictionary } from "@/i18n/types";
+import {
+   MdCode,
+   MdDescription,
+   MdDesignServices,
+   MdPlayArrow,
+   MdRemoveRedEye,
+} from "react-icons/md";
+import type { Dictionary, ProjectLink } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
 import { Button } from "../atoms/Button";
 import { SectionContainer } from "../atoms/SectionContainer";
@@ -21,6 +27,22 @@ export const ProjectEcosystem = ({
 }: ProjectEcosystemProps) => {
    if (!project.ecosystem) return null;
 
+   const getActionLabel = (type: ProjectLink["type"]) => {
+      switch (type) {
+         case "paper":
+            return actions.read_paper;
+         case "github":
+            return actions.view_code;
+         case "figma":
+            return actions.view_design;
+         case "video":
+            return actions.view_video;
+         case "demo":
+         default:
+            return actions.view_demo;
+      }
+   };
+
    return (
       <SectionContainer
          className="bg-surface"
@@ -37,30 +59,38 @@ export const ProjectEcosystem = ({
          {/* Ecosystem items — each reveals on scroll with a stagger */}
          <div className="flex flex-col gap-16 lg:gap-30 w-full transition-all duration-500">
             {project.ecosystem.items.map((item, index) => {
-               const itemActions = item.link ? (
-                  <a
-                     href={item.link.url}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                  >
-                     <Button
-                        variant="outline"
-                        icon={
-                           item.link.type === "paper" ? (
-                              <MdDescription />
-                           ) : (
-                              <MdCode />
-                           )
-                        }
-                        className="w-fit"
-                     >
-                        {item.link.type === "paper"
-                           ? actions.read_paper
-                           : item.link.type === "github"
-                             ? actions.view_code
-                             : actions.view_demo}
-                     </Button>
-                  </a>
+               const resolvedLinks = item.links ?? [];
+               const itemActions = resolvedLinks.length ? (
+                  <div className="flex flex-wrap gap-3">
+                     {resolvedLinks.map((link) => (
+                        <a
+                           key={`${link.type}-${link.url}`}
+                           href={link.url}
+                           target="_blank"
+                           rel="noopener noreferrer"
+                        >
+                           <Button
+                              variant="outline"
+                              icon={
+                                 link.type === "paper" ? (
+                                    <MdDescription />
+                                 ) : link.type === "demo" ? (
+                                    <MdRemoveRedEye />
+                                 ) : link.type === "video" ? (
+                                    <MdPlayArrow />
+                                 ) : link.type === "figma" ? (
+                                    <MdDesignServices />
+                                 ) : (
+                                    <MdCode />
+                                 )
+                              }
+                              className="w-fit"
+                           >
+                              {getActionLabel(link.type)}
+                           </Button>
+                        </a>
+                     ))}
+                  </div>
                ) : undefined;
 
                return (

@@ -16,40 +16,48 @@ export const projectFlacks = {
          {
             imagePath: "/assets/images/projects/flacks-cc/specific1.png",
             techStack: ["angular", "bootstrap"],
-            link: {
-               type: "github",
-               url: "https://github.com/flacks-cc-org/FLACKS_WEB-APP",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/flacks-cc-org/FLACKS_WEB-APP",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/flacks-cc/specific2.png",
             techStack: ["angular", "ionic", "typescript"],
-            link: {
-               type: "github",
-               url: "https://github.com/flacks-cc-org/FLACKS_HYBRID-MOBILE-APP",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/flacks-cc-org/FLACKS_HYBRID-MOBILE-APP",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/flacks-cc/specific3.png",
             techStack: ["java", "android"],
-            link: {
-               type: "github",
-               url: "https://github.com/flacks-cc-org/FLACKS_NATIVE-MOBILE-APP",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/flacks-cc-org/FLACKS_NATIVE-MOBILE-APP",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/flacks-cc/specific4.png",
             techStack: ["java", "springboot", "postgresql"],
-            link: {
-               type: "github",
-               url: "https://github.com/flacks-cc-org/FLACKS_API-REST",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/flacks-cc-org/FLACKS_API-REST",
+               },
+            ],
          },
       ],
    },
    en: {
       title: "Flack's Cut & Connect",
-      subtitle: "Multiplatform booking and commerce ecosystem",
+      subtitle: "Multiplatform Booking and Commerce Ecosystem",
       description:
          "A complete booking-and-sales ecosystem for a barber shop, designed to reduce friction for clients and keep operations tidy.",
       fullDescription:
@@ -63,17 +71,17 @@ export const projectFlacks = {
       ecosystem: {
          items: [
             {
-               title: "Web app (Landing + Admin)",
+               title: "Web App (Landing + Admin)",
                description:
                   "Landing page plus an administrative panel to manage CRUD operations, appointment scheduling, and reservation management for the business.",
             },
             {
-               title: "Hybrid mobile app (PWA)",
+               title: "Hybrid Mobile App (PWA)",
                description:
                   "Customer-facing app to browse catalogs, reserve services/products, manage a cart, authenticate (email or Google), post reviews, and track history.",
             },
             {
-               title: "Native mobile app (Android)",
+               title: "Native Mobile App (Android)",
                description:
                   "Native Android build mirroring the hybrid app features for better device integration and performance.",
             },

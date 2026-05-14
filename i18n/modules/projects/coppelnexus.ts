@@ -22,32 +22,38 @@ export const projectCoppelNexus = {
          {
             imagePath: "/assets/images/projects/coppel-nexus/specific1.png",
             techStack: ["reactnative", "expo", "tailwindcss"],
-            link: {
-               type: "github",
-               url: "https://github.com/karl262/CoppelNexus-MobileApp",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/karl262/CoppelNexus-MobileApp",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/coppel-nexus/specific2.png",
             techStack: ["react", "tailwindcss"],
-            link: {
-               type: "github",
-               url: "https://github.com/chrisssp/coppel-nexus-web",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/chrisssp/coppel-nexus-web",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/coppel-nexus/specific3.png",
             techStack: ["mongodb", "firebase", "express"],
-            link: {
-               type: "github",
-               url: "https://github.com/VivianaVM07/apiCoppelNexus",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/VivianaVM07/apiCoppelNexus",
+               },
+            ],
          },
       ],
    },
    en: {
       title: "Coppel Nexus",
-      subtitle: "Referral ecosystem for field acquisition teams",
+      subtitle: "Referral Ecosystem for Field Acquisition Teams",
       description:
          "Referral ecosystem for Coppel that makes field onboarding of micro-businesses faster and easier.",
       fullDescription:
@@ -61,22 +67,19 @@ export const projectCoppelNexus = {
       ecosystem: {
          items: [
             {
-               title: "Mobile app (field collaborators)",
+               title: "Mobile App (Field Collaborators)",
                description:
                   "React Native + Expo app for collection collaborators to visit micro-businesses and refer them to Coppel Emprende.",
-               link: { label: "View code" },
             },
             {
-               title: "Web app (admin and tracking)",
+               title: "Web App (Admin and Tracking)",
                description:
                   "Web platform to register micro-businesses, track course progress, and manage collaborator routes and workload.",
-               link: { label: "View code" },
             },
             {
                title: "Backend API",
                description:
                   "MongoDB + Firebase backend with Express for user, referral, and progress tracking.",
-               link: { label: "View code" },
             },
          ],
       },
@@ -100,19 +103,16 @@ export const projectCoppelNexus = {
                title: "App móvil (colaboradores en campo)",
                description:
                   "App en React Native + Expo para colaboradores de cobranza que visitan microempresas y generan referidos a Coppel Emprende.",
-               link: { label: "Ver código" },
             },
             {
                title: "App web (administración y seguimiento)",
                description:
                   "Plataforma web para registrar microempresas, dar seguimiento a cursos y gestionar rutas de trabajo.",
-               link: { label: "Ver código" },
             },
             {
                title: "Backend API",
                description:
                   "Backend en MongoDB + Firebase con Express para usuarios, referidos y progreso.",
-               link: { label: "Ver código" },
             },
          ],
       },

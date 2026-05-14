@@ -11,24 +11,28 @@ export const projectMtrpa = {
          {
             imagePath: "/assets/images/projects/mtrpa/specific1.png",
             techStack: ["angular", "bootstrap"],
-            link: {
-               type: "github",
-               url: "https://github.com/chrisssp/MTRPA_APP-WEB",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/chrisssp/MTRPA_APP-WEB",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/mtrpa/specific2.png",
             techStack: ["mongodb", "springboot", "java"],
-            link: {
-               type: "github",
-               url: "https://github.com/chrisssp/MTRPA_API-REST",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/chrisssp/MTRPA_API-REST",
+               },
+            ],
          },
       ],
    },
    en: {
       title: "Master Template Rutas Power App (PepsiCo)",
-      subtitle: "Logistics operations centralization platform",
+      subtitle: "Logistics Operations Centralization Platform",
       description:
          "Centralized operations hub for PepsiCo's supply chain, replacing fragmented Excel workflows and manual follow-ups.",
       fullDescription:
@@ -42,16 +46,14 @@ export const projectMtrpa = {
       ecosystem: {
          items: [
             {
-               title: "Web app (operations hub)",
+               title: "Web App (Operations Hub)",
                description:
                   "Angular + Bootstrap interface that centralizes logistics routes, approvals, and reporting for multiple roles.",
-               link: { label: "View code" },
             },
             {
                title: "Backend API",
                description:
                   "Spring Boot + MongoDB backend providing validation, auditing, and secure data access for all workflows.",
-               link: { label: "View code" },
             },
          ],
       },
@@ -75,13 +77,11 @@ export const projectMtrpa = {
                title: "App web (hub operativo)",
                description:
                   "Interfaz Angular + Bootstrap que centraliza rutas, aprobaciones y reportes para múltiples roles.",
-               link: { label: "Ver código" },
             },
             {
                title: "Backend API",
                description:
                   "Backend Spring Boot + MongoDB con validaciones, auditoría y acceso seguro para los flujos críticos.",
-               link: { label: "Ver código" },
             },
          ],
       },

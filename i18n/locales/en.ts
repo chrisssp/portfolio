@@ -35,7 +35,7 @@ export const en: Dictionary = {
       title: "Projects",
       subtitle: "Want to see more? Check my GitHub",
       sections: {
-         challenge: "The challenge",
+         challenge: "The Challenge",
          challengeTitle: "Challenge",
          solutionTitle: "Solution",
          ecosystem: "Ecosystem",
@@ -55,13 +55,7 @@ export const en: Dictionary = {
                        return {
                           ...dataItem,
                           ...item,
-                          link:
-                             item.link || dataItem.link
-                                ? {
-                                     ...dataItem.link,
-                                     ...item.link,
-                                  }
-                                : undefined,
+                          links: dataItem.links ?? [],
                        };
                     }),
                  }
@@ -69,15 +63,15 @@ export const en: Dictionary = {
          };
       }) as ProjectItem[],
       actions: {
-         view_code: "Go to code",
-         view_demo: "See in action",
-         view_design: "View details",
-         view_video: "Watch demo",
-         view_details: "View details",
-         read_paper: "Read paper",
+         view_code: "Go to Code",
+         view_demo: "See in Action",
+         view_design: "View Details",
+         view_video: "Watch Demo",
+         view_details: "View Details",
+         read_paper: "Read Paper",
          tab_featured: "Featured",
          tab_all: "Others",
-         see_more: "See more projects",
+         see_more: "See More Projects",
       },
    },
    cta: cta.en,

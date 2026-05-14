@@ -22,10 +22,12 @@ export const projectPuntoFiel = {
          {
             imagePath: "/assets/images/projects/puntofiel/general.png",
             techStack: ["reactnative", "expo", "tanstackquery", "zustand"],
-            link: {
-               type: "video",
-               url: "https://youtu.be/k2Ea1Mi4Ou8",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/chrisssp/puntofiel-mobileapp",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/puntofiel/specific2.png",
@@ -35,7 +37,7 @@ export const projectPuntoFiel = {
    },
    en: {
       title: "PuntoFiel",
-      subtitle: "Role-based loyalty platform for local businesses",
+      subtitle: "Role-Based Loyalty Platform for Local Businesses",
       description:
          "Role-based loyalty app that connects customers, owners, and staff with a simple, transparent rewards flow.",
       fullDescription:
@@ -49,10 +51,9 @@ export const projectPuntoFiel = {
       ecosystem: {
          items: [
             {
-               title: "Mobile app (customers, owners, employees)",
+               title: "Mobile App (Customers, Owners, Employees)",
                description:
                   "Role-based app where customers find affiliated businesses, earn points with QR scans, and redeem rewards, while owners manage staff, products, rewards, raffles, and promotions with an audit section.",
-               link: { label: "View code" },
             },
             {
                title: "Backend (Supabase + PostgreSQL)",
@@ -81,7 +82,6 @@ export const projectPuntoFiel = {
                title: "App móvil (clientes, dueños, empleados)",
                description:
                   "App por roles donde los clientes encuentran negocios afiliados, ganan puntos con QR y canjean recompensas, mientras los dueños gestionan empleados, productos, recompensas, rifas, promociones y auditoría.",
-               link: { label: "Ver código" },
             },
             {
                title: "Backend (Supabase + PostgreSQL)",

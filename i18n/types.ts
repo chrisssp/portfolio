@@ -1,7 +1,7 @@
 // src/i18n/types.ts
 
 // --------------------------------------------------------
-// 1. Interfaces Auxiliares
+// 1. Interfaces auxiliares
 // --------------------------------------------------------
 
 export interface ExperienceItem {
@@ -10,7 +10,7 @@ export interface ExperienceItem {
    location: string;
    remote?: string;
    product?: string;
-   projectId?: string; // ID del proyecto para scroll
+   projectId?: string;
    date: string;
    description: string;
    link?: {
@@ -29,26 +29,19 @@ export interface EcosystemItem {
    description: string;
    imagePath: string;
    techStack: string[];
-   link?: {
-      type: "paper" | "github" | "demo";
-      url: string;
-      label: string;
-   };
+   links?: ProjectLink[];
 }
 
 export interface ProjectItem {
-   id: string; // Slug para la URL
-   featured?: boolean; // Si aparece en la vista destacada
-   title: string;
-   subtitle?: string; // Título largo en la página de detalle
-   description: string; // Resumen para la card
-   fullDescription?: string; // Descripción larga para el detalle
-   imagePath: string; // Imagen para la card (general.png)
-   heroImagePath?: string; // Imagen para el hero del detalle (hero.png)
+   id: string;
+   featured?: boolean;
+   subtitle?: string;
+   description: string;
+   fullDescription?: string;
+   imagePath: string;
+   heroImagePath?: string;
    techStack: string[];
    links: ProjectLink[];
-
-   // Campos específicos para el detalle
    challenge?: {
       description: string;
       solution: string;
@@ -76,11 +69,7 @@ export interface ProjectModule {
       ecosystem?: {
          imagePath: string;
          techStack: string[];
-         link?: {
-            type: string;
-            url: string;
-            label?: string;
-         };
+         links?: ProjectLink[];
       }[];
    };
    en: {
@@ -96,9 +85,6 @@ export interface ProjectModule {
          items: {
             title: string;
             description: string;
-            link?: {
-               label: string;
-            };
          }[];
       };
    };
@@ -115,16 +101,13 @@ export interface ProjectModule {
          items: {
             title: string;
             description: string;
-            link?: {
-               label: string;
-            };
          }[];
       };
    };
 }
 
 // --------------------------------------------------------
-// 2. Interfaz Principal del Diccionario
+// 2. Interfaz principal del diccionario
 // --------------------------------------------------------
 
 export interface Dictionary {

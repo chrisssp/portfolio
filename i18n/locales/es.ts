@@ -55,13 +55,7 @@ export const es: Dictionary = {
                        return {
                           ...dataItem,
                           ...item,
-                          link:
-                             item.link || dataItem.link
-                                ? {
-                                     ...dataItem.link,
-                                     ...item.link,
-                                  }
-                                : undefined,
+                          links: dataItem.links ?? [],
                        };
                     }),
                  }

@@ -24,26 +24,36 @@ export const projectIapex = {
          {
             imagePath: "/assets/images/projects/iapex/specific1.png",
             techStack: ["django", "postgresql", "scikitlearn", "python"],
-            link: {
-               type: "github",
-               url: "https://github.com/aescobar80/API-REST-IAPEX",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/aescobar80/API-REST-IAPEX",
+               },
+               {
+                  type: "paper",
+                  url: "https://virtual.cuautitlan.unam.mx/intar/wp-content/uploads/sites/19/2025/12/166-A-Hybrid-Artificial-Intelligent-System-for-Missing-JORGE-CHRISTIAN-SERRANO-PUERTOS.pdf",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/iapex/specific2.png",
             techStack: ["angular", "ionic", "tailwindcss"],
-            link: {
-               type: "github",
-               url: "https://github.com/aescobar80/IAPEX-MOBILE-APP",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/aescobar80/IAPEX-MOBILE-APP",
+               },
+            ],
          },
          {
             imagePath: "/assets/images/projects/iapex/specific3.png",
             techStack: ["angular", "bootstrap", "springboot"],
-            link: {
-               type: "github",
-               url: "https://github.com/aescobar80/IAPEX_APP-WEB",
-            },
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/aescobar80/IAPEX_APP-WEB",
+               },
+            ],
          },
       ],
    },
@@ -66,19 +76,16 @@ export const projectIapex = {
                title: "Neural Core",
                description:
                   "The heart of IAPEX. Fuses FaceNet embeddings (Euclidean distance) with text filters to rank candidates, significantly reducing false positives compared to standard recognition.",
-               link: { label: "Go to code" },
             },
             {
                title: "The Mobile Client (Family Side)",
                description:
                   "Secure interface for families to input descriptions. It displays potential matches based on similarity scores, protecting patient privacy until verification.",
-               link: { label: "Go to code" },
             },
             {
                title: "The Web Portal (Institutional Side)",
                description:
                   "Secure web portal for medical staff to register patients using morphological traits and photographs under strict RBAC (Role-Based Access Control).",
-               link: { label: "Go to code" },
             },
          ],
       },
@@ -102,19 +109,16 @@ export const projectIapex = {
                title: "Núcleo neural",
                description:
                   "El corazón de IAPEX. Fusiona embeddings de FaceNet (distancia euclidiana) con filtros de texto para clasificar candidatos, reduciendo significativamente los falsos positivos comparado con el reconocimiento estándar.",
-               link: { label: "Ver código" },
             },
             {
                title: "Cliente móvil",
                description:
                   "Interfaz segura para que las familias ingresen descripciones y visualicen posibles coincidencias basadas en puntajes de similitud, protegiendo la privacidad hasta la verificación.",
-               link: { label: "Ver código" },
             },
             {
                title: "Portal web institucional",
                description:
                   "Portal web seguro para que el personal médico registre pacientes utilizando rasgos morfológicos y fotografías bajo un estricto control de acceso basado en roles (RBAC).",
-               link: { label: "Ver código" },
             },
          ],
       },
