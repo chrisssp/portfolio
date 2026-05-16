@@ -17,6 +17,7 @@ export const projectDabetai = {
          "python",
       ],
       links: [
+         { type: "demo", url: "https://dabetai.netlify.app/" },
          { type: "github", url: "https://github.com/dabetai-org" },
          {
             type: "paper",
@@ -26,6 +27,20 @@ export const projectDabetai = {
       ecosystem: [
          {
             imagePath: "/assets/images/projects/dabetai/specific1.png",
+            techStack: ["astro", "tailwindcss"],
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/dabetai-org/dabetai-landing",
+               },
+               {
+                  type: "demo",
+                  url: "https://dabetai.netlify.app/",
+               },
+            ],
+         },
+         {
+            imagePath: "/assets/images/projects/dabetai/specific2.png",
             techStack: [
                "fastapi",
                "mongodb",
@@ -45,7 +60,7 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific2.png",
+            imagePath: "/assets/images/projects/dabetai/specific3.png",
             techStack: ["reactnative", "expo", "tailwindcss"],
             links: [
                {
@@ -55,12 +70,32 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific3.png",
+            imagePath: "/assets/images/projects/dabetai/specific4.png",
             techStack: ["angular", "tailwindcss"],
             links: [
                {
                   type: "github",
                   url: "https://github.com/dabetai-org/dabetai-webapp",
+               },
+            ],
+         },
+         {
+            imagePath: "/assets/images/projects/dabetai/specific5.png",
+            techStack: ["nestjs", "postgresql"],
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/dabetai-org/dabetai-api",
+               },
+            ],
+         },
+         {
+            imagePath: "/assets/images/projects/dabetai/specific6.png",
+            techStack: ["fastapi", "python", "mongodb"],
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/dabetai-org/dabetai-aiapi",
                },
             ],
          },
@@ -82,11 +117,11 @@ export const projectDabetai = {
       },
       ecosystem: {
          items: [
-            /* {
-               title: "Product Landing Page",
-               description: "Educational and marketing landing page focused on explaining the preventive ecosystem and hardware integration with wearables.",
-               link: { label: "Visit landing" }
-            }, */
+            {
+               title: "Landing Page",
+               description:
+                  "Educational and marketing landing page that presents the preventive ecosystem, highlighting how wearables and AI integrate to deliver real-time diabetes risk prevention.",
+            },
             {
                title: "Complication Prediction Core (AI)",
                description:
@@ -101,6 +136,16 @@ export const projectDabetai = {
                title: "Medical Portal (Oversight)",
                description:
                   "Allows physicians to link with patient accounts for remote supervision. It transforms raw daily data into clinical insights, enabling doctors to receive alerts and intervene remotely.",
+            },
+            {
+               title: "RESTful API",
+               description:
+                  "Core backend API powering the ecosystem, handling authentication, patient management, clinical data integration, and secure communication between all components.",
+            },
+            {
+               title: "AI Inference API",
+               description:
+                  "Dedicated API for AI model inference, processing real-time biometric data to deliver risk predictions for diabetes complications through optimized endpoints.",
             },
          ],
       },
@@ -121,11 +166,11 @@ export const projectDabetai = {
       },
       ecosystem: {
          items: [
-            /* {
-               title: "Landing page del producto",
-               description: "Landing page educativa y de marketing enfocada en explicar el ecosistema preventivo y la integración de hardware con wearables.",
-               link: { label: "Visitar landing" }
-            }, */
+            {
+               title: "Landing Page",
+               description:
+                  "Landing Page educativa y de marketing que presenta el ecosistema preventivo, destacando cómo los wearables y la IA se integran para la prevención de riesgos de la diabetes en tiempo real.",
+            },
             {
                title: "Núcleo de predicción (IA)",
                description:
@@ -140,6 +185,16 @@ export const projectDabetai = {
                title: "Portal médico (supervisión)",
                description:
                   "Permite a los médicos vincularse con pacientes para supervisión remota, transformando datos diarios en conocimientos clínicos y alertas tempranas.",
+            },
+            {
+               title: "API RESTful",
+               description:
+                  "API backend central que impulsa el ecosistema, manejando autenticación, gestión de pacientes, integración de datos clínicos y comunicación segura entre todos los componentes.",
+            },
+            {
+               title: "API de inferencia (IA)",
+               description:
+                  "API dedicada para la inferencia de modelos de IA, procesando datos biométricos en tiempo real para entregar predicciones de riesgo de complicaciones de la diabetes mediante endpoints optimizados.",
             },
          ],
       },
