@@ -58,6 +58,8 @@
 
 html {
    scroll-behavior: smooth;
+   overflow-x: clip;
+   background-color: var(--bg-page);
 }
 
 body {
@@ -139,4 +141,3 @@ body {
 }
 
 /* SpotlightCard removed — replaced by global GridMouseTracker effect */
-

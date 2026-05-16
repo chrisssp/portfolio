@@ -59,7 +59,7 @@ export default async function Home({ params }: Props) {
    };
 
    return (
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen overflow-x-clip">
          <script
             type="application/ld+json"
             // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD is safe here
