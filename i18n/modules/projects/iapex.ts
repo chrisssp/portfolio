@@ -6,6 +6,7 @@ export const projectIapex = {
       heroImagePath: "/assets/images/projects/iapex/hero.png",
       techStack: [
          "angular",
+         "react",
          "ionic",
          "springboot",
          "django",
@@ -13,7 +14,7 @@ export const projectIapex = {
          "python",
       ],
       links: [
-         { type: "github", url: "https://github.com/aescobar80/IAPEX_APP-WEB" },
+         { type: "github", url: "https://github.com/iapex-org" },
          { type: "video", url: "https://youtu.be/WPlo9SK-dgw" },
          {
             type: "paper",
@@ -27,7 +28,7 @@ export const projectIapex = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/aescobar80/API-REST-IAPEX",
+                  url: "https://github.com/iapex-org/core-api",
                },
                {
                   type: "paper",
@@ -37,11 +38,11 @@ export const projectIapex = {
          },
          {
             imagePath: "/assets/images/projects/iapex/specific2.png",
-            techStack: ["angular", "ionic", "tailwindcss"],
+            techStack: ["react", "ionic", "tailwindcss"],
             links: [
                {
                   type: "github",
-                  url: "https://github.com/aescobar80/IAPEX-MOBILE-APP",
+                  url: "https://github.com/iapex-org/mobile-app",
                },
             ],
          },
@@ -51,7 +52,7 @@ export const projectIapex = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/aescobar80/IAPEX_APP-WEB",
+                  url: "https://github.com/iapex-org/web-app",
                },
             ],
          },
