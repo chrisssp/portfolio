@@ -7,6 +7,10 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
+<p align="center">
+  <a href="README.md">🇬🇧 English</a> · <a href="README.es.md">🇪🇸 Español</a>
+</p>
+
 High-performance, multi-language professional portfolio built with a focus on clean architecture, accessibility, and modern user experience.
 
 **Live Demo:** [chrisssp.vercel.app](https://chrisssp.vercel.app)
@@ -65,9 +69,13 @@ High-performance, multi-language professional portfolio built with a focus on cl
 
 ---
 
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming, commit conventions, and PR workflow.
+
 ## License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 > **Note:** All personal images, project descriptions, and brand assets are intellectual property of Christian Serrano. Feel free to use the code for learning purposes, but please do not replicate the personal content.
 
@@ -76,3 +84,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 <p align="center">
     0 errors, 14 warnings, 100% by Christian Serrano 🤓👆
 </p>
+
+## Acknowledgments
+
+**Authors:**
+
+- [@chrisssp](https://github.com/chrisssp) — Christian Serrano
