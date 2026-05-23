@@ -19,7 +19,7 @@ export const projectFlacks = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/flacks-cc/FLACKS_WEB-APP",
+                  url: "https://github.com/flacks-cc/web-app",
                },
             ],
          },
