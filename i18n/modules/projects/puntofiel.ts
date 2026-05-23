@@ -14,7 +14,7 @@ export const projectPuntoFiel = {
       links: [
          {
             type: "github",
-            url: "https://github.com/chrisssp/puntofiel-mobileapp",
+            url: "https://github.com/chrisssp/puntofiel-mobile-app",
          },
          { type: "video", url: "https://youtu.be/k2Ea1Mi4Ou8" },
       ],
@@ -25,7 +25,7 @@ export const projectPuntoFiel = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/chrisssp/puntofiel-mobileapp",
+                  url: "https://github.com/chrisssp/puntofiel-mobile-app",
                },
             ],
          },

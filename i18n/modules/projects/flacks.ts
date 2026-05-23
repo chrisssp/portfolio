@@ -11,7 +11,7 @@ export const projectFlacks = {
          "springboot",
          "postgresql",
       ],
-      links: [{ type: "github", url: "https://github.com/flacks-cc-org" }],
+      links: [{ type: "github", url: "https://github.com/flacks-cc" }],
       ecosystem: [
          {
             imagePath: "/assets/images/projects/flacks-cc/specific1.png",
@@ -19,7 +19,7 @@ export const projectFlacks = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/flacks-cc-org/FLACKS_WEB-APP",
+                  url: "https://github.com/flacks-cc/FLACKS_WEB-APP",
                },
             ],
          },
@@ -29,7 +29,7 @@ export const projectFlacks = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/flacks-cc-org/FLACKS_HYBRID-MOBILE-APP",
+                  url: "https://github.com/flacks-cc/mobile-app",
                },
             ],
          },
@@ -39,7 +39,7 @@ export const projectFlacks = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/flacks-cc-org/FLACKS_NATIVE-MOBILE-APP",
+                  url: "https://github.com/flacks-cc/mobile-app-android",
                },
             ],
          },
@@ -49,7 +49,7 @@ export const projectFlacks = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/flacks-cc-org/FLACKS_API-REST",
+                  url: "https://github.com/flacks-cc/api",
                },
             ],
          },

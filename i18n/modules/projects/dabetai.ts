@@ -31,7 +31,7 @@ export const projectDabetai = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/dabetai-org/dabetai-landing",
+                  url: "https://github.com/dabetai-org/landing",
                },
                {
                   type: "demo",
@@ -55,7 +55,7 @@ export const projectDabetai = {
                },
                {
                   type: "github",
-                  url: "https://github.com/dabetai-org/dabetai-aimodels",
+                  url: "https://github.com/dabetai-org/ai-models",
                },
             ],
          },
@@ -65,7 +65,7 @@ export const projectDabetai = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/dabetai-org/dabetai-mobileapp",
+                  url: "https://github.com/dabetai-org/mobile-app",
                },
             ],
          },
@@ -75,7 +75,7 @@ export const projectDabetai = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/dabetai-org/dabetai-webapp",
+                  url: "https://github.com/dabetai-org/web-app",
                },
             ],
          },
@@ -85,7 +85,7 @@ export const projectDabetai = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/dabetai-org/dabetai-api",
+                  url: "https://github.com/dabetai-org/api",
                },
             ],
          },
@@ -95,7 +95,7 @@ export const projectDabetai = {
             links: [
                {
                   type: "github",
-                  url: "https://github.com/dabetai-org/dabetai-aiapi",
+                  url: "https://github.com/dabetai-org/ai-api",
                },
             ],
          },
