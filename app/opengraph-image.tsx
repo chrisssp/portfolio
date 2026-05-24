@@ -14,7 +14,7 @@ export default async function Image() {
       ),
    ).then((res) => res.arrayBuffer());
 
-   const profileImageUrl = `https://chrisssp.vercel.app/assets/images/profile/me.png`;
+   const profileImageUrl = `https://chrisssp.vercel.app/assets/images/profile/me.webp`;
 
    return new ImageResponse(
       <div

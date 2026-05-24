@@ -2,21 +2,21 @@ export const project7dCompass = {
    data: {
       id: "7dcompass",
       featured: true,
-      imagePath: "/assets/images/projects/7dcompass/general.png",
-      heroImagePath: "/assets/images/projects/7dcompass/hero.png",
+      imagePath: "/assets/images/projects/7dcompass/general.webp",
+      heroImagePath: "/assets/images/projects/7dcompass/hero.webp",
       techStack: ["angular", "nodejs", "postgresql", "typescript", "ionic"],
       links: [{ type: "demo", url: "https://7d-compass.com/" }],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/7dcompass/specific1.png",
+            imagePath: "/assets/images/projects/7dcompass/specific1.webp",
             techStack: ["angular", "tailwindcss", "typescript"],
          },
          {
-            imagePath: "/assets/images/projects/7dcompass/specific2.png",
+            imagePath: "/assets/images/projects/7dcompass/specific2.webp",
             techStack: ["angular", "ionic", "capacitor"],
          },
          {
-            imagePath: "/assets/images/projects/7dcompass/specific3.png",
+            imagePath: "/assets/images/projects/7dcompass/specific3.webp",
             techStack: ["nodejs", "postgresql", "express"],
          },
       ],

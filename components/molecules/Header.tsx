@@ -50,36 +50,43 @@ export const Header = ({
    }, []);
 
    useEffect(() => {
-      const handleScroll = () => {
-         const currentScrollY = window.scrollY;
+      if (showBack) return;
 
-         if (!showBack) {
-            const sections = ["experience", "projects", "about"];
-            const current = sections.find((section) => {
-               const element = document.getElementById(section);
-               if (element) {
-                  const rect = element.getBoundingClientRect();
-                  return rect.top <= 150 && rect.bottom >= 150;
+      const sections = ["experience", "projects", "about"];
+      const io = new IntersectionObserver(
+         (entries) => {
+            for (const entry of entries) {
+               if (entry.isIntersecting) {
+                  setActiveSection(entry.target.id);
                }
-               return false;
-            });
-            setActiveSection(current || "");
-         }
-
-         if (!mobileMenuOpen) {
-            if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-               setVisible(false);
-            } else {
-               setVisible(true);
             }
-         }
+         },
+         { rootMargin: "-150px 0px -70% 0px" },
+      );
 
+      for (const id of sections) {
+         const el = document.getElementById(id);
+         if (el) io.observe(el);
+      }
+
+      return () => io.disconnect();
+   }, [showBack]);
+
+   useEffect(() => {
+      const handleScroll = () => {
+         if (mobileMenuOpen) return;
+         const currentScrollY = window.scrollY;
+         if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+            setVisible(false);
+         } else {
+            setVisible(true);
+         }
          lastScrollY.current = currentScrollY;
       };
 
       window.addEventListener("scroll", handleScroll, { passive: true });
       return () => window.removeEventListener("scroll", handleScroll);
-   }, [showBack, mobileMenuOpen]);
+   }, [mobileMenuOpen]);
 
    useEffect(() => {
       if (mobileMenuOpen) {
@@ -124,21 +131,21 @@ export const Header = ({
                      className="relative h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0"
                   >
                      {/* Logo para modo claro */}
-                     <Image
-                        src="/assets/images/profile/isotipo-white-nobg-center.png"
-                        alt="Logo"
-                        fill
-                        className="object-contain logo-light"
-                        priority
-                     />
-                     {/* Logo para modo oscuro */}
-                     <Image
-                        src="/assets/images/profile/isotipo-black-nobg-center.png"
-                        alt="Logo"
-                        fill
-                        className="object-contain logo-dark"
-                        priority
-                     />
+                      <Image
+                         src="/assets/images/profile/isotipo-white-nobg-center.webp"
+                         alt="Logo"
+                         fill
+                         className="object-contain logo-light"
+                         priority
+                      />
+                      {/* Logo para modo oscuro */}
+                      <Image
+                         src="/assets/images/profile/isotipo-black-nobg-center.webp"
+                         alt="Logo"
+                         fill
+                         className="object-contain logo-dark"
+                         priority
+                      />
                   </Link>
 
                   {showBack && (
@@ -220,19 +227,20 @@ export const Header = ({
                <div className="flex justify-between items-center p-4 sm:p-5 border-b border-subtle bg-page">
                   <div className="flex items-center gap-3 sm:gap-4">
                      <div className="relative h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12">
-                        <Image
-                           src="/assets/images/profile/isotipo-white-nobg.png"
-                           alt="Logo"
-                           fill
-                           className="object-contain logo-light"
-                        />
-                        <Image
-                           src="/assets/images/profile/isotipo-black-nobg.png"
-                           alt="Logo"
-                           fill
-                           className="object-contain logo-dark"
-                        />
-                     </div>
+                      <Image
+                         src="/assets/images/profile/isotipo-white-nobg.webp"
+                         alt="Logo"
+                         fill
+                         className="object-contain logo-light"
+                      />
+                      {/* Logo para modo oscuro */}
+                      <Image
+                         src="/assets/images/profile/isotipo-black-nobg.webp"
+                         alt="Logo"
+                         fill
+                         className="object-contain logo-dark"
+                       />
+                      </div>
                      <div className="flex flex-col text-left">
                         <span className="text-base sm:text-lg font-bold text-body">
                            Christian Serrano

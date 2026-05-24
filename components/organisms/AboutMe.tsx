@@ -10,8 +10,8 @@ interface AboutMeProps {
 }
 
 export const AboutMe = ({ dict }: AboutMeProps) => {
-   const img1 = "/assets/images/about/midudev.jpg";
-   const img2 = "/assets/images/about/mouredev.jpg";
+   const img1 = "/assets/images/about/midudev.webp";
+   const img2 = "/assets/images/about/mouredev.webp";
 
    return (
       <SectionContainer

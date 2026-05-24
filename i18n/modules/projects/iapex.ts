@@ -2,8 +2,8 @@ export const projectIapex = {
    data: {
       id: "iapex",
       featured: true,
-      imagePath: "/assets/images/projects/iapex/general.png",
-      heroImagePath: "/assets/images/projects/iapex/hero.png",
+      imagePath: "/assets/images/projects/iapex/general.webp",
+      heroImagePath: "/assets/images/projects/iapex/hero.webp",
       techStack: [
          "angular",
          "react",
@@ -23,7 +23,7 @@ export const projectIapex = {
       ],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/iapex/specific1.png",
+            imagePath: "/assets/images/projects/iapex/specific1.webp",
             techStack: ["django", "postgresql", "scikitlearn", "python"],
             links: [
                {
@@ -37,7 +37,7 @@ export const projectIapex = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/iapex/specific2.png",
+            imagePath: "/assets/images/projects/iapex/specific2.webp",
             techStack: ["react", "ionic", "tailwindcss"],
             links: [
                {
@@ -47,7 +47,7 @@ export const projectIapex = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/iapex/specific3.png",
+            imagePath: "/assets/images/projects/iapex/specific3.webp",
             techStack: ["angular", "bootstrap", "springboot"],
             links: [
                {

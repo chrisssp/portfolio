@@ -2,8 +2,8 @@ export const projectDabetai = {
    data: {
       id: "dabetai",
       featured: true,
-      imagePath: "/assets/images/projects/dabetai/general.png",
-      heroImagePath: "/assets/images/projects/dabetai/hero.png",
+      imagePath: "/assets/images/projects/dabetai/general.webp",
+      heroImagePath: "/assets/images/projects/dabetai/hero.webp",
       techStack: [
          "astro",
          "angular",
@@ -26,7 +26,7 @@ export const projectDabetai = {
       ],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/dabetai/specific1.png",
+            imagePath: "/assets/images/projects/dabetai/specific1.webp",
             techStack: ["astro", "tailwindcss"],
             links: [
                {
@@ -40,7 +40,7 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific2.png",
+            imagePath: "/assets/images/projects/dabetai/specific2.webp",
             techStack: [
                "fastapi",
                "mongodb",
@@ -60,7 +60,7 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific3.png",
+            imagePath: "/assets/images/projects/dabetai/specific3.webp",
             techStack: ["reactnative", "expo", "tailwindcss"],
             links: [
                {
@@ -70,7 +70,7 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific4.png",
+            imagePath: "/assets/images/projects/dabetai/specific4.webp",
             techStack: ["angular", "tailwindcss"],
             links: [
                {
@@ -80,7 +80,7 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific5.png",
+            imagePath: "/assets/images/projects/dabetai/specific5.webp",
             techStack: ["nestjs", "postgresql"],
             links: [
                {
@@ -90,7 +90,7 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific6.png",
+            imagePath: "/assets/images/projects/dabetai/specific6.webp",
             techStack: ["fastapi", "python", "mongodb"],
             links: [
                {

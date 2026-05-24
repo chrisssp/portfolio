@@ -1,8 +1,8 @@
 export const projectFlacks = {
    data: {
       id: "flacks-cc",
-      imagePath: "/assets/images/projects/flacks-cc/general.png",
-      heroImagePath: "/assets/images/projects/flacks-cc/hero.png",
+      imagePath: "/assets/images/projects/flacks-cc/general.webp",
+      heroImagePath: "/assets/images/projects/flacks-cc/hero.webp",
       techStack: [
          "angular",
          "bootstrap",
@@ -14,7 +14,7 @@ export const projectFlacks = {
       links: [{ type: "github", url: "https://github.com/flacks-cc" }],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/flacks-cc/specific1.png",
+            imagePath: "/assets/images/projects/flacks-cc/specific1.webp",
             techStack: ["angular", "bootstrap"],
             links: [
                {
@@ -24,7 +24,7 @@ export const projectFlacks = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/flacks-cc/specific2.png",
+            imagePath: "/assets/images/projects/flacks-cc/specific2.webp",
             techStack: ["angular", "ionic", "typescript"],
             links: [
                {
@@ -34,7 +34,7 @@ export const projectFlacks = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/flacks-cc/specific3.png",
+            imagePath: "/assets/images/projects/flacks-cc/specific3.webp",
             techStack: ["java", "android"],
             links: [
                {
@@ -44,7 +44,7 @@ export const projectFlacks = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/flacks-cc/specific4.png",
+            imagePath: "/assets/images/projects/flacks-cc/specific4.webp",
             techStack: ["java", "springboot", "postgresql"],
             links: [
                {

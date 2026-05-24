@@ -17,7 +17,7 @@ interface HeroProps {
 }
 
 export const Hero = ({ dict }: HeroProps) => {
-   const profileImg = "/assets/images/profile/me.png";
+   const profileImg = "/assets/images/profile/me.webp";
    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
    return (

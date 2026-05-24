@@ -1,13 +1,13 @@
 export const projectMtrpa = {
    data: {
       id: "mtrpa",
-      imagePath: "/assets/images/projects/mtrpa/general.png",
-      heroImagePath: "/assets/images/projects/mtrpa/hero.png",
+      imagePath: "/assets/images/projects/mtrpa/general.webp",
+      heroImagePath: "/assets/images/projects/mtrpa/hero.webp",
       techStack: ["angular", "bootstrap", "mongodb", "springboot", "java"],
       links: [{ type: "github", url: "https://github.com/chrisssp/mtrpa-web" }],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/mtrpa/specific1.png",
+            imagePath: "/assets/images/projects/mtrpa/specific1.webp",
             techStack: ["angular", "bootstrap"],
             links: [
                {
@@ -17,7 +17,7 @@ export const projectMtrpa = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/mtrpa/specific2.png",
+            imagePath: "/assets/images/projects/mtrpa/specific2.webp",
             techStack: ["mongodb", "springboot", "java"],
             links: [
                {

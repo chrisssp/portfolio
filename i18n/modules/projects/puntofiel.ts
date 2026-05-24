@@ -1,8 +1,8 @@
 export const projectPuntoFiel = {
    data: {
       id: "puntofiel",
-      imagePath: "/assets/images/projects/puntofiel/general.png",
-      heroImagePath: "/assets/images/projects/puntofiel/hero.png",
+      imagePath: "/assets/images/projects/puntofiel/general.webp",
+      heroImagePath: "/assets/images/projects/puntofiel/hero.webp",
       techStack: [
          "reactnative",
          "expo",
@@ -20,7 +20,7 @@ export const projectPuntoFiel = {
       ],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/puntofiel/general.png",
+            imagePath: "/assets/images/projects/puntofiel/general.webp",
             techStack: ["reactnative", "expo", "tanstackquery", "zustand"],
             links: [
                {
@@ -30,7 +30,7 @@ export const projectPuntoFiel = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/puntofiel/specific2.png",
+            imagePath: "/assets/images/projects/puntofiel/specific2.webp",
             techStack: ["supabase", "postgresql"],
          },
       ],
