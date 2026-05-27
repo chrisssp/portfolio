@@ -16,6 +16,7 @@ export const hero = {
          },
          linkedin: "LinkedIn",
          github: "GitHub",
+         youtube: "YouTube",
       },
    },
    es: {
@@ -36,6 +37,7 @@ export const hero = {
          },
          linkedin: "LinkedIn",
          github: "GitHub",
+         youtube: "YouTube",
       },
    },
 };

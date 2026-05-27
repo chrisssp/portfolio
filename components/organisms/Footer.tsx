@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { MdDescription, MdEmail } from "react-icons/md";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import type { Dictionary } from "@/i18n/types";
@@ -45,6 +45,15 @@ export const Footer = ({ dict }: FooterProps) => {
                   aria-label="LinkedIn"
                >
                   <FaLinkedin className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
+               </a>
+               <a
+                  href={PROFESSIONAL_LINKS.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="YouTube"
+                  aria-label="YouTube"
+               >
+                  <FaYoutube className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>
                <a
                   href={`mailto:${PROFESSIONAL_LINKS.email}`}

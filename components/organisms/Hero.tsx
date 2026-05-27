@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { MdDescription } from "react-icons/md";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import type { Dictionary } from "@/i18n/types";
@@ -28,7 +28,11 @@ export const Hero = ({ dict }: HeroProps) => {
          <div className="flex flex-col gap-8 md:gap-12 max-w-190 order-2 lg:order-1">
             <div className="flex flex-col gap-6 md:gap-8 text-left">
                {/* Title & role — appear first */}
-               <AnimatedSection variant="fade-up" delay={100} duration="duration-700">
+               <AnimatedSection
+                  variant="fade-up"
+                  delay={100}
+                  duration="duration-700"
+               >
                   <div className="flex flex-col gap-2 md:gap-4">
                      <Typography variant="hero">Christian Serrano</Typography>
                      <Typography variant="hero-sub" className="text-primary">
@@ -38,13 +42,23 @@ export const Hero = ({ dict }: HeroProps) => {
                </AnimatedSection>
 
                {/* Description — second */}
-               <AnimatedSection variant="fade-up" delay={250} duration="duration-700">
-                  <Typography variant="body">{dict.hero.description}</Typography>
+               <AnimatedSection
+                  variant="fade-up"
+                  delay={250}
+                  duration="duration-700"
+               >
+                  <Typography variant="body">
+                     {dict.hero.description}
+                  </Typography>
                </AnimatedSection>
             </div>
 
             {/* Buttons — third */}
-            <AnimatedSection variant="fade-up" delay={400} duration="duration-700">
+            <AnimatedSection
+               variant="fade-up"
+               delay={400}
+               duration="duration-700"
+            >
                <div className="flex flex-wrap justify-start gap-3 md:gap-4">
                   <a
                      href={dict.hero.actions.cvLink}
@@ -87,6 +101,20 @@ export const Hero = ({ dict }: HeroProps) => {
                         ariaLabel="LinkedIn"
                      >
                         {dict.hero.actions.linkedin}
+                     </Button>
+                  </a>
+                  <a
+                     href={PROFESSIONAL_LINKS.youtube}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                  >
+                     <Button
+                        variant="primary"
+                        icon={<FaYoutube />}
+                        className="px-3! xs:px-4! sm:px-6! py-2! sm:py-3! text-sm! sm:text-base!"
+                        ariaLabel={dict.hero.actions.youtube}
+                     >
+                        {dict.hero.actions.youtube}
                      </Button>
                   </a>
                   <SmartEmailButton

@@ -60,7 +60,9 @@ export const ProjectCard = ({
                     ? actions.view_code
                     : link.type === "paper"
                       ? actions.read_paper
-                      : actions.view_demo;
+                      : link.type === "landing"
+                        ? actions.view_landing
+                        : actions.view_demo;
 
             return (
                <a
