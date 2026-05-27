@@ -197,7 +197,7 @@ export const Header = ({
                   >
                      <MdLanguage className="size-4 sm:size-5 shrink-0" />
                      <span className="ml-2 text-sm sm:text-base font-bold uppercase leading-none">
-                        {lang}
+                        {lang === "en" ? "ES" : "EN"}
                      </span>
                   </button>
                   <div className="w-px h-4 sm:h-6 bg-subtle mx-1" />
