@@ -136,6 +136,9 @@ export interface Dictionary {
       projects: string;
       about: string;
       goBack: string;
+      language: string;
+      themeLight: string;
+      themeDark: string;
    };
 
    hero: {

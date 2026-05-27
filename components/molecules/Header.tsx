@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import {
    MdArrowBack,
    MdClose,
@@ -131,21 +131,21 @@ export const Header = ({
                      className="relative h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0"
                   >
                      {/* Logo para modo claro */}
-                      <Image
-                         src="/assets/images/profile/isotipo-white-nobg-center.webp"
-                         alt="Logo"
-                         fill
-                         className="object-contain logo-light"
-                         priority
-                      />
-                      {/* Logo para modo oscuro */}
-                      <Image
-                         src="/assets/images/profile/isotipo-black-nobg-center.webp"
-                         alt="Logo"
-                         fill
-                         className="object-contain logo-dark"
-                         priority
-                      />
+                     <Image
+                        src="/assets/images/profile/isotipo-white-nobg-center.webp"
+                        alt="Logo"
+                        fill
+                        className="object-contain logo-light"
+                        priority
+                     />
+                     {/* Logo para modo oscuro */}
+                     <Image
+                        src="/assets/images/profile/isotipo-black-nobg-center.webp"
+                        alt="Logo"
+                        fill
+                        className="object-contain logo-dark"
+                        priority
+                     />
                   </Link>
 
                   {showBack && (
@@ -224,23 +224,23 @@ export const Header = ({
          {/* Mobile Menu Overlay - Botones más compactos */}
          {mobileMenuOpen && (
             <div className="fixed inset-0 z-60 flex flex-col bg-page w-full h-full overflow-hidden">
-               <div className="flex justify-between items-center p-4 sm:p-5 border-b border-subtle bg-page">
+               <div className="flex justify-between items-center h-16 px-4 xs:px-6 border-b border-subtle bg-page">
                   <div className="flex items-center gap-3 sm:gap-4">
                      <div className="relative h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12">
-                      <Image
-                         src="/assets/images/profile/isotipo-white-nobg.webp"
-                         alt="Logo"
-                         fill
-                         className="object-contain logo-light"
-                      />
-                      {/* Logo para modo oscuro */}
-                      <Image
-                         src="/assets/images/profile/isotipo-black-nobg.webp"
-                         alt="Logo"
-                         fill
-                         className="object-contain logo-dark"
-                       />
-                      </div>
+                        <Image
+                           src="/assets/images/profile/isotipo-white-nobg-center.webp"
+                           alt="Logo"
+                           fill
+                           className="object-contain logo-light"
+                        />
+                        {/* Logo para modo oscuro */}
+                        <Image
+                           src="/assets/images/profile/isotipo-black-nobg-center.webp"
+                           alt="Logo"
+                           fill
+                           className="object-contain logo-dark"
+                        />
+                     </div>
                      <div className="flex flex-col text-left">
                         <span className="text-base sm:text-lg font-bold text-body">
                            Christian Serrano
@@ -285,6 +285,45 @@ export const Header = ({
                      ))}
                   </nav>
 
+                  <div className="flex flex-col gap-2 mt-4">
+                     <button
+                        type="button"
+                        onClick={toggleLanguage}
+                        className="flex items-center justify-between p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-subtle bg-surface text-body hover:text-primary hover:border-primary/50 transition-all duration-200 cursor-pointer"
+                        aria-label={
+                           lang === "en" ? "Switch language" : "Cambiar idioma"
+                        }
+                     >
+                        <span className="text-base sm:text-lg font-bold">
+                           {dict.nav.language}
+                        </span>
+                        <MdLanguage className="size-4 sm:size-5 opacity-50" />
+                     </button>
+                     <button
+                        type="button"
+                        onClick={() =>
+                           setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                        }
+                        className="flex items-center justify-between p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-subtle bg-surface text-body hover:text-primary hover:border-primary/50 transition-all duration-200 cursor-pointer"
+                        aria-label={
+                           resolvedTheme === "dark"
+                              ? dict.nav.themeLight
+                              : dict.nav.themeDark
+                        }
+                     >
+                        <span className="text-base sm:text-lg font-bold">
+                           {resolvedTheme === "dark"
+                              ? dict.nav.themeLight
+                              : dict.nav.themeDark}
+                        </span>
+                        {resolvedTheme === "dark" ? (
+                           <MdLightMode className="size-4 sm:size-5 opacity-50" />
+                        ) : (
+                           <MdDarkMode className="size-4 sm:size-5 opacity-50" />
+                        )}
+                     </button>
+                  </div>
+
                   <div className="mt-auto py-6 sm:py-8 flex flex-col gap-4 sm:gap-6 items-center border-t border-subtle bg-page">
                      <div className="flex gap-4 sm:gap-6 items-center">
                         <a
@@ -314,6 +353,15 @@ export const Header = ({
                            aria-label="LinkedIn"
                         >
                            <FaLinkedin className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
+                        </a>
+                        <a
+                           href={PROFESSIONAL_LINKS.youtube}
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           title="YouTube"
+                           aria-label="YouTube"
+                        >
+                           <FaYoutube className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>
                         <a
                            href={`mailto:${PROFESSIONAL_LINKS.email}`}

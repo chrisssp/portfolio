@@ -14,7 +14,7 @@ export const Footer = ({ dict }: FooterProps) => {
          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 xs:gap-8 px-4 xs:px-6 sm:px-10 md:px-16 lg:px-20 py-8 xs:py-10 md:py-12 w-full max-w-360">
             <Typography
                variant="small"
-               className="text-slate-600 dark:text-slate-400 font-medium text-center sm:text-left text-xs! xs:text-sm!"
+               className="text-slate-600 dark:text-slate-400 font-medium text-center text-xs! xs:text-sm!"
             >
                {dict.footer.rights}
             </Typography>
