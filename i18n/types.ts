@@ -20,8 +20,15 @@ export interface ExperienceItem {
 }
 
 export interface ProjectLink {
-   type: "github" | "demo" | "figma" | "video" | "paper";
+   type: "github" | "demo" | "landing" | "figma" | "video" | "paper";
    url: string;
+}
+
+export interface CertificateItem {
+   title: string;
+   filePath: string;
+   issuer?: string;
+   date?: string;
 }
 
 export interface EcosystemItem {
@@ -50,6 +57,7 @@ export interface ProjectItem {
    ecosystem?: {
       items: EcosystemItem[];
    };
+   certificates?: CertificateItem[];
 }
 
 export interface EducationItem {
@@ -72,6 +80,11 @@ export interface ProjectModule {
          techStack: string[];
          links?: ProjectLink[];
       }[];
+      certificates?: {
+         filePath: string;
+         issuer?: string;
+         date?: string;
+      }[];
    };
    en: {
       title: string;
@@ -88,6 +101,9 @@ export interface ProjectModule {
             description: string;
          }[];
       };
+      certificates?: {
+         title: string;
+      }[];
    };
    es: {
       title: string;
@@ -104,6 +120,9 @@ export interface ProjectModule {
             description: string;
          }[];
       };
+      certificates?: {
+         title: string;
+      }[];
    };
 }
 
@@ -135,6 +154,7 @@ export interface Dictionary {
          };
          linkedin: string;
          github: string;
+         youtube: string;
       };
    };
 
@@ -162,14 +182,17 @@ export interface Dictionary {
          challengeTitle: string;
          solutionTitle: string;
          ecosystem: string;
+         recognitions: string;
       };
       actions: {
          view_code: string;
          view_demo: string;
+         view_landing: string;
          view_design: string;
          view_video: string;
          view_details: string;
          read_paper: string;
+         view_certificate: string;
          tab_featured: string;
          tab_all: string;
          see_more: string;

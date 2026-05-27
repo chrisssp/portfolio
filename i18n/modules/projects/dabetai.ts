@@ -17,11 +17,19 @@ export const projectDabetai = {
          "python",
       ],
       links: [
-         { type: "demo", url: "https://dabetai.netlify.app/" },
+         { type: "landing", url: "https://dabetai.netlify.app/" },
          { type: "github", url: "https://github.com/dabetai-org" },
          {
             type: "paper",
             url: "/assets/docs/papers/Prevención-de-Riesgos-de-la-Diabetes-Mediante-una-Plataforma-Inteligente-de-Monitorización-y-Predicción-de-Complicaciones-con-Inteligencia-Artificial.pdf",
+         },
+      ],
+      certificates: [
+         {
+            filePath:
+               "/assets/docs/certificates/Constancia_Congreso_Multidisciplinario_2024_Christian_Serrano.pdf",
+            issuer: "VII Congreso Multidisciplinario",
+            date: "Oct 2024",
          },
       ],
       ecosystem: [
@@ -149,6 +157,11 @@ export const projectDabetai = {
             },
          ],
       },
+      certificates: [
+         {
+            title: "VII Congreso Multidisciplinario 2024 — Poster Presentation",
+         },
+      ],
    },
    es: {
       title: "dabetai",
@@ -198,5 +211,10 @@ export const projectDabetai = {
             },
          ],
       },
+      certificates: [
+         {
+            title: "VII Congreso Multidisciplinario 2024 — Presentación de cartel",
+         },
+      ],
    },
 };

@@ -18,12 +18,14 @@ interface ProjectEcosystemProps {
    project: Dictionary["projects"]["items"][0];
    labels: Dictionary["projects"]["sections"];
    actions: Dictionary["projects"]["actions"];
+   bg?: string;
 }
 
 export const ProjectEcosystem = ({
    project,
    labels,
    actions,
+   bg,
 }: ProjectEcosystemProps) => {
    if (!project.ecosystem) return null;
 
@@ -37,6 +39,8 @@ export const ProjectEcosystem = ({
             return actions.view_design;
          case "video":
             return actions.view_video;
+         case "landing":
+            return actions.view_landing;
          case "demo":
          default:
             return actions.view_demo;
@@ -45,7 +49,7 @@ export const ProjectEcosystem = ({
 
    return (
       <SectionContainer
-         className="bg-surface"
+         className={bg ?? "bg-surface"}
          innerClassName="flex flex-col gap-16"
       >
          {/* Section header */}
@@ -74,7 +78,8 @@ export const ProjectEcosystem = ({
                               icon={
                                  link.type === "paper" ? (
                                     <MdDescription />
-                                 ) : link.type === "demo" ? (
+                                 ) : link.type === "demo" ||
+                                   link.type === "landing" ? (
                                     <MdRemoveRedEye />
                                  ) : link.type === "video" ? (
                                     <MdPlayArrow />

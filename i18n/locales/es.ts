@@ -39,6 +39,7 @@ export const es: Dictionary = {
          challengeTitle: "Desafío",
          solutionTitle: "Solución",
          ecosystem: "Ecosistema",
+         recognitions: "Reconocimientos",
       },
       items: projectModules.map((m) => {
          const lang = m.es;
@@ -60,15 +61,25 @@ export const es: Dictionary = {
                     }),
                  }
                : undefined,
+            certificates: lang.certificates
+               ? lang.certificates.map((item, i) => {
+                    const dataItem = m.data.certificates?.[i] || {
+                       filePath: "",
+                    };
+                    return { ...dataItem, ...item };
+                 })
+               : undefined,
          };
       }) as ProjectItem[],
       actions: {
          view_code: "Ver código",
          view_demo: "Ver en acción",
+         view_landing: "Ver landing",
          view_design: "Ver detalles",
          view_video: "Ver demo",
          view_details: "Ver detalles",
          read_paper: "Leer artículo",
+         view_certificate: "Abrir",
          tab_featured: "Destacados",
          tab_all: "Otros",
          see_more: "Ver más proyectos",

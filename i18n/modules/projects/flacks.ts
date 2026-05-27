@@ -12,6 +12,19 @@ export const projectFlacks = {
          "postgresql",
       ],
       links: [{ type: "github", url: "https://github.com/flacks-cc" }],
+      certificates: [
+         {
+            filePath:
+               "/assets/docs/certificates/Carta_Aval_Flacks_Christian_Serrano.pdf",
+            issuer: "Flack's Barber Shop",
+         },
+         {
+            filePath:
+               "/assets/docs/certificates/Certificado_Expotecnologia_UTCV_2023_Christian_Serrano.pdf",
+            issuer: "UTCV — Expotecnologías 2023",
+            date: "2023",
+         },
+      ],
       ecosystem: [
          {
             imagePath: "/assets/images/projects/flacks-cc/specific1.webp",
@@ -92,6 +105,10 @@ export const projectFlacks = {
             },
          ],
       },
+      certificates: [
+         { title: "Flack's Barber Shop — Endorsement Letter (Apr 2024)" },
+         { title: "UTCV — Expotecnologías 2023 Participation" },
+      ],
    },
    es: {
       title: "Flack's Cut & Connect",
@@ -130,5 +147,9 @@ export const projectFlacks = {
             },
          ],
       },
+      certificates: [
+         { title: "Flack's Barber Shop — Carta aval (Abr 2024)" },
+         { title: "UTCV — Participación en Expotecnologías 2023" },
+      ],
    },
 };

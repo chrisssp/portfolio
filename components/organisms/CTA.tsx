@@ -13,9 +13,10 @@ import { SmartEmailButton } from "../molecules/SmartEmailButton";
 interface CTAProps {
    dict: Dictionary;
    projectTitle?: string;
+   bg?: string;
 }
 
-export const CTA = ({ dict, projectTitle }: CTAProps) => {
+export const CTA = ({ dict, projectTitle, bg }: CTAProps) => {
    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
    const description = projectTitle
@@ -24,7 +25,7 @@ export const CTA = ({ dict, projectTitle }: CTAProps) => {
 
    return (
       <SectionContainer
-         className={`bg-page transition-all duration-300 ${isMenuOpen ? "z-100" : "z-10"}`}
+         className={`${bg ?? "bg-page"} transition-all duration-300 ${isMenuOpen ? "z-100" : "z-10"}`}
          paddingY="py-12 xs:py-16 lg:py-30"
          innerClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 xs:gap-10 md:gap-24"
       >

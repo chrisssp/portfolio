@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/molecules/Header";
 import { CTA } from "@/components/organisms/CTA";
 import { Footer } from "@/components/organisms/Footer";
+import { ProjectCertificates } from "@/components/organisms/ProjectCertificates";
 import { ProjectChallenge } from "@/components/organisms/ProjectChallenge";
 import { ProjectDetailHero } from "@/components/organisms/ProjectDetailHero";
 import { ProjectEcosystem } from "@/components/organisms/ProjectEcosystem";
@@ -46,6 +47,8 @@ export default async function ProjectPage({ params }: Props) {
       notFound();
    }
 
+   const hasCerts = !!project.certificates?.length;
+
    return (
       <div className="flex flex-col min-h-screen overflow-x-clip">
          <Header
@@ -62,12 +65,22 @@ export default async function ProjectPage({ params }: Props) {
                labels={dict.projects.sections}
             />
 
+            <ProjectCertificates
+               project={project}
+               labels={dict.projects.sections}
+            />
+
             <ProjectEcosystem
                project={project}
                labels={dict.projects.sections}
                actions={dict.projects.actions}
+               bg={hasCerts ? "bg-page" : undefined}
             />
-            <CTA dict={dict} projectTitle={project.title} />
+            <CTA
+               dict={dict}
+               projectTitle={project.title}
+               bg={hasCerts ? "bg-surface" : undefined}
+            />
          </main>
 
          <Footer dict={dict} />

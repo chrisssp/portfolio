@@ -21,6 +21,38 @@ export const projectIapex = {
             url: "https://virtual.cuautitlan.unam.mx/intar/wp-content/uploads/sites/19/2025/12/166-A-Hybrid-Artificial-Intelligent-System-for-Missing-JORGE-CHRISTIAN-SERRANO-PUERTOS.pdf",
          },
       ],
+      certificates: [
+         {
+            filePath:
+               "/assets/docs/certificates/Certificado_CEIAAIT_2025_Christian_Serrano.pdf",
+            issuer: "FES Cuautitlán, UNAM",
+            date: "Nov 2025",
+         },
+         {
+            filePath:
+               "/assets/docs/certificates/Carta_Intencion_Uso_IAPEX_IMSS_Christian_Serrano.pdf",
+            issuer: "IMSS General de Córdoba",
+            date: "Nov 2025",
+         },
+         {
+            filePath:
+               "/assets/docs/certificates/Carta_Validacion_IAPEX_IMSS_Christian_Serrano.pdf",
+            issuer: "IMSS General de Córdoba",
+            date: "Nov 2025",
+         },
+         {
+            filePath:
+               "/assets/docs/certificates/Certificado_Conferencia_IAPEX_CBTIS_2025_Christian_Serrano.pdf",
+            issuer: "CBTIS de Córdoba — SNCT 2025",
+            date: "2025",
+         },
+         {
+            filePath:
+               "/assets/docs/certificates/Certificado_FERVECI_2025_Christian_Serrano.pdf",
+            issuer: "COVEICYDET — FERVECI 2025",
+            date: "Dec 2025",
+         },
+      ],
       ecosystem: [
          {
             imagePath: "/assets/images/projects/iapex/specific1.webp",
@@ -90,6 +122,13 @@ export const projectIapex = {
             },
          ],
       },
+      certificates: [
+         { title: "CEIAAIT 2025 — Oral Presentation" },
+         { title: "IMSS — Letter of Intent (Nov 2025)" },
+         { title: "IMSS — Project Validation (Nov 2025)" },
+         { title: "CBTIS Córdoba — Science & Technology Week Talk" },
+         { title: "FERVECI 2025 — Participation" },
+      ],
    },
    es: {
       title: "IAPEX (Encuéntrame)",
@@ -123,5 +162,14 @@ export const projectIapex = {
             },
          ],
       },
+      certificates: [
+         { title: "CEIAAIT 2025 — Ponencia oral" },
+         { title: "IMSS — Carta de intención de uso (Nov 2025)" },
+         { title: "IMSS — Carta de validación del proyecto (Nov 2025)" },
+         {
+            title: "CBTIS Córdoba — Conferencia Semana Nacional de Ciencia y Tecnología 2025",
+         },
+         { title: "FERVECI 2025 — Participación" },
+      ],
    },
 };
