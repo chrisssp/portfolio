@@ -6,6 +6,13 @@ export const project7dCompass = {
       heroImagePath: "/assets/images/projects/7dcompass/hero.webp",
       techStack: ["angular", "nodejs", "postgresql", "typescript", "ionic"],
       links: [{ type: "demo", url: "https://7d-compass.com/" }],
+      certificates: [
+         {
+            filePath:
+               "/assets/docs/certificates/Recomendation_7D_Construction_Christian_Serrano_en.pdf",
+            issuer: "Seven D Construction",
+         },
+      ],
       ecosystem: [
          {
             imagePath: "/assets/images/projects/7dcompass/specific1.webp",
@@ -34,6 +41,9 @@ export const project7dCompass = {
          solution:
             "A centralized audit engine with complex validation logic that flags discrepancies in real-time, reducing the monthly reconciliation window from weeks to hours.",
       },
+      certificates: [
+         { title: "Seven D Construction — Recommendation Letter (May 2026)" },
+      ],
       ecosystem: {
          items: [
             {
@@ -68,6 +78,13 @@ export const project7dCompass = {
          solution:
             "Un motor de auditoría centralizado con lógica de validación compleja que marca discrepancias en tiempo real, reduciendo la ventana de conciliación mensual de semanas a horas.",
       },
+      certificates: [
+         {
+            title: "Seven D Construction — Carta de recomendación (May 2026)",
+            filePath:
+               "/assets/docs/certificates/Recomendacion_7D_Construction_Christian_Serrano_es.pdf",
+         },
+      ],
       ecosystem: {
          items: [
             {
