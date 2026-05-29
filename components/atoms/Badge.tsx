@@ -11,7 +11,7 @@ interface BadgeProps {
 }
 
 const handleKeyDown =
-   (onClick?: () => void) => (e: KeyboardEvent<HTMLDivElement>) => {
+   (onClick?: () => void) => (e: KeyboardEvent<HTMLElement>) => {
       if (onClick && (e.key === "Enter" || e.key === " ")) {
          e.preventDefault();
          onClick();
