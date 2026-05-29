@@ -16,6 +16,8 @@ interface ProjectCardProps {
    actions: Dictionary["projects"]["actions"];
    reverse?: boolean;
    lang: Locale;
+   selectedTechs?: string[];
+   onTechClick?: (techId: string) => void;
 }
 
 export const ProjectCard = ({
@@ -23,6 +25,8 @@ export const ProjectCard = ({
    actions,
    reverse,
    lang,
+   selectedTechs,
+   onTechClick,
 }: ProjectCardProps) => {
    const handleViewDetails = () => {
       if (typeof window === "undefined") return;
@@ -88,6 +92,8 @@ export const ProjectCard = ({
          techStack={project.techStack}
          reverse={reverse}
          actions={projectActions}
+         selectedTechs={selectedTechs}
+         onTechClick={onTechClick}
       />
    );
 };

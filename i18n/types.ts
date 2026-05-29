@@ -103,6 +103,7 @@ export interface ProjectModule {
       };
       certificates?: {
          title: string;
+         filePath?: string;
       }[];
    };
    es: {
@@ -122,6 +123,7 @@ export interface ProjectModule {
       };
       certificates?: {
          title: string;
+         filePath?: string;
       }[];
    };
 }
@@ -199,6 +201,9 @@ export interface Dictionary {
          tab_featured: string;
          tab_all: string;
          see_more: string;
+         filter_tech: string;
+         clear_filters: string;
+         no_projects_match: string;
       };
    };
 

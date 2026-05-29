@@ -12,6 +12,8 @@ interface FeatureCardProps {
    reverse?: boolean;
    actions?: ReactNode;
    imageClassName?: string;
+   selectedTechs?: string[];
+   onTechClick?: (techId: string) => void;
 }
 
 export const FeatureCard = ({
@@ -22,6 +24,8 @@ export const FeatureCard = ({
    reverse,
    actions,
    imageClassName = "bg-page",
+   selectedTechs,
+   onTechClick,
 }: FeatureCardProps) => {
    return (
       <div
@@ -39,12 +43,22 @@ export const FeatureCard = ({
             <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
                {/* Badges */}
                <div className="flex flex-wrap gap-2 md:gap-3">
-                  {techStack.map(
-                     (techId) =>
-                        TECHNOLOGIES[techId] && (
-                           <Badge key={techId} tech={TECHNOLOGIES[techId]} />
-                        ),
-                  )}
+                  {techStack.map((techId) => {
+                     const tech = TECHNOLOGIES[techId];
+                     if (!tech) return null;
+                     const isInteractive = !!onTechClick;
+                     const isSelected = selectedTechs?.includes(techId);
+                     return (
+                        <Badge
+                           key={techId}
+                           tech={tech}
+                           interactive={isInteractive}
+                           selected={isSelected}
+                           hasActiveFilter={!!selectedTechs?.length}
+                           onClick={() => onTechClick?.(techId)}
+                        />
+                     );
+                  })}
                </div>
 
                {/* Custom Actions (Buttons) */}

@@ -83,6 +83,10 @@ export const es: Dictionary = {
          tab_featured: "Destacados",
          tab_all: "Otros",
          see_more: "Ver más proyectos",
+         filter_tech: "Filtrar por tecnología",
+         clear_filters: "Limpiar filtros",
+         no_projects_match:
+            "No hay proyectos con las tecnologías seleccionadas",
       },
    },
    cta: cta.es,
