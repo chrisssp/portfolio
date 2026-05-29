@@ -42,16 +42,16 @@ export const TechFilterBar = ({
             </span>
          </div>
 
-         {/* Badges row */}
-         <div className="grid grid-flow-col grid-rows-2 gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:gap-2.5 sm:overflow-visible">
+         {/* Badges row — 2 rows on mobile with horizontal scroll, full wrap on desktop */}
+         <div className="grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
             {selectedTechs.length > 0 && (
                <button
                   type="button"
                   onClick={onClear}
-                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 border border-red-500/30 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer shrink-0"
+                  className="flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 border border-red-500/30 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer shrink-0 normal-case sm:text-sm sm:px-3"
                   aria-label={clearLabel}
                >
-                  <MdClose className="size-3.5" />
+                  <MdClose className="size-3 sm:size-3.5" />
                   <span>{clearLabel}</span>
                </button>
             )}
