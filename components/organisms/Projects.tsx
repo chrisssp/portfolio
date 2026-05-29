@@ -241,6 +241,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                      }
                      onClick={() => setShowFilterBar((prev) => !prev)}
                      ariaLabel={dict.projects.actions.filter_tech}
+                     className="w-full sm:w-auto"
                   >
                      {dict.projects.actions.filter_tech}
                   </Button>

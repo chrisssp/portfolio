@@ -43,7 +43,7 @@ export const TechFilterBar = ({
          </div>
 
          {/* Badges row */}
-         <div className="flex flex-nowrap sm:flex-wrap items-center gap-2 sm:gap-2.5 overflow-x-auto sm:overflow-visible">
+         <div className="grid grid-flow-col grid-rows-2 gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:gap-2.5 sm:overflow-visible">
             {selectedTechs.length > 0 && (
                <button
                   type="button"
