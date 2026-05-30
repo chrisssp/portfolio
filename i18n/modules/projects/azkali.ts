@@ -18,6 +18,14 @@ export const projectAzkali = {
          { type: "github", url: "https://github.com/chrisssp/azkali" },
          { type: "video", url: "https://youtu.be/orvfws_kxcc" },
       ],
+      certificates: [
+         {
+            filePath:
+               "/assets/docs/certificates/Certificado_TalentLand_2026_Christian_Serrano.pdf",
+            issuer: "Talent Land 2026",
+            date: "April 2026",
+         },
+      ],
       ecosystem: [
          {
             imagePath: "/assets/images/projects/azkali/specific1.webp",
@@ -56,6 +64,7 @@ export const projectAzkali = {
          solution:
             "An AI copilot integrated with partners like Grupo Salinas that uses behavioral economics to trigger saving actions at the point of purchase through gamification and rewards.",
       },
+      certificates: [{ title: "Genius Arena Hackathon — Participation" }],
       ecosystem: {
          items: [
             {
@@ -89,6 +98,7 @@ export const projectAzkali = {
          solution:
             "Un copiloto de IA integrado con socios como Grupo Salinas que utiliza economía conductual para disparar acciones de ahorro en el punto de compra mediante gamificación.",
       },
+      certificates: [{ title: "Genius Arena Hackathon — Participación" }],
       ecosystem: {
          items: [
             {

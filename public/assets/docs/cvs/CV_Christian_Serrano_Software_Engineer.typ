@@ -44,7 +44,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
   ),
   (
     entry-header-args: (
-      top-left: [*Banco Azteca (Hackathon Talent Land 2026)*],
+      top-left: [*Banco Azteca (Genius Arena Hackathon — Talent Land 2026)*],
       top-right: [April 2026],
       bottom-left: [Hackathon Participant & Team Lead],
       bottom-right: [Santa Fe, CDMX, Mexico],
@@ -57,7 +57,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
   ),
   (
     entry-header-args: (
-      top-left: [*Coppel (Hackathon Talent Land 2025)*],
+      top-left: [*Coppel (Genius Arena Hackathon — Talent Land 2025)*],
       top-right: [April 2025],
       bottom-left: [4th Place & Team Lead],
       bottom-right: [Guadalajara, Jalisco, Mexico],

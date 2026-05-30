@@ -18,6 +18,14 @@ export const projectCoppelNexus = {
          },
          { type: "video", url: "https://youtu.be/QOrzY2dIhsw" },
       ],
+      certificates: [
+         {
+            filePath:
+               "/assets/docs/certificates/Certificado_TalentLand_2025_Christian_Serrano.pdf",
+            issuer: "Talent Land 2025",
+            date: "April 2025",
+         },
+      ],
       ecosystem: [
          {
             imagePath: "/assets/images/projects/coppel-nexus/specific1.webp",
@@ -64,6 +72,7 @@ export const projectCoppelNexus = {
          solution:
             "A unified ecosystem with a field-ready mobile app, a management web portal, and a backend that tracks referrals, progress, and collaborator routes in real time.",
       },
+      certificates: [{ title: "Genius Arena Hackathon — Participation" }],
       ecosystem: {
          items: [
             {
@@ -97,6 +106,7 @@ export const projectCoppelNexus = {
          solution:
             "Un ecosistema web y móvil con app en campo, portal administrativo y backend centralizado para seguimiento de referidos y rutas.",
       },
+      certificates: [{ title: "Genius Arena Hackathon — Participación" }],
       ecosystem: {
          items: [
             {

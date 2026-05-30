@@ -15,31 +15,23 @@ export const experience = {
          },
          {
             role: "Hackathon Team Lead",
-            company: "Banco Azteca (Hackathon Talent Land 2026)",
+            company: "Banco Azteca (Genius Arena Hackathon — Talent Land 2026)",
             location: "Santa Fe, CDMX, México",
             product: "Azkali",
             projectId: "azkali",
             date: "April 2026",
             description:
                "Developed Azkali in 48h: an AI copilot to mitigate impulsive spending using Gemini 2.5 Flash-Lite. Built under Design Thinking methodology, it translates monetary costs into operating opportunity costs, achieving high engagement during Talent Land 2026.",
-            link: {
-               url: "/assets/docs/certificates/Certificado_TalentLand_2026_Christian_Serrano.pdf",
-               label: "View Certificate of Participation",
-            },
          },
          {
             role: "4th Place & Team Lead",
-            company: "Coppel (Hackathon Talent Land 2025)",
+            company: "Coppel (Genius Arena Hackathon — Talent Land 2025)",
             location: "Guadalajara, Jalisco, México",
             product: "Coppel Nexus",
             projectId: "coppel-nexus",
             date: "April 2025",
             description:
                "Architected Coppel Nexus, a gamified referral ecosystem for Coppel (React Native/Node.js) in a 72-hour sprint. Led the team by strictly applying XP and Kanban methodologies, securing a fourth place on the podium.",
-            link: {
-               url: "/assets/docs/certificates/Certificado_TalentLand_2025_Christian_Serrano.pdf",
-               label: "View Certificate of Participation",
-            },
          },
          {
             role: "Software Engineer Intern",
@@ -80,31 +72,23 @@ export const experience = {
          },
          {
             role: "Líder de equipo de hackathon",
-            company: "Banco Azteca (Hackathon Talent Land 2026)",
+            company: "Banco Azteca (Genius Arena Hackathon — Talent Land 2026)",
             location: "Santa Fe, CDMX, México",
             product: "Azkali",
             projectId: "azkali",
             date: "Abril 2026",
             description:
                "Desarrollé Azkali en 48h: un copiloto de IA conductual para mitigar gastos impulsivos usando Gemini 2.5 Flash-Lite. Construido bajo metodología Design Thinking, traduce costos monetarios a costo de oportunidad operativos, logrando un alto impacto en Talent Land 2026.",
-            link: {
-               url: "/assets/docs/certificates/Certificado_TalentLand_2026_Christian_Serrano.pdf",
-               label: "Ver certificado de participación",
-            },
          },
          {
             role: "4to lugar y líder de equipo",
-            company: "Coppel (Hackathon Talent Land 2025)",
+            company: "Coppel (Genius Arena Hackathon — Talent Land 2025)",
             location: "Guadalajara, Jalisco, México",
             product: "Coppel Nexus",
             projectId: "coppel-nexus",
             date: "Abril 2025",
             description:
                "Arquitecturé Coppel Nexus, un ecosistema de referidos gamificado para Coppel (React Native/Node.js) en un sprint de 72 horas. Dirigí al equipo aplicando estrictamente metodologías XP y Kanban, asegurando el 4to lugar en el podio.",
-            link: {
-               url: "/assets/docs/certificates/Certificado_TalentLand_2025_Christian_Serrano.pdf",
-               label: "Ver certificado de participación",
-            },
          },
          {
             role: "Pasante de ingeniería de software",

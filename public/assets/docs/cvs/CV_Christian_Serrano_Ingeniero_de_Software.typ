@@ -44,7 +44,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
   ),
   (
     entry-header-args: (
-      top-left: [*Banco Azteca (Hackathon Talent Land 2026)*],
+      top-left: [*Banco Azteca (Genius Arena Hackathon — Talent Land 2026)*],
       top-right: [Abril 2026],
       bottom-left: [Participante de hackathon y líder de equipo],
       bottom-right: [Santa Fe, CDMX, México],
@@ -57,7 +57,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
   ),
   (
     entry-header-args: (
-      top-left: [*Coppel (Hackathon Talent Land 2025)*],
+      top-left: [*Coppel (Genius Arena Hackathon — Talent Land 2025)*],
       top-right: [Abril 2025],
       bottom-left: [4to lugar y líder de equipo],
       bottom-right: [Guadalajara, Jalisco, México],
