@@ -5,6 +5,11 @@ export const project7dCompass = {
       imagePath: "/assets/images/projects/7dcompass/general.webp",
       heroImagePath: "/assets/images/projects/7dcompass/hero.webp",
       techStack: ["angular", "nodejs", "postgresql", "typescript", "ionic"],
+      categories: {
+         domain: ["fintech", "productivity"],
+         platform: ["web", "mobile", "api"],
+         tags: ["enterprise"],
+      },
       links: [{ type: "demo", url: "https://7d-compass.com/" }],
       certificates: [
          {

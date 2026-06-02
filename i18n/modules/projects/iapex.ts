@@ -13,6 +13,11 @@ export const projectIapex = {
          "postgresql",
          "python",
       ],
+      categories: {
+         domain: ["health"],
+         platform: ["web", "mobile"],
+         tags: ["ai-ml", "research"],
+      },
       links: [
          { type: "github", url: "https://github.com/iapex-org" },
          { type: "video", url: "https://youtu.be/WPlo9SK-dgw" },

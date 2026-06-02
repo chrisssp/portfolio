@@ -3,15 +3,21 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { MdCode, MdFilterList, MdFilterListOff } from "react-icons/md";
-import { useTechFilter } from "@/hooks/useTechFilter";
+import {
+   CATEGORY_AXES,
+   type CategoryAxis,
+   type FilterAxisKey,
+} from "@/config/categories";
+import { TECHNOLOGIES } from "@/config/technologies";
+import { useProjectFilter } from "@/hooks/useProjectFilter";
 import type { Locale } from "@/i18n/config";
-import type { Dictionary } from "@/i18n/types";
+import type { Dictionary, ProjectCategories } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
 import { Button } from "../atoms/Button";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { Typography } from "../atoms/Typography";
+import { FilterBar } from "../molecules/FilterBar";
 import { ProjectCard } from "../molecules/ProjectCard";
-import { TechFilterBar } from "../molecules/TechFilterBar";
 
 interface FilterPillsProps {
    filter: "featured" | "others";
@@ -84,7 +90,6 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
    const [showFilterBar, setShowFilterBar] = useState(false);
    const pendingProjectIdRef = useRef<string | null>(null);
 
-   // Collect all unique technologies from ALL projects
    const allTechs = useMemo(() => {
       const techSet = new Set<string>();
       for (const project of dict.projects.items) {
@@ -95,36 +100,138 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       return Array.from(techSet).sort();
    }, [dict.projects.items]);
 
-   // Tech filter state (URL + localStorage)
-   const { selectedTechs, toggleTech, clearTechs, hasActiveFilter } =
-      useTechFilter(allTechs);
+   const allDomains = useMemo(() => {
+      const domainSet = new Set<string>();
+      for (const project of dict.projects.items) {
+         for (const domain of project.categories.domain) {
+            domainSet.add(domain);
+         }
+      }
+      return Array.from(domainSet).sort();
+   }, [dict.projects.items]);
 
-   const handleToggleTech = useCallback(
-      (techId: string) => {
+   const allPlatforms = useMemo(() => {
+      const platformSet = new Set<string>();
+      for (const project of dict.projects.items) {
+         for (const platform of project.categories.platform) {
+            platformSet.add(platform);
+         }
+      }
+      return Array.from(platformSet).sort();
+   }, [dict.projects.items]);
+
+   const allTags = useMemo(() => {
+      const tagSet = new Set<string>();
+      for (const project of dict.projects.items) {
+         for (const tag of project.categories.tags) {
+            tagSet.add(tag);
+         }
+      }
+      return Array.from(tagSet).sort();
+   }, [dict.projects.items]);
+
+   const { selections, toggle, clearAxis, clearAll, hasActiveFilter } =
+      useProjectFilter({
+         tech: allTechs,
+         domain: allDomains,
+         platform: allPlatforms,
+         tags: allTags,
+      });
+
+   const handleToggle = useCallback(
+      (axis: string, value: string) => {
          setShowFilterBar(true);
-         toggleTech(techId);
+         toggle(axis as FilterAxisKey, value);
       },
-      [toggleTech],
+      [toggle],
    );
 
-   const handleClearTechs = useCallback(() => {
-      clearTechs();
-      setShowFilterBar(false);
-   }, [clearTechs]);
+   const handleClearAxis = useCallback(
+      (axis: string) => {
+         clearAxis(axis as FilterAxisKey);
+      },
+      [clearAxis],
+   );
 
-   // Filter logic: tech filter takes priority, otherwise use tabs
+   const handleClearAll = useCallback(() => {
+      clearAll();
+      setShowFilterBar(false);
+   }, [clearAll]);
+
+   const filterAxes: CategoryAxis[] = useMemo(() => {
+      const techAxis: CategoryAxis = {
+         key: "tech",
+         urlParam: "tech",
+         storageKey: "portfolio-tech-filter",
+         options: allTechs
+            .map((techId) => {
+               const tech = TECHNOLOGIES[techId];
+               if (!tech) return null;
+               return {
+                  id: techId,
+                  name: tech.name,
+                  icon: tech.icon,
+                  bgColor: tech.bgColor,
+               };
+            })
+            .filter((x): x is NonNullable<typeof x> => x != null),
+      };
+
+      return [techAxis, ...CATEGORY_AXES];
+   }, [allTechs]);
+
+   const filterSelections = useMemo(
+      () => ({
+         tech: selections.tech,
+         domain: selections.domain,
+         platform: selections.platform,
+         tags: selections.tags,
+      }),
+      [selections],
+   );
+
+   const filterLabels = useMemo(
+      () => ({
+         tech: dict.projects.actions.filter_tech,
+         domain: dict.projects.actions.filter_domain,
+         platform: dict.projects.actions.filter_platform,
+         tags: dict.projects.actions.filter_tags,
+      }),
+      [dict.projects.actions],
+   );
+
    const filteredProjects = useMemo(() => {
-      if (hasActiveFilter) {
-         return dict.projects.items.filter((p) =>
-            p.techStack.some((t) => selectedTechs.includes(t)),
-         );
+      const hasFilters = Object.values(selections).some(
+         (values) => values.length > 0,
+      );
+
+      if (hasFilters) {
+         return dict.projects.items.filter((project) => {
+            return (
+               Object.keys(selections) as Array<
+                  keyof ProjectCategories | "tech"
+               >
+            ).every((axis) => {
+               const selected = selections[axis];
+               if (!selected || selected.length === 0) return true;
+
+               if (axis === "tech") {
+                  return project.techStack.some((tech) =>
+                     selected.includes(tech),
+                  );
+               }
+
+               const categories =
+                  project.categories?.[axis as keyof ProjectCategories] ?? [];
+               return categories.some((value) => selected.includes(value));
+            });
+         });
       }
 
-      // Normal tab behavior
       return filter === "featured"
          ? dict.projects.items.filter((p) => p.featured)
          : dict.projects.items.filter((p) => !p.featured);
-   }, [filter, dict.projects.items, selectedTechs, hasActiveFilter]);
+   }, [filter, dict.projects.items, selections]);
 
    const queueProjectScroll = useCallback(
       (projectId: string) => {
@@ -257,16 +364,21 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                </div>
             </div>
 
-            {/* Tech Filter Bar — toggled */}
+            {/* Filter Bar — toggled */}
             {showFilterBar && (
-               <TechFilterBar
-                  allTechs={allTechs}
-                  selectedTechs={selectedTechs}
-                  onToggle={handleToggleTech}
-                  onClear={handleClearTechs}
+               <FilterBar
+                  axes={filterAxes.map((axis) => ({
+                     key: axis.key,
+                     label: filterLabels[axis.key],
+                     options: axis.options,
+                  }))}
+                  selections={filterSelections}
+                  onToggle={handleToggle}
+                  onClearAxis={handleClearAxis}
+                  onClearAll={handleClearAll}
                   hasActiveFilter={hasActiveFilter}
-                  label={dict.projects.actions.filter_tech}
-                  clearLabel={dict.projects.actions.clear_filters}
+                  clearLabel={dict.projects.actions.clear_all}
+                  clearAxisLabel={dict.projects.actions.clear_filters}
                />
             )}
          </div>
@@ -282,7 +394,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                   >
                      {dict.projects.actions.no_projects_match}
                   </Typography>
-                  <Button variant="outline" onClick={handleClearTechs}>
+                  <Button variant="outline" onClick={handleClearAll}>
                      {dict.projects.actions.clear_filters}
                   </Button>
                </div>
@@ -302,8 +414,8 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                         actions={dict.projects.actions}
                         reverse={index % 2 !== 0}
                         lang={lang}
-                        selectedTechs={selectedTechs}
-                        onTechClick={handleToggleTech}
+                        selectedTechs={selections.tech}
+                        onTechClick={(techId) => handleToggle("tech", techId)}
                      />
                   </AnimatedSection>
                ))
@@ -312,17 +424,22 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
 
          {/* Bottom Section: Filter Bar (conditional) + Footer */}
          <div className="flex flex-col gap-8 mt-8 lg:mt-16">
-            {/* Tech Filter Bar Bottom — only when >3 projects visible */}
+            {/* Filter Bar Bottom — only when >3 projects visible */}
             {showFilterBar && filteredProjects.length > 3 && (
                <div className="flex justify-center lg:justify-end">
-                  <TechFilterBar
-                     allTechs={allTechs}
-                     selectedTechs={selectedTechs}
-                     onToggle={handleToggleTech}
-                     onClear={handleClearTechs}
+                  <FilterBar
+                     axes={filterAxes.map((axis) => ({
+                        key: axis.key,
+                        label: filterLabels[axis.key],
+                        options: axis.options,
+                     }))}
+                     selections={filterSelections}
+                     onToggle={handleToggle}
+                     onClearAxis={handleClearAxis}
+                     onClearAll={handleClearAll}
                      hasActiveFilter={hasActiveFilter}
-                     label={dict.projects.actions.filter_tech}
-                     clearLabel={dict.projects.actions.clear_filters}
+                     clearLabel={dict.projects.actions.clear_all}
+                     clearAxisLabel={dict.projects.actions.clear_filters}
                   />
                </div>
             )}

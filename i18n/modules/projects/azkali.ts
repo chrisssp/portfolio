@@ -13,6 +13,11 @@ export const projectAzkali = {
          "postgresql",
          "gemini",
       ],
+      categories: {
+         domain: ["fintech"],
+         platform: ["web", "mobile"],
+         tags: ["ai-ml", "hackathon"],
+      },
       links: [
          { type: "landing", url: "https://azkali-landing.vercel.app/" },
          { type: "github", url: "https://github.com/chrisssp/azkali" },

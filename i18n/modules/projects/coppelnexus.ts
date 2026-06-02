@@ -11,6 +11,11 @@ export const projectCoppelNexus = {
          "firebase",
          "express",
       ],
+      categories: {
+         domain: ["retail"],
+         platform: ["web", "mobile"],
+         tags: ["hackathon"],
+      },
       links: [
          {
             type: "github",

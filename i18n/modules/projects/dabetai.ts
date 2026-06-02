@@ -16,6 +16,11 @@ export const projectDabetai = {
          "mongodb",
          "python",
       ],
+      categories: {
+         domain: ["health"],
+         platform: ["web", "mobile", "api", "landing"],
+         tags: ["ai-ml", "iot-wearables", "research"],
+      },
       links: [
          { type: "landing", url: "https://dabetai.netlify.app/" },
          { type: "github", url: "https://github.com/dabetai-org" },

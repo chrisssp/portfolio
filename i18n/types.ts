@@ -39,6 +39,26 @@ export interface EcosystemItem {
    links?: ProjectLink[];
 }
 
+export type Domain =
+   | "health"
+   | "fintech"
+   | "logistics"
+   | "retail"
+   | "productivity";
+export type Platform = "web" | "mobile" | "api" | "landing";
+export type VerticalTag =
+   | "ai-ml"
+   | "iot-wearables"
+   | "hackathon"
+   | "research"
+   | "enterprise";
+
+export interface ProjectCategories {
+   domain: Domain[];
+   platform: Platform[];
+   tags: VerticalTag[];
+}
+
 export interface ProjectItem {
    id: string;
    featured?: boolean;
@@ -49,6 +69,7 @@ export interface ProjectItem {
    imagePath: string;
    heroImagePath?: string;
    techStack: string[];
+   categories: ProjectCategories;
    links: ProjectLink[];
    challenge?: {
       description: string;
@@ -74,6 +95,7 @@ export interface ProjectModule {
       imagePath: string;
       heroImagePath?: string;
       techStack: string[];
+      categories: ProjectCategories;
       links: { type: string; url: string }[];
       ecosystem?: {
          imagePath: string;
@@ -202,7 +224,11 @@ export interface Dictionary {
          tab_all: string;
          see_more: string;
          filter_tech: string;
+         filter_domain: string;
+         filter_platform: string;
+         filter_tags: string;
          clear_filters: string;
+         clear_all: string;
          no_projects_match: string;
       };
    };

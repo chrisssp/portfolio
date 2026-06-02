@@ -4,6 +4,11 @@ export const projectMtrpa = {
       imagePath: "/assets/images/projects/mtrpa/general.webp",
       heroImagePath: "/assets/images/projects/mtrpa/hero.webp",
       techStack: ["angular", "bootstrap", "mongodb", "springboot", "java"],
+      categories: {
+         domain: ["logistics"],
+         platform: ["web", "api"],
+         tags: ["enterprise"],
+      },
       links: [{ type: "github", url: "https://github.com/chrisssp/mtrpa-web" }],
       ecosystem: [
          {

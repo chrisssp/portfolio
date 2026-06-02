@@ -11,6 +11,11 @@ export const projectFlacks = {
          "springboot",
          "postgresql",
       ],
+      categories: {
+         domain: ["retail"],
+         platform: ["web", "mobile"],
+         tags: ["enterprise"],
+      },
       links: [{ type: "github", url: "https://github.com/flacks-cc" }],
       certificates: [
          {

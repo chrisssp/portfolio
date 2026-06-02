@@ -11,6 +11,11 @@ export const projectPuntoFiel = {
          "tanstackquery",
          "zustand",
       ],
+      categories: {
+         domain: ["retail"],
+         platform: ["mobile"],
+         tags: [],
+      },
       links: [
          {
             type: "github",
