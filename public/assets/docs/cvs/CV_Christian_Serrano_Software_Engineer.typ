@@ -21,11 +21,11 @@ Focused on building efficient web and mobile ecosystems. Experienced in Linux en
 == Technical Skills
 #multi-line-list(
   single-line-entry([*Frontend & Mobile:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS], []),
-  single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
+  single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Python (Django, FastAPI), Supabase], []),
   single-line-entry([*Data & Infrastructure:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
   single-line-entry([*Tools & OS:*], [Git, Linux, Figma, Claude Code, OpenCode, MCP], []),
   single-line-entry([*Methodologies:*], [SDD (Spec-Driven Development), Multi-model orchestration, Scrum, Kanban, XP, Design Thinking], []),
-  single-line-entry([*Familiar with:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase, SQL Server], [])
+  single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
 )
 
 == Professional Experience
