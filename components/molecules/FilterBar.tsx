@@ -177,37 +177,32 @@ const ActiveChips = ({
    if (chips.length === 0) return null;
 
    return (
-      <div className="flex flex-col gap-3">
-         <div className="flex flex-wrap gap-2">
-            {chips.map(({ axis, value }) => {
-               const option = axis.options.find((item) => item.id === value);
-               if (!option) return null;
+      <div className="flex flex-wrap items-center gap-2">
+         {chips.map(({ axis, value }) => {
+            const option = axis.options.find((item) => item.id === value);
+            if (!option) return null;
 
-               return (
-                  <button
-                     key={`${axis.key}-${value}`}
-                     type="button"
-                     onClick={() => onRemove(axis.key, value)}
-                     className="flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold text-body border border-subtle/60 bg-surface/80 hover:bg-surface transition"
-                  >
-                     <span className="text-body/70">{axis.label}:</span>
-                     <span className="text-body">{option.name}</span>
-                     <MdClear className="size-3 text-body/60" />
-                  </button>
-               );
-            })}
-         </div>
-
-         <div>
-            <button
-               type="button"
-               onClick={onClearAll}
-               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 transition"
-            >
-               <MdClear className="size-3" />
-               {clearLabel}
-            </button>
-         </div>
+            return (
+               <button
+                  key={`${axis.key}-${value}`}
+                  type="button"
+                  onClick={() => onRemove(axis.key, value)}
+                  className="flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold text-body border border-subtle/60 bg-surface/80 hover:bg-surface transition"
+               >
+                  <span className="text-body/70">{axis.label}:</span>
+                  <span className="text-body">{option.name}</span>
+                  <MdClear className="size-3 text-body/60" />
+               </button>
+            );
+         })}
+         <button
+            type="button"
+            onClick={onClearAll}
+            className="inline-flex items-center gap-1 text-xs font-semibold text-body/50 hover:text-body transition px-2 py-1"
+         >
+            <MdClear className="size-3" />
+            {clearLabel}
+         </button>
       </div>
    );
 };

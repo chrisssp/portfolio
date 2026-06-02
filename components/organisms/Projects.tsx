@@ -367,16 +367,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                         showFilterBar || hasActiveFilter ? "primary" : "outline"
                      }
                      icon={
-                        <span className="relative">
-                           {showFilterBar ? (
-                              <MdFilterListOff />
-                           ) : (
-                              <MdFilterList />
-                           )}
-                           {hasActiveFilter && !showFilterBar && (
-                              <span className="absolute -top-1.5 -right-1.5 size-2 bg-red-400 rounded-full ring-1 ring-white-off" />
-                           )}
-                        </span>
+                        showFilterBar ? <MdFilterListOff /> : <MdFilterList />
                      }
                      onClick={() => setShowFilterBar((prev) => !prev)}
                      ariaLabel={dict.projects.actions.filter}
