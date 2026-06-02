@@ -130,13 +130,18 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       return Array.from(tagSet).sort();
    }, [dict.projects.items]);
 
-   const { selections, toggle, clearAxis, clearAll, hasActiveFilter } =
-      useProjectFilter({
+   const allValues = useMemo(
+      () => ({
          tech: allTechs,
          domain: allDomains,
          platform: allPlatforms,
          tags: allTags,
-      });
+      }),
+      [allTechs, allDomains, allPlatforms, allTags],
+   );
+
+   const { selections, toggle, clearAxis, clearAll, hasActiveFilter } =
+      useProjectFilter(allValues);
 
    const handleToggle = useCallback(
       (axis: string, value: string) => {
