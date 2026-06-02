@@ -216,6 +216,11 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       [dict.projects.actions],
    );
 
+   const totalActiveFilters = useMemo(
+      () => Object.values(selections).reduce((sum, arr) => sum + arr.length, 0),
+      [selections],
+   );
+
    const filteredProjects = useMemo(() => {
       const hasFilters = Object.values(selections).some(
          (values) => values.length > 0,
@@ -358,15 +363,31 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                {/* Controls — toggle button + segmented control */}
                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full lg:w-auto lg:ml-auto">
                   <Button
-                     variant={showFilterBar ? "primary" : "outline"}
+                     variant={
+                        showFilterBar || hasActiveFilter ? "primary" : "outline"
+                     }
                      icon={
-                        showFilterBar ? <MdFilterListOff /> : <MdFilterList />
+                        <span className="relative">
+                           {showFilterBar ? (
+                              <MdFilterListOff />
+                           ) : (
+                              <MdFilterList />
+                           )}
+                           {hasActiveFilter && !showFilterBar && (
+                              <span className="absolute -top-1.5 -right-1.5 size-2 bg-red-400 rounded-full ring-1 ring-white-off" />
+                           )}
+                        </span>
                      }
                      onClick={() => setShowFilterBar((prev) => !prev)}
                      ariaLabel={dict.projects.actions.filter}
                      className="w-full sm:w-auto"
                   >
                      {dict.projects.actions.filter}
+                     {hasActiveFilter && !showFilterBar && (
+                        <span className="ml-1 inline-flex items-center justify-center text-[10px] font-bold leading-none text-primary-contrast bg-primary/80 rounded-full min-w-[18px] h-[18px] px-1">
+                           {totalActiveFilters}
+                        </span>
+                     )}
                   </Button>
 
                   {!hasActiveFilter && (
