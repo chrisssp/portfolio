@@ -36,6 +36,15 @@ const FilterPills = ({
 }: FilterPillsProps) => {
    const handleChange = (value: "featured" | "others") => {
       onFilterChange(value);
+
+      // Clear project-specific anchors and restore #projects
+      if (
+         typeof window !== "undefined" &&
+         window.location.hash.startsWith("#project-")
+      ) {
+         window.history.replaceState(null, "", "#projects");
+      }
+
       if (window.scrollY > 500) {
          document
             .getElementById("projects")
