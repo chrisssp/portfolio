@@ -16,15 +16,15 @@
 )
 
 == Perfil
-Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles y automatización de procesos.
+Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.
 
 == Habilidades técnicas
 #multi-line-list(
   single-line-entry([*Frontend y móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS], []),
   single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
   single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
-  single-line-entry([*Herramientas y OS:*], [Git, Linux, Figma], []),
-  single-line-entry([*Desarrollo aumentado por IA:*], [SDD (Spec-Driven Development), Claude Code, OpenCode, MCP, Orquestación multi-modelo], []),
+  single-line-entry([*Herramientas y OS:*], [Git, Linux, Figma, Claude Code, OpenCode, MCP], []),
+  single-line-entry([*Metodologías:*], [SDD (Spec-Driven Development), Orquestación multi-modelo, Scrum, Kanban, XP, Design Thinking], []),
   single-line-entry([*Familiarizado con:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase, SQL Server], [])
 )
 
@@ -34,7 +34,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Seven D Construction*],
       top-right: [Enero 2026 -- Abril 2026],
-      bottom-left: [Ingeniero de software intern (Remoto)],
+      bottom-left: [Pasante de ingeniería de software (Remoto)],
       bottom-right: [Chicago, IL, USA / México],
     ),
     list-items: (
@@ -72,7 +72,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*PepsiCo*],
       top-right: [Mayo 2024 -- Agosto 2024],
-      bottom-left: [Ingeniero de software intern (Remoto)],
+      bottom-left: [Pasante de ingeniería de software (Remoto)],
       bottom-right: [Azcapotzalco, CDMX, México],
     ),
     list-items: (

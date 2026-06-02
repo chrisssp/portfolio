@@ -16,15 +16,15 @@
 )
 
 == Profile
-Focused on building efficient web and mobile ecosystems. Experienced in operating within Linux environments, prioritizing scalability, clean code, and performance. Results-oriented professional skilled in translating business requirements into maintainable architectures and process automation.
+Focused on building efficient web and mobile ecosystems. Experienced in Linux environments, prioritizing scalability, clean code, and performance. Translates business requirements into maintainable architectures through process automation and AI-augmented development workflows.
 
 == Technical Skills
 #multi-line-list(
   single-line-entry([*Frontend & Mobile:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS], []),
   single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
   single-line-entry([*Data & Infrastructure:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
-  single-line-entry([*Tools & OS:*], [Git, Linux, Figma], []),
-  single-line-entry([*AI-Augmented Development:*], [SDD (Spec-Driven Development), Claude Code, OpenCode, MCP, Multi-model orchestration], []),
+  single-line-entry([*Tools & OS:*], [Git, Linux, Figma, Claude Code, OpenCode, MCP], []),
+  single-line-entry([*Methodologies:*], [SDD (Spec-Driven Development), Multi-model orchestration, Scrum, Kanban, XP, Design Thinking], []),
   single-line-entry([*Familiar with:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase, SQL Server], [])
 )
 
