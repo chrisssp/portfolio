@@ -1,4 +1,4 @@
-import type { KeyboardEvent } from "react";
+import { type KeyboardEvent, useMemo } from "react";
 import { MdCheck } from "react-icons/md";
 import type { TechConfig } from "@/config/technologies";
 
@@ -43,7 +43,17 @@ const withAlpha = (hexColor: string, alpha: number) => {
    return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 };
 
-const getBestTextColorClass = (hexColor: string): string => {
+const wcagRelativeLuminance = (r: number, g: number, b: number): number => {
+   const toLinear = (c: number) => {
+      const s = c / 255;
+      return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+   };
+   return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+};
+
+const darkenForWhiteText = (
+   hexColor: string,
+): { r: number; g: number; b: number } => {
    const normalized = hexColor.replace("#", "");
    const safe =
       normalized.length === 3
@@ -53,20 +63,44 @@ const getBestTextColorClass = (hexColor: string): string => {
               .join("")
          : normalized;
 
-   if (safe.length !== 6) return "text-white-off";
-
-   const red = Number.parseInt(safe.slice(0, 2), 16);
-   const green = Number.parseInt(safe.slice(2, 4), 16);
-   const blue = Number.parseInt(safe.slice(4, 6), 16);
-
-   if (Number.isNaN(red) || Number.isNaN(green) || Number.isNaN(blue)) {
-      return "text-white-off";
+   if (safe.length !== 6) {
+      const fallback = Number.parseInt(safe.slice(0, 2), 16);
+      return { r: fallback || 0, g: fallback || 0, b: fallback || 0 };
    }
 
-   const luminance = 0.299 * red + 0.587 * green + 0.114 * blue;
+   const r = Number.parseInt(safe.slice(0, 2), 16);
+   const g = Number.parseInt(safe.slice(2, 4), 16);
+   const b = Number.parseInt(safe.slice(4, 6), 16);
 
-   // WCAG AA: light backgrounds need dark text
-   return luminance > 130 ? "text-slate-900" : "text-white-off";
+   if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b)) {
+      return { r: 0, g: 0, b: 0 };
+   }
+
+   // Max relative luminance allowed for 4.5:1 contrast with white
+   const maxL = 1.05 / 4.5 - 0.05; // ≈ 0.1833
+
+   // Quick check: already passes?
+   if (wcagRelativeLuminance(r, g, b) <= maxL) {
+      return { r, g, b };
+   }
+
+   // Binary search for highest scale factor that still passes
+   let lo = 0;
+   let hi = 1;
+   for (let i = 0; i < 20; i++) {
+      const mid = (lo + hi) / 2;
+      if (wcagRelativeLuminance(r * mid, g * mid, b * mid) <= maxL) {
+         lo = mid; // try brighter while still valid
+      } else {
+         hi = mid; // too bright, darken more
+      }
+   }
+
+   return {
+      r: Math.round(r * lo),
+      g: Math.round(g * lo),
+      b: Math.round(b * lo),
+   };
 };
 
 const toRgbaLightenedIfDark = (hexColor: string, alpha: number) => {
@@ -112,9 +146,14 @@ export const Badge = ({
    const Icon = tech.icon;
    const isOutlined = hasActiveFilter && !selected;
    const showSelected = hasActiveFilter && selected;
-   const filledTextColor = isOutlined
-      ? "text-body/60"
-      : getBestTextColorClass(tech.bgColor);
+
+   const safeBg = useMemo(
+      () => darkenForWhiteText(tech.bgColor),
+      [tech.bgColor],
+   );
+   const safeBgRgb = `rgb(${safeBg.r}, ${safeBg.g}, ${safeBg.b})`;
+
+   const filledTextColor = isOutlined ? "text-body/60" : "text-white-off";
    const borderColor = isOutlined
       ? toRgbaLightenedIfDark(tech.bgColor, 0.6)
       : undefined;
@@ -148,7 +187,7 @@ export const Badge = ({
 
    const commonStyle = isOutlined
       ? { borderColor }
-      : { backgroundColor: tech.bgColor };
+      : { backgroundColor: safeBgRgb };
 
    const inner = (
       <>
