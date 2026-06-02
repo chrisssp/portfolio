@@ -136,7 +136,7 @@ const Section = ({
          >
             <div className="overflow-hidden">
                <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-                  <div className="grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
+                  <div className="p-1 grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
                      {sortedOptions.map((optionId) => {
                         const option = axis.options.find(
                            (item) => item.id === optionId,
