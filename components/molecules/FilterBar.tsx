@@ -129,30 +129,36 @@ const Section = ({
             </div>
          </button>
 
-         {isOpen && (
-            <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-               <div className="grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
-                  {sortedOptions.map((optionId) => {
-                     const option = axis.options.find(
-                        (item) => item.id === optionId,
-                     );
-                     if (!option) return null;
-                     const isSelected = selected.includes(optionId);
+         <div
+            className={`grid transition-[grid-template-rows] duration-200 ease-out ${
+               isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            }`}
+         >
+            <div className="overflow-hidden">
+               <div className="px-4 sm:px-5 pb-4 sm:pb-5">
+                  <div className="grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
+                     {sortedOptions.map((optionId) => {
+                        const option = axis.options.find(
+                           (item) => item.id === optionId,
+                        );
+                        if (!option) return null;
+                        const isSelected = selected.includes(optionId);
 
-                     return (
-                        <Badge
-                           key={optionId}
-                           tech={toTechConfig(option)}
-                           interactive
-                           selected={isSelected}
-                           hasActiveFilter={hasActiveFilter}
-                           onClick={() => onToggle(optionId)}
-                        />
-                     );
-                  })}
+                        return (
+                           <Badge
+                              key={optionId}
+                              tech={toTechConfig(option)}
+                              interactive
+                              selected={isSelected}
+                              hasActiveFilter={hasActiveFilter}
+                              onClick={() => onToggle(optionId)}
+                           />
+                        );
+                     })}
+                  </div>
                </div>
             </div>
-         )}
+         </div>
       </div>
    );
 };
@@ -225,15 +231,21 @@ export const FilterBar = ({
 
    return (
       <div className="flex flex-col gap-4 w-full">
-         {hasActiveFilter && (
-            <ActiveChips
-               axes={normalizedAxes}
-               selections={selections}
-               onRemove={onToggle}
-               onClearAll={onClearAll}
-               clearLabel={clearLabel}
-            />
-         )}
+         <div
+            className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+               hasActiveFilter ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            }`}
+         >
+            <div className="overflow-hidden">
+               <ActiveChips
+                  axes={normalizedAxes}
+                  selections={selections}
+                  onRemove={onToggle}
+                  onClearAll={onClearAll}
+                  clearLabel={clearLabel}
+               />
+            </div>
+         </div>
 
          <div className="flex flex-col gap-3">
             {normalizedAxes.map((axis) => (

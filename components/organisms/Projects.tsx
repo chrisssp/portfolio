@@ -392,25 +392,31 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                </div>
             </div>
 
-            {/* Filter Bar — toggled */}
-            {showFilterBar && (
-               <FilterBar
-                  axes={filterAxes.map((axis) => ({
-                     key: axis.key,
-                     label: filterLabels[axis.key],
-                     options: axis.options,
-                  }))}
-                  selections={filterSelections}
-                  onToggle={handleToggle}
-                  onClearAxis={handleClearAxis}
-                  onClearAll={handleClearAll}
-                  hasActiveFilter={hasActiveFilter}
-                  clearLabel={dict.projects.actions.clear_all}
-                  clearAxisLabel={dict.projects.actions.clear_filters}
-                  expandedSections={expandedSections}
-                  onSectionToggle={handleSectionToggle}
-               />
-            )}
+            {/* Filter Bar — animated reveal */}
+            <div
+               className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                  showFilterBar ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+               }`}
+            >
+               <div className="overflow-hidden">
+                  <FilterBar
+                     axes={filterAxes.map((axis) => ({
+                        key: axis.key,
+                        label: filterLabels[axis.key],
+                        options: axis.options,
+                     }))}
+                     selections={filterSelections}
+                     onToggle={handleToggle}
+                     onClearAxis={handleClearAxis}
+                     onClearAll={handleClearAll}
+                     hasActiveFilter={hasActiveFilter}
+                     clearLabel={dict.projects.actions.clear_all}
+                     clearAxisLabel={dict.projects.actions.clear_filters}
+                     expandedSections={expandedSections}
+                     onSectionToggle={handleSectionToggle}
+                  />
+               </div>
+            </div>
          </div>
 
          {/* Project List */}
