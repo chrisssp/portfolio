@@ -37,6 +37,8 @@ interface FilterBarProps {
    hasActiveFilter: boolean;
    clearLabel: string;
    clearAxisLabel: string;
+   expandedSections?: Record<string, boolean>;
+   onSectionToggle?: (key: string) => void;
 }
 
 interface ActiveChipsProps {
@@ -54,6 +56,8 @@ interface SectionProps {
    onClear: () => void;
    clearAxisLabel: string;
    hasActiveFilter: boolean;
+   expanded?: boolean;
+   onToggleExpand?: () => void;
 }
 
 const sortSelectedFirst = (selected: string[]) => (a: string, b: string) => {
@@ -71,8 +75,10 @@ const Section = ({
    onClear,
    clearAxisLabel,
    hasActiveFilter,
+   expanded = false,
+   onToggleExpand,
 }: SectionProps) => {
-   const [isOpen, setIsOpen] = useState(true);
+   const isOpen = expanded;
 
    const selectedCount = selected.length;
    const sortedOptions = useMemo(() => {
@@ -84,7 +90,7 @@ const Section = ({
       <div className="rounded-2xl border border-subtle/60 bg-surface/70 shadow-sm">
          <button
             type="button"
-            onClick={() => setIsOpen((prev) => !prev)}
+            onClick={() => onToggleExpand?.()}
             className="w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3 sm:py-3.5"
             aria-expanded={isOpen}
          >
@@ -215,6 +221,8 @@ export const FilterBar = ({
    hasActiveFilter,
    clearLabel,
    clearAxisLabel,
+   expandedSections,
+   onSectionToggle,
 }: FilterBarProps) => {
    const normalizedAxes = useMemo(
       () => axes.filter((axis) => axis.options.length > 0),
@@ -243,6 +251,8 @@ export const FilterBar = ({
                   onClear={() => onClearAxis(axis.key)}
                   clearAxisLabel={clearAxisLabel}
                   hasActiveFilter={hasActiveFilter}
+                  expanded={expandedSections?.[axis.key] ?? false}
+                  onToggleExpand={() => onSectionToggle?.(axis.key)}
                />
             ))}
          </div>

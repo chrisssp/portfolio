@@ -163,6 +163,17 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       setShowFilterBar(false);
    }, [clearAll]);
 
+   const [expandedSections, setExpandedSections] = useState<
+      Record<string, boolean>
+   >({});
+
+   const handleSectionToggle = useCallback((key: string) => {
+      setExpandedSections((prev) => ({
+         ...prev,
+         [key]: !prev[key],
+      }));
+   }, []);
+
    const filterAxes: CategoryAxis[] = useMemo(() => {
       const techAxis: CategoryAxis = {
          key: "tech",
@@ -352,10 +363,10 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                         showFilterBar ? <MdFilterListOff /> : <MdFilterList />
                      }
                      onClick={() => setShowFilterBar((prev) => !prev)}
-                     ariaLabel={dict.projects.actions.filter_tech}
+                     ariaLabel={dict.projects.actions.filter}
                      className="w-full sm:w-auto"
                   >
-                     {dict.projects.actions.filter_tech}
+                     {dict.projects.actions.filter}
                   </Button>
 
                   {!hasActiveFilter && (
@@ -384,6 +395,8 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                   hasActiveFilter={hasActiveFilter}
                   clearLabel={dict.projects.actions.clear_all}
                   clearAxisLabel={dict.projects.actions.clear_filters}
+                  expandedSections={expandedSections}
+                  onSectionToggle={handleSectionToggle}
                />
             )}
          </div>
@@ -445,6 +458,8 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                      hasActiveFilter={hasActiveFilter}
                      clearLabel={dict.projects.actions.clear_all}
                      clearAxisLabel={dict.projects.actions.clear_filters}
+                     expandedSections={expandedSections}
+                     onSectionToggle={handleSectionToggle}
                   />
                </div>
             )}

@@ -223,6 +223,7 @@ export interface Dictionary {
          tab_featured: string;
          tab_all: string;
          see_more: string;
+         filter: string;
          filter_tech: string;
          filter_domain: string;
          filter_platform: string;

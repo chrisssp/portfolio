@@ -43,6 +43,32 @@ const withAlpha = (hexColor: string, alpha: number) => {
    return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 };
 
+const getBestTextColorClass = (hexColor: string): string => {
+   const normalized = hexColor.replace("#", "");
+   const safe =
+      normalized.length === 3
+         ? normalized
+              .split("")
+              .map((ch) => `${ch}${ch}`)
+              .join("")
+         : normalized;
+
+   if (safe.length !== 6) return "text-white-off";
+
+   const red = Number.parseInt(safe.slice(0, 2), 16);
+   const green = Number.parseInt(safe.slice(2, 4), 16);
+   const blue = Number.parseInt(safe.slice(4, 6), 16);
+
+   if (Number.isNaN(red) || Number.isNaN(green) || Number.isNaN(blue)) {
+      return "text-white-off";
+   }
+
+   const luminance = 0.299 * red + 0.587 * green + 0.114 * blue;
+
+   // WCAG AA: light backgrounds need dark text
+   return luminance > 130 ? "text-slate-900" : "text-white-off";
+};
+
 const toRgbaLightenedIfDark = (hexColor: string, alpha: number) => {
    const normalized = hexColor.replace("#", "");
    const isShort = normalized.length === 3;
@@ -86,6 +112,9 @@ export const Badge = ({
    const Icon = tech.icon;
    const isOutlined = hasActiveFilter && !selected;
    const showSelected = hasActiveFilter && selected;
+   const filledTextColor = isOutlined
+      ? "text-body/60"
+      : getBestTextColorClass(tech.bgColor);
    const borderColor = isOutlined
       ? toRgbaLightenedIfDark(tech.bgColor, 0.6)
       : undefined;
@@ -105,14 +134,14 @@ export const Badge = ({
 
    const iconClassName = [
       "size-3 sm:size-3.5 md:size-4 shrink-0",
-      isOutlined ? "text-body/60" : "text-white-off",
+      filledTextColor,
    ]
       .filter(Boolean)
       .join(" ");
 
    const textClassName = [
       "font-sans font-medium text-xs md:text-sm whitespace-nowrap leading-none mt-px",
-      isOutlined ? "text-body/60" : "text-white-off",
+      filledTextColor,
    ]
       .filter(Boolean)
       .join(" ");
@@ -125,7 +154,9 @@ export const Badge = ({
       <>
          <Icon className={iconClassName} />
          {showSelected ? (
-            <MdCheck className="size-3 sm:size-3.5 md:size-4 text-white-off shrink-0" />
+            <MdCheck
+               className={`size-3 sm:size-3.5 md:size-4 shrink-0 ${filledTextColor}`}
+            />
          ) : null}
          <span className={textClassName}>{tech.name}</span>
       </>
