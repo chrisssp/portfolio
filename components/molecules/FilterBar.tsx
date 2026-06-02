@@ -55,7 +55,6 @@ interface SectionProps {
    onToggle: (value: string) => void;
    onClear: () => void;
    clearAxisLabel: string;
-   hasActiveFilter: boolean;
    expanded?: boolean;
    onToggleExpand?: () => void;
 }
@@ -74,11 +73,11 @@ const Section = ({
    onToggle,
    onClear,
    clearAxisLabel,
-   hasActiveFilter,
    expanded = false,
    onToggleExpand,
 }: SectionProps) => {
    const isOpen = expanded;
+   const hasActiveFilter = selected.length > 0;
 
    const selectedCount = selected.length;
    const sortedOptions = useMemo(() => {
@@ -245,7 +244,6 @@ export const FilterBar = ({
                   onToggle={(value) => onToggle(axis.key, value)}
                   onClear={() => onClearAxis(axis.key)}
                   clearAxisLabel={clearAxisLabel}
-                  hasActiveFilter={hasActiveFilter}
                   expanded={expandedSections?.[axis.key] ?? false}
                   onToggleExpand={() => onSectionToggle?.(axis.key)}
                />
