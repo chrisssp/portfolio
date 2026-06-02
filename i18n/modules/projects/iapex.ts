@@ -11,6 +11,7 @@ export const projectIapex = {
          "springboot",
          "django",
          "postgresql",
+         "mongodb",
          "python",
       ],
       categories: {
@@ -61,11 +62,11 @@ export const projectIapex = {
       ecosystem: [
          {
             imagePath: "/assets/images/projects/iapex/specific1.webp",
-            techStack: ["django", "postgresql", "scikitlearn", "python"],
+            techStack: ["django", "scikitlearn", "python"],
             links: [
                {
                   type: "github",
-                  url: "https://github.com/iapex-org/core-api",
+                  url: "https://github.com/iapex-org/search-api",
                },
                {
                   type: "paper",
@@ -90,6 +91,16 @@ export const projectIapex = {
                {
                   type: "github",
                   url: "https://github.com/iapex-org/web-app",
+               },
+            ],
+         },
+         {
+            imagePath: "/assets/images/projects/iapex/specific4.webp",
+            techStack: ["springboot", "mongodb"],
+            links: [
+               {
+                  type: "github",
+                  url: "https://github.com/iapex-org/core-api",
                },
             ],
          },
@@ -124,6 +135,11 @@ export const projectIapex = {
                title: "The Web Portal (Institutional Side)",
                description:
                   "Secure web portal for medical staff to register patients using morphological traits and photographs under strict RBAC (Role-Based Access Control).",
+            },
+            {
+               title: "Core API",
+               description:
+                  "Central orchestration layer connecting the neural core, institutional portal, and mobile interface. Manages identity, access control, and data synchronization across the ecosystem.",
             },
          ],
       },
@@ -164,6 +180,11 @@ export const projectIapex = {
                title: "Portal web institucional",
                description:
                   "Portal web seguro para que el personal médico registre pacientes utilizando rasgos morfológicos y fotografías bajo un estricto control de acceso basado en roles (RBAC).",
+            },
+            {
+               title: "API Central",
+               description:
+                  "Capa de orquestación central que conecta el núcleo neural, el portal institucional y la interfaz móvil. Gestiona identidad, control de acceso y sincronización de datos en todo el ecosistema.",
             },
          ],
       },
