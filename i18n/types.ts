@@ -189,6 +189,7 @@ export interface Dictionary {
       title: string;
       p1: string;
       p2: string;
+      p3: string;
       philosophy: string;
       quote: string;
       educationTitle: string;
@@ -232,6 +233,12 @@ export interface Dictionary {
          clear_all: string;
          no_projects_match: string;
       };
+   };
+
+   filters: {
+      domain: Record<string, string>;
+      platform: Record<string, string>;
+      tags: Record<string, string>;
    };
 
    cta: {

@@ -93,6 +93,28 @@ export const es: Dictionary = {
          no_projects_match: "No hay proyectos con los filtros seleccionados",
       },
    },
+   filters: {
+      domain: {
+         health: "Salud",
+         fintech: "Fintech",
+         logistics: "Logística",
+         retail: "Retail",
+         productivity: "Productividad",
+      },
+      platform: {
+         web: "Web",
+         mobile: "Móvil",
+         api: "API",
+         landing: "Landing",
+      },
+      tags: {
+         "ai-ml": "IA / ML",
+         "iot-wearables": "IoT / Wearables",
+         hackathon: "Hackathon",
+         research: "Investigación",
+         enterprise: "Corporativo",
+      },
+   },
    cta: cta.es,
    footer: footer.es,
 };

@@ -23,7 +23,8 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
   single-line-entry([*Frontend y móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS], []),
   single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
   single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
-  single-line-entry([*Herramientas y OS:*], [Git, Linux, Linux, Figma], []),
+  single-line-entry([*Herramientas y OS:*], [Git, Linux, Figma], []),
+  single-line-entry([*Desarrollo aumentado por IA:*], [SDD (Spec-Driven Development), Claude Code, OpenCode, MCP, Orquestación multi-modelo], []),
   single-line-entry([*Familiarizado con:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase, SQL Server], [])
 )
 

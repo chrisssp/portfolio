@@ -24,6 +24,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in operatin
   single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Supabase], []),
   single-line-entry([*Data & Infrastructure:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
   single-line-entry([*Tools & OS:*], [Git, Linux, Figma], []),
+  single-line-entry([*AI-Augmented Development:*], [SDD (Spec-Driven Development), Claude Code, OpenCode, MCP, Multi-model orchestration], []),
   single-line-entry([*Familiar with:*], [.NET, Kotlin, Python (Django, FastAPI), MySQL, Firebase, SQL Server], [])
 )
 

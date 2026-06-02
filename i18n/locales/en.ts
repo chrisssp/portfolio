@@ -93,6 +93,28 @@ export const en: Dictionary = {
          no_projects_match: "No projects match the selected filters",
       },
    },
+   filters: {
+      domain: {
+         health: "Health",
+         fintech: "Fintech",
+         logistics: "Logistics",
+         retail: "Retail",
+         productivity: "Productivity",
+      },
+      platform: {
+         web: "Web",
+         mobile: "Mobile",
+         api: "API",
+         landing: "Landing",
+      },
+      tags: {
+         "ai-ml": "AI / ML",
+         "iot-wearables": "IoT / Wearables",
+         hackathon: "Hackathon",
+         research: "Research",
+         enterprise: "Enterprise",
+      },
+   },
    cta: cta.en,
    footer: footer.en,
 };

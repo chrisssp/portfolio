@@ -193,8 +193,20 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             .filter((x): x is NonNullable<typeof x> => x != null),
       };
 
-      return [techAxis, ...CATEGORY_AXES];
-   }, [allTechs]);
+      return [
+         techAxis,
+         ...CATEGORY_AXES.map((axis) => ({
+            ...axis,
+            options: axis.options.map((opt) => ({
+               ...opt,
+               name:
+                  dict.filters?.[axis.key as "domain" | "platform" | "tags"]?.[
+                     opt.id
+                  ] ?? opt.name,
+            })),
+         })),
+      ];
+   }, [allTechs, dict.filters]);
 
    const filterSelections = useMemo(
       () => ({

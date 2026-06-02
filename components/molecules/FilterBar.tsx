@@ -90,7 +90,7 @@ const Section = ({
          <button
             type="button"
             onClick={() => onToggleExpand?.()}
-            className="w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3 sm:py-3.5"
+            className="cursor-pointer w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3 sm:py-3.5"
             aria-expanded={isOpen}
          >
             <div className="flex items-center gap-2">

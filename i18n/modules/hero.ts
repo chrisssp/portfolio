@@ -2,7 +2,7 @@ export const hero = {
    en: {
       role: "Software Engineer | Full-Stack & Mobile Developer",
       description:
-         "Focused on building efficient web and mobile ecosystems. Knowledgeable in Linux environments, prioritizing scalability, clean code, and performance. Skilled in translating business requirements into maintainable architectures and process automation.",
+         "Focused on building efficient web and mobile ecosystems. Experienced in Linux environments, prioritizing scalability, clean code, and performance. Translates business requirements into maintainable architectures through process automation and AI-augmented development workflows.",
       actions: {
          cv: "CV",
          cvLink: "/assets/docs/cvs/CV_Christian_Serrano_Software_Engineer.pdf",
@@ -22,7 +22,7 @@ export const hero = {
    es: {
       role: "Ingeniero de software | Desarrollador full-stack y móvil",
       description:
-         "Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles y automatización de procesos.",
+         "Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.",
       actions: {
          cv: "CV",
          cvLink:
