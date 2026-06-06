@@ -6,9 +6,9 @@
 
 #let cv-start(title, lang, body) = {
   let location = if lang == "es" {
-    "Córdoba, Veracruz, México"
+    "Córdoba, Veracruz, México · Remote-first · Disponible para cambio de residencia"
   } else {
-    "Córdoba, Veracruz, Mexico"
+    "Córdoba, Veracruz, Mexico · Remote-first · Open to relocation"
   }
 
   show: resume.with(
