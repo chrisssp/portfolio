@@ -5,16 +5,13 @@ export const projectDabetai = {
       imagePath: "/assets/images/projects/dabetai/general.webp",
       heroImagePath: "/assets/images/projects/dabetai/hero.webp",
       techStack: [
-         "astro",
          "angular",
          "reactnative",
-         "expo",
          "tailwindcss",
-         "nestjs",
          "postgresql",
-         "fastapi",
          "mongodb",
          "python",
+         "typescript",
       ],
       categories: {
          domain: ["health"],

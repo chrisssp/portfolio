@@ -33,8 +33,8 @@ Focused on building efficient web and mobile ecosystems. Experienced in Linux en
   (
     entry-header-args: (
       top-left: [*Seven D Construction*],
-      top-right: [January 2026 -- April 2026],
-      bottom-left: [Software Engineer Intern (Remote)],
+      top-right: [January 2026 -- May 2026],
+      bottom-left: [Software Engineer (Remote)],
       bottom-right: [Chicago, IL, USA / Mexico],
     ),
     list-items: (
@@ -47,11 +47,12 @@ Focused on building efficient web and mobile ecosystems. Experienced in Linux en
     entry-header-args: (
       top-left: [*Banco Azteca (Genius Arena Hackathon — Talent Land 2026)*],
       top-right: [April 2026],
-      bottom-left: [Hackathon Participant & Team Lead],
+      bottom-left: [Participant & Team Lead],
       bottom-right: [Santa Fe, CDMX, Mexico],
     ),
     list-items: (
       [Led the development of #link("https://chrisssp.vercel.app/en/projects/azkali")[*Azkali*] during a *48-hour* sprint, creating a behavioral AI copilot to mitigate impulsive spending in Gen Z using *Design Thinking* methodology.],
+      [Selected among 1,500 participants nationwide for the on-site phase of Talent Land 2026.],
       [Implemented a real-time impulsivity analysis engine using *Gemini 2.5 Flash-Lite*, translating monetary costs into operational opportunity costs.],
       [Architected the multi-platform ecosystem integrating *React Native* and *Supabase*, incorporating gamification mechanics.],
     )
@@ -65,6 +66,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in Linux en
     ),
     list-items: (
       [Built #link("https://chrisssp.vercel.app/en/projects/coppel-nexus")[*Coppel Nexus*], a gamified referral ecosystem for corporate expansion (React Native/Node.js).],
+      [Selected among 1,400+ participants nationwide for the on-site phase of Talent Land 2025.],
       [Managed the team by strictly implementing *XP* and *Kanban* methodologies.],
     )
   ),
@@ -72,7 +74,7 @@ Focused on building efficient web and mobile ecosystems. Experienced in Linux en
     entry-header-args: (
       top-left: [*PepsiCo*],
       top-right: [May 2024 -- August 2024],
-      bottom-left: [Software Engineer Intern (Remote)],
+      bottom-left: [Software Developer (Remote)],
       bottom-right: [Azcapotzalco, CDMX, Mexico],
     ),
     list-items: (

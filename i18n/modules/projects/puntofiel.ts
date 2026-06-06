@@ -5,11 +5,11 @@ export const projectPuntoFiel = {
       heroImagePath: "/assets/images/projects/puntofiel/hero.webp",
       techStack: [
          "reactnative",
-         "expo",
          "supabase",
          "tailwindcss",
          "tanstackquery",
          "zustand",
+         "typescript",
       ],
       categories: {
          domain: ["retail"],

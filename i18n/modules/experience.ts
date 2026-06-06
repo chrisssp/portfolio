@@ -3,7 +3,7 @@ export const experience = {
       title: "Experience",
       items: [
          {
-            role: "Software Engineer Intern",
+            role: "Software Engineer",
             company: "Seven D Construction",
             location: "Chicago, IL, USA / México",
             remote: "Remote",
@@ -11,17 +11,17 @@ export const experience = {
             projectId: "7dcompass",
             date: "Jan 2026 — May 2026",
             description:
-               "Led the evolution of 7D-Compass (Angular/Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by 95%. Implemented a centralized audit engine for $2.3M USD in transactions, detecting critical financial discrepancies through complex validation logic.",
+               "Led the evolution of 7D-Compass (Angular/Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by 95%. Implemented a centralized audit engine for $5.5M USD in transactions, detecting critical financial discrepancies through complex validation logic.",
          },
          {
-            role: "Hackathon Team Lead",
+            role: "Team Lead",
             company: "Banco Azteca (Genius Arena Hackathon — Talent Land 2026)",
             location: "Santa Fe, CDMX, México",
             product: "Azkali",
             projectId: "azkali",
             date: "April 2026",
             description:
-               "Developed Azkali in 48h: an AI copilot to mitigate impulsive spending using Gemini 2.5 Flash-Lite. Built under Design Thinking methodology, it translates monetary costs into operating opportunity costs, achieving high engagement during Talent Land 2026.",
+               "Developed Azkali in 48h: an AI copilot to mitigate impulsive spending using Gemini 2.5 Flash-Lite. Selected among 1,500 participants nationwide for the on-site phase of Talent Land 2026. Built under Design Thinking methodology, it translates monetary costs into operating opportunity costs, achieving high engagement during Talent Land 2026.",
          },
          {
             role: "4th Place & Team Lead",
@@ -31,10 +31,10 @@ export const experience = {
             projectId: "coppel-nexus",
             date: "April 2025",
             description:
-               "Architected Coppel Nexus, a gamified referral ecosystem for Coppel (React Native/Node.js) in a 72-hour sprint. Led the team by strictly applying XP and Kanban methodologies, securing a fourth place on the podium.",
+               "Architected Coppel Nexus, a gamified referral ecosystem for Coppel (React Native/Node.js) in a 72-hour sprint. Selected among 1,400+ participants nationwide for the on-site phase of Talent Land 2025. Led the team by strictly applying XP and Kanban methodologies, securing a fourth place on the podium.",
          },
          {
-            role: "Software Engineer Intern",
+            role: "Software Developer",
             company: "PepsiCo",
             location: "Azcapotzalco, CDMX, México",
             remote: "Remote",
@@ -60,7 +60,7 @@ export const experience = {
       title: "Experiencia",
       items: [
          {
-            role: "Pasante de ingeniería de software",
+            role: "Ingeniero de software",
             company: "Seven D Construction",
             location: "Chicago, IL, USA / México",
             remote: "Remoto",
@@ -68,17 +68,17 @@ export const experience = {
             projectId: "7dcompass",
             date: "Ene 2026 — May 2026",
             description:
-               "Lideré la evolución de 7D-Compass (Angular/Node.js/PostgreSQL), automatizando la conciliación de pagos y reduciendo el tiempo operativo en un 95%. Implementé un motor de auditoría centralizado para $2.3M USD en transacciones, detectando discrepancias financieras críticas mediante lógica de validación compleja.",
+               "Lideré la evolución de 7D-Compass (Angular/Node.js/PostgreSQL), automatizando la conciliación de pagos y reduciendo el tiempo operativo en un 95%. Implementé un motor de auditoría centralizado para $5.5M USD en transacciones, detectando discrepancias financieras críticas mediante lógica de validación compleja.",
          },
          {
-            role: "Líder de equipo de hackathon",
+            role: "Líder de equipo",
             company: "Banco Azteca (Genius Arena Hackathon — Talent Land 2026)",
             location: "Santa Fe, CDMX, México",
             product: "Azkali",
             projectId: "azkali",
             date: "Abril 2026",
             description:
-               "Desarrollé Azkali en 48h: un copiloto de IA conductual para mitigar gastos impulsivos usando Gemini 2.5 Flash-Lite. Construido bajo metodología Design Thinking, traduce costos monetarios a costo de oportunidad operativos, logrando un alto impacto en Talent Land 2026.",
+               "Desarrollé Azkali en 48h: un copiloto de IA conductual para mitigar gastos impulsivos usando Gemini 2.5 Flash-Lite. Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026. Construido bajo metodología Design Thinking, traduce costos monetarios a costo de oportunidad operativos, logrando un alto impacto en Talent Land 2026.",
          },
          {
             role: "4to lugar y líder de equipo",
@@ -88,10 +88,10 @@ export const experience = {
             projectId: "coppel-nexus",
             date: "Abril 2025",
             description:
-               "Arquitecturé Coppel Nexus, un ecosistema de referidos gamificado para Coppel (React Native/Node.js) en un sprint de 72 horas. Dirigí al equipo aplicando estrictamente metodologías XP y Kanban, asegurando el 4to lugar en el podio.",
+               "Arquitecturé Coppel Nexus, un ecosistema de referidos gamificado para Coppel (React Native/Node.js) en un sprint de 72 horas. Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025. Dirigí al equipo aplicando estrictamente metodologías XP y Kanban, asegurando el 4to lugar en el podio.",
          },
          {
-            role: "Pasante de ingeniería de software",
+            role: "Desarrollador de software",
             company: "PepsiCo",
             location: "Azcapotzalco, CDMX, México",
             remote: "Remoto",

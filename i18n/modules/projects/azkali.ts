@@ -9,13 +9,13 @@ export const projectAzkali = {
          "reactnative",
          "supabase",
          "tailwindcss",
-         "expo",
          "postgresql",
          "gemini",
+         "typescript",
       ],
       categories: {
          domain: ["fintech"],
-         platform: ["web", "mobile"],
+         platform: ["landing", "mobile"],
          tags: ["ai-ml", "hackathon"],
       },
       links: [

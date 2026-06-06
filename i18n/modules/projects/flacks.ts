@@ -10,10 +10,12 @@ export const projectFlacks = {
          "java",
          "springboot",
          "postgresql",
+         "typescript",
+         "android",
       ],
       categories: {
          domain: ["retail"],
-         platform: ["web", "mobile"],
+         platform: ["web", "mobile", "api"],
          tags: ["enterprise"],
       },
       links: [{ type: "github", url: "https://github.com/flacks-cc" }],

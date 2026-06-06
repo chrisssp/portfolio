@@ -3,7 +3,14 @@ export const projectMtrpa = {
       id: "mtrpa",
       imagePath: "/assets/images/projects/mtrpa/general.webp",
       heroImagePath: "/assets/images/projects/mtrpa/hero.webp",
-      techStack: ["angular", "bootstrap", "mongodb", "springboot", "java"],
+      techStack: [
+         "angular",
+         "bootstrap",
+         "mongodb",
+         "springboot",
+         "java",
+         "typescript",
+      ],
       categories: {
          domain: ["logistics"],
          platform: ["web", "api"],

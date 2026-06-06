@@ -4,16 +4,15 @@ export const projectCoppelNexus = {
       imagePath: "/assets/images/projects/coppel-nexus/general.webp",
       techStack: [
          "reactnative",
-         "expo",
          "react",
          "tailwindcss",
          "mongodb",
          "firebase",
-         "express",
+         "typescript",
       ],
       categories: {
-         domain: ["retail"],
-         platform: ["web", "mobile"],
+         domain: ["logistics"],
+         platform: ["web", "mobile", "api"],
          tags: ["hackathon"],
       },
       links: [

@@ -33,8 +33,8 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
   (
     entry-header-args: (
       top-left: [*Seven D Construction*],
-      top-right: [Enero 2026 -- Abril 2026],
-      bottom-left: [Pasante de ingeniería de software (Remoto)],
+      top-right: [Enero 2026 -- Mayo 2026],
+      bottom-left: [Ingeniero de software (Remoto)],
       bottom-right: [Chicago, IL, USA / México],
     ),
     list-items: (
@@ -47,11 +47,12 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*Banco Azteca (Genius Arena Hackathon — Talent Land 2026)*],
       top-right: [Abril 2026],
-      bottom-left: [Participante de hackathon y líder de equipo],
+      bottom-left: [Participante y líder de equipo],
       bottom-right: [Santa Fe, CDMX, México],
     ),
     list-items: (
       [Lideré la desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*] en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
+      [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
       [Implementé un motor de análisis de impulsividad en tiempo real utilizando *Gemini 2.5 Flash-Lite*, traduciendo costos monetarios a costo de oportunidad operativo.],
       [Arquitecté el ecosistema multiplataforma integrando *React Native* y *Supabase*, incorporando mecánicas de gamificación.],
     )
@@ -65,6 +66,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     ),
     list-items: (
       [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema de referidos gamificado para expansión corporativa en un sprint de 4 días (React Native/Node.js).],
+      [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
       [Dirigí al equipo implementando estrictamente metodologías *XP* y *Kanban*.],
     )
   ),
@@ -72,7 +74,7 @@ Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimie
     entry-header-args: (
       top-left: [*PepsiCo*],
       top-right: [Mayo 2024 -- Agosto 2024],
-      bottom-left: [Pasante de ingeniería de software (Remoto)],
+      bottom-left: [Desarrollador de software (Remoto)],
       bottom-right: [Azcapotzalco, CDMX, México],
     ),
     list-items: (

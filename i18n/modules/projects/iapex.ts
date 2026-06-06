@@ -9,14 +9,14 @@ export const projectIapex = {
          "react",
          "ionic",
          "springboot",
-         "django",
          "postgresql",
          "mongodb",
          "python",
+         "typescript",
       ],
       categories: {
          domain: ["health"],
-         platform: ["web", "mobile"],
+         platform: ["web", "mobile", "api"],
          tags: ["ai-ml", "research"],
       },
       links: [
@@ -86,7 +86,7 @@ export const projectIapex = {
          },
          {
             imagePath: "/assets/images/projects/iapex/specific3.webp",
-            techStack: ["angular", "bootstrap", "springboot"],
+            techStack: ["angular", "bootstrap"],
             links: [
                {
                   type: "github",
