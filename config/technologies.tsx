@@ -26,6 +26,7 @@ import {
    SiSpringboot,
    SiSupabase,
    SiTailwindcss,
+   SiTypescript,
 } from "react-icons/si";
 
 export interface TechConfig {
@@ -144,6 +145,11 @@ export const TECHNOLOGIES: Record<string, TechConfig> = {
       name: "Node.js",
       icon: SiNodedotjs,
       bgColor: "#339933",
+   },
+   typescript: {
+      name: "TypeScript",
+      icon: SiTypescript,
+      bgColor: "#3178c6",
    },
    express: {
       name: "Express",
