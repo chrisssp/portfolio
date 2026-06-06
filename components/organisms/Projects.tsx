@@ -10,6 +10,7 @@ import {
 } from "@/config/categories";
 import { TECHNOLOGIES } from "@/config/technologies";
 import { useProjectFilter } from "@/hooks/useProjectFilter";
+
 import type { Locale } from "@/i18n/config";
 import type { Dictionary, ProjectCategories } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
@@ -18,6 +19,17 @@ import { SectionContainer } from "../atoms/SectionContainer";
 import { Typography } from "../atoms/Typography";
 import { FilterBar } from "../molecules/FilterBar";
 import { ProjectCard } from "../molecules/ProjectCard";
+
+function getEcosystemTechs(ecosystem?: { techStack: string[] }[]): string[] {
+   if (!ecosystem) return [];
+   const techs: string[] = [];
+   for (const item of ecosystem) {
+      for (const tech of item.techStack ?? []) {
+         techs.push(tech);
+      }
+   }
+   return techs;
+}
 
 interface FilterPillsProps {
    filter: "featured" | "others";
@@ -103,6 +115,9 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       const techSet = new Set<string>();
       for (const project of dict.projects.items) {
          for (const tech of project.techStack) {
+            techSet.add(tech);
+         }
+         for (const tech of getEcosystemTechs(project.ecosystem?.items)) {
             techSet.add(tech);
          }
       }
@@ -258,9 +273,11 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                if (!selected || selected.length === 0) return true;
 
                if (axis === "tech") {
-                  return project.techStack.some((tech) =>
-                     selected.includes(tech),
+                  const ecosystemTechs = getEcosystemTechs(
+                     project.ecosystem?.items,
                   );
+                  const allTechs = [...project.techStack, ...ecosystemTechs];
+                  return selected.some((tech) => allTechs.includes(tech));
                }
 
                const categories =

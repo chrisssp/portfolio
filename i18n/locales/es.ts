@@ -99,7 +99,6 @@ export const es: Dictionary = {
          fintech: "Fintech",
          logistics: "Logística",
          retail: "Retail",
-         productivity: "Productividad",
       },
       platform: {
          web: "Web",

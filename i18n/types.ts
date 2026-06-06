@@ -39,12 +39,7 @@ export interface EcosystemItem {
    links?: ProjectLink[];
 }
 
-export type Domain =
-   | "health"
-   | "fintech"
-   | "logistics"
-   | "retail"
-   | "productivity";
+export type Domain = "health" | "fintech" | "logistics" | "retail";
 export type Platform = "web" | "mobile" | "api" | "landing";
 export type VerticalTag =
    | "ai-ml"

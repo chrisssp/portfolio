@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { HIDDEN_TECHS } from "@/config/hidden-techs";
 import { TECHNOLOGIES } from "@/config/technologies";
 import { Badge } from "../atoms/Badge";
 import { Typography } from "../atoms/Typography";
@@ -43,22 +44,24 @@ export const FeatureCard = ({
             <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
                {/* Badges */}
                <div className="flex flex-wrap gap-2 md:gap-3">
-                  {techStack.map((techId) => {
-                     const tech = TECHNOLOGIES[techId];
-                     if (!tech) return null;
-                     const isInteractive = !!onTechClick;
-                     const isSelected = selectedTechs?.includes(techId);
-                     return (
-                        <Badge
-                           key={techId}
-                           tech={tech}
-                           interactive={isInteractive}
-                           selected={isSelected}
-                           hasActiveFilter={!!selectedTechs?.length}
-                           onClick={() => onTechClick?.(techId)}
-                        />
-                     );
-                  })}
+                  {techStack
+                     .filter((t) => !HIDDEN_TECHS.has(t))
+                     .map((techId) => {
+                        const tech = TECHNOLOGIES[techId];
+                        if (!tech) return null;
+                        const isInteractive = !!onTechClick;
+                        const isSelected = selectedTechs?.includes(techId);
+                        return (
+                           <Badge
+                              key={techId}
+                              tech={tech}
+                              interactive={isInteractive}
+                              selected={isSelected}
+                              hasActiveFilter={!!selectedTechs?.length}
+                              onClick={() => onTechClick?.(techId)}
+                           />
+                        );
+                     })}
                </div>
 
                {/* Custom Actions (Buttons) */}
