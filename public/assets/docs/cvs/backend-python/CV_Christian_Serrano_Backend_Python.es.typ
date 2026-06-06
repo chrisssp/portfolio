@@ -1,166 +1,93 @@
-#import "@preview/pro-academic-cv:0.1.0": *
+#import "../_shared/template.typ": cv-start, r2c2-entry-list, multi-line-list, single-line-entry, multi-line-text
+#import "../_shared/sections.es.typ": education, languages
+#import "../_shared/experiences.es.typ": exp-7d, exp-pepsico, exp-coppel, exp-azteca, exp-flacks
+#import "../_shared/projects.es.typ": proj-iapex, proj-dabetai, proj-azkali
 
-#show: resume.with(
-  author-info: (
-    name: "Christian Serrano",
-    primary-info: [
-      Ingeniero Backend | Python & Django \
-      +52 271 266 73 65 | #link("mailto:christian.serrano.puertos@gmail.com")[christian.serrano.puertos\@gmail.com]
-    ],
-    secondary-info: [
-      #link("https://chrisssp.vercel.app")[chrisssp.vercel.app] | #link("https://linkedin.com/in/chrisssp")[linkedin.com/in/chrisssp] | #link("https://github.com/chrisssp")[github.com/chrisssp]
-    ],
-    tertiary-info: "Córdoba, Veracruz, México",
-  ),
-  author-position: center
-)
+#cv-start(
+  [Ingeniero Backend | Python & Django],
+  "es",
+)[
+  == Perfil
+  Ingeniero backend especializado en Python, Django y FastAPI. Experiencia construyendo APIs REST, sistemas de procesamiento de datos y soluciones backend integradas con IA. Enfocado en código limpio, testeabilidad, automatización y arquitecturas escalables. Trayectoria comprobada entregando proyectos full-stack con bases sólidas en backend.
 
-== Perfil
-Ingeniero backend especializado en Python, Django y FastAPI. Experiencia construyendo APIs REST, sistemas de procesamiento de datos y soluciones backend integradas con IA. Enfocado en código limpio, testeabilidad, automatización y arquitecturas escalables. Trayectoria comprobada entregando proyectos full-stack con bases sólidas en backend.
+  == Habilidades técnicas
+  #multi-line-list(
+    single-line-entry([*Backend:*], [Python, Django, FastAPI, APIs REST, Celery], []),
+    single-line-entry([*IA y Datos:*], [Gemini API, LangChain, Pandas, NumPy], []),
+    single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Supabase], []),
+    single-line-entry([*Infraestructura:*], [Docker, Git, Linux], []),
+    single-line-entry([*Otros lenguajes:*], [Node.js, Java, TypeScript], []),
+    single-line-entry([*Frontend:*], [React, React Native, Angular], []),
+    single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
+  )
 
-== Habilidades técnicas
-#multi-line-list(
-  single-line-entry([*Backend:*], [Python, Django, FastAPI, APIs REST, Celery], []),
-  single-line-entry([*IA y Datos:*], [Gemini API, LangChain, Pandas, NumPy], []),
-  single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Supabase], []),
-  single-line-entry([*Infraestructura:*], [Docker, Git, Linux], []),
-  single-line-entry([*Otros lenguajes:*], [Node.js, Java, TypeScript], []),
-  single-line-entry([*Frontend:*], [React, React Native, Angular], []),
-  single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
-)
-
-== Experiencia profesional
-#r2c2-entry-list(
-  (
-    entry-header-args: (
-      top-left: [*Seven D Construction*],
-      top-right: [Enero 2026 -- Abril 2026],
-      bottom-left: [Ingeniero de software (Remoto)],
-      bottom-right: [Chicago, IL, USA / México],
+  == Experiencia profesional
+  #r2c2-entry-list(
+    (
+      ..exp-7d,
+      list-items: (
+        [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
+        [Implementé un motor de auditoría centralizado conciliando *\$2.3M USD* en transacciones.],
+        [Optimicé seguridad usando *JWT/Bcrypt* siguiendo estándares *OWASP*.],
+      )
     ),
-    list-items: (
-      [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
-      [Implementé un motor de auditoría centralizado conciliando *\$2.3M USD* en transacciones.],
-      [Optimicé seguridad usando *JWT/Bcrypt* siguiendo estándares *OWASP*.],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*PepsiCo*],
-      top-right: [Mayo 2024 -- Agosto 2024],
-      bottom-left: [Desarrollador de software (Remoto)],
-      bottom-right: [Azcapotzalco, CDMX, México],
+    (
+      ..exp-pepsico,
+      list-items: (
+        [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*] (Angular/MongoDB), automatizando *+100k registros* y reduciendo errores manuales a cero.],
+        [Diseñé pipelines de datos backend optimizando el tiempo de procesamiento en 70%.],
+      )
     ),
-    list-items: (
-      [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*] (Angular/MongoDB), automatizando *+100k registros* y reduciendo errores manuales a cero.],
-      [Diseñé pipelines de datos backend optimizando el tiempo de procesamiento en 70%.],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*Coppel (Genius Arena Hackathon — Talent Land 2025)*],
-      top-right: [Abril 2025],
-      bottom-left: [4to lugar y líder de equipo],
-      bottom-right: [Guadalajara, Jalisco, México],
+    (
+      ..exp-coppel,
+      list-items: (
+        [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema full-stack de referidos (React Native/Node.js), liderando con XP y Kanban.],
+        [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
+      )
     ),
-    list-items: (
-      [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema full-stack de referidos (React Native/Node.js), liderando con XP y Kanban.],
-      [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*Banco Azteca (Genius Arena Hackathon — Talent Land 2026)*],
-      top-right: [Abril 2026],
-      bottom-left: [Participante y líder de equipo],
-      bottom-right: [Santa Fe, CDMX, México],
+    (
+      ..exp-azteca,
+      list-items: (
+        [Lideré el desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*], un copiloto de IA integrando Gemini 2.5 Flash-Lite en un sprint de 48 horas.],
+        [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
+      )
     ),
-    list-items: (
-      [Lideré el desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*], un copiloto de IA integrando Gemini 2.5 Flash-Lite en un sprint de 48 horas.],
-      [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*Flack's Barber Shop*],
-      top-right: [Octubre 2022 -- Abril 2024],
-      bottom-left: [Desarrollador full stack - Freelancer],
-      bottom-right: [Córdoba, Veracruz, México],
-    ),
-    list-items: (
-      [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo automatizando el 100% de las citas.],
-      [Desarrollé una API REST con Node.js y PostgreSQL para gestión de inventario y ventas.],
+    (
+      ..exp-flacks,
+      list-items: (
+        [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo automatizando el 100% de las citas.],
+        [Desarrollé una API REST con Node.js y PostgreSQL para gestión de inventario y ventas.],
+      )
     )
   )
-)
 
-== Proyectos destacados
-#r2c2-entry-list(
-  (
-    entry-header-args: (
-      top-left: [#link("https://chrisssp.vercel.app/es/projects/iapex")[*IAPEX*]],
-      top-right: [],
-      bottom-left: [_Python, Django, Spring Boot, PostgreSQL, IA_],
-      bottom-right: [],
+  == Proyectos destacados
+  #r2c2-entry-list(
+    (
+      ..proj-iapex([_Python, Django, Spring Boot, PostgreSQL, IA_]),
+      list-items: (
+        [Ecosistema de IA híbrida para localización de pacientes extraviados en instituciones de salud.],
+        [Construí backend Django con APIs REST, integración PostgreSQL y orquestación de IA.],
+        [Implementé motor de fusión de información híbrida (Reconocimiento facial + Búsqueda textual).],
+      ),
     ),
-    list-items: (
-      [Ecosistema de IA híbrida para localización de pacientes extraviados en instituciones de salud.],
-      [Construí backend Django con APIs REST, integración PostgreSQL y orquestación de IA.],
-      [Implementé motor de fusión de información híbrida (Reconocimiento facial + Búsqueda textual).],
+    (
+      ..proj-dabetai([_Python, React Native, NestJS, Wearables_]),
+      list-items: (
+        [Plataforma preventiva para diabetes que conecta wearables con supervisión médica.],
+        [Desarrollé algoritmos de predicción de riesgo en tiempo real con Python para nefropatía y retinopatía.],
+        [Mejoré eficiencia de respuesta médico-paciente en 40% mediante alertas automatizadas.],
+      ),
     ),
-  ),
-  (
-    entry-header-args: (
-      top-left: [#link("https://chrisssp.vercel.app/es/projects/dabetai")[*dabetai*]],
-      top-right: [],
-      bottom-left: [_Python, React Native, NestJS, Wearables_],
-      bottom-right: [],
-    ),
-    list-items: (
-      [Plataforma preventiva para diabetes que conecta wearables con supervisión médica.],
-      [Desarrollé algoritmos de predicción de riesgo en tiempo real con Python para nefropatía y retinopatía.],
-      [Mejoré eficiencia de respuesta médico-paciente en 40% mediante alertas automatizadas.],
-    ),
-  ),
-  (
-    entry-header-args: (
-      top-left: [#link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*]],
-      top-right: [],
-      bottom-left: [_React Native, Supabase, Gemini IA, Python_],
-      bottom-right: [],
-    ),
-    list-items: (
-      [Copiloto de IA conductual integrando Gemini 2.5 Flash-Lite para análisis de gastos en tiempo real.],
-      [Lógica backend en Python para motor de economía conductual y mecánicas de gamificación.],
+    (
+      ..proj-azkali([_React Native, Supabase, Gemini IA, Python_]),
+      list-items: (
+        [Copiloto de IA conductual integrando Gemini 2.5 Flash-Lite para análisis de gastos en tiempo real.],
+        [Lógica backend en Python para motor de economía conductual y mecánicas de gamificación.],
+      )
     )
   )
-)
 
-== Educación
-#r2c2-entry-list(
-  (
-    entry-header-args: (
-      top-left: [*Universidad Tecnológica del Centro de Veracruz*],
-      top-right: [Abril 2026],
-      bottom-left: [Ingeniería en desarrollo y gestión de software],
-      bottom-right: [Cuitláhuac, Veracruz, México],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*Universidad Tecnológica del Centro de Veracruz*],
-      top-right: [Agosto 2024],
-      bottom-left: [TSU en desarrollo de software multiplataforma],
-      bottom-right: [Cuitláhuac, Veracruz, México],
-    ),
-    list-items: (
-      [_Graduado como 1er lugar de la generación (Promedio final: 9.82/10)_],
-    ),
-  ),
-)
-
-== Idiomas
-#multi-line-text(
-  single-line-entry([*Español:*], [Nativo], []),
-  single-line-entry([*Inglés:*], [B1 (Intermedio - En progreso activo)], [])
-)
+  #education
+  #languages
+]

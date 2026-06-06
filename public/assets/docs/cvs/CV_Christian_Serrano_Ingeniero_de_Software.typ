@@ -1,170 +1,97 @@
-#import "@preview/pro-academic-cv:0.1.0": *
+#import "_shared/template.typ": cv-start, r2c2-entry-list, multi-line-list, single-line-entry, multi-line-text
+#import "_shared/sections.es.typ": education, languages
+#import "_shared/experiences.es.typ": exp-7d, exp-azteca, exp-coppel, exp-pepsico, exp-flacks
+#import "_shared/projects.es.typ": proj-iapex, proj-dabetai, proj-puntofiel
 
-#show: resume.with(
-  author-info: (
-    name: "Christian Serrano",
-    primary-info: [
-      Ingeniero de software | Desarrollador full-stack y móvil \
-      +52 271 266 73 65 | #link("mailto:christian.serrano.puertos@gmail.com")[christian.serrano.puertos\@gmail.com]
-    ],
-    secondary-info: [
-      #link("https://chrisssp.vercel.app")[chrisssp.vercel.app] | #link("https://linkedin.com/in/chrisssp")[linkedin.com/in/chrisssp] | #link("https://github.com/chrisssp")[github.com/chrisssp]
-    ],
-    tertiary-info: "Córdoba, Veracruz, México",
-  ),
-  author-position: center
-)
+#cv-start(
+  [Ingeniero de software | Desarrollador full-stack y móvil],
+  "es",
+)[
+  == Perfil
+  Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.
 
-== Perfil
-Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.
+  == Habilidades técnicas
+  #multi-line-list(
+    single-line-entry([*Frontend y móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS], []),
+    single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Python (Django, FastAPI), Supabase], []),
+    single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
+    single-line-entry([*Herramientas y OS:*], [Git, Linux, Figma, Claude Code, OpenCode, MCP], []),
+    single-line-entry([*Metodologías:*], [SDD (Spec-Driven Development), Orquestación multi-modelo, Scrum, Kanban, XP, Design Thinking], []),
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+  )
 
-== Habilidades técnicas
-#multi-line-list(
-  single-line-entry([*Frontend y móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS], []),
-  single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Python (Django, FastAPI), Supabase], []),
-  single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker], []),
-  single-line-entry([*Herramientas y OS:*], [Git, Linux, Figma, Claude Code, OpenCode, MCP], []),
-  single-line-entry([*Metodologías:*], [SDD (Spec-Driven Development), Orquestación multi-modelo, Scrum, Kanban, XP, Design Thinking], []),
-  single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
-)
-
-== Experiencia profesional
-#r2c2-entry-list(
-  (
-    entry-header-args: (
-      top-left: [*Seven D Construction*],
-      top-right: [Enero 2026 -- Mayo 2026],
-      bottom-left: [Ingeniero de software (Remoto)],
-      bottom-right: [Chicago, IL, USA / México],
+  == Experiencia profesional
+  #r2c2-entry-list(
+    (
+      ..exp-7d,
+      list-items: (
+        [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL) automatizando la conciliación de pagos y reduciendo el tiempo operativo en un *95%*.],
+        [Implementé un motor de auditoría centralizado para conciliar *\$2.3M USD* en transacciones, detectando discrepancias financieras críticas mediante lógica de validación.],
+        [Optimicé el rendimiento del frontend (*3.2x* TTI) y fortalecí la seguridad del sistema mediante *JWT/Bcrypt* siguiendo estándares *OWASP*.],
+      )
     ),
-    list-items: (
-      [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL) automatizando la conciliación de pagos y reduciendo el tiempo operativo en un *95%*.],
-      [Implementé un motor de auditoría centralizado para conciliar *\$2.3M USD* en transacciones, detectando discrepancias financieras críticas mediante lógica de validación.],
-      [Optimicé el rendimiento del frontend (*3.2x* TTI) y fortalecí la seguridad del sistema mediante *JWT/Bcrypt* siguiendo estándares *OWASP*.],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*Banco Azteca (Genius Arena Hackathon — Talent Land 2026)*],
-      top-right: [Abril 2026],
-      bottom-left: [Participante y líder de equipo],
-      bottom-right: [Santa Fe, CDMX, México],
+    (
+      ..exp-azteca,
+      list-items: (
+        [Lideré la desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*] en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
+        [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
+        [Implementé un motor de análisis de impulsividad en tiempo real utilizando *Gemini 2.5 Flash-Lite*, traduciendo costos monetarios a costo de oportunidad operativo.],
+        [Arquitecté el ecosistema multiplataforma integrando *React Native* y *Supabase*, incorporando mecánicas de gamificación.],
+      )
     ),
-    list-items: (
-      [Lideré la desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*] en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
-      [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
-      [Implementé un motor de análisis de impulsividad en tiempo real utilizando *Gemini 2.5 Flash-Lite*, traduciendo costos monetarios a costo de oportunidad operativo.],
-      [Arquitecté el ecosistema multiplataforma integrando *React Native* y *Supabase*, incorporando mecánicas de gamificación.],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*Coppel (Genius Arena Hackathon — Talent Land 2025)*],
-      top-right: [Abril 2025],
-      bottom-left: [4to lugar y líder de equipo],
-      bottom-right: [Guadalajara, Jalisco, México],
+    (
+      ..exp-coppel,
+      list-items: (
+        [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema de referidos gamificado para expansión corporativa en un sprint de 4 días (React Native/Node.js).],
+        [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
+        [Dirigí al equipo implementando estrictamente metodologías *XP* y *Kanban*.],
+      )
     ),
-    list-items: (
-      [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema de referidos gamificado para expansión corporativa en un sprint de 4 días (React Native/Node.js).],
-      [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
-      [Dirigí al equipo implementando estrictamente metodologías *XP* y *Kanban*.],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*PepsiCo*],
-      top-right: [Mayo 2024 -- Agosto 2024],
-      bottom-left: [Desarrollador de software (Remoto)],
-      bottom-right: [Azcapotzalco, CDMX, México],
+    (
+      ..exp-pepsico,
+      list-items: (
+        [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*], una Web App centralizada (Angular/MongoDB) reemplazando flujos legacy en Excel.],
+        [Automaticé el procesamiento de *+100k registros*, reduciendo errores manuales a cero.],
+        [Diseñé la solución "Master Template Rutas Power App", optimizando el tiempo de procesamiento en un 70%.],
+      )
     ),
-    list-items: (
-      [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*], una Web App centralizada (Angular/MongoDB) reemplazando flujos legacy en Excel.],
-      [Automaticé el procesamiento de *+100k registros*, reduciendo errores manuales a cero.],
-      [Diseñé la solución "Master Template Rutas Power App", optimizando el tiempo de procesamiento en un 70%.],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*Flack's Barber Shop*],
-      top-right: [Octubre 2022 -- Abril 2024],
-      bottom-left: [Desarrollador full stack - Freelancer],
-      bottom-right: [Córdoba, Veracruz, México],
-    ),
-    list-items: (
-      [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
-      [Desarrollé una API REST con Node.js y PostgreSQL para centralizar inventario y ventas.],
+    (
+      ..exp-flacks,
+      list-items: (
+        [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
+        [Desarrollé una API REST con Node.js y PostgreSQL para centralizar inventario y ventas.],
+      )
     )
   )
-)
 
-== Proyectos destacados
-#r2c2-entry-list(
-  (
-    entry-header-args: (
-      top-left: [#link("https://chrisssp.vercel.app/es/projects/iapex")[*IAPEX*]],
-      top-right: [],
-      bottom-left: [_Angular, Ionic, Spring Boot, Django, PostgreSQL, IA_],
-      bottom-right: [],
+  == Proyectos destacados
+  #r2c2-entry-list(
+    (
+      ..proj-iapex([_Angular, Ionic, Spring Boot, Django, PostgreSQL, IA_]),
+      list-items: (
+        [Ecosistema de IA híbrida para la localización de pacientes extraviados en instituciones de salud.],
+        [Implementé un motor de *fusión de información híbrida* (Reconocimiento facial + Textual).],
+        [Diseñé la arquitectura bajo estrictos protocolos de privacidad y seguridad de datos médicos.],
+      ),
     ),
-    list-items: (
-      [Ecosistema de IA híbrida para la localización de pacientes extraviados en instituciones de salud.],
-      [Implementé un motor de *fusión de información híbrida* (Reconocimiento facial + Textual).],
-      [Diseñé la arquitectura bajo estrictos protocolos de privacidad y seguridad de datos médicos.],
+    (
+      ..proj-dabetai([_React Native, NestJS, Expo, Python, Wearables_]),
+      list-items: (
+        [Plataforma preventiva para diabetes que conecta wearables con supervisión médica.],
+        [Desarrollé algoritmos de predicción de riesgo en tiempo real para nefropatía y retinopatía.],
+        [Mejoré la eficiencia de respuesta médico-paciente en un *40%* mediante alertas automatizadas.],
+      )
     ),
-  ),
-  (
-    entry-header-args: (
-      top-left: [#link("https://chrisssp.vercel.app/es/projects/dabetai")[*dabetai*]],
-      top-right: [],
-      bottom-left: [_React Native, NestJS, Expo, Python, Wearables_],
-      bottom-right: [],
-    ),
-    list-items: (
-      [Plataforma preventiva para diabetes que conecta wearables con supervisión médica.],
-      [Desarrollé algoritmos de predicción de riesgo en tiempo real para nefropatía y retinopatía.],
-      [Mejoré la eficiencia de respuesta médico-paciente en un *40%* mediante alertas automatizadas.],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [#link("https://chrisssp.vercel.app/es/projects/puntofiel")[*PuntoFiel*]],
-      top-right: [],
-      bottom-left: [_React Native, Expo, Supabase, TanStack Query, Zustand_],
-      bottom-right: [],
-    ),
-    list-items: (
-      [Aplicación de fidelización para negocios locales con sistema de recompensas y cupones mediante códigos QR.],
-      [Implementé seguridad de datos granular usando *Row Level Security (RLS)* de PostgreSQL en Supabase.],
-      [Diseñé una interfaz escalable centrada en la productividad del comerciante y la agilidad del cliente.],
+    (
+      ..proj-puntofiel([_React Native, Expo, Supabase, TanStack Query, Zustand_]),
+      list-items: (
+        [Aplicación de fidelización para negocios locales con sistema de recompensas y cupones mediante códigos QR.],
+        [Implementé seguridad de datos granular usando *Row Level Security (RLS)* de PostgreSQL en Supabase.],
+        [Diseñé una interfaz escalable centrada en la productividad del comerciante y la agilidad del cliente.],
+      )
     )
   )
-)
 
-== Educación
-#r2c2-entry-list(
-  (
-    entry-header-args: (
-      top-left: [*Universidad Tecnológica del Centro de Veracruz*],
-      top-right: [Abril 2026],
-      bottom-left: [Ingeniería en desarrollo y gestión de software],
-      bottom-right: [Cuitláhuac, Veracruz, México],
-    )
-  ),
-  (
-    entry-header-args: (
-      top-left: [*Universidad Tecnológica del Centro de Veracruz*],
-      top-right: [Agosto 2024],
-      bottom-left: [TSU en desarrollo de software multiplataforma],
-      bottom-right: [Cuitláhuac, Veracruz, México],
-    ),
-    list-items: (
-      [_Graduado como 1er lugar de la generación (Promedio final: 9.82/10)_],
-    ),
-  ),
-)
-
-== Idiomas
-#multi-line-text(
-  single-line-entry([*Español:*], [Nativo], []),
-  single-line-entry([*Inglés:*], [B1 (Intermedio - En progreso activo)], [])
-)
+  #education
+  #languages
+]
