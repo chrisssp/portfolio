@@ -167,7 +167,7 @@ const Section = ({
                                  <p className="text-[10px] font-semibold text-body/50 uppercase tracking-wider mb-2">
                                     {subgroup.label}
                                  </p>
-                                 <div className="p-1 grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
+                                 <div className="p-1 grid grid-flow-col grid-rows-3 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
                                     {renderChips(sortedIds)}
                                  </div>
                               </div>
@@ -175,7 +175,7 @@ const Section = ({
                         })}
                      </div>
                   ) : (
-                     <div className="p-1 grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
+                     <div className="p-1 grid grid-flow-col grid-rows-3 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
                         {renderChips(
                            [...axis.options.map((o) => o.id)].sort(
                               sortSelectedFirst(selected),
