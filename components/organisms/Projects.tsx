@@ -203,7 +203,10 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             ...opt,
             name: dict.filters?.focus?.[opt.id] ?? opt.name,
          })),
-         subgroups: FOCUS_AXIS.subgroups,
+         subgroups: FOCUS_AXIS.subgroups.map((sg) => ({
+            ...sg,
+            label: dict.filters?.focus?.[sg.groupKey] ?? sg.label,
+         })),
       };
 
       return [techAxis, focusAxis];

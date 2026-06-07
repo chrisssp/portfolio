@@ -93,6 +93,8 @@ export const en: Dictionary = {
    },
    filters: {
       focus: {
+         _group_industry: "Industry / Vertical",
+         _group_platform: "Platform",
          health: "Health",
          fintech: "Fintech",
          logistics: "Logistics",

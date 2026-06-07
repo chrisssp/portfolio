@@ -31,6 +31,7 @@ export interface CategoryOption {
 
 export interface SubgroupConfig {
    label: string;
+   groupKey: string;
    optionIds: string[];
 }
 
@@ -129,6 +130,7 @@ export const FOCUS_AXIS: FocusAxisConfig = {
    subgroups: [
       {
          label: "Industry / Vertical",
+         groupKey: "_group_industry",
          optionIds: [
             "health",
             "fintech",
@@ -143,6 +145,7 @@ export const FOCUS_AXIS: FocusAxisConfig = {
       },
       {
          label: "Platform",
+         groupKey: "_group_platform",
          optionIds: ["web", "mobile", "api", "landing"],
       },
    ],
