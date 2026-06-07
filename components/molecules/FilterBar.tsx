@@ -22,10 +22,16 @@ const toTechConfig = (option: FilterChipConfig) => ({
    bgColor: option.bgColor,
 });
 
+interface SubgroupConfig {
+   label: string;
+   optionIds: string[];
+}
+
 interface FilterAxisConfig {
    key: string;
    label: string;
    options: FilterChipConfig[];
+   subgroups?: SubgroupConfig[];
 }
 
 interface FilterBarProps {
@@ -80,10 +86,24 @@ const Section = ({
    const hasActiveFilter = selected.length > 0;
 
    const selectedCount = selected.length;
-   const sortedOptions = useMemo(() => {
-      const ids = axis.options.map((option) => option.id);
-      return [...ids].sort(sortSelectedFirst(selected));
-   }, [axis.options, selected]);
+
+   const renderChips = (optionIds: string[]) =>
+      optionIds.map((optionId) => {
+         const option = axis.options.find((item) => item.id === optionId);
+         if (!option) return null;
+         const isSelected = selected.includes(optionId);
+
+         return (
+            <Badge
+               key={optionId}
+               tech={toTechConfig(option)}
+               interactive
+               selected={isSelected}
+               hasActiveFilter={hasActiveFilter}
+               onClick={() => onToggle(optionId)}
+            />
+         );
+      });
 
    return (
       <div className="rounded-2xl border border-subtle/60 bg-surface/70 shadow-sm">
@@ -136,26 +156,33 @@ const Section = ({
          >
             <div className="overflow-hidden">
                <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-                  <div className="p-1 grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
-                     {sortedOptions.map((optionId) => {
-                        const option = axis.options.find(
-                           (item) => item.id === optionId,
-                        );
-                        if (!option) return null;
-                        const isSelected = selected.includes(optionId);
-
-                        return (
-                           <Badge
-                              key={optionId}
-                              tech={toTechConfig(option)}
-                              interactive
-                              selected={isSelected}
-                              hasActiveFilter={hasActiveFilter}
-                              onClick={() => onToggle(optionId)}
-                           />
-                        );
-                     })}
-                  </div>
+                  {axis.subgroups && axis.subgroups.length > 0 ? (
+                     <div className="flex flex-col gap-4">
+                        {axis.subgroups.map((subgroup) => {
+                           const sortedIds = [...subgroup.optionIds].sort(
+                              sortSelectedFirst(selected),
+                           );
+                           return (
+                              <div key={subgroup.label}>
+                                 <p className="text-[10px] font-semibold text-body/50 uppercase tracking-wider mb-2">
+                                    {subgroup.label}
+                                 </p>
+                                 <div className="p-1 grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
+                                    {renderChips(sortedIds)}
+                                 </div>
+                              </div>
+                           );
+                        })}
+                     </div>
+                  ) : (
+                     <div className="p-1 grid grid-flow-col grid-rows-2 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
+                        {renderChips(
+                           [...axis.options.map((o) => o.id)].sort(
+                              sortSelectedFirst(selected),
+                           ),
+                        )}
+                     </div>
+                  )}
                </div>
             </div>
          </div>
@@ -194,7 +221,6 @@ const ActiveChips = ({
                   onClick={() => onRemove(axis.key, value)}
                   className="flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold text-body border border-subtle/60 bg-surface/80 hover:bg-surface transition"
                >
-                  <span className="text-body/70">{axis.label}:</span>
                   <span className="text-body">{option.name}</span>
                   <MdClear className="size-3 text-body/60" />
                </button>

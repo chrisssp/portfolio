@@ -18,7 +18,7 @@
 
 #let proj-iapex(stacks) = (
   entry-header-args: (
-    top-left: [#link("https://chrisssp.vercel.app/es/projects/iapex")[*IAPEX*]],
+    top-left: [#link("https://chrisssp.vercel.app/es/projects/iapex")[*IAPEX (Encuéntrame)*]],
     top-right: [],
     bottom-left: stacks,
     bottom-right: [],

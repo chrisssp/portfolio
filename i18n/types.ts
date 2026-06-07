@@ -221,9 +221,7 @@ export interface Dictionary {
          see_more: string;
          filter: string;
          filter_tech: string;
-         filter_domain: string;
-         filter_platform: string;
-         filter_tags: string;
+         filter_focus: string;
          clear_filters: string;
          clear_all: string;
          no_projects_match: string;
@@ -231,9 +229,7 @@ export interface Dictionary {
    };
 
    filters: {
-      domain: Record<string, string>;
-      platform: Record<string, string>;
-      tags: Record<string, string>;
+      focus: Record<string, string>;
    };
 
    cta: {

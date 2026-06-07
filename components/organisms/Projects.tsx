@@ -3,11 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { MdCode, MdFilterList, MdFilterListOff } from "react-icons/md";
-import {
-   CATEGORY_AXES,
-   type CategoryAxis,
-   type FilterAxisKey,
-} from "@/config/categories";
+import { type FilterAxisKey, FOCUS_AXIS } from "@/config/categories";
 import { TECHNOLOGIES } from "@/config/technologies";
 import { useProjectFilter } from "@/hooks/useProjectFilter";
 
@@ -124,44 +120,28 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       return Array.from(techSet).sort();
    }, [dict.projects.items]);
 
-   const allDomains = useMemo(() => {
-      const domainSet = new Set<string>();
+   const allFocusOptions = useMemo(() => {
+      const focusSet = new Set<string>();
       for (const project of dict.projects.items) {
          for (const domain of project.categories.domain) {
-            domainSet.add(domain);
+            focusSet.add(domain);
          }
-      }
-      return Array.from(domainSet).sort();
-   }, [dict.projects.items]);
-
-   const allPlatforms = useMemo(() => {
-      const platformSet = new Set<string>();
-      for (const project of dict.projects.items) {
          for (const platform of project.categories.platform) {
-            platformSet.add(platform);
+            focusSet.add(platform);
          }
-      }
-      return Array.from(platformSet).sort();
-   }, [dict.projects.items]);
-
-   const allTags = useMemo(() => {
-      const tagSet = new Set<string>();
-      for (const project of dict.projects.items) {
          for (const tag of project.categories.tags) {
-            tagSet.add(tag);
+            focusSet.add(tag);
          }
       }
-      return Array.from(tagSet).sort();
+      return Array.from(focusSet).sort();
    }, [dict.projects.items]);
 
    const allValues = useMemo(
       () => ({
          tech: allTechs,
-         domain: allDomains,
-         platform: allPlatforms,
-         tags: allTags,
+         focus: allFocusOptions,
       }),
-      [allTechs, allDomains, allPlatforms, allTags],
+      [allTechs, allFocusOptions],
    );
 
    const { selections, toggle, clearAxis, clearAll, hasActiveFilter } =
@@ -198,11 +178,10 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       }));
    }, []);
 
-   const filterAxes: CategoryAxis[] = useMemo(() => {
-      const techAxis: CategoryAxis = {
+   const filterAxes = useMemo(() => {
+      const techAxis = {
          key: "tech",
-         urlParam: "tech",
-         storageKey: "portfolio-tech-filter",
+         label: dict.projects.actions.filter_tech,
          options: allTechs
             .map((techId) => {
                const tech = TECHNOLOGIES[techId];
@@ -217,39 +196,25 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             .filter((x): x is NonNullable<typeof x> => x != null),
       };
 
-      return [
-         techAxis,
-         ...CATEGORY_AXES.map((axis) => ({
-            ...axis,
-            options: axis.options.map((opt) => ({
-               ...opt,
-               name:
-                  dict.filters?.[axis.key as "domain" | "platform" | "tags"]?.[
-                     opt.id
-                  ] ?? opt.name,
-            })),
+      const focusAxis = {
+         key: "focus",
+         label: dict.projects.actions.filter_focus,
+         options: FOCUS_AXIS.options.map((opt) => ({
+            ...opt,
+            name: dict.filters?.focus?.[opt.id] ?? opt.name,
          })),
-      ];
-   }, [allTechs, dict.filters]);
+         subgroups: FOCUS_AXIS.subgroups,
+      };
+
+      return [techAxis, focusAxis];
+   }, [allTechs, dict.filters, dict.projects.actions]);
 
    const filterSelections = useMemo(
       () => ({
          tech: selections.tech,
-         domain: selections.domain,
-         platform: selections.platform,
-         tags: selections.tags,
+         focus: selections.focus,
       }),
       [selections],
-   );
-
-   const filterLabels = useMemo(
-      () => ({
-         tech: dict.projects.actions.filter_tech,
-         domain: dict.projects.actions.filter_domain,
-         platform: dict.projects.actions.filter_platform,
-         tags: dict.projects.actions.filter_tags,
-      }),
-      [dict.projects.actions],
    );
 
    const totalActiveFilters = useMemo(
@@ -264,26 +229,29 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
 
       if (hasFilters) {
          return dict.projects.items.filter((project) => {
-            return (
-               Object.keys(selections) as Array<
-                  keyof ProjectCategories | "tech"
-               >
-            ).every((axis) => {
-               const selected = selections[axis];
-               if (!selected || selected.length === 0) return true;
+            // AND across axes
+            if (selections.tech.length > 0) {
+               const ecosystemTechs = getEcosystemTechs(
+                  project.ecosystem?.items,
+               );
+               const projectTechs = [...project.techStack, ...ecosystemTechs];
+               const techMatch = selections.tech.some((tech) =>
+                  projectTechs.includes(tech),
+               );
+               if (!techMatch) return false;
+            }
 
-               if (axis === "tech") {
-                  const ecosystemTechs = getEcosystemTechs(
-                     project.ecosystem?.items,
-                  );
-                  const allTechs = [...project.techStack, ...ecosystemTechs];
-                  return selected.some((tech) => allTechs.includes(tech));
-               }
+            if (selections.focus.length > 0) {
+               // OR across domain + platform + tags
+               const cats = project.categories;
+               const focusMatch =
+                  cats.domain.some((d) => selections.focus.includes(d)) ||
+                  cats.platform.some((p) => selections.focus.includes(p)) ||
+                  cats.tags.some((t) => selections.focus.includes(t));
+               if (!focusMatch) return false;
+            }
 
-               const categories =
-                  project.categories?.[axis as keyof ProjectCategories] ?? [];
-               return categories.some((value) => selected.includes(value));
-            });
+            return true;
          });
       }
 
@@ -379,8 +347,6 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
       });
    }, [filteredProjects, scrollToProject]);
 
-   // Moved FilterPills outside component - see module-level definition below
-
    return (
       <SectionContainer
          id="projects"
@@ -438,11 +404,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             >
                <div className="overflow-hidden">
                   <FilterBar
-                     axes={filterAxes.map((axis) => ({
-                        key: axis.key,
-                        label: filterLabels[axis.key],
-                        options: axis.options,
-                     }))}
+                     axes={filterAxes}
                      selections={filterSelections}
                      onToggle={handleToggle}
                      onClearAxis={handleClearAxis}
@@ -502,11 +464,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             {showFilterBar && filteredProjects.length > 3 && (
                <div className="flex justify-center lg:justify-end">
                   <FilterBar
-                     axes={filterAxes.map((axis) => ({
-                        key: axis.key,
-                        label: filterLabels[axis.key],
-                        options: axis.options,
-                     }))}
+                     axes={filterAxes}
                      selections={filterSelections}
                      onToggle={handleToggle}
                      onClearAxis={handleClearAxis}

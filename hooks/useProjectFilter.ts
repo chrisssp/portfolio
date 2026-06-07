@@ -9,25 +9,29 @@ const DEFAULT_TECH_CONFIG: FilterAxisConfig = {
    storageKey: "portfolio-tech-filter",
 };
 
+const DEFAULT_FOCUS_CONFIG: FilterAxisConfig = {
+   key: "focus",
+   urlParam: "focus",
+   storageKey: "portfolio-focus-filter",
+};
+
 const DEFAULT_AXES: FilterAxisConfig[] = [
    DEFAULT_TECH_CONFIG,
-   { key: "domain", urlParam: "domain", storageKey: "portfolio-domain-filter" },
-   {
-      key: "platform",
-      urlParam: "platform",
-      storageKey: "portfolio-platform-filter",
-   },
-   { key: "tags", urlParam: "tag", storageKey: "portfolio-tag-filter" },
+   DEFAULT_FOCUS_CONFIG,
 ];
 
 type SelectionState = Record<FilterAxisKey, string[]>;
 
 const createEmptySelections = (): SelectionState => ({
    tech: [],
-   domain: [],
-   platform: [],
-   tags: [],
+   focus: [],
 });
+
+const LEGACY_KEYS = {
+   domain: "portfolio-domain-filter",
+   platform: "portfolio-platform-filter",
+   tag: "portfolio-tag-filter",
+} as const;
 
 const parseSelection = (value: string | null, allowed: string[]) => {
    if (!value) return [];
@@ -63,10 +67,27 @@ const readSelectionsFromUrl = (
       const params = new URLSearchParams(window.location.search);
       const selections: Record<string, string[]> = {};
 
+      // Read new params
       axes.forEach((axis) => {
          const value = params.get(axis.urlParam);
          selections[axis.key] = parseSelection(value, allowedValues[axis.key]);
       });
+
+      // Legacy migration: merge domain, platform, tag into focus
+      if (!selections.focus || selections.focus.length === 0) {
+         const legacyValues: string[] = [];
+         for (const legacyParam of ["domain", "platform", "tag"]) {
+            const value = params.get(legacyParam);
+            if (value) {
+               legacyValues.push(...parseSelection(value, allowedValues.focus));
+            }
+         }
+         if (legacyValues.length > 0) {
+            selections.focus = [
+               ...new Set([...(selections.focus ?? []), ...legacyValues]),
+            ];
+         }
+      }
 
       return normalizeSelections(selections, allowedValues);
    } catch {
@@ -103,6 +124,34 @@ const readSelectionsFromStorage = (
       }
    });
 
+   // Legacy localStorage migration: merge old keys into portfolio-focus-filter
+   if (!selections.focus || selections.focus.length === 0) {
+      const legacyValues: string[] = [];
+      for (const legacyKey of Object.values(LEGACY_KEYS)) {
+         try {
+            const stored = localStorage.getItem(legacyKey);
+            if (stored) {
+               const parsed = JSON.parse(stored);
+               if (Array.isArray(parsed)) {
+                  legacyValues.push(
+                     ...parsed.filter((v: string) =>
+                        allowedValues.focus.includes(v),
+                     ),
+                  );
+               }
+               localStorage.removeItem(legacyKey);
+            }
+         } catch {
+            // ignore
+         }
+      }
+      if (legacyValues.length > 0) {
+         selections.focus = [
+            ...new Set([...(selections.focus ?? []), ...legacyValues]),
+         ];
+      }
+   }
+
    return normalizeSelections(selections, allowedValues);
 };
 
@@ -134,6 +183,11 @@ const syncToUrl = (axes: FilterAxisConfig[], selections: SelectionState) => {
             params.delete(axis.urlParam);
          }
       });
+
+      // Drop legacy params on write
+      for (const legacyParam of ["domain", "platform", "tag"]) {
+         params.delete(legacyParam);
+      }
 
       const paramString = params.toString();
       const hash = window.location.hash;

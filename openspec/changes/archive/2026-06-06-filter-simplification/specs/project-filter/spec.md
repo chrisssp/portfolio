@@ -1,12 +1,8 @@
-# Project Filter Specification
+# Delta for project-filter
 
-## Purpose
+## MODIFIED Requirements
 
-Two-axis project filtering: tech and focus. The focus axis merges domain (industry), platform, and vertical tags into one OR-based dimension. Users combine axes to narrow projects (e.g., "health projects using React"). Filter state syncs to URL params and persists via localStorage. Legacy 4-axis params auto-migrate to the new 2-axis model.
-
-## Requirements
-
-### Requirement: Filter State
+### Requirement: Multi-Axis Filter State
 
 The system SHALL maintain selection state for two axes: `tech` and `focus`. Each axis defaults to empty string array. The `focus` axis merges legacy `domain`, `platform`, and `tags`. Values within `focus` combine with OR across all source categories.
 
@@ -80,14 +76,14 @@ The filter UI SHALL render as an accordion with two sections: Tecnología and Fo
 
 ### Requirement: Active Filter Chips
 
-Selected values across BOTH axes SHALL render as removable chips above the accordion. Each chip shows option name without axis prefix. Removing a chip deselects that value.
+Selected values across BOTH axes SHALL render as removable chips above the accordion. Each chip shows axis label prefix and value. Removing a chip deselects that value.
 
-(Previously: chips with axis prefix across 4 axes)
+(Previously: chips across ALL 4 axes)
 
 #### Scenario: Remove a chip
 
 - GIVEN chips for tech=react, focus=health
-- WHEN user removes "health"
+- WHEN user removes "Focus: health"
 - THEN "health" is deselected, chip disappears, projects re-filter
 
 ### Requirement: Clear Per-Axis and Clear All
