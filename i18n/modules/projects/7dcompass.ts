@@ -37,7 +37,7 @@ export const project7dCompass = {
       title: "7D-Compass",
       subtitle: "Fintech Audit & Reconciliation Platform for Construction",
       description:
-         "Financial reconciliation platform for the construction industry, automating audits for $2.3M USD in transactions and reducing operational time by 95%.",
+         "Financial reconciliation platform for the construction industry, automating audits for $5.5M USD in transactions and reducing operational time by 95%.",
       fullDescription:
          "7D-Compass is a high-performance auditing ecosystem designed for Seven D Construction (Chicago). It automates 95% of financial reconciliation by centralizing bank records and operational data into a single audit workflow.",
       challenge: {
@@ -64,7 +64,7 @@ export const project7dCompass = {
             {
                title: "Node.js Audit Engine",
                description:
-                  "High-throughput backend that processes $2.3M USD in transactions, performing complex reconciliation between multiple data sources.",
+                  "High-throughput backend that processes $5.5M USD in transactions, performing complex reconciliation between multiple data sources.",
             },
          ],
       },
@@ -74,7 +74,7 @@ export const project7dCompass = {
       subtitle:
          "Plataforma fintech de auditoría y conciliación para construcción",
       description:
-         "Plataforma de conciliación financiera para la industria de la construcción, automatizando auditorías de $2.3M USD en transacciones y reduciendo el tiempo operativo en un 95%.",
+         "Plataforma de conciliación financiera para la industria de la construcción, automatizando auditorías de $5.5M USD en transacciones y reduciendo el tiempo operativo en un 95%.",
       fullDescription:
          "7D-Compass es un ecosistema de auditoría de alto rendimiento diseñado para Seven D Construction (Chicago). Automatiza el 95% de la conciliación financiera al centralizar registros bancarios y datos operativos en un solo flujo de auditoría.",
       challenge: {
@@ -105,7 +105,7 @@ export const project7dCompass = {
             {
                title: "Motor de auditoría Node.js",
                description:
-                  "Backend de alto rendimiento que procesa $2.3M USD en transacciones, realizando conciliaciones complejas entre múltiples fuentes de datos de forma automatizada.",
+                  "Backend de alto rendimiento que procesa $5.5M USD en transacciones, realizando conciliaciones complejas entre múltiples fuentes de datos de forma automatizada.",
             },
          ],
       },

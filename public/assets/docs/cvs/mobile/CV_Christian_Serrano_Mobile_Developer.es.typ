@@ -18,7 +18,7 @@
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Firebase], []),
     single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker, EAS Build], []),
     single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking], []),
-    single-line-entry([*Familiarizado con:*], [Java, Python, Spring Boot], [])
+    single-line-entry([*Familiarizado con:*], [Kotlin, Java, Python, Spring Boot], [])
   )
 
   == Experiencia profesional
@@ -49,7 +49,7 @@
     (
       ..exp-7d,
       list-items: (
-        [Lideré la evolución de plataforma web reduciendo tiempo operativo en *95%* y conciliando *\$2.3M USD* en transacciones.],
+        [Lideré la evolución de plataforma web reduciendo tiempo operativo en *95%* y conciliando *\$5.5M USD* en transacciones.],
       )
     ),
     (

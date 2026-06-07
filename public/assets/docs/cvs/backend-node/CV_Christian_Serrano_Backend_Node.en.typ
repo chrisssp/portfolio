@@ -18,7 +18,7 @@
     single-line-entry([*Frontend:*], [React, Angular, React Native (integration context)], []),
     single-line-entry([*Tools:*], [Git, Linux, Figma, OWASP security practices], []),
     single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiar:*], [Java (Spring Boot), Python (Django, FastAPI)], [])
+    single-line-entry([*Familiar with:*], [Java (Spring Boot), Python (Django, FastAPI)], [])
   )
 
   == Professional Experience
@@ -27,7 +27,7 @@
       ..exp-7d,
       list-items: (
         [Led the evolution of #link("https://chrisssp.vercel.app/en/projects/7dcompass")[*7D-Compass*] (Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by *95%*.],
-        [Implemented a centralized audit engine reconciling *\$2.3M USD* in transactions through complex validation logic.],
+        [Implemented a centralized audit engine reconciling *\$5.5M USD* in transactions through complex validation logic.],
         [Optimized system security using *JWT/Bcrypt* following *OWASP* standards.],
       )
     ),

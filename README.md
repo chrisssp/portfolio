@@ -23,7 +23,7 @@ High-performance, multi-language professional portfolio built with a focus on cl
 - **Dynamic Open Graph Images:** Automated generation of social preview images (OG) using Edge Functions, customized for both the home page and individual projects.
 - **Performance First:** Optimized Core Web Vitals, featuring real-time monitoring with Vercel Speed Insights.
 - **Modern UI/UX:** Responsive, mobile-first design with dark/light mode support, featuring a custom "Smart Email Button" and blurred context-aware overlays.
-- **Business Impact:** Showcasing technical solutions with real-world metrics (e.g., $2.3M USD reconciled, 95% process optimization).
+- **Business Impact:** Showcasing technical solutions with real-world metrics (e.g., $5.5M USD reconciled, 95% process optimization).
 
 ---
 

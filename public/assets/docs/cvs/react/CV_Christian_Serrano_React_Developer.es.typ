@@ -13,7 +13,7 @@
   == Habilidades técnicas
   #multi-line-list(
     single-line-entry([*Frontend y Móvil:*], [React, React Native, TypeScript, TailwindCSS, Expo, Next.js], []),
-    single-line-entry([*Estado y Datos:*], [Zustand, TanStack Query, Supabase, Firebase], []),
+    single-line-entry([*Estado y datos:*], [Zustand, TanStack Query, Supabase, Firebase], []),
     single-line-entry([*Backend:*], [Node.js (Express, NestJS), APIs REST], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB], []),
     single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker], []),
@@ -43,7 +43,7 @@
       ..exp-7d,
       list-items: (
         [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automatizando la conciliación de pagos y reduciendo el tiempo operativo en un *95%*.],
-        [Implementé un motor de auditoría centralizado para conciliar *\$2.3M USD* en transacciones.],
+        [Implementé un motor de auditoría centralizado para conciliar *\$5.5M USD* en transacciones.],
         [Optimicé rendimiento frontend (*3.2x* TTI) y fortalecí seguridad con *JWT/Bcrypt* siguiendo *OWASP*.],
       )
     ),

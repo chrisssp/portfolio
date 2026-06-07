@@ -14,7 +14,7 @@
   #multi-line-list(
     single-line-entry([*Frontend:*], [Angular, TypeScript, RxJS, TailwindCSS, HTML/CSS], []),
     single-line-entry([*Móvil:*], [Ionic, Capacitor], []),
-    single-line-entry([*Estado y Datos:*], [NgRx, Angular Router, APIs REST], []),
+    single-line-entry([*Estado y datos:*], [NgRx, Angular Router, APIs REST], []),
     single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot)], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB], []),
     single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker], []),
@@ -28,7 +28,7 @@
       ..exp-7d,
       list-items: (
         [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*], una plataforma Angular/Node.js para conciliación de pagos, reduciendo el tiempo operativo en un *95%*.],
-        [Implementé un motor de auditoría centralizado para conciliar *\$2.3M USD* en transacciones.],
+        [Implementé un motor de auditoría centralizado para conciliar *\$5.5M USD* en transacciones.],
         [Optimicé rendimiento frontend Angular (*3.2x* TTI) y fortalecí seguridad con *JWT/Bcrypt* bajo *OWASP*.],
       )
     ),

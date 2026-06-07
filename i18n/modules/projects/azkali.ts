@@ -10,6 +10,7 @@ export const projectAzkali = {
          "supabase",
          "tailwindcss",
          "postgresql",
+         "python",
          "gemini",
          "typescript",
       ],
@@ -49,7 +50,7 @@ export const projectAzkali = {
          },
          {
             imagePath: "/assets/images/projects/azkali/specific3.webp",
-            techStack: ["supabase", "postgresql", "gemini"],
+            techStack: ["supabase", "postgresql", "python", "gemini"],
             links: [
                { type: "github", url: "https://github.com/chrisssp/azkali" },
             ],

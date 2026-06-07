@@ -27,7 +27,7 @@
       ..exp-7d,
       list-items: (
         [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
-        [Implementé un motor de auditoría centralizado conciliando *\$2.3M USD* en transacciones.],
+        [Implementé un motor de auditoría centralizado conciliando *\$5.5M USD* en transacciones.],
         [Optimicé seguridad usando *JWT/Bcrypt* siguiendo estándares *OWASP*.],
       )
     ),

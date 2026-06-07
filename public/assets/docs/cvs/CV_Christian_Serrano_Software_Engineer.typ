@@ -26,7 +26,7 @@
       ..exp-7d,
       list-items: (
         [Led the evolution of #link("https://chrisssp.vercel.app/en/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by *95%*.],
-        [Implemented a centralized audit engine to reconcile *\$2.3M USD* in transactions, detecting critical financial discrepancies through validation logic.],
+        [Implemented a centralized audit engine to reconcile *\$5.5M USD* in transactions, detecting critical financial discrepancies through validation logic.],
         [Optimized frontend performance (*3.2x* TTI) and strengthened system security using *JWT/Bcrypt* following *OWASP* standards.],
       )
     ),
@@ -52,7 +52,7 @@
       list-items: (
         [Developed #link("https://chrisssp.vercel.app/en/projects/mtrpa")[*Master Template Rutas Power App*], a centralized Web App (Angular/MongoDB) replacing legacy Excel workflows.],
         [Automated processing of *+100k records*, reducing manual errors to zero.],
-        [Designed the "Master Template Rutas Power App" solution, optimizing processing time by 70%.],
+        [Designed the solution optimizing processing time by 70%.],
       )
     ),
     (

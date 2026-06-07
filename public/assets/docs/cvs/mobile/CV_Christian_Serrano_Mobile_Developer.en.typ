@@ -18,7 +18,7 @@
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, Firebase], []),
     single-line-entry([*Tools & OS:*], [Git, Linux, Figma, Docker, EAS Build], []),
     single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking], []),
-    single-line-entry([*Familiar:*], [Java, Python, Spring Boot], [])
+    single-line-entry([*Familiar with:*], [Kotlin, Java, Python, Spring Boot], [])
   )
 
   == Professional Experience
@@ -49,7 +49,7 @@
     (
       ..exp-7d,
       list-items: (
-        [Led the evolution of #link("https://chrisssp.vercel.app/en/projects/7dcompass")[*7D-Compass*], reducing operational time by *95%* and reconciling *\$2.3M USD* in transactions.],
+        [Led the evolution of #link("https://chrisssp.vercel.app/en/projects/7dcompass")[*7D-Compass*], reducing operational time by *95%* and reconciling *\$5.5M USD* in transactions.],
       )
     ),
     (
