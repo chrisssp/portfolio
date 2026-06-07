@@ -8,7 +8,7 @@
   "en",
 )[
   == Profile
-  Frontend engineer specialized in React, React Native, and TypeScript. Experienced building responsive web applications and cross-platform mobile experiences with modern state management and component architecture. Focused on performance, clean code, and translating business requirements into intuitive user interfaces.
+  Frontend engineer with +2 years of experience building production software, specialized in React, React Native, and TypeScript. Experienced building responsive web applications and cross-platform mobile experiences with modern state management and component architecture. Focused on performance, clean code, and translating business requirements into intuitive user interfaces.
 
   == Technical Skills
   #multi-line-list(

@@ -8,7 +8,7 @@
   "en",
 )[
   == Profile
-  Backend engineer specialized in Java and Spring Boot. Experienced building enterprise REST APIs and data-driven backend systems. Strong foundation in software design patterns, object-oriented architecture, and database design. Focused on writing clean, maintainable, and well-structured enterprise applications.
+  Backend engineer with +2 years of experience building production software, specialized in Java and Spring Boot. Experienced building enterprise REST APIs and data-driven backend systems. Strong foundation in software design patterns, object-oriented architecture, and database design. Focused on writing clean, maintainable, and well-structured enterprise applications.
 
   == Technical Skills
   #multi-line-list(

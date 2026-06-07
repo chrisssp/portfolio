@@ -8,7 +8,7 @@
   "en",
 )[
   == Profile
-  Backend engineer specialized in Node.js, TypeScript, and API architecture. Experienced designing REST APIs, database schemas, and backend systems for financial, logistics, and enterprise applications. Focused on clean architecture, performance optimization, and secure, maintainable code.
+  Backend engineer with +2 years of experience building production software, specialized in Node.js, TypeScript, and API architecture. Experienced designing REST APIs, database schemas, and backend systems for financial, logistics, and enterprise applications. Focused on clean architecture, performance optimization, and secure, maintainable code.
 
   == Technical Skills
   #multi-line-list(

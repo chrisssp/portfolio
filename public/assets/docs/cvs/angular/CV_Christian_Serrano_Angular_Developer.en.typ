@@ -8,7 +8,7 @@
   "en",
 )[
   == Profile
-  Frontend engineer specialized in Angular, TypeScript, and Ionic. Experienced building enterprise-grade web applications with complex state management and RxJS-driven reactive architectures. Focused on modular, testable, and scalable frontend solutions for data-intensive business applications.
+  Frontend engineer with +2 years of experience building production software, specialized in Angular, TypeScript, and Ionic. Experienced building enterprise-grade web applications with complex state management and RxJS-driven reactive architectures. Focused on modular, testable, and scalable frontend solutions for data-intensive business applications.
 
   == Technical Skills
   #multi-line-list(

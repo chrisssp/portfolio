@@ -8,7 +8,7 @@
   "es",
 )[
   == Perfil
-  Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.
+  Ingeniero de software con +2 años de experiencia construyendo software en producción. Enfocado en la construcción de ecosistemas web y móviles eficientes, con conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(

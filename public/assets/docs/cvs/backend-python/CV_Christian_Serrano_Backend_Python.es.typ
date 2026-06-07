@@ -8,7 +8,7 @@
   "es",
 )[
   == Perfil
-  Ingeniero backend especializado en Python, Django y FastAPI. Experiencia construyendo APIs REST, sistemas de procesamiento de datos y soluciones backend integradas con IA. Enfocado en código limpio, testeabilidad, automatización y arquitecturas escalables. Trayectoria comprobada entregando proyectos full-stack con bases sólidas en backend.
+  Ingeniero backend con +2 años de experiencia construyendo software en producción, especializado en Python, Django y FastAPI. Experiencia construyendo APIs REST, sistemas de procesamiento de datos y soluciones backend integradas con IA. Enfocado en código limpio, testeabilidad, automatización y arquitecturas escalables. Trayectoria comprobada entregando proyectos full-stack con bases sólidas en backend.
 
   == Habilidades técnicas
   #multi-line-list(

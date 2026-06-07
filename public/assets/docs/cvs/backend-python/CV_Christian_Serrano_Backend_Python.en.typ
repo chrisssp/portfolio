@@ -8,7 +8,7 @@
   "en",
 )[
   == Profile
-  Backend engineer specialized in Python, Django, and FastAPI. Experienced building REST APIs, data processing systems, and AI-integrated backend solutions. Focused on clean code, testability, automation, and scalable architectures. Proven track record delivering full-stack projects with a strong backend foundation.
+  Backend engineer with +2 years of experience building production software, specialized in Python, Django, and FastAPI. Experienced building REST APIs, data processing systems, and AI-integrated backend solutions. Focused on clean code, testability, automation, and scalable architectures. Proven track record delivering full-stack projects with a strong backend foundation.
 
   == Technical Skills
   #multi-line-list(

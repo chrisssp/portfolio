@@ -8,7 +8,7 @@
   "es",
 )[
   == Perfil
-  Ingeniero frontend especializado en Angular, TypeScript e Ionic. Experiencia construyendo aplicaciones web empresariales con manejo de estado complejo y arquitecturas reactivas impulsadas por RxJS. Enfocado en soluciones frontend modulares, testeables y escalables para aplicaciones de negocio intensivas en datos.
+  Ingeniero frontend con +2 años de experiencia construyendo software en producción, especializado en Angular, TypeScript e Ionic. Experiencia construyendo aplicaciones web empresariales con manejo de estado complejo y arquitecturas reactivas impulsadas por RxJS. Enfocado en soluciones frontend modulares, testeables y escalables para aplicaciones de negocio intensivas en datos.
 
   == Habilidades técnicas
   #multi-line-list(

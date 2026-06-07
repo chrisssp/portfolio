@@ -8,7 +8,7 @@
   "en",
 )[
   == Profile
-  Mobile developer specialized in React Native and Expo. Experienced building cross-platform applications from concept to deployment — with focus on native performance, smooth UI/UX, and seamless backend integration. Proven ability to deliver production-ready mobile solutions under tight deadlines.
+  Mobile developer with +2 years of experience building production software, specialized in React Native and Expo. Experienced building cross-platform applications from concept to deployment — with focus on native performance, smooth UI/UX, and seamless backend integration. Proven ability to deliver production-ready mobile solutions under tight deadlines.
 
   == Technical Skills
   #multi-line-list(

@@ -8,7 +8,7 @@
   "en",
 )[
   == Profile
-  Focused on building efficient web and mobile ecosystems. Experienced in Linux environments, prioritizing scalability, clean code, and performance. Translates business requirements into maintainable architectures through process automation and AI-augmented development workflows.
+  Software engineer with +2 years of experience building production software. Focused on building efficient web and mobile ecosystems, experienced in Linux environments, prioritizing scalability, clean code, and performance. Translates business requirements into maintainable architectures through process automation and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(

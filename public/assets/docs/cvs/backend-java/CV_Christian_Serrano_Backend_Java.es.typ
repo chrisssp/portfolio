@@ -8,7 +8,7 @@
   "es",
 )[
   == Perfil
-  Ingeniero backend especializado en Java y Spring Boot. Experiencia construyendo APIs REST empresariales y sistemas backend impulsados por datos. Base sólida en patrones de diseño, arquitectura orientada a objetos y diseño de bases de datos. Enfocado en escribir aplicaciones enterprise limpias, mantenibles y bien estructuradas.
+  Ingeniero backend con +2 años de experiencia construyendo software en producción, especializado en Java y Spring Boot. Experiencia construyendo APIs REST empresariales y sistemas backend impulsados por datos. Base sólida en patrones de diseño, arquitectura orientada a objetos y diseño de bases de datos. Enfocado en escribir aplicaciones enterprise limpias, mantenibles y bien estructuradas.
 
   == Habilidades técnicas
   #multi-line-list(

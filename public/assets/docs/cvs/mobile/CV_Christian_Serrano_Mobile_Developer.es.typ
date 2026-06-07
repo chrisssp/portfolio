@@ -8,7 +8,7 @@
   "es",
 )[
   == Perfil
-  Desarrollador móvil especializado en React Native y Expo. Experiencia construyendo aplicaciones cross-platform desde el concepto hasta el deployment, con foco en rendimiento nativo, UI/UX fluida e integración seamless con servicios backend. Capacidad comprobada de entregar apps funcionales bajo plazos ajustados.
+  Desarrollador móvil con +2 años de experiencia construyendo software en producción, especializado en React Native y Expo. Experiencia construyendo aplicaciones cross-platform desde el concepto hasta el deployment, con foco en rendimiento nativo, UI/UX fluida e integración seamless con servicios backend. Capacidad comprobada de entregar apps funcionales bajo plazos ajustados.
 
   == Habilidades técnicas
   #multi-line-list(

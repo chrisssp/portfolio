@@ -8,7 +8,7 @@
   "es",
 )[
   == Perfil
-  Ingeniero backend especializado en Node.js, TypeScript y arquitectura de APIs. Experiencia diseñando APIs REST, esquemas de bases de datos y sistemas backend para aplicaciones financieras, logísticas y empresariales. Enfocado en arquitectura limpia, optimización de rendimiento y código seguro y mantenible.
+  Ingeniero backend con +2 años de experiencia construyendo software en producción, especializado en Node.js, TypeScript y arquitectura de APIs. Experiencia diseñando APIs REST, esquemas de bases de datos y sistemas backend para aplicaciones financieras, logísticas y empresariales. Enfocado en arquitectura limpia, optimización de rendimiento y código seguro y mantenible.
 
   == Habilidades técnicas
   #multi-line-list(

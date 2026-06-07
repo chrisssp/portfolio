@@ -8,7 +8,7 @@
   "es",
 )[
   == Perfil
-  Ingeniero frontend especializado en React, React Native y TypeScript. Experiencia construyendo aplicaciones web responsivas y experiencias móviles cross-platform con arquitectura de componentes y manejo de estado moderno. Enfocado en rendimiento, código limpio y traducir requerimientos de negocio en interfaces de usuario intuitivas.
+  Ingeniero frontend con +2 años de experiencia construyendo software en producción, especializado en React, React Native y TypeScript. Experiencia construyendo aplicaciones web responsivas y experiencias móviles cross-platform con arquitectura de componentes y manejo de estado moderno. Enfocado en rendimiento, código limpio y traducir requerimientos de negocio en interfaces de usuario intuitivas.
 
   == Habilidades técnicas
   #multi-line-list(
