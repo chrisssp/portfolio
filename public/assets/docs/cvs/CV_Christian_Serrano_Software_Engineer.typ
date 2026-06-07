@@ -8,7 +8,7 @@
   "en",
 )[
   == Profile
-  Software engineer with +2 years of experience building production software. Focused on building efficient web and mobile ecosystems, experienced in Linux environments, prioritizing scalability, clean code, and performance. Translates business requirements into maintainable architectures through process automation and AI-augmented development workflows.
+  Software engineer with *+2 years* of experience building production software. Focused on building efficient web and mobile ecosystems, experienced in Linux environments, prioritizing scalability, clean code, and performance. Translates business requirements into maintainable architectures through process automation and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
@@ -59,7 +59,7 @@
       ..exp-flacks,
       list-items: (
         [Deployed #link("https://chrisssp.vercel.app/en/projects/flacks-cc")[*Flack's Cut & Connect*], a complete digital ecosystem (Web & Mobile), automating 100% of appointments.],
-        [Developed a REST API with Node.js and PostgreSQL to centralize inventory and sales.],
+        [Built a REST API with Java (Spring Boot) and PostgreSQL to centralize inventory and sales.],
       )
     )
   )

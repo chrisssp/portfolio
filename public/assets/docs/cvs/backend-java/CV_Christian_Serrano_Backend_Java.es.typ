@@ -8,17 +8,17 @@
   "es",
 )[
   == Perfil
-  Ingeniero backend con +2 años de experiencia construyendo software en producción, especializado en Java y Spring Boot. Experiencia construyendo APIs REST empresariales y sistemas backend impulsados por datos. Base sólida en patrones de diseño, arquitectura orientada a objetos y diseño de bases de datos. Enfocado en escribir aplicaciones enterprise limpias, mantenibles y bien estructuradas.
+  Ingeniero backend con *+2 años* de experiencia construyendo software en producción, especializado en Java y Spring Boot. Experiencia construyendo APIs REST empresariales y sistemas backend impulsados por datos. Base sólida en patrones de diseño, arquitectura orientada a objetos y diseño de bases de datos. Enfocado en escribir aplicaciones enterprise limpias, mantenibles y bien estructuradas. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
     single-line-entry([*Backend:*], [Java, Spring Boot, JPA/Hibernate, APIs REST, Maven], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Frontend:*], [Angular, Ionic, TypeScript], []),
+    single-line-entry([*Frontend:*], [Angular, Ionic, React, React Native, TypeScript], []),
     single-line-entry([*Infraestructura:*], [Docker, Git, Linux], []),
-    single-line-entry([*Otros lenguajes:*], [Node.js, Python, TypeScript], []),
+    single-line-entry([*Otros lenguajes:*], [Node.js, Python (Django, FastAPI), TypeScript], []),
     single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiarizado con:*], [React, React Native, Django, FastAPI], [])
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
   == Experiencia profesional
@@ -56,7 +56,7 @@
       ..exp-flacks,
       list-items: (
         [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo automatizando el 100% de las citas.],
-        [Desarrollé una API REST con Node.js y PostgreSQL para gestión de inventario y ventas.],
+        [Construí una API REST con Java (Spring Boot) y PostgreSQL para gestión de inventario y ventas.],
       )
     )
   )

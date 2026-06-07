@@ -8,17 +8,17 @@
   "en",
 )[
   == Profile
-  Backend engineer with +2 years of experience building production software, specialized in Java and Spring Boot. Experienced building enterprise REST APIs and data-driven backend systems. Strong foundation in software design patterns, object-oriented architecture, and database design. Focused on writing clean, maintainable, and well-structured enterprise applications.
+  Backend engineer with *+2 years* of experience building production software, specialized in Java and Spring Boot. Experienced building enterprise REST APIs and data-driven backend systems. Strong foundation in software design patterns, object-oriented architecture, and database design. Focused on writing clean, maintainable, and well-structured enterprise applications. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
     single-line-entry([*Backend:*], [Java, Spring Boot, JPA/Hibernate, REST APIs, Maven], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Frontend:*], [Angular, Ionic, TypeScript], []),
+    single-line-entry([*Frontend:*], [Angular, Ionic, React, React Native, TypeScript], []),
     single-line-entry([*Infrastructure:*], [Docker, Git, Linux], []),
-    single-line-entry([*Other Languages:*], [Node.js, Python, TypeScript], []),
+    single-line-entry([*Other Languages:*], [Node.js, Python (Django, FastAPI), TypeScript], []),
     single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiar with:*], [React, React Native, Django, FastAPI], [])
+    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
   == Professional Experience
@@ -56,7 +56,7 @@
       ..exp-flacks,
       list-items: (
         [Deployed #link("https://chrisssp.vercel.app/en/projects/flacks-cc")[*Flack's Cut & Connect*], a full digital ecosystem automating 100% of appointments.],
-        [Developed a REST API with Node.js and PostgreSQL for inventory and sales management.],
+        [Built a REST API with Java (Spring Boot) and PostgreSQL for inventory and sales management.],
       )
     )
   )

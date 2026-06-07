@@ -8,18 +8,18 @@
   "es",
 )[
   == Perfil
-  Ingeniero frontend con +2 años de experiencia construyendo software en producción, especializado en Angular, TypeScript e Ionic. Experiencia construyendo aplicaciones web empresariales con manejo de estado complejo y arquitecturas reactivas impulsadas por RxJS. Enfocado en soluciones frontend modulares, testeables y escalables para aplicaciones de negocio intensivas en datos.
+  Ingeniero frontend con *+2 años* de experiencia construyendo software en producción, especializado en Angular, TypeScript e Ionic. Experiencia construyendo aplicaciones web empresariales con manejo de estado complejo y arquitecturas reactivas impulsadas por RxJS. Enfocado en soluciones frontend modulares, testeables y escalables para aplicaciones de negocio intensivas en datos. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
-    single-line-entry([*Frontend:*], [Angular, TypeScript, RxJS, TailwindCSS, HTML/CSS], []),
+    single-line-entry([*Frontend:*], [Angular, React, React Native, TypeScript, RxJS, TailwindCSS, HTML/CSS], []),
     single-line-entry([*Móvil:*], [Ionic, Capacitor], []),
     single-line-entry([*Estado y datos:*], [NgRx, Angular Router, APIs REST], []),
-    single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot)], []),
+    single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB], []),
     single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker], []),
     single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiarizado con:*], [React, React Native, Python], [])
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
   == Experiencia profesional
@@ -59,7 +59,7 @@
       ..exp-flacks,
       list-items: (
         [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo (Web y móvil) automatizando el 100% de las citas.],
-        [Desarrollé una API REST con Node.js y PostgreSQL para centralizar inventario y ventas.],
+        [Construí una API REST con Java (Spring Boot) y PostgreSQL para centralizar inventario y ventas.],
       )
     )
   )

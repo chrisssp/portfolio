@@ -8,17 +8,17 @@
   "es",
 )[
   == Perfil
-  Desarrollador móvil con +2 años de experiencia construyendo software en producción, especializado en React Native y Expo. Experiencia construyendo aplicaciones cross-platform desde el concepto hasta el deployment, con foco en rendimiento nativo, UI/UX fluida e integración seamless con servicios backend. Capacidad comprobada de entregar apps funcionales bajo plazos ajustados.
+  Desarrollador móvil con *+2 años* de experiencia construyendo software en producción, especializado en React Native y Expo. Experiencia construyendo aplicaciones cross-platform desde el concepto hasta el deployment, con foco en rendimiento nativo, UI/UX fluida e integración seamless con servicios backend. Capacidad comprobada de entregar apps funcionales bajo plazos ajustados. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
     single-line-entry([*Móvil:*], [React Native, Expo, TypeScript, TailwindCSS, GlueStack, Nativewind], []),
     single-line-entry([*Frontend:*], [React, Angular, Ionic], []),
-    single-line-entry([*Backend y APIs:*], [Node.js (Express, NestJS), APIs REST, Supabase], []),
+    single-line-entry([*Backend y APIs:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, APIs REST, Supabase], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Firebase], []),
     single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker, EAS Build], []),
     single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking], []),
-    single-line-entry([*Familiarizado con:*], [Kotlin, Java, Python, Spring Boot], [])
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
   == Experiencia profesional
@@ -43,7 +43,7 @@
       ..exp-flacks,
       list-items: (
         [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema móvil + web completo automatizando el 100% de las citas.],
-        [Desarrollé una API REST con Node.js y PostgreSQL para sincronización de inventario y ventas.],
+        [Construí una app nativa Android (Java) y una app híbrida (Ionic) para la plataforma digital de la barbería.],
       )
     ),
     (

@@ -8,7 +8,7 @@
   "es",
 )[
   == Perfil
-  Ingeniero de software con +2 años de experiencia construyendo software en producción. Enfocado en la construcción de ecosistemas web y móviles eficientes, con conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.
+  Ingeniero de software con *+2 años* de experiencia construyendo software en producción. Enfocado en la construcción de ecosistemas web y móviles eficientes, con conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
@@ -59,7 +59,7 @@
       ..exp-flacks,
       list-items: (
         [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
-        [Desarrollé una API REST con Node.js y PostgreSQL para centralizar inventario y ventas.],
+        [Construí una API REST con Java (Spring Boot) y PostgreSQL para centralizar inventario y ventas.],
       )
     )
   )

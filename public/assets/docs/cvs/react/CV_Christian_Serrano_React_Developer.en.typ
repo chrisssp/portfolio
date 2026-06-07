@@ -8,17 +8,17 @@
   "en",
 )[
   == Profile
-  Frontend engineer with +2 years of experience building production software, specialized in React, React Native, and TypeScript. Experienced building responsive web applications and cross-platform mobile experiences with modern state management and component architecture. Focused on performance, clean code, and translating business requirements into intuitive user interfaces.
+  Frontend engineer with *+2 years* of experience building production software, specialized in React, React Native, and TypeScript. Experienced building responsive web applications and cross-platform mobile experiences with modern state management and component architecture. Focused on performance, clean code, and translating business requirements into intuitive user interfaces. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
-    single-line-entry([*Frontend & Mobile:*], [React, React Native, TypeScript, TailwindCSS, Expo, Next.js], []),
+    single-line-entry([*Frontend & Mobile:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS, Expo, Next.js], []),
     single-line-entry([*State & Data:*], [Zustand, TanStack Query, Supabase, Firebase], []),
-    single-line-entry([*Backend:*], [Node.js (Express, NestJS), REST APIs], []),
+    single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python (Django, FastAPI), REST APIs], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB], []),
     single-line-entry([*Tools & OS:*], [Git, Linux, Figma, Docker], []),
     single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiar with:*], [Angular, Ionic, Java, Python], [])
+    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
   == Professional Experience
@@ -59,7 +59,7 @@
       ..exp-flacks,
       list-items: (
         [Deployed #link("https://chrisssp.vercel.app/en/projects/flacks-cc")[*Flack's Cut & Connect*], a complete digital ecosystem (React-based Web & Mobile), automating 100% of appointments.],
-        [Developed a REST API with Node.js and PostgreSQL to centralize inventory and sales.],
+        [Built a REST API with Java (Spring Boot) and PostgreSQL to centralize inventory and sales.],
       )
     )
   )

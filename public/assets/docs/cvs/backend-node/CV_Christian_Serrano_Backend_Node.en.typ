@@ -8,17 +8,17 @@
   "en",
 )[
   == Profile
-  Backend engineer with +2 years of experience building production software, specialized in Node.js, TypeScript, and API architecture. Experienced designing REST APIs, database schemas, and backend systems for financial, logistics, and enterprise applications. Focused on clean architecture, performance optimization, and secure, maintainable code.
+  Backend engineer with *+2 years* of experience building production software, specialized in Node.js, TypeScript, and API architecture. Experienced designing REST APIs, database schemas, and backend systems for financial, logistics, and enterprise applications. Focused on clean architecture, performance optimization, and secure, maintainable code. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
-    single-line-entry([*Backend:*], [Node.js, Express, NestJS, TypeScript, REST APIs], []),
+    single-line-entry([*Backend:*], [Node.js, Express, NestJS, TypeScript, Java (Spring Boot), Python (Django, FastAPI), REST APIs], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, Supabase, Firebase], []),
     single-line-entry([*Infrastructure:*], [Docker, Git, Linux], []),
     single-line-entry([*Frontend:*], [React, Angular, React Native (integration context)], []),
     single-line-entry([*Tools:*], [Git, Linux, Figma, OWASP security practices], []),
     single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiar with:*], [Java (Spring Boot), Python (Django, FastAPI)], [])
+    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
   == Professional Experience
@@ -56,7 +56,7 @@
     (
       ..exp-flacks,
       list-items: (
-        [Developed a REST API with Node.js and PostgreSQL to centralize inventory, sales, and appointment data.],
+        [Built a REST API with Java (Spring Boot) and PostgreSQL to centralize inventory, sales, and appointment data.],
         [Deployed a full digital ecosystem (Web & Mobile) backed by a unified API layer.],
       )
     )

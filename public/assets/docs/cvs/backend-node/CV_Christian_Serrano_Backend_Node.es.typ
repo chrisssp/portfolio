@@ -8,17 +8,17 @@
   "es",
 )[
   == Perfil
-  Ingeniero backend con +2 años de experiencia construyendo software en producción, especializado en Node.js, TypeScript y arquitectura de APIs. Experiencia diseñando APIs REST, esquemas de bases de datos y sistemas backend para aplicaciones financieras, logísticas y empresariales. Enfocado en arquitectura limpia, optimización de rendimiento y código seguro y mantenible.
+  Ingeniero backend con *+2 años* de experiencia construyendo software en producción, especializado en Node.js, TypeScript y arquitectura de APIs. Experiencia diseñando APIs REST, esquemas de bases de datos y sistemas backend para aplicaciones financieras, logísticas y empresariales. Enfocado en arquitectura limpia, optimización de rendimiento y código seguro y mantenible. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
-    single-line-entry([*Backend:*], [Node.js, Express, NestJS, TypeScript, APIs REST], []),
+    single-line-entry([*Backend:*], [Node.js, Express, NestJS, TypeScript, Java (Spring Boot), Python (Django, FastAPI), APIs REST], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Supabase, Firebase], []),
     single-line-entry([*Infraestructura:*], [Docker, Git, Linux], []),
     single-line-entry([*Frontend (ctx integración):*], [React, Angular, React Native], []),
     single-line-entry([*Herramientas:*], [Git, Linux, Figma, OWASP], []),
     single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiarizado con:*], [Java (Spring Boot), Python (Django, FastAPI)], [])
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
   == Experiencia profesional
@@ -56,7 +56,7 @@
     (
       ..exp-flacks,
       list-items: (
-        [Desarrollé una API REST con Node.js y PostgreSQL para centralizar inventario, ventas y citas.],
+        [Construí una API REST con Java (Spring Boot) y PostgreSQL para centralizar inventario, ventas y citas.],
         [Desplegué un ecosistema digital completo (Web y móvil) respaldado por una capa de API unificada.],
       )
     )

@@ -8,7 +8,7 @@
   "es",
 )[
   == Perfil
-  Ingeniero backend con +2 años de experiencia construyendo software en producción, especializado en Python, Django y FastAPI. Experiencia construyendo APIs REST, sistemas de procesamiento de datos y soluciones backend integradas con IA. Enfocado en código limpio, testeabilidad, automatización y arquitecturas escalables. Trayectoria comprobada entregando proyectos full-stack con bases sólidas en backend.
+  Ingeniero backend con *+2 años* de experiencia construyendo software en producción, especializado en Python, Django y FastAPI. Experiencia construyendo APIs REST, sistemas de procesamiento de datos y soluciones backend integradas con IA. Enfocado en código limpio, testeabilidad, automatización y arquitecturas escalables. Trayectoria comprobada entregando proyectos full-stack con bases sólidas en backend. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
@@ -19,6 +19,7 @@
     single-line-entry([*Otros lenguajes:*], [Node.js, Java, TypeScript], []),
     single-line-entry([*Frontend:*], [React, React Native, Angular], []),
     single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
   == Experiencia profesional
@@ -56,7 +57,7 @@
       ..exp-flacks,
       list-items: (
         [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo automatizando el 100% de las citas.],
-        [Desarrollé una API REST con Node.js y PostgreSQL para gestión de inventario y ventas.],
+        [Construí una API REST con Java (Spring Boot) y PostgreSQL para gestión de inventario y ventas.],
       )
     )
   )

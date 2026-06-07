@@ -8,17 +8,17 @@
   "en",
 )[
   == Profile
-  Mobile developer with +2 years of experience building production software, specialized in React Native and Expo. Experienced building cross-platform applications from concept to deployment — with focus on native performance, smooth UI/UX, and seamless backend integration. Proven ability to deliver production-ready mobile solutions under tight deadlines.
+  Mobile developer with *+2 years* of experience building production software, specialized in React Native and Expo. Experienced building cross-platform applications from concept to deployment — with focus on native performance, smooth UI/UX, and seamless backend integration. Proven ability to deliver production-ready mobile solutions under tight deadlines. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
     single-line-entry([*Mobile:*], [React Native, Expo, TypeScript, TailwindCSS, GlueStack, Nativewind], []),
     single-line-entry([*Frontend:*], [React, Angular, Ionic], []),
-    single-line-entry([*Backend & APIs:*], [Node.js (Express, NestJS), REST APIs, Supabase], []),
+    single-line-entry([*Backend & APIs:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, REST APIs, Supabase], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, Firebase], []),
     single-line-entry([*Tools & OS:*], [Git, Linux, Figma, Docker, EAS Build], []),
     single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking], []),
-    single-line-entry([*Familiar with:*], [Kotlin, Java, Python, Spring Boot], [])
+    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
   == Professional Experience
@@ -43,7 +43,7 @@
       ..exp-flacks,
       list-items: (
         [Deployed #link("https://chrisssp.vercel.app/en/projects/flacks-cc")[*Flack's Cut & Connect*], a complete mobile + web ecosystem automating 100% of appointment scheduling.],
-        [Developed a REST API with Node.js and PostgreSQL for real-time inventory and sales sync.],
+        [Built a native Android app (Java) and a hybrid mobile app (Ionic) for the barber shop's digital platform.],
       )
     ),
     (
