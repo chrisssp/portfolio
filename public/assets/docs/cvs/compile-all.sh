@@ -24,6 +24,10 @@ CVS=(
   "mobile/Desarrollador_Móvil_Christian_Serrano_CV.es"
   "react/React_Developer_Christian_Serrano_CV.en"
   "react/Desarrollador_React_Christian_Serrano_CV.es"
+  "frontend/Frontend_Developer_Christian_Serrano_CV.en"
+  "frontend/Desarrollador_Frontend_Christian_Serrano_CV.es"
+  "backend/Backend_Developer_Christian_Serrano_CV.en"
+  "backend/Desarrollador_Backend_Christian_Serrano_CV.es"
 )
 
 for cv in "${CVS[@]}"; do
