@@ -14,8 +14,8 @@
   #multi-line-list(
     single-line-entry([*Backend:*], [Node.js, Express, NestJS, TypeScript, Java (Spring Boot), Python (Django, FastAPI), REST APIs], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, Supabase, Firebase], []),
-    single-line-entry([*Infrastructure:*], [Docker, Git, Linux], []),
-    single-line-entry([*Frontend:*], [React, Angular, React Native (integration context)], []),
+    single-line-entry([*Infrastructure:*], [Docker & Docker Compose, Git, Linux], []),
+    single-line-entry([*Frontend:*], [React, Angular, React Native (integration context), Astro], []),
     single-line-entry([*Tools:*], [Git, Linux, Figma, OWASP security practices], []),
     single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
     single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])

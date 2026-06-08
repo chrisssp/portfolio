@@ -13,10 +13,10 @@
   == Habilidades técnicas
   #multi-line-list(
     single-line-entry([*Móvil:*], [React Native, Expo, TypeScript, TailwindCSS, GlueStack, Nativewind], []),
-    single-line-entry([*Frontend:*], [React, Angular, Ionic], []),
+    single-line-entry([*Frontend:*], [React, Angular, Ionic, Astro], []),
     single-line-entry([*Backend y APIs:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, APIs REST, Supabase], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Firebase], []),
-    single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker, EAS Build], []),
+    single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker & Docker Compose, EAS Build], []),
     single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking], []),
     single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )

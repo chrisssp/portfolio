@@ -15,9 +15,9 @@
     single-line-entry([*Backend:*], [Python, Django, FastAPI, APIs REST, Celery], []),
     single-line-entry([*IA y Datos:*], [Gemini API, LangChain, Pandas, NumPy], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Supabase], []),
-    single-line-entry([*Infraestructura:*], [Docker, Git, Linux], []),
+    single-line-entry([*Infraestructura:*], [Docker & Docker Compose, Git, Linux], []),
     single-line-entry([*Otros lenguajes:*], [Node.js, Java, TypeScript], []),
-    single-line-entry([*Frontend:*], [React, React Native, Angular], []),
+    single-line-entry([*Frontend:*], [React, React Native, Angular, Astro], []),
     single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
     single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )

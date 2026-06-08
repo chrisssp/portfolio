@@ -13,10 +13,10 @@
   == Technical Skills
   #multi-line-list(
     single-line-entry([*Mobile:*], [React Native, Expo, TypeScript, TailwindCSS, GlueStack, Nativewind], []),
-    single-line-entry([*Frontend:*], [React, Angular, Ionic], []),
+    single-line-entry([*Frontend:*], [React, Angular, Ionic, Astro], []),
     single-line-entry([*Backend & APIs:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, REST APIs, Supabase], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, Firebase], []),
-    single-line-entry([*Tools & OS:*], [Git, Linux, Figma, Docker, EAS Build], []),
+    single-line-entry([*Tools & OS:*], [Git, Linux, Figma, Docker & Docker Compose, EAS Build], []),
     single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking], []),
     single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )

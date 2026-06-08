@@ -12,11 +12,11 @@
 
   == Habilidades técnicas
   #multi-line-list(
-    single-line-entry([*Frontend y Móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS, Expo, Next.js], []),
+    single-line-entry([*Frontend y Móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS, Expo, Next.js, Astro], []),
     single-line-entry([*Estado y datos:*], [Zustand, TanStack Query, Supabase, Firebase], []),
     single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python (Django, FastAPI), APIs REST], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker], []),
+    single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker & Docker Compose], []),
     single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
     single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
