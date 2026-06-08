@@ -12,6 +12,24 @@
   }
 
   show: resume.with(
+    paper: "us-letter",
+    heading-settings: (
+      above-spacing: 1.2em,
+      below-spacing: 0.6em,
+      section-title-size: 1.1em,
+      section-title-weight: "semibold",
+      section-note-size: 0.8em,
+      section-note-weight: "light",
+      section-line-above-spacing: -0.85em,
+      line-length: 100%,
+      line-stroke: 0.04em + black,
+    ),
+    font-settings: (
+      font-family: "TeX Gyre Pagella",
+      font-size: 10pt,
+      author-font-size: 25pt,
+      lang: lang,
+    ),
     author-info: (
       name: "Christian Serrano",
       primary-info: [#title \ #contact-info],
