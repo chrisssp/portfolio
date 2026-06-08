@@ -1,7 +1,7 @@
 #import "../_shared/template.typ": cv-start, r2c2-entry-list, multi-line-list, single-line-entry, multi-line-text
 #import "../_shared/sections.es.typ": education, languages
 #import "../_shared/experiences.es.typ": exp-7d, exp-coppel, exp-azteca, exp-pepsico, exp-flacks
-#import "../_shared/projects.es.typ": proj-azkali, proj-coppel, proj-7d
+#import "../_shared/projects.es.typ": proj-iapex, proj-coppel, proj-7d
 
 #cv-start(
   [Desarrollador Frontend | Angular & React],
@@ -68,11 +68,11 @@
   == Proyectos destacados
   #r2c2-entry-list(
     (
-      ..proj-azkali([_React, React Native, Supabase, Gemini IA_]),
+      ..proj-iapex([_Angular, Ionic, Spring Boot, PostgreSQL, IA_]),
       list-items: (
-        [Copiloto de IA conductual que genera fricción cognitiva en compras impulsivas mostrando costos en horas de trabajo.],
-        [Ecosistema multiplataforma (React Native mobile + React web) construido en un sprint de 48 horas.],
-        [Integré Gemini 2.5 Flash-Lite para análisis de gastos en tiempo real con mecánicas de gamificación.],
+        [Ecosistema de IA híbrida para localización de pacientes extraviados en instituciones de salud.],
+        [Construí frontend cross-platform con app web Angular y app móvil Ionic.],
+        [Implementé un motor de fusión de información híbrido (Reconocimiento facial + Textual).],
       ),
     ),
     (
