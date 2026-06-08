@@ -5,7 +5,6 @@ export const projectAzkali = {
       imagePath: "/assets/images/projects/azkali/general.webp",
       heroImagePath: "/assets/images/projects/azkali/hero.webp",
       techStack: [
-         "react",
          "reactnative",
          "supabase",
          "tailwindcss",

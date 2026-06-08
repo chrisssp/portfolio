@@ -30,9 +30,30 @@ CVS=(
   "backend/Desarrollador_Backend_Christian_Serrano_CV.es"
 )
 
+SHARED_DIR="_shared"
+
 for cv in "${CVS[@]}"; do
   src="${cv}.typ"
   out="${cv}.pdf"
+
+  # Check if recompilation is needed
+  needs_compile=false
+  if [ ! -f "$out" ]; then
+    needs_compile=true
+  elif [ "$src" -nt "$out" ]; then
+    needs_compile=true
+  else
+    # Check if any shared file is newer than the PDF
+    for shared in "$SHARED_DIR"/*.typ; do
+      [ -f "$shared" ] && [ "$shared" -nt "$out" ] && needs_compile=true && break
+    done
+  fi
+
+  if [ "$needs_compile" = false ]; then
+    printf "⏭️ %s ... up to date\n" "$src"
+    continue
+  fi
+
   printf "📄 %s ... " "$src"
   if typst compile --root "$ROOT" "$src" 2>/dev/null; then
     echo "✅"

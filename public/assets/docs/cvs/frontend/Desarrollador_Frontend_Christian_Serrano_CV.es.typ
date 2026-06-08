@@ -1,7 +1,7 @@
 #import "../_shared/template.typ": cv-start, r2c2-entry-list, multi-line-list, single-line-entry, multi-line-text
 #import "../_shared/sections.es.typ": education, languages
 #import "../_shared/experiences.es.typ": exp-7d, exp-coppel, exp-azteca, exp-pepsico, exp-flacks
-#import "../_shared/projects.es.typ": proj-iapex, proj-coppel, proj-7d
+#import "../_shared/projects.es.typ": proj-iapex, proj-dabetai, proj-7d
 
 #cv-start(
   [Desarrollador Frontend | Angular & React],
@@ -76,11 +76,11 @@
       ),
     ),
     (
-      ..proj-coppel([_React, React Native, MongoDB, Firebase, Express_]),
+      ..proj-dabetai([_React Native, NestJS, Python, Wearables_]),
       list-items: (
-        [Ecosistema de referidos gamificado con app móvil para campo y portal web de administración.],
-        [Arquitecté un sistema de tres capas: móvil (React Native), web (React) y backend.],
-        [Aceleré el registro de microempresas para la red nacional de Coppel.],
+        [Plataforma preventiva para diabetes que conecta wearables con supervisión médica.],
+        [Desarrollé frontend móvil cross-platform con visualización de datos de salud en tiempo real.],
+        [Mejoré la eficiencia de respuesta médico-paciente en un *40%* mediante interfaces de alerta intuitivas.],
       ),
     ),
     (
