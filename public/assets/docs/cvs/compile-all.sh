@@ -13,7 +13,7 @@ CVS=(
   "Software_Engineer_Christian_Serrano_CV.en"
   "Ingeniero_de_Software_Christian_Serrano_CV.es"
   "angular/Angular_Developer_Christian_Serrano_CV.en"
-  "angular/Angular_Developer_Christian_Serrano_CV.es"
+  "angular/Desarrollador_Angular_Christian_Serrano_CV.es"
   "backend-java/Backend_Java_Christian_Serrano_CV.en"
   "backend-java/Backend_Java_Christian_Serrano_CV.es"
   "backend-node/Backend_Node_Christian_Serrano_CV.en"
@@ -21,9 +21,9 @@ CVS=(
   "backend-python/Backend_Python_Christian_Serrano_CV.en"
   "backend-python/Backend_Python_Christian_Serrano_CV.es"
   "mobile/Mobile_Developer_Christian_Serrano_CV.en"
-  "mobile/Mobile_Developer_Christian_Serrano_CV.es"
+  "mobile/Desarrollador_Móvil_Christian_Serrano_CV.es"
   "react/React_Developer_Christian_Serrano_CV.en"
-  "react/React_Developer_Christian_Serrano_CV.es"
+  "react/Desarrollador_React_Christian_Serrano_CV.es"
 )
 
 for cv in "${CVS[@]}"; do
