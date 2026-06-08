@@ -65,7 +65,7 @@
   == Proyectos destacados
   #r2c2-entry-list(
     (
-      ..proj-iapex([_Java, Spring Boot, .NET, PostgreSQL, Angular, Ionic, Python_]),
+      ..proj-iapex([_Java, Spring Boot, PostgreSQL, Angular, Ionic, Python_]),
       list-items: (
         [Ecosistema de IA híbrida para localización de pacientes extraviados en instituciones de salud.],
         [Diseñé y construí backend Spring Boot con APIs REST, repositorios JPA e integración PostgreSQL.],

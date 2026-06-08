@@ -65,7 +65,7 @@
   == Featured Projects
   #r2c2-entry-list(
     (
-      ..proj-iapex([_Java, Spring Boot, .NET, PostgreSQL, Angular, Ionic, Python_]),
+      ..proj-iapex([_Java, Spring Boot, PostgreSQL, Angular, Ionic, Python_]),
       list-items: (
         [Hybrid AI ecosystem for locating missing patients in healthcare institutions.],
         [Designed and built Spring Boot backend with REST APIs, JPA repositories, and PostgreSQL integration.],
