@@ -33,7 +33,8 @@ export const projectAzkali = {
       ],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/azkali/specific1.webp",
+            imagePath:
+               "/assets/images/projects/azkali/product-landing-page.webp",
             techStack: ["react", "tailwindcss"],
             links: [
                { type: "demo", url: "https://azkali-landing.vercel.app/" },
@@ -41,14 +42,16 @@ export const projectAzkali = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/azkali/specific2.webp",
+            imagePath:
+               "/assets/images/projects/azkali/ai-mobile-experience.webp",
             techStack: ["reactnative", "expo", "tailwindcss", "gluestack"],
             links: [
                { type: "github", url: "https://github.com/chrisssp/azkali" },
             ],
          },
          {
-            imagePath: "/assets/images/projects/azkali/specific3.webp",
+            imagePath:
+               "/assets/images/projects/azkali/ai-and-supabase-backend.webp",
             techStack: ["supabase", "postgresql", "python", "gemini"],
             links: [
                { type: "github", url: "https://github.com/chrisssp/azkali" },

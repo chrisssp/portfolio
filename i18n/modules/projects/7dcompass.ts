@@ -20,15 +20,18 @@ export const project7dCompass = {
       ],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/7dcompass/specific1.webp",
+            imagePath:
+               "/assets/images/projects/7dcompass/administrative-web-portal.webp",
             techStack: ["angular", "typescript"],
          },
          {
-            imagePath: "/assets/images/projects/7dcompass/specific2.webp",
+            imagePath:
+               "/assets/images/projects/7dcompass/on-site-mobile-app.webp",
             techStack: ["angular"],
          },
          {
-            imagePath: "/assets/images/projects/7dcompass/specific3.webp",
+            imagePath:
+               "/assets/images/projects/7dcompass/nodejs-audit-engine.webp",
             techStack: ["nodejs", "postgresql", "express"],
          },
       ],

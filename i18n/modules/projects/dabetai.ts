@@ -36,7 +36,7 @@ export const projectDabetai = {
       ],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/dabetai/specific1.webp",
+            imagePath: "/assets/images/projects/dabetai/landing-page.webp",
             techStack: ["astro", "tailwindcss"],
             links: [
                {
@@ -50,7 +50,8 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific2.webp",
+            imagePath:
+               "/assets/images/projects/dabetai/complication-prediction-core-ai.webp",
             techStack: [
                "fastapi",
                "mongodb",
@@ -70,7 +71,8 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific3.webp",
+            imagePath:
+               "/assets/images/projects/dabetai/mobile-app-patient-hub.webp",
             techStack: ["reactnative", "expo", "tailwindcss"],
             links: [
                {
@@ -80,7 +82,8 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific4.webp",
+            imagePath:
+               "/assets/images/projects/dabetai/medical-portal-oversight.webp",
             techStack: ["angular", "tailwindcss"],
             links: [
                {
@@ -90,7 +93,7 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific5.webp",
+            imagePath: "/assets/images/projects/dabetai/restful-api.webp",
             techStack: ["nestjs", "postgresql"],
             links: [
                {
@@ -100,7 +103,7 @@ export const projectDabetai = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/dabetai/specific6.webp",
+            imagePath: "/assets/images/projects/dabetai/ai-inference-api.webp",
             techStack: ["fastapi", "python", "mongodb"],
             links: [
                {

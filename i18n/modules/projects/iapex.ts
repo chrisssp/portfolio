@@ -61,7 +61,7 @@ export const projectIapex = {
       ],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/iapex/specific1.webp",
+            imagePath: "/assets/images/projects/iapex/neural-core.webp",
             techStack: ["django", "scikitlearn", "python"],
             links: [
                {
@@ -75,7 +75,8 @@ export const projectIapex = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/iapex/specific2.webp",
+            imagePath:
+               "/assets/images/projects/iapex/the-mobile-client-family-side.webp",
             techStack: ["react", "ionic", "tailwindcss"],
             links: [
                {
@@ -85,7 +86,8 @@ export const projectIapex = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/iapex/specific3.webp",
+            imagePath:
+               "/assets/images/projects/iapex/the-web-portal-institutional-side.webp",
             techStack: ["angular", "bootstrap"],
             links: [
                {
@@ -95,7 +97,7 @@ export const projectIapex = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/iapex/specific4.webp",
+            imagePath: "/assets/images/projects/iapex/core-api.webp",
             techStack: ["springboot", "mongodb"],
             links: [
                {

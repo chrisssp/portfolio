@@ -35,7 +35,8 @@ export const projectPuntoFiel = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/puntofiel/specific2.webp",
+            imagePath:
+               "/assets/images/projects/puntofiel/backend-supabase-postgresql.webp",
             techStack: ["supabase", "postgresql"],
          },
       ],

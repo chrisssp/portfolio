@@ -34,7 +34,8 @@ export const projectFlacks = {
       ],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/flacks-cc/specific1.webp",
+            imagePath:
+               "/assets/images/projects/flacks-cc/web-app-landing-and-admin.webp",
             techStack: ["angular", "bootstrap"],
             links: [
                {
@@ -44,7 +45,8 @@ export const projectFlacks = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/flacks-cc/specific2.webp",
+            imagePath:
+               "/assets/images/projects/flacks-cc/hybrid-mobile-app-pwa.webp",
             techStack: ["angular", "ionic", "typescript"],
             links: [
                {
@@ -54,7 +56,8 @@ export const projectFlacks = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/flacks-cc/specific3.webp",
+            imagePath:
+               "/assets/images/projects/flacks-cc/native-mobile-app-android.webp",
             techStack: ["java", "android"],
             links: [
                {
@@ -64,7 +67,7 @@ export const projectFlacks = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/flacks-cc/specific4.webp",
+            imagePath: "/assets/images/projects/flacks-cc/backend-api.webp",
             techStack: ["java", "springboot", "postgresql"],
             links: [
                {

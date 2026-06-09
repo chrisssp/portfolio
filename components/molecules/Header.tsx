@@ -133,7 +133,7 @@ export const Header = ({
                      {/* Logo para modo claro */}
                      <Image
                         src="/assets/images/profile/isotipo-white-nobg-center.webp"
-                        alt="Logo"
+                        alt="Christian Serrano"
                         fill
                         className="object-contain logo-light"
                         priority
@@ -141,7 +141,7 @@ export const Header = ({
                      {/* Logo para modo oscuro */}
                      <Image
                         src="/assets/images/profile/isotipo-black-nobg-center.webp"
-                        alt="Logo"
+                        alt="Christian Serrano"
                         fill
                         className="object-contain logo-dark"
                         priority
@@ -229,14 +229,14 @@ export const Header = ({
                      <div className="relative h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12">
                         <Image
                            src="/assets/images/profile/isotipo-white-nobg-center.webp"
-                           alt="Logo"
+                           alt="Christian Serrano"
                            fill
                            className="object-contain logo-light"
                         />
                         {/* Logo para modo oscuro */}
                         <Image
                            src="/assets/images/profile/isotipo-black-nobg-center.webp"
-                           alt="Logo"
+                           alt="Christian Serrano"
                            fill
                            className="object-contain logo-dark"
                         />

@@ -32,7 +32,8 @@ export const projectCoppelNexus = {
       ],
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/coppel-nexus/specific1.webp",
+            imagePath:
+               "/assets/images/projects/coppel-nexus/mobile-app-field-collaborators.webp",
             techStack: ["reactnative", "expo", "tailwindcss"],
             links: [
                {
@@ -42,7 +43,8 @@ export const projectCoppelNexus = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/coppel-nexus/specific2.webp",
+            imagePath:
+               "/assets/images/projects/coppel-nexus/web-app-admin-and-tracking.webp",
             techStack: ["react", "tailwindcss"],
             links: [
                {
@@ -52,7 +54,7 @@ export const projectCoppelNexus = {
             ],
          },
          {
-            imagePath: "/assets/images/projects/coppel-nexus/specific3.webp",
+            imagePath: "/assets/images/projects/coppel-nexus/backend-api.webp",
             techStack: ["mongodb", "firebase", "express"],
             links: [
                {

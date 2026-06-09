@@ -18,11 +18,12 @@ export const projectMtrpa = {
       },
       ecosystem: [
          {
-            imagePath: "/assets/images/projects/mtrpa/specific1.webp",
+            imagePath:
+               "/assets/images/projects/mtrpa/web-app-operations-hub.webp",
             techStack: ["angular", "bootstrap"],
          },
          {
-            imagePath: "/assets/images/projects/mtrpa/specific2.webp",
+            imagePath: "/assets/images/projects/mtrpa/backend-api.webp",
             techStack: ["mongodb", "springboot", "java"],
          },
       ],
