@@ -68,6 +68,8 @@ export const project7dCompass = {
             },
          ],
       },
+      ctaHighlight:
+         "7D-Compass automated audits for $5.5M USD in transactions, reducing reconciliation from weeks to hours. Let's discuss how I can bring similar financial automation to your projects.",
    },
    es: {
       title: "7D-Compass",
@@ -109,5 +111,7 @@ export const project7dCompass = {
             },
          ],
       },
+      ctaHighlight:
+         "7D-Compass automatizó auditorías de $5.5M USD en transacciones, reduciendo la conciliación de semanas a horas. Hablemos sobre cómo puedo llevar una automatización financiera similar a tus proyectos.",
    },
 };

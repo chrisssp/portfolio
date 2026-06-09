@@ -13,15 +13,23 @@ import { SmartEmailButton } from "../molecules/SmartEmailButton";
 interface CTAProps {
    dict: Dictionary;
    projectTitle?: string;
+   projectCtaHighlight?: string;
    bg?: string;
 }
 
-export const CTA = ({ dict, projectTitle, bg }: CTAProps) => {
+export const CTA = ({
+   dict,
+   projectTitle,
+   projectCtaHighlight,
+   bg,
+}: CTAProps) => {
    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-   const description = projectTitle
-      ? dict.cta.projectDescription.replace("{project}", projectTitle)
-      : dict.cta.description;
+   const description = projectCtaHighlight
+      ? projectCtaHighlight
+      : projectTitle
+        ? dict.cta.projectDescription.replace("{project}", projectTitle)
+        : dict.cta.description;
 
    return (
       <SectionContainer

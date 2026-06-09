@@ -11,7 +11,7 @@ interface ProjectDetailHeroProps {
 }
 
 export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
-   const videoLink = project.links.find((l) => l.type === "video");
+   const videoLink = project.links?.find((l) => l.type === "video");
 
    const getEmbedUrl = (url: string) => {
       let videoId = "";
@@ -40,7 +40,10 @@ export const ProjectDetailHero = ({ project }: ProjectDetailHeroProps) => {
                   {project.title}
                </Typography>
                {project.subtitle && (
-                  <Typography variant="project-hero-sub" className="text-primary">
+                  <Typography
+                     variant="project-hero-sub"
+                     className="text-primary"
+                  >
                      {project.subtitle}
                   </Typography>
                )}

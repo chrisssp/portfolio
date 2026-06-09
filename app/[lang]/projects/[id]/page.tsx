@@ -79,6 +79,7 @@ export default async function ProjectPage({ params }: Props) {
             <CTA
                dict={dict}
                projectTitle={project.title}
+               projectCtaHighlight={project.ctaHighlight}
                bg={hasCerts ? "bg-surface" : undefined}
             />
          </main>

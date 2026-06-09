@@ -150,6 +150,8 @@ export const projectIapex = {
          { title: "CBTIS Córdoba — Science & Technology Week Talk" },
          { title: "FERVECI 2025 — Participation" },
       ],
+      ctaHighlight:
+         "IAPEX reduced patient identification from days to seconds using hybrid AI fusion of facial and textual signals. Let's explore how I can bring similar precision to your projects.",
    },
    es: {
       title: "IAPEX (Encuéntrame)",
@@ -197,5 +199,7 @@ export const projectIapex = {
          },
          { title: "FERVECI 2025 — Participación" },
       ],
+      ctaHighlight:
+         "IAPEX redujo la identificación de pacientes de días a segundos mediante una fusión híbrida de señales faciales y textuales. Exploremos cómo puedo aportar una precisión similar a tus proyectos.",
    },
 };

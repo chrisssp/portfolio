@@ -96,6 +96,8 @@ export const projectCoppelNexus = {
             },
          ],
       },
+      ctaHighlight:
+         "Coppel Nexus unified field acquisition into a trackable flow across mobile, web, and backend. Let's talk about how I can build a similar connected ecosystem for your operations.",
    },
    es: {
       title: "Coppel Nexus",
@@ -130,5 +132,7 @@ export const projectCoppelNexus = {
             },
          ],
       },
+      ctaHighlight:
+         "Coppel Nexus unificó la adquisición en campo en un flujo rastreable en móvil, web y backend. Hablemos sobre cómo puedo construir un ecosistema similar para tus operaciones.",
    },
 };

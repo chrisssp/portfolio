@@ -164,6 +164,8 @@ export const projectDabetai = {
             title: "VII Congreso Multidisciplinario 2024 — Poster Presentation",
          },
       ],
+      ctaHighlight:
+         "dabetai connects wearables with medical dashboards, predicting complications before they become irreversible. Let's explore how IoT-driven prevention can transform your health platform.",
    },
    es: {
       title: "dabetai",
@@ -218,5 +220,7 @@ export const projectDabetai = {
             title: "VII Congreso Multidisciplinario 2024 — Presentación de cartel",
          },
       ],
+      ctaHighlight:
+         "dabetai conecta wearables con tableros médicos, prediciendo complicaciones antes de que sean irreversibles. Exploremos cómo la prevención impulsada por IoT puede transformar tu plataforma de salud.",
    },
 };

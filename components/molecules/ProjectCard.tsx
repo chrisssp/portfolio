@@ -46,7 +46,7 @@ export const ProjectCard = ({
             </Button>
          </Link>
 
-         {project.links.map((link) => {
+         {project.links?.map((link) => {
             const icon =
                link.type === "video" ? (
                   <MdPlayArrow />

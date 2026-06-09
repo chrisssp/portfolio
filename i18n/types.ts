@@ -65,7 +65,7 @@ export interface ProjectItem {
    heroImagePath?: string;
    techStack: string[];
    categories: ProjectCategories;
-   links: ProjectLink[];
+   links?: ProjectLink[];
    challenge?: {
       description: string;
       solution: string;
@@ -74,6 +74,7 @@ export interface ProjectItem {
       items: EcosystemItem[];
    };
    certificates?: CertificateItem[];
+   ctaHighlight?: string;
 }
 
 export interface EducationItem {

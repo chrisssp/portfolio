@@ -47,6 +47,8 @@ export const projectPuntoFiel = {
          "Role-based loyalty app that connects customers, owners, and staff with a simple, transparent rewards flow.",
       fullDescription:
          "Customers earn and redeem rewards with QR, while owners manage staff, catalog, promotions, and audit activity with clarity. It balances customer engagement with day-to-day control, so loyalty feels simple for users and useful for businesses.",
+      ctaHighlight:
+         "PuntoFiel connects customers, owners, and staff through a role-based loyalty system with QR rewards. Let's discuss how I can build a similar engagement engine for your business.",
       challenge: {
          description:
             "Small businesses needed a loyalty system that could serve customers, employees, and owners without complex hardware or manual tracking.",
@@ -75,6 +77,8 @@ export const projectPuntoFiel = {
          "App de lealtad por roles que conecta clientes, dueños y empleados con un flujo de recompensas simple y transparente.",
       fullDescription:
          "Los clientes ganan y canjean recompensas con QR, mientras los dueños gestionan personal, catálogo, promociones y auditoría con claridad. Equilibra el engagement del cliente con el control diario del negocio, haciendo la lealtad simple y útil.",
+      ctaHighlight:
+         "PuntoFiel conecta clientes, dueños y empleados a través de un sistema de lealtad por roles con recompensas QR. Hablemos sobre cómo puedo construir un motor de engagement similar para tu negocio.",
       challenge: {
          description:
             "Los negocios locales necesitaban un sistema de lealtad que funcionara para clientes, empleados y dueños sin procesos manuales ni poca trazabilidad.",

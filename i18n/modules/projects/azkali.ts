@@ -89,6 +89,8 @@ export const projectAzkali = {
             },
          ],
       },
+      ctaHighlight:
+         "Azkali was built in 48 hours at Talent Land 2026 — a behavioral AI copilot that turns impulsive spending into saving habits. Let's explore what rapid prototyping with AI can do for your ideas.",
    },
    es: {
       title: "Azkali",
@@ -123,5 +125,7 @@ export const projectAzkali = {
             },
          ],
       },
+      ctaHighlight:
+         "Azkali se construyó en 48 horas durante Talent Land 2026 — un copiloto de IA conductual que transforma el gasto impulsivo en hábitos de ahorro. Exploremos qué puede hacer la prototipación rápida con IA para tus ideas.",
    },
 };

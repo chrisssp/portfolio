@@ -116,6 +116,8 @@ export const projectFlacks = {
          { title: "Flack's Barber Shop — Endorsement Letter (Apr 2024)" },
          { title: "UTCV — Expotecnologías 2023 Participation" },
       ],
+      ctaHighlight:
+         "Flack's unified reservations, catalog, and sales across web, hybrid, and native Android into one consistent flow. Let's discuss how I can streamline your multiplatform operations.",
    },
    es: {
       title: "Flack's Cut & Connect",
@@ -158,5 +160,7 @@ export const projectFlacks = {
          { title: "Flack's Barber Shop — Carta aval (Abr 2024)" },
          { title: "UTCV — Participación en Expotecnologías 2023" },
       ],
+      ctaHighlight:
+         "Flack's unificó reservaciones, catálogo y ventas en web, híbrido y Android nativo en un flujo coherente. Hablemos sobre cómo puedo optimizar tus operaciones multiplataforma.",
    },
 };
