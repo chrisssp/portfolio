@@ -4,7 +4,7 @@
 #import "../_shared/projects.es.typ": proj-iapex, proj-dabetai, proj-azkali
 
 #cv-start(
-  [Ingeniero Backend | Python & Django],
+  [Ingeniero Backend | Python, Django y FastAPI],
   "es",
 )[
   == Perfil
@@ -15,10 +15,10 @@
     single-line-entry([*Backend:*], [Python, Django, FastAPI, APIs REST, Celery], []),
     single-line-entry([*IA y Datos:*], [Gemini API, LangChain, Pandas, NumPy], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Supabase], []),
-    single-line-entry([*Infraestructura:*], [Docker & Docker Compose, Git, Linux], []),
+    single-line-entry([*Infraestructura:*], [Docker, Docker Compose, Git, GitHub, Linux], []),
     single-line-entry([*Otros lenguajes:*], [Node.js, Java, TypeScript], []),
     single-line-entry([*Frontend:*], [React, React Native, Angular, Astro], []),
-    single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
+    single-line-entry([*Metodologías:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
     single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
@@ -27,7 +27,7 @@
     (
       ..exp-7d,
       list-items: (
-        [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
+        [Lideré la evolución de *7D-Compass* (Angular/Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
         [Implementé un motor de auditoría centralizado conciliando *\$5.5M USD* en transacciones.],
         [Optimicé seguridad usando *JWT/Bcrypt* siguiendo estándares *OWASP*.],
       )
@@ -35,28 +35,28 @@
     (
       ..exp-pepsico,
       list-items: (
-        [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*] (Angular/MongoDB), automatizando *+100k registros* y reduciendo errores manuales a cero.],
+        [Desarrollé *Master Template Rutas Power App* (Angular/MongoDB), automatizando *+100k registros* y reduciendo errores manuales a cero.],
         [Diseñé pipelines de datos backend optimizando el tiempo de procesamiento en 70%.],
       )
     ),
     (
       ..exp-coppel,
       list-items: (
-        [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema full-stack de referidos (React Native/Node.js), liderando con XP y Kanban.],
+        [Construí *Coppel Nexus*, un ecosistema full-stack de referidos (React Native/Node.js), liderando con XP y Kanban.],
         [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
       )
     ),
     (
       ..exp-azteca,
       list-items: (
-        [Lideré el desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*], un copiloto de IA integrando Gemini 2.5 Flash-Lite en un sprint de 48 horas.],
+        [Lideré el desarrollo de *Azkali*, un copiloto de IA integrando Gemini 2.5 Flash-Lite en un sprint de 48 horas.],
         [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
       )
     ),
     (
       ..exp-flacks,
       list-items: (
-        [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo automatizando el 100% de las citas.],
+        [Desplegué *Flack's Cut and Connect*, un ecosistema digital completo automatizando el 100% de las citas.],
         [Construí una API REST con Java (Spring Boot) y PostgreSQL para gestión de inventario y ventas.],
       )
     )

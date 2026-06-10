@@ -16,8 +16,8 @@
     single-line-entry([*Frontend:*], [React, Angular, Ionic, Astro], []),
     single-line-entry([*Backend & APIs:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, REST APIs, Supabase], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, Firebase], []),
-    single-line-entry([*Tools & OS:*], [Git, Linux, Figma, Docker & Docker Compose, EAS Build], []),
-    single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking], []),
+    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose, EAS Build], []),
+    single-line-entry([*Methodologies:*], [Agile, Scrum, Kanban, XP, Design Thinking], []),
     single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
@@ -26,7 +26,7 @@
     (
       ..exp-coppel,
       list-items: (
-        [Built #link("https://chrisssp.vercel.app/en/projects/coppel-nexus")[*Coppel Nexus*], a React Native + Expo mobile app for field collaborators to register micro-businesses on-site.],
+        [Built *Coppel Nexus*, a React Native + Expo mobile app for field collaborators to register micro-businesses on-site.],
         [Selected among 1,400+ participants nationwide for the on-site phase of Talent Land 2025.],
         [Managed the team by strictly implementing *XP* and *Kanban* methodologies in a 72-hour sprint.],
       )
@@ -34,7 +34,7 @@
     (
       ..exp-azteca,
       list-items: (
-        [Led the development of #link("https://chrisssp.vercel.app/en/projects/azkali")[*Azkali*], a React Native AI copilot with conversational interface and behavioral economics engine.],
+        [Led the development of *Azkali*, a React Native AI copilot with conversational interface and behavioral economics engine.],
         [Selected among 1,500 participants nationwide for the on-site phase of Talent Land 2026.],
         [Architected the cross-platform experience using *Expo*, *Nativewind*, and *Supabase* in a 48-hour sprint.],
       )
@@ -42,14 +42,14 @@
     (
       ..exp-flacks,
       list-items: (
-        [Deployed #link("https://chrisssp.vercel.app/en/projects/flacks-cc")[*Flack's Cut & Connect*], a complete mobile + web ecosystem automating 100% of appointment scheduling.],
+        [Deployed *Flack's Cut and Connect*, a complete mobile + web ecosystem automating 100% of appointment scheduling.],
         [Built a native Android app (Java) and a hybrid mobile app (Ionic) for the barber shop's digital platform.],
       )
     ),
     (
       ..exp-7d,
       list-items: (
-        [Led the evolution of #link("https://chrisssp.vercel.app/en/projects/7dcompass")[*7D-Compass*], reducing operational time by *95%* and reconciling *\$5.5M USD* in transactions.],
+        [Led the evolution of *7D-Compass*, reducing operational time by *95%* and reconciling *\$5.5M USD* in transactions.],
       )
     ),
     (

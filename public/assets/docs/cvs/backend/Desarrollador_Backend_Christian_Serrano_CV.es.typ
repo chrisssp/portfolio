@@ -4,7 +4,7 @@
 #import "../_shared/projects.es.typ": proj-iapex, proj-7d, proj-dabetai
 
 #cv-start(
-  [Desarrollador Backend | Java, .NET, Node.js & Python],
+  [Desarrollador Backend | Java, .NET, Node.js y Python],
   "es",
 )[
   == Perfil
@@ -15,9 +15,9 @@
     single-line-entry([*Backend (JVM & .NET):*], [Java, Spring Boot, .NET, JPA/Hibernate, Maven], []),
     single-line-entry([*Backend (Scripting):*], [Node.js (Express, NestJS), Python (Django, FastAPI), APIs REST, TypeScript], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, MySQL, SQL Server], []),
-    single-line-entry([*Infraestructura:*], [Docker & Docker Compose, Git, Linux], []),
+    single-line-entry([*Infraestructura:*], [Docker, Docker Compose, Git, GitHub, Linux], []),
     single-line-entry([*Frontend (Integración):*], [Angular, React, React Native, Astro], []),
-    single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
+    single-line-entry([*Metodologías:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
     single-line-entry([*Familiarizado con:*], [Kotlin, Firebase, Supabase], [])
   )
 
@@ -26,7 +26,7 @@
     (
       ..exp-7d,
       list-items: (
-        [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
+        [Lideré la evolución de *7D-Compass* (Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
         [Implementé un motor de auditoría centralizado conciliando *\$5.5M USD* en transacciones mediante lógica de validación backend.],
         [Optimicé seguridad usando *JWT/Bcrypt* siguiendo estándares *OWASP*.],
       )
@@ -34,14 +34,14 @@
     (
       ..exp-pepsico,
       list-items: (
-        [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*] (Angular/MongoDB), automatizando *+100k registros* y reduciendo errores manuales a cero.],
+        [Desarrollé *Master Template Rutas Power App* (Angular/MongoDB), automatizando *+100k registros* y reduciendo errores manuales a cero.],
         [Optimicé el tiempo de procesamiento backend en un 70% mediante pipelines de datos eficientes.],
       )
     ),
     (
       ..exp-coppel,
       list-items: (
-        [Arquitecté y construí el backend de #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*] con Express, MongoDB y Firebase para tracking de referidos en tiempo real.],
+        [Arquitecté y construí el backend de *Coppel Nexus* con Express, MongoDB y Firebase para tracking de referidos en tiempo real.],
         [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
         [Diseñé el esquema de API y estructura de base de datos para soportar clientes móvil y web simultáneamente.],
       )
@@ -49,7 +49,7 @@
     (
       ..exp-azteca,
       list-items: (
-        [Lideré el desarrollo del backend de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*], orquestando lógica de IA Gemini con Supabase para almacenamiento en tiempo real y base de datos protegida con RLS.],
+        [Lideré el desarrollo del backend de *Azkali*, orquestando lógica de IA Gemini con Supabase para almacenamiento en tiempo real y base de datos protegida con RLS.],
         [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
       )
     ),

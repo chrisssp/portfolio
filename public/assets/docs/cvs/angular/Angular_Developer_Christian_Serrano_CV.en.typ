@@ -17,8 +17,8 @@
     single-line-entry([*State & Data:*], [NgRx, Angular Router, REST APIs], []),
     single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Tools & OS:*], [Git, Linux, Figma, Docker & Docker Compose], []),
-    single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
+    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose], []),
+    single-line-entry([*Methodologies:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
     single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
@@ -27,7 +27,7 @@
     (
       ..exp-7d,
       list-items: (
-        [Led the evolution of #link("https://chrisssp.vercel.app/en/projects/7dcompass")[*7D-Compass*], an Angular/Node.js platform for payment reconciliation, reducing operational time by *95%*.],
+        [Led the evolution of *7D-Compass*, an Angular/Node.js platform for payment reconciliation, reducing operational time by *95%*.],
         [Implemented a centralized audit engine to reconcile *\$5.5M USD* in transactions.],
         [Optimized Angular frontend performance (*3.2x* TTI) and strengthened system security using *JWT/Bcrypt* following *OWASP* standards.],
       )
@@ -35,7 +35,7 @@
     (
       ..exp-pepsico,
       list-items: (
-        [Developed #link("https://chrisssp.vercel.app/en/projects/mtrpa")[*Master Template Rutas Power App*], an Angular/MongoDB web app replacing legacy Excel workflows.],
+        [Developed *Master Template Rutas Power App*, an Angular/MongoDB web app replacing legacy Excel workflows.],
         [Automated processing of *+100k records*, reducing manual errors to zero.],
         [Designed the solution optimizing processing time by 70% through full-stack automation.],
       )
@@ -43,7 +43,7 @@
     (
       ..exp-coppel,
       list-items: (
-        [Built #link("https://chrisssp.vercel.app/en/projects/coppel-nexus")[*Coppel Nexus*], a full-stack web + mobile ecosystem (React/Node.js), in a 72-hour sprint.],
+        [Built *Coppel Nexus*, a full-stack web + mobile ecosystem (React/Node.js), in a 72-hour sprint.],
         [Selected among 1,400+ participants nationwide for the on-site phase of Talent Land 2025.],
         [Managed the team by strictly implementing *XP* and *Kanban* methodologies.],
       )
@@ -51,14 +51,14 @@
     (
       ..exp-azteca,
       list-items: (
-        [Led the development of #link("https://chrisssp.vercel.app/en/projects/azkali")[*Azkali*], an AI copilot built in a *48-hour* sprint using React Native and Gemini AI.],
+        [Led the development of *Azkali*, an AI copilot built in a *48-hour* sprint using React Native and Gemini AI.],
         [Selected among 1,500 participants nationwide for the on-site phase of Talent Land 2026.],
       )
     ),
     (
       ..exp-flacks,
       list-items: (
-        [Deployed #link("https://chrisssp.vercel.app/en/projects/flacks-cc")[*Flack's Cut & Connect*], a complete digital ecosystem (Web & Mobile) automating 100% of appointments.],
+        [Deployed *Flack's Cut and Connect*, a complete digital ecosystem (Web and Mobile) automating 100% of appointments.],
         [Built a REST API with Java (Spring Boot) and PostgreSQL to centralize inventory and sales.],
       )
     )

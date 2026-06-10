@@ -13,10 +13,10 @@
   == Habilidades técnicas
   #multi-line-list(
     single-line-entry([*Frontend y móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS, Astro], []),
-    single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Python (Django, FastAPI), Supabase], []),
-    single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker & Docker Compose], []),
-    single-line-entry([*Herramientas y OS:*], [Git, Linux, Figma, Claude Code, OpenCode, MCP], []),
-    single-line-entry([*Metodologías:*], [SDD (Spec-Driven Development), Orquestación multi-modelo, Scrum, Kanban, XP, Design Thinking], []),
+    single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Python (Django, FastAPI), APIs REST, Supabase], []),
+    single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker, Docker Compose], []),
+    single-line-entry([*Herramientas y OS:*], [Git, GitHub, Linux, Figma, Claude Code, OpenCode, MCP], []),
+    single-line-entry([*Metodologías:*], [SDD (Spec-Driven Development), Agile, Orquestación multi-modelo, Scrum, Kanban, XP, Design Thinking], []),
     single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
@@ -25,7 +25,7 @@
     (
       ..exp-7d,
       list-items: (
-        [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL) automatizando la conciliación de pagos y reduciendo el tiempo operativo en un *95%*.],
+        [Lideré la evolución de *7D-Compass* (Angular/Node.js/PostgreSQL) automatizando la conciliación de pagos y reduciendo el tiempo operativo en un *95%*.],
         [Implementé un motor de auditoría centralizado para conciliar *\$5.5M USD* en transacciones, detectando discrepancias financieras críticas mediante lógica de validación.],
         [Optimicé el rendimiento del frontend (*3.2x* TTI) y fortalecí la seguridad del sistema mediante *JWT/Bcrypt* siguiendo estándares *OWASP*.],
       )
@@ -33,7 +33,7 @@
     (
       ..exp-azteca,
       list-items: (
-        [Lideré la desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*] en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
+        [Lideré la desarrollo de *Azkali* en un sprint de *48 horas*, creando un copiloto con IA conductual para mitigar gastos impulsivos en la Gen Z bajo una metodología *Design Thinking*],
         [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
         [Implementé un motor de análisis de impulsividad en tiempo real utilizando *Gemini 2.5 Flash-Lite*, traduciendo costos monetarios a costo de oportunidad operativo.],
         [Arquitecté el ecosistema multiplataforma integrando *React Native* y *Supabase*, incorporando mecánicas de gamificación.],
@@ -42,7 +42,7 @@
     (
       ..exp-coppel,
       list-items: (
-        [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema de referidos gamificado para expansión corporativa en un sprint de 4 días (React Native/Node.js).],
+        [Construí *Coppel Nexus*, un ecosistema de referidos gamificado para expansión corporativa en un sprint de 4 días (React Native/Node.js).],
         [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
         [Dirigí al equipo implementando estrictamente metodologías *XP* y *Kanban*.],
       )
@@ -50,7 +50,7 @@
     (
       ..exp-pepsico,
       list-items: (
-        [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*], una Web App centralizada (Angular/MongoDB) reemplazando flujos legacy en Excel.],
+        [Desarrollé *Master Template Rutas Power App*, una Web App centralizada (Angular/MongoDB) reemplazando flujos legacy en Excel.],
         [Automaticé el procesamiento de *+100k registros*, reduciendo errores manuales a cero.],
         [Diseñé la solución optimizando el tiempo de procesamiento en un 70%.],
       )
@@ -58,7 +58,7 @@
     (
       ..exp-flacks,
       list-items: (
-        [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo (Web & móvil) automatizando el 100% de las citas.],
+        [Desplegué *Flack's Cut and Connect*, un ecosistema digital completo (Web y móvil) automatizando el 100% de las citas.],
         [Construí una API REST con Java (Spring Boot) y PostgreSQL para centralizar inventario y ventas.],
       )
     )

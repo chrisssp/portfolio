@@ -6,7 +6,7 @@
     (
       entry-header-args: (
         top-left: [*Universidad Tecnológica del Centro de Veracruz*],
-        top-right: [Abril 2026],
+        top-right: [Abr 2026],
         bottom-left: [Ingeniería en desarrollo y gestión de software],
         bottom-right: [Cuitláhuac, Veracruz, México],
       )
@@ -14,7 +14,7 @@
     (
       entry-header-args: (
         top-left: [*Universidad Tecnológica del Centro de Veracruz*],
-        top-right: [Agosto 2024],
+        top-right: [Ago 2024],
         bottom-left: [TSU en desarrollo de software multiplataforma],
         bottom-right: [Cuitláhuac, Veracruz, México],
       ),

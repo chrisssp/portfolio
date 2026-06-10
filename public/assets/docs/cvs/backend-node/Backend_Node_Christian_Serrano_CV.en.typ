@@ -4,7 +4,7 @@
 #import "../_shared/projects.en.typ": proj-7d, proj-coppel, proj-iapex
 
 #cv-start(
-  [Backend Engineer | Node.js & TypeScript],
+  [Backend Engineer | Node.js and TypeScript],
   "en",
 )[
   == Profile
@@ -14,10 +14,10 @@
   #multi-line-list(
     single-line-entry([*Backend:*], [Node.js, Express, NestJS, TypeScript, Java (Spring Boot), Python (Django, FastAPI), REST APIs], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, Supabase, Firebase], []),
-    single-line-entry([*Infrastructure:*], [Docker & Docker Compose, Git, Linux], []),
+    single-line-entry([*Infrastructure:*], [Docker, Docker Compose, Git, Linux], []),
     single-line-entry([*Frontend:*], [React, Angular, React Native (integration context), Astro], []),
-    single-line-entry([*Tools:*], [Git, Linux, Figma, OWASP security practices], []),
-    single-line-entry([*Methodologies:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
+    single-line-entry([*Tools:*], [Git, GitHub, Linux, Figma, OWASP security practices], []),
+    single-line-entry([*Methodologies:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
     single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
@@ -26,7 +26,7 @@
     (
       ..exp-7d,
       list-items: (
-        [Led the evolution of #link("https://chrisssp.vercel.app/en/projects/7dcompass")[*7D-Compass*] (Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by *95%*.],
+        [Led the evolution of *7D-Compass* (Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by *95%*.],
         [Implemented a centralized audit engine reconciling *\$5.5M USD* in transactions through complex validation logic.],
         [Optimized system security using *JWT/Bcrypt* following *OWASP* standards.],
       )
@@ -34,7 +34,7 @@
     (
       ..exp-coppel,
       list-items: (
-        [Architected and built the backend for #link("https://chrisssp.vercel.app/en/projects/coppel-nexus")[*Coppel Nexus*] using Express, MongoDB, and Firebase for real-time referral tracking.],
+        [Architected and built the backend for *Coppel Nexus* using Express, MongoDB, and Firebase for real-time referral tracking.],
         [Selected among 1,400+ participants nationwide for the on-site phase of Talent Land 2025.],
         [Designed the API schema and database structure to support mobile + web clients simultaneously.],
       )
@@ -42,14 +42,14 @@
     (
       ..exp-azteca,
       list-items: (
-        [Led the development of #link("https://chrisssp.vercel.app/en/projects/azkali")[*Azkali*]'s backend, orchestrating Gemini AI logic with Supabase for real-time storage and RLS-protected database.],
+        [Led the development of *Azkali*'s backend, orchestrating Gemini AI logic with Supabase for real-time storage and RLS-protected database.],
         [Selected among 1,500 participants nationwide for the on-site phase of Talent Land 2026.],
       )
     ),
     (
       ..exp-pepsico,
       list-items: (
-        [Developed #link("https://chrisssp.vercel.app/en/projects/mtrpa")[*Master Template Rutas Power App*], automating processing of *+100k records* and reducing manual errors to zero.],
+        [Developed *Master Template Rutas Power App*, automating processing of *+100k records* and reducing manual errors to zero.],
         [Optimized processing time by 70% through backend automation and database optimization.],
       )
     ),

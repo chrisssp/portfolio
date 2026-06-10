@@ -4,7 +4,7 @@
 #import "../_shared/projects.es.typ": proj-iapex, proj-dabetai, proj-7d
 
 #cv-start(
-  [Desarrollador Frontend | Angular & React],
+  [Desarrollador Frontend | Angular y React],
   "es",
 )[
   == Perfil
@@ -17,8 +17,8 @@
     single-line-entry([*Estado y datos:*], [NgRx, Zustand, TanStack Query, APIs REST, Supabase], []),
     single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python (Django, FastAPI), APIs REST], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker & Docker Compose], []),
-    single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
+    single-line-entry([*Herramientas:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose], []),
+    single-line-entry([*Metodologías:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
     single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
@@ -27,7 +27,7 @@
     (
       ..exp-7d,
       list-items: (
-        [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
+        [Lideré la evolución de *7D-Compass* (Angular/Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
         [Optimicé rendimiento frontend Angular (*3.2x* TTI) mediante lazy loading, optimización de change detection y análisis de bundle.],
         [Diseñé un motor de auditoría centralizado conciliando *\$5.5M USD* en transacciones con dashboards interactivos.],
       )
@@ -35,7 +35,7 @@
     (
       ..exp-coppel,
       list-items: (
-        [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema full-stack React + React Native para referidos gamificados en un sprint de 72 horas.],
+        [Construí *Coppel Nexus*, un ecosistema full-stack React + React Native para referidos gamificados en un sprint de 72 horas.],
         [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
         [Dirigí al equipo implementando estrictamente metodologías *XP* y *Kanban*.],
       )
@@ -43,7 +43,7 @@
     (
       ..exp-azteca,
       list-items: (
-        [Lideré el desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*] en un sprint de *48 horas*, un copiloto con IA en React Native + React con integración Gemini.],
+        [Lideré el desarrollo de *Azkali* en un sprint de *48 horas*, un copiloto con IA en React Native + React con integración Gemini.],
         [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
         [Arquitecté el ecosistema multiplataforma usando *React Native* (Expo), React web y *Supabase*.],
       )
@@ -51,7 +51,7 @@
     (
       ..exp-pepsico,
       list-items: (
-        [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*] (Angular/MongoDB), una aplicación web centralizada reemplazando flujos legacy en Excel.],
+        [Desarrollé *Master Template Rutas Power App* (Angular/MongoDB), una aplicación web centralizada reemplazando flujos legacy en Excel.],
         [Automaticé el procesamiento de *+100k registros*, reduciendo errores manuales a cero.],
         [Diseñé la arquitectura Angular optimizando el tiempo de procesamiento en un 70% mediante automatización full-stack.],
       )
@@ -59,7 +59,7 @@
     (
       ..exp-flacks,
       list-items: (
-        [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo (Web y móvil con React) automatizando el 100% de las citas.],
+        [Desplegué *Flack's Cut and Connect*, un ecosistema digital completo (Web y móvil con React) automatizando el 100% de las citas.],
         [Construí interfaces responsivas con React integradas con una API REST en Java (Spring Boot).],
       )
     )

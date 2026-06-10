@@ -4,7 +4,7 @@
 #import "../_shared/projects.es.typ": proj-iapex, proj-7d, proj-dabetai
 
 #cv-start(
-  [Ingeniero Backend | Java & Spring Boot],
+  [Ingeniero Backend | Java y Spring Boot],
   "es",
 )[
   == Perfil
@@ -15,9 +15,9 @@
     single-line-entry([*Backend:*], [Java, Spring Boot, JPA/Hibernate, APIs REST, Maven], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB], []),
     single-line-entry([*Frontend:*], [Angular, Ionic, React, React Native, TypeScript, Astro], []),
-    single-line-entry([*Infraestructura:*], [Docker & Docker Compose, Git, Linux], []),
+    single-line-entry([*Infraestructura:*], [Docker, Docker Compose, Git, GitHub, Linux], []),
     single-line-entry([*Otros lenguajes:*], [Node.js, Python (Django, FastAPI), TypeScript], []),
-    single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking, SDD], []),
+    single-line-entry([*Metodologías:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
     single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
@@ -26,7 +26,7 @@
     (
       ..exp-7d,
       list-items: (
-        [Lideré la evolución de #link("https://chrisssp.vercel.app/es/projects/7dcompass")[*7D-Compass*] (Angular/Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
+        [Lideré la evolución de *7D-Compass* (Angular/Node.js/PostgreSQL), automatizando conciliación de pagos y reduciendo tiempo operativo en *95%*.],
         [Implementé un motor de auditoría centralizado conciliando *\$5.5M USD* en transacciones mediante lógica de validación.],
         [Optimicé seguridad usando *JWT/Bcrypt* siguiendo estándares *OWASP*.],
       )
@@ -34,28 +34,28 @@
     (
       ..exp-pepsico,
       list-items: (
-        [Desarrollé #link("https://chrisssp.vercel.app/es/projects/mtrpa")[*Master Template Rutas Power App*] (Angular/MongoDB), automatizando *+100k registros* y reduciendo errores manuales a cero.],
+        [Desarrollé *Master Template Rutas Power App* (Angular/MongoDB), automatizando *+100k registros* y reduciendo errores manuales a cero.],
         [Optimicé el tiempo de procesamiento backend en un 70% mediante pipelines de datos eficientes.],
       )
     ),
     (
       ..exp-coppel,
       list-items: (
-        [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], un ecosistema full-stack de referidos, liderando el equipo con XP y Kanban.],
+        [Construí *Coppel Nexus*, un ecosistema full-stack de referidos, liderando el equipo con XP y Kanban.],
         [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
       )
     ),
     (
       ..exp-azteca,
       list-items: (
-        [Lideré el desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*], un copiloto de IA construido en un sprint de 48 horas.],
+        [Lideré el desarrollo de *Azkali*, un copiloto de IA construido en un sprint de 48 horas.],
         [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
       )
     ),
     (
       ..exp-flacks,
       list-items: (
-        [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema digital completo automatizando el 100% de las citas.],
+        [Desplegué *Flack's Cut and Connect*, un ecosistema digital completo automatizando el 100% de las citas.],
         [Construí una API REST con Java (Spring Boot) y PostgreSQL para gestión de inventario y ventas.],
       )
     )

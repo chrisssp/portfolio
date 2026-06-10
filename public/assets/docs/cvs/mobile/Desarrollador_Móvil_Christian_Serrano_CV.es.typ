@@ -16,8 +16,8 @@
     single-line-entry([*Frontend:*], [React, Angular, Ionic, Astro], []),
     single-line-entry([*Backend y APIs:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, APIs REST, Supabase], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Firebase], []),
-    single-line-entry([*Herramientas:*], [Git, Linux, Figma, Docker & Docker Compose, EAS Build], []),
-    single-line-entry([*Metodologías:*], [Scrum, Kanban, XP, Design Thinking], []),
+    single-line-entry([*Herramientas:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose, EAS Build], []),
+    single-line-entry([*Metodologías:*], [Agile, Scrum, Kanban, XP, Design Thinking], []),
     single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
   )
 
@@ -26,7 +26,7 @@
     (
       ..exp-coppel,
       list-items: (
-        [Construí #link("https://chrisssp.vercel.app/es/projects/coppel-nexus")[*Coppel Nexus*], una app React Native + Expo para que colaboradores en campo registren microempresas in-situ.],
+        [Construí *Coppel Nexus*, una app React Native + Expo para que colaboradores en campo registren microempresas in-situ.],
         [Seleccionados entre más de 1,400 participantes a nivel nacional para la fase presencial de Talent Land 2025.],
         [Dirigí al equipo aplicando estrictamente metodologías *XP* y *Kanban* en un sprint de 72 horas.],
       )
@@ -34,7 +34,7 @@
     (
       ..exp-azteca,
       list-items: (
-        [Lideré el desarrollo de #link("https://chrisssp.vercel.app/es/projects/azkali")[*Azkali*], un copiloto de IA con interfaz conversacional y motor de economía conductual.],
+        [Lideré el desarrollo de *Azkali*, un copiloto de IA con interfaz conversacional y motor de economía conductual.],
         [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
         [Arquitecté la experiencia multiplataforma usando *Expo*, *Nativewind* y *Supabase* en un sprint de 48 horas.],
       )
@@ -42,7 +42,7 @@
     (
       ..exp-flacks,
       list-items: (
-        [Desplegué #link("https://chrisssp.vercel.app/es/projects/flacks-cc")[*Flack's Cut & Connect*], un ecosistema móvil + web completo automatizando el 100% de las citas.],
+        [Desplegué *Flack's Cut and Connect*, un ecosistema móvil + web completo automatizando el 100% de las citas.],
         [Construí una app nativa Android (Java) y una app híbrida (Ionic) para la plataforma digital de la barbería.],
       )
     ),
