@@ -1,0 +1,290 @@
+#!/usr/bin/env python3
+"""generate-cv — Genera un CV personalizado desde una base existente.
+
+Uso:
+  ./generate-cv --tipo backend-java --titulo "Senior Backend Engineer | Java y Spring Boot"
+  ./generate-cv --tipo react --titulo "React Developer" --lang en
+  ./generate-cv --tipo fullstack --titulo "Fullstack Engineer" --lang both
+"""
+
+import argparse
+import os
+import re
+import subprocess
+import sys
+
+CVS_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Aliases para nombres comunes
+ALIASES = {
+    "java": "backend-java",
+    "node": "backend-node",
+    "python": "backend-python",
+    "flutter": "mobile",
+    "fullstack": "_root",
+    "software-engineer": "_root",
+    "ingeniero": "_root",
+    "general": "_root",
+}
+
+def resolve_tipo(tipo):
+    """Resuelve alias y devuelve el directorio base."""
+    tipo = ALIASES.get(tipo, tipo)
+    return tipo
+
+def _typ_sources(directory):
+    """Lista archivos .typ en un directorio, excluyendo generados (_*)."""
+    files = []
+    for f in sorted(os.listdir(directory)):
+        full = os.path.join(directory, f)
+        if f.endswith(".typ") and os.path.isfile(full) and not f.startswith("_"):
+            files.append(full)
+    return files if files else None
+
+def find_base_sources(base_dir, tipo):
+    """Encuentra los archivos .typ de origen para un tipo base."""
+    resolved = resolve_tipo(tipo)
+
+    if resolved == "_root":
+        return _typ_sources(base_dir)
+
+    type_dir = os.path.join(base_dir, resolved)
+    if not os.path.isdir(type_dir):
+        return None
+
+    return _typ_sources(type_dir)
+
+def clean_filename(title, lang_code):
+    """'Senior Backend Engineer | Java' -> 'Senior_Backend_Engineer_Christian_Serrano_CV.es.typ'"""
+    # Tomar la parte principal antes del pipe
+    main = re.split(r"\s*[|│]\s*", title)[0].strip()
+
+    # Limpiar caracteres no seguros para filename
+    cleaned = re.sub(r"[^a-zA-Z0-9áéíóúñÁÉÍÓÚÑ\s]", "", main)
+    cleaned = re.sub(r"\s+", "_", cleaned)
+
+    lang_suffix = ".es" if lang_code == "es" else ".en"
+    # Prefijo _ para distinguir archivos generados de los base
+    return f"_{cleaned}_Christian_Serrano_CV{lang_suffix}.typ"
+
+def replace_title(content, new_title):
+    """Reemplaza el título en #cv-start([TITLE], ...)"""
+    return re.sub(
+        r'(#cv-start\s*\(\s*)\[([^\]]*)\](,)',
+        lambda m: f"{m.group(1)}[{new_title}]{m.group(3)}",
+        content,
+        count=1,
+    )
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Generar CV personalizado desde una base existente.",
+        epilog="Ejemplos:\n"
+        "  %(prog)s --tipo backend-java --titulo \"Senior Backend Engineer | Java\"\n"
+        "  %(prog)s --tipo react --titulo \"React Developer\" --lang en\n"
+        "  %(prog)s --tipo fullstack --titulo \"Fullstack Engineer\"",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        "--tipo",
+        "-t",
+        help="Base del CV. Usá --list-types para ver todas disponibles.",
+    )
+    parser.add_argument(
+        "--titulo",
+        "-T",
+        help='Título del rol (ej: "Senior Backend Engineer | Java y Spring Boot")',
+    )
+    parser.add_argument(
+        "--lang",
+        "-l",
+        choices=["es", "en", "both"],
+        default="both",
+        help="Idioma(s) a generar (default: both)",
+    )
+    parser.add_argument(
+        "--list-types",
+        action="store_true",
+        help="Mostrar tipos base disponibles y salir",
+    )
+    parser.add_argument(
+        "--dry-run",
+        "-n",
+        action="store_true",
+        help="Solo mostrar qué se generaría, sin escribir archivos",
+    )
+    parser.add_argument(
+        "--force",
+        "-f",
+        action="store_true",
+        help="Sobrescribir archivos existentes (por defecto: error si ya existe)",
+    )
+    parser.add_argument(
+        "--no-compile",
+        action="store_true",
+        help="Solo generar .typ, sin compilar a PDF",
+    )
+
+    args = parser.parse_args()
+    base_dir = CVS_DIR
+
+    # --list-types: mostrar tipos disponibles y salir
+    if args.list_types:
+        print("📁 Tipos base disponibles:\n")
+        for d in sorted(os.listdir(base_dir)):
+            if os.path.isdir(os.path.join(base_dir, d)) and not d.startswith("_"):
+                cvs_en = [f for f in os.listdir(os.path.join(base_dir, d)) if f.endswith(".en.typ")]
+                cvs_es = [f for f in os.listdir(os.path.join(base_dir, d)) if f.endswith(".es.typ")]
+                roles = []
+                for f in cvs_es + cvs_en:
+                    roles.append(f.replace("_Christian_Serrano_CV", "").rsplit(".", 1)[0])
+                print(f"  {d}")
+                for r in sorted(set(roles)):
+                    print(f"    - {r}")
+        print("\n  fullstack (alias) → CVs raíz (Ingeniero de Software / Software Engineer)")
+        print("\n🔗 Alias disponibles:")
+        for alias, target in sorted(ALIASES.items()):
+            if target != "_root":
+                print(f"  {alias} → {target}")
+            else:
+                print(f"  {alias} → CVs raíz")
+        print()
+        sys.exit(0)
+
+    # Validar flags obligatorias
+    if not args.tipo:
+        print("❌ Falta --tipo. Usá --list-types para ver los disponibles.", file=sys.stderr)
+        sys.exit(1)
+    if not args.titulo:
+        print("❌ Falta --titulo. El título del rol es obligatorio.", file=sys.stderr)
+        sys.exit(1)
+
+    # Validar tipo
+    sources = find_base_sources(base_dir, args.tipo)
+    if not sources:
+        resolved = resolve_tipo(args.tipo)
+        print(f"❌ Tipo '{args.tipo}' no encontrado", file=sys.stderr)
+        if resolved != args.tipo:
+            print(f"   (resolvió a '{resolved}', pero no se encontraron archivos)", file=sys.stderr)
+        print(file=sys.stderr)
+        print("Usá --list-types para ver los tipos disponibles.", file=sys.stderr)
+        sys.exit(1)
+
+    # Filtrar por idioma
+    lang = args.lang
+    filtered = []
+    for src in sources:
+        fname = os.path.basename(src)
+        if lang == "es" and not fname.endswith(".es.typ"):
+            continue
+        if lang == "en" and not fname.endswith(".en.typ"):
+            continue
+        filtered.append(src)
+
+    if not filtered:
+        print(
+            f"❌ No hay archivos para idioma '{lang}' en tipo '{args.tipo}'",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    # Determinar directorio de salida (mismo nivel que el origen)
+    src_dir = os.path.dirname(filtered[0])
+
+    resolved_tipo = resolve_tipo(args.tipo)
+    if resolved_tipo == "_root":
+        out_name = "root"
+    else:
+        out_name = resolved_tipo
+
+    print(f"📝 Base:       {args.tipo} ({out_name})")
+    print(f"🎯 Título:     {args.titulo}")
+    print(f"🌐 Idioma(s):  {lang}")
+    print(f"📂 Salida:     {src_dir}/")
+    if args.dry_run:
+        print(f"🏁 Modo:       dry-run (solo simulación)")
+    print()
+
+    generated = []
+    for src in filtered:
+        fname = os.path.basename(src)
+        lang_code = "es" if fname.endswith(".es.typ") else "en"
+        new_fname = clean_filename(args.titulo, lang_code)
+        out_path = os.path.join(src_dir, new_fname)
+
+        # Detectar colisiones con archivos existentes
+        if os.path.exists(out_path):
+            if os.path.samefile(src, out_path):
+                # Sobrescribir el mismo archivo fuente (ej: root CV)
+                if not args.force:
+                    print(
+                        f"  ⚠ {new_fname} es el archivo fuente de '{args.tipo}'. "
+                        "Usá --force para sobrescribirlo.",
+                        file=sys.stderr,
+                    )
+                    continue
+            elif not args.force:
+                print(
+                    f"  ⚠ {new_fname} ya existe. Usá --force para sobrescribir.",
+                    file=sys.stderr,
+                )
+                continue
+
+        with open(src, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        new_content = replace_title(content, args.titulo)
+        if new_content == content:
+            print(f"  ⚠ No se pudo reemplazar el título en {fname}", file=sys.stderr)
+            print("     El patrón esperado es: #cv-start([...],", file=sys.stderr)
+            continue
+
+        if not args.dry_run:
+            with open(out_path, "w", encoding="utf-8") as f:
+                f.write(new_content)
+
+        print(f"  ✅ {new_fname}")
+        generated.append(out_path)
+
+    if generated:
+        print()
+        print("📂 Archivos generados:")
+        for g in generated:
+            print(f"   {g}")
+
+        if not args.no_compile and not args.dry_run:
+            print()
+            print("⚙️  Compilando a PDF...")
+            errors = 0
+            for g in generated:
+                rel = os.path.relpath(g, base_dir)
+                pdf_path = g.rsplit(".", 1)[0] + ".pdf"
+                result = subprocess.run(
+                    ["typst", "compile", "--root", base_dir, rel],
+                    capture_output=True,
+                    text=True,
+                    cwd=base_dir,
+                )
+                if result.returncode == 0:
+                    print(f"   ✅ {os.path.basename(pdf_path)}")
+                else:
+                    print(f"   ❌ {os.path.basename(pdf_path)}")
+                    if result.stderr:
+                        for line in result.stderr.strip().split("\n"):
+                            print(f"      {line}")
+                    errors += 1
+
+            if errors:
+                print(f"\n⚠️  {errors} PDF(s) con errores — los .typ están listos para depurar")
+        elif not args.dry_run:
+            print()
+            print("💡 Compilar manualmente:")
+            for g in generated:
+                rel = os.path.relpath(g, base_dir)
+                print(f"   typst compile --root {base_dir} {rel}")
+
+    return 0 if len(generated) == len(filtered) else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
