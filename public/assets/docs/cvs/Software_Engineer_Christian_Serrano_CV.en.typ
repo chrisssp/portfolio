@@ -8,16 +8,16 @@
   "en",
 )[
   == Profile
-  Software engineer with *+2 years* of experience building production software. Focused on building efficient web and mobile ecosystems, experienced in Linux environments, prioritizing scalability, clean code, and performance. Translates business requirements into maintainable architectures through process automation and AI-augmented development workflows.
+  Software engineer with experience building production software. Focused on building efficient web and mobile ecosystems, experienced in Linux environments, prioritizing scalability, clean code, and performance. Translates business requirements into maintainable architectures through process automation and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
-    single-line-entry([*Frontend & Mobile:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS, Astro], []),
+    single-line-entry([*Frontend & Mobile:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS, Performance, Web Vitals, SEO], []),
     single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Python (Django, FastAPI), REST APIs, Supabase], []),
-    single-line-entry([*Data & Infrastructure:*], [PostgreSQL, MongoDB, Supabase, Docker, Docker Compose], []),
-    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Claude Code, OpenCode, MCP], []),
+    single-line-entry([*Data & Infrastructure:*], [PostgreSQL, MongoDB, Supabase, Docker, Docker Compose, CI/CD, GitHub Actions, Microservices, GraphQL], []),
+    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Claude Code, OpenCode, MCP, Vercel, Netlify, JUnit, Jest, Cypress], []),
     single-line-entry([*Methodologies:*], [SDD (Spec-Driven Development), Agile, Multi-model orchestration, Scrum, Kanban, XP, Design Thinking], []),
-    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server, AWS, Azure], [])
   )
 
   == Professional Experience

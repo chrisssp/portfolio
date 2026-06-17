@@ -8,17 +8,17 @@
   "en",
 )[
   == Profile
-  Backend engineer with *+2 years* of experience building production software, specialized in Java, .NET, Node.js, and Python. Experienced designing and building REST APIs, microservices, and data-intensive backend systems across multiple enterprise stacks. Strong foundation in software design patterns, object-oriented architecture, database design, and system security. Focused on writing clean, maintainable, and well-structured backend applications. Experienced in Linux environments and AI-augmented development workflows.
+  Backend engineer with experience building production software, specialized in Java, .NET, Node.js, and Python. Experienced designing and building REST APIs, microservices, and data-intensive backend systems across multiple enterprise stacks. Strong foundation in software design patterns, object-oriented architecture, database design, and system security. Focused on writing clean, maintainable, and well-structured backend applications. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
-    single-line-entry([*Backend (JVM & .NET):*], [Java, Spring Boot, .NET, JPA/Hibernate, Maven], []),
-    single-line-entry([*Backend (Scripting):*], [Node.js (Express, NestJS), Python (Django, FastAPI), REST APIs, TypeScript], []),
+    single-line-entry([*Backend (JVM & .NET):*], [Java, Spring Boot, .NET, JPA/Hibernate, Maven, Microservices, Kafka], []),
+    single-line-entry([*Backend (Scripting):*], [Node.js (Express, NestJS), Python (Django, FastAPI), REST APIs, TypeScript, GraphQL], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, MySQL, SQL Server], []),
-    single-line-entry([*Infrastructure:*], [Docker, Docker Compose, Git, GitHub, Linux], []),
-    single-line-entry([*Frontend (Integration):*], [Angular, React, React Native, Astro], []),
+    single-line-entry([*Infrastructure:*], [Docker, Docker Compose, Git, GitHub, Linux, CI/CD, GitHub Actions, JUnit, Mockito, Jest], []),
+    single-line-entry([*Frontend (Integration):*], [Angular, React, TypeScript], []),
     single-line-entry([*Methodologies:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiar with:*], [Kotlin, Firebase, Supabase], [])
+    single-line-entry([*Familiar with:*], [Kotlin, Firebase, Supabase, AWS, Azure, Vercel, Netlify], [])
   )
 
   == Professional Experience

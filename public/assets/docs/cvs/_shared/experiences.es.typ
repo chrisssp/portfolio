@@ -2,7 +2,7 @@
   entry-header-args: (
     top-left: [*Seven D Construction*],
     top-right: [Ene 2026 - May 2026],
-    bottom-left: [Ingeniero de software (Remoto)],
+    bottom-left: [Ingeniero de software · Contrato por proyecto (Remoto)],
     bottom-right: [Chicago, IL, USA / México],
   ),
 )
@@ -29,7 +29,7 @@
   entry-header-args: (
     top-left: [*PepsiCo*],
     top-right: [May 2024 - Ago 2024],
-    bottom-left: [Desarrollador de software (Remoto)],
+    bottom-left: [Desarrollador de software · Contrato por proyecto (Remoto)],
     bottom-right: [Azcapotzalco, CDMX, México],
   ),
 )
@@ -38,7 +38,7 @@
   entry-header-args: (
     top-left: [*Flack's Barber Shop*],
     top-right: [Oct 2022 - Abr 2024],
-    bottom-left: [Desarrollador de software - Freelancer],
+    bottom-left: [Desarrollador de software · Contrato por proyecto],
     bottom-right: [Córdoba, Veracruz, México],
   ),
 )

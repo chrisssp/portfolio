@@ -8,18 +8,18 @@
   "en",
 )[
   == Profile
-  Frontend engineer with *+2 years* of experience building production software, specialized in Angular, React, and TypeScript. Experienced building enterprise-grade web applications and cross-platform mobile experiences across multiple frontend ecosystems. Strong foundation in reactive architectures, state management, component-driven design, and responsive UI. Focused on delivering intuitive, performant, and accessible user interfaces. Experienced in Linux environments and AI-augmented development workflows.
+  Frontend engineer with experience building production software, specialized in Angular, React, and TypeScript. Experienced building enterprise-grade web applications and cross-platform mobile experiences across multiple frontend ecosystems. Strong foundation in reactive architectures, state management, component-driven design, and responsive UI. Focused on delivering intuitive, performant, and accessible user interfaces. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
-    single-line-entry([*Frontend:*], [Angular, React, React Native, TypeScript, RxJS, TailwindCSS, HTML/CSS, Next.js, Astro], []),
+    single-line-entry([*Frontend:*], [Angular, React, React Native, TypeScript, RxJS, TailwindCSS, HTML/CSS, Next.js, Astro, Angular Material, Performance, Web Vitals, SEO], []),
     single-line-entry([*Mobile:*], [Ionic, Capacitor, Expo], []),
-    single-line-entry([*State & Data:*], [NgRx, Zustand, TanStack Query, REST APIs, Supabase], []),
-    single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python (Django, FastAPI), REST APIs], []),
+    single-line-entry([*State & Data:*], [NgRx, Redux, Zustand, TanStack Query, REST APIs, Supabase], []),
+    single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, REST APIs], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose], []),
+    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose, CI/CD, GitHub Actions, Vercel, Netlify, Jest, Cypress], []),
     single-line-entry([*Methodologies:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server, AWS, Azure, GraphQL], [])
   )
 
   == Professional Experience

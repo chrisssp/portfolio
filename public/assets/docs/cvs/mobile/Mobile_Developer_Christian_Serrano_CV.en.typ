@@ -8,17 +8,17 @@
   "en",
 )[
   == Profile
-  Mobile developer with *+2 years* of experience building production software, specialized in React Native and Expo. Experienced building cross-platform applications from concept to deployment — with focus on native performance, smooth UI/UX, and seamless backend integration. Proven ability to deliver production-ready mobile solutions under tight deadlines. Experienced in Linux environments and AI-augmented development workflows.
+  Mobile developer with experience building production software, specialized in React Native and Expo. Experienced building cross-platform applications from concept to deployment — with focus on native performance, smooth UI/UX, and seamless backend integration. Proven ability to deliver production-ready mobile solutions under tight deadlines. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
-    single-line-entry([*Mobile:*], [React Native, Expo, TypeScript, TailwindCSS, GlueStack, Nativewind], []),
-    single-line-entry([*Frontend:*], [React, Angular, Ionic, Astro], []),
-    single-line-entry([*Backend & APIs:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, REST APIs, Supabase], []),
+    single-line-entry([*Mobile:*], [React Native, Expo, TypeScript, TailwindCSS, GlueStack, Nativewind, Kotlin], []),
+    single-line-entry([*Frontend:*], [React, Angular], []),
+    single-line-entry([*Backend & APIs:*], [Node.js, Java, Python, REST APIs, Supabase], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, Firebase], []),
-    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose, EAS Build], []),
+    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose, EAS Build, CI/CD, GitHub Actions, Fastlane, Jest], []),
     single-line-entry([*Methodologies:*], [Agile, Scrum, Kanban, XP, Design Thinking], []),
-    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiar with:*], [.NET, MySQL, Firebase, SQL Server, AWS, Azure, Vercel, Netlify], [])
   )
 
   == Professional Experience

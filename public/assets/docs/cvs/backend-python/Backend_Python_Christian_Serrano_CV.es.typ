@@ -8,18 +8,18 @@
   "es",
 )[
   == Perfil
-  Ingeniero backend con *+2 años* de experiencia construyendo software en producción, especializado en Python, Django y FastAPI. Experiencia construyendo APIs REST, sistemas de procesamiento de datos y soluciones backend integradas con IA. Enfocado en código limpio, testeabilidad, automatización y arquitecturas escalables. Trayectoria comprobada entregando proyectos full-stack con bases sólidas en backend. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
+  Ingeniero backend con experiencia construyendo software en producción, especializado en Python, Django y FastAPI. Experiencia construyendo APIs REST, sistemas de procesamiento de datos y soluciones backend integradas con IA. Enfocado en código limpio, testeabilidad, automatización y arquitecturas escalables. Trayectoria comprobada entregando proyectos full-stack con bases sólidas en backend. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
-    single-line-entry([*Backend:*], [Python, Django, FastAPI, APIs REST, Celery], []),
+    single-line-entry([*Backend:*], [Python, Django, FastAPI, APIs REST, Celery, Microservicios], []),
     single-line-entry([*IA y Datos:*], [Gemini API, LangChain, Pandas, NumPy], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Supabase], []),
-    single-line-entry([*Infraestructura:*], [Docker, Docker Compose, Git, GitHub, Linux], []),
+    single-line-entry([*Infraestructura:*], [Docker, Docker Compose, Git, GitHub, Linux, CI/CD, GitHub Actions, pytest], []),
     single-line-entry([*Otros lenguajes:*], [Node.js, Java, TypeScript], []),
-    single-line-entry([*Frontend:*], [React, React Native, Angular, Astro], []),
+    single-line-entry([*Frontend:*], [React, Angular, TypeScript], []),
     single-line-entry([*Metodologías:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server, AWS, Azure, GraphQL, Vercel, Netlify], [])
   )
 
   == Experiencia profesional

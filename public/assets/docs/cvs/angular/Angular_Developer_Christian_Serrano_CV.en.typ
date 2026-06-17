@@ -8,18 +8,18 @@
   "en",
 )[
   == Profile
-  Frontend engineer with *+2 years* of experience building production software, specialized in Angular, TypeScript, and Ionic. Experienced building enterprise-grade web applications with complex state management and RxJS-driven reactive architectures. Focused on modular, testable, and scalable frontend solutions for data-intensive business applications. Experienced in Linux environments and AI-augmented development workflows.
+  Frontend engineer with experience building production software, specialized in Angular, TypeScript, and Ionic. Experienced building enterprise-grade web applications with complex state management and RxJS-driven reactive architectures. Focused on modular, testable, and scalable frontend solutions for data-intensive business applications. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
-    single-line-entry([*Frontend:*], [Angular, React, React Native, TypeScript, RxJS, TailwindCSS, HTML/CSS, Astro], []),
+    single-line-entry([*Frontend:*], [Angular, TypeScript, RxJS, TailwindCSS, HTML/CSS, Angular Material, Performance, Web Vitals, SEO, Angular Universal], []),
     single-line-entry([*Mobile:*], [Ionic, Capacitor], []),
-    single-line-entry([*State & Data:*], [NgRx, Angular Router, REST APIs], []),
-    single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python], []),
+    single-line-entry([*State & Data:*], [NgRx, Redux, Angular Router, REST APIs], []),
+    single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, REST APIs], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose], []),
+    single-line-entry([*Tools & OS:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose, CI/CD, GitHub Actions, Vercel, Netlify, Jest, Karma, Jasmine], []),
     single-line-entry([*Methodologies:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server, AWS, Azure, GraphQL], [])
   )
 
   == Professional Experience

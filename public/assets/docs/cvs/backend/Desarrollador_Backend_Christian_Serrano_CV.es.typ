@@ -8,17 +8,17 @@
   "es",
 )[
   == Perfil
-  Ingeniero backend con *+2 años* de experiencia construyendo software en producción, especializado en Java, .NET, Node.js y Python. Experiencia diseñando y construyendo APIs REST, microservicios y sistemas backend con alto volumen de datos en múltiples stacks enterprise. Base sólida en patrones de diseño, arquitectura orientada a objetos, diseño de bases de datos y seguridad de sistemas. Enfocado en escribir aplicaciones backend limpias, mantenibles y bien estructuradas. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
+  Ingeniero backend con experiencia construyendo software en producción, especializado en Java, .NET, Node.js y Python. Experiencia diseñando y construyendo APIs REST, microservicios y sistemas backend con alto volumen de datos en múltiples stacks enterprise. Base sólida en patrones de diseño, arquitectura orientada a objetos, diseño de bases de datos y seguridad de sistemas. Enfocado en escribir aplicaciones backend limpias, mantenibles y bien estructuradas. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
-    single-line-entry([*Backend (JVM & .NET):*], [Java, Spring Boot, .NET, JPA/Hibernate, Maven], []),
-    single-line-entry([*Backend (Scripting):*], [Node.js (Express, NestJS), Python (Django, FastAPI), APIs REST, TypeScript], []),
+    single-line-entry([*Backend (JVM & .NET):*], [Java, Spring Boot, .NET, JPA/Hibernate, Maven, Microservicios, Kafka], []),
+    single-line-entry([*Backend (Scripting):*], [Node.js (Express, NestJS), Python (Django, FastAPI), APIs REST, TypeScript, GraphQL], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, MySQL, SQL Server], []),
-    single-line-entry([*Infraestructura:*], [Docker, Docker Compose, Git, GitHub, Linux], []),
-    single-line-entry([*Frontend (Integración):*], [Angular, React, React Native, Astro], []),
+    single-line-entry([*Infraestructura:*], [Docker, Docker Compose, Git, GitHub, Linux, CI/CD, GitHub Actions, JUnit, Mockito, Jest], []),
+    single-line-entry([*Frontend (Integración):*], [Angular, React, TypeScript], []),
     single-line-entry([*Metodologías:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiarizado con:*], [Kotlin, Firebase, Supabase], [])
+    single-line-entry([*Familiarizado con:*], [Kotlin, Firebase, Supabase, AWS, Azure, Vercel, Netlify], [])
   )
 
   == Experiencia profesional

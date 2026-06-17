@@ -8,17 +8,17 @@
   "en",
 )[
   == Profile
-  Backend engineer with *+2 years* of experience building production software, specialized in Node.js, TypeScript, and API architecture. Experienced designing REST APIs, database schemas, and backend systems for financial, logistics, and enterprise applications. Focused on clean architecture, performance optimization, and secure, maintainable code. Experienced in Linux environments and AI-augmented development workflows.
+  Backend engineer with experience building production software, specialized in Node.js, TypeScript, and API architecture. Experienced designing REST APIs, database schemas, and backend systems for financial, logistics, and enterprise applications. Focused on clean architecture, performance optimization, and secure, maintainable code. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
-    single-line-entry([*Backend:*], [Node.js, Express, NestJS, TypeScript, Java (Spring Boot), Python (Django, FastAPI), REST APIs], []),
+    single-line-entry([*Backend:*], [Node.js, Express, NestJS, TypeScript, Java (Spring Boot), Python (Django, FastAPI), REST APIs, GraphQL, Microservices], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB, Supabase, Firebase], []),
-    single-line-entry([*Infrastructure:*], [Docker, Docker Compose, Git, Linux], []),
-    single-line-entry([*Frontend:*], [React, Angular, React Native (integration context), Astro], []),
+    single-line-entry([*Infrastructure:*], [Docker, Docker Compose, Git, Linux, CI/CD, GitHub Actions, Jest, Supertest], []),
+    single-line-entry([*Frontend:*], [React, Angular, TypeScript (integration context)], []),
     single-line-entry([*Tools:*], [Git, GitHub, Linux, Figma, OWASP security practices], []),
     single-line-entry([*Methodologies:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server, AWS, Azure, Vercel, Netlify], [])
   )
 
   == Professional Experience

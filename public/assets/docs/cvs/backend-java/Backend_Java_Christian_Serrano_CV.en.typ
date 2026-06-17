@@ -8,17 +8,17 @@
   "en",
 )[
   == Profile
-  Backend engineer with *+2 years* of experience building production software, specialized in Java and Spring Boot. Experienced building enterprise REST APIs and data-driven backend systems. Strong foundation in software design patterns, object-oriented architecture, and database design. Focused on writing clean, maintainable, and well-structured enterprise applications. Experienced in Linux environments and AI-augmented development workflows.
+  Backend engineer with experience building production software, specialized in Java and Spring Boot. Experienced building enterprise REST APIs and data-driven backend systems. Strong foundation in software design patterns, object-oriented architecture, and database design. Focused on writing clean, maintainable, and well-structured enterprise applications. Experienced in Linux environments and AI-augmented development workflows.
 
   == Technical Skills
   #multi-line-list(
-    single-line-entry([*Backend:*], [Java, Spring Boot, JPA/Hibernate, REST APIs, Maven], []),
+    single-line-entry([*Backend:*], [Java, Spring Boot, JPA/Hibernate, REST APIs, Maven, Microservices, Kafka], []),
     single-line-entry([*Databases:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Frontend:*], [Angular, Ionic, React, React Native, TypeScript, Astro], []),
-    single-line-entry([*Infrastructure:*], [Docker, Docker Compose, Git, GitHub, Linux], []),
+    single-line-entry([*Frontend:*], [Angular, React, TypeScript], []),
+    single-line-entry([*Infrastructure:*], [Docker, Docker Compose, Git, GitHub, Linux, CI/CD, GitHub Actions, JUnit, Mockito, Jest], []),
     single-line-entry([*Other Languages:*], [Node.js, Python (Django, FastAPI), TypeScript], []),
     single-line-entry([*Methodologies:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiar with:*], [.NET, Kotlin, MySQL, Firebase, SQL Server, AWS, Azure, GraphQL, Vercel, Netlify], [])
   )
 
   == Professional Experience

@@ -8,16 +8,16 @@
   "es",
 )[
   == Perfil
-  Ingeniero de software con *+2 años* de experiencia construyendo software en producción. Enfocado en la construcción de ecosistemas web y móviles eficientes, con conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.
+  Ingeniero de software con experiencia construyendo software en producción. Enfocado en la construcción de ecosistemas web y móviles eficientes, con conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
-    single-line-entry([*Frontend y móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS, Astro], []),
+    single-line-entry([*Frontend y móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS, Performance, Web Vitals, SEO], []),
     single-line-entry([*Backend:*], [Node.js (NestJS, Express), Java (Spring Boot), Python (Django, FastAPI), APIs REST, Supabase], []),
-    single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker, Docker Compose], []),
-    single-line-entry([*Herramientas y OS:*], [Git, GitHub, Linux, Figma, Claude Code, OpenCode, MCP], []),
+    single-line-entry([*Datos e infraestructura:*], [PostgreSQL, MongoDB, Supabase, Docker, Docker Compose, CI/CD, GitHub Actions, Microservicios, GraphQL], []),
+    single-line-entry([*Herramientas y OS:*], [Git, GitHub, Linux, Figma, Claude Code, OpenCode, MCP, Vercel, Netlify, JUnit, Jest, Cypress], []),
     single-line-entry([*Metodologías:*], [SDD (Spec-Driven Development), Agile, Orquestación multi-modelo, Scrum, Kanban, XP, Design Thinking], []),
-    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server, AWS, Azure], [])
   )
 
   == Experiencia profesional

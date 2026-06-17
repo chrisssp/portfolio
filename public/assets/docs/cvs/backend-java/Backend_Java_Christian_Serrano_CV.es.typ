@@ -8,17 +8,17 @@
   "es",
 )[
   == Perfil
-  Ingeniero backend con *+2 años* de experiencia construyendo software en producción, especializado en Java y Spring Boot. Experiencia construyendo APIs REST empresariales y sistemas backend impulsados por datos. Base sólida en patrones de diseño, arquitectura orientada a objetos y diseño de bases de datos. Enfocado en escribir aplicaciones enterprise limpias, mantenibles y bien estructuradas. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
+  Ingeniero backend con experiencia construyendo software en producción, especializado en Java y Spring Boot. Experiencia construyendo APIs REST empresariales y sistemas backend impulsados por datos. Base sólida en patrones de diseño, arquitectura orientada a objetos y diseño de bases de datos. Enfocado en escribir aplicaciones enterprise limpias, mantenibles y bien estructuradas. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
-    single-line-entry([*Backend:*], [Java, Spring Boot, JPA/Hibernate, APIs REST, Maven], []),
+    single-line-entry([*Backend:*], [Java, Spring Boot, JPA/Hibernate, APIs REST, Maven, Microservicios, Kafka], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Frontend:*], [Angular, Ionic, React, React Native, TypeScript, Astro], []),
-    single-line-entry([*Infraestructura:*], [Docker, Docker Compose, Git, GitHub, Linux], []),
+    single-line-entry([*Frontend:*], [Angular, React, TypeScript], []),
+    single-line-entry([*Infraestructura:*], [Docker, Docker Compose, Git, GitHub, Linux, CI/CD, GitHub Actions, JUnit, Mockito, Jest], []),
     single-line-entry([*Otros lenguajes:*], [Node.js, Python (Django, FastAPI), TypeScript], []),
     single-line-entry([*Metodologías:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server, AWS, Azure, GraphQL, Vercel, Netlify], [])
   )
 
   == Experiencia profesional

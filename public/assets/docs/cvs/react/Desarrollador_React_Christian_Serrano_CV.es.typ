@@ -8,17 +8,17 @@
   "es",
 )[
   == Perfil
-  Ingeniero frontend con *+2 años* de experiencia construyendo software en producción, especializado en React, React Native y TypeScript. Experiencia construyendo aplicaciones web responsivas y experiencias móviles cross-platform con arquitectura de componentes y manejo de estado moderno. Enfocado en rendimiento, código limpio y traducir requerimientos de negocio en interfaces de usuario intuitivas. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
+  Ingeniero frontend con experiencia construyendo software en producción, especializado en React, React Native y TypeScript. Experiencia construyendo aplicaciones web responsivas y experiencias móviles cross-platform con arquitectura de componentes y manejo de estado moderno. Enfocado en rendimiento, código limpio y traducir requerimientos de negocio en interfaces de usuario intuitivas. Con experiencia en entornos Linux y flujos de desarrollo aumentados por IA.
 
   == Habilidades técnicas
   #multi-line-list(
-    single-line-entry([*Frontend y Móvil:*], [React, React Native, Angular, Ionic, TypeScript, TailwindCSS, Expo, Next.js, Astro], []),
-    single-line-entry([*Estado y datos:*], [Zustand, TanStack Query, Supabase, Firebase], []),
-    single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python (Django, FastAPI), APIs REST], []),
+    single-line-entry([*Frontend y Móvil:*], [React, React Native, TypeScript, TailwindCSS, Expo, Next.js, Redux, Performance, Web Vitals, SEO], []),
+    single-line-entry([*Estado y datos:*], [Zustand, Redux, TanStack Query, Supabase, Firebase], []),
+    single-line-entry([*Backend:*], [Node.js (Express, NestJS), Java (Spring Boot), Python, APIs REST], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB], []),
-    single-line-entry([*Herramientas:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose], []),
+    single-line-entry([*Herramientas:*], [Git, GitHub, Linux, Figma, Docker, Docker Compose, CI/CD, GitHub Actions, Vercel, Netlify, Jest, Cypress], []),
     single-line-entry([*Metodologías:*], [Agile, Scrum, Kanban, XP, Design Thinking, SDD], []),
-    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server], [])
+    single-line-entry([*Familiarizado con:*], [.NET, Kotlin, MySQL, Firebase, SQL Server, AWS, Azure, GraphQL], [])
   )
 
   == Experiencia profesional
