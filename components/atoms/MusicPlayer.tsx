@@ -10,6 +10,7 @@ type Props = {
 
 export const MusicPlayer = ({ locale = "en" }: Props) => {
    const audioRef = useRef<HTMLAudioElement | null>(null);
+   const buttonRef = useRef<HTMLButtonElement | null>(null);
    const isFadingRef = useRef(false);
    const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
    const isLongPress = useRef(false);
@@ -23,6 +24,8 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
       title: "Dreamy Ambient Background Music",
       artist: "Spanac",
    };
+
+   // --- Audio setup ---
 
    useEffect(() => {
       const audio = new Audio("/audio/ambient.mp3");
@@ -52,6 +55,29 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
          audioRef.current = null;
       };
    }, []);
+
+   // --- Close tooltip on outside tap ---
+
+   useEffect(() => {
+      if (!tooltipPinned) return;
+
+      const handlePointerDown = (e: PointerEvent) => {
+         if (
+            buttonRef.current &&
+            !buttonRef.current.contains(e.target as Node)
+         ) {
+            setTooltipPinned(false);
+         }
+      };
+
+      // Use capture phase so it fires before any click on the button
+      document.addEventListener("pointerdown", handlePointerDown, true);
+      return () => {
+         document.removeEventListener("pointerdown", handlePointerDown, true);
+      };
+   }, [tooltipPinned]);
+
+   // --- Play / pause ---
 
    const togglePlay = () => {
       const audio = audioRef.current;
@@ -103,17 +129,15 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
          longPressTimer.current = null;
       }
 
-      // If it was a long press, prevent the click from firing
       if (isLongPress.current) {
          e.preventDefault();
          isLongPress.current = false;
       }
-      // Short tap falls through to onClick -> togglePlay
    }, []);
 
    const buttonStyle = isPlaying
       ? ({
-           animation: "musicPulse 2.5s ease-in-out infinite",
+           animation: "musicPulse 3s ease-in-out infinite",
         } as React.CSSProperties)
       : undefined;
 
@@ -130,10 +154,11 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
          <style>{`
             @keyframes musicPulse {
                0%, 100% { transform: scale(1); }
-               50% { transform: scale(1.08); }
+               50% { transform: scale(1.04); }
             }
          `}</style>
          <button
+            ref={buttonRef}
             type="button"
             onClick={togglePlay}
             onTouchStart={handleTouchStart}
@@ -155,7 +180,7 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
             )}
 
             <div
-               className={`absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-surface text-body text-xs font-medium border border-subtle shadow-lg text-left transition-all duration-300 ${
+               className={`absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-surface text-body text-xs font-medium border border-subtle shadow-lg text-left transition-all duration-300 max-w-[180px] xs:max-w-none ${
                   tooltipPinned
                      ? "opacity-100 translate-x-0"
                      : "opacity-0 -translate-x-2 pointer-events-none"
@@ -163,7 +188,7 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
             >
                {isPlaying ? (
                   <>
-                     <span className="whitespace-nowrap">
+                     <span className="whitespace-normal xs:whitespace-nowrap">
                         {currentTrack.title}
                         <span className="text-body/50 mx-1">·</span>
                         {currentTrack.artist}
