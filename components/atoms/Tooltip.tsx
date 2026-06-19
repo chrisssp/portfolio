@@ -9,26 +9,19 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 
-type TooltipPosition = "top" | "bottom" | "left" | "right";
-
 interface TooltipProps {
    content: ReactNode;
    children: ReactNode;
-   position?: TooltipPosition;
+   align?: "left" | "right" | "center";
+   direction?: "up" | "down" | "center";
    className?: string;
 }
-
-const absolutePosition: Record<TooltipPosition, string> = {
-   top: "bottom-full left-1/2 -translate-x-1/2 mb-3",
-   bottom: "top-full left-1/2 -translate-x-1/2 mt-3",
-   left: "right-full top-1/2 -translate-y-1/2 mr-3",
-   right: "left-full top-1/2 -translate-y-1/2 ml-3",
-};
 
 export const Tooltip = ({
    content,
    children,
-   position = "bottom",
+   align = "center",
+   direction = "up",
    className = "",
 }: TooltipProps) => {
    const [isVisible, setIsVisible] = useState(false);
@@ -98,6 +91,21 @@ export const Tooltip = ({
       ? { onClick: toggle }
       : { onMouseEnter: show, onMouseLeave: hide, onFocus: show, onBlur: hide };
 
+   // Desktop positioning
+   const verticalClass =
+      direction === "up"
+         ? "bottom-full mb-3"
+         : direction === "down"
+           ? "top-full mt-3"
+           : "top-1/2 -translate-y-1/2";
+
+   const horizontalClass =
+      align === "left"
+         ? "right-full mr-3"
+         : align === "right"
+           ? "left-full ml-3"
+           : "left-1/2 -translate-x-1/2";
+
    const tooltipBubble = (
       <div
          ref={tooltipRef}
@@ -120,7 +128,9 @@ export const Tooltip = ({
 
          {/* Desktop: inline absolute positioning relative to trigger */}
          {isVisible && !isTouchDevice && (
-            <div className={`absolute z-50 ${absolutePosition[position]}`}>
+            <div
+               className={`absolute z-50 ${verticalClass} ${horizontalClass}`}
+            >
                {tooltipBubble}
             </div>
          )}

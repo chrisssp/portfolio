@@ -17,6 +17,7 @@ interface SmartEmailButtonProps {
    className?: string;
    buttonClassName?: string;
    align?: "left" | "right";
+   direction?: "up" | "down";
    onOpenChange?: (isOpen: boolean) => void;
    menuLabels: {
       send: string;
@@ -34,6 +35,7 @@ export const SmartEmailButton = ({
    className = "",
    buttonClassName = "",
    align = "left",
+   direction = "down",
    onOpenChange,
    menuLabels,
 }: SmartEmailButtonProps) => {
@@ -183,7 +185,7 @@ export const SmartEmailButton = ({
                   bg-page border border-subtle rounded-2xl shadow-2xl overflow-hidden z-20
                   min-w-65 xs:min-w-75
                   animate-in fade-in zoom-in-95 duration-200
-                  ${isTouchDevice ? "" : align === "right" ? "absolute bottom-full mb-2 right-0" : "absolute top-full mt-2 left-0"}
+                  ${isTouchDevice ? "" : `absolute ${direction === "up" ? "bottom-full mb-2" : "top-full mt-2"} ${align === "right" ? "right-0" : "left-0"}`}
                `}
                style={
                   isTouchDevice
