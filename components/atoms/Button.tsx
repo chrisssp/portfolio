@@ -4,7 +4,7 @@ interface ButtonProps {
    children: ReactNode;
    variant?: "primary" | "secondary" | "outline";
    icon?: ReactNode;
-   onClick?: () => void;
+   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
    className?: string;
    ariaLabel?: string;
 }
