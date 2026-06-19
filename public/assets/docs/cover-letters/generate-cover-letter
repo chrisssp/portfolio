@@ -1,0 +1,124 @@
+#!/bin/bash
+
+# Generate Cover Letter PDFs
+# Usage: ./generate-cover-letter <type> <lang> <company> "<why>"
+# Example: ./generate-cover-letter react en "Google" "Your work on React and open source..."
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$DIR"
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+BOLD='\033[1m'
+
+usage() {
+    echo -e "${BOLD}Usage:${NC}"
+    echo "  $0 <type> <lang> <company> \"<why>\""
+    echo ""
+    echo -e "${BOLD}Types:${NC}"
+    echo "  fullstack, react, frontend, angular, backend, backend-java, backend-node, backend-python, mobile, ai-ml"
+    echo ""
+    echo -e "${BOLD}Languages:${NC}"
+    echo "  en - English"
+    echo "  es - Español"
+    echo ""
+    echo -e "${BOLD}Examples:${NC}"
+    echo "  $0 react en \"Google\" \"Your work on React and open source...\""
+    echo "  $0 fullstack es \"Mercado Libre\" \"La escala de Mercado Libre...\""
+    exit 1
+}
+
+check_deps() {
+    if ! command -v typst &> /dev/null; then
+        echo -e "${RED}Error: typst is not installed${NC}"
+        exit 1
+    fi
+}
+
+compile_cover_letter() {
+    local type="$1"
+    local lang="$2"
+    local company="$3"
+    local why="$4"
+
+    local type_dir="$ROOT/$type"
+    if [ ! -d "$type_dir" ]; then
+        echo -e "${RED}Error: Type '$type' not found${NC}"
+        usage
+    fi
+
+    # Find source .typ file
+    local src_file=""
+    if [ "$lang" == "en" ]; then
+        src_file=$(ls "$type_dir"/Cover_Letter_Christian_Serrano_*.en.typ 2>/dev/null | head -1)
+    elif [ "$lang" == "es" ]; then
+        src_file=$(ls "$type_dir"/Carta_Presentacion_Christian_Serrano_*.es.typ 2>/dev/null | head -1)
+    fi
+
+    if [ -z "$src_file" ] || [ ! -f "$src_file" ]; then
+        echo -e "${RED}Error: No template found for $type ($lang)${NC}"
+        exit 1
+    fi
+
+    # Extract role from source file
+    local role=$(grep -oP '(?<=role: ")[^"]*' "$src_file" | head -1)
+
+    # Build company suffix for filename
+    local company_suffix=$(echo "$company" | tr ' ' '_')
+    local base_name=$(basename "$src_file" .typ)
+    local output_name="${base_name}_${company_suffix}"
+    local tmp_file="$type_dir/_tmp_${output_name}.typ"
+
+    # Escape for Typst content
+    local company_escaped=$(echo "$company" | sed 's/"/\\"/g')
+
+    # Build the "why" paragraph with company name inline
+    local why_paragraph=""
+    if [ "$lang" == "en" ]; then
+        why_paragraph="What excites me most about #text(weight: \"bold\")[${company_escaped}] is that ${why}. This aligns perfectly with my experience and the kind of impact I want to continue making."
+    else
+        why_paragraph="Lo que más me emociona de #text(weight: \"bold\")[${company_escaped}] es que ${why}. Esto se alinea perfectamente con mi experiencia y el tipo de impacto que quiero seguir generando."
+    fi
+
+    # Create temporary .typ
+    cat > "$tmp_file" << TYPST_EOF
+#import "../_shared/template.typ": cover-letter
+#import "../_shared/sections.typ": *
+
+#cover-letter(
+  role: "${role}",
+  company: "${company_escaped}",
+  lang: "${lang}",
+)[
+  #intro-${type}-${lang}
+
+  ${why_paragraph}
+
+  #body-${type}-${lang}
+
+  #closing-${lang}
+]
+TYPST_EOF
+
+    # Compile
+    echo -e "${BLUE}Compiling:${NC} $type/${output_name}.pdf"
+    typst compile --root "$ROOT" "$tmp_file" "$type_dir/$output_name.pdf"
+
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}✓${NC} Generated: $type/$output_name.pdf"
+        rm -f "$tmp_file"
+    else
+        echo -e "${RED}✗${NC} Failed. Temp file kept: $tmp_file"
+    fi
+}
+
+check_deps
+
+if [ $# -lt 4 ]; then
+    echo -e "${RED}Error: Company name and 'why' paragraph are required${NC}"
+    usage
+fi
+
+compile_cover_letter "$1" "$2" "$3" "$4"

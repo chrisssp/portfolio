@@ -29,6 +29,6 @@
   == Idiomas
   #multi-line-text(
     single-line-entry([*Español:*], [Nativo], []),
-    single-line-entry([*Inglés:*], [B1 (Intermedio - En progreso activo)], [])
+    single-line-entry([*Inglés:*], [B1+ (Intermedio - En progreso activo)], [])
   )
 ]

@@ -185,7 +185,6 @@ export interface Dictionary {
       title: string;
       p1: string;
       p2: string;
-      p3: string;
       philosophy: string;
       quote: string;
       educationTitle: string;

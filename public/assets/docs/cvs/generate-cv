@@ -21,10 +21,10 @@ ALIASES = {
     "node": "backend-node",
     "python": "backend-python",
     "flutter": "mobile",
-    "fullstack": "_root",
-    "software-engineer": "_root",
-    "ingeniero": "_root",
-    "general": "_root",
+    "fullstack": "fullstack",
+    "software-engineer": "fullstack",
+    "ingeniero": "fullstack",
+    "general": "fullstack",
 }
 
 def resolve_tipo(tipo):
@@ -44,14 +44,9 @@ def _typ_sources(directory):
 def find_base_sources(base_dir, tipo):
     """Encuentra los archivos .typ de origen para un tipo base."""
     resolved = resolve_tipo(tipo)
-
-    if resolved == "_root":
-        return _typ_sources(base_dir)
-
     type_dir = os.path.join(base_dir, resolved)
     if not os.path.isdir(type_dir):
         return None
-
     return _typ_sources(type_dir)
 
 def clean_filename(title, lang_code):
@@ -141,13 +136,9 @@ def main():
                 print(f"  {d}")
                 for r in sorted(set(roles)):
                     print(f"    - {r}")
-        print("\n  fullstack (alias) → CVs raíz (Ingeniero de Software / Software Engineer)")
         print("\n🔗 Alias disponibles:")
         for alias, target in sorted(ALIASES.items()):
-            if target != "_root":
-                print(f"  {alias} → {target}")
-            else:
-                print(f"  {alias} → CVs raíz")
+            print(f"  {alias} → {target}")
         print()
         sys.exit(0)
 
@@ -192,10 +183,7 @@ def main():
     src_dir = os.path.dirname(filtered[0])
 
     resolved_tipo = resolve_tipo(args.tipo)
-    if resolved_tipo == "_root":
-        out_name = "root"
-    else:
-        out_name = resolved_tipo
+    out_name = resolved_tipo
 
     print(f"📝 Base:       {args.tipo} ({out_name})")
     print(f"🎯 Título:     {args.titulo}")
@@ -267,6 +255,11 @@ def main():
                 )
                 if result.returncode == 0:
                     print(f"   ✅ {os.path.basename(pdf_path)}")
+                    # Clean up generated .typ file (keep only PDF)
+                    try:
+                        os.remove(g)
+                    except OSError:
+                        pass
                 else:
                     print(f"   ❌ {os.path.basename(pdf_path)}")
                     if result.stderr:

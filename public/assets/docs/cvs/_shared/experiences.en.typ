@@ -1,7 +1,7 @@
 #let exp-7d = (
   entry-header-args: (
     top-left: [*Seven D Construction*],
-    top-right: [Jan 2026 - May 2026],
+    top-right: [Jan 2026 - Jun 2026],
     bottom-left: [Software Engineer · Project-based Contract (Remote)],
     bottom-right: [Chicago, IL, USA / Mexico],
   ),

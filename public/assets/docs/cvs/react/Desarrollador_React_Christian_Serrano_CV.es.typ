@@ -34,9 +34,9 @@
     (
       ..exp-azteca,
       list-items: (
-        [Lideré el desarrollo de *Azkali* en un sprint de *48 horas*, un copiloto con IA en React Native + React con integración Gemini.],
+        [Lideré el desarrollo de *Azkali* en un sprint de *48 horas*, un copiloto con IA en React Native con integración Gemini.],
         [Seleccionados entre 1,500 participantes de todo el país para la fase presencial de Talent Land 2026.],
-        [Arquitecté el ecosistema multiplataforma usando *React Native* (Expo), React web y *Supabase*.],
+        [Arquitecté el ecosistema multiplataforma usando *React Native* (Expo) y *Supabase*.],
       )
     ),
     (
@@ -67,10 +67,10 @@
   == Proyectos destacados
   #r2c2-entry-list(
     (
-      ..proj-azkali([_React, React Native, Supabase, Gemini IA_]),
+      ..proj-azkali([_React Native, Supabase, Gemini IA_]),
       list-items: (
         [Copiloto de IA conductual que genera fricción cognitiva en compras impulsivas mostrando costos en horas de trabajo.],
-        [Ecosistema multiplataforma (React Native mobile + React web) construido en un sprint de 48 horas.],
+        [Ecosistema multiplataforma móvil construido en un sprint de 48 horas.],
         [Integré Gemini 2.5 Flash-Lite para análisis de gastos en tiempo real con mecánicas de gamificación.],
       ),
     ),

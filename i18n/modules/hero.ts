@@ -6,7 +6,7 @@ export const hero = {
       actions: {
          cv: "CV",
          cvLink:
-            "/assets/docs/cvs/Software_Engineer_Christian_Serrano_CV.en.pdf",
+            "/assets/docs/cvs/fullstack/FullStack_Developer_Christian_Serrano_CV.en.pdf",
          email: "Email",
          emailMenu: {
             send: "Send Email",
@@ -27,7 +27,7 @@ export const hero = {
       actions: {
          cv: "CV",
          cvLink:
-            "/assets/docs/cvs/Ingeniero_de_Software_Christian_Serrano_CV.es.pdf",
+            "/assets/docs/cvs/fullstack/Desarrollador_FullStack_Christian_Serrano_CV.es.pdf",
          email: "Correo",
          emailMenu: {
             send: "Enviar correo",

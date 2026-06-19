@@ -43,9 +43,9 @@
     (
       ..exp-azteca,
       list-items: (
-        [Led the development of *Azkali* during a *48-hour* sprint, a React Native + React AI copilot with Gemini integration.],
+        [Led the development of *Azkali* during a *48-hour* sprint, a React Native AI copilot with Gemini integration.],
         [Selected among 1,500 participants nationwide for the on-site phase of Talent Land 2026.],
-        [Architected the multi-platform ecosystem using *React Native* (Expo), React web, and *Supabase*.],
+        [Architected the multi-platform ecosystem using *React Native* (Expo) and *Supabase*.],
       )
     ),
     (

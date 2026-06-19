@@ -10,8 +10,8 @@ ROOT="$(pwd)"
 ERRORS=0
 
 CVS=(
-  "Software_Engineer_Christian_Serrano_CV.en"
-  "Ingeniero_de_Software_Christian_Serrano_CV.es"
+  "fullstack/FullStack_Developer_Christian_Serrano_CV.en"
+  "fullstack/Desarrollador_FullStack_Christian_Serrano_CV.es"
   "angular/Angular_Developer_Christian_Serrano_CV.en"
   "angular/Desarrollador_Angular_Christian_Serrano_CV.es"
   "backend-java/Backend_Java_Christian_Serrano_CV.en"
@@ -28,6 +28,8 @@ CVS=(
   "frontend/Desarrollador_Frontend_Christian_Serrano_CV.es"
   "backend/Backend_Developer_Christian_Serrano_CV.en"
   "backend/Desarrollador_Backend_Christian_Serrano_CV.es"
+  "ai-ml/AI_ML_Developer_Christian_Serrano_CV.en"
+  "ai-ml/Desarrollador_AI_ML_Christian_Serrano_CV.es"
 )
 
 SHARED_DIR="_shared"

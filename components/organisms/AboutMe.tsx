@@ -34,7 +34,6 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                <div className="flex flex-col gap-3">
                   <Typography variant="body">{dict.about.p1}</Typography>
                   <Typography variant="body">{dict.about.p2}</Typography>
-                  <Typography variant="body">{dict.about.p3}</Typography>
                   <Typography variant="body">
                      {dict.about.philosophy}
                      <span className="font-bold italic">

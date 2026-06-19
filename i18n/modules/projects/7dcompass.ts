@@ -50,7 +50,7 @@ export const project7dCompass = {
             "A centralized audit engine with complex validation logic that flags discrepancies in real-time, reducing the monthly reconciliation window from weeks to hours.",
       },
       certificates: [
-         { title: "Seven D Construction — Recommendation Letter (May 2026)" },
+         { title: "Seven D Construction — Recommendation Letter (Jun 2026)" },
       ],
       ecosystem: {
          items: [
@@ -90,7 +90,7 @@ export const project7dCompass = {
       },
       certificates: [
          {
-            title: "Seven D Construction — Carta de recomendación (May 2026)",
+            title: "Seven D Construction — Carta de recomendación (Jun 2026)",
             filePath:
                "/assets/docs/certificates/Recomendacion_7D_Construction_Christian_Serrano_es.pdf",
          },

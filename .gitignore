@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 # Local AI runtime state
 .atl/
+
+# Cover letter PDFs (generated on demand)
+public/assets/docs/cover-letters/**/*.pdf

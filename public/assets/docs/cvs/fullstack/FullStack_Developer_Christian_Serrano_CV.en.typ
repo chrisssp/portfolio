@@ -1,7 +1,7 @@
-#import "_shared/template.typ": cv-start, r2c2-entry-list, multi-line-list, single-line-entry, multi-line-text
-#import "_shared/sections.typ": education, languages
-#import "_shared/experiences.en.typ": exp-7d, exp-azteca, exp-coppel, exp-pepsico, exp-flacks
-#import "_shared/projects.en.typ": proj-iapex, proj-dabetai, proj-puntofiel
+#import "../_shared/template.typ": cv-start, r2c2-entry-list, multi-line-list, single-line-entry, multi-line-text
+#import "../_shared/sections.typ": education, languages
+#import "../_shared/experiences.en.typ": exp-7d, exp-azteca, exp-coppel, exp-pepsico, exp-flacks
+#import "../_shared/projects.en.typ": proj-iapex, proj-dabetai, proj-puntofiel
 
 #cv-start(
   [Software Engineer | Full-Stack and Mobile Developer],
