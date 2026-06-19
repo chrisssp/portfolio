@@ -19,6 +19,10 @@ export const about = {
             achievement: "Graduated 1st in class with a 9.82/10 GPA",
          },
       ],
+      tooltipMidudev:
+         "With Miguel Ángel Durán (midudev) at Talent Land 2025 in Guadalajara, Jalisco, Mexico. Undisputed reference in web ecosystem and full-stack development content for the Spanish-speaking world.",
+      tooltipMouredev:
+         "With Brais Moure (mouredev) at Talent Land 2026 in Santa Fe, CDMX, Mexico. Leader in mobile development and creator of essential resources that build the foundations of programming from scratch.",
    },
    es: {
       title: "Sobre m\u00ed",
@@ -41,5 +45,9 @@ export const about = {
                "Graduado como 1er lugar de la generaci\u00f3n con un promedio de 9.82/10",
          },
       ],
+      tooltipMidudev:
+         "Con Miguel Ángel Durán (midudev) durante Talent Land 2025 en Guadalajara, Jalisco, México. Referente indiscutible en la divulgación sobre el ecosistema web moderno y full-stack para el mundo hispano.",
+      tooltipMouredev:
+         "Con Brais Moure (mouredev) durante Talent Land 2026 en Santa Fe, CDMX, México. Líder en desarrollo mobile y creador de recursos esenciales que estructuran las bases de la programación desde cero.",
    },
 };

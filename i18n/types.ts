@@ -189,6 +189,8 @@ export interface Dictionary {
       quote: string;
       educationTitle: string;
       education: EducationItem[];
+      tooltipMidudev: string;
+      tooltipMouredev: string;
    };
 
    experience: {

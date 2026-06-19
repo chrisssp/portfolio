@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { MdPerson } from "react-icons/md";
 import type { Dictionary } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
 import { SectionContainer } from "../atoms/SectionContainer";
+import { Tooltip } from "../atoms/Tooltip";
 import { Typography } from "../atoms/Typography";
 
 interface AboutMeProps {
@@ -82,23 +85,39 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
             duration="duration-700"
             className="relative w-full max-w-100 lg:max-w-none lg:w-125 aspect-square shrink-0 mt-8 lg:mt-0"
          >
-            <div className="absolute top-0 right-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500">
-               <Image
-                  src={img1}
-                  alt="Christian Serrano at Talent Land 2025"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 260px, 330px"
-               />
+            <div className="absolute top-0 right-0 w-[66%] aspect-square">
+               <Tooltip
+                  content={dict.about.tooltipMidudev}
+                  position="right"
+                  className="w-full h-full"
+               >
+                  <div className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer">
+                     <Image
+                        src={img1}
+                        alt="Christian Serrano at Talent Land 2025"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 260px, 330px"
+                     />
+                  </div>
+               </Tooltip>
             </div>
-            <div className="absolute bottom-0 left-0 w-[66%] aspect-square rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500">
-               <Image
-                  src={img2}
-                  alt="Christian Serrano at Talent Land 2026"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 260px, 330px"
-               />
+            <div className="absolute bottom-0 left-0 w-[66%] aspect-square">
+               <Tooltip
+                  content={dict.about.tooltipMouredev}
+                  position="left"
+                  className="w-full h-full"
+               >
+                  <div className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer">
+                     <Image
+                        src={img2}
+                        alt="Christian Serrano at Talent Land 2026"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 260px, 330px"
+                     />
+                  </div>
+               </Tooltip>
             </div>
          </AnimatedSection>
       </SectionContainer>
