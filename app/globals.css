@@ -36,10 +36,10 @@
       --shimmer-highlight: #3d4a65;
 
       /* Motion parameters */
-      --motion-float-distance: -8px;
-      --motion-bob-distance: -2px;
+      --motion-float-distance: -10px;
+      --motion-bob-distance: -3px;
       --motion-sway-angle: 6deg;
-      --motion-zoom-scale: 1.08;
+      --motion-zoom-scale: 1.1;
    }
 
    .dark {
