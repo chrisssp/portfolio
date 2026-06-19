@@ -103,16 +103,25 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
             <MdMusicOff className="size-5" />
          )}
 
-         <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-surface text-body text-xs font-medium border border-subtle opacity-0 -translate-x-2 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 shadow-lg">
-            <span className="whitespace-nowrap">
-               {isPlaying ? "♪ " : ""}
-               {currentTrack.title}
-               <span className="text-body/50 mx-1">·</span>
-               {currentTrack.artist}
-            </span>
-            <span className="block text-[10px] text-body/40 leading-tight mt-0.5">
-               CC BY 4.0 — Spanac · Free Sounds Library
-            </span>
+         <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-surface text-body text-xs font-medium border border-subtle opacity-0 -translate-x-2 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 shadow-lg text-left">
+            {isPlaying ? (
+               <>
+                  <span className="whitespace-nowrap">
+                     {currentTrack.title}
+                     <span className="text-body/50 mx-1">·</span>
+                     {currentTrack.artist}
+                  </span>
+                  <span className="block text-[10px] text-body/40 leading-tight mt-0.5">
+                     CC BY 4.0 — Spanac · Free Sounds Library
+                  </span>
+               </>
+            ) : (
+               <span className="whitespace-nowrap">
+                  {isSpanish
+                     ? "Reproducir música ambiental"
+                     : "Play ambient music"}
+               </span>
+            )}
          </div>
       </button>
    );
