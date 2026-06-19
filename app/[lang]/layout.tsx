@@ -3,6 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { GridMouseTracker } from "@/components/atoms/GridMouseTracker";
+import { MusicPlayer } from "@/components/atoms/MusicPlayer";
 import { ScrollToTop } from "@/components/atoms/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeContext";
 import type { Locale } from "@/i18n/config";
@@ -78,6 +79,7 @@ export default async function RootLayout({ children, params }: Props) {
             <ThemeProvider>
                {children}
                <GridMouseTracker />
+               <MusicPlayer locale={locale} />
                <ScrollToTop />
                <Analytics />
                <SpeedInsights />
