@@ -88,10 +88,14 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
             <div className="absolute top-0 right-0 w-[66%] aspect-square">
                <Tooltip
                   content={dict.about.tooltipMidudev}
-                  position="right"
+                  align="left"
+                  direction="center"
                   className="w-full h-full"
                >
-                  <div className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer">
+                  <div
+                     className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer animate-float motion-reduce:animate-none"
+                     style={{ animationDuration: "3s" }}
+                  >
                      <Image
                         src={img1}
                         alt="Christian Serrano at Talent Land 2025"
@@ -105,10 +109,14 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
             <div className="absolute bottom-0 left-0 w-[66%] aspect-square">
                <Tooltip
                   content={dict.about.tooltipMouredev}
-                  position="left"
+                  align="left"
+                  direction="center"
                   className="w-full h-full"
                >
-                  <div className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer">
+                  <div
+                     className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer animate-float motion-reduce:animate-none"
+                     style={{ animationDuration: "5s" }}
+                  >
                      <Image
                         src={img2}
                         alt="Christian Serrano at Talent Land 2026"

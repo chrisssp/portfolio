@@ -25,6 +25,13 @@ export const Footer = ({ dict }: FooterProps) => {
                   rel="noopener noreferrer"
                   title="CV"
                   aria-label={dict.hero.actions.cv}
+                  className="animate-bob motion-reduce:animate-none"
+                  style={
+                     {
+                        "--i": 0,
+                        animationDelay: "calc(var(--i) * 0.15s)",
+                     } as React.CSSProperties
+                  }
                >
                   <MdDescription className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>
@@ -34,6 +41,13 @@ export const Footer = ({ dict }: FooterProps) => {
                   rel="noopener noreferrer"
                   title="GitHub"
                   aria-label="GitHub"
+                  className="animate-bob motion-reduce:animate-none"
+                  style={
+                     {
+                        "--i": 1,
+                        animationDelay: "calc(var(--i) * 0.15s)",
+                     } as React.CSSProperties
+                  }
                >
                   <FaGithub className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>
@@ -43,6 +57,13 @@ export const Footer = ({ dict }: FooterProps) => {
                   rel="noopener noreferrer"
                   title="LinkedIn"
                   aria-label="LinkedIn"
+                  className="animate-bob motion-reduce:animate-none"
+                  style={
+                     {
+                        "--i": 2,
+                        animationDelay: "calc(var(--i) * 0.15s)",
+                     } as React.CSSProperties
+                  }
                >
                   <FaLinkedin className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>
@@ -52,6 +73,13 @@ export const Footer = ({ dict }: FooterProps) => {
                   rel="noopener noreferrer"
                   title="YouTube"
                   aria-label="YouTube"
+                  className="animate-bob motion-reduce:animate-none"
+                  style={
+                     {
+                        "--i": 3,
+                        animationDelay: "calc(var(--i) * 0.15s)",
+                     } as React.CSSProperties
+                  }
                >
                   <FaYoutube className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>
@@ -59,6 +87,13 @@ export const Footer = ({ dict }: FooterProps) => {
                   href={`mailto:${PROFESSIONAL_LINKS.email}`}
                   title="Email"
                   aria-label="Email"
+                  className="animate-bob motion-reduce:animate-none"
+                  style={
+                     {
+                        "--i": 4,
+                        animationDelay: "calc(var(--i) * 0.15s)",
+                     } as React.CSSProperties
+                  }
                >
                   <MdEmail className="size-5 text-body cursor-pointer hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                </a>

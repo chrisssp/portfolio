@@ -65,7 +65,7 @@ export const CTA = ({
             >
                <Button
                   variant="primary"
-                  className="w-full px-5! xs:px-8! bg-[#0A66C2] hover:bg-[#084a8c] border-[#0A66C2] text-primary-contrast"
+                  className="w-full px-5! xs:px-8! bg-[#0A66C2] hover:bg-[#084a8c] border-[#0A66C2] text-primary-contrast animate-glow motion-reduce:animate-none"
                   icon={<FaLinkedin className="size-5 text-primary-contrast" />}
                >
                   {dict.cta.actions.talk}
@@ -76,7 +76,8 @@ export const CTA = ({
                label={dict.hero.actions.email}
                menuLabels={dict.hero.actions.emailMenu}
                variant="outline"
-               align="left"
+               align="right"
+               direction="down"
                checkmarkClassName="text-primary"
                className="w-auto lg:w-full"
                buttonClassName="lg:w-full"

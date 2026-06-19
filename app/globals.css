@@ -70,6 +70,7 @@
    --animate-sway: sway 6s ease-in-out infinite;
    --animate-bounce-in: microBounce 0.4s ease-out 1;
    --animate-bob: bob 2s ease-in-out infinite;
+   --animate-bob-delay: calc(var(--i, 0) * 0.15s);
 }
 
 html {
