@@ -151,11 +151,8 @@ export const SmartEmailButton = ({
             />
          )}
 
-         {/* Button — always above backdrop */}
-         <div
-            className="relative"
-            style={{ zIndex: showEmailMenu && isTouchDevice ? 10 : "auto" }}
-         >
+         {/* Button */}
+         <div className="relative">
             <Button
                variant={variant}
                icon={
