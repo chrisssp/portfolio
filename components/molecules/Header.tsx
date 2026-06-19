@@ -188,7 +188,7 @@ export const Header = ({
                </div>
 
                <div className="flex items-center gap-2">
-                  <div className="hidden md:flex items-center">
+                  <div className="hidden md:flex items-center text-body/60">
                      <GitHubStats
                         githubStars={dict.nav.githubStars}
                         githubRepos={dict.nav.githubRepos}
@@ -295,13 +295,6 @@ export const Header = ({
                      ))}
                   </nav>
 
-                  <div className="flex items-center justify-between px-3 sm:px-4 py-3 rounded-xl sm:rounded-2xl border border-subtle bg-surface text-body/60 text-sm font-medium">
-                     <GitHubStats
-                        githubStars={dict.nav.githubStars}
-                        githubRepos={dict.nav.githubRepos}
-                     />
-                  </div>
-
                   <div className="flex flex-col gap-2 mt-4">
                      <button
                         type="button"
@@ -339,6 +332,12 @@ export const Header = ({
                            <MdDarkMode className="size-4 sm:size-5 opacity-50" />
                         )}
                      </button>
+                     <div className="flex items-center justify-between px-3 sm:px-4 py-2 text-body/40 text-xs font-medium">
+                        <GitHubStats
+                           githubStars={dict.nav.githubStars}
+                           githubRepos={dict.nav.githubRepos}
+                        />
+                     </div>
                   </div>
 
                   <div className="mt-auto py-6 sm:py-8 flex flex-col gap-4 sm:gap-6 items-center border-t border-subtle bg-page">

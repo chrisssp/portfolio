@@ -18,7 +18,7 @@ export const GitHubStats = ({ githubStars, githubRepos }: GitHubStatsProps) => {
    }
 
    return (
-      <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-body/60 font-medium md:px-3">
+      <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm font-medium md:px-3">
          <FaGithub className="size-3.5 md:size-4 shrink-0" />
          <span>
             {stars} {githubStars}
