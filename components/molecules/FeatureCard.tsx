@@ -52,14 +52,18 @@ export const FeatureCard = ({
                         const isInteractive = !!onTechClick;
                         const isSelected = selectedTechs?.includes(techId);
                         return (
-                           <Badge
+                           <div
                               key={techId}
-                              tech={tech}
-                              interactive={isInteractive}
-                              selected={isSelected}
-                              hasActiveFilter={!!selectedTechs?.length}
-                              onClick={() => onTechClick?.(techId)}
-                           />
+                              className="animate-bounce-in motion-reduce:animate-none"
+                           >
+                              <Badge
+                                 tech={tech}
+                                 interactive={isInteractive}
+                                 selected={isSelected}
+                                 hasActiveFilter={!!selectedTechs?.length}
+                                 onClick={() => onTechClick?.(techId)}
+                              />
+                           </div>
                         );
                      })}
                </div>
@@ -79,7 +83,7 @@ export const FeatureCard = ({
                src={imagePath}
                alt={title}
                fill
-               className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
+               className="object-cover group-hover:scale-[1.02] group-hover:animation-play-state-paused animate-idle-zoom motion-reduce:animate-none transition-transform duration-700"
                sizes="(max-width: 1024px) 100vw, 630px"
             />
          </div>

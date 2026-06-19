@@ -42,6 +42,8 @@ export const Header = ({
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
    const [visible, setVisible] = useState(true);
    const lastScrollY = useRef(0);
+   const navLinksRef = useRef<Map<string, HTMLAnchorElement>>(new Map());
+   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
 
    const pathname = usePathname();
    const router = useRouter();
@@ -72,6 +74,15 @@ export const Header = ({
 
       return () => io.disconnect();
    }, [showBack]);
+
+   // Update sliding indicator position when active section changes
+   useEffect(() => {
+      if (showBack || !activeSection) return;
+      const el = navLinksRef.current.get(activeSection);
+      if (el) {
+         setIndicatorStyle({ left: el.offsetLeft, width: el.offsetWidth });
+      }
+   }, [activeSection, showBack]);
 
    useEffect(() => {
       const handleScroll = () => {
@@ -159,14 +170,26 @@ export const Header = ({
 
                   {!showBack && (
                      <>
-                        <nav className="hidden md:flex bg-page border border-subtle items-center rounded-2xl p-1 shadow-sm">
+                        <nav className="hidden md:flex bg-page border border-subtle items-center rounded-2xl p-1 shadow-sm relative">
+                           {/* Sliding indicator */}
+                           <div
+                              className="absolute top-1 bottom-1 rounded-xl bg-surface/50 shadow-inner transition-all duration-300 ease-out motion-reduce:transition-none"
+                              style={{
+                                 left: indicatorStyle.left,
+                                 width: indicatorStyle.width,
+                              }}
+                           />
                            {navLinks.map((link) => (
                               <Link
                                  key={link.id}
+                                 ref={(el) => {
+                                    if (el)
+                                       navLinksRef.current.set(link.id, el);
+                                 }}
                                  href={`/${lang}#${link.id}`}
-                                 className={`px-4 lg:px-6 py-2.5 font-bold text-base leading-none transition-all duration-300 rounded-xl hover:bg-surface hover:text-primary hover:scale-[1.02] active:scale-95 flex items-center ${
+                                 className={`relative z-10 px-4 lg:px-6 py-2.5 font-bold text-base leading-none transition-all duration-300 rounded-xl hover:text-primary hover:scale-[1.02] active:scale-95 flex items-center ${
                                     activeSection === link.id
-                                       ? "text-primary bg-surface/50 shadow-inner"
+                                       ? "text-primary"
                                        : "text-body"
                                  }`}
                               >
