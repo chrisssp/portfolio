@@ -20,6 +20,7 @@ import { PROFESSIONAL_LINKS } from "@/config/links";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
 import { Button } from "../atoms/Button";
+import { GitHubStats } from "../atoms/GitHubStats";
 import { Typography } from "../atoms/Typography";
 
 type HeaderProps = {
@@ -186,37 +187,46 @@ export const Header = ({
                   )}
                </div>
 
-               <div className="bg-page border border-subtle flex items-center rounded-xl sm:rounded-2xl p-1 shadow-sm">
-                  <button
-                     type="button"
-                     onClick={toggleLanguage}
-                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary hover:bg-surface transition-all duration-300 rounded-lg sm:rounded-xl leading-none cursor-pointer hover:scale-[1.02] active:scale-95"
-                     aria-label={
-                        lang === "en" ? "Switch language" : "Cambiar idioma"
-                     }
-                  >
-                     <MdLanguage className="size-4 sm:size-5 shrink-0" />
-                     <span className="ml-2 text-sm sm:text-base font-bold uppercase leading-none">
-                        {lang === "en" ? "ES" : "EN"}
-                     </span>
-                  </button>
-                  <div className="w-px h-4 sm:h-6 bg-subtle mx-1" />
-                  <button
-                     type="button"
-                     onClick={() =>
-                        setTheme(resolvedTheme === "dark" ? "light" : "dark")
-                     }
-                     className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary hover:bg-surface transition-all duration-300 rounded-lg sm:rounded-xl leading-none cursor-pointer hover:scale-[1.02] active:scale-95"
-                     aria-label={
-                        resolvedTheme === "dark" ? "Light mode" : "Dark mode"
-                     }
-                  >
-                     {resolvedTheme === "dark" ? (
-                        <MdLightMode className="size-4 sm:size-5 shrink-0" />
-                     ) : (
-                        <MdDarkMode className="size-4 sm:size-5 shrink-0" />
-                     )}
-                  </button>
+               <div className="flex items-center gap-2">
+                  <div className="hidden md:flex items-center">
+                     <GitHubStats
+                        githubStars={dict.nav.githubStars}
+                        githubRepos={dict.nav.githubRepos}
+                     />
+                  </div>
+
+                  <div className="bg-page border border-subtle flex items-center rounded-xl sm:rounded-2xl p-1 shadow-sm">
+                     <button
+                        type="button"
+                        onClick={toggleLanguage}
+                        className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary hover:bg-surface transition-all duration-300 rounded-lg sm:rounded-xl leading-none cursor-pointer hover:scale-[1.02] active:scale-95"
+                        aria-label={
+                           lang === "en" ? "Switch language" : "Cambiar idioma"
+                        }
+                     >
+                        <MdLanguage className="size-4 sm:size-5 shrink-0" />
+                        <span className="ml-2 text-sm sm:text-base font-bold uppercase leading-none">
+                           {lang === "en" ? "ES" : "EN"}
+                        </span>
+                     </button>
+                     <div className="w-px h-4 sm:h-6 bg-subtle mx-1" />
+                     <button
+                        type="button"
+                        onClick={() =>
+                           setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                        }
+                        className="flex items-center justify-center px-3 sm:px-4 py-1 sm:py-2 text-body hover:text-primary hover:bg-surface transition-all duration-300 rounded-lg sm:rounded-xl leading-none cursor-pointer hover:scale-[1.02] active:scale-95"
+                        aria-label={
+                           resolvedTheme === "dark" ? "Light mode" : "Dark mode"
+                        }
+                     >
+                        {resolvedTheme === "dark" ? (
+                           <MdLightMode className="size-4 sm:size-5 shrink-0" />
+                        ) : (
+                           <MdDarkMode className="size-4 sm:size-5 shrink-0" />
+                        )}
+                     </button>
+                  </div>
                </div>
             </div>
          </header>
@@ -284,6 +294,13 @@ export const Header = ({
                         </Link>
                      ))}
                   </nav>
+
+                  <div className="flex items-center justify-between px-3 sm:px-4 py-3 rounded-xl sm:rounded-2xl border border-subtle bg-surface text-body/60 text-sm font-medium">
+                     <GitHubStats
+                        githubStars={dict.nav.githubStars}
+                        githubRepos={dict.nav.githubRepos}
+                     />
+                  </div>
 
                   <div className="flex flex-col gap-2 mt-4">
                      <button

@@ -159,6 +159,8 @@ export interface Dictionary {
       language: string;
       themeLight: string;
       themeDark: string;
+      githubStars: string;
+      githubRepos: string;
    };
 
    hero: {

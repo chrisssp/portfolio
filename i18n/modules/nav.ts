@@ -7,6 +7,8 @@ export const nav = {
       language: "Español",
       themeLight: "Light",
       themeDark: "Dark",
+      githubStars: "stars",
+      githubRepos: "repos",
    },
    es: {
       experience: "Experiencia",
@@ -16,5 +18,7 @@ export const nav = {
       language: "English",
       themeLight: "Claro",
       themeDark: "Oscuro",
+      githubStars: "estrellas",
+      githubRepos: "repos",
    },
 };
