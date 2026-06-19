@@ -21,8 +21,10 @@ export const Experience = ({ dict }: ExperienceProps) => {
          {/* Section header */}
          <AnimatedSection variant="fade-up" threshold={0.2}>
             <div className="flex gap-4 md:gap-6 items-center">
-               <MdWork className="size-8 text-body" />
-               <Typography variant="section">{dict.experience.title}</Typography>
+               <MdWork className="size-8 text-body animate-sway motion-reduce:animate-none" />
+               <Typography variant="section">
+                  {dict.experience.title}
+               </Typography>
             </div>
          </AnimatedSection>
 
@@ -38,6 +40,7 @@ export const Experience = ({ dict }: ExperienceProps) => {
                   <TimelineItem
                      item={item}
                      index={index}
+                     isFirst={index === 0}
                      isLast={index === dict.experience.items.length - 1}
                   />
                </AnimatedSection>

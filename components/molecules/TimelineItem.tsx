@@ -1,6 +1,7 @@
 "use client";
 
 import { MdApps, MdDescription, MdLocationOn, MdPublic } from "react-icons/md";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import type { ExperienceItem } from "@/i18n/types";
 import { Button } from "../atoms/Button";
 import { Tag } from "../atoms/Tag";
@@ -9,15 +10,21 @@ import { Typography } from "../atoms/Typography";
 interface TimelineItemProps {
    item: ExperienceItem;
    index: number;
+   isFirst?: boolean;
    isLast?: boolean;
 }
 
 export const TimelineItem = ({
    item,
    index,
+   isFirst = false,
    isLast = false,
 }: TimelineItemProps) => {
    const isEven = index % 2 === 0;
+   const [connectorRef, isConnectorVisible] = useScrollReveal({
+      threshold: 0.1,
+      rootMargin: "0px 0px -40px 0px",
+   });
 
    const handleProjectClick = () => {
       if (item.projectId) {
@@ -35,8 +42,18 @@ export const TimelineItem = ({
       <div className="flex w-full relative">
          {/* Center Line Dot */}
          <div className="absolute left-0 md:left-1/2 top-0 -translate-x-1/2 flex flex-col items-center h-full z-20">
-            <div className="size-3 xs:size-4 rounded-full border-2 border-primary bg-page shrink-0" />
-            {!isLast && <div className="w-0.5 h-full bg-subtle" />}
+            <div
+               ref={connectorRef}
+               className={`size-3 xs:size-4 rounded-full border-2 border-primary bg-page shrink-0 ${isFirst ? "animate-pulse-ring motion-reduce:animate-none" : ""}`}
+            />
+            {!isLast && (
+               <div className="w-0.5 h-full bg-subtle relative overflow-hidden">
+                  <div
+                     className={`absolute inset-0 bg-primary transition-all duration-600 ease-out motion-reduce:transition-none ${isConnectorVisible ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"}`}
+                     style={{ transformOrigin: "top" }}
+                  />
+               </div>
+            )}
          </div>
 
          {/* Content Container */}
