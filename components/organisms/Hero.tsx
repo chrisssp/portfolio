@@ -34,7 +34,12 @@ export const Hero = ({ dict }: HeroProps) => {
                   duration="duration-700"
                >
                   <div className="flex flex-col gap-2 md:gap-4">
-                     <Typography variant="hero">Christian Serrano</Typography>
+                     <Typography
+                        variant="hero"
+                        className="bg-gradient-to-r from-primary via-body to-primary bg-clip-text text-transparent animate-gradient-shift motion-reduce:animate-none"
+                     >
+                        Christian Serrano
+                     </Typography>
                      <Typography variant="hero-sub" className="text-primary">
                         {dict.hero.role}
                      </Typography>
@@ -136,7 +141,7 @@ export const Hero = ({ dict }: HeroProps) => {
             duration="duration-900"
             className="order-1 lg:order-2 shrink-0"
          >
-            <div className="relative size-70 sm:size-80 lg:size-90 rounded-full border-3 border-subtle overflow-hidden bg-page shadow-xl hover:scale-[1.02] transition-transform duration-500">
+            <div className="relative size-70 sm:size-80 lg:size-90 rounded-full border-3 border-subtle overflow-hidden bg-page shadow-xl hover:scale-[1.02] transition-transform duration-500 animate-float motion-reduce:animate-none">
                <Image
                   src={profileImg}
                   alt="Christian Serrano"
