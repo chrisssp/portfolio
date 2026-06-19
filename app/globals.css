@@ -26,6 +26,12 @@
 
       /* Color de rejilla más sutil para modo claro */
       --grid-line-color: rgba(23, 28, 40, 0.07);
+
+      /* Motion parameters */
+      --motion-float-distance: -8px;
+      --motion-bob-distance: -4px;
+      --motion-sway-angle: 3deg;
+      --motion-zoom-scale: 1.03;
    }
 
    .dark {
@@ -54,6 +60,16 @@
    /* Custom Breakpoints */
    --breakpoint-xs: 375px;
    --breakpoint-desktop: 1200px;
+
+   /* Animation Tokens */
+   --animate-float: float 4s ease-in-out infinite;
+   --animate-gradient-shift: gradientShift 8s linear infinite;
+   --animate-pulse-ring: pulseRing 2s ease-out infinite;
+   --animate-idle-zoom: idleZoom 20s linear infinite;
+   --animate-glow: glowPulse 3s ease-in-out infinite;
+   --animate-sway: sway 6s ease-in-out infinite;
+   --animate-bounce-in: microBounce 0.4s ease-out 1;
+   --animate-bob: bob 2s ease-in-out infinite;
 }
 
 html {
@@ -135,6 +151,146 @@ body {
 @layer utilities {
    .animate-page-enter {
       animation: page-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+   }
+}
+
+/* ─── Subtle Motion Keyframes ─────────────────────────────────────────────── */
+@keyframes float {
+   0%,
+   100% {
+      transform: translateY(0);
+   }
+   50% {
+      transform: translateY(var(--motion-float-distance));
+   }
+}
+
+@keyframes gradientShift {
+   0% {
+      background-position: 0% 50%;
+   }
+   100% {
+      background-position: 200% 50%;
+   }
+}
+
+@keyframes pulseRing {
+   0% {
+      box-shadow: 0 0 0 0 rgba(var(--brand-primary), 0.6);
+   }
+   100% {
+      box-shadow: 0 0 0 12px rgba(var(--brand-primary), 0);
+   }
+}
+
+@keyframes idleZoom {
+   0%,
+   100% {
+      transform: scale(1);
+   }
+   50% {
+      transform: scale(var(--motion-zoom-scale));
+   }
+}
+
+@keyframes glowPulse {
+   0%,
+   100% {
+      box-shadow: 0 0 8px rgba(var(--brand-primary), 0.3);
+   }
+   50% {
+      box-shadow: 0 0 16px rgba(var(--brand-primary), 0.5);
+   }
+}
+
+@keyframes sway {
+   0%,
+   100% {
+      transform: rotate(calc(-1 * var(--motion-sway-angle)));
+   }
+   50% {
+      transform: rotate(var(--motion-sway-angle));
+   }
+}
+
+@keyframes microBounce {
+   0% {
+      transform: scale(0.8);
+      opacity: 0;
+   }
+   60% {
+      transform: scale(1.05);
+   }
+   100% {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+
+@keyframes bob {
+   0%,
+   100% {
+      transform: translateY(0);
+   }
+   50% {
+      transform: translateY(var(--motion-bob-distance));
+   }
+}
+
+/* Reduced-motion overrides — !important required to override Tailwind @theme utility specificity */
+@media (prefers-reduced-motion: reduce) {
+   .animate-float,
+   .animate-gradient-shift,
+   .animate-pulse-ring,
+   .animate-idle-zoom,
+   .animate-glow,
+   .animate-sway,
+   .animate-bounce-in,
+   .animate-bob {
+      animation: none !important; /* biome-ignore lint/complexity/noImportantStyles: a11y reduced-motion override */
+   }
+
+   .animate-float {
+      transform: translateY(
+         0
+      ) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+   }
+
+   .animate-gradient-shift {
+      background-size: 100% 100% !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+   }
+
+   .animate-pulse-ring {
+      box-shadow: none !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+   }
+
+   .animate-idle-zoom {
+      transform: scale(
+         1
+      ) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+   }
+
+   .animate-glow {
+      box-shadow: 0 0 8px rgba(var(--brand-primary), 0.3) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+   }
+
+   .animate-sway {
+      transform: rotate(
+         0
+      ) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+   }
+
+   .animate-bounce-in {
+      opacity: 1 !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+      transform: scale(
+         1
+      ) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+   }
+
+   .animate-bob {
+      transform: translateY(
+         0
+      ) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
    }
 }
 
