@@ -50,11 +50,14 @@ export const Tooltip = ({
    useEffect(() => {
       if (isVisible && isTouchDevice) {
          originalOverflow.current = document.body.style.overflow;
+         document.documentElement.style.overflow = "hidden";
          document.body.style.overflow = "hidden";
       } else if (!isVisible) {
+         document.documentElement.style.overflow = "unset";
          document.body.style.overflow = originalOverflow.current || "unset";
       }
       return () => {
+         document.documentElement.style.overflow = "unset";
          document.body.style.overflow = originalOverflow.current || "unset";
       };
    }, [isVisible, isTouchDevice]);
