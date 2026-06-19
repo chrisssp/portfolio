@@ -32,8 +32,8 @@
       /* Color de rejilla más sutil para modo claro */
       --grid-line-color: rgba(23, 28, 40, 0.07);
 
-      /* Hero shimmer highlight (light mode: barely visible) */
-      --shimmer-highlight: rgba(255, 255, 255, 0.06);
+      /* Hero shimmer highlight (dark sweep — lighter than text body for subtle sheen) */
+      --shimmer-highlight: #3d4a65;
 
       /* Motion parameters */
       --motion-float-distance: -8px;
