@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { HIDDEN_TECHS } from "@/config/hidden-techs";
 import { TECHNOLOGIES } from "@/config/technologies";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Badge } from "../atoms/Badge";
 import { Typography } from "../atoms/Typography";
 
@@ -28,6 +31,10 @@ export const FeatureCard = ({
    selectedTechs,
    onTechClick,
 }: FeatureCardProps) => {
+   const [badgeRef, badgesVisible] = useScrollReveal<HTMLDivElement>({
+      threshold: 0.1,
+   });
+
    return (
       <div
          className={`flex flex-col lg:flex-row gap-8 lg:gap-16 items-start w-full ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"}`}
@@ -43,7 +50,7 @@ export const FeatureCard = ({
 
             <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
                {/* Badges */}
-               <div className="flex flex-wrap gap-2 md:gap-3">
+               <div ref={badgeRef} className="flex flex-wrap gap-2 md:gap-3">
                   {techStack
                      .filter((t) => !HIDDEN_TECHS.has(t))
                      .map((techId) => {
@@ -54,7 +61,7 @@ export const FeatureCard = ({
                         return (
                            <div
                               key={techId}
-                              className="animate-bounce-in motion-reduce:animate-none"
+                              className={`${badgesVisible ? "animate-bounce-in" : "opacity-0"} motion-reduce:animate-none motion-reduce:opacity-100`}
                            >
                               <Badge
                                  tech={tech}

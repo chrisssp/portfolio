@@ -173,9 +173,9 @@ export const Header = ({
                         <nav className="hidden md:flex bg-page border border-subtle items-center rounded-2xl p-1 shadow-sm relative">
                            {/* Sliding indicator */}
                            <div
-                              className="absolute top-1 bottom-1 rounded-xl bg-surface/50 shadow-inner transition-all duration-300 ease-out motion-reduce:transition-none"
+                              className="absolute top-1 bottom-1 rounded-xl bg-surface/50 shadow-inner transition-[transform] duration-300 ease-out motion-reduce:transition-none"
                               style={{
-                                 left: indicatorStyle.left,
+                                 transform: `translateX(${indicatorStyle.left}px)`,
                                  width: indicatorStyle.width,
                               }}
                            />

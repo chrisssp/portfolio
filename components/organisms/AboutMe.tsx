@@ -94,7 +94,10 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                >
                   <div
                      className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer animate-float motion-reduce:animate-none"
-                     style={{ animationDuration: "3s" }}
+                     style={{
+                        animationDuration: "3s",
+                        "--motion-float-distance": "-6px" as string,
+                     }}
                   >
                      <Image
                         src={img1}
@@ -115,7 +118,10 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                >
                   <div
                      className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer animate-float motion-reduce:animate-none"
-                     style={{ animationDuration: "5s" }}
+                     style={{
+                        animationDuration: "5s",
+                        "--motion-float-distance": "-10px" as string,
+                     }}
                   >
                      <Image
                         src={img2}
