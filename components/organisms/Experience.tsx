@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { MdWork } from "react-icons/md";
 import type { Dictionary } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
@@ -12,6 +13,34 @@ interface ExperienceProps {
 }
 
 export const Experience = ({ dict }: ExperienceProps) => {
+   const [activeIndex, setActiveIndex] = useState(0);
+   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+   useEffect(() => {
+      const observers: IntersectionObserver[] = [];
+      const items = dict.experience.items;
+
+      for (let i = 0; i < items.length; i++) {
+         const el = itemRefs.current[i];
+         if (!el) continue;
+
+         const observer = new IntersectionObserver(
+            ([entry]) => {
+               if (entry.isIntersecting) {
+                  setActiveIndex(i);
+               }
+            },
+            { rootMargin: "-100px 0px -55% 0px", threshold: 0 },
+         );
+         observer.observe(el);
+         observers.push(observer);
+      }
+
+      return () => {
+         for (const obs of observers) obs.disconnect();
+      };
+   }, [dict.experience.items]);
+
    return (
       <SectionContainer
          id="experience"
@@ -21,7 +50,7 @@ export const Experience = ({ dict }: ExperienceProps) => {
          {/* Section header */}
          <AnimatedSection variant="fade-up" threshold={0.2}>
             <div className="flex gap-4 md:gap-6 items-center">
-               <MdWork className="size-8 text-body animate-sway motion-reduce:animate-none" />
+               <MdWork className="size-8 text-body" />
                <Typography variant="section">
                   {dict.experience.title}
                </Typography>
@@ -37,12 +66,18 @@ export const Experience = ({ dict }: ExperienceProps) => {
                   delay={index * 80}
                   threshold={0.05}
                >
-                  <TimelineItem
-                     item={item}
-                     index={index}
-                     isFirst={index === 0}
-                     isLast={index === dict.experience.items.length - 1}
-                  />
+                  <div
+                     ref={(el) => {
+                        itemRefs.current[index] = el;
+                     }}
+                  >
+                     <TimelineItem
+                        item={item}
+                        index={index}
+                        isActive={activeIndex === index}
+                        isLast={index === dict.experience.items.length - 1}
+                     />
+                  </div>
                </AnimatedSection>
             ))}
          </div>

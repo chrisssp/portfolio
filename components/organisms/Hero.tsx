@@ -36,7 +36,7 @@ export const Hero = ({ dict }: HeroProps) => {
                   <div className="flex flex-col gap-2 md:gap-4">
                      <Typography
                         variant="hero"
-                        className="bg-gradient-to-r from-primary via-body to-primary bg-clip-text text-transparent animate-gradient-shift motion-reduce:animate-none"
+                        className="hero-shimmer animate-shimmer motion-reduce:bg-none motion-reduce:text-body"
                      >
                         Christian Serrano
                      </Typography>

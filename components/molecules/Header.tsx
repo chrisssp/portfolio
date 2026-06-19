@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { useEffect, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
 import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import {
    MdArrowBack,
@@ -372,6 +372,13 @@ export const Header = ({
                            rel="noopener noreferrer"
                            title="CV"
                            aria-label={dict.hero.actions.cv}
+                           className="animate-bob motion-reduce:animate-none"
+                           style={
+                              {
+                                 "--i": 0,
+                                 animationDelay: "calc(var(--i) * 0.06s)",
+                              } as CSSProperties
+                           }
                         >
                            <MdDescription className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>
@@ -381,6 +388,13 @@ export const Header = ({
                            rel="noopener noreferrer"
                            title="GitHub"
                            aria-label="GitHub"
+                           className="animate-bob motion-reduce:animate-none"
+                           style={
+                              {
+                                 "--i": 1,
+                                 animationDelay: "calc(var(--i) * 0.06s)",
+                              } as CSSProperties
+                           }
                         >
                            <FaGithub className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>
@@ -390,6 +404,13 @@ export const Header = ({
                            rel="noopener noreferrer"
                            title="LinkedIn"
                            aria-label="LinkedIn"
+                           className="animate-bob motion-reduce:animate-none"
+                           style={
+                              {
+                                 "--i": 2,
+                                 animationDelay: "calc(var(--i) * 0.06s)",
+                              } as CSSProperties
+                           }
                         >
                            <FaLinkedin className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>
@@ -399,6 +420,13 @@ export const Header = ({
                            rel="noopener noreferrer"
                            title="YouTube"
                            aria-label="YouTube"
+                           className="animate-bob motion-reduce:animate-none"
+                           style={
+                              {
+                                 "--i": 3,
+                                 animationDelay: "calc(var(--i) * 0.06s)",
+                              } as CSSProperties
+                           }
                         >
                            <FaYoutube className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>
@@ -406,6 +434,13 @@ export const Header = ({
                            href={`mailto:${PROFESSIONAL_LINKS.email}`}
                            title="Email"
                            aria-label="Email"
+                           className="animate-bob motion-reduce:animate-none"
+                           style={
+                              {
+                                 "--i": 4,
+                                 animationDelay: "calc(var(--i) * 0.06s)",
+                              } as CSSProperties
+                           }
                         >
                            <MdEmail className="size-5 sm:size-6 text-body hover:text-primary transition-all duration-300 hover:scale-110 active:scale-90" />
                         </a>

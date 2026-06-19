@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
    :root {
       /* --- Primitives --- */
@@ -22,16 +24,22 @@
       --text-body: var(--color-slate-900);
       --border-subtle: var(--color-slate-200);
       --brand-primary: #026fac;
+      --brand-primary-r: 2;
+      --brand-primary-g: 111;
+      --brand-primary-b: 172;
       --contrast-primary: var(--color-white-off);
 
       /* Color de rejilla más sutil para modo claro */
       --grid-line-color: rgba(23, 28, 40, 0.07);
 
+      /* Hero shimmer highlight (light mode: barely visible) */
+      --shimmer-highlight: rgba(255, 255, 255, 0.06);
+
       /* Motion parameters */
       --motion-float-distance: -8px;
-      --motion-bob-distance: -4px;
-      --motion-sway-angle: 3deg;
-      --motion-zoom-scale: 1.03;
+      --motion-bob-distance: -2px;
+      --motion-sway-angle: 6deg;
+      --motion-zoom-scale: 1.08;
    }
 
    .dark {
@@ -40,10 +48,16 @@
       --text-body: var(--color-white-off);
       --border-subtle: var(--color-slate-700);
       --brand-primary: #52d1ff; /* Brighter cyan for dark mode accessibility */
+      --brand-primary-r: 82;
+      --brand-primary-g: 209;
+      --brand-primary-b: 255;
       --contrast-primary: var(--color-slate-900);
 
       /* Color de rejilla sutil para modo oscuro */
       --grid-line-color: rgba(245, 247, 250, 0.05);
+
+      /* Hero shimmer highlight (dark mode: visible sweep) */
+      --shimmer-highlight: rgba(255, 255, 255, 0.65);
    }
 }
 
@@ -63,11 +77,10 @@
 
    /* Animation Tokens */
    --animate-float: float 4s ease-in-out infinite;
-   --animate-gradient-shift: gradientShift 8s linear infinite;
+   --animate-shimmer: shimmer 4s ease-in-out infinite;
    --animate-pulse-ring: pulseRing 2s ease-out infinite;
-   --animate-idle-zoom: idleZoom 20s linear infinite;
-   --animate-glow: glowPulse 3s ease-in-out infinite;
-   --animate-sway: sway 6s ease-in-out infinite;
+   --animate-idle-zoom: idleZoom 12s ease-in-out infinite;
+   --animate-glow: glowPulse 2.5s ease-in-out infinite;
    --animate-bounce-in: microBounce 0.4s ease-out 1;
    --animate-bob: bob 2s ease-in-out infinite;
    --animate-bob-delay: calc(var(--i, 0) * 0.15s);
@@ -166,21 +179,46 @@ body {
    }
 }
 
-@keyframes gradientShift {
+@keyframes shimmer {
    0% {
-      background-position: 0% 50%;
-   }
-   100% {
       background-position: 200% 50%;
    }
+   100% {
+      background-position: -200% 50%;
+   }
+}
+
+/* Hero name shimmer — uses --shimmer-highlight variable for theme-adaptive color */
+.hero-shimmer {
+   background-image: linear-gradient(
+      110deg,
+      var(--text-body) 30%,
+      var(--shimmer-highlight) 50%,
+      var(--text-body) 70%
+   );
+   background-size: 200% 100%;
+   background-clip: text;
+   color: transparent !important; /* biome-ignore lint/complexity/noImportantStyles: hero shimmer requires transparent text */
 }
 
 @keyframes pulseRing {
    0% {
-      box-shadow: 0 0 0 0 rgba(var(--brand-primary), 0.6);
+      box-shadow: 0 0 0 0
+         rgba(
+            var(--brand-primary-r),
+            var(--brand-primary-g),
+            var(--brand-primary-b),
+            0.6
+         );
    }
    100% {
-      box-shadow: 0 0 0 12px rgba(var(--brand-primary), 0);
+      box-shadow: 0 0 0 12px
+         rgba(
+            var(--brand-primary-r),
+            var(--brand-primary-g),
+            var(--brand-primary-b),
+            0
+         );
    }
 }
 
@@ -197,20 +235,22 @@ body {
 @keyframes glowPulse {
    0%,
    100% {
-      box-shadow: 0 0 8px rgba(var(--brand-primary), 0.3);
+      box-shadow: 0 0 2px
+         rgba(
+            var(--brand-primary-r),
+            var(--brand-primary-g),
+            var(--brand-primary-b),
+            0.15
+         );
    }
    50% {
-      box-shadow: 0 0 16px rgba(var(--brand-primary), 0.5);
-   }
-}
-
-@keyframes sway {
-   0%,
-   100% {
-      transform: rotate(calc(-1 * var(--motion-sway-angle)));
-   }
-   50% {
-      transform: rotate(var(--motion-sway-angle));
+      box-shadow: 0 0 16px
+         rgba(
+            var(--brand-primary-r),
+            var(--brand-primary-g),
+            var(--brand-primary-b),
+            0.4
+         );
    }
 }
 
@@ -241,11 +281,11 @@ body {
 /* Reduced-motion overrides — !important required to override Tailwind @theme utility specificity */
 @media (prefers-reduced-motion: reduce) {
    .animate-float,
-   .animate-gradient-shift,
+   .animate-shimmer,
+   .hero-shimmer,
    .animate-pulse-ring,
    .animate-idle-zoom,
    .animate-glow,
-   .animate-sway,
    .animate-bounce-in,
    .animate-bob {
       animation: none !important; /* biome-ignore lint/complexity/noImportantStyles: a11y reduced-motion override */
@@ -257,8 +297,12 @@ body {
       ) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
    }
 
-   .animate-gradient-shift {
-      background-size: 100% 100% !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+   .animate-shimmer,
+   .hero-shimmer {
+      background-image: none !important;
+      color: var(
+         --text-body
+      ) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
    }
 
    .animate-pulse-ring {
@@ -272,13 +316,13 @@ body {
    }
 
    .animate-glow {
-      box-shadow: 0 0 8px rgba(var(--brand-primary), 0.3) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
-   }
-
-   .animate-sway {
-      transform: rotate(
-         0
-      ) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+      box-shadow: 0 0 2px
+         rgba(
+            var(--brand-primary-r),
+            var(--brand-primary-g),
+            var(--brand-primary-b),
+            0.15
+         ) !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
    }
 
    .animate-bounce-in {

@@ -10,14 +10,14 @@ import { Typography } from "../atoms/Typography";
 interface TimelineItemProps {
    item: ExperienceItem;
    index: number;
-   isFirst?: boolean;
+   isActive?: boolean;
    isLast?: boolean;
 }
 
 export const TimelineItem = ({
    item,
    index,
-   isFirst = false,
+   isActive = false,
    isLast = false,
 }: TimelineItemProps) => {
    const isEven = index % 2 === 0;
@@ -44,13 +44,24 @@ export const TimelineItem = ({
          <div className="absolute left-0 md:left-1/2 top-0 -translate-x-1/2 flex flex-col items-center h-full z-20">
             <div
                ref={connectorRef}
-               className={`size-3 xs:size-4 rounded-full border-2 border-primary bg-page shrink-0 ${isFirst ? "animate-pulse-ring motion-reduce:animate-none" : ""}`}
+               className={`size-3 xs:size-4 rounded-full border-2 border-primary bg-page shrink-0 transition-all duration-300 motion-reduce:transition-none ${
+                  isActive
+                     ? "animate-pulse-ring motion-reduce:animate-none"
+                     : ""
+               }`}
             />
             {!isLast && (
                <div className="w-0.5 h-full bg-subtle relative overflow-hidden">
                   <div
-                     className={`absolute inset-0 bg-primary transition-all duration-600 ease-out motion-reduce:transition-none ${isConnectorVisible ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"}`}
-                     style={{ transformOrigin: "top" }}
+                     className={`absolute inset-0 transition-[transform,opacity,background-color] duration-600 ease-out motion-reduce:transition-none ${
+                        isConnectorVisible ? "opacity-100" : "opacity-0"
+                     } ${isActive ? "bg-primary" : "bg-subtle"}`}
+                     style={{
+                        transform: isConnectorVisible
+                           ? "scaleY(1)"
+                           : "scaleY(0)",
+                        transformOrigin: "top",
+                     }}
                   />
                </div>
             )}

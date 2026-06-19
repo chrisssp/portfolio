@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type React from "react";
 import { MdPerson } from "react-icons/md";
 import type { Dictionary } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
@@ -94,10 +95,12 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                >
                   <div
                      className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer animate-float motion-reduce:animate-none"
-                     style={{
-                        animationDuration: "3s",
-                        "--motion-float-distance": "-6px" as string,
-                     }}
+                     style={
+                        {
+                           animationDuration: "3s",
+                           "--motion-float-distance": "-6px",
+                        } as React.CSSProperties
+                     }
                   >
                      <Image
                         src={img1}
@@ -118,10 +121,12 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                >
                   <div
                      className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer animate-float motion-reduce:animate-none"
-                     style={{
-                        animationDuration: "5s",
-                        "--motion-float-distance": "-10px" as string,
-                     }}
+                     style={
+                        {
+                           animationDuration: "5s",
+                           "--motion-float-distance": "-10px",
+                        } as React.CSSProperties
+                     }
                   >
                      <Image
                         src={img2}
