@@ -44,3 +44,6 @@ next-env.d.ts
 
 # Cover letter PDFs (generated on demand)
 public/assets/docs/cover-letters/**/*.pdf
+
+# Chat content JSON (generated at build time)
+public/portfolio-content.json
