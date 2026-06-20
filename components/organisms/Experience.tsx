@@ -67,6 +67,7 @@ export const Experience = ({ dict }: ExperienceProps) => {
                   threshold={0.05}
                >
                   <div
+                     id={item.projectId ? `exp-${item.projectId}` : undefined}
                      ref={(el) => {
                         itemRefs.current[index] = el;
                      }}

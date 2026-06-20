@@ -22,6 +22,7 @@ type Props = {
    message: ChatMessage;
    isStreaming?: boolean;
    locale: Locale;
+   onClose?: () => void;
 };
 
 // --- Constants ---
@@ -259,11 +260,24 @@ function EcosystemButton({
    );
 }
 
-function ExperienceButton({ projectId }: { projectId: string }) {
+function ExperienceButton({
+   projectId,
+   onClose,
+}: {
+   projectId: string;
+   onClose?: () => void;
+}) {
    const handleClick = () => {
       if (typeof window === "undefined") return;
-      const el = document.getElementById("experience");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      const el = document.getElementById(`exp-${projectId}`);
+      if (el) {
+         el.scrollIntoView({ behavior: "smooth" });
+      } else {
+         // Fallback to the section container
+         const section = document.getElementById("experience");
+         section?.scrollIntoView({ behavior: "smooth" });
+      }
+      onClose?.();
    };
 
    const label = displayName(projectId);

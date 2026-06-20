@@ -725,6 +725,60 @@ function matchContent(query: string, locale: string): ContentChunk[] {
       }
    }
 
+   // Experience section: portfolio-content.json has no "experience" chunks, so
+   // section matching above won't find anything. If any keyword activated the
+   // "experience" section, inject all experience items as context chunks.
+   let experienceTriggered = false;
+   for (const [keyword, section] of Object.entries(sectionMap)) {
+      if (section === "experience" && lower.includes(keyword)) {
+         experienceTriggered = true;
+         break;
+      }
+   }
+   if (experienceTriggered) {
+      const expItems =
+         locale === "en" ? experience.en.items : experience.es.items;
+      for (const exp of expItems) {
+         const chunkId = `exp-${exp.projectId}-${locale}`;
+         if (!seen.has(chunkId)) {
+            matched.push({
+               id: chunkId,
+               section: "experience",
+               locale,
+               title: `${exp.role} at ${exp.company}`,
+               description: exp.description,
+               company: exp.company,
+               role: exp.role,
+               date: exp.date,
+               location: exp.location,
+               remote: exp.remote,
+               tags: exp.tags,
+               projectId: exp.projectId,
+            });
+            seen.add(chunkId);
+         }
+         // Also include the related project detail
+         const detail = PROJECT_DETAILS[exp.projectId];
+         if (detail && !seen.has(`project-${detail.id}-${locale}`)) {
+            const projId = `proj-detail-${detail.id}-${locale}`;
+            matched.push({
+               id: projId,
+               section: "project",
+               locale,
+               title:
+                  locale === "en" ? detail.displayName : detail.displayNameEs,
+               description: "",
+               fullDescription: `Links: ${detail.links.length > 0 ? detail.links.map((l) => `${l.type}:${l.url}`).join(", ") : "N/A"}`,
+               techStack: detail.techStack,
+               challenge: detail.challenge,
+               certificates: detail.certificates,
+               links: detail.links,
+            });
+            seen.add(projId);
+         }
+      }
+   }
+
    // Fallback: return general summary if no matches
    if (matched.length === 0) {
       for (const chunk of localeChunks) {
