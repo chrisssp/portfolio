@@ -947,6 +947,8 @@ ${socialBlock}
 ## Response Format
 Keep responses concise (2-4 sentences max). Use markdown for emphasis (**bold**, *italic*).
 
+**Use the Portfolio Context data.** When asked about a project's structure, parts, or division, look for the "Ecosystem" items in the context — they describe each component of the project. The context is your source of truth; read it carefully before answering.
+
 ${langInstruction}
 
 ## Portfolio Context
