@@ -102,7 +102,7 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
             });
       }
 
-      setShowTooltip(true);
+      if (isNarrow) setShowTooltip(true);
    };
 
    const buttonStyle = isPlaying
