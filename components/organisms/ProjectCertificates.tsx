@@ -19,6 +19,7 @@ export const ProjectCertificates = ({
 
    return (
       <SectionContainer
+         id="certificates"
          className="bg-surface"
          innerClassName="flex flex-col gap-12 md:gap-16"
       >

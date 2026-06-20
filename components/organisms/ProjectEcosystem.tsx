@@ -14,6 +14,15 @@ import { SectionContainer } from "../atoms/SectionContainer";
 import { Typography } from "../atoms/Typography";
 import { FeatureCard } from "../molecules/FeatureCard";
 
+function slugify(text: string): string {
+   return text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .trim();
+}
+
 interface ProjectEcosystemProps {
    project: Dictionary["projects"]["items"][0];
    labels: Dictionary["projects"]["sections"];
@@ -49,6 +58,7 @@ export const ProjectEcosystem = ({
 
    return (
       <SectionContainer
+         id="ecosystem"
          className={bg ?? "bg-surface"}
          innerClassName="flex flex-col gap-16"
       >
@@ -100,6 +110,7 @@ export const ProjectEcosystem = ({
 
                return (
                   <AnimatedSection
+                     id={`ecosystem-${slugify(item.title)}`}
                      key={item.title}
                      variant="fade-up"
                      delay={index * 80}
