@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { google } from "@ai-sdk/google";
 import { groq } from "@ai-sdk/groq";
-import { type StreamTextResult, streamText } from "ai";
+import { generateText, streamText } from "ai";
 import { type NextRequest, NextResponse } from "next/server";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import { experience } from "@/i18n/modules/experience";
@@ -842,6 +842,41 @@ ${langInstruction}
 ${contextText || "No specific context available. Answer based on general portfolio knowledge."}`;
 }
 
+// --- Groq Availability Check (cached per session) ---
+// We test Groq with a minimal request before streaming so we never
+// send the client a broken stream — always a hard provider decision first.
+
+let groqAvailablePromise: Promise<boolean> | null = null;
+
+async function checkGroqAvailable(): Promise<boolean> {
+   if (groqAvailablePromise) return groqAvailablePromise;
+
+   groqAvailablePromise = (async () => {
+      try {
+         await generateText({
+            model: groq("openai/gpt-oss-120b"),
+            prompt: "ok",
+         });
+         return true;
+      } catch {
+         return false;
+      }
+   })();
+
+   return groqAvailablePromise;
+}
+
+// --- Shared streaming helper ---
+
+function buildMessages(
+   messages: Array<{ role: "user" | "assistant"; content: string }>,
+) {
+   return messages.map((m) => ({
+      role: m.role as "user" | "assistant",
+      content: m.content,
+   }));
+}
+
 // --- POST Handler ---
 
 export async function POST(request: NextRequest) {
@@ -899,53 +934,45 @@ export async function POST(request: NextRequest) {
       // Build system prompt
       const systemPrompt = buildSystemPrompt(locale, contextChunks);
 
-      // Stream response — Groq primary, Gemini fallback
-      let result: StreamTextResult<{}, never>;
-      try {
-         result = streamText({
-            model: groq("openai/gpt-oss-120b"),
-            system: systemPrompt,
-            messages: messages.map((m) => ({
-               role: m.role as "user" | "assistant",
-               content: m.content,
-            })),
-         });
-      } catch (groqError) {
-         console.warn(
-            "[chat-api] Groq failed, falling back to Gemini:",
-            groqError,
-         );
-         result = streamText({
-            model: google("gemini-2.0-flash"),
-            system: systemPrompt,
-            messages: messages.map((m) => ({
-               role: m.role as "user" | "assistant",
-               content: m.content,
-            })),
-            providerOptions: {
-               google: {
-                  safetySettings: [
-                     {
-                        category: "HARM_CATEGORY_HATE_SPEECH",
-                        threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                     },
-                     {
-                        category: "HARM_CATEGORY_HARASSMENT",
-                        threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                     },
-                     {
-                        category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                        threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                     },
-                     {
-                        category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-                        threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                     },
-                  ],
-               },
-            },
-         });
-      }
+      // Stream response — probe Groq first, then commit
+      const useGroq = await checkGroqAvailable();
+      const provider = useGroq ? "groq" : "gemini";
+      console.info("[chat-api] Using provider:", provider);
+
+      const result =
+         provider === "groq"
+            ? streamText({
+                 model: groq("openai/gpt-oss-120b"),
+                 system: systemPrompt,
+                 messages: buildMessages(messages),
+              })
+            : streamText({
+                 model: google("gemini-2.0-flash"),
+                 system: systemPrompt,
+                 messages: buildMessages(messages),
+                 providerOptions: {
+                    google: {
+                       safetySettings: [
+                          {
+                             category: "HARM_CATEGORY_HATE_SPEECH",
+                             threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                          },
+                          {
+                             category: "HARM_CATEGORY_HARASSMENT",
+                             threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                          },
+                          {
+                             category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                             threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                          },
+                          {
+                             category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+                             threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                          },
+                       ],
+                    },
+                 },
+              });
 
       return result.toTextStreamResponse();
    } catch (error) {
