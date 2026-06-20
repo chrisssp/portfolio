@@ -151,7 +151,7 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
             <div
                className={`${
                   isNarrow
-                     ? "fixed left-6 right-6 z-[60]"
+                     ? "fixed left-6 right-6 z-[62]"
                      : "absolute left-full ml-3"
                } top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-surface text-body text-xs font-medium border border-subtle shadow-lg text-left transition-all duration-300 ${
                   showTooltip
