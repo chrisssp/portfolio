@@ -454,11 +454,14 @@ function parseAssistantContent(
 
    const textNodes: ReactNode[] = [];
    const actionNodes: ReactNode[] = [];
+   const seenActions = new Set<string>();
    let textIdx = 0;
    let actionIdx = 0;
 
    for (const segment of segments) {
       if (segment.startsWith("[PROJECT:")) {
+         if (seenActions.has(segment)) continue;
+         seenActions.add(segment);
          actionNodes.push(
             <ProjectButton
                key={`act-${actionIdx++}`}
@@ -466,6 +469,8 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[CODE:")) {
+         if (seenActions.has(segment)) continue;
+         seenActions.add(segment);
          actionNodes.push(
             <CodeButton
                key={`act-${actionIdx++}`}
@@ -473,6 +478,8 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[LANDING:")) {
+         if (seenActions.has(segment)) continue;
+         seenActions.add(segment);
          actionNodes.push(
             <LandingButton
                key={`act-${actionIdx++}`}
@@ -480,6 +487,8 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[DEMO:")) {
+         if (seenActions.has(segment)) continue;
+         seenActions.add(segment);
          actionNodes.push(
             <DemoButton
                key={`act-${actionIdx++}`}
@@ -487,6 +496,8 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[ARTICLE:")) {
+         if (seenActions.has(segment)) continue;
+         seenActions.add(segment);
          actionNodes.push(
             <ArticleButton
                key={`act-${actionIdx++}`}
@@ -494,6 +505,8 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[CERT:")) {
+         if (seenActions.has(segment)) continue;
+         seenActions.add(segment);
          actionNodes.push(
             <CertificateButton
                key={`act-${actionIdx++}`}
@@ -502,6 +515,8 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[ECOSYSTEM:")) {
+         if (seenActions.has(segment)) continue;
+         seenActions.add(segment);
          const inner = segment.slice(11, -1); // "slug:item name"
          const colonIdx = inner.indexOf(":");
          if (colonIdx > 0) {
@@ -517,6 +532,8 @@ function parseAssistantContent(
             );
          }
       } else if (segment.startsWith("[EXPERIENCE:")) {
+         if (seenActions.has(segment)) continue;
+         seenActions.add(segment);
          actionNodes.push(
             <ExperienceButton
                key={`act-${actionIdx++}`}
@@ -525,14 +542,24 @@ function parseAssistantContent(
             />,
          );
       } else if (segment === "[EMAIL]") {
+         if (seenActions.has("[EMAIL]")) continue;
+         seenActions.add("[EMAIL]");
          actionNodes.push(<EmailButton key={`act-${actionIdx++}`} />);
       } else if (segment === "[GITHUB]") {
+         if (seenActions.has("[GITHUB]")) continue;
+         seenActions.add("[GITHUB]");
          actionNodes.push(<GitHubButton key={`act-${actionIdx++}`} />);
       } else if (segment === "[LINKEDIN]") {
+         if (seenActions.has("[LINKEDIN]")) continue;
+         seenActions.add("[LINKEDIN]");
          actionNodes.push(<LinkedInButton key={`act-${actionIdx++}`} />);
       } else if (segment === "[CV]") {
+         if (seenActions.has("[CV]")) continue;
+         seenActions.add("[CV]");
          actionNodes.push(<CVButton key={`act-${actionIdx++}`} />);
       } else if (segment === "[ABOUT]") {
+         if (seenActions.has("[ABOUT]")) continue;
+         seenActions.add("[ABOUT]");
          actionNodes.push(<AboutButton key={`act-${actionIdx++}`} />);
       } else if (segment) {
          textNodes.push(
