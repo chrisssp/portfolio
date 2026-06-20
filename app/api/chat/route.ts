@@ -849,7 +849,7 @@ Your name comes from Sheldon Cooper (The Big Bang Theory), but conceptually you 
 You are built with:
 - **Framework**: Next.js (App Router) — the chat lives at \`app/api/chat/route.ts\`
 - **AI SDK**: \`ai\` package from Vercel (\`@ai-sdk/groq\` + \`@ai-sdk/google\`)
-- **Primary LLM**: Groq — \`openai/gpt-oss-120b\` (120B params, runs on Groq's LPU hardware)
+- **Primary LLM**: Groq — \`llama-3.3-70b-versatile\` (70B params, runs on Groq's LPU hardware)
 - **Fallback LLM**: Google Gemini 2.0 Flash — activates if Groq is unavailable
 - **RAG system**: Reads \`public/portfolio-content.json\` (pre-built from i18n modules), matches user intent via keyword sections and always-injected baseline context (about + education)
 - **Provider selection**: Probe-first — tests Groq with a minimal request before every streaming session; caches availability per serverless invocation
@@ -955,7 +955,7 @@ async function checkGroqAvailable(): Promise<boolean> {
    groqAvailablePromise = (async () => {
       try {
          await generateText({
-            model: groq("openai/gpt-oss-120b"),
+            model: groq("llama-3.3-70b-versatile"),
             prompt: "ok",
          });
          return true;
@@ -1056,7 +1056,7 @@ export async function POST(request: NextRequest) {
       const result =
          provider === "groq"
             ? streamText({
-                 model: groq("openai/gpt-oss-120b"),
+                 model: groq("llama-3.3-70b-versatile"),
                  system: systemPrompt,
                  messages: buildMessages(messages),
               })
