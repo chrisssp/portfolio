@@ -6,6 +6,7 @@ import { GridMouseTracker } from "@/components/atoms/GridMouseTracker";
 import { MusicPlayer } from "@/components/atoms/MusicPlayer";
 import { ScrollProgress } from "@/components/atoms/ScrollProgress";
 import { ScrollToTop } from "@/components/atoms/ScrollToTop";
+import { ChatWidgetWrapper } from "@/components/organisms/ChatWidget/ChatWidgetWrapper";
 import { ThemeProvider } from "@/components/ThemeContext";
 import type { Locale } from "@/i18n/config";
 import "./../globals.css";
@@ -90,6 +91,7 @@ export default async function RootLayout({ children, params }: Props) {
                <GridMouseTracker />
                <MusicPlayer locale={locale} />
                <ScrollToTop />
+               <ChatWidgetWrapper locale={locale} />
                <Analytics />
                <SpeedInsights />
             </ThemeProvider>
