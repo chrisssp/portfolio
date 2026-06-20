@@ -291,6 +291,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
             isLoading={isLoading}
             streamingContent={streamingContent}
             locale={locale}
+            onClose={onClose}
          />
 
          {/* Terminated overlay */}

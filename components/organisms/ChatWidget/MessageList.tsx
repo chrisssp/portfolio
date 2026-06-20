@@ -11,6 +11,7 @@ type Props = {
    isLoading: boolean;
    streamingContent?: string;
    locale: Locale;
+   onClose?: () => void;
 };
 
 export function MessageList({
@@ -18,6 +19,7 @@ export function MessageList({
    isLoading,
    streamingContent,
    locale,
+   onClose,
 }: Props) {
    const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -37,6 +39,7 @@ export function MessageList({
                key={`${msg.role}-${msg.timestamp}`}
                message={msg}
                locale={locale}
+               onClose={onClose}
             />
          ))}
 
@@ -50,6 +53,7 @@ export function MessageList({
                }}
                isStreaming
                locale={locale}
+               onClose={onClose}
             />
          )}
 

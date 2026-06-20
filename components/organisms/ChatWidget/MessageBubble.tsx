@@ -443,7 +443,11 @@ type ParsedContent = {
    actionNodes: ReactNode[];
 };
 
-function parseAssistantContent(text: string, locale: Locale): ParsedContent {
+function parseAssistantContent(
+   text: string,
+   locale: Locale,
+   onClose?: () => void,
+): ParsedContent {
    const segments = text.split(
       /(\[PROJECT:[^\]]+\]|\[CODE:[^\]]+\]|\[LANDING:[^\]]+\]|\[DEMO:[^\]]+\]|\[ARTICLE:[^\]]+\]|\[CERT:[^\]]+\]|\[ECOSYSTEM:[^\]]+\]|\[EXPERIENCE:[^\]]+\]|\[EMAIL\]|\[GITHUB\]|\[LINKEDIN\]|\[CV\]|\[ABOUT\])/,
    );
@@ -517,6 +521,7 @@ function parseAssistantContent(text: string, locale: Locale): ParsedContent {
             <ExperienceButton
                key={`act-${actionIdx++}`}
                projectId={segment.slice(12, -1)}
+               onClose={onClose}
             />,
          );
       } else if (segment === "[EMAIL]") {
@@ -543,15 +548,20 @@ function parseAssistantContent(text: string, locale: Locale): ParsedContent {
 
 // --- Component ---
 
-export function MessageBubble({ message, isStreaming, locale }: Props) {
+export function MessageBubble({
+   message,
+   isStreaming,
+   locale,
+   onClose,
+}: Props) {
    const isUser = message.role === "user";
 
    const { textNodes, actionNodes } = useMemo(
       () =>
          isUser
             ? { textNodes: [], actionNodes: [] }
-            : parseAssistantContent(message.content, locale),
-      [message.content, isUser, locale],
+            : parseAssistantContent(message.content, locale, onClose),
+      [message.content, isUser, locale, onClose],
    );
 
    return (
