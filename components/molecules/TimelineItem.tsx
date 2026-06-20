@@ -1,6 +1,12 @@
 "use client";
 
-import { MdApps, MdDescription, MdLocationOn, MdPublic } from "react-icons/md";
+import {
+   MdApps,
+   MdDescription,
+   MdLocationOn,
+   MdPublic,
+   MdWork,
+} from "react-icons/md";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import type { ExperienceItem } from "@/i18n/types";
 import { Button } from "../atoms/Button";
@@ -97,7 +103,9 @@ export const TimelineItem = ({
                      >
                         {item.company}
                      </Typography>
-                     <div className="flex flex-wrap gap-2">
+                     <div
+                        className={`flex flex-wrap gap-2 ${isEven ? "md:justify-end" : "md:justify-start"}`}
+                     >
                         <Tag icon={<MdLocationOn className="size-3" />}>
                            {item.location}
                         </Tag>
@@ -106,6 +114,15 @@ export const TimelineItem = ({
                               {item.remote}
                            </Tag>
                         )}
+                        {item.tags?.map((tag) => (
+                           <Tag
+                              key={tag}
+                              variant="outline"
+                              icon={<MdWork className="size-3" />}
+                           >
+                              {tag}
+                           </Tag>
+                        ))}
                         {item.product && (
                            <button
                               type="button"

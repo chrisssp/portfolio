@@ -13,6 +13,7 @@ export interface ExperienceItem {
    projectId?: string;
    date: string;
    description: string;
+   tags?: string[];
    link?: {
       url: string;
       label: string;
