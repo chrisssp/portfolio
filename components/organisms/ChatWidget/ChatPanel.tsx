@@ -90,7 +90,15 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
          });
 
          if (!res.ok) {
-            throw new Error(`HTTP ${res.status}`);
+            // Try to extract a meaningful error from the response body
+            let errorText = `HTTP ${res.status}`;
+            try {
+               const errBody = await res.json();
+               if (errBody.error) errorText = errBody.error;
+            } catch {
+               // ignore parse failures
+            }
+            throw new Error(errorText);
          }
 
          // Check if it's a non-streaming redirect response
@@ -152,9 +160,17 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
             }
          }
 
+         // If the stream produced no content, show a useful message
+         if (!fullContent.trim()) {
+            fullContent =
+               locale === "es"
+                  ? "No se recibió respuesta del asistente. Es posible que el límite de la API se haya agotado. Intenta de nuevo en unos minutos."
+                  : "No response received from the assistant. The API rate limit may have been reached. Please try again in a few minutes.";
+         }
+
          const assistantMsg: ChatMessage = {
             role: "assistant",
-            content: fullContent || "No response received.",
+            content: fullContent,
             timestamp: Date.now(),
          };
          const finalMessages = [...newMessages, assistantMsg];
@@ -162,6 +178,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
          saveHistory(finalMessages);
       } catch (err: any) {
          if (err.name === "AbortError") return;
+         const errorMessage = err.message || "Unknown error";
          const errorMsg: ChatMessage = {
             role: "assistant",
             content:
