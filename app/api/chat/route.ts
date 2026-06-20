@@ -40,6 +40,7 @@ interface ContentChunk {
    certificates?: CertificateItem[];
    links?: LinkItem[];
    ecosystem?: Array<{ title: string; description: string }>;
+   languages?: Array<{ language: string; level: string }>;
 }
 
 interface ChatRequest {
@@ -693,6 +694,9 @@ function matchContent(query: string, locale: string): ContentChunk[] {
       titulo: "education",
       título: "education",
       sobre: "about",
+      idiomas: "about",
+      lenguas: "about",
+      languages: "about",
       habilidades: "skills",
       // Awards / Recognitions — also match project section (per-project certificates)
       award: "project",
@@ -825,6 +829,9 @@ function buildSystemPrompt(
          }
          if (c.ecosystem && c.ecosystem.length > 0) {
             text += ` Ecosystem: ${c.ecosystem.map((e) => `${e.title}: ${e.description}`).join(" | ")}`;
+         }
+         if (c.languages && c.languages.length > 0) {
+            text += ` Languages: ${c.languages.map((l) => `${l.language} (${l.level})`).join(", ")}`;
          }
          return text;
       })
