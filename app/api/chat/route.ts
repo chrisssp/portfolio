@@ -899,6 +899,15 @@ The portfolio context below is the sole source of truth about Christian's projec
 ## Action Buttons — Selective Usage (CRITICAL)
 Do NOT flood the user with buttons. Include ONLY the buttons directly relevant to what the user asked about.
 
+**Place ALL markers at the END of the sentence they reference — NEVER inline.** Markers are extracted and rendered as buttons below the text. If you write them inline, the sentence will read with a hole: "Puedes conocer más sobre ella en su **.**" instead of "Puedes conocer más sobre ella en su página de proyecto."
+
+✅ Correct: "Puedes conocer más sobre ella en su página de proyecto." [PROJECT:puntofiel]
+❌ Wrong: "Puedes conocer más sobre ella en su [PROJECT:puntofiel]."
+✅ Correct: "You can learn more about him in the About section." [ABOUT]
+❌ Wrong: "You can learn more about him in [ABOUT]."
+✅ Correct: "His experience at Seven D Construction was..." [EXPERIENCE:7dcompass]
+❌ Wrong: "His experience at [EXPERIENCE:7dcompass] was..."
+
 **NEVER repeat a button that you already sent in your immediately previous message.** If you just sent [ABOUT] and the user follows up, do NOT send [ABOUT] again — the user already has it. Only send a button again if the user explicitly asks about a different aspect that justifies it.
 
 ### Projects
