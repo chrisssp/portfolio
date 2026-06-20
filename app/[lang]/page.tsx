@@ -17,13 +17,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
    const locale = lang as Locale;
 
    const titles = {
-      en: "Christian Serrano | Software Engineer | Full-Stack & Mobile Developer",
-      es: "Christian Serrano | Ingeniero de Software | Desarrollador Full-Stack y Móvil",
+      en: "Christian Serrano | Software Engineer",
+      es: "Christian Serrano | Ingeniero de Software",
    };
 
    const descriptions = {
-      en: "Explore the portfolio of Christian Serrano, a Software Engineer specializing in efficient web and mobile ecosystems, clean code, and high performance.",
-      es: "Explora el portafolio de Christian Serrano, Ingeniero de Software especializado en ecosistemas web y móviles eficientes, código limpio y alto rendimiento.",
+      en: "Software Engineer building efficient web & mobile ecosystems with clean code and high performance.",
+      es: "Ingeniero de Software construyendo ecosistemas web y móviles eficientes con código limpio y alto rendimiento.",
+   };
+
+   const ogImage = {
+      url: "/assets/images/profile/banner.webp",
+      width: 1200,
+      height: 630,
+      alt: "Christian Serrano — Software Engineer",
    };
 
    return {
@@ -32,7 +39,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
          title: titles[locale],
          description: descriptions[locale],
+         url: "https://chrisssp.vercel.app",
+         siteName: "Christian Serrano Portfolio",
          locale: locale === "en" ? "en_US" : "es_ES",
+         type: "website",
+         images: ogImage,
+      },
+      twitter: {
+         card: "summary_large_image",
+         title: titles[locale],
+         description: descriptions[locale],
+         images: ogImage,
       },
    };
 }

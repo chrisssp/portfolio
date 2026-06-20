@@ -21,8 +21,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
    if (!project) return {};
 
-   const title = `${project.title} | Christian Serrano Project`;
+   const title = `${project.title} | Christian Serrano`;
    const description = project.description;
+
+   const ogImage = project.imagePath
+      ? {
+           url: project.imagePath,
+           width: 630,
+           height: 354,
+           alt: `${project.title} — Christian Serrano`,
+        }
+      : undefined;
 
    return {
       title,
@@ -30,7 +39,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
          title,
          description,
-         images: project.imagePath ? [{ url: project.imagePath }] : [],
+         url: `https://chrisssp.vercel.app/projects/${id}`,
+         siteName: "Christian Serrano Portfolio",
+         locale: locale === "en" ? "en_US" : "es_ES",
+         type: "website",
+         images: ogImage ? [ogImage] : [],
+      },
+      twitter: {
+         card: "summary_large_image",
+         title,
+         description,
+         images: ogImage ? [ogImage] : [],
       },
    };
 }
