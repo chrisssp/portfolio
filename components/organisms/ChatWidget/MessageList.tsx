@@ -6,6 +6,17 @@ import type { ChatMessage } from "./chatSession";
 import { MessageBubble } from "./MessageBubble";
 import { TypingIndicator } from "./TypingIndicator";
 
+/** Extract action markers from an assistant message content string */
+function extractMarkers(content: string): Set<string> {
+   const markers = new Set<string>();
+   const pattern =
+      /\[PROJECT:[^\]]+\]|\[CODE:[^\]]+\]|\[LANDING:[^\]]+\]|\[DEMO:[^\]]+\]|\[ARTICLE:[^\]]+\]|\[CERT:[^\]]+\]|\[ECOSYSTEM:[^\]]+\]|\[EXPERIENCE:[^\]]+\]|\[EMAIL\]|\[GITHUB\]|\[LINKEDIN\]|\[CV\]|\[ABOUT\]/g;
+   for (const match of content.matchAll(pattern)) {
+      markers.add(match[0]);
+   }
+   return markers;
+}
+
 type Props = {
    messages: ChatMessage[];
    isLoading: boolean;
@@ -28,18 +39,29 @@ export function MessageList({
       bottomRef.current?.scrollIntoView({ behavior: "smooth" });
    }, [messages, streamingContent]);
 
+   /** Find markers from the most recent assistant message before a given index */
+   function getRecentMarkers(currentIdx: number): Set<string> {
+      for (let i = currentIdx - 1; i >= 0; i--) {
+         if (messages[i].role === "assistant") {
+            return extractMarkers(messages[i].content);
+         }
+      }
+      return new Set();
+   }
+
    return (
       <div
          className="flex-1 overflow-y-auto px-4 py-3 space-y-1 scroll-smooth"
          role="log"
          aria-label="Chat messages"
       >
-         {messages.map((msg) => (
+         {messages.map((msg, idx) => (
             <MessageBubble
                key={`${msg.role}-${msg.timestamp}`}
                message={msg}
                locale={locale}
                onClose={onClose}
+               recentMarkers={idx > 0 ? getRecentMarkers(idx) : undefined}
             />
          ))}
 

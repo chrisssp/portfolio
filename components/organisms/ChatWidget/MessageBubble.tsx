@@ -23,6 +23,7 @@ type Props = {
    isStreaming?: boolean;
    locale: Locale;
    onClose?: () => void;
+   recentMarkers?: Set<string>;
 };
 
 // --- Constants ---
@@ -447,6 +448,7 @@ function parseAssistantContent(
    text: string,
    locale: Locale,
    onClose?: () => void,
+   recentMarkers?: Set<string>,
 ): ParsedContent {
    const segments = text.split(
       /(\[PROJECT:[^\]]+\]|\[CODE:[^\]]+\]|\[LANDING:[^\]]+\]|\[DEMO:[^\]]+\]|\[ARTICLE:[^\]]+\]|\[CERT:[^\]]+\]|\[ECOSYSTEM:[^\]]+\]|\[EXPERIENCE:[^\]]+\]|\[EMAIL\]|\[GITHUB\]|\[LINKEDIN\]|\[CV\]|\[ABOUT\])/,
@@ -460,7 +462,7 @@ function parseAssistantContent(
 
    for (const segment of segments) {
       if (segment.startsWith("[PROJECT:")) {
-         if (seenActions.has(segment)) continue;
+         if (seenActions.has(segment) || recentMarkers?.has(segment)) continue;
          seenActions.add(segment);
          actionNodes.push(
             <ProjectButton
@@ -469,7 +471,7 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[CODE:")) {
-         if (seenActions.has(segment)) continue;
+         if (seenActions.has(segment) || recentMarkers?.has(segment)) continue;
          seenActions.add(segment);
          actionNodes.push(
             <CodeButton
@@ -478,7 +480,7 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[LANDING:")) {
-         if (seenActions.has(segment)) continue;
+         if (seenActions.has(segment) || recentMarkers?.has(segment)) continue;
          seenActions.add(segment);
          actionNodes.push(
             <LandingButton
@@ -487,7 +489,7 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[DEMO:")) {
-         if (seenActions.has(segment)) continue;
+         if (seenActions.has(segment) || recentMarkers?.has(segment)) continue;
          seenActions.add(segment);
          actionNodes.push(
             <DemoButton
@@ -496,7 +498,7 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[ARTICLE:")) {
-         if (seenActions.has(segment)) continue;
+         if (seenActions.has(segment) || recentMarkers?.has(segment)) continue;
          seenActions.add(segment);
          actionNodes.push(
             <ArticleButton
@@ -505,7 +507,7 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[CERT:")) {
-         if (seenActions.has(segment)) continue;
+         if (seenActions.has(segment) || recentMarkers?.has(segment)) continue;
          seenActions.add(segment);
          actionNodes.push(
             <CertificateButton
@@ -515,7 +517,7 @@ function parseAssistantContent(
             />,
          );
       } else if (segment.startsWith("[ECOSYSTEM:")) {
-         if (seenActions.has(segment)) continue;
+         if (seenActions.has(segment) || recentMarkers?.has(segment)) continue;
          seenActions.add(segment);
          const inner = segment.slice(11, -1); // "slug:item name"
          const colonIdx = inner.indexOf(":");
@@ -532,7 +534,7 @@ function parseAssistantContent(
             );
          }
       } else if (segment.startsWith("[EXPERIENCE:")) {
-         if (seenActions.has(segment)) continue;
+         if (seenActions.has(segment) || recentMarkers?.has(segment)) continue;
          seenActions.add(segment);
          actionNodes.push(
             <ExperienceButton
@@ -542,23 +544,27 @@ function parseAssistantContent(
             />,
          );
       } else if (segment === "[EMAIL]") {
-         if (seenActions.has("[EMAIL]")) continue;
+         if (seenActions.has("[EMAIL]") || recentMarkers?.has("[EMAIL]"))
+            continue;
          seenActions.add("[EMAIL]");
          actionNodes.push(<EmailButton key={`act-${actionIdx++}`} />);
       } else if (segment === "[GITHUB]") {
-         if (seenActions.has("[GITHUB]")) continue;
+         if (seenActions.has("[GITHUB]") || recentMarkers?.has("[GITHUB]"))
+            continue;
          seenActions.add("[GITHUB]");
          actionNodes.push(<GitHubButton key={`act-${actionIdx++}`} />);
       } else if (segment === "[LINKEDIN]") {
-         if (seenActions.has("[LINKEDIN]")) continue;
+         if (seenActions.has("[LINKEDIN]") || recentMarkers?.has("[LINKEDIN]"))
+            continue;
          seenActions.add("[LINKEDIN]");
          actionNodes.push(<LinkedInButton key={`act-${actionIdx++}`} />);
       } else if (segment === "[CV]") {
-         if (seenActions.has("[CV]")) continue;
+         if (seenActions.has("[CV]") || recentMarkers?.has("[CV]")) continue;
          seenActions.add("[CV]");
          actionNodes.push(<CVButton key={`act-${actionIdx++}`} />);
       } else if (segment === "[ABOUT]") {
-         if (seenActions.has("[ABOUT]")) continue;
+         if (seenActions.has("[ABOUT]") || recentMarkers?.has("[ABOUT]"))
+            continue;
          seenActions.add("[ABOUT]");
          actionNodes.push(<AboutButton key={`act-${actionIdx++}`} />);
       } else if (segment) {
@@ -580,6 +586,7 @@ export function MessageBubble({
    isStreaming,
    locale,
    onClose,
+   recentMarkers,
 }: Props) {
    const isUser = message.role === "user";
 
@@ -587,8 +594,13 @@ export function MessageBubble({
       () =>
          isUser
             ? { textNodes: [], actionNodes: [] }
-            : parseAssistantContent(message.content, locale, onClose),
-      [message.content, isUser, locale, onClose],
+            : parseAssistantContent(
+                 message.content,
+                 locale,
+                 onClose,
+                 recentMarkers,
+              ),
+      [message.content, isUser, locale, onClose, recentMarkers],
    );
 
    return (
