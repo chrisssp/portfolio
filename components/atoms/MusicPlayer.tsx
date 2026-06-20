@@ -25,6 +25,18 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
       artist: "Spanac",
    };
 
+   // --- Detect mobile (below xs breakpoint = 375px) ---
+
+   const [isNarrow, setIsNarrow] = useState(false);
+
+   useEffect(() => {
+      const mq = window.matchMedia("(max-width: 374px)");
+      const update = () => setIsNarrow(mq.matches);
+      update();
+      mq.addEventListener("change", update);
+      return () => mq.removeEventListener("change", update);
+   }, []);
+
    // --- Audio setup ---
 
    useEffect(() => {
@@ -157,38 +169,49 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
                50% { transform: scale(1.04); }
             }
          `}</style>
-         <button
-            ref={buttonRef}
-            type="button"
-            onClick={togglePlay}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            disabled={!isLoaded}
-            className={`fixed bottom-6 xs:bottom-8 left-6 xs:left-8 z-50 p-2.5 xs:p-3 rounded-full shadow-2xl transition-all duration-500 ease-in-out group cursor-pointer border ${
-               isLoaded
-                  ? "bg-primary text-primary-contrast hover:scale-110 active:scale-95 hover:shadow-primary/20 border-subtle"
-                  : "bg-surface text-body/30 border-subtle cursor-not-allowed"
-            }`}
-            style={buttonStyle}
-            aria-label={ariaLabel}
-         >
-            {isPlaying ? (
-               <MdMusicNote className="size-5 motion-safe:animate-pulse" />
-            ) : (
-               <MdMusicOff className="size-5" />
-            )}
+         <div className="fixed bottom-6 xs:bottom-8 left-6 xs:left-8 z-[60] group">
+            <button
+               ref={buttonRef}
+               type="button"
+               onClick={togglePlay}
+               onTouchStart={handleTouchStart}
+               onTouchMove={handleTouchMove}
+               onTouchEnd={handleTouchEnd}
+               disabled={!isLoaded}
+               className={`p-2.5 xs:p-3 rounded-full shadow-2xl transition-all duration-500 ease-in-out cursor-pointer border ${
+                  isLoaded
+                     ? "bg-primary text-primary-contrast hover:scale-110 active:scale-95 hover:shadow-primary/20 border-subtle"
+                     : "bg-surface text-body/30 border-subtle cursor-not-allowed"
+               }`}
+               style={buttonStyle}
+               aria-label={ariaLabel}
+            >
+               {isPlaying ? (
+                  <MdMusicNote className="size-5 motion-safe:animate-pulse" />
+               ) : (
+                  <MdMusicOff className="size-5" />
+               )}
+            </button>
 
             <div
-               className={`absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-surface text-body text-xs font-medium border border-subtle shadow-lg text-left transition-all duration-300 max-w-[180px] xs:max-w-none ${
+               className={`${
+                  isNarrow
+                     ? "fixed left-6 right-6 z-[60]"
+                     : "absolute left-full ml-3"
+               } top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-surface text-body text-xs font-medium border border-subtle shadow-lg text-left transition-all duration-300 ${
                   tooltipPinned
                      ? "opacity-100 translate-x-0"
                      : "opacity-0 -translate-x-2 pointer-events-none"
                } group-hover:opacity-100 group-hover:translate-x-0`}
+               style={
+                  isNarrow
+                     ? { top: "calc(100vh - 44px)" }
+                     : { width: "max-content", maxWidth: "calc(100vw - 120px)" }
+               }
             >
                {isPlaying ? (
                   <>
-                     <span className="whitespace-normal xs:whitespace-nowrap">
+                     <span className="whitespace-normal">
                         {currentTrack.title}
                         <span className="text-body/50 mx-1">·</span>
                         {currentTrack.artist}
@@ -205,7 +228,7 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
                   </span>
                )}
             </div>
-         </button>
+         </div>
       </>
    );
 };
