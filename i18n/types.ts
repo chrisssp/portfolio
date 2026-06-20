@@ -85,6 +85,11 @@ export interface EducationItem {
    achievement?: string;
 }
 
+export interface LanguageItem {
+   language: string;
+   level: string;
+}
+
 export interface ProjectModule {
    data: {
       id: string;
@@ -192,6 +197,8 @@ export interface Dictionary {
       quote: string;
       educationTitle: string;
       education: EducationItem[];
+      languagesTitle: string;
+      languages: LanguageItem[];
       tooltipMidudev: string;
       tooltipMouredev: string;
    };

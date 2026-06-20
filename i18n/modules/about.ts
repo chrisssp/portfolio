@@ -19,6 +19,11 @@ export const about = {
             achievement: "Graduated 1st in class with a 9.82/10 GPA",
          },
       ],
+      languagesTitle: "Languages",
+      languages: [
+         { language: "Spanish", level: "Native" },
+         { language: "English", level: "B1+ (Intermediate — Active progress)" },
+      ],
       tooltipMidudev:
          "With Miguel Ángel Durán (midudev) at Talent Land 2025 in Guadalajara, Jalisco, Mexico. Undisputed reference in web ecosystem and full-stack development content for the Spanish-speaking world.",
       tooltipMouredev:
@@ -43,6 +48,14 @@ export const about = {
             date: "Agosto 2024",
             achievement:
                "Graduado como 1er lugar de la generaci\u00f3n con un promedio de 9.82/10",
+         },
+      ],
+      languagesTitle: "Idiomas",
+      languages: [
+         { language: "Espa\u00f1ol", level: "Nativo" },
+         {
+            language: "Ingl\u00e9s",
+            level: "B1+ (Intermedio \u2014 En progreso activo)",
          },
       ],
       tooltipMidudev:

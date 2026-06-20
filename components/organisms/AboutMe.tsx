@@ -77,6 +77,26 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   ))}
                </div>
             </div>
+
+            {/* Languages */}
+            <div className="flex flex-col gap-4 md:gap-5">
+               <Typography variant="project">
+                  {dict.about.languagesTitle}
+               </Typography>
+               <div className="flex flex-col gap-3">
+                  {dict.about.languages.map((lang) => (
+                     <div
+                        key={lang.language}
+                        className="flex items-center gap-2"
+                     >
+                        <Typography variant="body">
+                           <span className="font-medium">{lang.language}:</span>{" "}
+                           {lang.level}
+                        </Typography>
+                     </div>
+                  ))}
+               </div>
+            </div>
          </AnimatedSection>
 
          {/* Circular Images — slide in from right with slight stagger */}
