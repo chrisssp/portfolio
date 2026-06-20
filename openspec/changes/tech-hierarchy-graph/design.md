@@ -93,6 +93,7 @@ export function expandTechStack(techs: string[]): string[] {
 // config/technologies.tsx — new export
 export const TECH_PARENTS: Record<string, string[]> = {
   angular: ["typescript"],
+  "angular-material": ["angular"],
   reactnative: ["react", "typescript"],
   nextjs: ["react", "nodejs"],
   nestjs: ["typescript", "nodejs"],
