@@ -13,6 +13,7 @@ import {
    SiGooglegemini,
    SiIonic,
    SiLaravel,
+   SiMaterialdesign,
    SiMongodb,
    SiNestjs,
    SiNextdotjs,
@@ -55,6 +56,11 @@ export const TECHNOLOGIES: Record<string, TechConfig> = {
       name: "NextJS",
       icon: SiNextdotjs,
       bgColor: "#000000",
+   },
+   "angular-material": {
+      name: "Angular Material",
+      icon: SiMaterialdesign,
+      bgColor: "#009688",
    },
    ionic: {
       name: "Ionic",
