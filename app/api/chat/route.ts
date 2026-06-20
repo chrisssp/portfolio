@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { google } from "@ai-sdk/google";
 import { groq } from "@ai-sdk/groq";
-import { streamText } from "ai";
+import { type StreamTextResult, streamText } from "ai";
 import { type NextRequest, NextResponse } from "next/server";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import { experience } from "@/i18n/modules/experience";
@@ -899,37 +899,53 @@ export async function POST(request: NextRequest) {
       // Build system prompt
       const systemPrompt = buildSystemPrompt(locale, contextChunks);
 
-      // Stream response
-      const result = streamText({
-         model: google("gemini-2.0-flash"),
-         system: systemPrompt,
-         messages: messages.map((m) => ({
-            role: m.role as "user" | "assistant",
-            content: m.content,
-         })),
-         providerOptions: {
-            google: {
-               safetySettings: [
-                  {
-                     category: "HARM_CATEGORY_HATE_SPEECH",
-                     threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                  },
-                  {
-                     category: "HARM_CATEGORY_HARASSMENT",
-                     threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                  },
-                  {
-                     category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                     threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                  },
-                  {
-                     category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-                     threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                  },
-               ],
+      // Stream response — Groq primary, Gemini fallback
+      let result: StreamTextResult<{}, never>;
+      try {
+         result = streamText({
+            model: groq("openai/gpt-oss-120b"),
+            system: systemPrompt,
+            messages: messages.map((m) => ({
+               role: m.role as "user" | "assistant",
+               content: m.content,
+            })),
+         });
+      } catch (groqError) {
+         console.warn(
+            "[chat-api] Groq failed, falling back to Gemini:",
+            groqError,
+         );
+         result = streamText({
+            model: google("gemini-2.0-flash"),
+            system: systemPrompt,
+            messages: messages.map((m) => ({
+               role: m.role as "user" | "assistant",
+               content: m.content,
+            })),
+            providerOptions: {
+               google: {
+                  safetySettings: [
+                     {
+                        category: "HARM_CATEGORY_HATE_SPEECH",
+                        threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                     },
+                     {
+                        category: "HARM_CATEGORY_HARASSMENT",
+                        threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                     },
+                     {
+                        category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                        threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                     },
+                     {
+                        category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+                        threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                     },
+                  ],
+               },
             },
-         },
-      });
+         });
+      }
 
       return result.toTextStreamResponse();
    } catch (error) {
