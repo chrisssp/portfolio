@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MdClose, MdSend } from "react-icons/md";
+import { MdClose, MdRefresh, MdSend } from "react-icons/md";
 import type { Locale } from "@/i18n/config";
 import {
    type ChatMessage,
@@ -273,6 +273,15 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                <span className="text-sm font-semibold text-body">Cooper</span>
             </div>
             <div className="flex items-center gap-1">
+               <button
+                  type="button"
+                  onClick={handleClearChat}
+                  className="p-1.5 rounded-lg hover:bg-body/10 transition-colors text-body/60 hover:text-body cursor-pointer"
+                  aria-label="New chat"
+                  title={locale === "es" ? "Nuevo chat" : "New chat"}
+               >
+                  <MdRefresh className="size-4" />
+               </button>
                <SettingsPopover locale={locale} />
                <button
                   type="button"
