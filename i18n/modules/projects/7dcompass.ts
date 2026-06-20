@@ -4,7 +4,13 @@ export const project7dCompass = {
       featured: true,
       imagePath: "/assets/images/projects/7dcompass/general.webp",
       heroImagePath: "/assets/images/projects/7dcompass/hero.webp",
-      techStack: ["angular", "nodejs", "postgresql", "typescript", "ionic"],
+      techStack: [
+         "angular",
+         "angular-material",
+         "nodejs",
+         "postgresql",
+         "typescript",
+      ],
       categories: {
          domain: ["fintech", "logistics"],
          platform: ["web", "mobile", "api"],
@@ -22,12 +28,12 @@ export const project7dCompass = {
          {
             imagePath:
                "/assets/images/projects/7dcompass/administrative-web-portal.webp",
-            techStack: ["angular", "typescript"],
+            techStack: ["angular", "angular-material", "typescript"],
          },
          {
             imagePath:
                "/assets/images/projects/7dcompass/on-site-mobile-app.webp",
-            techStack: ["angular"],
+            techStack: ["angular", "angular-material"],
          },
          {
             imagePath:
