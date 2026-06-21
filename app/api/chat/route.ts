@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { google } from "@ai-sdk/google";
 import { groq } from "@ai-sdk/groq";
-import { generateText, streamText } from "ai";
+import { streamText } from "ai";
 import { type NextRequest, NextResponse } from "next/server";
 import { experience } from "@/i18n/modules/experience";
 
@@ -832,32 +832,32 @@ function buildSystemPrompt(
 ): string {
    const contextText = contextChunks
       .map((c) => {
-         let text = `[${c.section}] ${c.title}: ${c.description}`;
-         if (c.fullDescription) text += ` (${c.fullDescription})`;
-         if (c.techStack && c.techStack.length > 0)
-            text += ` Tech: ${c.techStack.join(", ")}`;
+         const parts = [`[${c.section}] ${c.title} | ${c.description}`];
+         if (c.fullDescription) parts.push(`(${c.fullDescription})`);
+         if (c.techStack?.length)
+            parts.push(`T:${c.techStack.join(",")}`);
          if (c.challenge)
-            text += ` Challenge: ${c.challenge.description} Solution: ${c.challenge.solution}`;
-         if (c.company) text += ` Company: ${c.company}`;
-         if (c.role) text += ` Role: ${c.role}`;
-         if (c.date) text += ` Period: ${c.date}`;
-         if (c.location) text += ` Location: ${c.location}`;
-         if (c.remote) text += ` Type: ${c.remote}`;
-         if (c.tags && c.tags.length > 0) text += ` Tags: ${c.tags.join(", ")}`;
-         if (c.projectId) text += ` Project: ${c.projectId}`;
-         if (c.certificates && c.certificates.length > 0) {
-            text += ` Certificates: ${c.certificates.map((cert) => `${cert.title}${cert.issuer ? ` (${cert.issuer})` : ""}${cert.date ? ` - ${cert.date}` : ""}`).join(" | ")}`;
+            parts.push(`Ch:${c.challenge.description} | Sol:${c.challenge.solution}`);
+         if (c.company) parts.push(`Co:${c.company}`);
+         if (c.role) parts.push(`R:${c.role}`);
+         if (c.date) parts.push(`Dt:${c.date}`);
+         if (c.location) parts.push(`Loc:${c.location}`);
+         if (c.remote) parts.push(`Type:${c.remote}`);
+         if (c.tags?.length) parts.push(`#${c.tags.join(" #")}`);
+         if (c.projectId) parts.push(`PID:${c.projectId}`);
+         if (c.certificates?.length) {
+            parts.push(`Cert:${c.certificates.map((cert) => `${cert.title}${cert.issuer ? `(${cert.issuer})` : ""}${cert.date ? ` ${cert.date}` : ""}`).join("; ")}`);
          }
-         if (c.links && c.links.length > 0) {
-            text += ` Links: ${c.links.map((l) => `${l.type}:${l.url}`).join(", ")}`;
+         if (c.links?.length) {
+            parts.push(`Links:${c.links.map((l) => `${l.type}:${l.url}`).join(", ")}`);
          }
-         if (c.ecosystem && c.ecosystem.length > 0) {
-            text += ` Ecosystem: ${c.ecosystem.map((e) => `${e.title}: ${e.description}`).join(" | ")}`;
+         if (c.ecosystem?.length) {
+            parts.push(`Eco:${c.ecosystem.map((e) => `${e.title}: ${e.description}`).join(" | ")}`);
          }
-         if (c.languages && c.languages.length > 0) {
-            text += ` Languages: ${c.languages.map((l) => `${l.language} (${l.level})`).join(", ")}`;
+         if (c.languages?.length) {
+            parts.push(`Lang:${c.languages.map((l) => `${l.language}(${l.level})`).join(", ")}`);
          }
-         return text;
+         return parts.join(" ");
       })
       .join("\n");
 
@@ -906,8 +906,7 @@ ${contextText || "No specific context available. Answer based on general portfol
 }
 
 // --- Groq Availability Check (cached per session) ---
-// We test Groq with a minimal request before streaming so we never
-// send the client a broken stream — always a hard provider decision first.
+// We check the model endpoint directly instead of burning tokens with a probe request.
 
 let groqAvailablePromise: Promise<boolean> | null = null;
 
@@ -916,11 +915,15 @@ async function checkGroqAvailable(): Promise<boolean> {
 
    groqAvailablePromise = (async () => {
       try {
-         await generateText({
-            model: groq("llama-3.3-70b-versatile"),
-            prompt: "ok",
-         });
-         return true;
+         const res = await fetch(
+            "https://api.groq.com/openai/v1/models/llama-3.3-70b-versatile",
+            {
+               headers: {
+                  Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+               },
+            },
+         );
+         return res.ok;
       } catch {
          return false;
       }
@@ -996,16 +999,54 @@ export async function POST(request: NextRequest) {
       await loadContent();
       const contextChunks = matchContent(lastUserMessage.content, locale);
 
-      // Always include about + education as baseline context so the model
-      // never hallucinates Christian's background — keywords are a bonus, not a requirement.
-      const baselineIds = new Set(contextChunks.map((c) => c.id));
-      for (const chunk of contentCache ?? []) {
-         if (
-            chunk.locale === locale &&
-            (chunk.section === "about" || chunk.section === "education") &&
-            !baselineIds.has(chunk.id)
-         ) {
-            contextChunks.push(chunk);
+      // Inject about + education context when the query asks about background,
+      // education, age, languages, or Christian himself (but not just project names).
+      const baselineKeywords = [
+         "about",
+         "background",
+         "tell me about yourself",
+         "quien es",
+         "quién es",
+         "sobre ti",
+         "acerca de",
+         "presentate",
+         "preséntate",
+         "education",
+         "study",
+         "studies",
+         "degree",
+         "university",
+         "carrera",
+         "estudio",
+         "estudios",
+         "universidad",
+         "ingenieria",
+         "ingeniería",
+         "utcv",
+         "age",
+         "years old",
+         "años",
+         "edad",
+         "languages",
+         "language",
+         "idiomas",
+         "lenguas",
+         "hablas",
+         "inglés",
+         "ingles",
+         "español",
+         "espanol",
+      ].some((kw) => lastUserMessage.content.toLowerCase().includes(kw));
+      if (baselineKeywords) {
+         const baselineIds = new Set(contextChunks.map((c) => c.id));
+         for (const chunk of contentCache ?? []) {
+            if (
+               chunk.locale === locale &&
+               (chunk.section === "about" || chunk.section === "education") &&
+               !baselineIds.has(chunk.id)
+            ) {
+               contextChunks.push(chunk);
+            }
          }
       }
 
