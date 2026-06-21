@@ -434,6 +434,42 @@ function renderMarkdown(text: string): ReactNode[] {
    return nodes.length > 0 ? nodes : [text];
 }
 
+// --- Marker Relocation (moves inline markers to end) ---
+
+const MARKER_PATTERN =
+   /\[PROJECT:[^\]]+\]|\[CODE:[^\]]+\]|\[LANDING:[^\]]+\]|\[DEMO:[^\]]+\]|\[ARTICLE:[^\]]+\]|\[CERT:[^\]]+\]|\[ECOSYSTEM:[^\]]+\]|\[EXPERIENCE:[^\]]+\]|\[EMAIL\]|\[GITHUB\]|\[LINKEDIN\]|\[CV\]|\[ABOUT\]/g;
+
+/**
+ * When the model places markers inline (e.g. "...como [PROJECT:azkali] o [PROJECT:mtrpa]."),
+ * the parser strips them, leaving orphaned text like "...como  o ."
+ * This function extracts all markers and appends them at the end.
+ */
+function relocateMarkers(text: string): string {
+   const markers: string[] = [];
+   let cleanText = text.replace(MARKER_PATTERN, (match) => {
+      markers.push(match);
+      return "";
+   });
+
+   // Clean up orphaned punctuation and extra whitespace left by removed markers
+   cleanText = cleanText
+      .replace(/\s*[.,;:!]\s*\.\s*$/g, ".") // "o ." → "."
+      .replace(/\s*[.,;:!]\s*,\s*$/g, ",") // "o ," → ","
+      .replace(/\s{2,}/g, " ") // collapse multiple spaces
+      .replace(/\s+([.,;:!])/g, "$1") // remove space before punctuation
+      .trim();
+
+   if (markers.length === 0) return text;
+
+   // Ensure text ends with punctuation before appending markers
+   const lastChar = cleanText.slice(-1);
+   if (lastChar !== "." && lastChar !== "!" && lastChar !== "?") {
+      cleanText += ".";
+   }
+
+   return `${cleanText} ${markers.join(" ")}`;
+}
+
 // --- Content Parser (splits text from action markers) ---
 
 type ParsedContent = {
@@ -596,7 +632,7 @@ export function MessageBubble({
          isUser
             ? { textNodes: [], actionNodes: [] }
             : parseAssistantContent(
-                 message.content,
+                 relocateMarkers(message.content),
                  locale,
                  onClose,
                  recentMarkers,
