@@ -83,7 +83,7 @@ export function SettingsPopover({ locale }: Props) {
                         ? "Configuración del chat"
                         : "Chat settings"
                   }
-                  className="absolute right-0 top-full mt-2 z-[66] w-72 p-3 rounded-xl bg-surface border border-subtle shadow-2xl"
+                  className="absolute right-0 top-full mt-2 z-[66] w-56 p-2 rounded-xl bg-surface border border-subtle shadow-2xl"
                >
                   {/* Sound toggle */}
                   <button
@@ -111,7 +111,7 @@ export function SettingsPopover({ locale }: Props) {
                   </button>
 
                   {/* Privacy tooltip */}
-                  <div className="mt-2 p-2.5 rounded-lg bg-body/5 border border-subtle">
+                  <div className="mt-1.5 p-2 rounded-lg bg-body/5 border border-subtle">
                      <div className="flex items-start gap-2">
                         <MdLock className="size-3.5 mt-0.5 text-body/40 shrink-0" />
                         <p className="text-[11px] leading-relaxed text-body/60">
