@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
 import { MdClose, MdRefresh, MdSend } from "react-icons/md";
 import type { Locale } from "@/i18n/config";
 import {
@@ -30,6 +31,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
    const [terminated, setTerminatedState] = useState(false);
    const abortRef = useRef<AbortController | null>(null);
    const inputRef = useRef<HTMLTextAreaElement>(null);
+   const { resolvedTheme } = useTheme();
 
    // Load history on mount
    useEffect(() => {
@@ -282,12 +284,15 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
          <div className="sticky top-0 z-10 bg-surface flex items-center justify-between px-4 py-3 border-b border-subtle">
             <div className="flex items-center gap-2">
                <img
-                  src="/assets/images/cooper/raw-copper.png"
-                  alt="Cooper"
+                  src={
+                     resolvedTheme === "dark"
+                        ? "/assets/images/profile/isotipo-white-nobg-center.webp"
+                        : "/assets/images/profile/isotipo-black-nobg-center.webp"
+                  }
+                  alt="chrisssp"
                   className="size-5 sm:size-6 object-contain"
-                  style={{ imageRendering: "pixelated" }}
                />
-               <span className="text-sm font-semibold text-body">Cooper</span>
+               <span className="text-sm font-semibold text-body">chrisssp</span>
             </div>
             <div className="flex items-center gap-1">
                <button
