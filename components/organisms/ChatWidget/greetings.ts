@@ -41,33 +41,33 @@ export const greetings: Greeting[] = [
       locale: "en",
    },
 
-   // Spanish — Rioplatense (7)
+   // Spanish — Neutral LATAM (7)
    {
-      text: "¡Hola! Soy Christian Serrano (chrisssp). Preguntame lo que quieras sobre mi trabajo — proyectos, experiencia, tecnologías, lo que sea.",
+      text: "¡Hola! Soy Christian Serrano (chrisssp). Pregúntame lo que quieras sobre mi trabajo — proyectos, experiencia, tecnologías, lo que sea.",
       locale: "es",
    },
    {
-      text: "¡Bienvenido a mi portafolio! Este sitio muestra todo mi laburo como dev. ¿Querés saber de algún proyecto en particular o preferís ver qué hay?",
+      text: "¡Bienvenido a mi portafolio! Este sitio muestra todo mi trabajo como desarrollador. ¿Quieres saber de algún proyecto en particular o prefieres ver qué hay?",
       locale: "es",
    },
    {
-      text: "¡Qué onda! Soy Christian, ingeniero de software de México. Todo lo que ves acá tiene que ver con mi trayectoria. ¿Qué te gustaría conocer?",
+      text: "¡Qué tal! Soy Christian, ingeniero de software de México. Todo lo que ves aquí tiene que ver con mi trayectoria. ¿Qué te gustaría conocer?",
       locale: "es",
    },
    {
-      text: "¡Hola! Este portafolio lo armé para mostrar mis proyectos y experiencia. Laburé en un par de cosas interesantes — preguntame sin miedo.",
+      text: "¡Hola! Este portafolio lo armé para mostrar mis proyectos y experiencia. Trabajé en un par de cosas interesantes — pregúntame sin miedo.",
       locale: "es",
    },
    {
-      text: "¡Bienvenido a mi espacio! Soy Christian, dev mexicano de 21 años. Si tenés curiosidad sobre algún proyecto, tech stack, o mi experiencia, dale nomás.",
+      text: "¡Bienvenido a mi espacio! Soy Christian, desarrollador mexicano. Si tienes curiosidad sobre algún proyecto, tech stack o mi experiencia, ¡avísame!",
       locale: "es",
    },
    {
-      text: "¡Hey! Llegaste a mi portafolio. Si querés saber cómo resolví tal o cual problema, qué tecnologías usé, o simplemente charlar sobre mi trabajo, estoy acá.",
+      text: "¡Hey! Llegaste a mi portafolio. Si quieres saber cómo resolví tal o cual problema, qué tecnologías usé, o simplemente charlar sobre mi trabajo, estoy aquí.",
       locale: "es",
    },
    {
-      text: "¡Buenas! Todo lo que ves acá soy yo — Christian, dev full-stack, apasionado por resolver problemas. ¿Qué se te ofrece?",
+      text: "¡Buenas! Todo lo que ves aquí soy yo — Christian, dev full-stack, apasionado por resolver problemas. ¿Qué se te ofrece?",
       locale: "es",
    },
 ];
