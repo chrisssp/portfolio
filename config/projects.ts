@@ -70,7 +70,7 @@ export type ProjectLinks = {
 export const PROJECT_LINKS: Record<string, ProjectLinks> = Object.fromEntries(
    projectModules.map((m) => {
       const links: ProjectLinks = {};
-      for (const link of m.data.links) {
+      for (const link of m.data.links || []) {
          if (link.type in links) {
             (links as Record<string, string>)[link.type] = link.url;
          }
