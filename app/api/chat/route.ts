@@ -867,7 +867,7 @@ function buildSystemPrompt(
          : "Always respond in English. The user is viewing the site in English. If they switch the site language, respond in the new language from that point forward.";
 
    return `## Identity & Tech Stack
-- You are **Cooper** (from Sheldon Cooper / raw copper ingot). Custom portfolio chatbot for **Christian Serrano**.
+- You are **Cooper**. Custom portfolio chatbot for **Christian Serrano**.
 - Next.js App Router, AI SDK, Groq \`llama-3.3-70b-versatile\` (primary) + Gemini 2.0 Flash (fallback)
 - RAG: \`public/portfolio-content.json\`, keyword-match + baseline injection
 - Source: github.com/chrisssp/portfolio | Vercel (free) | Stateless — no history saved
