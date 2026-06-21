@@ -8,6 +8,7 @@ import {
    useState,
 } from "react";
 import { createPortal } from "react-dom";
+import { Typography } from "./Typography";
 
 interface TooltipProps {
    content: ReactNode;
@@ -83,8 +84,8 @@ export const Tooltip = ({
    }, [isVisible, hide]);
 
    const animationClasses = isVisible
-      ? "opacity-100 scale-100"
-      : "opacity-0 scale-95";
+      ? "opacity-100 scale-100 pointer-events-auto"
+      : "opacity-0 scale-95 pointer-events-none";
 
    // Desktop: hover events. Mobile: click only.
    const triggerProps = isTouchDevice
@@ -110,10 +111,17 @@ export const Tooltip = ({
       <div
          ref={tooltipRef}
          role="tooltip"
-         className={`pointer-events-none transition-all duration-200 ease-out ${animationClasses}`}
+         aria-hidden={!isVisible}
+         className={`transition-all duration-200 ease-out ${animationClasses}`}
       >
          <div className="bg-surface border border-subtle rounded-xl px-4 py-3 shadow-lg w-max max-w-[280px]">
-            <p className="text-xs text-body leading-relaxed">{content}</p>
+            <Typography
+               variant="small"
+               weight="normal"
+               className="leading-relaxed"
+            >
+               {content}
+            </Typography>
          </div>
       </div>
    );
@@ -126,8 +134,8 @@ export const Tooltip = ({
       >
          {children}
 
-         {/* Desktop: inline absolute positioning relative to trigger */}
-         {isVisible && !isTouchDevice && (
+         {/* Desktop: always in DOM for smooth CSS transitions */}
+         {!isTouchDevice && (
             <div
                className={`absolute z-50 ${verticalClass} ${horizontalClass}`}
             >

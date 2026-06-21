@@ -1,5 +1,7 @@
 "use client";
 
+import { Typography } from "@/components/atoms/Typography";
+
 export function TypingIndicator() {
    return (
       <div className="flex items-center gap-1 px-4 py-3">
@@ -16,9 +18,13 @@ export function TypingIndicator() {
             />
          ))}
          {/* Static fallback for reduced motion */}
-         <span className="hidden motion-reduce:inline text-xs text-body/40 italic">
+         <Typography
+            variant="small"
+            as="span"
+            className="hidden motion-reduce:inline"
+         >
             chrisssp is typing...
-         </span>
+         </Typography>
       </div>
    );
 }

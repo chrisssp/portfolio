@@ -74,24 +74,28 @@ const FilterPills = ({
          <button
             type="button"
             onClick={() => handleChange("featured")}
-            className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
+            className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
                filter === "featured"
                   ? "text-primary-contrast"
                   : "text-body hover:text-primary hover:bg-surface/50"
             }`}
          >
-            {tabFeatured}
+            <Typography variant="body" as="span" weight="bold">
+               {tabFeatured}
+            </Typography>
          </button>
          <button
             type="button"
             onClick={() => handleChange("others")}
-            className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 font-bold text-sm sm:text-base transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
+            className={`relative z-10 flex-1 px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 text-center whitespace-nowrap cursor-pointer hover:scale-[1.02] active:scale-95 rounded-lg sm:rounded-xl ${
                filter === "others"
                   ? "text-primary-contrast"
                   : "text-body hover:text-primary hover:bg-surface/50"
             }`}
          >
-            {tabAll}
+            <Typography variant="body" as="span" weight="bold">
+               {tabAll}
+            </Typography>
          </button>
       </div>
    );
@@ -382,9 +386,13 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                   >
                      {dict.projects.actions.filter}
                      {hasActiveFilter && !showFilterBar && (
-                        <span className="ml-1 inline-flex items-center justify-center text-[10px] font-bold leading-none text-primary-contrast bg-primary/80 rounded-full min-w-[18px] h-[18px] px-1">
+                        <Typography
+                           variant="small"
+                           as="span"
+                           className="ml-1 inline-flex items-center justify-center leading-none text-primary-contrast bg-primary/80 rounded-full min-w-[18px] h-[18px] px-1"
+                        >
                            {totalActiveFilters}
-                        </span>
+                        </Typography>
                      )}
                   </Button>
 
@@ -498,7 +506,8 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6 pt-8">
                <Typography
                   variant="body"
-                  className="font-medium text-slate-600 dark:text-slate-400"
+                  weight="medium"
+                  className="text-slate-600 dark:text-slate-400"
                >
                   {dict.projects.subtitle}
                </Typography>

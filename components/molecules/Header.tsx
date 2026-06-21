@@ -189,13 +189,19 @@ export const Header = ({
                                        navLinksRef.current.set(link.id, el);
                                  }}
                                  href={`/${lang}#${link.id}`}
-                                 className={`relative z-10 px-4 lg:px-6 py-2.5 font-bold text-base leading-none transition-all duration-300 rounded-xl hover:text-primary hover:scale-[1.02] active:scale-95 flex items-center ${
+                                 className={`relative z-10 px-4 lg:px-6 py-2.5 transition-all duration-300 rounded-xl hover:text-primary hover:scale-[1.02] active:scale-95 flex items-center ${
                                     activeSection === link.id
                                        ? "text-primary"
                                        : "text-body"
                                  }`}
                               >
-                                 {link.label}
+                                 <Typography
+                                    variant="body"
+                                    as="span"
+                                    weight="bold"
+                                 >
+                                    {link.label}
+                                 </Typography>
                               </Link>
                            ))}
                         </nav>
@@ -230,9 +236,14 @@ export const Header = ({
                         }
                      >
                         <MdLanguage className="size-4 sm:size-5 shrink-0" />
-                        <span className="ml-2 text-sm sm:text-base font-bold uppercase leading-none">
+                        <Typography
+                           variant="body"
+                           as="span"
+                           weight="bold"
+                           className="ml-2 uppercase"
+                        >
                            {lang === "en" ? "ES" : "EN"}
-                        </span>
+                        </Typography>
                      </button>
                      <div className="w-px h-4 sm:h-6 bg-subtle mx-1" />
                      <button
@@ -277,12 +288,17 @@ export const Header = ({
                         />
                      </div>
                      <div className="flex flex-col text-left">
-                        <span className="text-base sm:text-lg font-bold text-body">
+                        <Typography variant="body" as="span" weight="bold">
                            Christian Serrano
-                        </span>
-                        <span className="text-xs text-primary font-bold uppercase tracking-widest">
+                        </Typography>
+                        <Typography
+                           variant="small"
+                           as="span"
+                           weight="bold"
+                           className="text-primary uppercase tracking-widest"
+                        >
                            Menu
-                        </span>
+                        </Typography>
                      </div>
                   </div>
                   <button
@@ -308,14 +324,12 @@ export const Header = ({
                                  : "bg-surface border-subtle text-body hover:text-primary hover:border-primary/50"
                            }`}
                         >
-                           <span className="text-base sm:text-lg font-bold">
+                           <Typography variant="body" as="span" weight="bold">
                               {link.label}
-                           </span>
-                           <span
-                              className={`text-xs sm:text-sm font-black opacity-50`}
-                           >
+                           </Typography>
+                           <Typography variant="small" as="span" weight="black">
                               0{idx + 1}
-                           </span>
+                           </Typography>
                         </Link>
                      ))}
                   </nav>
@@ -329,9 +343,9 @@ export const Header = ({
                            lang === "en" ? "Switch language" : "Cambiar idioma"
                         }
                      >
-                        <span className="text-base sm:text-lg font-bold">
+                        <Typography variant="body" as="span" weight="bold">
                            {dict.nav.language}
-                        </span>
+                        </Typography>
                         <MdLanguage className="size-4 sm:size-5 opacity-50" />
                      </button>
                      <button
@@ -346,18 +360,18 @@ export const Header = ({
                               : dict.nav.themeDark
                         }
                      >
-                        <span className="text-base sm:text-lg font-bold">
+                        <Typography variant="body" as="span" weight="bold">
                            {resolvedTheme === "dark"
                               ? dict.nav.themeLight
                               : dict.nav.themeDark}
-                        </span>
+                        </Typography>
                         {resolvedTheme === "dark" ? (
                            <MdLightMode className="size-4 sm:size-5 opacity-50" />
                         ) : (
                            <MdDarkMode className="size-4 sm:size-5 opacity-50" />
                         )}
                      </button>
-                     <div className="flex items-center justify-between px-3 sm:px-4 py-2 text-body/40 text-xs font-medium">
+                     <div className="flex items-center justify-between px-3 sm:px-4 py-2">
                         <GitHubStats
                            githubStars={dict.nav.githubStars}
                            githubRepos={dict.nav.githubRepos}

@@ -2,6 +2,7 @@
 
 import { FaGithub } from "react-icons/fa";
 import { useGitHubStats } from "@/hooks/useGitHubStats";
+import { Typography } from "./Typography";
 
 interface GitHubStatsProps {
    githubStars: string;
@@ -18,15 +19,17 @@ export const GitHubStats = ({ githubStars, githubRepos }: GitHubStatsProps) => {
    }
 
    return (
-      <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm font-medium md:px-3">
+      <div className="flex items-center gap-1.5 md:gap-2 md:px-3">
          <FaGithub className="size-3.5 md:size-4 shrink-0" />
-         <span>
+         <Typography variant="small" as="span">
             {stars} {githubStars}
-         </span>
-         <span className="opacity-40">·</span>
-         <span>
+         </Typography>
+         <Typography variant="small" as="span" className="opacity-40">
+            ·
+         </Typography>
+         <Typography variant="small" as="span">
             {repos} {githubRepos}
-         </span>
+         </Typography>
       </div>
    );
 };

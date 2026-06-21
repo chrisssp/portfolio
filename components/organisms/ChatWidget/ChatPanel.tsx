@@ -3,6 +3,8 @@
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { MdClose, MdRefresh, MdSend } from "react-icons/md";
+import { Button } from "@/components/atoms/Button";
+import { Typography } from "@/components/atoms/Typography";
 import type { Locale } from "@/i18n/config";
 import {
    type ChatMessage,
@@ -287,27 +289,27 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                   alt="chrisssp"
                   className="size-5 sm:size-6 object-contain"
                />
-               <span className="text-sm font-semibold text-body">chrisssp</span>
+               <Typography variant="body" weight="medium" as="span">
+                  chrisssp
+               </Typography>
             </div>
             <div className="flex items-center gap-1">
                <SettingsPopover locale={locale} />
-               <button
-                  type="button"
+               <Button
+                  variant="outline"
+                  icon={<MdRefresh />}
+                  circle
                   onClick={handleClearChat}
-                  className="p-1.5 rounded-lg hover:bg-body/10 transition-colors text-body/60 hover:text-body cursor-pointer"
-                  aria-label="New chat"
+                  ariaLabel={locale === "es" ? "Nuevo chat" : "New chat"}
                   title={locale === "es" ? "Nuevo chat" : "New chat"}
-               >
-                  <MdRefresh className="size-4" />
-               </button>
-               <button
-                  type="button"
+               />
+               <Button
+                  variant="outline"
+                  icon={<MdClose />}
+                  circle
                   onClick={onClose}
-                  className="p-1.5 rounded-lg hover:bg-body/10 transition-colors text-body/60 hover:text-body cursor-pointer"
-                  aria-label="Close chat"
-               >
-                  <MdClose className="size-4" />
-               </button>
+                  ariaLabel={locale === "es" ? "Cerrar chat" : "Close chat"}
+               />
             </div>
          </div>
 
@@ -324,15 +326,15 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
          {terminated && (
             <div className="absolute inset-0 bg-surface/80 flex items-center justify-center z-10 rounded-2xl md:rounded-2xl">
                <div className="text-center px-6">
-                  <p className="text-sm text-body/60 mb-3">
+                  <Typography variant="body" className="mb-3">
                      {locale === "es"
                         ? "La conversación ha terminado."
                         : "Conversation ended."}
-                  </p>
+                  </Typography>
                   <button
                      type="button"
                      onClick={handleClearChat}
-                     className="px-4 py-2 text-xs rounded-lg bg-primary text-primary-contrast hover:opacity-90 transition-opacity cursor-pointer"
+                     className="px-5 py-2.5 text-sm rounded-lg bg-primary text-primary-contrast hover:opacity-90 transition-opacity cursor-pointer"
                   >
                      {locale === "es"
                         ? "Nueva conversación"
@@ -357,18 +359,17 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                   }
                   disabled={terminated}
                   rows={1}
-                  className="flex-1 resize-none rounded-xl bg-body/5 border border-subtle px-3 py-2 text-sm text-body placeholder:text-body/30 focus:outline-none focus:ring-1 focus:ring-primary/40 transition-all disabled:opacity-40"
+                  className="flex-1 resize-none rounded-xl bg-body/5 border border-subtle px-4 py-3 text-sm text-body placeholder:text-body/30 focus:outline-none focus:ring-1 focus:ring-primary/40 transition-all disabled:opacity-40"
                   style={{ maxHeight: "80px" }}
                />
-               <button
-                  type="button"
+               <Button
+                  variant="primary"
+                  icon={<MdSend />}
+                  circle
                   onClick={sendMessage}
                   disabled={!input.trim() || isLoading || terminated}
-                  className="p-2.5 rounded-xl bg-primary text-primary-contrast hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shrink-0"
-                  aria-label="Send message"
-               >
-                  <MdSend className="size-4" />
-               </button>
+                  ariaLabel="Send message"
+               />
             </div>
          </div>
       </div>

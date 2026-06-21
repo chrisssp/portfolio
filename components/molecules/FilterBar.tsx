@@ -8,6 +8,7 @@ import {
    MdFilterList,
 } from "react-icons/md";
 import { Badge } from "../atoms/Badge";
+import { Typography } from "../atoms/Typography";
 
 interface FilterChipConfig {
    id: string;
@@ -115,13 +116,22 @@ const Section = ({
          >
             <div className="flex items-center gap-2">
                <MdFilterList className="size-4 text-body/70" />
-               <span className="text-xs font-semibold text-body/70 uppercase tracking-wider">
+               <Typography
+                  variant="small"
+                  as="span"
+                  weight="semibold"
+                  className="uppercase tracking-wider"
+               >
                   {axis.label}
-               </span>
+               </Typography>
                {!isOpen && selectedCount > 0 && (
-                  <span className="ml-2 inline-flex items-center justify-center text-xs font-semibold text-primary-contrast bg-primary/80 rounded-full px-2 py-0.5">
+                  <Typography
+                     variant="small"
+                     as="span"
+                     className="ml-2 inline-flex items-center justify-center text-primary-contrast bg-primary/80 rounded-full px-2 py-0.5"
+                  >
                      {selectedCount}
-                  </span>
+                  </Typography>
                )}
             </div>
 
@@ -133,12 +143,16 @@ const Section = ({
                         event.stopPropagation();
                         onClear();
                      }}
-                     className="text-xs font-semibold text-red-400 hover:text-red-300 px-2 py-1 rounded-full bg-red-500/10 hover:bg-red-500/20 transition"
+                     className="px-2 py-1 rounded-full bg-red-500/10 hover:bg-red-500/20 transition"
                   >
-                     <span className="flex items-center gap-1">
+                     <Typography
+                        variant="small"
+                        as="span"
+                        className="flex items-center gap-1"
+                     >
                         <MdClear className="size-3" />
                         {clearAxisLabel}
-                     </span>
+                     </Typography>
                   </button>
                )}
                {isOpen ? (
@@ -164,9 +178,13 @@ const Section = ({
                            );
                            return (
                               <div key={subgroup.label}>
-                                 <p className="text-[10px] font-semibold text-body/50 uppercase tracking-wider mb-2">
+                                 <Typography
+                                    variant="small"
+                                    weight="medium"
+                                    className="mb-2"
+                                 >
                                     {subgroup.label}
-                                 </p>
+                                 </Typography>
                                  <div className="p-1 grid grid-flow-col grid-rows-3 auto-cols-max gap-2 overflow-x-auto sm:flex sm:flex-wrap sm:overflow-visible sm:gap-2.5">
                                     {renderChips(sortedIds)}
                                  </div>
@@ -219,9 +237,11 @@ const ActiveChips = ({
                   key={`${axis.key}-${value}`}
                   type="button"
                   onClick={() => onRemove(axis.key, value)}
-                  className="flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold text-body border border-subtle/60 bg-surface/80 hover:bg-surface transition"
+                  className="flex items-center gap-2 rounded-full px-3 py-1.5 border border-subtle/60 bg-surface/80 hover:bg-surface transition"
                >
-                  <span className="text-body">{option.name}</span>
+                  <Typography variant="small" as="span" weight="semibold">
+                     {option.name}
+                  </Typography>
                   <MdClear className="size-3 text-body/60" />
                </button>
             );
@@ -229,10 +249,17 @@ const ActiveChips = ({
          <button
             type="button"
             onClick={onClearAll}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-body/50 hover:text-body transition px-2 py-1"
+            className="inline-flex items-center gap-1 px-2 py-1 transition"
          >
-            <MdClear className="size-3" />
-            {clearLabel}
+            <MdClear className="size-3 text-body/50" />
+            <Typography
+               variant="small"
+               as="span"
+               weight="semibold"
+               className="text-body/50 hover:text-body"
+            >
+               {clearLabel}
+            </Typography>
          </button>
       </div>
    );

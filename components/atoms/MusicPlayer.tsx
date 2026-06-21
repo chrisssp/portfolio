@@ -2,9 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MdMusicNote, MdMusicOff } from "react-icons/md";
+import { Button } from "@/components/atoms/Button";
 import { useMobileMenu } from "@/components/contexts/MobileMenuContext";
 import { useFooterVisible } from "@/components/hooks/useFooterVisible";
 import type { Locale } from "@/i18n/config";
+import { Typography } from "./Typography";
 
 type Props = {
    locale?: Locale;
@@ -140,32 +142,34 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
                   : "opacity-100 translate-y-0"
             }`}
          >
-            <button
+            <Button
                ref={buttonRef}
-               type="button"
+               variant="primary"
+               circle
+               icon={
+                  isPlaying ? (
+                     <MdMusicNote className="motion-safe:animate-pulse" />
+                  ) : (
+                     <MdMusicOff />
+                  )
+               }
                onClick={togglePlay}
                disabled={!isLoaded}
-               className={`p-2.5 xs:p-3 rounded-full shadow-2xl transition-all duration-500 ease-in-out cursor-pointer border ${
-                  isLoaded
-                     ? "bg-primary text-primary-contrast hover:scale-110 active:scale-95 hover:shadow-primary/20 border-subtle"
-                     : "bg-surface text-body/30 border-subtle cursor-not-allowed"
+               ariaLabel={ariaLabel}
+               className={`shadow-2xl transition-all duration-500 ease-in-out hover:shadow-primary/20 ${
+                  !isLoaded
+                     ? "bg-surface text-body/30 hover:scale-100 active:scale-100"
+                     : ""
                }`}
-               style={buttonStyle}
-               aria-label={ariaLabel}
-            >
-               {isPlaying ? (
-                  <MdMusicNote className="size-5 motion-safe:animate-pulse" />
-               ) : (
-                  <MdMusicOff className="size-5" />
-               )}
-            </button>
+               style={isPlaying ? buttonStyle : undefined}
+            />
 
             <div
                className={`${
                   isNarrow
                      ? "fixed left-6 right-6 z-[62]"
                      : "absolute left-full ml-3"
-               } top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-surface text-body text-xs font-medium border border-subtle shadow-lg text-left transition-all duration-300 ${
+               } top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-surface border border-subtle shadow-lg text-left transition-all duration-300 ${
                   showTooltip
                      ? "opacity-100 translate-x-0"
                      : "opacity-0 -translate-x-2 pointer-events-none"
@@ -178,21 +182,35 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
             >
                {isPlaying ? (
                   <>
-                     <span className="whitespace-normal">
+                     <Typography
+                        variant="small"
+                        as="span"
+                        weight="medium"
+                        className="whitespace-normal"
+                     >
                         {currentTrack.title}
-                        <span className="text-body/50 mx-1">·</span>
+                        <span className="text-body/70 mx-1">·</span>
                         {currentTrack.artist}
-                     </span>
-                     <span className="block text-[10px] text-body/40 leading-tight mt-0.5">
+                     </Typography>
+                     <Typography
+                        variant="small"
+                        as="span"
+                        className="block mt-0.5 opacity-70"
+                     >
                         CC BY 4.0 — Spanac · Free Sounds Library
-                     </span>
+                     </Typography>
                   </>
                ) : (
-                  <span className="whitespace-nowrap">
+                  <Typography
+                     variant="small"
+                     as="span"
+                     weight="medium"
+                     className="whitespace-nowrap"
+                  >
                      {isSpanish
                         ? "Reproducir música ambiental"
                         : "Play ambient music"}
-                  </span>
+                  </Typography>
                )}
             </div>
          </div>

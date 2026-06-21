@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MdLock, MdSettings, MdVolumeOff, MdVolumeUp } from "react-icons/md";
+import { Button } from "@/components/atoms/Button";
+import { Typography } from "@/components/atoms/Typography";
 import { isSoundEnabled, setSoundEnabled } from "./chatSounds";
 
 type Props = {
@@ -51,17 +53,17 @@ export function SettingsPopover({ locale }: Props) {
 
    return (
       <div className="relative">
-         <button
+         <Button
             ref={triggerRef}
-            type="button"
+            variant="outline"
+            icon={<MdSettings />}
+            circle
             onClick={() => setOpen(!open)}
-            className="p-1.5 rounded-lg hover:bg-body/10 transition-colors text-body/60 hover:text-body cursor-pointer"
-            aria-label={locale === "es" ? "Configuración" : "Settings"}
+            ariaLabel={locale === "es" ? "Configuración" : "Settings"}
             aria-expanded={open}
-            aria-haspopup="true"
-         >
-            <MdSettings className="size-4" />
-         </button>
+            aria-haspopup="dialog"
+            className={`${open ? "bg-page/80" : ""}`}
+         />
 
          {open && (
             <>
@@ -114,9 +116,9 @@ export function SettingsPopover({ locale }: Props) {
                   <div className="mt-1.5 p-2 rounded-lg bg-body/5 border border-subtle">
                      <div className="flex items-start gap-2">
                         <MdLock className="size-3.5 mt-0.5 text-body/40 shrink-0" />
-                        <p className="text-[11px] leading-relaxed text-body/60">
+                        <Typography variant="small" className="leading-relaxed">
                            {privacyText}
-                        </p>
+                        </Typography>
                      </div>
                   </div>
                </div>

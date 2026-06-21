@@ -74,9 +74,9 @@ export function fuzzyMatch(input: string, validItems: string[]): string | null {
 // --- Shared button class ---
 
 const BTN =
-   "inline-flex items-center gap-1 px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/40";
+   "inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/40";
 const LINK =
-   "inline-flex items-center gap-1 px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors";
+   "inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors";
 
 // --- Button Components ---
 
@@ -98,7 +98,7 @@ export function ProjectButton({
          }}
          className={BTN}
       >
-         <MdFolder className="size-3.5 shrink-0" />
+         <MdFolder className="size-4 shrink-0" />
          {label}
       </button>
    );
@@ -109,7 +109,7 @@ export function CodeButton({ slug }: { slug: string }) {
    if (!url) return null;
    return (
       <a href={url} target="_blank" rel="noopener noreferrer" className={LINK}>
-         <MdCode className="size-3.5 shrink-0" />
+         <MdCode className="size-4 shrink-0" />
          Code
       </a>
    );
@@ -122,7 +122,7 @@ export function LandingButton({ slug }: { slug: string }) {
    if (!url) return null;
    return (
       <a href={url} target="_blank" rel="noopener noreferrer" className={LINK}>
-         <MdOpenInNew className="size-3.5 shrink-0" />
+         <MdOpenInNew className="size-4 shrink-0" />
          Landing
       </a>
    );
@@ -133,7 +133,7 @@ export function DemoButton({ slug }: { slug: string }) {
    if (!url) return null;
    return (
       <a href={url} target="_blank" rel="noopener noreferrer" className={LINK}>
-         <MdPlayArrow className="size-3.5 shrink-0" />
+         <MdPlayArrow className="size-4 shrink-0" />
          Demo
       </a>
    );
@@ -144,7 +144,7 @@ export function ArticleButton({ slug }: { slug: string }) {
    if (!url) return null;
    return (
       <a href={url} target="_blank" rel="noopener noreferrer" className={LINK}>
-         <MdArticle className="size-3.5 shrink-0" />
+         <MdArticle className="size-4 shrink-0" />
          Article
       </a>
    );
@@ -173,7 +173,7 @@ export function CertificateButton({
          }}
          className={BTN}
       >
-         <MdVerified className="size-3.5 shrink-0" />
+         <MdVerified className="size-4 shrink-0" />
          Certificates
       </button>
    );
@@ -209,7 +209,7 @@ export function EcosystemButton({
          }}
          className={BTN}
       >
-         <MdWidgets className="size-3.5 shrink-0" />
+         <MdWidgets className="size-4 shrink-0" />
          {matched}
       </button>
    );
@@ -241,7 +241,7 @@ export function ExperienceButton({
          }}
          className={BTN}
       >
-         <MdBusinessCenter className="size-3.5 shrink-0" />
+         <MdBusinessCenter className="size-4 shrink-0" />
          {label} Experience
       </button>
    );
@@ -250,7 +250,7 @@ export function ExperienceButton({
 export function EmailButton() {
    return (
       <a href={`mailto:${PROFESSIONAL_LINKS.email}`} className={LINK}>
-         <MdEmail className="size-3.5 shrink-0" />
+         <MdEmail className="size-4 shrink-0" />
          Email
       </a>
    );
@@ -264,7 +264,7 @@ export function GitHubButton() {
          rel="noopener noreferrer"
          className={LINK}
       >
-         <MdCode className="size-3.5 shrink-0" />
+         <MdCode className="size-4 shrink-0" />
          GitHub
       </a>
    );
@@ -278,7 +278,7 @@ export function LinkedInButton() {
          rel="noopener noreferrer"
          className={LINK}
       >
-         <MdLink className="size-3.5 shrink-0" />
+         <MdLink className="size-4 shrink-0" />
          LinkedIn
       </a>
    );
@@ -288,7 +288,7 @@ export function CVButton({ locale }: { locale: Locale }) {
    const cvLink = hero[locale]?.actions.cvLink || hero.en.actions.cvLink;
    return (
       <a href={cvLink} download className={LINK}>
-         <MdFileDownload className="size-3.5 shrink-0" />
+         <MdFileDownload className="size-4 shrink-0" />
          CV
       </a>
    );
@@ -304,7 +304,7 @@ export function AboutButton({ locale }: { locale: Locale }) {
          }}
          className={BTN}
       >
-         <MdPerson className="size-3.5 shrink-0" />
+         <MdPerson className="size-4 shrink-0" />
          About Christian
       </button>
    );

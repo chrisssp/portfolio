@@ -9,6 +9,7 @@ import {
 } from "react-icons/md";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import { Button } from "../atoms/Button";
+import { Typography } from "../atoms/Typography";
 
 interface SmartEmailButtonProps {
    label: string;
@@ -200,36 +201,40 @@ export const SmartEmailButton = ({
             >
                <a
                   href={`mailto:${PROFESSIONAL_LINKS.email}`}
-                  className="flex items-center gap-3 xs:gap-4 px-4 xs:px-6 py-3 xs:py-4 hover:bg-surface transition-all duration-300 border-b border-subtle hover:scale-[1.01] active:scale-95"
+                  className="flex items-center gap-3 xs:gap-4 px-4 xs:px-5 py-3 hover:bg-surface transition-all duration-300 border-b border-subtle hover:scale-[1.01] active:scale-95"
                   onClick={hide}
                >
                   <div className="p-1.5 xs:p-2 bg-primary/10 rounded-lg text-primary">
                      <MdEmail className="size-4 xs:size-5" />
                   </div>
                   <div className="flex flex-col text-left">
-                     <span className="text-sm sm:text-base font-bold text-body">
+                     <Typography variant="body" as="span" weight="medium">
                         {menuLabels.send}
-                     </span>
-                     <span className="text-xs sm:text-sm text-body opacity-60">
+                     </Typography>
+                     <Typography variant="small" as="span">
                         {menuLabels.sendSub}
-                     </span>
+                     </Typography>
                   </div>
                </a>
                <button
                   type="button"
-                  className="w-full flex items-center gap-3 xs:gap-4 px-4 xs:px-6 py-3 xs:py-4 hover:bg-surface transition-all duration-300 hover:scale-[1.01] active:scale-95"
+                  className="w-full flex items-center gap-3 xs:gap-4 px-4 xs:px-5 py-3 hover:bg-surface transition-all duration-300 hover:scale-[1.01] active:scale-95"
                   onClick={handleCopyEmail}
                >
                   <div className="p-1.5 xs:p-2 bg-surface rounded-lg text-body border border-subtle">
                      <MdContentCopy className="size-4 xs:size-5" />
                   </div>
                   <div className="flex flex-col text-left overflow-hidden">
-                     <span className="text-sm sm:text-base font-bold text-body">
+                     <Typography variant="body" as="span" weight="medium">
                         {menuLabels.copy}
-                     </span>
-                     <span className="text-xs sm:text-sm text-body opacity-60 truncate w-full">
+                     </Typography>
+                     <Typography
+                        variant="small"
+                        as="span"
+                        className="truncate w-full"
+                     >
                         {PROFESSIONAL_LINKS.email}
-                     </span>
+                     </Typography>
                   </div>
                </button>
             </div>

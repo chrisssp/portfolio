@@ -53,7 +53,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   <Typography variant="project">
                      {dict.about.educationTitle}
                   </Typography>
-                  <Typography variant="body" className="font-medium">
+                  <Typography variant="body" weight="medium">
                      {dict.about.education[0].institution}
                   </Typography>
                </div>
