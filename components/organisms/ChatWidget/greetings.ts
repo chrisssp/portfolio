@@ -13,7 +13,7 @@ interface Greeting {
 export const greetings: Greeting[] = [
    // English (7)
    {
-      text: "Hey! I'm Christian Serrano (chrisssp). Ask me anything about my work — projects, experience, tech stacks, whatever you're curious about.",
+      text: "Hey! I'm Christian Serrano. Ask me anything about my work — projects, experience, tech stacks, whatever you're curious about.",
       locale: "en",
    },
    {
@@ -43,7 +43,7 @@ export const greetings: Greeting[] = [
 
    // Spanish — Neutral LATAM (7)
    {
-      text: "¡Hola! Soy Christian Serrano (chrisssp). Pregúntame lo que quieras sobre mi trabajo — proyectos, experiencia, tecnologías, lo que sea.",
+      text: "¡Hola! Soy Christian Serrano. Pregúntame lo que quieras sobre mi trabajo — proyectos, experiencia, tecnologías, lo que sea.",
       locale: "es",
    },
    {

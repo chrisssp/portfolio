@@ -13,6 +13,7 @@ import {
    setTerminated,
 } from "./chatSession";
 import { playReceiveTone, playSendTone } from "./chatSounds";
+import { getRandomError } from "./errorMessages";
 import { getRandomGreeting } from "./greetings";
 import { MessageList } from "./MessageList";
 import { SettingsPopover } from "./SettingsPopover";
@@ -130,7 +131,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
 
             const assistantMsg: ChatMessage = {
                role: "assistant",
-               content: data.content || data.error || "Something went wrong.",
+               content: data.content || data.error || getRandomError(locale),
                timestamp: Date.now(),
             };
             const finalMessages = [...newMessages, assistantMsg];
@@ -164,10 +165,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
 
          // If the stream produced no content, show a useful message
          if (!fullContent.trim()) {
-            fullContent =
-               locale === "es"
-                  ? "No se recibió respuesta del asistente. Es posible que el límite de la API se haya agotado. Intenta de nuevo en unos minutos."
-                  : "No response received from the assistant. The API rate limit may have been reached. Please try again in a few minutes.";
+            fullContent = getRandomError(locale);
          }
 
          const assistantMsg: ChatMessage = {
@@ -183,10 +181,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
          const errorMessage = err.message || "Unknown error";
          const errorMsg: ChatMessage = {
             role: "assistant",
-            content:
-               locale === "es"
-                  ? "Lo siento, algo salió mal. Por favor intenta de nuevo más tarde."
-                  : "Sorry, something went wrong. Please try again later.",
+            content: getRandomError(locale),
             timestamp: Date.now(),
          };
          const finalMessages = [...newMessages, errorMsg];
