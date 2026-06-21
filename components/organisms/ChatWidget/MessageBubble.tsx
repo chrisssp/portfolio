@@ -114,18 +114,13 @@ function resolveSlug(raw: string): string {
 
 // --- Action Button Components ---
 
-function ProjectButton({ slug }: { slug: string }) {
+function ProjectButton({ slug, locale }: { slug: string; locale: Locale }) {
    const resolved = resolveSlug(slug);
    const label = displayName(resolved);
 
    const handleClick = () => {
       if (typeof window === "undefined") return;
-      window.location.hash = `project-${resolved}`;
-      window.dispatchEvent(
-         new CustomEvent("switch-project-tab", {
-            detail: { projectId: resolved },
-         }),
-      );
+      window.location.href = `/${locale}#project-${resolved}`;
    };
 
    return (
@@ -335,10 +330,16 @@ function LinkedInButton() {
    );
 }
 
-function CVButton() {
+function CVButton({ locale }: { locale: Locale }) {
+   const cvPath =
+      locale === "es"
+         ? "/assets/docs/cvs/fullstack/Desarrollador_FullStack_Christian_Serrano_CV.es.pdf"
+         : "/assets/docs/cvs/fullstack/FullStack_Developer_Christian_Serrano_CV.en.pdf";
+
    return (
       <a
-         href={CV_URL}
+         href={cvPath}
+         download
          className="inline-flex items-center gap-1 px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors"
       >
          <MdFileDownload className="size-3.5 shrink-0" />
@@ -468,6 +469,7 @@ function parseAssistantContent(
             <ProjectButton
                key={`act-${actionIdx++}`}
                slug={segment.slice(9, -1)}
+               locale={locale}
             />,
          );
       } else if (segment.startsWith("[CODE:")) {
@@ -561,7 +563,9 @@ function parseAssistantContent(
       } else if (segment === "[CV]") {
          if (seenActions.has("[CV]") || recentMarkers?.has("[CV]")) continue;
          seenActions.add("[CV]");
-         actionNodes.push(<CVButton key={`act-${actionIdx++}`} />);
+         actionNodes.push(
+            <CVButton key={`act-${actionIdx++}`} locale={locale} />,
+         );
       } else if (segment === "[ABOUT]") {
          if (seenActions.has("[ABOUT]") || recentMarkers?.has("[ABOUT]"))
             continue;
