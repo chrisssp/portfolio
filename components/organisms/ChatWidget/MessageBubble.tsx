@@ -31,7 +31,126 @@ type Props = {
 const CHRISTIAN_EMAIL = "christian.serrano.puertos@gmail.com";
 const GITHUB_URL = "https://github.com/chrisssp";
 const LINKEDIN_URL = "https://www.linkedin.com/in/chrisssp/";
-const CV_URL = `mailto:${CHRISTIAN_EMAIL}?subject=CV Request - Christian Serrano`;
+
+// --- Validation Dictionaries ---
+
+const VALID_ECOSYSTEM_ITEMS: Record<string, string[]> = {
+   "7dcompass": [
+      "Administrative Web Portal",
+      "On-Site Mobile App",
+      "Node.js Audit Engine",
+   ],
+   azkali: [
+      "Product Landing Page",
+      "AI Mobile Experience",
+      "AI & Supabase Backend",
+   ],
+   "coppel-nexus": [
+      "Mobile App (Field Collaborators)",
+      "Web App (Admin and Tracking)",
+      "Backend API",
+   ],
+   "flacks-cc": [
+      "Web App (Landing + Admin)",
+      "Hybrid Mobile App (PWA)",
+      "Native Mobile App (Android)",
+      "Backend API",
+   ],
+   mtrpa: ["Web App (Operations Hub)", "Backend API"],
+   iapex: [
+      "Neural Core",
+      "The Mobile Client (Family Side)",
+      "The Web Portal (Institutional Side)",
+      "Core API",
+   ],
+   dabetai: [
+      "Landing Page",
+      "Complication Prediction Core (AI)",
+      "Mobile App (Patient Hub)",
+      "Medical Portal (Oversight)",
+      "RESTful API",
+      "AI Inference API",
+   ],
+   puntofiel: [
+      "Mobile App (Customers, Owners, Employees)",
+      "Backend (Supabase + PostgreSQL)",
+   ],
+};
+
+// Experience: map both project IDs and company names → projectId
+const EXPERIENCE_ALIASES: Record<string, string> = {
+   // Project IDs
+   "7dcompass": "7dcompass",
+   azkali: "azkali",
+   "coppel-nexus": "coppel-nexus",
+   mtrpa: "mtrpa",
+   "flacks-cc": "flacks-cc",
+   // Company names → projectId
+   "seven d": "7dcompass",
+   "seven d construction": "7dcompass",
+   "banco azteca": "azkali",
+   coppel: "coppel-nexus",
+   pepsico: "mtrpa",
+   "pepsi co": "mtrpa",
+   "flack's": "flacks-cc",
+   flacks: "flacks-cc",
+   "flack's barber": "flacks-cc",
+   "flack's barber shop": "flacks-cc",
+};
+
+const VALID_CERTIFICATES: Record<string, string[]> = {
+   "7dcompass": ["Recommendation Letter"],
+   azkali: ["Genius Arena Hackathon — Participation"],
+   "coppel-nexus": ["Genius Arena Hackathon — 4th Place"],
+   "flacks-cc": [
+      "Endorsement Letter",
+      "Expotecnología UTCV 2023 — Participation",
+   ],
+   iapex: [
+      "CEIAAIT 2025 — Oral Presentation",
+      "IMSS — Letter of Intent",
+      "IMSS — Project Validation",
+      "CBTIS Córdoba — Science & Tech Week Talk",
+      "FERVECI 2025 — Participation",
+   ],
+   dabetai: ["Expociencias Veracruz 2025 — Participation"],
+};
+
+// --- Fuzzy Matching ---
+
+function fuzzyMatch(input: string, validItems: string[]): string | null {
+   const lower = input.toLowerCase().trim();
+
+   // Exact match (case-insensitive)
+   for (const item of validItems) {
+      if (item.toLowerCase() === lower) return item;
+   }
+
+   // Partial match (input is substring of valid item)
+   for (const item of validItems) {
+      if (item.toLowerCase().includes(lower)) return item;
+   }
+
+   // Reverse partial (valid item is substring of input)
+   for (const item of validItems) {
+      if (lower.includes(item.toLowerCase())) return item;
+   }
+
+   // Word overlap (for multi-word items like "Mobile App (Field Collaborators)")
+   const inputWords = lower.split(/\s+/);
+   let bestScore = 0;
+   let bestMatch: string | null = null;
+   for (const item of validItems) {
+      const itemWords = item.toLowerCase().split(/\s+/);
+      const overlap = inputWords.filter((w) => itemWords.includes(w)).length;
+      if (overlap > bestScore && overlap >= 2) {
+         bestScore = overlap;
+         bestMatch = item;
+      }
+   }
+
+   return bestMatch;
+}
 
 // --- Project display & link lookup ---
 
@@ -44,6 +163,20 @@ const PROJECT_NAMES: Record<string, string> = {
    iapex: "IAPEX (Encuéntrame)",
    dabetai: "dabetai",
    puntofiel: "PuntoFiel",
+};
+
+// Reverse map: company names → display names
+const COMPANY_DISPLAY_NAMES: Record<string, string> = {
+   "seven d": "Seven D Construction",
+   "seven d construction": "Seven D Construction",
+   "banco azteca": "Banco Azteca",
+   coppel: "Coppel",
+   pepsico: "PepsiCo",
+   "pepsi co": "PepsiCo",
+   "flack's": "Flack's Barber Shop",
+   flacks: "Flack's Barber Shop",
+   "flack's barber": "Flack's Barber Shop",
+   "flack's barber shop": "Flack's Barber Shop",
 };
 
 type ProjectLinks = {
@@ -110,6 +243,13 @@ const SLUG_ALIASES: Record<string, string> = {
 function resolveSlug(raw: string): string {
    const key = raw.toLowerCase().trim();
    return SLUG_ALIASES[key] || raw;
+}
+
+// --- Resolve experience ID (supports both project IDs and company names) ---
+
+function resolveExperienceId(raw: string): string | null {
+   const key = raw.toLowerCase().trim();
+   return EXPERIENCE_ALIASES[key] || null;
 }
 
 // --- Action Button Components ---
@@ -204,8 +344,24 @@ function ArticleButton({ slug }: { slug: string }) {
    );
 }
 
-function CertificateButton({ slug, locale }: { slug: string; locale: Locale }) {
+function CertificateButton({
+   slug,
+   itemId,
+   locale,
+}: {
+   slug: string;
+   itemId?: string;
+   locale: Locale;
+}) {
    const resolved = resolveSlug(slug);
+
+   // Validate certificate item if provided
+   if (itemId) {
+      const validItems = VALID_CERTIFICATES[resolved] || [];
+      const matched = fuzzyMatch(itemId, validItems);
+      if (!matched) return null; // Invalid certificate — don't render
+   }
+
    const handleClick = () => {
       if (typeof window === "undefined") return;
       window.location.href = `/${locale}/projects/${resolved}#certificates`;
@@ -233,12 +389,19 @@ function EcosystemButton({
    locale: Locale;
 }) {
    const resolvedSlug = resolveSlug(slug);
-   const itemId = item
+
+   // Validate ecosystem item against known valid items
+   const validItems = VALID_ECOSYSTEM_ITEMS[resolvedSlug] || [];
+   const matchedItem = fuzzyMatch(item, validItems);
+   if (!matchedItem) return null; // Invalid ecosystem item — don't render button
+
+   const itemId = matchedItem
       .toLowerCase()
       .replace(/[^\w\s-]/g, "")
       .replace(/\s+/g, "-")
       .replace(/-+/g, "-")
       .trim();
+
    const handleClick = () => {
       if (typeof window === "undefined") return;
       window.location.href = `/${locale}/projects/${resolvedSlug}#ecosystem-${itemId}`;
@@ -251,7 +414,7 @@ function EcosystemButton({
          className="inline-flex items-center gap-1 px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/40"
       >
          <MdWidgets className="size-3.5 shrink-0" />
-         {item}
+         {matchedItem}
       </button>
    );
 }
@@ -265,14 +428,20 @@ function ExperienceButton({
    locale: Locale;
    onClose?: () => void;
 }) {
+   // Resolve company name → projectId, or use as-is if already valid
+   const resolved = resolveExperienceId(projectId);
+   if (!resolved) return null; // Invalid experience — don't render
+
    const handleClick = () => {
       if (typeof window === "undefined") return;
-      // Navigate to main page with experience hash (works from any page)
       window.location.href = `/${locale}#experience`;
       onClose?.();
    };
 
-   const label = displayName(projectId);
+   // Use company display name if available, otherwise project display name
+   const label =
+      COMPANY_DISPLAY_NAMES[projectId.toLowerCase().trim()] ||
+      displayName(resolved);
 
    return (
       <button
@@ -344,10 +513,10 @@ function CVButton({ locale }: { locale: Locale }) {
    );
 }
 
-function AboutButton() {
+function AboutButton({ locale }: { locale: Locale }) {
    const handleClick = () => {
-      const el = document.getElementById("about");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      if (typeof window === "undefined") return;
+      window.location.href = `/${locale}#about`;
    };
 
    return (
@@ -543,10 +712,15 @@ function parseAssistantContent(
       } else if (segment.startsWith("[CERT:")) {
          if (seenActions.has(segment) || recentMarkers?.has(segment)) continue;
          seenActions.add(segment);
+         const inner = segment.slice(6, -1); // "slug:item name" or "slug"
+         const colonIdx = inner.indexOf(":");
+         const slug = colonIdx > 0 ? inner.slice(0, colonIdx) : inner;
+         const itemId = colonIdx > 0 ? inner.slice(colonIdx + 1) : undefined;
          actionNodes.push(
             <CertificateButton
                key={`act-${actionIdx++}`}
-               slug={segment.slice(6, -1)}
+               slug={slug}
+               itemId={itemId}
                locale={locale}
             />,
          );
@@ -603,7 +777,9 @@ function parseAssistantContent(
          if (seenActions.has("[ABOUT]") || recentMarkers?.has("[ABOUT]"))
             continue;
          seenActions.add("[ABOUT]");
-         actionNodes.push(<AboutButton key={`act-${actionIdx++}`} />);
+         actionNodes.push(
+            <AboutButton key={`act-${actionIdx++}`} locale={locale} />,
+         );
       } else if (segment) {
          textNodes.push(
             <Fragment key={`txt-${textIdx++}`}>
