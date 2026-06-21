@@ -295,6 +295,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                <span className="text-sm font-semibold text-body">chrisssp</span>
             </div>
             <div className="flex items-center gap-1">
+               <SettingsPopover locale={locale} />
                <button
                   type="button"
                   onClick={handleClearChat}
@@ -304,7 +305,6 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                >
                   <MdRefresh className="size-4" />
                </button>
-               <SettingsPopover locale={locale} />
                <button
                   type="button"
                   onClick={onClose}
