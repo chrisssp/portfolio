@@ -16,6 +16,7 @@ import {
    MdLightMode,
    MdMenu,
 } from "react-icons/md";
+import { useMobileMenu } from "@/components/contexts/MobileMenuContext";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
@@ -37,9 +38,10 @@ export const Header = ({
    backHref,
 }: HeaderProps) => {
    const { setTheme, resolvedTheme } = useTheme();
+   const { isOpen: mobileMenuOpen, setOpen: setMobileMenuOpen } =
+      useMobileMenu();
    const [mounted, setMounted] = useState(false);
    const [activeSection, setActiveSection] = useState<string>("");
-   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
    const [visible, setVisible] = useState(true);
    const lastScrollY = useRef(0);
    const navLinksRef = useRef<Map<string, HTMLAnchorElement>>(new Map());

@@ -2,8 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { MdArrowUpward } from "react-icons/md";
+import { useMobileMenu } from "@/components/contexts/MobileMenuContext";
+import { useFooterVisible } from "@/components/hooks/useFooterVisible";
 
 export const ScrollToTop = () => {
+   const { isOpen: isMenuOpen } = useMobileMenu();
+   const isFooterVisible = useFooterVisible();
    const [isVisible, setIsVisible] = useState(false);
 
    useEffect(() => {
@@ -31,7 +35,7 @@ export const ScrollToTop = () => {
          type="button"
          onClick={scrollToTop}
          className={`fixed bottom-6 xs:bottom-8 right-[4.5rem] xs:right-[5.25rem] z-50 p-2.5 xs:p-3 rounded-full bg-primary text-primary-contrast shadow-2xl transition-all duration-500 ease-in-out hover:scale-110 active:scale-95 hover:shadow-primary/20 group cursor-pointer border border-subtle ${
-            isVisible
+            isVisible && !isMenuOpen && !isFooterVisible
                ? "opacity-100 translate-y-0 scale-100"
                : "opacity-0 translate-y-10 scale-50 pointer-events-none"
          }`}

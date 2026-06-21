@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MdMusicNote, MdMusicOff } from "react-icons/md";
+import { useMobileMenu } from "@/components/contexts/MobileMenuContext";
+import { useFooterVisible } from "@/components/hooks/useFooterVisible";
 import type { Locale } from "@/i18n/config";
 
 type Props = {
@@ -9,12 +11,16 @@ type Props = {
 };
 
 export const MusicPlayer = ({ locale = "en" }: Props) => {
+   const { isOpen: isMenuOpen } = useMobileMenu();
+   const isFooterVisible = useFooterVisible();
    const audioRef = useRef<HTMLAudioElement | null>(null);
    const buttonRef = useRef<HTMLButtonElement | null>(null);
    const isFadingRef = useRef(false);
    const [isPlaying, setIsPlaying] = useState(false);
    const [isLoaded, setIsLoaded] = useState(false);
    const [showTooltip, setShowTooltip] = useState(false);
+
+   const isHidden = isMenuOpen || isFooterVisible;
 
    const isSpanish = locale === "es";
 
@@ -127,7 +133,13 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
                50% { transform: scale(1.04); }
             }
          `}</style>
-         <div className="fixed bottom-6 xs:bottom-8 left-6 xs:left-8 z-[60] group">
+         <div
+            className={`fixed bottom-6 xs:bottom-8 left-6 xs:left-8 z-[60] group transition-all duration-500 ease-in-out ${
+               isHidden
+                  ? "opacity-0 translate-y-4 pointer-events-none"
+                  : "opacity-100 translate-y-0"
+            }`}
+         >
             <button
                ref={buttonRef}
                type="button"

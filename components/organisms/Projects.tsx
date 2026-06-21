@@ -495,7 +495,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             )}
 
             {/* Footer */}
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6 pt-8 border-t border-subtle/30">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6 pt-8">
                <Typography
                   variant="body"
                   className="font-medium text-slate-600 dark:text-slate-400"
