@@ -258,21 +258,17 @@ function EcosystemButton({
 
 function ExperienceButton({
    projectId,
+   locale,
    onClose,
 }: {
    projectId: string;
+   locale: Locale;
    onClose?: () => void;
 }) {
    const handleClick = () => {
       if (typeof window === "undefined") return;
-      const el = document.getElementById(`exp-${projectId}`);
-      if (el) {
-         el.scrollIntoView({ behavior: "smooth" });
-      } else {
-         // Fallback to the section container
-         const section = document.getElementById("experience");
-         section?.scrollIntoView({ behavior: "smooth" });
-      }
+      // Navigate to main page with experience hash (works from any page)
+      window.location.href = `/${locale}#experience`;
       onClose?.();
    };
 
@@ -542,6 +538,7 @@ function parseAssistantContent(
             <ExperienceButton
                key={`act-${actionIdx++}`}
                projectId={segment.slice(12, -1)}
+               locale={locale}
                onClose={onClose}
             />,
          );
