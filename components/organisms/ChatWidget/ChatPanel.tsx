@@ -262,23 +262,23 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
       };
    }, [isOpen, onClose]);
 
-   if (!isOpen) return null;
-
    return (
       <div
          className={`
-              fixed z-[70] flex flex-col bg-surface border border-subtle shadow-2xl
-              motion-safe:animate-in
-              /* Mobile: fullscreen — visualViewport JS syncs top/height */
-              top-0 inset-x-0 bottom-0
-              /* Desktop: floating panel anchored to button */
-              md:inset-auto md:bottom-24 md:right-6 md:w-[380px] md:h-[520px] md:rounded-2xl md:transition-all md:duration-200
-           `}
+               fixed z-[70] flex flex-col bg-page border border-body/10 shadow-2xl
+               motion-safe:transition-all motion-safe:duration-200 motion-safe:ease-out
+               ${isOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-[0.92] translate-y-4 pointer-events-none invisible"}
+               md:overflow-hidden
+               /* Mobile: fullscreen — visualViewport JS syncs top/height */
+               top-0 inset-x-0 bottom-0
+               /* Desktop: floating panel anchored to button */
+               md:inset-auto md:bottom-24 md:right-6 md:w-[380px] md:h-[520px] md:rounded-2xl
+            `}
          role="dialog"
          aria-label="Chat panel"
       >
          {/* Header — sticky on mobile so it survives keyboard scroll */}
-         <div className="sticky top-0 z-10 bg-surface flex items-center justify-between px-4 py-3 border-b border-subtle">
+         <div className="sticky top-0 z-10 bg-page flex items-center justify-between px-4 py-3 border-b border-body/10">
             <div className="flex items-center gap-2">
                <img
                   src={
@@ -299,6 +299,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                   variant="outline"
                   icon={<MdRefresh />}
                   circle
+                  size="sm"
                   onClick={handleClearChat}
                   ariaLabel={locale === "es" ? "Nuevo chat" : "New chat"}
                   title={locale === "es" ? "Nuevo chat" : "New chat"}
@@ -307,6 +308,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                   variant="outline"
                   icon={<MdClose />}
                   circle
+                  size="sm"
                   onClick={onClose}
                   ariaLabel={locale === "es" ? "Cerrar chat" : "Close chat"}
                />
@@ -324,7 +326,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
 
          {/* Terminated overlay */}
          {terminated && (
-            <div className="absolute inset-0 bg-surface/80 flex items-center justify-center z-10 rounded-2xl md:rounded-2xl">
+            <div className="absolute inset-0 bg-page/80 flex items-center justify-center z-10 rounded-2xl md:rounded-2xl">
                <div className="text-center px-6">
                   <Typography variant="body" className="mb-3">
                      {locale === "es"
@@ -345,7 +347,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
          )}
 
          {/* Input */}
-         <div className="px-3 py-3 border-t border-subtle">
+         <div className="px-4 py-4 border-t border-subtle">
             <div className="flex items-end gap-2">
                <textarea
                   ref={inputRef}

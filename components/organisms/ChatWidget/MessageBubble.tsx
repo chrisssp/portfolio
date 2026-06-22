@@ -42,8 +42,8 @@ export function MessageBubble({
          <div
             className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                isUser
-                  ? "bg-surface border border-subtle text-body rounded-br-md"
-                  : "bg-primary/10 border border-primary/20 text-body rounded-bl-md"
+                  ? "bg-primary text-primary-contrast rounded-br-md shadow-sm"
+                  : "bg-primary/10 border border-primary/20 text-body rounded-bl-md shadow-sm"
             }`}
          >
             {isUser ? (

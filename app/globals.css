@@ -279,6 +279,10 @@ body {
    }
 }
 
+/* ─── Chat Widget Animations ─────────────────────────────────────────────── */
+/* Both panel and backdrop use CSS transitions managed via className toggles.
+   No @keyframes needed — faster, more reliable, works on mount/unmount. */
+
 /* Reduced-motion overrides — !important required to override Tailwind @theme utility specificity */
 @media (prefers-reduced-motion: reduce) {
    .animate-float,

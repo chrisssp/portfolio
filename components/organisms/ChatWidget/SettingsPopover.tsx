@@ -58,6 +58,7 @@ export function SettingsPopover({ locale }: Props) {
             variant="outline"
             icon={<MdSettings />}
             circle
+            size="sm"
             onClick={() => setOpen(!open)}
             ariaLabel={locale === "es" ? "Configuración" : "Settings"}
             aria-expanded={open}

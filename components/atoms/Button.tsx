@@ -5,6 +5,7 @@ interface ButtonProps {
    variant?: "primary" | "secondary" | "outline";
    icon?: ReactNode;
    circle?: boolean;
+   size?: "sm" | "md";
    onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
    className?: string;
    ariaLabel?: string;
@@ -22,6 +23,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
          variant = "primary",
          icon,
          circle = false,
+         size = "md",
          onClick,
          className = "",
          ariaLabel,
@@ -34,7 +36,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ref,
    ) => {
       const baseStyles = circle
-         ? "flex items-center justify-center p-2.5 xs:p-3 rounded-full transition-all duration-200 cursor-pointer leading-none hover:scale-110 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
+         ? [
+              "flex items-center justify-center rounded-full transition-all duration-200 cursor-pointer leading-none",
+              "hover:scale-110 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100",
+              size === "sm" ? "p-1.5 xs:p-2" : "p-2.5 xs:p-3",
+           ].join(" ")
          : "flex items-center justify-center gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl font-bold font-sans transition-all active:scale-95 hover:scale-[1.02] hover:shadow-md whitespace-nowrap leading-none cursor-pointer text-sm sm:text-base disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none";
 
       const variants = {
@@ -61,7 +67,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
          >
             {icon && (
                <span
-                  className={`flex items-center justify-center shrink-0 ${circle ? "size-5" : "size-4 sm:size-5"}`}
+                  className={`flex items-center justify-center shrink-0 ${circle ? (size === "sm" ? "size-4" : "size-5") : "size-4 sm:size-5"}`}
                >
                   {icon}
                </span>

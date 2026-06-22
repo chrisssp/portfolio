@@ -20,6 +20,16 @@ export function ChatWidget({ locale }: Props) {
 
    return (
       <>
+         {/* Desktop backdrop — mobile is fullscreen so no overlay needed */}
+         <div
+            className={`fixed inset-0 z-[65] bg-black/30 hidden md:block motion-safe:transition-opacity motion-safe:duration-200 motion-safe:ease-out ${
+               isOpen && !isHidden
+                  ? "opacity-100"
+                  : "opacity-0 pointer-events-none"
+            }`}
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+         />
          <ChatBubble
             isOpen={isOpen}
             onClick={() => setIsOpen(!isOpen)}
