@@ -266,8 +266,8 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
       <div
          className={`
                fixed z-[70] flex flex-col bg-page border border-body/10 shadow-2xl
-               motion-safe:transition-all motion-safe:duration-200 motion-safe:ease-out
-               ${isOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-[0.92] translate-y-4 pointer-events-none invisible"}
+                motion-safe:transition-all motion-safe:duration-200 motion-safe:ease-out
+                ${isOpen ? "opacity-100 md:scale-100 md:translate-y-0" : "opacity-0 md:scale-[0.92] md:translate-y-4 pointer-events-none invisible"}
                md:overflow-hidden
                /* Mobile: fullscreen — visualViewport JS syncs top/height */
                top-0 inset-x-0 bottom-0
