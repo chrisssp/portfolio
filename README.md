@@ -22,6 +22,7 @@ High-performance, multi-language professional portfolio built with a focus on cl
 - **Full Internationalization (i18n):** Native support for English and Spanish with automated route detection and localized metadata.
 - **Dynamic Open Graph Images:** Automated generation of social preview images (OG) using Edge Functions, customized for both the home page and individual projects.
 - **Performance First:** Optimized Core Web Vitals, featuring real-time monitoring with Vercel Speed Insights.
+- **AI Portfolio Assistant:** Interactive chatbot that answers questions about projects, experience, and tech stack in real time.
 - **Modern UI/UX:** Responsive, mobile-first design with dark/light mode support, featuring a custom "Smart Email Button" and blurred context-aware overlays.
 - **Business Impact:** Showcasing technical solutions with real-world metrics (e.g., $5.5M USD reconciled, 95% process optimization).
 
