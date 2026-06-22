@@ -112,4 +112,10 @@ export const es: Dictionary = {
    },
    cta: cta.es,
    footer: footer.es,
+
+   notFound: {
+      title: "Página no encontrada",
+      description: "Ups! La página que buscas no existe o ha sido movida.",
+      goHome: "Volver al inicio",
+   },
 };

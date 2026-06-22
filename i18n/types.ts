@@ -257,4 +257,10 @@ export interface Dictionary {
    footer: {
       rights: string;
    };
+
+   notFound: {
+      title: string;
+      description: string;
+      goHome: string;
+   };
 }

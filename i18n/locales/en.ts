@@ -112,4 +112,11 @@ export const en: Dictionary = {
    },
    cta: cta.en,
    footer: footer.en,
+
+   notFound: {
+      title: "Page not found",
+      description:
+         "Oops! The page you're looking for doesn't exist or has been moved.",
+      goHome: "Go back home",
+   },
 };
