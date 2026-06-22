@@ -12,7 +12,9 @@ import { projectDabetai } from "../modules/projects/dabetai";
 import { projectFlacks } from "../modules/projects/flacks";
 import { projectIapex } from "../modules/projects/iapex";
 import { projectMtrpa } from "../modules/projects/mtrpa";
+import { projectPortfolio } from "../modules/projects/portfolio";
 import { projectPuntoFiel } from "../modules/projects/puntofiel";
+import { projectRataCueva } from "../modules/projects/ratacueva";
 import type { Dictionary, ProjectItem, ProjectModule } from "../types";
 
 const projectModules: ProjectModule[] = [
@@ -21,7 +23,9 @@ const projectModules: ProjectModule[] = [
    projectIapex as unknown as ProjectModule,
    projectDabetai as unknown as ProjectModule,
    projectMtrpa as unknown as ProjectModule,
+   projectPortfolio as unknown as ProjectModule,
    projectPuntoFiel as unknown as ProjectModule,
+   projectRataCueva as unknown as ProjectModule,
    projectCoppelNexus as unknown as ProjectModule,
    projectFlacks as unknown as ProjectModule,
 ];

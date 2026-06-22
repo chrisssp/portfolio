@@ -529,6 +529,66 @@ const PROJECT_DETAILS: Record<string, ProjectDetail> = {
             "A role-based mobile app with QR point assignment and administrative tooling.",
       },
    },
+   portfolio: {
+      id: "portfolio",
+      displayName: "chrisssp Portfolio",
+      displayNameEs: "chrisssp Portfolio",
+      links: [{ type: "github", url: "https://github.com/chrisssp/portfolio" }],
+      certificates: [],
+      techStack: ["nextjs", "typescript", "tailwindcss", "nodejs", "gemini"],
+      ecosystem: [
+         {
+            title: "Next.js Frontend",
+            description:
+               "App Router with i18n, Server Components, streaming, and optimized images delivering fast Core Web Vitals.",
+         },
+         {
+            title: "AI Chatbot (RAG)",
+            description:
+               "Custom chat API using AI SDK with Groq (primary) and Gemini (fallback), smart query classification, and RAG from portfolio-content.json.",
+         },
+         {
+            title: "Bilingual Content System",
+            description:
+               "i18n architecture with locale-specific dictionaries, auto-generated content JSON, and full bilingual support.",
+         },
+      ],
+      challenge: {
+         description:
+            "Traditional portfolios are static — visitors browse and leave without engaging.",
+         solution:
+            "An interactive portfolio with an AI chatbot using Groq and Gemini with RAG for dynamic, on-topic answers.",
+      },
+   },
+   ratacueva: {
+      id: "ratacueva",
+      displayName: "RataCueva",
+      displayNameEs: "RataCueva",
+      links: [
+         { type: "github", url: "https://github.com/ratacueva-org" },
+         { type: "landing", url: "https://ratacueva.vercel.app" },
+      ],
+      certificates: [],
+      techStack: ["nextjs", "typescript", "tailwindcss", "express", "mongodb"],
+      ecosystem: [
+         {
+            title: "Next.js Web App",
+            description:
+               "Frontend with Next.js 15 App Router, Server Components, Server Actions, and Framer Motion animations.",
+         },
+         {
+            title: "Express REST API",
+            description:
+               "Backend API with Express and MongoDB handling products, inventory, cart, orders, and MercadoPago payment webhooks.",
+         },
+      ],
+      challenge: {
+         description:
+            "Building a production-grade e-commerce platform with real-time inventory and secure payment processing.",
+         solution:
+            "Microservices-inspired architecture: Next.js 15 frontend with SSR, Express API with MongoDB, and webhook-based payment flow via MercadoPago.",
+      },
+   },
 };
 
 // --- RAG: Keyword + Section Matching ---
@@ -577,7 +637,21 @@ function classifyQuery(query: string, locale: string): QueryClassification {
       mtrpa: ["mtrpa", "master template", "rutas", "power app", "pepsico"],
       iapex: ["iapex", "encuéntrame", "encuentrame"],
       dabetai: ["dabetai", "diabetes"],
+      portfolio: [
+         "portfolio",
+         "portafolio",
+         "this site",
+         "this website",
+         "este sitio",
+      ],
       puntofiel: ["punto", "fiel", "puntofiel"],
+      ratacueva: [
+         "ratacueva",
+         "rata cueva",
+         "rata",
+         "cueva",
+         "gaming ecommerce",
+      ],
    };
 
    for (const [slug, patterns] of Object.entries(projectPatterns)) {
@@ -846,7 +920,9 @@ function matchContentSmart(
             mtrpa: ["mtrpa", "pepsico", "rutas"],
             iapex: ["iapex"],
             dabetai: ["dabetai", "diabetes"],
+            portfolio: ["portfolio", "portafolio", "this site"],
             puntofiel: ["punto", "fiel", "puntofiel"],
+            ratacueva: ["ratacueva", "rata cueva", "gaming ecommerce"],
          };
 
          let ecoSlug: string | null = null;
@@ -882,7 +958,6 @@ function matchContentSmart(
          break;
       }
 
-      case "general":
       default: {
          // Fallback: about + hero (lightweight context)
          for (const chunk of localeChunks) {
@@ -1003,7 +1078,7 @@ For education: the context contains separate entries for TSU and Ingeniería. Ea
 
 Available markers: [PROJECT:slug] [CODE:slug] [DEMO:slug] [LANDING:slug] [ARTICLE:slug] [CERT:slug] [ECOSYSTEM:slug:Item] [EXPERIENCE:id] [ABOUT] [EMAIL] [GITHUB] [LINKEDIN] [CV]
 
-Slugs: 7dcompass, azkali, coppel-nexus, flacks-cc, mtrpa, iapex, dabetai, puntofiel
+Slugs: 7dcompass, azkali, coppel-nexus, flacks-cc, mtrpa, iapex, dabetai, puntofiel, portfolio, ratacueva
 Experience IDs: 7dcompass, azkali, coppel-nexus, mtrpa, flacks-cc
 
 ## Response Style

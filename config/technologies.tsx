@@ -1,4 +1,5 @@
 import { FaJava } from "react-icons/fa";
+import type { IconType } from "react-icons/lib";
 import {
    SiAndroid,
    SiAngular,
@@ -29,6 +30,20 @@ import {
    SiTailwindcss,
    SiTypescript,
 } from "react-icons/si";
+
+// --- Custom icons (no SimpleIcons equivalent) ---
+
+const GroqIcon: IconType = (props) => (
+   <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+   >
+      <title>Groq</title>
+      <path d="M7 18V6h5a4 4 0 0 1 4 4v1a4 4 0 0 1-4 4H9.5v3H7zm2.5-8.5V12H12a1.5 1.5 0 0 0 1.5-1.5v-1A1.5 1.5 0 0 0 12 8H9.5z" />
+   </svg>
+);
 
 export interface TechConfig {
    name: string;
@@ -201,5 +216,10 @@ export const TECHNOLOGIES: Record<string, TechConfig> = {
       name: "Gemini AI",
       icon: SiGooglegemini,
       bgColor: "#1a73e8",
+   },
+   groq: {
+      name: "Groq",
+      icon: GroqIcon,
+      bgColor: "#f97316",
    },
 };

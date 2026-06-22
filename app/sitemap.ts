@@ -11,7 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "flacks-cc",
       "iapex",
       "mtrpa",
+      "portfolio",
       "puntofiel",
+      "ratacueva",
    ];
 
    const routes = locales.flatMap((lang) => {

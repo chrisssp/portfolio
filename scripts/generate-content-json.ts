@@ -87,7 +87,9 @@ async function loadModules() {
       "flacks",
       "iapex",
       "mtrpa",
+      "portfolio",
       "puntofiel",
+      "ratacueva",
    ];
 
    for (const slug of projectFiles) {

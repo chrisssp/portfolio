@@ -14,7 +14,9 @@ import { projectDabetai } from "../i18n/modules/projects/dabetai";
 import { projectFlacks } from "../i18n/modules/projects/flacks";
 import { projectIapex } from "../i18n/modules/projects/iapex";
 import { projectMtrpa } from "../i18n/modules/projects/mtrpa";
+import { projectPortfolio } from "../i18n/modules/projects/portfolio";
 import { projectPuntoFiel } from "../i18n/modules/projects/puntofiel";
+import { projectRataCueva } from "../i18n/modules/projects/ratacueva";
 import type { ProjectModule } from "../i18n/types";
 
 // --- All project modules in one array ---
@@ -27,7 +29,9 @@ const projectModules: ProjectModule[] = [
    projectFlacks as unknown as ProjectModule,
    projectIapex as unknown as ProjectModule,
    projectMtrpa as unknown as ProjectModule,
+   projectPortfolio as unknown as ProjectModule,
    projectPuntoFiel as unknown as ProjectModule,
+   projectRataCueva as unknown as ProjectModule,
 ];
 
 // --- Derived: Project Display Names (from EN titles) ---
