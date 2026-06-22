@@ -49,6 +49,37 @@ export const FeatureCard = ({
    const hasCarousel = allImages.length > 1;
    const [currentIndex, setCurrentIndex] = useState(0);
 
+   // --- Image fallback — placeholder is ALWAYS the base layer ---
+   const [erroredImages, setErroredImages] = useState<Set<string>>(new Set());
+   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+   const markErrored = useCallback((src: string) => {
+      setErroredImages((prev) => {
+         if (prev.has(src)) return prev;
+         const next = new Set(prev);
+         next.add(src);
+         return next;
+      });
+   }, []);
+   const markLoaded = useCallback((src: string) => {
+      setLoadedImages((prev) => {
+         if (prev.has(src)) return prev;
+         const next = new Set(prev);
+         next.add(src);
+         return next;
+      });
+   }, []);
+
+   const fallbackTech = techStack.map((t) => TECHNOLOGIES[t]).find(Boolean);
+   const fallbackColor = fallbackTech?.bgColor ?? "#1e1e2e";
+   const fallbackWord =
+      title.split(/\s+/).length > 1
+         ? title
+              .split(/\s+/)
+              .slice(0, 2)
+              .map((w) => w.charAt(0).toUpperCase())
+              .join("")
+         : title.slice(0, 2).toUpperCase();
+
    const goTo = useCallback(
       (index: number) => {
          setCurrentIndex(
@@ -163,24 +194,60 @@ export const FeatureCard = ({
             aria-label={hasCarousel ? `${title} image gallery` : undefined}
          >
             {/* Stacked images — only current is visible */}
-            {allImages.map((src, i) => (
-               <Image
-                  key={src}
-                  src={src}
-                  alt={`${title}${i > 0 ? ` — ${i + 1}` : ""}`}
-                  fill
-                  className={`object-cover transition-opacity duration-500 ease-out ${
-                     i === currentIndex ? "opacity-100" : "opacity-0"
-                  }`}
-                  sizes="(max-width: 1024px) 100vw, 630px"
-                  priority={i === 0}
-               />
-            ))}
+            {allImages.map((src, i) => {
+               const isCurrent = i === currentIndex;
+               const errored = erroredImages.has(src);
+               const loaded = loadedImages.has(src);
+               return (
+                  <div
+                     key={src}
+                     className={`absolute inset-0 transition-opacity duration-500 ease-out ${
+                        isCurrent ? "opacity-100" : "opacity-0"
+                     }`}
+                  >
+                     {/* Placeholder — ALWAYS rendered as the base layer */}
+                     <div
+                        className="absolute inset-0"
+                        style={{
+                           background: `linear-gradient(135deg, ${fallbackColor}, color-mix(in srgb, ${fallbackColor} 60%, #1e1e2e))`,
+                        }}
+                     >
+                        <span
+                           aria-hidden="true"
+                           className="absolute inset-0 flex items-center justify-center select-none font-bold tracking-tight opacity-30"
+                           style={{
+                              fontSize: "clamp(3rem, 12vw, 6rem)",
+                              lineHeight: 1,
+                              color: "#fff",
+                           }}
+                        >
+                           {fallbackWord}
+                        </span>
+                     </div>
+
+                     {/* Actual image — only rendered if it hasn't errored */}
+                     {!errored && (
+                        <Image
+                           src={src}
+                           alt={`${title}${i > 0 ? ` — ${i + 1}` : ""}`}
+                           fill
+                           className={`object-cover transition-opacity duration-500 ${
+                              loaded ? "opacity-100" : "opacity-0"
+                           }`}
+                           sizes="(max-width: 1024px) 100vw, 630px"
+                           priority={i === 0}
+                           onLoad={() => markLoaded(src)}
+                           onError={() => markErrored(src)}
+                        />
+                     )}
+                  </div>
+               );
+            })}
 
             {/* Prev / Next controls */}
             {hasCarousel && (
                <>
-                  {/* Desktop: appears on hover */}
+                  {/* Prev / Next: desktop only — appear on hover */}
                   <button
                      type="button"
                      onClick={goPrev}
@@ -189,17 +256,6 @@ export const FeatureCard = ({
                   >
                      <MdChevronLeft className="size-6" />
                   </button>
-                  {/* Mobile: always visible */}
-                  <button
-                     type="button"
-                     onClick={goPrev}
-                     aria-label="Previous image"
-                     className="absolute left-2 top-1/2 -translate-y-1/2 z-10 flex lg:hidden items-center justify-center size-8 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors duration-200 cursor-pointer"
-                  >
-                     <MdChevronLeft className="size-5" />
-                  </button>
-
-                  {/* Desktop: appears on hover */}
                   <button
                      type="button"
                      onClick={goNext}
@@ -207,15 +263,6 @@ export const FeatureCard = ({
                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center justify-center size-9 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 hover:bg-black/70 hover:scale-110 transition-all duration-200 cursor-pointer"
                   >
                      <MdChevronRight className="size-6" />
-                  </button>
-                  {/* Mobile: always visible */}
-                  <button
-                     type="button"
-                     onClick={goNext}
-                     aria-label="Next image"
-                     className="absolute right-2 top-1/2 -translate-y-1/2 z-10 flex lg:hidden items-center justify-center size-8 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors duration-200 cursor-pointer"
-                  >
-                     <MdChevronRight className="size-5" />
                   </button>
 
                   {/* Dot indicators */}
