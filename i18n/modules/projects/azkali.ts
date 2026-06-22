@@ -23,6 +23,11 @@ export const projectAzkali = {
          { type: "github", url: "https://github.com/chrisssp/azkali" },
          { type: "video", url: "https://youtu.be/orvfws_kxcc" },
       ],
+      galleryImages: [
+         "/assets/images/projects/azkali/product-landing-page.webp",
+         "/assets/images/projects/azkali/ai-mobile-experience.webp",
+         "/assets/images/projects/azkali/ai-and-supabase-backend.webp",
+      ],
       certificates: [
          {
             filePath:

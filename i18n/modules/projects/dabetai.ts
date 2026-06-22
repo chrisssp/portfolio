@@ -26,6 +26,14 @@ export const projectDabetai = {
             url: "/assets/docs/papers/Prevención-de-Riesgos-de-la-Diabetes-Mediante-una-Plataforma-Inteligente-de-Monitorización-y-Predicción-de-Complicaciones-con-Inteligencia-Artificial.pdf",
          },
       ],
+      galleryImages: [
+         "/assets/images/projects/dabetai/landing-page.webp",
+         "/assets/images/projects/dabetai/complication-prediction-core-ai.webp",
+         "/assets/images/projects/dabetai/mobile-app-patient-hub.webp",
+         "/assets/images/projects/dabetai/medical-portal-oversight.webp",
+         "/assets/images/projects/dabetai/restful-api.webp",
+         "/assets/images/projects/dabetai/ai-inference-api.webp",
+      ],
       certificates: [
          {
             filePath:

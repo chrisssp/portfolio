@@ -23,6 +23,9 @@ export const projectPuntoFiel = {
          },
          { type: "video", url: "https://youtu.be/k2Ea1Mi4Ou8" },
       ],
+      galleryImages: [
+         "/assets/images/projects/puntofiel/backend-supabase-postgresql.webp",
+      ],
       ecosystem: [
          {
             imagePath: "/assets/images/projects/puntofiel/general.webp",

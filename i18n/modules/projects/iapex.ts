@@ -27,6 +27,12 @@ export const projectIapex = {
             url: "https://virtual.cuautitlan.unam.mx/intar/wp-content/uploads/sites/19/2025/12/166-A-Hybrid-Artificial-Intelligent-System-for-Missing-JORGE-CHRISTIAN-SERRANO-PUERTOS.pdf",
          },
       ],
+      galleryImages: [
+         "/assets/images/projects/iapex/neural-core.webp",
+         "/assets/images/projects/iapex/the-mobile-client-family-side.webp",
+         "/assets/images/projects/iapex/the-web-portal-institutional-side.webp",
+         "/assets/images/projects/iapex/core-api.webp",
+      ],
       certificates: [
          {
             filePath:

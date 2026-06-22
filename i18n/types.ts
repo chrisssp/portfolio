@@ -75,6 +75,7 @@ export interface ProjectItem {
       items: EcosystemItem[];
    };
    certificates?: CertificateItem[];
+   galleryImages?: string[];
    ctaHighlight?: string;
 }
 
@@ -109,6 +110,7 @@ export interface ProjectModule {
          issuer?: string;
          date?: string;
       }[];
+      galleryImages?: string[];
    };
    en: {
       title: string;

@@ -89,6 +89,7 @@ export const ProjectCard = ({
          title={project.title}
          description={project.description}
          imagePath={project.imagePath}
+         galleryImages={project.galleryImages}
          techStack={project.techStack}
          reverse={reverse}
          actions={projectActions}

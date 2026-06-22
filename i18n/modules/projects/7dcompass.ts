@@ -17,6 +17,11 @@ export const project7dCompass = {
          tags: ["enterprise"],
       },
       links: [{ type: "demo", url: "https://7d-compass.com/" }],
+      galleryImages: [
+         "/assets/images/projects/7dcompass/administrative-web-portal.webp",
+         "/assets/images/projects/7dcompass/on-site-mobile-app.webp",
+         "/assets/images/projects/7dcompass/nodejs-audit-engine.webp",
+      ],
       certificates: [
          {
             filePath:

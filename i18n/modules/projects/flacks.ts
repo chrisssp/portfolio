@@ -19,6 +19,12 @@ export const projectFlacks = {
          tags: ["enterprise"],
       },
       links: [{ type: "github", url: "https://github.com/flacks-cc" }],
+      galleryImages: [
+         "/assets/images/projects/flacks-cc/web-app-landing-and-admin.webp",
+         "/assets/images/projects/flacks-cc/hybrid-mobile-app-pwa.webp",
+         "/assets/images/projects/flacks-cc/native-mobile-app-android.webp",
+         "/assets/images/projects/flacks-cc/backend-api.webp",
+      ],
       certificates: [
          {
             filePath:

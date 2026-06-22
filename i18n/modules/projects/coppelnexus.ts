@@ -30,6 +30,11 @@ export const projectCoppelNexus = {
             date: "April 2025",
          },
       ],
+      galleryImages: [
+         "/assets/images/projects/coppel-nexus/mobile-app-field-collaborators.webp",
+         "/assets/images/projects/coppel-nexus/web-app-admin-and-tracking.webp",
+         "/assets/images/projects/coppel-nexus/backend-api.webp",
+      ],
       ecosystem: [
          {
             imagePath:

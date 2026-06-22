@@ -16,6 +16,10 @@ export const projectMtrpa = {
          platform: ["web", "api"],
          tags: ["enterprise"],
       },
+      galleryImages: [
+         "/assets/images/projects/mtrpa/web-app-operations-hub.webp",
+         "/assets/images/projects/mtrpa/backend-api.webp",
+      ],
       ecosystem: [
          {
             imagePath:
