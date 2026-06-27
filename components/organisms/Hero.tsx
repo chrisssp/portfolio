@@ -78,7 +78,7 @@ export const Hero = ({ dict }: HeroProps) => {
                               direction="center"
                            >
                               <div className="cursor-default transition-opacity duration-200 group-hover:opacity-40 hover:!opacity-100">
-                                 <span className="inline-flex items-baseline gap-1.5 px-4 py-2 rounded-full bg-surface border border-subtle shadow-sm text-sm leading-snug transition-all duration-200 ease-out hover:-translate-y-1 whitespace-nowrap">
+                                 <span className="inline-flex items-baseline gap-1.5 px-4 py-2 rounded-full bg-surface border-2 border-primary/20 shadow-sm text-sm leading-snug transition-all duration-200 ease-out hover:-translate-y-1 whitespace-nowrap">
                                     <span className="font-bold text-primary">
                                        {stat.value}
                                     </span>

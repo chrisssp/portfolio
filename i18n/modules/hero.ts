@@ -60,7 +60,7 @@ export const hero = {
             value: "~40%",
             label: "faster patient response",
             tooltip:
-               "Physician-patient response improved ~40% with AI risk prediction for retinopathy, nephropathy, neuropathy, and diabetic foot — DabetAI preventive ecosystem",
+               "Physician-patient response improved ~40% with AI risk prediction for retinopathy, nephropathy, neuropathy, and diabetic foot — dabetai preventive ecosystem",
          },
          {
             value: "100%",
@@ -149,7 +149,7 @@ export const hero = {
             value: "~40%",
             label: "respuesta más rápida",
             tooltip:
-               "Eficiencia médico-paciente mejorada ~40% con predicción de retinopatía, nefropatía, neuropatía y pie diabético — ecosistema preventivo DabetAI",
+               "Eficiencia médico-paciente mejorada ~40% con predicción de retinopatía, nefropatía, neuropatía y pie diabético — ecosistema preventivo dabetai",
          },
          {
             value: "100%",
