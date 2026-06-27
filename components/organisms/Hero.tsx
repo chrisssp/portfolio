@@ -104,11 +104,7 @@ export const Hero = ({ dict }: HeroProps) => {
             </div>
 
             {/* Buttons — third */}
-            <AnimatedSection
-               variant="fade-up"
-               delay={500}
-               duration="duration-500"
-            >
+            <div className="animate-fade-up-once">
                <div className="flex flex-wrap justify-start gap-3 md:gap-4">
                   <a
                      href={dict.hero.actions.cvLink}
@@ -176,7 +172,7 @@ export const Hero = ({ dict }: HeroProps) => {
                      onOpenChange={setIsMenuOpen}
                   />
                </div>
-            </AnimatedSection>
+            </div>
          </div>
 
          {/* Profile image — slides in from the right on desktop */}
