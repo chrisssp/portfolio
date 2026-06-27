@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useState } from "react";
-import { createPortal } from "react-dom";
+import { useState } from "react";
 import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { MdDescription } from "react-icons/md";
 import { PROFESSIONAL_LINKS } from "@/config/links";
@@ -22,28 +21,6 @@ interface HeroProps {
 export const Hero = ({ dict }: HeroProps) => {
    const profileImg = "/assets/images/profile/me.webp";
    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-   // Badge tooltip: JS state + portal to body (escapes AnimatedSection's transform stacking context)
-   const [activeBadge, setActiveBadge] = useState<{
-      label: string;
-      description: string;
-      top: number;
-      left: number;
-   } | null>(null);
-
-   const showBadgeTooltip = useCallback(
-      (stat: (typeof dict.hero.stats)[0], e: React.MouseEvent<HTMLElement>) => {
-         const rect = e.currentTarget.getBoundingClientRect();
-         setActiveBadge({
-            label: stat.label,
-            description: stat.description,
-            top: rect.top + rect.height / 2,
-            left: rect.right, // right edge of badge → tooltip appears to the right
-         });
-      },
-      [],
-   );
-   const hideBadgeTooltip = useCallback(() => setActiveBadge(null), []);
 
    return (
       <SectionContainer
@@ -76,11 +53,9 @@ export const Hero = ({ dict }: HeroProps) => {
                   </div>
                </AnimatedSection>
 
-               {/* Stats badges — JS hover + portal to body for correct stacking */}
+               {/* Stats badges */}
                <div className="flex flex-wrap gap-3">
                   {dict.hero.stats.map((stat, i) => {
-                     const isActive = activeBadge?.label === stat.label;
-                     const isDimmed = activeBadge !== null && !isActive;
                      return (
                         <AnimatedSection
                            key={stat.label}
@@ -88,17 +63,8 @@ export const Hero = ({ dict }: HeroProps) => {
                            delay={250 + i * 60}
                            duration="duration-500"
                         >
-                           <div
-                              onMouseEnter={(e) => showBadgeTooltip(stat, e)}
-                              onMouseLeave={hideBadgeTooltip}
-                              className="relative cursor-default"
-                           >
-                              <span
-                                 className={`inline-flex items-baseline gap-1.5 px-4 py-2 rounded-full bg-surface border border-subtle shadow-sm text-sm leading-snug 
-                                    transition-all duration-200 ease-out
-                                    ${isDimmed ? "opacity-35" : "opacity-100"}
-                                    hover:-translate-y-1`}
-                              >
+                           <div className="relative cursor-default">
+                              <span className="inline-flex items-baseline gap-1.5 px-4 py-2 rounded-full bg-surface border border-subtle shadow-sm text-sm leading-snug transition-all duration-200 ease-out hover:-translate-y-1">
                                  <span className="font-bold text-primary whitespace-nowrap">
                                     {stat.value}
                                  </span>
@@ -106,30 +72,6 @@ export const Hero = ({ dict }: HeroProps) => {
                                     {stat.label}
                                  </span>
                               </span>
-
-                              {/* Portal tooltip — escapes AnimatedSection stacking context */}
-                              {activeBadge?.label === stat.label &&
-                                 createPortal(
-                                    <div
-                                       style={{
-                                          position: "fixed",
-                                          top: activeBadge.top,
-                                          left: activeBadge.left,
-                                       }}
-                                       className="z-[99999] -translate-y-1/2 ml-3 pointer-events-none"
-                                    >
-                                       <div className="bg-surface/80 backdrop-blur-sm border border-subtle rounded-xl px-4 py-3 shadow-lg w-max max-w-[280px]">
-                                          <Typography
-                                             variant="small"
-                                             weight="normal"
-                                             className="leading-relaxed"
-                                          >
-                                             {activeBadge.description}
-                                          </Typography>
-                                       </div>
-                                    </div>,
-                                    document.body,
-                                 )}
                            </div>
                         </AnimatedSection>
                      );
