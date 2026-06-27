@@ -25,7 +25,7 @@ export const Hero = ({ dict }: HeroProps) => {
    return (
       <SectionContainer
          className={`bg-surface transition-all duration-300 ${isMenuOpen ? "z-100" : "z-10"}`}
-         innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24"
+         innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16"
       >
          <div className="flex flex-col gap-8 md:gap-12 w-full max-w-190 order-2 lg:order-1">
             <div className="flex flex-col gap-6 md:gap-8 text-left">

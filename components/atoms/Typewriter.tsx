@@ -121,6 +121,13 @@ export const Typewriter = ({
       return () => clearInterval(interval);
    }, [prefersReducedMotion]);
 
+   /* ── Split last word so cursor never orphans on its own line ──────── */
+   const lastSpaceIndex = displayText.lastIndexOf(" ");
+   const textBefore =
+      lastSpaceIndex >= 0 ? displayText.slice(0, lastSpaceIndex + 1) : "";
+   const lastWord =
+      lastSpaceIndex >= 0 ? displayText.slice(lastSpaceIndex + 1) : displayText;
+
    /* ── Render ────────────────────────────────────────────────────────── */
    if (prefersReducedMotion) {
       return (
@@ -134,15 +141,18 @@ export const Typewriter = ({
    return (
       <Tag className={className} aria-label={words.join(", ")}>
          <span aria-live="polite" aria-atomic="true">
-            {displayText}
-         </span>
-         <span
-            className={`inline-block w-[1ch] text-primary ${
-               showCursor ? "opacity-100" : "opacity-0"
-            } transition-opacity duration-100`}
-            aria-hidden="true"
-         >
-            {cursorChar}
+            {textBefore}
+            <span className="whitespace-nowrap">
+               {lastWord}
+               <span
+                  className={`inline-block w-[1ch] text-primary ${
+                     showCursor ? "opacity-100" : "opacity-0"
+                  } transition-opacity duration-100`}
+                  aria-hidden="true"
+               >
+                  {cursorChar}
+               </span>
+            </span>
          </span>
       </Tag>
    );
