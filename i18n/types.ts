@@ -177,15 +177,12 @@ export interface Dictionary {
       stats: {
          value: string;
          label: string;
-         description: string;
          tooltip: string;
       }[];
       description: string;
       actions: {
          cv: string;
          cvLink: string;
-         cvDevOps: string;
-         cvDevOpsLink: string;
          email: string;
          emailMenu: {
             send: string;

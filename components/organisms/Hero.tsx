@@ -179,8 +179,8 @@ export const Hero = ({ dict }: HeroProps) => {
          >
             <Tooltip
                content={dict.hero.description}
-               align="left"
-               direction="center"
+               align="center"
+               direction="down"
             >
                <div className="relative size-70 sm:size-80 lg:size-90 rounded-full border-3 border-subtle overflow-hidden bg-page shadow-xl hover:scale-[1.02] transition-all duration-500 animate-float motion-reduce:animate-none">
                   <Image

@@ -17,69 +17,64 @@ export const hero = {
          {
             value: "$5.5M",
             label: "construction transactions audited",
-            description:
-               "Total transactions audited and reconciled for a Chicago-based construction company using an automated fintech platform",
             tooltip:
-               "Total transactions audited and reconciled for a Chicago-based construction company using an automated fintech platform",
+               "Transactions audited and reconciled via the 7D Compass fintech platform for Seven D Construction in Chicago",
          },
          {
             value: "95%",
             label: "faster reconciliation",
-            description:
-               "Reduction in financial reconciliation time — from days to minutes for complex multi-entity audits",
             tooltip:
-               "Reduction in financial reconciliation time — from days to minutes for complex multi-entity audits",
+               "Financial reconciliation reduced from weeks to hours for multi-entity audits on the 7D Compass platform",
          },
          {
             value: "+100K",
             label: "records processed for PepsiCo",
-            description:
-               "Total logistics records processed in batch for PepsiCo's MTRPA fleet management operations",
             tooltip:
-               "Total logistics records processed in batch for PepsiCo's MTRPA fleet management operations",
+               "Logistics records batch-processed for PepsiCo's MTRPA fleet operations — replacing manual Excel workflows",
          },
          {
             value: "#4",
             label: "national hackathon (1.4K+)",
-            description:
-               "4th place nationwide at Talent Land 2025 — Coppel Genius Arena Hackathon with 1,400+ participants",
             tooltip:
-               "4th place nationwide at Talent Land 2025 — Coppel Genius Arena Hackathon with 1,400+ participants",
+               "4th place at Talent Land 2025 — Coppel Genius Arena (1,400+ participants). Built Coppel Nexus referral ecosystem in 72 hours",
          },
          {
             value: "1.5K+",
             label: "selected for hackathon finals",
-            description:
-               "Selected among 1,500 applicants for the on-site phase of Talent Land 2026 — Azkali x Banco Azteca",
             tooltip:
-               "Selected among 1,500 applicants for the on-site phase of Talent Land 2026 — Azkali x Banco Azteca",
+               "Selected among 1,500 applicants for Talent Land 2026 — built Azkali behavioral AI copilot in 48 hours",
          },
          {
             value: "Institucional",
             label: "validated + research paper",
-            description:
-               "Validated by IMSS General de Córdoba + research paper presented at CEIAAIT 2025 (UNAM FES Cuautitlán)",
             tooltip:
-               "Validated by IMSS General de Córdoba + research paper presented at CEIAAIT 2025 (UNAM FES Cuautitlán)",
+               "IAPEX hybrid AI patient ID validated by IMSS General de Córdoba + research paper at CEIAAIT 2025 (UNAM FES Cuautitlán)",
          },
          {
             value: "70%",
             label: "faster logistics processing",
-            description:
-               "Optimized processing time for PepsiCo's fleet management platform — from manual to automated workflows",
             tooltip:
-               "Optimized processing time for PepsiCo's fleet management platform — from manual to automated workflows",
+               "Processing time optimized for PepsiCo's MTRPA fleet platform — from manual to automated with zero errors",
+         },
+         {
+            value: "~40%",
+            label: "faster patient response",
+            tooltip:
+               "Physician-patient response improved ~40% with AI risk prediction for retinopathy, nephropathy, neuropathy, and diabetic foot — DabetAI preventive ecosystem",
+         },
+         {
+            value: "100%",
+            label: "appointment automation",
+            tooltip:
+               "Automated 100% of appointment scheduling and inventory tracking for Flack's Barber Shop — web, mobile PWA, and native Android ecosystem",
          },
       ],
       description:
-         "Focused on building efficient web and mobile ecosystems. Experienced in Linux environments, prioritizing scalability, clean code, and performance. Translates business requirements into maintainable architectures through process automation and AI-augmented development workflows.",
+         "Building efficient, scalable web and mobile ecosystems. Translates business requirements into maintainable architectures through automation and AI-augmented workflows.",
       actions: {
          cv: "CV",
          cvLink:
             "/assets/docs/cvs/fullstack/FullStack_Developer_Christian_Serrano_CV.en.pdf",
-         cvDevOps: "DevOps CV",
-         cvDevOpsLink:
-            "/assets/docs/cvs/devops/DevOps_Developer_Christian_Serrano_CV.en.pdf",
          email: "Email",
          emailMenu: {
             send: "Send Email",
@@ -111,69 +106,64 @@ export const hero = {
          {
             value: "$5.5M",
             label: "transacciones auditadas",
-            description:
-               "Transacciones auditadas y conciliadas para una constructora en Chicago mediante una plataforma fintech automatizada",
             tooltip:
-               "Transacciones auditadas y conciliadas para una constructora en Chicago mediante una plataforma fintech automatizada",
+               "Transacciones auditadas y conciliadas mediante la plataforma fintech 7D Compass para Seven D Construction en Chicago",
          },
          {
             value: "95%",
             label: "conciliación más rápida",
-            description:
-               "Reducción en tiempo de conciliación financiera — de días a minutos en auditorías multi-entidad",
             tooltip:
-               "Reducción en tiempo de conciliación financiera — de días a minutos en auditorías multi-entidad",
+               "Conciliación financiera reducida de semanas a horas en auditorías multi-entidad con la plataforma 7D Compass",
          },
          {
             value: "+100K",
             label: "registros para PepsiCo",
-            description:
-               "Registros logísticos procesados en lote para las operaciones de flota MTRPA de PepsiCo",
             tooltip:
-               "Registros logísticos procesados en lote para las operaciones de flota MTRPA de PepsiCo",
+               "Registros logísticos procesados en lote para las operaciones MTRPA de PepsiCo — reemplazando flujos manuales en Excel",
          },
          {
             value: "#4",
             label: "hackathon nacional (1.4K+)",
-            description:
-               "4to lugar nacional en Talent Land 2025 — Hackathon Coppel Genius Arena con 1,400+ participantes",
             tooltip:
-               "4to lugar nacional en Talent Land 2025 — Hackathon Coppel Genius Arena con 1,400+ participantes",
+               "4to lugar en Talent Land 2025 — Coppel Genius Arena (1,400+ participantes). Ecosistema Coppel Nexus construido en 72 horas",
          },
          {
             value: "1.5K+",
             label: "seleccionado para final",
-            description:
-               "Seleccionado entre 1,500 aplicantes para la fase presencial de Talent Land 2026 — Azkali x Banco Azteca",
             tooltip:
-               "Seleccionado entre 1,500 aplicantes para la fase presencial de Talent Land 2026 — Azkali x Banco Azteca",
+               "Seleccionado entre 1,500 aplicantes para Talent Land 2026 — Azkali, copiloto financiero con IA conductual, construido en 48 horas",
          },
          {
             value: "Validación",
-            label: "institucional + paper",
-            description:
-               "Validado por IMSS General de Córdoba + paper presentado en CEIAAIT 2025 (UNAM FES Cuautitlán)",
+            label: "institucional + articulo",
             tooltip:
-               "Validado por IMSS General de Córdoba + paper presentado en CEIAAIT 2025 (UNAM FES Cuautitlán)",
+               "Sistema IAPEX de identificación híbrida con IA validado por IMSS General de Córdoba + paper en CEIAAIT 2025 (UNAM FES Cuautitlán)",
          },
          {
             value: "70%",
             label: "procesos logísticos más rápidos",
-            description:
-               "Tiempo de procesamiento optimizado para la plataforma de gestión de flota de PepsiCo — de manual a automatizado",
             tooltip:
-               "Tiempo de procesamiento optimizado para la plataforma de gestión de flota de PepsiCo — de manual a automatizado",
+               "Tiempo optimizado para la plataforma MTRPA de PepsiCo — de procesos manuales a automatizados, cero errores",
+         },
+         {
+            value: "~40%",
+            label: "respuesta más rápida",
+            tooltip:
+               "Eficiencia médico-paciente mejorada ~40% con predicción de retinopatía, nefropatía, neuropatía y pie diabético — ecosistema preventivo DabetAI",
+         },
+         {
+            value: "100%",
+            label: "automatización de citas",
+            tooltip:
+               "100% de citas e inventario automatizados para Flack's Barber Shop — web, PWA móvil y Android nativo",
          },
       ],
       description:
-         "Enfocado en la construcción de ecosistemas web y móviles eficientes. Conocimiento operando en entornos Linux, priorizando la escalabilidad, el código limpio y el rendimiento. Orientado a traducir requerimientos de negocio en arquitecturas mantenibles mediante automatización de procesos y flujos de desarrollo aumentados por IA.",
+         "Construyendo ecosistemas web y móviles eficientes y escalables. Traduzco requerimientos de negocio en arquitecturas mantenibles mediante automatización y flujos aumentados por IA.",
       actions: {
          cv: "CV",
          cvLink:
             "/assets/docs/cvs/fullstack/Desarrollador_FullStack_Christian_Serrano_CV.es.pdf",
-         cvDevOps: "CV DevOps",
-         cvDevOpsLink:
-            "/assets/docs/cvs/devops/Desarrollador_DevOps_Christian_Serrano_CV.es.pdf",
          email: "Correo",
          emailMenu: {
             send: "Enviar correo",
