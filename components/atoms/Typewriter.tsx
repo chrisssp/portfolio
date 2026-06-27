@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TypewriterProps {
    /** Array of strings to cycle through */
@@ -29,97 +29,103 @@ export const Typewriter = ({
    as: Tag = "span",
    className,
 }: TypewriterProps) => {
-   const [wordIndex, setWordIndex] = useState(0);
-   const [charIndex, setCharIndex] = useState(0);
-   const [phase, setPhase] = useState<Phase>("typing");
+   /* ── Mutable refs (no re-render on change) ─────────────────────────── */
+   const wordIndexRef = useRef(0);
+   const charIndexRef = useRef(0);
+   const phaseRef = useRef<Phase>("typing");
+   const wordsRef = useRef(words);
+   wordsRef.current = words; // always fresh, stable ref identity
+
+   /* ── Only what React must re-render for ────────────────────────────── */
+   const [displayText, setDisplayText] = useState("");
    const [showCursor, setShowCursor] = useState(true);
    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-   // Detect reduced motion preference
+   /* ── 1. Detect reduced-motion preference (stable, fires once) ─────── */
    useEffect(() => {
       const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
       setPrefersReducedMotion(mq.matches);
+      setShowCursor(!mq.matches);
 
-      const handler = (e: MediaQueryListEvent) =>
+      const handler = (e: MediaQueryListEvent) => {
          setPrefersReducedMotion(e.matches);
+         setShowCursor(!e.matches);
+      };
       mq.addEventListener("change", handler);
       return () => mq.removeEventListener("change", handler);
    }, []);
 
-   // Cursor blink
+   /* ── 2. Typing loop (stable deps — never recreates timer) ─────────── */
    useEffect(() => {
       if (prefersReducedMotion) {
-         setShowCursor(false);
+         setDisplayText(wordsRef.current[0] ?? "");
          return;
       }
+
+      // Reset to start on mount
+      wordIndexRef.current = 0;
+      charIndexRef.current = 0;
+      phaseRef.current = "typing";
+
+      let timer: ReturnType<typeof setTimeout>;
+
+      const tick = () => {
+         const currentWords = wordsRef.current;
+         const currentWord = currentWords[wordIndexRef.current] ?? "";
+
+         switch (phaseRef.current) {
+            case "typing": {
+               if (charIndexRef.current < currentWord.length) {
+                  charIndexRef.current += 1;
+                  setDisplayText(currentWord.slice(0, charIndexRef.current));
+                  timer = setTimeout(tick, typingSpeed);
+               } else {
+                  phaseRef.current = "pausing";
+                  timer = setTimeout(tick, pauseDuration);
+               }
+               break;
+            }
+
+            case "pausing": {
+               phaseRef.current = "deleting";
+               timer = setTimeout(tick, deletingSpeed);
+               break;
+            }
+
+            case "deleting": {
+               if (charIndexRef.current > 0) {
+                  charIndexRef.current -= 1;
+                  setDisplayText(currentWord.slice(0, charIndexRef.current));
+                  timer = setTimeout(tick, deletingSpeed);
+               } else {
+                  wordIndexRef.current =
+                     (wordIndexRef.current + 1) % currentWords.length;
+                  phaseRef.current = "typing";
+                  timer = setTimeout(tick, typingSpeed);
+               }
+               break;
+            }
+         }
+      };
+
+      timer = setTimeout(tick, typingSpeed);
+      return () => clearTimeout(timer);
+   }, [prefersReducedMotion, typingSpeed, deletingSpeed, pauseDuration]);
+
+   /* ── 3. Cursor blink (stable, isolated from typing) ───────────────── */
+   useEffect(() => {
+      if (prefersReducedMotion) return;
       const interval = setInterval(() => {
          setShowCursor((prev) => !prev);
       }, 530);
       return () => clearInterval(interval);
    }, [prefersReducedMotion]);
 
-   const displayText = words[wordIndex] ?? "";
-
-   const tick = useCallback(() => {
-      if (prefersReducedMotion) return;
-
-      setPhase((currentPhase) => {
-         const currentWord = words[wordIndex] ?? "";
-
-         switch (currentPhase) {
-            case "typing":
-               if (charIndex < currentWord.length) {
-                  setCharIndex((i) => i + 1);
-                  return "typing";
-               }
-               return "pausing";
-
-            case "pausing":
-               return "deleting";
-
-            case "deleting":
-               if (charIndex > 0) {
-                  setCharIndex((i) => i - 1);
-                  return "deleting";
-               }
-               setWordIndex((i) => (i + 1) % words.length);
-               return "typing";
-
-            default:
-               return "typing";
-         }
-      });
-   }, [wordIndex, charIndex, words, prefersReducedMotion]);
-
-   useEffect(() => {
-      if (prefersReducedMotion) {
-         setCharIndex(words[0]?.length ?? 0);
-         return;
-      }
-
-      const speed =
-         phase === "typing"
-            ? typingSpeed
-            : phase === "deleting"
-              ? deletingSpeed
-              : pauseDuration;
-
-      const timer = setTimeout(tick, speed);
-      return () => clearTimeout(timer);
-   }, [
-      phase,
-      tick,
-      typingSpeed,
-      deletingSpeed,
-      pauseDuration,
-      words,
-      prefersReducedMotion,
-   ]);
-
+   /* ── Render ────────────────────────────────────────────────────────── */
    if (prefersReducedMotion) {
       return (
          <Tag className={className}>
-            {displayText}
+            {words[0] ?? ""}
             <span className="inline-block w-[1ch]" aria-hidden="true" />
          </Tag>
       );
@@ -128,7 +134,7 @@ export const Typewriter = ({
    return (
       <Tag className={className} aria-label={words.join(", ")}>
          <span aria-live="polite" aria-atomic="true">
-            {displayText.slice(0, charIndex)}
+            {displayText}
          </span>
          <span
             className={`inline-block w-[1ch] text-primary ${

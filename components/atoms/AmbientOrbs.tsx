@@ -6,12 +6,14 @@
  *
  * Uses brand-primary CSS variables so colors adapt to light/dark mode.
  * Fully disabled when prefers-reduced-motion is active.
+ *
+ * Lives at z-index: 0 between body background and content (z-index: 1).
  */
 export function AmbientOrbs() {
    return (
       <div
          className="fixed inset-0 pointer-events-none overflow-hidden"
-         style={{ zIndex: 1 }}
+         style={{ zIndex: 0 }}
          aria-hidden="true"
       >
          {/* Orb 1 — largest, top-left area */}
@@ -24,7 +26,7 @@ export function AmbientOrbs() {
                top: "10%",
                background:
                   "radial-gradient(circle, rgba(var(--brand-primary-r), var(--brand-primary-g), var(--brand-primary-b), 0.08) 0%, transparent 70%)",
-               filter: "blur(80px)",
+               filter: "blur(50px)",
             }}
          />
          {/* Orb 2 — medium, bottom-right */}
@@ -37,7 +39,7 @@ export function AmbientOrbs() {
                bottom: "25%",
                background:
                   "radial-gradient(circle, rgba(var(--brand-primary-r), var(--brand-primary-g), var(--brand-primary-b), 0.06) 0%, transparent 70%)",
-               filter: "blur(100px)",
+               filter: "blur(60px)",
             }}
          />
          {/* Orb 3 — smallest, center-bottom */}
@@ -50,7 +52,7 @@ export function AmbientOrbs() {
                top: "55%",
                background:
                   "radial-gradient(circle, rgba(var(--brand-primary-r), var(--brand-primary-g), var(--brand-primary-b), 0.05) 0%, transparent 70%)",
-               filter: "blur(90px)",
+               filter: "blur(50px)",
             }}
          />
       </div>
