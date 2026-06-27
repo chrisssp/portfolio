@@ -4,6 +4,7 @@ import {
    type ReactNode,
    useCallback,
    useEffect,
+   useLayoutEffect,
    useRef,
    useState,
 } from "react";
@@ -30,6 +31,7 @@ export const Tooltip = ({
    const triggerRef = useRef<HTMLDivElement>(null);
    const tooltipRef = useRef<HTMLDivElement>(null);
    const originalOverflow = useRef("");
+   const [tooltipStyle, setTooltipStyle] = useState<React.CSSProperties>({});
 
    // Detect touch device on mount
    useEffect(() => {
@@ -83,6 +85,45 @@ export const Tooltip = ({
       };
    }, [isVisible, hide]);
 
+   // Calculate fixed position for desktop portal tooltip
+   useLayoutEffect(() => {
+      if (isTouchDevice || !isVisible) return;
+
+      const trigger = triggerRef.current;
+      const tooltip = tooltipRef.current;
+      if (!trigger) return;
+
+      const triggerRect = trigger.getBoundingClientRect();
+      const tooltipHeight = tooltip?.offsetHeight || 0;
+      const tooltipWidth = tooltip?.offsetWidth || 0;
+      const gap = 12;
+
+      let top = 0;
+      let left = 0;
+
+      // Vertical position (direction)
+      if (direction === "up") {
+         top = triggerRect.top - tooltipHeight - gap;
+      } else if (direction === "down") {
+         top = triggerRect.bottom + gap;
+      } else {
+         // center
+         top = triggerRect.top + (triggerRect.height - tooltipHeight) / 2;
+      }
+
+      // Horizontal position (align)
+      if (align === "left") {
+         left = triggerRect.left - tooltipWidth - gap;
+      } else if (align === "right") {
+         left = triggerRect.right + gap;
+      } else {
+         // center
+         left = triggerRect.left + (triggerRect.width - tooltipWidth) / 2;
+      }
+
+      setTooltipStyle({ top, left });
+   }, [isVisible, align, direction, isTouchDevice]);
+
    const animationClasses = isVisible
       ? "opacity-100 scale-100 pointer-events-auto"
       : "opacity-0 scale-95 pointer-events-none";
@@ -92,37 +133,15 @@ export const Tooltip = ({
       ? { onClick: toggle }
       : { onMouseEnter: show, onMouseLeave: hide, onFocus: show, onBlur: hide };
 
-   // Desktop positioning
-   const verticalClass =
-      direction === "up"
-         ? "bottom-full mb-3"
-         : direction === "down"
-           ? "top-full mt-3"
-           : "top-1/2 -translate-y-1/2";
-
-   const horizontalClass =
-      align === "left"
-         ? "right-full mr-3"
-         : align === "right"
-           ? "left-full ml-3"
-           : "left-1/2 -translate-x-1/2";
-
-   const tooltipBubble = (
-      <div
-         ref={tooltipRef}
-         role="tooltip"
-         aria-hidden={!isVisible}
-         className={`transition-all duration-200 ease-out ${animationClasses}`}
-      >
-         <div className="bg-surface border border-subtle rounded-xl px-4 py-3 shadow-lg w-max max-w-[280px]">
-            <Typography
-               variant="small"
-               weight="normal"
-               className="leading-relaxed"
-            >
-               {content}
-            </Typography>
-         </div>
+   const tooltipContent = (
+      <div className="bg-surface border border-subtle rounded-xl px-4 py-3 shadow-lg w-max max-w-[280px]">
+         <Typography
+            variant="small"
+            weight="normal"
+            className="leading-relaxed"
+         >
+            {content}
+         </Typography>
       </div>
    );
 
@@ -134,14 +153,20 @@ export const Tooltip = ({
       >
          {children}
 
-         {/* Desktop: always in DOM for smooth CSS transitions */}
-         {!isTouchDevice && (
-            <div
-               className={`absolute z-50 ${verticalClass} ${horizontalClass}`}
-            >
-               {tooltipBubble}
-            </div>
-         )}
+         {/* Desktop: portal to body with fixed positioning for z-index layering */}
+         {!isTouchDevice &&
+            createPortal(
+               <div
+                  ref={tooltipRef}
+                  role="tooltip"
+                  aria-hidden={!isVisible}
+                  className={`fixed z-10000 transition-all duration-200 ease-out ${animationClasses}`}
+                  style={tooltipStyle}
+               >
+                  {tooltipContent}
+               </div>,
+               document.body,
+            )}
 
          {/* Mobile: portaled centered modal with backdrop */}
          {isVisible &&
@@ -155,7 +180,14 @@ export const Tooltip = ({
                      onClick={hide}
                   />
                   <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10000">
-                     {tooltipBubble}
+                     <div
+                        ref={tooltipRef}
+                        role="tooltip"
+                        aria-hidden={false}
+                        className={`transition-all duration-200 ease-out ${animationClasses}`}
+                     >
+                        {tooltipContent}
+                     </div>
                   </div>
                </>,
                document.body,
