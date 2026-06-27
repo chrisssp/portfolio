@@ -174,6 +174,7 @@ export interface Dictionary {
    hero: {
       role: string;
       roles: string[];
+      stats: { value: string; label: string; description: string }[];
       description: string;
       actions: {
          cv: string;
@@ -194,6 +195,11 @@ export interface Dictionary {
       };
    };
 
+   experience: {
+      title: string;
+      items: ExperienceItem[];
+   };
+
    about: {
       title: string;
       p1: string;
@@ -206,11 +212,6 @@ export interface Dictionary {
       languages: LanguageItem[];
       tooltipMidudev: string;
       tooltipMouredev: string;
-   };
-
-   experience: {
-      title: string;
-      items: ExperienceItem[];
    };
 
    projects: {
