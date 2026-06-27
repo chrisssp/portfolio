@@ -30,6 +30,8 @@ CVS=(
   "backend/Desarrollador_Backend_Christian_Serrano_CV.es"
   "ai-ml/AI_ML_Developer_Christian_Serrano_CV.en"
   "ai-ml/Desarrollador_AI_ML_Christian_Serrano_CV.es"
+  "devops/DevOps_Developer_Christian_Serrano_CV.en"
+  "devops/Desarrollador_DevOps_Christian_Serrano_CV.es"
 )
 
 SHARED_DIR="_shared"

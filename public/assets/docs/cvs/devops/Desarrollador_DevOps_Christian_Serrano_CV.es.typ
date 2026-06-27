@@ -4,7 +4,7 @@
 #import "../_shared/projects.es.typ": proj-iapex, proj-7d, proj-dabetai
 
 #cv-start(
-  [Ingeniero DevOps | CI/CD, Infraestructura y Automatización],
+  [Ingeniero DevOps | CI/CD, infraestructura y automatización],
   "es",
 )[
   == Perfil
@@ -12,13 +12,13 @@
 
   == Habilidades técnicas
   #multi-line-list(
-    single-line-entry([*CI/CD y Automatización:*], [GitHub Actions, Pipelines CI/CD, Despliegues Automatizados, Automatización de Procesos, Git], []),
-    single-line-entry([*Contenedores y Virtualización:*], [Docker, Docker Compose, Linux, Vercel, Netlify], []),
-    single-line-entry([*Cloud e Infraestructura:*], [AWS, Azure, Supabase, Microservicios, GraphQL], []),
-    single-line-entry([*Scripting y Programación:*], [Node.js, Python, Bash, TypeScript, APIs REST], []),
+    single-line-entry([*CI/CD y automatización:*], [GitHub Actions, Pipelines CI/CD, despliegues automatizados, automatización de procesos], []),
+    single-line-entry([*Contenedores y virtualización:*], [Docker, Docker Compose, Linux, Vercel, Netlify], []),
+    single-line-entry([*Cloud e infraestructura:*], [AWS, Azure, Supabase, Microservicios, GraphQL], []),
+    single-line-entry([*Scripting y programación:*], [Node.js, Python, Bash, TypeScript, APIs REST], []),
     single-line-entry([*Bases de datos:*], [PostgreSQL, MongoDB, Supabase, MySQL, SQL Server], []),
-    single-line-entry([*Seguridad y Cumplimiento:*], [JWT, Bcrypt, Estándares OWASP, Row Level Security, Privacidad de Datos], []),
-    single-line-entry([*Monitoreo y Observabilidad:*], [Optimización de Rendimiento (3.2x TTI), Motores de Auditoría, Validación], []),
+    single-line-entry([*Seguridad y cumplimiento:*], [JWT, Bcrypt, Estándares OWASP, Row Level Security, privacidad de datos], []),
+    single-line-entry([*Monitoreo y observabilidad:*], [Optimización de rendimiento (3.2x TTI), motores de auditoría, validación], []),
     single-line-entry([*Metodologías:*], [SDD (Spec-Driven Development), Agile, Scrum, Kanban, XP, Design Thinking], []),
     single-line-entry([*Herramientas y OS:*], [Git, GitHub, Linux, Claude Code, OpenCode, MCP, Figma, JUnit, Jest, Cypress], []),
     single-line-entry([*Familiarizado con:*], [.NET, Kotlin, Firebase, Kafka, Java, Spring Boot, Angular, React], [])
