@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { AmbientOrbs } from "@/components/atoms/AmbientOrbs";
 import { GridMouseTracker } from "@/components/atoms/GridMouseTracker";
 import { MusicPlayer } from "@/components/atoms/MusicPlayer";
 import { ScrollProgress } from "@/components/atoms/ScrollProgress";
@@ -90,6 +91,7 @@ export default async function RootLayout({ children, params }: Props) {
                <MobileMenuProvider>
                   <ScrollProgress />
                   {children}
+                  <AmbientOrbs />
                   <GridMouseTracker />
                   <MusicPlayer locale={locale} />
                   <ScrollToTop />

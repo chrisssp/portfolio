@@ -84,6 +84,11 @@
    --animate-bounce-in: microBounce 0.4s ease-out 1;
    --animate-bob: bob 2s ease-in-out infinite;
    --animate-bob-delay: calc(var(--i, 0) * 0.15s);
+
+   /* Ambient Orbs */
+   --animate-orb-1: orb-drift-1 45s ease-in-out infinite;
+   --animate-orb-2: orb-drift-2 55s ease-in-out infinite;
+   --animate-orb-3: orb-drift-3 35s ease-in-out infinite;
 }
 
 html {
@@ -116,6 +121,7 @@ body {
    }
    .bg-grid-spotlight {
       background-size: 40px 40px;
+      animation: grid-breathe 12s ease-in-out infinite;
       background-image:
          linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
          linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
@@ -279,6 +285,72 @@ body {
    }
 }
 
+/* ─── Grid Breathing ─────────────────────────────────────────────────────── */
+@keyframes grid-breathe {
+   0%,
+   100% {
+      background-size: 40px 40px;
+   }
+   50% {
+      background-size: 40.4px 40.4px;
+   }
+}
+
+/* ─── Ambient Orbs ───────────────────────────────────────────────────────── */
+@keyframes orb-drift-1 {
+   0% {
+      transform: translate3d(0, 0, 0) scale(1);
+   }
+   20% {
+      transform: translate3d(50px, -30px, 0) scale(1.05);
+   }
+   40% {
+      transform: translate3d(80px, 20px, 0) scale(0.97);
+   }
+   60% {
+      transform: translate3d(30px, 60px, 0) scale(1.03);
+   }
+   80% {
+      transform: translate3d(-40px, 30px, 0) scale(0.95);
+   }
+   100% {
+      transform: translate3d(0, 0, 0) scale(1);
+   }
+}
+
+@keyframes orb-drift-2 {
+   0% {
+      transform: translate3d(0, 0, 0) scale(1);
+   }
+   25% {
+      transform: translate3d(-30px, -50px, 0) scale(0.95);
+   }
+   50% {
+      transform: translate3d(-60px, 30px, 0) scale(1.06);
+   }
+   75% {
+      transform: translate3d(20px, 70px, 0) scale(0.98);
+   }
+   100% {
+      transform: translate3d(0, 0, 0) scale(1);
+   }
+}
+
+@keyframes orb-drift-3 {
+   0% {
+      transform: translate3d(0, 0, 0) scale(1);
+   }
+   33% {
+      transform: translate3d(-50px, -40px, 0) scale(1.04);
+   }
+   66% {
+      transform: translate3d(40px, -70px, 0) scale(0.96);
+   }
+   100% {
+      transform: translate3d(0, 0, 0) scale(1);
+   }
+}
+
 /* ─── Chat Widget Animations ─────────────────────────────────────────────── */
 /* Both panel and backdrop use CSS transitions managed via className toggles.
    No @keyframes needed — faster, more reliable, works on mount/unmount. */
@@ -292,8 +364,16 @@ body {
    .animate-idle-zoom,
    .animate-glow,
    .animate-bounce-in,
-   .animate-bob {
+   .animate-bob,
+   .animate-orb-1,
+   .animate-orb-2,
+   .animate-orb-3 {
       animation: none !important; /* biome-ignore lint/complexity/noImportantStyles: a11y reduced-motion override */
+   }
+
+   .bg-grid-spotlight {
+      animation: none !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
+      background-size: 40px 40px !important; /* biome-ignore lint/complexity/noImportantStyles: a11y */
    }
 
    .animate-float {
