@@ -1,5 +1,5 @@
 /**
- * Ambient Gradient Orbs — slow-moving blurred color blobs in the background.
+ * Ambient Gradient Orbs — slow-moving blurred color blobs on top of content.
  *
  * Pure CSS animations (transform only) for GPU-composited performance:
  * no JS animation loops, no state, zero re-renders.
@@ -7,13 +7,14 @@
  * Uses brand-primary CSS variables so colors adapt to light/dark mode.
  * Fully disabled when prefers-reduced-motion is active.
  *
- * Lives at z-index: 0 between body background and content (z-index: 1).
+ * Renders above content with reduced opacity so it feels like a soft
+ * atmospheric depth rather than a distracting overlay.
  */
 export function AmbientOrbs() {
    return (
       <div
          className="fixed inset-0 pointer-events-none overflow-hidden"
-         style={{ zIndex: 0 }}
+         style={{ zIndex: 0, opacity: 0.7 }}
          aria-hidden="true"
       >
          {/* Orb 1 — largest, top-left area */}
