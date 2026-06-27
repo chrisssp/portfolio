@@ -9,6 +9,7 @@ import type { Dictionary } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
 import { Button } from "../atoms/Button";
 import { SectionContainer } from "../atoms/SectionContainer";
+import { Typewriter } from "../atoms/Typewriter";
 import { Typography } from "../atoms/Typography";
 import { SmartEmailButton } from "../molecules/SmartEmailButton";
 
@@ -40,9 +41,14 @@ export const Hero = ({ dict }: HeroProps) => {
                      >
                         Christian Serrano
                      </Typography>
-                     <Typography variant="hero-sub" className="text-primary">
-                        {dict.hero.role}
-                     </Typography>
+                     <Typewriter
+                        words={dict.hero.roles}
+                        typingSpeed={75}
+                        deletingSpeed={35}
+                        pauseDuration={2200}
+                        as="p"
+                        className="text-lg md:text-4xl lg:text-5xl leading-tight font-bold text-primary"
+                     />
                   </div>
                </AnimatedSection>
 

@@ -173,10 +173,13 @@ export interface Dictionary {
 
    hero: {
       role: string;
+      roles: string[];
       description: string;
       actions: {
          cv: string;
          cvLink: string;
+         cvDevOps: string;
+         cvDevOpsLink: string;
          email: string;
          emailMenu: {
             send: string;
