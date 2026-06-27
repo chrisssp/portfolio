@@ -1,17 +1,11 @@
 "use client";
 
-import {
-   MdApps,
-   MdDescription,
-   MdLocationOn,
-   MdPublic,
-   MdWork,
-} from "react-icons/md";
+import { MdDescription } from "react-icons/md";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import type { ExperienceItem } from "@/i18n/types";
 import { Button } from "../atoms/Button";
-import { Tag } from "../atoms/Tag";
 import { Typography } from "../atoms/Typography";
+import { ExperienceBadges } from "./ExperienceBadges";
 
 interface TimelineItemProps {
    item: ExperienceItem;
@@ -31,18 +25,6 @@ export const TimelineItem = ({
       threshold: 0.1,
       rootMargin: "0px 0px -40px 0px",
    });
-
-   const handleProjectClick = () => {
-      if (item.projectId) {
-         if (typeof window !== "undefined") {
-            window.location.hash = `project-${item.projectId}`;
-         }
-         const event = new CustomEvent("switch-project-tab", {
-            detail: { projectId: item.projectId },
-         });
-         window.dispatchEvent(event);
-      }
-   };
 
    return (
       <div className="flex w-full relative">
@@ -103,42 +85,14 @@ export const TimelineItem = ({
                      >
                         {item.company}
                      </Typography>
-                     <div
-                        className={`flex flex-wrap gap-2 ${isEven ? "md:justify-end" : "md:justify-start"}`}
-                     >
-                        <Tag icon={<MdLocationOn className="size-3" />}>
-                           {item.location}
-                        </Tag>
-                        {item.remote && (
-                           <Tag icon={<MdPublic className="size-3" />}>
-                              {item.remote}
-                           </Tag>
-                        )}
-                        {item.tags?.map((tag) => (
-                           <Tag
-                              key={tag}
-                              variant="outline"
-                              icon={<MdWork className="size-3" />}
-                           >
-                              {tag}
-                           </Tag>
-                        ))}
-                        {item.product && (
-                           <button
-                              type="button"
-                              onClick={handleProjectClick}
-                              className="flex cursor-pointer hover:scale-[1.02] active:scale-95 transition-all duration-300"
-                           >
-                              <Tag
-                                 variant="primary"
-                                 icon={<MdApps className="size-3" />}
-                                 className="hover:bg-primary/80"
-                              >
-                                 {item.product}
-                              </Tag>
-                           </button>
-                        )}
-                     </div>
+                     <ExperienceBadges
+                        location={item.location}
+                        remote={item.remote}
+                        tags={item.tags}
+                        product={item.product}
+                        projectId={item.projectId}
+                        align={isEven ? "right" : "left"}
+                     />
                   </div>
                </div>
 
