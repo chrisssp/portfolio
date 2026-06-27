@@ -106,8 +106,8 @@ export const Hero = ({ dict }: HeroProps) => {
             {/* Buttons — third */}
             <AnimatedSection
                variant="fade-up"
-               delay={800}
-               duration="duration-700"
+               delay={500}
+               duration="duration-500"
             >
                <div className="flex flex-wrap justify-start gap-3 md:gap-4">
                   <a
