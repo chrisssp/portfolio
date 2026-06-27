@@ -408,3 +408,10 @@ body {
 }
 
 /* SpotlightCard removed — replaced by global GridMouseTracker effect */
+
+@utility scrollbar-hide {
+   scrollbar-width: none;
+   &::-webkit-scrollbar {
+      display: none;
+   }
+}

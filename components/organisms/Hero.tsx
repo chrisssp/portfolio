@@ -27,7 +27,7 @@ export const Hero = ({ dict }: HeroProps) => {
          className={`bg-surface transition-all duration-300 ${isMenuOpen ? "z-100" : "z-10"}`}
          innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24"
       >
-         <div className="flex flex-col gap-8 md:gap-12 max-w-190 order-2 lg:order-1">
+         <div className="flex flex-col gap-8 md:gap-12 w-full max-w-190 order-2 lg:order-1">
             <div className="flex flex-col gap-6 md:gap-8 text-left">
                {/* Title & role — appear first */}
                <AnimatedSection
@@ -53,30 +53,38 @@ export const Hero = ({ dict }: HeroProps) => {
                   </div>
                </AnimatedSection>
 
-               {/* Stats badges */}
-               <div className="flex flex-wrap gap-3">
-                  {dict.hero.stats.map((stat, i) => {
-                     return (
-                        <AnimatedSection
-                           key={stat.label}
-                           variant="fade-up"
-                           delay={250 + i * 60}
-                           duration="duration-500"
-                        >
-                           <div className="relative cursor-default">
-                              <span className="inline-flex items-baseline gap-1.5 px-4 py-2 rounded-full bg-surface border border-subtle shadow-sm text-sm leading-snug transition-all duration-200 ease-out hover:-translate-y-1">
-                                 <span className="font-bold text-primary whitespace-nowrap">
+               {/* Stats badges — 3 rows scroll en mobile, wrap en desktop */}
+               <style>{`
+                   @media (max-width: 1023px) {
+                      .hero-stats-scroll {
+                         -webkit-mask-image: linear-gradient(to right, black 88%, transparent 100%);
+                         mask-image: linear-gradient(to right, black 88%, transparent 100%);
+                      }
+                   }
+                `}</style>
+               <AnimatedSection
+                  variant="fade-up"
+                  delay={250}
+                  duration="duration-500"
+                  className="w-full min-w-0"
+               >
+                  <div className="hero-stats-scroll w-full overflow-x-auto scrollbar-hide lg:overflow-visible">
+                     <div className="grid grid-rows-3 grid-flow-col gap-2 w-max lg:w-auto lg:grid-rows-none lg:flex lg:flex-wrap lg:gap-3">
+                        {dict.hero.stats.map((stat) => (
+                           <div key={stat.label} className="cursor-default">
+                              <span className="inline-flex items-baseline gap-1.5 px-4 py-2 rounded-full bg-surface border border-subtle shadow-sm text-sm leading-snug transition-all duration-200 ease-out hover:-translate-y-1 whitespace-nowrap">
+                                 <span className="font-bold text-primary">
                                     {stat.value}
                                  </span>
-                                 <span className="text-secondary whitespace-nowrap">
+                                 <span className="text-secondary">
                                     {stat.label}
                                  </span>
                               </span>
                            </div>
-                        </AnimatedSection>
-                     );
-                  })}
-               </div>
+                        ))}
+                     </div>
+                  </div>
+               </AnimatedSection>
             </div>
 
             {/* Buttons — third */}
