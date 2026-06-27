@@ -14,10 +14,17 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export function AmbientOrbs() {
    const { resolvedTheme } = useTheme();
-   const isDark = resolvedTheme === "dark";
+   const [mounted, setMounted] = useState(false);
+
+   useEffect(() => {
+      setMounted(true);
+   }, []);
+
+   const isDark = mounted && resolvedTheme === "dark";
 
    const orb1 = isDark
       ? "/assets/images/orbs/orb-1-dark.png"
