@@ -19,11 +19,15 @@ export const hero = {
             label: "construction transactions audited",
             description:
                "Total transactions audited and reconciled for a Chicago-based construction company using an automated fintech platform",
+            tooltip:
+               "Total transactions audited and reconciled for a Chicago-based construction company using an automated fintech platform",
          },
          {
             value: "95%",
             label: "faster reconciliation",
             description:
+               "Reduction in financial reconciliation time — from days to minutes for complex multi-entity audits",
+            tooltip:
                "Reduction in financial reconciliation time — from days to minutes for complex multi-entity audits",
          },
          {
@@ -31,11 +35,15 @@ export const hero = {
             label: "records processed for PepsiCo",
             description:
                "Total logistics records processed in batch for PepsiCo's MTRPA fleet management operations",
+            tooltip:
+               "Total logistics records processed in batch for PepsiCo's MTRPA fleet management operations",
          },
          {
             value: "#4",
             label: "national hackathon (1.4K+)",
             description:
+               "4th place nationwide at Talent Land 2025 — Coppel Genius Arena Hackathon with 1,400+ participants",
+            tooltip:
                "4th place nationwide at Talent Land 2025 — Coppel Genius Arena Hackathon with 1,400+ participants",
          },
          {
@@ -43,17 +51,23 @@ export const hero = {
             label: "selected for hackathon finals",
             description:
                "Selected among 1,500 applicants for the on-site phase of Talent Land 2026 — Azkali x Banco Azteca",
+            tooltip:
+               "Selected among 1,500 applicants for the on-site phase of Talent Land 2026 — Azkali x Banco Azteca",
          },
          {
             value: "Institucional",
             label: "validated + research paper",
             description:
                "Validated by IMSS General de Córdoba + research paper presented at CEIAAIT 2025 (UNAM FES Cuautitlán)",
+            tooltip:
+               "Validated by IMSS General de Córdoba + research paper presented at CEIAAIT 2025 (UNAM FES Cuautitlán)",
          },
          {
             value: "70%",
             label: "faster logistics processing",
             description:
+               "Optimized processing time for PepsiCo's fleet management platform — from manual to automated workflows",
+            tooltip:
                "Optimized processing time for PepsiCo's fleet management platform — from manual to automated workflows",
          },
       ],
@@ -99,11 +113,15 @@ export const hero = {
             label: "transacciones auditadas",
             description:
                "Transacciones auditadas y conciliadas para una constructora en Chicago mediante una plataforma fintech automatizada",
+            tooltip:
+               "Transacciones auditadas y conciliadas para una constructora en Chicago mediante una plataforma fintech automatizada",
          },
          {
             value: "95%",
             label: "conciliación más rápida",
             description:
+               "Reducción en tiempo de conciliación financiera — de días a minutos en auditorías multi-entidad",
+            tooltip:
                "Reducción en tiempo de conciliación financiera — de días a minutos en auditorías multi-entidad",
          },
          {
@@ -111,11 +129,15 @@ export const hero = {
             label: "registros para PepsiCo",
             description:
                "Registros logísticos procesados en lote para las operaciones de flota MTRPA de PepsiCo",
+            tooltip:
+               "Registros logísticos procesados en lote para las operaciones de flota MTRPA de PepsiCo",
          },
          {
             value: "#4",
             label: "hackathon nacional (1.4K+)",
             description:
+               "4to lugar nacional en Talent Land 2025 — Hackathon Coppel Genius Arena con 1,400+ participantes",
+            tooltip:
                "4to lugar nacional en Talent Land 2025 — Hackathon Coppel Genius Arena con 1,400+ participantes",
          },
          {
@@ -123,17 +145,23 @@ export const hero = {
             label: "seleccionado para final",
             description:
                "Seleccionado entre 1,500 aplicantes para la fase presencial de Talent Land 2026 — Azkali x Banco Azteca",
+            tooltip:
+               "Seleccionado entre 1,500 aplicantes para la fase presencial de Talent Land 2026 — Azkali x Banco Azteca",
          },
          {
             value: "Validación",
             label: "institucional + paper",
             description:
                "Validado por IMSS General de Córdoba + paper presentado en CEIAAIT 2025 (UNAM FES Cuautitlán)",
+            tooltip:
+               "Validado por IMSS General de Córdoba + paper presentado en CEIAAIT 2025 (UNAM FES Cuautitlán)",
          },
          {
             value: "70%",
             label: "procesos logísticos más rápidos",
             description:
+               "Tiempo de procesamiento optimizado para la plataforma de gestión de flota de PepsiCo — de manual a automatizado",
+            tooltip:
                "Tiempo de procesamiento optimizado para la plataforma de gestión de flota de PepsiCo — de manual a automatizado",
          },
       ],

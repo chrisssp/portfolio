@@ -174,7 +174,12 @@ export interface Dictionary {
    hero: {
       role: string;
       roles: string[];
-      stats: { value: string; label: string; description: string }[];
+      stats: {
+         value: string;
+         label: string;
+         description: string;
+         tooltip: string;
+      }[];
       description: string;
       actions: {
          cv: string;

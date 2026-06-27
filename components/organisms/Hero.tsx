@@ -69,18 +69,25 @@ export const Hero = ({ dict }: HeroProps) => {
                   className="w-full min-w-0"
                >
                   <div className="hero-stats-scroll w-full overflow-x-auto scrollbar-hide lg:overflow-visible">
-                     <div className="grid grid-rows-3 grid-flow-col gap-2 w-max lg:w-auto lg:grid-rows-none lg:flex lg:flex-wrap lg:gap-3">
+                     <div className="group grid grid-rows-3 grid-flow-col gap-2 w-max lg:w-auto lg:grid-rows-none lg:flex lg:flex-wrap lg:gap-3">
                         {dict.hero.stats.map((stat) => (
-                           <div key={stat.label} className="cursor-default">
-                              <span className="inline-flex items-baseline gap-1.5 px-4 py-2 rounded-full bg-surface border border-subtle shadow-sm text-sm leading-snug transition-all duration-200 ease-out hover:-translate-y-1 whitespace-nowrap">
-                                 <span className="font-bold text-primary">
-                                    {stat.value}
+                           <Tooltip
+                              key={stat.label}
+                              content={stat.tooltip}
+                              align="right"
+                              direction="center"
+                           >
+                              <div className="cursor-default transition-opacity duration-200 group-hover:opacity-40 hover:!opacity-100">
+                                 <span className="inline-flex items-baseline gap-1.5 px-4 py-2 rounded-full bg-surface border border-subtle shadow-sm text-sm leading-snug transition-all duration-200 ease-out hover:-translate-y-1 whitespace-nowrap">
+                                    <span className="font-bold text-primary">
+                                       {stat.value}
+                                    </span>
+                                    <span className="text-secondary">
+                                       {stat.label}
+                                    </span>
                                  </span>
-                                 <span className="text-secondary">
-                                    {stat.label}
-                                 </span>
-                              </span>
-                           </div>
+                              </div>
+                           </Tooltip>
                         ))}
                      </div>
                   </div>
