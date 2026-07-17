@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { SITE_URL } from "@/config/site";
 import { getDictionary, type Locale } from "@/i18n/config";
 
 export const runtime = "edge";
@@ -28,7 +29,7 @@ export default async function Image({
       ),
    ).then((res) => res.arrayBuffer());
 
-   const projectImageUrl = `https://chrisssp.vercel.app${project.imagePath}`;
+   const projectImageUrl = `${SITE_URL}${project.imagePath}`;
 
    return new ImageResponse(
       <div

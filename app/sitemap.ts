@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-   const baseUrl = "https://chrisssp.vercel.app";
+   const baseUrl = SITE_URL;
    const locales = ["en", "es"];
    const projectIds = [
       "7dcompass",

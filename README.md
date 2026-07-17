@@ -13,7 +13,7 @@
 
 High-performance, multi-language professional portfolio built with a focus on clean architecture, accessibility, and modern user experience.
 
-**Live Demo:** [chrisssp.vercel.app](https://chrisssp.vercel.app)
+**Live Demo:** [chrisssp.me](https://chrisssp.me)
 
 ---
 

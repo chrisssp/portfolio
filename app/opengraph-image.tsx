@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { SITE_URL } from "@/config/site";
 
 export const runtime = "edge";
 export const alt = "Christian Serrano | Software Engineer";
@@ -14,7 +15,7 @@ export default async function Image() {
       ),
    ).then((res) => res.arrayBuffer());
 
-   const profileImageUrl = `https://chrisssp.vercel.app/assets/images/profile/me.webp`;
+   const profileImageUrl = `${SITE_URL}/assets/images/profile/me.webp`;
 
    return new ImageResponse(
       <div
@@ -59,7 +60,7 @@ export default async function Image() {
                   fontWeight: 700,
                }}
             >
-               chrisssp.vercel.app
+               chrisssp.me
             </div>
          </div>
 

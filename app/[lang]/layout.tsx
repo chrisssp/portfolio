@@ -10,6 +10,7 @@ import { ScrollToTop } from "@/components/atoms/ScrollToTop";
 import { MobileMenuProvider } from "@/components/contexts/MobileMenuContext";
 import { ChatWidgetWrapper } from "@/components/organisms/ChatWidget/ChatWidgetWrapper";
 import { ThemeProvider } from "@/components/ThemeContext";
+import { SITE_URL } from "@/config/site";
 import type { Locale } from "@/i18n/config";
 import "./../globals.css";
 
@@ -23,9 +24,9 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
    title: "Christian Serrano's Portfolio",
    description: "Mobile & Full Stack Developer",
-   metadataBase: new URL("https://chrisssp.vercel.app"),
+   metadataBase: new URL(SITE_URL),
    alternates: {
-      canonical: "https://chrisssp.vercel.app",
+      canonical: SITE_URL,
       languages: {
          en: "/en",
          es: "/es",
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
       title: "Christian Serrano | Software Engineer",
       description:
          "Software Engineer building efficient web & mobile ecosystems with clean code and high performance.",
-      url: "https://chrisssp.vercel.app",
+      url: SITE_URL,
       siteName: "Christian Serrano Portfolio",
       locale: "en_US",
       type: "website",

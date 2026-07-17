@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chrisssp.vercel.app/sitemap.xml
+Sitemap: https://chrisssp.me/sitemap.xml

@@ -13,7 +13,7 @@
 
 Portafolio profesional multilingüe de alto rendimiento construido con enfoque en arquitectura limpia, accesibilidad y experiencia de usuario moderna.
 
-**Demo en vivo:** [chrisssp.vercel.app](https://chrisssp.vercel.app)
+**Demo en vivo:** [chrisssp.me](https://chrisssp.me)
 
 ---
 

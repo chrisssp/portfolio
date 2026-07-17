@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { SITE_URL } from "@/config/site";
 import { getDictionary, type Locale } from "@/i18n/config";
 
 export const runtime = "edge";
@@ -22,7 +23,7 @@ export default async function Image({ params }: { params: { lang: string } }) {
       ),
    ).then((res) => res.arrayBuffer());
 
-   const profileImageUrl = `https://chrisssp.vercel.app/assets/images/profile/me.webp`;
+   const profileImageUrl = `${SITE_URL}/assets/images/profile/me.webp`;
 
    return new ImageResponse(
       <div
@@ -121,7 +122,7 @@ export default async function Image({ params }: { params: { lang: string } }) {
                fontWeight: 700,
             }}
          >
-            chrisssp.vercel.app
+            chrisssp.me
          </div>
       </div>,
       {
