@@ -34,7 +34,7 @@
       name: "Christian Serrano",
       primary-info: [#title \ #contact-info],
       secondary-info: [
-        #link("https://chrisssp.vercel.app")[chrisssp.vercel.app] | #link("https://linkedin.com/in/chrisssp")[linkedin.com/in/chrisssp] | #link("https://github.com/chrisssp")[github.com/chrisssp]
+        #link("https://chrisssp.me")[chrisssp.me] | #link("https://linkedin.com/in/chrisssp")[linkedin.com/in/chrisssp] | #link("https://github.com/chrisssp")[github.com/chrisssp]
       ],
       tertiary-info: location,
     ),

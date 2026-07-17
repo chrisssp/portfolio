@@ -6,6 +6,7 @@ import { Experience } from "@/components/organisms/Experience";
 import { Footer } from "@/components/organisms/Footer";
 import { Hero } from "@/components/organisms/Hero";
 import { Projects } from "@/components/organisms/Projects";
+import { SITE_URL } from "@/config/site";
 import { getDictionary, type Locale } from "@/i18n/config";
 
 type Props = {
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
          title: titles[locale],
          description: descriptions[locale],
-         url: "https://chrisssp.vercel.app",
+         url: SITE_URL,
          siteName: "Christian Serrano Portfolio",
          locale: locale === "en" ? "en_US" : "es_ES",
          type: "website",
@@ -63,7 +64,7 @@ export default async function Home({ params }: Props) {
       "@context": "https://schema.org",
       "@type": "Person",
       name: "Christian Serrano",
-      url: "https://chrisssp.vercel.app",
+      url: SITE_URL,
       jobTitle: "Software Engineer",
       sameAs: [
          "https://github.com/chrisssp",

@@ -28,14 +28,16 @@ export const Tooltip = ({
 }: TooltipProps) => {
    const [isVisible, setIsVisible] = useState(false);
    const [isTouchDevice, setIsTouchDevice] = useState(false);
+   const [isMounted, setIsMounted] = useState(false);
    const triggerRef = useRef<HTMLDivElement>(null);
    const tooltipRef = useRef<HTMLDivElement>(null);
    const originalOverflow = useRef("");
    const [tooltipStyle, setTooltipStyle] = useState<React.CSSProperties>({});
 
-   // Detect touch device on mount
+   // Detect touch device and confirm client mount (SSR-safe)
    useEffect(() => {
       setIsTouchDevice(window.matchMedia("(hover: none)").matches);
+      setIsMounted(true);
    }, []);
 
    const show = useCallback(() => setIsVisible(true), []);
@@ -154,7 +156,8 @@ export const Tooltip = ({
          {children}
 
          {/* Desktop: portal to body with fixed positioning for z-index layering */}
-         {!isTouchDevice &&
+         {isMounted &&
+            !isTouchDevice &&
             createPortal(
                <div
                   ref={tooltipRef}
@@ -169,7 +172,8 @@ export const Tooltip = ({
             )}
 
          {/* Mobile: portaled centered modal with backdrop */}
-         {isVisible &&
+         {isMounted &&
+            isVisible &&
             isTouchDevice &&
             createPortal(
                <>

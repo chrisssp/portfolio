@@ -7,6 +7,7 @@ import { ProjectCertificates } from "@/components/organisms/ProjectCertificates"
 import { ProjectChallenge } from "@/components/organisms/ProjectChallenge";
 import { ProjectDetailHero } from "@/components/organisms/ProjectDetailHero";
 import { ProjectEcosystem } from "@/components/organisms/ProjectEcosystem";
+import { SITE_URL } from "@/config/site";
 import { getDictionary, type Locale } from "@/i18n/config";
 
 type Props = {
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
          title,
          description,
-         url: `https://chrisssp.vercel.app/projects/${id}`,
+         url: `${SITE_URL}/projects/${id}`,
          siteName: "Christian Serrano Portfolio",
          locale: locale === "en" ? "en_US" : "es_ES",
          type: "website",

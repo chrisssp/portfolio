@@ -22,7 +22,7 @@
     #role \
     +52 271 266 73 65 \
     #link("mailto:christian.serrano.puertos@gmail.com") \
-    #link("https://chrisssp.vercel.app") \
+    #link("https://chrisssp.me") \
     #link("https://linkedin.com/in/chrisssp")
   ]
 
