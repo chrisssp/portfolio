@@ -49,28 +49,7 @@ export const metadata: Metadata = {
       shortcut: "/assets/images/profile/isotipo-black-round.png",
       apple: "/assets/images/profile/isotipo-black-round.png",
    },
-   openGraph: {
-      title: "Christian Serrano | Software Engineer",
-      description:
-         "Software Engineer building efficient web & mobile ecosystems with clean code and high performance.",
-      url: SITE_URL,
-      siteName: "Christian Serrano Portfolio",
-      locale: "en_US",
-      type: "website",
-      images: {
-         url: "/assets/images/profile/banner.webp",
-         width: 1200,
-         height: 630,
-         alt: "Christian Serrano — Software Engineer",
-      },
-   },
-   twitter: {
-      card: "summary_large_image",
-      title: "Christian Serrano | Software Engineer",
-      description:
-         "Software Engineer building efficient web & mobile ecosystems with clean code and high performance.",
-      images: "/assets/images/profile/banner.webp",
-   },
+   manifest: "/manifest.webmanifest",
 };
 
 type Props = {
