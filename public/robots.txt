@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.chrisssp.me/en/sitemap.xml
-Sitemap: https://www.chrisssp.me/es/sitemap.xml
+Sitemap: https://www.chrisssp.me/sitemap.xml
