@@ -47,3 +47,6 @@ public/assets/docs/cover-letters/**/*.pdf
 
 # Chat content JSON (generated at build time)
 public/portfolio-content.json
+
+# CodeGraph index (generated locally by `codegraph init`, machine-specific)
+.codegraph/
