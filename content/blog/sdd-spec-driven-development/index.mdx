@@ -1,0 +1,140 @@
+---
+slug: "sdd-spec-driven-development"
+date: "2026-07-26T11:30:00Z"
+draft: false
+coverImage: "/blog/sdd-spec-driven-development.jpg"
+linkedin: "https://www.linkedin.com/posts/chrisssp_sdd-specdrivendevelopment-desarrolloconia-activity-7487018458241462272-P19t"
+translations:
+  es:
+    title: "SDD: Spec-Driven Development, la guía que necesitabas en 2026"
+    description: "Por qué documentar (bien) se convirtió en una necesidad absoluta cuando usas agentes de IA"
+    tags: ["especificaciones", "arquitectura-de-software", "desarrollo-con-ia", "metodologia", "sdd"]
+    resources:
+      - title: "OpenAPI Specification"
+        href: "https://spec.openapis.org/oas/latest.html"
+        description: "El formato que menciono para estructurar el contexto de tu agente"
+  en:
+    title: "SDD: Spec-Driven Development, the guide you needed in 2026"
+    description: "Why proper documentation became an absolute necessity when you work with AI agents"
+    tags: ["specifications", "software-architecture", "development-with-ai", "methodology", "sdd"]
+    resources:
+      - title: "OpenAPI Specification"
+        href: "https://spec.openapis.org/oas/latest.html"
+        description: "The format I mention for structuring your agent's context"
+---
+
+{/* SPANISH VERSION */}
+
+# SDD: Spec-Driven Development, la guía que necesitabas en 2026
+
+**Si en pleno 2026 sigues codeando a base de tirar pequeños prompts así porque sí, deberías leer esto.**
+
+Cuando iba a la universidad, documentar (hacer ERS, interminables casos de uso o UMLs) se sentía como un trámite burocrático, desconectado del código real. Parecía simplemente algo para cumplir que nadie volvía a leer una vez que empezábamos a tirar código.
+
+Pero hoy, con los agentes de IA, esa percepción me dio un giro de 180 grados.
+
+## El problema: de la claridad al caos en segundos
+
+Antes de cambiar mi enfoque, el "compactando..." de las herramientas agénticas me desviaba features enteras. Empezaba con una idea clarísima en la cabeza y el agente la terminaba convirtiendo en un _Frankenstein_ inconsistente con el resto del proyecto, alejándose totalmente de lo planeado.
+
+Aquí es donde entra el **Spec-Driven Development (SDD)**.
+
+Ya no hablo de documentación aburrida, sino de definir un **contrato técnico ejecutable** que se convierte en la única fuente de verdad (_Single Source of Truth_) para todo el ciclo de vida del proyecto.
+
+## ¿Por qué SDD pasó de ser una "buena práctica" a una necesidad?
+
+Se resume en 3 puntos:
+
+### 1. Límites claros
+El contrato (el spec) actúa como _guardrail_. La IA ya no tiene libertad para inventarse endpoints, alucinar variables ni romper tipos de datos.
+
+### 2. Contexto perfecto
+Pasarle un OpenAPI o un YAML estructurado a tu agente le da un mapa mental infinitamente más sólido que un prompt ambiguo de 10 líneas.
+
+### 3. Paralelismo real
+Tu rol evoluciona. Tú diseñas el contrato y la arquitectura; la IA escribe el código repetitivo, crea las interfaces y levanta los _mocks_.
+
+## Cómo empezar: tan simple como un `.md`
+
+¿Lo mejor? No necesitas pipelines complejos para empezar. Aplicar SDD puede ser tan simple como escribir un archivo `.md` bien estructurado con los contratos y reglas de tu feature antes de pedirle una sola línea de código a la IA.
+
+```markdown title="spec.md" showLineNumbers
+# Feature: Autenticación OAuth2
+
+## Contracts
+- POST /auth/login → { token, user }
+- GET /auth/verify → { valid: boolean }
+- POST /auth/logout → { success: boolean }
+
+## Rules
+- Tokens expiran en 24h
+- No se permiten caracteres especiales en usernames
+- Máximo 3 intentos fallidos por IP
+```
+
+Pasamos de solo typear código a ser **directores de orquesta**. Y la partitura es el spec.
+
+## La pregunta para ti
+
+¿Cómo lidian ustedes con el contexto cuando usan agentes de código? ¿Ya aplican estrategias _Spec-First_?
+
+La conversación también está abierta en LinkedIn — únete y comparte tu experiencia.
+
+---
+
+{/* ENGLISH VERSION */}
+
+# SDD: Spec-Driven Development, the guide you needed in 2026
+
+**If you're still in 2026 throwing random prompts at your code just because, you need to read this.**
+
+Back in university, documentation (writing ERS, endless use cases, or UMLs) felt like bureaucratic red tape, disconnected from the actual code. It seemed like something to tick off that nobody would read again once we started writing code.
+
+But today, with AI agents, that perception flipped 180 degrees.
+
+## The problem: from clarity to chaos in seconds
+
+Before changing my approach, the "compacting..." message from agentic tools would derail entire features. I'd start with a crystal-clear idea in my head, and the agent would turn it into a _Frankenstein_ that was inconsistent with the rest of the project, completely straying from what I planned.
+
+That's where **Spec-Driven Development (SDD)** comes in.
+
+I'm not talking about boring documentation anymore, but about defining an **executable technical contract** that becomes the single source of truth for your entire project lifecycle.
+
+## Why SDD went from "good practice" to absolute necessity
+
+It boils down to 3 points:
+
+### 1. Clear boundaries
+The contract (the spec) acts as a _guardrail_. AI can't just invent endpoints, hallucinate variables, or break data types.
+
+### 2. Perfect context
+Passing a structured OpenAPI or YAML to your agent gives it an infinitely more solid mental map than an ambiguous 10-line prompt.
+
+### 3. Real parallelism
+Your role evolves. You design the contract and architecture; the AI writes repetitive code, creates interfaces, and spins up mocks.
+
+## How to start: as simple as a `.md`
+
+The best part? You don't need complex pipelines to begin. Applying SDD can be as simple as writing a well-structured `.md` file with your feature contracts and rules before asking the AI for a single line of code.
+
+```markdown title="spec.md" showLineNumbers
+# Feature: OAuth2 Authentication
+
+## Contracts
+- POST /auth/login → { token, user }
+- GET /auth/verify → { valid: boolean }
+- POST /auth/logout → { success: boolean }
+
+## Rules
+- Tokens expire in 24h
+- No special characters allowed in usernames
+- Maximum 3 failed attempts per IP
+```
+
+We've moved from just typing code to being **conductors of an orchestra**. And the score is the spec.
+
+## The question for you
+
+How do you handle context when working with code agents? Are you already applying _Spec-First_ strategies?
+
+The conversation is also open on LinkedIn — join and share your experience.
