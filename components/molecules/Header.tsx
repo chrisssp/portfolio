@@ -120,7 +120,20 @@ export const Header = ({
    const toggleLanguage = () => {
       const newLang = lang === "en" ? "es" : "en";
       const newPath = pathname.replace(`/${lang}`, `/${newLang}`);
-      router.push(newPath);
+      router.replace(newPath);
+   };
+
+   const handleBackClick = () => {
+      // Intenta ir a la página anterior del historial
+      if (window.history.length > 1) {
+         window.history.back();
+      } else if (backHref) {
+         // Si no hay historial anterior, usa el fallback
+         router.push(backHref);
+      } else {
+         // Si no hay backHref definido, regresa a home
+         router.push(`/${lang}`);
+      }
    };
 
    if (!mounted) return <div className="h-16 md:h-21" />;
@@ -129,6 +142,7 @@ export const Header = ({
       { id: "experience", label: dict.nav.experience },
       { id: "projects", label: dict.nav.projects },
       { id: "about", label: dict.nav.about },
+      { id: "blog", label: dict.nav.blog, href: `/${lang}/blog` },
    ];
 
    return (
@@ -163,11 +177,13 @@ export const Header = ({
                   </Link>
 
                   {showBack && (
-                     <Link href={backHref ?? `/${lang}`}>
-                        <Button variant="outline" icon={<MdArrowBack />}>
-                           {dict.nav.goBack}
-                        </Button>
-                     </Link>
+                     <Button
+                        variant="outline"
+                        icon={<MdArrowBack />}
+                        onClick={handleBackClick}
+                     >
+                        {dict.nav.goBack}
+                     </Button>
                   )}
 
                   {!showBack && (
@@ -188,7 +204,7 @@ export const Header = ({
                                     if (el)
                                        navLinksRef.current.set(link.id, el);
                                  }}
-                                 href={`/${lang}#${link.id}`}
+                                 href={link.href ?? `/${lang}#${link.id}`}
                                  className={`relative z-10 px-4 lg:px-6 py-2.5 transition-all duration-300 rounded-xl hover:text-primary hover:scale-[1.02] active:scale-95 flex items-center ${
                                     activeSection === link.id
                                        ? "text-primary"
@@ -316,7 +332,7 @@ export const Header = ({
                      {navLinks.map((link, idx) => (
                         <Link
                            key={link.id}
-                           href={`/${lang}#${link.id}`}
+                           href={link.href ?? `/${lang}#${link.id}`}
                            onClick={() => setMobileMenuOpen(false)}
                            className={`flex items-center justify-between p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-200 ${
                               activeSection === link.id
