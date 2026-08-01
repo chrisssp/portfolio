@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/config/site";
+import { getAllPosts } from "@/lib/blog";
 
 const locales = ["en", "es"] as const;
 const projectIds = [
@@ -23,7 +24,7 @@ function alternates(path: string): MetadataRoute.Sitemap[0]["alternates"] {
    return { languages };
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
    const entries: MetadataRoute.Sitemap = [];
 
    // Root
@@ -57,6 +58,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
             alternates: alternates(`/projects/${id}`),
          });
       }
+   }
+
+   // Blog posts
+   const posts = await getAllPosts();
+   for (const post of posts) {
+      const lang = post.frontmatter.locale;
+      entries.push({
+         url: `${SITE_URL}/${lang}/blog/${post.slug}`,
+         lastModified: new Date(post.frontmatter.date),
+         changeFrequency: "monthly",
+         priority: 0.7,
+         alternates: alternates(`/blog/${post.slug}`),
+      });
    }
 
    return entries;
