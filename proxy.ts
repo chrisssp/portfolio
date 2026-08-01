@@ -60,6 +60,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
    matcher: [
-      "/((?!api|_next/static|_next/image|assets|audio|favicon.ico|manifest.webmanifest|robots.txt|sitemap.xml).*)",
+      "/((?!api|_next/static|_next/image|assets|audio|favicon.ico|manifest.webmanifest|robots.txt|sitemap.xml|.*\\.(?:jpe?g|png|gif|webp|svg|ico|avif|mp4|webm|mp3|pdf|woff2?|ttf|eot)).*)",
    ],
 };
