@@ -169,6 +169,7 @@ export interface Dictionary {
       themeDark: string;
       githubStars: string;
       githubRepos: string;
+      blog: string;
    };
 
    hero: {
@@ -270,5 +271,36 @@ export interface Dictionary {
       title: string;
       description: string;
       goHome: string;
+   };
+
+   blog: {
+      title: string;
+      subtitle: string;
+      searchPlaceholder: string;
+      filterByTags: string;
+      tagFilterPrefix: string;
+      noArticlesTitle: string;
+      noArticlesDescription: string;
+      readMore: string;
+      readTime: string;
+      prevPost: string;
+      nextPost: string;
+      relatedPosts: string;
+      resources: string;
+      viewOnLinkedin: string;
+      tableOfContents: string;
+      share: string;
+      copyLink: string;
+      copied: string;
+      shareLinkedin: string;
+      shareX: string;
+      feedDescription: string;
+      pagination: {
+         label: string;
+         previousPage: string;
+         nextPage: string;
+         page: string;
+         goToPage: string;
+      };
    };
 }
