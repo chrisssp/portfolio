@@ -93,6 +93,8 @@ export const en: Dictionary = {
          clear_filters: "Clear",
          clear_all: "Clear all filters",
          no_projects_match: "No projects match the selected filters",
+         show_more: "Show more",
+         show_less: "Show less",
       },
    },
    filters: {
@@ -128,10 +130,10 @@ export const en: Dictionary = {
       title: "Blog",
       subtitle:
          "A personal space where I share my workflow, the projects I'm working on, and what I think about development and AI.",
-      searchPlaceholder: "Search articles...",
+      searchPlaceholder: "Search posts...",
       filterByTags: "Filter by tags:",
       tagFilterPrefix: "Tag:",
-      noArticlesTitle: "No articles found",
+      noArticlesTitle: "No posts found",
       noArticlesDescription: "Try adjusting your search or filter criteria.",
       readMore: "Read more",
       readTime: "min read",
