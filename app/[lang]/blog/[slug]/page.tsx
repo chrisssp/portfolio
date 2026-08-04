@@ -17,6 +17,7 @@ import TableOfContents from "@/components/molecules/TableOfContents";
 import { SITE_URL } from "@/config/site";
 import { getDictionary, type Locale } from "@/i18n/config";
 import { getPostBySlug, getPostSeriesInfo, getRelatedPosts } from "@/lib/blog";
+import { formatTag } from "@/lib/blog/format";
 
 interface PostPageProps {
    params: Promise<{
@@ -143,7 +144,7 @@ async function PostPage({ params }: PostPageProps) {
                            weight="medium"
                            className="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full"
                         >
-                           {tag}
+                           {formatTag(tag, locale)}
                         </Typography>
                      ))}
                   </div>

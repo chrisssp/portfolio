@@ -7,6 +7,7 @@ import { Pagination } from "@/components/molecules/Pagination";
 import { BlogList } from "@/components/organisms/BlogList";
 import type { Dictionary } from "@/i18n/types";
 import type { BlogPostListItem } from "@/lib/blog";
+import { formatTag } from "@/lib/blog/format";
 
 interface BlogPageClientProps {
    locale: "en" | "es";
@@ -124,7 +125,7 @@ export function BlogPageClient({
                         }`}
                      >
                         <Typography variant="small" as="span">
-                           {tag}
+                           {formatTag(tag, locale)}
                         </Typography>
                      </button>
                   ))}
@@ -139,7 +140,7 @@ export function BlogPageClient({
                   as="span"
                   className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary"
                >
-                  {labels.tagFilterPrefix} {tagFilter}
+                  {labels.tagFilterPrefix} {formatTag(tagFilter, locale)}
                   <button
                      type="button"
                      onClick={handleClearTag}

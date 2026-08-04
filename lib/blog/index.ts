@@ -143,7 +143,9 @@ export const getAllPosts = cache(
 
          if (!translations) continue;
 
-         const readingTimeMinutes = calculateReadingTime(content);
+         const readingTimeMinutes = calculateReadingTime(
+            extractLanguageContent(content, targetLocale),
+         );
          const localizedFrontmatter: LocalizedBlogPostFrontmatter = {
             title: translations.title,
             description: translations.description,

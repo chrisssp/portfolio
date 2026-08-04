@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Typography } from "@/components/atoms/Typography";
 import type { Dictionary } from "@/i18n/types";
+import { formatTag } from "@/lib/blog/format";
 import type { BlogPostListItem } from "@/lib/blog/schema";
 
 interface BlogCardProps {
@@ -70,7 +71,7 @@ export function BlogCard({
                      weight="medium"
                      className="px-2 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full"
                   >
-                     {tag}
+                     {formatTag(tag, locale)}
                   </Typography>
                ))}
                {!isCompact && frontmatter.tags.length > 3 && (
