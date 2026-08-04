@@ -37,7 +37,7 @@ export const en: Dictionary = {
    experience: experience.en,
    projects: {
       title: "Projects",
-      subtitle: "Want to see more? Check my GitHub",
+      subtitleLink: "Check out my GitHub repositories",
       sections: {
          challenge: "The Challenge",
          challengeTitle: "Challenge",
@@ -86,7 +86,6 @@ export const en: Dictionary = {
          view_certificate: "Open",
          tab_featured: "Featured",
          tab_all: "Others",
-         see_more: "See More Projects",
          filter: "Filters",
          filter_tech: "Technology",
          filter_focus: "Focus",

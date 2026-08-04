@@ -219,7 +219,7 @@ export interface Dictionary {
 
    projects: {
       title: string;
-      subtitle: string;
+      subtitleLink: string;
       items: ProjectItem[];
       sections: {
          challenge: string;
@@ -239,7 +239,6 @@ export interface Dictionary {
          view_certificate: string;
          tab_featured: string;
          tab_all: string;
-         see_more: string;
          filter: string;
          filter_tech: string;
          filter_focus: string;

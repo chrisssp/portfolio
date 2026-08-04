@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FaGithub } from "react-icons/fa";
 import {
    MdCode,
    MdExpandLess,
@@ -17,6 +16,7 @@ import type { Locale } from "@/i18n/config";
 import type { Dictionary, ProjectItem } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
 import { Button } from "../atoms/Button";
+import { InlineLink } from "../atoms/InlineLink";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { Typography } from "../atoms/Typography";
 import { FilterBar } from "../molecules/FilterBar";
@@ -551,42 +551,29 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                </div>
             )}
 
-            {/* Segmented Control Bottom — only when tech filter is NOT active */}
-            {!hasActiveFilter && (
-               <div className="flex justify-center lg:justify-end">
-                  <FilterPills
-                     filter={filter}
-                     onFilterChange={handleFilterChange}
-                     tabFeatured={dict.projects.actions.tab_featured}
-                     tabAll={dict.projects.actions.tab_all}
-                     className="max-w-md"
-                  />
-               </div>
-            )}
-
-            {/* Footer */}
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6 pt-8">
+            {/* Footer — subtitle con link a GitHub + segmented control en la misma fila */}
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6">
                <Typography
                   variant="body"
                   weight="medium"
                   className="text-slate-600 dark:text-slate-400"
                >
-                  {dict.projects.subtitle}
+                  <InlineLink href="https://github.com/chrisssp?tab=repositories">
+                     {dict.projects.subtitleLink}
+                  </InlineLink>
                </Typography>
-               <a
-                  href="https://github.com/chrisssp?tab=repositories"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full lg:w-auto"
-               >
-                  <Button
-                     variant="outline"
-                     icon={<FaGithub className="size-5" />}
-                     className="rounded-xl! w-full lg:w-auto"
-                  >
-                     {dict.projects.actions.see_more}
-                  </Button>
-               </a>
+
+               {!hasActiveFilter && (
+                  <div className="flex justify-center lg:justify-end w-full lg:w-auto">
+                     <FilterPills
+                        filter={filter}
+                        onFilterChange={handleFilterChange}
+                        tabFeatured={dict.projects.actions.tab_featured}
+                        tabAll={dict.projects.actions.tab_all}
+                        className="max-w-md"
+                     />
+                  </div>
+               )}
             </div>
          </div>
       </SectionContainer>
