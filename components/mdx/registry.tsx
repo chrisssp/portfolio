@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import { InlineLink } from "../atoms/InlineLink";
 import Callout from "./Callout";
 import CodeBlock from "./CodeBlock";
 import MDXImage from "./Image";
@@ -34,16 +35,7 @@ const mdxComponents: MDXComponents = {
       />
    ),
    p: (props) => <p className="text-body/90 leading-relaxed mb-4" {...props} />,
-   a: (props) => (
-      <a
-         className="text-primary underline underline-offset-2 hover:no-underline transition-colors"
-         target={props.href?.startsWith("http") ? "_blank" : undefined}
-         rel={
-            props.href?.startsWith("http") ? "noopener noreferrer" : undefined
-         }
-         {...props}
-      />
-   ),
+   a: (props) => <InlineLink {...props} />,
    ul: (props) => (
       <ul className="list-disc list-inside space-y-2 mb-4 ml-4" {...props} />
    ),

@@ -1,5 +1,6 @@
 import { Fragment, type ReactNode } from "react";
 import type { Locale } from "@/i18n/config";
+import { InlineLink } from "../../atoms/InlineLink";
 import {
    AboutButton,
    ArticleButton,
@@ -95,15 +96,9 @@ export function renderMarkdown(text: string): ReactNode[] {
          nodes.push(<em key={`i-${idx++}`}>{match[5]}</em>);
       } else if (match[6] !== undefined) {
          nodes.push(
-            <a
-               key={`l-${idx++}`}
-               href={match[7]}
-               target="_blank"
-               rel="noopener noreferrer"
-               className="text-primary underline hover:text-primary/80 transition-colors"
-            >
+            <InlineLink key={`l-${idx++}`} href={match[7]}>
                {match[6]}
-            </a>,
+            </InlineLink>,
          );
       } else if (match[0] === "\n") {
          nodes.push(<br key={`br-${idx++}`} />);
