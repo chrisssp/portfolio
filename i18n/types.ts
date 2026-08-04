@@ -295,6 +295,8 @@ export interface Dictionary {
       copied: string;
       shareLinkedin: string;
       shareX: string;
+      shareReddit: string;
+      shareWhatsapp: string;
       feedDescription: string;
       pagination: {
          label: string;

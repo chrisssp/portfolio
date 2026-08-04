@@ -9,6 +9,7 @@ export const projectIapex = {
          "react",
          "ionic",
          "springboot",
+         "java",
          "postgresql",
          "mongodb",
          "python",

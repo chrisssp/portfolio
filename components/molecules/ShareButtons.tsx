@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin, FaReddit, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { LuCheck, LuLink } from "react-icons/lu";
 import { Button } from "@/components/atoms/Button";
 
@@ -11,6 +11,8 @@ interface ShareTexts {
    copied: string;
    linkedin: string;
    x: string;
+   reddit: string;
+   whatsapp: string;
 }
 
 interface ShareButtonsProps {
@@ -39,6 +41,8 @@ export default function ShareButtons({ url, title, texts }: ShareButtonsProps) {
 
    const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
    const xShare = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+   const redditShare = `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+   const whatsappShare = `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`;
 
    return (
       <div className="flex items-center gap-2 flex-wrap">
@@ -88,6 +92,38 @@ export default function ShareButtons({ url, title, texts }: ShareButtonsProps) {
                icon={<FaXTwitter aria-hidden />}
                ariaLabel={texts.x}
                title={texts.x}
+            />
+         </a>
+         <a
+            href={redditShare}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={texts.reddit}
+            title={texts.reddit}
+         >
+            <Button
+               variant="outline"
+               circle
+               size="md"
+               icon={<FaReddit aria-hidden />}
+               ariaLabel={texts.reddit}
+               title={texts.reddit}
+            />
+         </a>
+         <a
+            href={whatsappShare}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={texts.whatsapp}
+            title={texts.whatsapp}
+         >
+            <Button
+               variant="outline"
+               circle
+               size="md"
+               icon={<FaWhatsapp aria-hidden />}
+               ariaLabel={texts.whatsapp}
+               title={texts.whatsapp}
             />
          </a>
       </div>

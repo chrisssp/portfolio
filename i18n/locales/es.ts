@@ -147,6 +147,8 @@ export const es: Dictionary = {
       copied: "Enlace copiado",
       shareLinkedin: "Compartir en LinkedIn",
       shareX: "Compartir en X",
+      shareReddit: "Compartir en Reddit",
+      shareWhatsapp: "Compartir en WhatsApp",
       feedDescription: "Publicaciones recientes del blog",
       pagination: {
          label: "Paginación",

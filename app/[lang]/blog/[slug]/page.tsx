@@ -234,6 +234,8 @@ async function PostPage({ params }: PostPageProps) {
                         copied: dict.blog.copied,
                         linkedin: dict.blog.shareLinkedin,
                         x: dict.blog.shareX,
+                        reddit: dict.blog.shareReddit,
+                        whatsapp: dict.blog.shareWhatsapp,
                      }}
                   />
                </div>
