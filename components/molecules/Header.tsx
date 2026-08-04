@@ -148,7 +148,7 @@ export const Header = ({
    return (
       <>
          <header
-            className={`sticky top-0 z-60 w-full bg-page/80 backdrop-blur-md h-16 md:h-21 flex items-center justify-center border-b border-subtle/50 md:border-none transition-transform duration-300 ${
+            className={`sticky top-0 z-60 w-full bg-page/80 backdrop-blur-md h-16 md:h-21 flex items-center justify-center border-b border-subtle transition-transform duration-300 ${
                visible ? "translate-y-0" : "md:-translate-y-full"
             }`}
          >

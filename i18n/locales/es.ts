@@ -125,7 +125,8 @@ export const es: Dictionary = {
 
    blog: {
       title: "Blog",
-      subtitle: "Explora artículos sobre desarrollo web, diseño y tecnología.",
+      subtitle:
+         "Un espacio personal donde comparto mi flujo de trabajo, los proyectos que tengo entre manos y lo que pienso sobre desarrollo e IA.",
       searchPlaceholder: "Buscar artículos...",
       filterByTags: "Filtrar por etiquetas:",
       tagFilterPrefix: "Etiqueta:",

@@ -114,7 +114,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   className="w-full h-full"
                >
                   <div
-                     className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer animate-float motion-reduce:animate-none"
+                     className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 animate-float motion-reduce:animate-none"
                      style={
                         {
                            animationDuration: "3s",
@@ -140,7 +140,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   className="w-full h-full"
                >
                   <div
-                     className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 cursor-pointer animate-float motion-reduce:animate-none"
+                     className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 animate-float motion-reduce:animate-none"
                      style={
                         {
                            animationDuration: "5s",

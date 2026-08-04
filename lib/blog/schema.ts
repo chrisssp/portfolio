@@ -31,6 +31,7 @@ export const BlogPostFrontmatterSchema = z.object({
       en: TranslationSchema,
    }),
    coverImage: z.string().url().or(z.string().startsWith("/")).optional(),
+   coverImageDark: z.string().url().or(z.string().startsWith("/")).optional(),
    series: z.string().optional(),
    linkedin: z.string().url().optional(),
    readingTimeMinutes: z.number().optional(),
@@ -46,6 +47,7 @@ export interface LocalizedBlogPostFrontmatter {
    draft: boolean;
    locale: "es" | "en";
    coverImage?: string;
+   coverImageDark?: string;
    series?: string;
    linkedin?: string;
    resources?: ResourceItem[];

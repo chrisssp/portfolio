@@ -5,10 +5,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FaLinkedin } from "react-icons/fa";
 import { LuChevronLeft, LuChevronRight, LuClock } from "react-icons/lu";
+import { AnimatedSection } from "@/components/atoms/AnimatedSection";
 import { Button } from "@/components/atoms/Button";
 import { Card } from "@/components/atoms/Card";
 import { SectionContainer } from "@/components/atoms/SectionContainer";
 import { Typography } from "@/components/atoms/Typography";
+import { BlogCard } from "@/components/molecules/BlogCard";
 import Resources from "@/components/molecules/Resources";
 import ShareButtons from "@/components/molecules/ShareButtons";
 import TableOfContents from "@/components/molecules/TableOfContents";
@@ -92,66 +94,86 @@ async function PostPage({ params }: PostPageProps) {
    return (
       <SectionContainer showGrid={false}>
          <article className="max-w-5xl mx-auto">
-            <header className="mb-8">
-               <div className="flex items-center gap-2 mb-4 flex-wrap">
-                  <Typography
-                     variant="small"
-                     as="span"
-                     className="inline-flex items-center text-body/60"
-                  >
-                     <LuClock className="w-4 h-4 mr-1" />
-                     {post.readingTimeMinutes} {dict.blog.readTime}
-                  </Typography>
-                  <Typography
-                     variant="small"
-                     as="span"
-                     className="text-body/60"
-                  >
-                     {formatDate(
-                        new Date(post.frontmatter.date),
-                        "MMMM d, yyyy",
-                        { locale: locale === "es" ? esLocale : enLocale },
-                     )}
-                  </Typography>
-               </div>
-
-               <Typography variant="section" as="h1" className="mb-4 text-body">
-                  {post.frontmatter.title}
-               </Typography>
-               <Typography
-                  variant="project"
-                  as="p"
-                  weight="normal"
-                  className="text-body/70 mb-6"
-               >
-                  {post.frontmatter.description}
-               </Typography>
-
-               <div className="flex flex-wrap gap-2 mb-6">
-                  {post.frontmatter.tags.map((tag) => (
+            <AnimatedSection variant="fade-up">
+               <header className="mb-8">
+                  <div className="flex items-center gap-2 mb-4 flex-wrap">
                      <Typography
-                        key={tag}
                         variant="small"
                         as="span"
-                        weight="medium"
-                        className="px-3 py-1 bg-surface border border-subtle/50 rounded-full text-body/70"
+                        className="inline-flex items-center text-body/60"
                      >
-                        {tag}
+                        <LuClock className="w-4 h-4 mr-1" />
+                        {post.readingTimeMinutes} {dict.blog.readTime}
                      </Typography>
-                  ))}
-               </div>
-            </header>
+                     <Typography
+                        variant="small"
+                        as="span"
+                        className="text-body/60"
+                     >
+                        {formatDate(
+                           new Date(post.frontmatter.date),
+                           "MMMM d, yyyy",
+                           { locale: locale === "es" ? esLocale : enLocale },
+                        )}
+                     </Typography>
+                  </div>
 
-            {post.frontmatter.coverImage && (
-               <Image
-                  src={post.frontmatter.coverImage}
-                  alt={post.frontmatter.title}
-                  width={1200}
-                  height={627}
-                  priority
-                  className="w-full h-auto rounded-2xl border border-subtle/50 shadow-lg mb-10"
-               />
-            )}
+                  <Typography
+                     variant="section"
+                     as="h1"
+                     className="mb-4 text-body"
+                  >
+                     {post.frontmatter.title}
+                  </Typography>
+                  <Typography
+                     variant="project"
+                     as="p"
+                     weight="normal"
+                     className="text-body/70 mb-6"
+                  >
+                     {post.frontmatter.description}
+                  </Typography>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                     {post.frontmatter.tags.map((tag) => (
+                        <Typography
+                           key={tag}
+                           variant="small"
+                           as="span"
+                           weight="medium"
+                           className="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full"
+                        >
+                           {tag}
+                        </Typography>
+                     ))}
+                  </div>
+               </header>
+            </AnimatedSection>
+
+            <AnimatedSection variant="fade-up" delay={100}>
+               {post.frontmatter.coverImage && (
+                  <div className="relative mb-10">
+                     <Image
+                        src={post.frontmatter.coverImage}
+                        alt={post.frontmatter.title}
+                        width={1200}
+                        height={627}
+                        priority
+                        className="theme-img-light w-full h-auto rounded-2xl border border-subtle/50 shadow-lg"
+                     />
+                     {post.frontmatter.coverImageDark && (
+                        <Image
+                           src={post.frontmatter.coverImageDark}
+                           alt={post.frontmatter.title}
+                           width={1200}
+                           height={627}
+                           priority
+                           className="theme-img-dark w-full h-auto rounded-2xl border border-subtle/50 shadow-lg"
+                        />
+                     )}
+                  </div>
+               )}
+            </AnimatedSection>
 
             <div className="grid lg:grid-cols-[minmax(0,1fr)_240px] lg:gap-10">
                <div className="min-w-0">
@@ -330,48 +352,20 @@ async function PostPage({ params }: PostPageProps) {
                      {dict.blog.relatedPosts}
                   </Typography>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                     {relatedPosts.map((relatedPost) => (
-                        <Card
+                     {relatedPosts.map((relatedPost, index) => (
+                        <AnimatedSection
                            key={relatedPost.slug}
-                           className="p-6"
-                           variant="outlined"
+                           variant="fade-up"
+                           delay={index * 60}
+                           threshold={0.05}
                         >
-                           <Typography
-                              as="h3"
-                              variant="project"
-                              weight="semibold"
-                              className="mb-2 line-clamp-2 text-body"
-                           >
-                              <a
-                                 href={`/${lang}/blog/${relatedPost.slug}`}
-                                 className="hover:text-primary transition-colors"
-                              >
-                                 {relatedPost.frontmatter.title}
-                              </a>
-                           </Typography>
-                           <Typography
-                              variant="small"
-                              as="p"
-                              className="text-body/60 mb-3 line-clamp-2"
-                           >
-                              {relatedPost.frontmatter.description}
-                           </Typography>
-                           <div className="flex flex-wrap gap-1">
-                              {relatedPost.frontmatter.tags
-                                 .slice(0, 2)
-                                 .map((tag) => (
-                                    <Typography
-                                       key={tag}
-                                       variant="small"
-                                       as="span"
-                                       weight="medium"
-                                       className="px-2 py-1 bg-primary/10 text-primary rounded-full"
-                                    >
-                                       {tag}
-                                    </Typography>
-                                 ))}
-                           </div>
-                        </Card>
+                           <BlogCard
+                              post={relatedPost}
+                              locale={locale}
+                              labels={dict.blog}
+                              variant="compact"
+                           />
+                        </AnimatedSection>
                      ))}
                   </div>
                </section>

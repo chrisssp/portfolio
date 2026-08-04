@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { LuCheck, LuLink } from "react-icons/lu";
+import { Button } from "@/components/atoms/Button";
 
 interface ShareTexts {
    share: string;
@@ -42,28 +43,36 @@ export default function ShareButtons({ url, title, texts }: ShareButtonsProps) {
    return (
       <div className="flex items-center gap-2 flex-wrap">
          <span className="text-sm text-body/60">{texts.share}</span>
-         <button
-            type="button"
-            onClick={handleCopy}
-            aria-label={copied ? texts.copied : texts.copyLink}
+         <Button
+            variant="secondary"
+            circle
+            size="md"
+            icon={
+               copied ? (
+                  <LuCheck className="text-green" aria-hidden />
+               ) : (
+                  <LuLink aria-hidden />
+               )
+            }
+            ariaLabel={copied ? texts.copied : texts.copyLink}
             title={texts.copyLink}
-            className="inline-flex items-center justify-center size-9 rounded-lg border border-subtle/50 bg-surface text-body/80 hover:text-primary hover:border-primary/50 transition-colors"
-         >
-            {copied ? (
-               <LuCheck className="size-4 text-green" aria-hidden />
-            ) : (
-               <LuLink className="size-4" aria-hidden />
-            )}
-         </button>
+            onClick={handleCopy}
+         />
          <a
             href={linkedinShare}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={texts.linkedin}
             title={texts.linkedin}
-            className="inline-flex items-center justify-center size-9 rounded-lg border border-subtle/50 bg-surface text-body/80 hover:text-white hover:bg-blue-700 transition-colors"
          >
-            <FaLinkedin className="size-4" aria-hidden />
+            <Button
+               variant="outline"
+               circle
+               size="md"
+               icon={<FaLinkedin aria-hidden />}
+               ariaLabel={texts.linkedin}
+               title={texts.linkedin}
+            />
          </a>
          <a
             href={xShare}
@@ -71,9 +80,15 @@ export default function ShareButtons({ url, title, texts }: ShareButtonsProps) {
             rel="noopener noreferrer"
             aria-label={texts.x}
             title={texts.x}
-            className="inline-flex items-center justify-center size-9 rounded-lg border border-subtle/50 bg-surface text-body/80 hover:text-white hover:bg-black transition-colors"
          >
-            <FaXTwitter className="size-4" aria-hidden />
+            <Button
+               variant="outline"
+               circle
+               size="md"
+               icon={<FaXTwitter aria-hidden />}
+               ariaLabel={texts.x}
+               title={texts.x}
+            />
          </a>
       </div>
    );
