@@ -246,6 +246,8 @@ export interface Dictionary {
          clear_filters: string;
          clear_all: string;
          no_projects_match: string;
+         show_more: string;
+         show_less: string;
       };
    };
 

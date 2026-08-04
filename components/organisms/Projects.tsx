@@ -2,13 +2,19 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa";
-import { MdCode, MdFilterList, MdFilterListOff } from "react-icons/md";
+import {
+   MdCode,
+   MdExpandLess,
+   MdExpandMore,
+   MdFilterList,
+   MdFilterListOff,
+} from "react-icons/md";
 import { type FilterAxisKey, FOCUS_AXIS } from "@/config/categories";
 import { TECHNOLOGIES } from "@/config/technologies";
 import { useProjectFilter } from "@/hooks/useProjectFilter";
 
 import type { Locale } from "@/i18n/config";
-import type { Dictionary, ProjectCategories } from "@/i18n/types";
+import type { Dictionary, ProjectItem } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
 import { Button } from "../atoms/Button";
 import { SectionContainer } from "../atoms/SectionContainer";
@@ -25,6 +31,16 @@ function getEcosystemTechs(ecosystem?: { techStack: string[] }[]): string[] {
       }
    }
    return techs;
+}
+
+// Proyectos que solo se muestran tras "Ver más" en el tab de otros
+const OTHERS_REVEAL_IDS = new Set(["ratacueva", "portfolio"]);
+
+function orderOthers(projects: ProjectItem[]): ProjectItem[] {
+   return [
+      ...projects.filter((p) => !OTHERS_REVEAL_IDS.has(p.id)),
+      ...projects.filter((p) => OTHERS_REVEAL_IDS.has(p.id)),
+   ];
 }
 
 interface FilterPillsProps {
@@ -109,6 +125,7 @@ interface ProjectsProps {
 export const Projects = ({ dict, lang }: ProjectsProps) => {
    const [filter, setFilter] = useState<"featured" | "others">("featured");
    const [showFilterBar, setShowFilterBar] = useState(false);
+   const [othersExpanded, setOthersExpanded] = useState(false);
    const pendingProjectIdRef = useRef<string | null>(null);
 
    const allTechs = useMemo(() => {
@@ -264,8 +281,15 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
 
       return filter === "featured"
          ? dict.projects.items.filter((p) => p.featured)
-         : dict.projects.items.filter((p) => !p.featured);
+         : orderOthers(dict.projects.items.filter((p) => !p.featured));
    }, [filter, dict.projects.items, selections]);
+
+   const displayedProjects = useMemo(() => {
+      if (hasActiveFilter || filter !== "others" || othersExpanded) {
+         return filteredProjects;
+      }
+      return filteredProjects.slice(0, 4);
+   }, [filteredProjects, hasActiveFilter, filter, othersExpanded]);
 
    const queueProjectScroll = useCallback(
       (projectId: string) => {
@@ -274,6 +298,14 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             const project = dict.projects.items.find((p) => p.id === projectId);
             if (project) {
                setFilter(project.featured ? "featured" : "others");
+               if (!project.featured) {
+                  const index = orderOthers(
+                     dict.projects.items.filter((p) => !p.featured),
+                  ).findIndex((p) => p.id === projectId);
+                  if (index >= 4) {
+                     setOthersExpanded(true);
+                  }
+               }
             }
          }
       },
@@ -338,7 +370,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
    useEffect(() => {
       const projectId = pendingProjectIdRef.current;
       if (!projectId) return;
-      if (filteredProjects.length === 0) return;
+      if (displayedProjects.length === 0) return;
 
       pendingProjectIdRef.current = null;
 
@@ -352,7 +384,13 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
             }
          });
       });
-   }, [filteredProjects, scrollToProject]);
+   }, [displayedProjects, scrollToProject]);
+
+   // Resetear el reveal al cambiar de pestaña
+   const handleFilterChange = useCallback((value: "featured" | "others") => {
+      setOthersExpanded(false);
+      setFilter(value);
+   }, []);
 
    return (
       <SectionContainer
@@ -399,7 +437,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                   {!hasActiveFilter && (
                      <FilterPills
                         filter={filter}
-                        onFilterChange={setFilter}
+                        onFilterChange={handleFilterChange}
                         tabFeatured={dict.projects.actions.tab_featured}
                         tabAll={dict.projects.actions.tab_all}
                      />
@@ -446,7 +484,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                   </Button>
                </div>
             ) : (
-               filteredProjects.map((project, index) => (
+               displayedProjects.map((project, index) => (
                   <AnimatedSection
                      key={project.id}
                      variant="fade-up"
@@ -471,6 +509,30 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
 
          {/* Bottom Section: Filter Bar (conditional) + Footer */}
          <div className="flex flex-col gap-8 mt-8 lg:mt-16">
+            {/* Reveal toggle — tab "others" sin filtros con proyectos ocultos */}
+            {!hasActiveFilter &&
+               filter === "others" &&
+               filteredProjects.length > 4 && (
+                  <div className="flex justify-center">
+                     <Button
+                        variant="outline"
+                        icon={
+                           othersExpanded ? <MdExpandLess /> : <MdExpandMore />
+                        }
+                        onClick={() => setOthersExpanded((prev) => !prev)}
+                        ariaLabel={
+                           othersExpanded
+                              ? dict.projects.actions.show_less
+                              : dict.projects.actions.show_more
+                        }
+                     >
+                        {othersExpanded
+                           ? dict.projects.actions.show_less
+                           : dict.projects.actions.show_more}
+                     </Button>
+                  </div>
+               )}
+
             {/* Filter Bar Bottom — only when >3 projects visible */}
             {showFilterBar && filteredProjects.length > 3 && (
                <div className="flex justify-center lg:justify-end">
@@ -494,7 +556,7 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                <div className="flex justify-center lg:justify-end">
                   <FilterPills
                      filter={filter}
-                     onFilterChange={setFilter}
+                     onFilterChange={handleFilterChange}
                      tabFeatured={dict.projects.actions.tab_featured}
                      tabAll={dict.projects.actions.tab_all}
                      className="max-w-md"
