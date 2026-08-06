@@ -37,7 +37,7 @@ const Thead = forwardRef<
    HTMLTableSectionElement,
    TableHTMLAttributes<HTMLTableSectionElement>
 >(({ children, className = "", ...props }, ref) => (
-   <thead ref={ref} className={`bg-surface/50 ${className}`} {...props}>
+   <thead ref={ref} className={`bg-surface ${className}`} {...props}>
       {children}
    </thead>
 ));
@@ -71,7 +71,7 @@ const Th = forwardRef<HTMLTableCellElement, ThProps>(
    ({ children, className = "", ...props }, ref) => (
       <th
          ref={ref}
-         className={`px-4 py-3 text-left font-semibold text-body bg-surface/30 ${className}`}
+         className={`px-4 py-3 text-left font-semibold text-body bg-surface ${className}`}
          {...props}
       >
          {children}
@@ -84,7 +84,7 @@ const Td = forwardRef<HTMLTableCellElement, TdProps>(
    ({ children, className = "", ...props }, ref) => (
       <td
          ref={ref}
-         className={`px-4 py-3 text-body/90 ${className}`}
+         className={`px-4 py-3 text-body/90 bg-page ${className}`}
          {...props}
       >
          {children}
@@ -101,5 +101,7 @@ export const TableComponents = {
    Th,
    Td,
 };
+
+export { Table, Tbody, Td, Th, Thead, Tr };
 
 export default TableComponents;

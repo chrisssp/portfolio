@@ -1,9 +1,11 @@
 import type { MDXComponents } from "mdx/types";
 import { InlineLink } from "../atoms/InlineLink";
 import Callout from "./Callout";
+import Caption from "./Caption";
 import CodeBlock from "./CodeBlock";
+import MDXDiagram from "./Diagram";
 import MDXImage from "./Image";
-import { TableComponents } from "./Table";
+import { Table, Tbody, Td, Th, Thead, Tr } from "./Table";
 
 const mdxComponents: MDXComponents = {
    // Override default HTML elements
@@ -54,16 +56,28 @@ const mdxComponents: MDXComponents = {
    strong: (props) => <strong className="font-bold text-body" {...props} />,
    em: (props) => <em className="italic" {...props} />,
    img: (props) => <MDXImage {...props} />,
+   // rehype-pretty-code emits <figure><figcaption> for fenced code blocks.
+   figcaption: (props) => <Caption {...props} />,
 
    // Custom components
    Callout,
+   Caption,
+   Diagram: MDXDiagram,
    Image: MDXImage,
-   Table: TableComponents.Table,
-   Thead: TableComponents.Thead,
-   Tbody: TableComponents.Tbody,
-   Tr: TableComponents.Tr,
-   Th: TableComponents.Th,
-   Td: TableComponents.Td,
+   // GFM tables emit lowercase HTML tags; route them to the styled Table components.
+   table: (props) => <Table {...props} />,
+   thead: (props) => <Thead {...props} />,
+   tbody: (props) => <Tbody {...props} />,
+   tr: (props) => <Tr {...props} />,
+   th: (props) => <Th {...props} />,
+   td: (props) => <Td {...props} />,
+   // Capitalized variants for explicit JSX usage.
+   Table: (props) => <Table {...props} />,
+   Thead: (props) => <Thead {...props} />,
+   Tbody: (props) => <Tbody {...props} />,
+   Tr: (props) => <Tr {...props} />,
+   Th: (props) => <Th {...props} />,
+   Td: (props) => <Td {...props} />,
 };
 
 export default mdxComponents;
