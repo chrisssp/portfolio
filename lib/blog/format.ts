@@ -30,6 +30,7 @@ const ACRONYMS = new Set([
    "ai",
    "ia",
    "sdd",
+   "iapex",
    "api",
    "ui",
    "ux",

@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
    },
    headers: async () => [
       {
+         source: "/blog/iapex-ai-finds-missing-people/:path*.png",
+         headers: [
+            {
+               key: "Cache-Control",
+               value: "no-cache",
+            },
+         ],
+      },
+      {
          source: "/:path*",
          headers: [
             {

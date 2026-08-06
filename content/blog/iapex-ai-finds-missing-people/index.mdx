@@ -1,0 +1,274 @@
+---
+slug: "iapex-ai-finds-missing-people"
+date: "2026-08-05T12:00:00Z"
+draft: false
+coverImage: "/blog/iapex-ai-finds-missing-people/portada-iapex-ficha/es-light.png"
+coverImageDark: "/blog/iapex-ai-finds-missing-people/portada-iapex-ficha/es-dark.png"
+ogImage: "/blog/iapex-ai-finds-missing-people/og/es-light.png"
+ogImageDark: "/blog/iapex-ai-finds-missing-people/og/es-dark.png"
+translations:
+  es:
+    title: "IAPEX: la IA que encuentra a los que nadie busca"
+    description: "Cómo construimos un sistema híbrido de reconocimiento facial y análisis de texto para conectar pacientes no identificados en hospitales con las familias que los buscan"
+    tags: ["iapex", "inteligencia-artificial", "reconocimiento-facial", "desarrollo-de-software"]
+    resources:
+      - title: "Repositorio del proyecto"
+        href: "https://github.com/iapex-org"
+        description: "Los cuatro componentes con documentación y arquitectura."
+      - title: "Página del proyecto"
+        href: "https://www.chrisssp.me/es/projects/iapex"
+        description: "Visión general, reconocimientos y certificados."
+      - title: "El paper publicado"
+        href: "https://virtual.cuautitlan.unam.mx/intar/wp-content/uploads/sites/19/2025/12/166-A-Hybrid-Artificial-Intelligent-System-for-Missing-JORGE-CHRISTIAN-SERRANO-PUERTOS.pdf"
+        description: "Metodología completa, experimentos y matrices de confusión."
+      - title: "El primer intento (2023, sin IA)"
+        href: "http://revistaaristas.tij.uabc.mx/index.php/revista_aristas/article/view/292/295"
+        description: "El antecesor que solo usaba descripción morfológica (Revista Aristas, UABC)."
+  en:
+    title: "IAPEX: the AI that finds the ones nobody looks for"
+    description: "How we built a hybrid facial recognition and text analysis system to connect unidentified hospital patients with the families searching for them"
+    tags: ["iapex", "artificial-intelligence", "facial-recognition", "software-development"]
+    resources:
+      - title: "Project repository"
+        href: "https://github.com/iapex-org"
+        description: "The four components with documentation and architecture."
+      - title: "Project page"
+        href: "https://www.chrisssp.me/en/projects/iapex"
+        description: "Overview, recognitions and certificates."
+      - title: "The published paper"
+        href: "https://virtual.cuautitlan.unam.mx/intar/wp-content/uploads/sites/19/2025/12/166-A-Hybrid-Artificial-Intelligent-System-for-Missing-JORGE-CHRISTIAN-SERRANO-PUERTOS.pdf"
+        description: "Complete methodology, experiments and confusion matrices."
+      - title: "The first attempt (2023, no AI)"
+        href: "http://revistaaristas.tij.uabc.mx/index.php/revista_aristas/article/view/292/295"
+        description: "The predecessor that only used morphological description (Revista Aristas, UABC)."
+---
+
+{/* SPANISH VERSION */}
+# IAPEX: la IA que encuentra a los que nadie busca
+
+**¿Qué pasa si llegas solo a un hospital y nadie sabe quién eres?**
+
+Piénsalo un segundo. No es una pregunta filosófica: es la situación de miles de personas en México. Un accidente, una crisis, un episodio de violencia. Alguien llega a una institución de salud sin identificación, sin poder —o sin querer— decir su nombre. Y mientras tanto, en alguna casa, una familia lo está buscando en morgues y hospitales a ciegas.
+
+Los números son brutales: en México hay más de **133,000 personas desaparecidas y no localizadas** (RNPDNO, 2025), y más de **72,000 cuerpos sin identificar** en morgues (INEGI, 2019-2023). Entre esos dos números hay un hueco enorme: pacientes **vivos**, registrados en un hospital, que nadie sabe que están ahí.
+
+<Diagram
+   lightSrc="/blog/iapex-ai-finds-missing-people/desaparecidos-vs-cuerpos/es-light.png"
+   darkSrc="/blog/iapex-ai-finds-missing-people/desaparecidos-vs-cuerpos/es-dark.png"
+   alt="133,000 personas desaparecidas contra 72,000 cuerpos sin identificar, con un hueco en el medio: los que están vivos y nadie busca"
+   width={4200}
+   height={1020}
+   caption="Entre 133,000 desaparecidos y 72,000 cuerpos hay un hueco: pacientes vivos que nadie sabe que están ahí."
+/>
+
+Ese hueco es el problema que ataca IAPEX.
+
+**IAPEX** (Inteligencia Artificial para la Localización de Pacientes Extraviados en Instituciones de Salud), también conocido como **Encuéntrame**, es un sistema que combina **reconocimiento facial y análisis de texto** para conectar a un paciente sin identificar con la familia que lo busca. Es la segunda vida de un proyecto universitario, y después de dos años terminó siendo un paper publicado y expuesto en un congreso estudiantil de la UNAM, con acercamientos al IMSS en Veracruz. Este post es la historia de cómo funciona por dentro.
+
+## ¿Por qué híbrido? Porque solo no alcanza
+
+Cuando empezamos, revisamos lo que ya existía. FindMe y Encuéntrame RD son repositorios centralizados: guardan la información de los desaparecidos y la exponen, pero no la analizan. Otros proyectos usan solo reconocimiento facial, y si la familia no tiene una foto decente, no sirven. Ninguno resolvía el caso más común: _tengo una descripción vaga y una foto de mala calidad_.
+
+La idea de IAPEX es que cada dato cuenta como evidencia parcial, y el sistema **fusiona** las dos. El requisito no negociable desde el día uno fue este: **100% de sensibilidad**. IAPEX no puede perder a nadie. Si el paciente está en la base de datos, tiene que encontrarlo, aunque eso signifique mostrar candidatos de más que un humano tenga que revisar.
+
+## Cómo "piensa" IAPEX
+
+### El lado facial
+
+Tomamos una foto del paciente y la pasamos por un modelo CNN preentrenado (dlib, vía la librería `face_recognition`) que convierte el rostro en un **vector de 128 números**: la huella facial. Después comparamos ese vector contra los de todos los pacientes registrados con **distancia euclidiana**. Mientras más pequeña la distancia, más parecido el rostro. Son miles de comparaciones en milisegundos.
+
+### El lado textual
+
+Comparamos los campos de texto —nombre, sexo, complexión, características físicas— contra la base de datos con **tres algoritmos a la vez**: **Levenshtein** (qué tan parecidas son las cadenas), **Jaro-Winkler** (tolerante a errores de escritura) y **Soundex** (captura el clásico error de "lo registró el de recepción como sonaba").
+
+### ¿Y por qué no un modelo de lenguaje?
+
+Por una razón simple: cuando desarrollamos IAPEX, en 2024, los modelos de lenguaje eran un tema muy nuevo —apenas estaban naciendo los chats web con IA— y confiar la búsqueda de una persona a una tecnología tan joven era un riesgo que no valía la pena. Preferimos la vía probada: algoritmos clásicos de comparación de texto, rápidos y predecibles. Era la decisión correcta en ese momento, y de hecho nos dejó un pendiente claro (lo cuento al final).
+
+### La fusión
+
+La similitud total es una ponderación: **25% textual + 75% facial**. Si el resultado supera el umbral configurado para el modo de búsqueda (75% en modo texto, 50% en imagen e híbrido), es candidato. Y hay un filtrado en tres etapas: primero el umbral base, luego una verificación de coherencia entre campos (para no casar a alguien porque coincidió un solo dato) y por último un límite de resultados, para no saturar al operador.
+
+### Un ejemplo real (y una foto de un gato)
+
+Un ejemplo real del paper: un registro "duplicado" con los mismos datos textuales (100%) y una similitud facial del 85% da (100% × 0.25) + (85% × 0.75) = **88.75%** → match contundente. Y si le pasas la foto de un gato: distancia facial altísima, 0% de similitud, rechazado al instante. El sistema además aguanta fotos feas: vendas, tubos, lesiones, oclusiones.
+
+<Diagram lightSrc="/blog/iapex-ai-finds-missing-people/flujo-match-simtotal/es-light.png" darkSrc="/blog/iapex-ai-finds-missing-people/flujo-match-simtotal/es-dark.png" alt="Flujo de un match: foto y texto alimentan la fórmula SimTotal = (Sim_text × 0.25) + (Sim_facial × 0.75), con resultado 88.75% que supera el umbral" width={4200} height={1020} caption="Sim_total = 25% textual + 75% facial. Por encima del umbral, es candidato." />
+
+## La arquitectura (el repo es la verdad)
+
+Cuatro piezas, cada una con su rol:
+
+| Componente | Stack | Rol |
+|---|---|---|
+| **search-api** | FastAPI, Python | El motor de IA: fusiona facial + textual |
+| **core-api** | Spring Boot 3, PostgreSQL + MongoDB | Orquestación, auth JWT, control de acceso (RBAC), sincronización |
+| **web-app** | Angular 19, Bootstrap | Portal institucional para el personal de salud |
+| **mobile-app** | React 18, Ionic, Capacitor | La app de las familias: suben foto y descripción |
+
+<Caption>Los cuatro componentes del sistema IAPEX y el rol de cada uno.</Caption>
+
+### El flujo de una búsqueda
+
+El personal del hospital registra al paciente sin identificar desde el portal web. La familia busca desde su celular. El motor de IA cruza ambos lados, y el match se muestra con un porcentaje de similitud — **anónimo hasta que el personal de la institución lo verifica**. JWT de extremo a extremo, RBAC estricto y almacenamiento de medios cifrado. La privacidad no es un accesorio: es parte del diseño.
+
+Y no es solo una promesa: el sistema está pensado para alinearse con las normas oficiales mexicanas que regulan este tipo de información — la **NOM-004-SSA3-2012** (Del Expediente Clínico) y la **NOM-024-SSA3-2012** (Sistemas de información de registro electrónico para la salud).
+
+## Los números, con honestidad
+
+Probamos con **310 pacientes sintéticos** (datos realistas generados con Faker + rostros sintéticos por GAN, sin un solo dato real) y **3,720 evaluaciones**:
+
+| Modo | Sensibilidad | Efectividad | Precisión |
+|---|---|---|---|
+| Texto | 100% | 96.8% | 9.2% |
+| Imagen | 100% | 100% | 100% |
+| Híbrido | 100% | 100% | 100% |
+
+<Caption>Resultados sobre 310 pacientes sintéticos y 3,720 evaluaciones: el modo texto sacrifica precisión por sensibilidad.</Caption>
+
+<Diagram lightSrc="/blog/iapex-ai-finds-missing-people/barras-modos-busqueda/es-light.png" darkSrc="/blog/iapex-ai-finds-missing-people/barras-modos-busqueda/es-dark.png" alt="Gráfica de barras de los tres modos de búsqueda —Texto, Imagen, Híbrido— contra sensibilidad, efectividad y precisión; el 9.2% de precisión del modo texto se destaca en rojo" width={4200} height={1440} caption="El modo texto gana en sensibilidad pero paga un precio: 9.2% de precisión. Imagen e híbrido lo logran todo." />
+
+### El tradeoff del modo texto
+
+Ese 9.2% de precisión en texto se ve feo, y lo es — pero es un tradeoff deliberado. Al fijar el umbral alto para garantizar que **nunca** se nos escape alguien, aceptamos falsos positivos: revisar manualmente 118 candidatos es molesto; perder a una persona no tiene costo. Cuando hay una foto de por medio, el sistema es perfecto en todo.
+
+## De proyecto escolar a paper publicado
+
+### La primera vida: sin IA
+
+IAPEX no nació en una startup ni en un laboratorio: nació como proyecto de cuatrimestre en la **Universidad Tecnológica del Centro de Veracruz**. Y esta es, de hecho, la **segunda vida** del proyecto. La primera versión, años atrás, fue desarrollada por otros compañeros y quedó publicada en la Revista Aristas de la UABC: era una plataforma que buscaba pacientes solo por **descripción morfológica** (estatura, complexión, rasgos), sin inteligencia artificial.
+
+### La convocatoria que se quedó en el camino
+
+Nuestro turno llegó como parte de la convocatoria **"Juntos por la Educación, Tecnología con Responsabilidad Social"** de la Secretaría de Educación de Veracruz. Pasamos varias fases del proceso de evaluación —el proyecto fue aprobado con folio FPGS00424 y nos autorizaron un presupuesto de $149,233 MXN— pero el programa, por alguna razón, fue cancelado y nunca se le dio seguimiento. Nos quedamos con la idea, el equipo y las ganas.
+
+### Nuestra versión: con IA de verdad
+
+Ahí empezó nuestra versión: con IA de verdad. Con un proceso formal de **TRLs** (niveles de madurez tecnológica) que nos obligó a documentar cada etapa, pasando por requisitos, mockups, presupuestos y versiones del paper en inglés y español, hasta convertirse en el artículo _"A Hybrid Artificial Intelligent System for Missing Person Identification Using Facial Recognition and Textual Data Analysis"_.
+
+### Lo que vino después
+
+Lo que vino después superó lo que esperábamos: **ponencia oral en el CEIAAIT 2025** —el 8vo Congreso Estudiantil de Inteligencia Artificial Aplicada a la Ingeniería y Tecnología, organizado por la Facultad de Estudios Superiores Cuautitlán de la UNAM, un congreso estudiantil con memorias publicadas que reúne proyectos de IA de alumnos de distintos niveles académicos—, **cartas del IMSS a nivel local** (carta de intención de uso y carta de validación del proyecto, ambas del Hospital General de Córdoba, nov. 2025), una conferencia en el CBTIS Córdoba (SNCT 2025) y participación en FERVECI 2025.
+
+## Qué sigue
+
+El punto débil es claro: los falsos positivos del modo texto. El plan es reemplazar Levenshtein/Jaro-Winkler/Soundex por **modelos de lenguaje como GPT-5 o BERT** para búsqueda semántica real — entender que "de tez morena" y "piel morena" son lo mismo. Y el siguiente paso grande: validar con **datos reales anonimizados** en un entorno controlado, porque hasta hoy las pruebas son sobre datos sintéticos. El siguiente capítulo se juega en el mundo real.
+
+---
+
+La IA puede sonar fría, pero el problema que resuelve es todo lo contrario: familias enteras esperando noticias. ¿Qué harías tú con una tecnología que, si funciona, reduce la identificación de **días a segundos**?
+
+{/* ENGLISH VERSION */}
+# IAPEX: the AI that finds the ones nobody looks for
+
+**What happens if you arrive alone at a hospital and nobody knows who you are?**
+
+Think about it for a second. It's not a philosophical question: it's the situation of thousands of people in Mexico. An accident, a crisis, an episode of violence. Someone arrives at a health institution without identification, unable —or unwilling— to say their name. And meanwhile, somewhere, a family is searching for them in morgues and hospitals, blindly.
+
+The numbers are brutal: in Mexico there are more than **133,000 missing and unlocated people** (RNPDNO, 2025), and more than **72,000 unidentified bodies** in morgues (INEGI, 2019-2023). Between those two numbers there is a huge gap: patients who are **alive**, registered at a hospital, that nobody knows are there.
+
+<Diagram
+   lightSrc="/blog/iapex-ai-finds-missing-people/desaparecidos-vs-cuerpos/en-light.png"
+   darkSrc="/blog/iapex-ai-finds-missing-people/desaparecidos-vs-cuerpos/en-dark.png"
+   alt="133,000 missing people against 72,000 unidentified bodies, with a gap in the middle: the ones who are alive and nobody is looking for"
+   width={4200}
+   height={1020}
+   caption="Between 133,000 missing people and 72,000 bodies there's a gap: alive patients nobody knows are there."
+/>
+
+That gap is the problem IAPEX attacks.
+
+**IAPEX** (Artificial Intelligence for the Localization of Missing Patients in Health Institutions), also known as **Encuéntrame**, is a system that combines **facial recognition and text analysis** to connect an unidentified patient with the family searching for them. It's the second life of a university project, and after two years it ended up as a published paper presented at a UNAM student congress, with approaches to IMSS in Veracruz. This post is the story of how it works inside.
+
+## Why hybrid? Because one alone isn't enough
+
+When we started, we reviewed what already existed. FindMe and Encuéntrame RD are centralized repositories: they store the missing people's information and expose it, but they don't analyze it. Other projects use facial recognition only, and if the family doesn't have a decent photo, they're useless. None solved the most common case: _I have a vague description and a low-quality photo_.
+
+IAPEX's idea is that every piece of data counts as partial evidence, and the system **fuses** both. The non-negotiable requirement from day one was this: **100% sensitivity**. IAPEX cannot lose anyone. If the patient is in the database, it has to find them, even if that means showing extra candidates that a human has to review.
+
+## How IAPEX "thinks"
+
+### The facial side
+
+We take a patient's photo and run it through a pre-trained CNN model (dlib, via the `face_recognition` library) that converts the face into a **vector of 128 numbers**: the facial fingerprint. Then we compare that vector against those of all registered patients using **Euclidean distance**. The smaller the distance, the more similar the face. Thousands of comparisons in milliseconds.
+
+### The textual side
+
+We compare the text fields —name, sex, build, physical traits— against the database with **three algorithms at once**: **Levenshtein** (how similar two strings are), **Jaro-Winkler** (tolerant to typos) and **Soundex** (captures the classic "the receptionist registered it as it sounded" error).
+
+### Why not a language model?
+
+For a simple reason: when we developed IAPEX, in 2024, language models were a very new topic —the web AI chats were barely being born— and trusting the search for a person to such a young technology was a risk not worth taking. We chose the proven path: classic text comparison algorithms, fast and predictable. It was the right decision at the time, and in fact it left us with a clear pending item (I tell it at the end).
+
+### The fusion
+
+Total similarity is a weighted combination: **25% textual + 75% facial**. If the result exceeds the threshold configured for the search mode (75% in text mode, 50% in image and hybrid), it's a candidate. And there's a three-stage filter: first the base threshold, then a coherence check between fields (so we don't match someone because a single data point coincided) and finally a results limit, so we don't overwhelm the operator.
+
+### A real example (and a photo of a cat)
+
+A real example from the paper: a "duplicate" record with identical textual data (100%) and 85% facial similarity gives (100% × 0.25) + (85% × 0.75) = **88.75%** → a solid match. And if you pass a photo of a cat: extremely high facial distance, 0% similarity, rejected instantly. The system also handles bad photos: bandages, tubes, injuries, occlusions.
+
+<Diagram lightSrc="/blog/iapex-ai-finds-missing-people/flujo-match-simtotal/en-light.png" darkSrc="/blog/iapex-ai-finds-missing-people/flujo-match-simtotal/en-dark.png" alt="Match flow: photo and text feed the formula SimTotal = (Sim_text × 0.25) + (Sim_facial × 0.75), with the 88.75% result beating the threshold" width={4200} height={1020} caption="Sim_total = 25% textual + 75% facial. Above the threshold, it's a candidate." />
+
+## The architecture (the repo is the truth)
+
+Four pieces, each with its role:
+
+| Component | Stack | Role |
+|---|---|---|
+| **search-api** | FastAPI, Python | The AI engine: fuses facial + textual |
+| **core-api** | Spring Boot 3, PostgreSQL + MongoDB | Orchestration, JWT auth, access control (RBAC), sync |
+| **web-app** | Angular 19, Bootstrap | Institutional portal for healthcare staff |
+| **mobile-app** | React 18, Ionic, Capacitor | The families' app: they upload photo and description |
+
+<Caption>The four components of the IAPEX system and each one's role.</Caption>
+
+### The search flow
+
+Hospital staff register the unidentified patient from the web portal. The family searches from their phone. The AI engine crosses both sides, and the match is shown with a similarity percentage — **anonymous until institution staff verify it**. End-to-end JWT, strict RBAC and encrypted media storage. Privacy isn't an accessory: it's part of the design.
+
+And it's not just a promise: the system is designed to align with the official Mexican regulations that govern this type of information — **NOM-004-SSA3-2012** (On the Clinical Record) and **NOM-024-SSA3-2012** (Electronic health record information systems).
+
+## The numbers, honestly
+
+We tested with **310 synthetic patients** (realistic data generated with Faker + synthetic faces by GAN, not a single real data point) and **3,720 evaluations**:
+
+| Mode | Sensitivity | Accuracy | Precision |
+|---|---|---|---|
+| Text | 100% | 96.8% | 9.2% |
+| Image | 100% | 100% | 100% |
+| Hybrid | 100% | 100% | 100% |
+
+<Caption>Results across 310 synthetic patients and 3,720 evaluations: text mode trades precision for sensitivity.</Caption>
+
+<Diagram lightSrc="/blog/iapex-ai-finds-missing-people/barras-modos-busqueda/en-light.png" darkSrc="/blog/iapex-ai-finds-missing-people/barras-modos-busqueda/en-dark.png" alt="Bar chart of the three search modes —Text, Image, Hybrid— against sensitivity, effectiveness and precision; the 9.2% text-mode precision is highlighted in red" width={4200} height={1440} caption="Text mode wins on sensitivity but pays a price: 9.2% precision. Image and hybrid get it all." />
+
+### The text-mode tradeoff
+
+That 9.2% text precision looks bad, and it is — but it's a deliberate tradeoff. By setting the threshold high to guarantee we **never** miss someone, we accept false positives: manually reviewing 118 candidates is annoying; losing a person has no price. When there's a photo involved, the system is perfect across the board.
+
+## From school project to published paper
+
+### The first life: without AI
+
+IAPEX wasn't born in a startup or a lab: it was born as a term project at the **Universidad Tecnológica del Centro de Veracruz**. And this is, in fact, the project's **second life**. The first version, years ago, was developed by other classmates and ended up published in the Revista Aristas at UABC: a platform that searched for patients only by **morphological description** (height, build, features), with no artificial intelligence.
+
+### The call that got cut short
+
+Our turn came as part of the **"Juntos por la Educación, Tecnología con Responsabilidad Social"** call from the Veracruz Secretary of Education. We went through several evaluation stages —the project was approved with reference FPGS00424 and we were authorized a budget of $149,233 MXN— but the program, for some reason, was cancelled and never followed up. We were left with the idea, the team and the will.
+
+### Our version: with real AI
+
+That's where our version began: with real AI. With a formal **TRL** process (technology readiness levels) that forced us to document every stage, going through requirements, mockups, budgets and versions of the paper in English and Spanish, until it became the article _"A Hybrid Artificial Intelligent System for Missing Person Identification Using Facial Recognition and Textual Data Analysis"_.
+
+### What came next
+
+What came next exceeded what we expected: an **oral presentation at CEIAAIT 2025** —the 8th Student Congress of Artificial Intelligence Applied to Engineering and Technology, organized by the FES Cuautitlán at UNAM, a student congress with published proceedings that gathers AI projects from students of different academic levels—, **letters from IMSS at a local level** (a letter of intent and a letter of project validation, both from Hospital General de Córdoba, Nov. 2025), a conference at CBTIS Córdoba (SNCT 2025) and participation in FERVECI 2025.
+
+## What's next
+
+The weak point is clear: the false positives in text mode. The plan is to replace Levenshtein/Jaro-Winkler/Soundex with **language models like GPT-5 or BERT** for real semantic search — understanding that "de tez morena" and "piel morena" are the same thing. And the next big step: validate with **real anonymized data** in a controlled environment, because so far the tests run on synthetic data. The next chapter is played out in the real world.
+
+---
+
+AI can sound cold, but the problem it solves is the exact opposite: whole families waiting for news. What would you do with a technology that, if it works, reduces identification from **days to seconds**?
