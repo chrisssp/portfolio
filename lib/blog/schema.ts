@@ -11,6 +11,10 @@ const TranslationSchema = z.object({
    title: z.string().min(1),
    description: z.string().min(1),
    tags: z.array(z.string().toLowerCase()).min(1),
+   coverImage: z.string().url().or(z.string().startsWith("/")).optional(),
+   coverImageDark: z.string().url().or(z.string().startsWith("/")).optional(),
+   ogImage: z.string().url().or(z.string().startsWith("/")).optional(),
+   ogImageDark: z.string().url().or(z.string().startsWith("/")).optional(),
    resources: z
       .array(
          z.object({
