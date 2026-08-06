@@ -24,8 +24,9 @@ async function main() {
          ...post.diagrams,
       ].filter((spec, i, arr) => arr.findIndex((s) => s.id === spec.id) === i);
       await renderPost(post.slug, specs, outRoot);
-      if (post.cover) {
-         await renderOgCover(post.cover, post.slug, outRoot);
+      const ogSpec = post.og ?? post.cover;
+      if (ogSpec) {
+         await renderOgCover(ogSpec, post.slug, outRoot);
       }
    }
 }
