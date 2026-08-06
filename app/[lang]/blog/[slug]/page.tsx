@@ -35,6 +35,8 @@ export async function generateMetadata({
    const post = await getPostBySlug(slug, locale);
    if (!post || post.frontmatter.locale !== locale) return {};
 
+   const ogImage = post.frontmatter.ogImage ?? post.frontmatter.coverImage;
+
    return {
       title: post.frontmatter.title,
       description: post.frontmatter.description,
@@ -47,9 +49,7 @@ export async function generateMetadata({
          description: post.frontmatter.description,
          url: `/${lang}/blog/${slug}`,
          publishedTime: post.frontmatter.date,
-         images: post.frontmatter.coverImage
-            ? [post.frontmatter.coverImage]
-            : undefined,
+         images: ogImage ? [ogImage] : undefined,
       },
    };
 }
@@ -70,6 +70,9 @@ async function PostPage({ params }: PostPageProps) {
 
    const postUrl = `${SITE_URL}/${lang}/blog/${slug}`;
 
+   const ogImageForJsonLd =
+      post.frontmatter.ogImage ?? post.frontmatter.coverImage;
+
    const jsonLd = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -86,9 +89,7 @@ async function PostPage({ params }: PostPageProps) {
          name: "Christian Serrano",
          url: SITE_URL,
       },
-      image: post.frontmatter.coverImage
-         ? `${SITE_URL}${post.frontmatter.coverImage}`
-         : undefined,
+      image: ogImageForJsonLd ? `${SITE_URL}${ogImageForJsonLd}` : undefined,
       mainEntityOfPage: postUrl,
    };
 
@@ -160,7 +161,7 @@ async function PostPage({ params }: PostPageProps) {
                         width={1200}
                         height={627}
                         priority
-                        className="theme-img-light w-full h-auto rounded-2xl border border-subtle/50 shadow-lg"
+                        className="theme-img-light w-full h-auto rounded-2xl"
                      />
                      {post.frontmatter.coverImageDark && (
                         <Image
@@ -169,7 +170,7 @@ async function PostPage({ params }: PostPageProps) {
                            width={1200}
                            height={627}
                            priority
-                           className="theme-img-dark w-full h-auto rounded-2xl border border-subtle/50 shadow-lg"
+                           className="theme-img-dark w-full h-auto rounded-2xl"
                         />
                      )}
                   </div>
