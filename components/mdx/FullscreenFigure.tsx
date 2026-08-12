@@ -1,8 +1,17 @@
 "use client";
 
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
+import {
+   type ReactNode,
+   useEffect,
+   useRef,
+   useState,
+   useSyncExternalStore,
+} from "react";
 import { createPortal } from "react-dom";
 import { LuMaximize2, LuX } from "react-icons/lu";
+
+const emptySubscribe = () => () => {};
 
 export interface FullscreenFigureProps {
    src: string;
@@ -21,6 +30,18 @@ export function FullscreenFigure({
    const triggerRef = useRef<HTMLButtonElement>(null);
    const closeRef = useRef<HTMLButtonElement>(null);
    const hasOpenedRef = useRef(false);
+
+   // The diagram/image variant passed as `src` is theme-resolved upstream
+   // (light variant is designed for a light background, dark for dark). The
+   // lightbox backdrop must follow the same theme or light-mode assets get
+   // lost against a dark overlay.
+   const { resolvedTheme } = useTheme();
+   const mounted = useSyncExternalStore(
+      emptySubscribe,
+      () => true,
+      () => false,
+   );
+   const isDark = mounted && resolvedTheme === "dark";
 
    const openLightbox = () => setOpen(true);
    const closeLightbox = () => setOpen(false);
@@ -73,7 +94,9 @@ export function FullscreenFigure({
             createPortal(
                // biome-ignore lint/a11y/useKeyWithClickEvents: backdrop click-to-close is a pointer convenience; the Escape key provides the keyboard close path
                <div
-                  className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm flex items-center justify-center p-4"
+                  className={`fixed inset-0 z-[100] ${
+                     isDark ? "bg-black/85" : "bg-white/95"
+                  } backdrop-blur-sm flex items-center justify-center p-4`}
                   role="dialog"
                   aria-modal="true"
                   aria-label={alt}
@@ -86,7 +109,11 @@ export function FullscreenFigure({
                      ref={closeRef}
                      onClick={closeLightbox}
                      aria-label="Close"
-                     className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 transition-all cursor-pointer"
+                     className={`absolute top-4 right-4 ${
+                        isDark
+                           ? "bg-white/10 hover:bg-white/20 text-white"
+                           : "bg-black/10 hover:bg-black/20 text-neutral-900"
+                     } rounded-full p-2 transition-all cursor-pointer`}
                   >
                      <LuX className="size-5" />
                   </button>
@@ -100,7 +127,11 @@ export function FullscreenFigure({
                      />
                      {/* eslint-enable @next/next/no-img-element */}
                      {caption && (
-                        <p className="text-center text-sm text-white/70 italic mt-3">
+                        <p
+                           className={`text-center text-sm ${
+                              isDark ? "text-white/70" : "text-neutral-700"
+                           } italic mt-3`}
+                        >
                            {caption}
                         </p>
                      )}
