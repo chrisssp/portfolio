@@ -1,7 +1,15 @@
 "use client";
 
+import { Space_Grotesk } from "next/font/google";
 import { usePathname } from "next/navigation";
 import { useEffect, useSyncExternalStore } from "react";
+
+const spaceGrotesk = Space_Grotesk({
+   variable: "--font-space-grotesk",
+   subsets: ["latin"],
+   weight: ["300", "400", "500", "700"],
+   display: "swap",
+});
 
 /** Never-updating external store used to detect client-only mount (SSR-safe). */
 const subscribeToMount = () => () => {};
@@ -37,28 +45,18 @@ export default function RootNotFound() {
    };
 
    const t = content[lang];
+   const pageTitle = t.title;
 
-   // biome-ignore lint/correctness/useExhaustiveDependencies: mount-only; t.title is static
    useEffect(() => {
-      document.title = `404 — ${t.title}`;
-   }, []);
+      document.title = `404 — ${pageTitle}`;
+   }, [pageTitle]);
 
    if (!mounted) {
       return null;
    }
 
    return (
-      <main lang={lang}>
-         <link rel="preconnect" href="https://fonts.googleapis.com" />
-         <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-         />
-         <link
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
-            rel="stylesheet"
-         />
+      <main lang={lang} className={spaceGrotesk.className}>
          <style>{`
 				* { margin: 0; padding: 0; box-sizing: border-box; }
 				body {
