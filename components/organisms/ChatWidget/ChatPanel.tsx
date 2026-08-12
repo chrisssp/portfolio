@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { MdClose, MdRefresh, MdSend } from "react-icons/md";
@@ -273,13 +274,15 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
          {/* Header — sticky on mobile so it survives keyboard scroll */}
          <div className="sticky top-0 z-10 bg-page flex items-center justify-between px-4 py-3 border-b border-body/10">
             <div className="flex items-center gap-2">
-               <img
+               <Image
                   src={
                      resolvedTheme === "dark"
                         ? "/assets/images/profile/isotipo-black-nobg-center.webp"
                         : "/assets/images/profile/isotipo-white-nobg-center.webp"
                   }
                   alt="chrisssp"
+                  width={95}
+                  height={95}
                   className="size-5 sm:size-6 object-contain"
                />
                <Typography variant="body" weight="medium" as="span">

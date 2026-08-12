@@ -18,6 +18,7 @@ export const MDXImage = forwardRef<HTMLImageElement, MDXImageProps>(
       return (
          <figure className={`my-6 ${className}`}>
             {isExternal ? (
+               /* eslint-disable @next/next/no-img-element -- external hosts are not in images.remotePatterns and dimensions are unknown */
                // biome-ignore lint/performance/noImgElement: external images cannot be optimized by next/image
                <img
                   ref={ref}
@@ -29,6 +30,7 @@ export const MDXImage = forwardRef<HTMLImageElement, MDXImageProps>(
                   className="w-full max-w-full h-auto rounded-lg shadow-lg"
                   {...props}
                />
+               /* eslint-enable @next/next/no-img-element */
             ) : (
                <div
                   className="relative w-full"
