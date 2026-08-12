@@ -14,6 +14,17 @@ type Props = {
    params: Promise<{ lang: string; id: string }>;
 };
 
+export async function generateStaticParams() {
+   const dict = await getDictionary("en");
+   const locales: Locale[] = ["es", "en"];
+
+   return locales.flatMap((lang) =>
+      dict.projects.items.map((project) => ({ lang, id: project.id })),
+   );
+}
+
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
    const { lang, id } = await params;
    const locale = lang as Locale;

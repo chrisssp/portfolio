@@ -401,6 +401,4 @@ export async function generateStaticParams() {
    return params;
 }
 
-export const revalidate = 3600;
-
 export default PostPage;

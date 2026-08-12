@@ -13,6 +13,13 @@ type Props = {
    params: Promise<{ lang: string }>;
 };
 
+export function generateStaticParams() {
+   const locales: Locale[] = ["es", "en"];
+   return locales.map((lang) => ({ lang }));
+}
+
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
    const { lang } = await params;
    const locale = lang as Locale;
