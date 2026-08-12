@@ -11,6 +11,8 @@ interface PaginationProps {
    basePath: string;
    searchParams?: string;
    labels: Dictionary["blog"]["pagination"];
+   /** Called with the target page before navigation so parents can sync state. */
+   onNavigate?: (page: number) => void;
 }
 
 export function Pagination({
@@ -19,6 +21,7 @@ export function Pagination({
    basePath,
    searchParams = "",
    labels,
+   onNavigate,
 }: PaginationProps) {
    const router = useRouter();
 
@@ -32,6 +35,7 @@ export function Pagination({
    const handleNavigate = (
       event: MouseEvent<HTMLAnchorElement>,
       url: string,
+      page: number,
    ) => {
       if (
          event.button !== 0 ||
@@ -43,6 +47,7 @@ export function Pagination({
          return;
       }
       event.preventDefault();
+      onNavigate?.(page);
       router.replace(url);
    };
 
@@ -57,7 +62,11 @@ export function Pagination({
                   <a
                      href={createPageUrl(currentPage - 1)}
                      onClick={(event) =>
-                        handleNavigate(event, createPageUrl(currentPage - 1))
+                        handleNavigate(
+                           event,
+                           createPageUrl(currentPage - 1),
+                           currentPage - 1,
+                        )
                      }
                      className="flex items-center justify-center w-10 h-10 rounded-lg border border-subtle text-body/70 hover:bg-surface/80 transition-colors"
                      aria-label={labels.previousPage}
@@ -89,7 +98,7 @@ export function Pagination({
                      <a
                         href={createPageUrl(page)}
                         onClick={(event) =>
-                           handleNavigate(event, createPageUrl(page))
+                           handleNavigate(event, createPageUrl(page), page)
                         }
                         className={`flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-200 $
                   ${
@@ -119,7 +128,11 @@ export function Pagination({
                   <a
                      href={createPageUrl(currentPage + 1)}
                      onClick={(event) =>
-                        handleNavigate(event, createPageUrl(currentPage + 1))
+                        handleNavigate(
+                           event,
+                           createPageUrl(currentPage + 1),
+                           currentPage + 1,
+                        )
                      }
                      className="flex items-center justify-center w-10 h-10 rounded-lg border border-subtle text-body/70 hover:bg-surface/80 transition-colors"
                      aria-label={labels.nextPage}
