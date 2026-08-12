@@ -238,6 +238,15 @@ export const useProjectFilter = (
       readInitialSelections(axes, allValues),
    );
 
+   const [prevAllValues, setPrevAllValues] = useState(allValues);
+
+   // Adjust state during render when the allowed-values prop changes
+   // (React's documented pattern for deriving state from a prop change).
+   if (allValues !== prevAllValues) {
+      setPrevAllValues(allValues);
+      setSelections((prev) => normalizeSelections(prev, allValues));
+   }
+
    const axesRef = useRef(axes);
    const valuesRef = useRef(allValues);
 
@@ -247,7 +256,6 @@ export const useProjectFilter = (
 
    useEffect(() => {
       valuesRef.current = allValues;
-      setSelections((prev) => normalizeSelections(prev, allValues));
    }, [allValues]);
 
    useEffect(() => {
