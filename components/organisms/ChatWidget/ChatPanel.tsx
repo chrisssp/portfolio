@@ -27,32 +27,26 @@ type Props = {
 };
 
 export function ChatPanel({ isOpen, onClose, locale }: Props) {
-   const [messages, setMessages] = useState<ChatMessage[]>([]);
+   const [messages, setMessages] = useState<ChatMessage[]>(() => {
+      const history = loadHistory();
+      if (history.length > 0) return history;
+
+      // New session — show greeting
+      const greeting: ChatMessage = {
+         role: "assistant",
+         content: getRandomGreeting(locale),
+         timestamp: Date.now(),
+      };
+      saveHistory([greeting]);
+      return [greeting];
+   });
    const [input, setInput] = useState("");
    const [isLoading, setIsLoading] = useState(false);
    const [streamingContent, setStreamingContent] = useState("");
-   const [terminated, setTerminatedState] = useState(false);
+   const [terminated, setTerminatedState] = useState(() => isTerminated());
    const abortRef = useRef<AbortController | null>(null);
    const inputRef = useRef<HTMLTextAreaElement>(null);
    const { resolvedTheme } = useTheme();
-
-   // Load history on mount
-   useEffect(() => {
-      const history = loadHistory();
-      if (history.length > 0) {
-         setMessages(history);
-      } else {
-         // New session — show greeting
-         const greeting: ChatMessage = {
-            role: "assistant",
-            content: getRandomGreeting(locale),
-            timestamp: Date.now(),
-         };
-         setMessages([greeting]);
-         saveHistory([greeting]);
-      }
-      setTerminatedState(isTerminated());
-   }, [locale]);
 
    // Focus input when panel opens
    useEffect(() => {
@@ -178,9 +172,8 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
          const finalMessages = [...newMessages, assistantMsg];
          setMessages(finalMessages);
          saveHistory(finalMessages);
-      } catch (err: any) {
-         if (err.name === "AbortError") return;
-         const errorMessage = err.message || "Unknown error";
+      } catch (err) {
+         if (err instanceof Error && err.name === "AbortError") return;
          const errorMsg: ChatMessage = {
             role: "assistant",
             content: getRandomError(locale),

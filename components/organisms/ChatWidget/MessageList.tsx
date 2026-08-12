@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/i18n/config";
 import type { ChatMessage } from "./chatSession";
 import { MessageBubble } from "./MessageBubble";
@@ -33,6 +33,11 @@ export function MessageList({
    onClose,
 }: Props) {
    const bottomRef = useRef<HTMLDivElement>(null);
+
+   // Streaming bubble placeholder timestamp. MessageBubble never renders the
+   // timestamp, so a mount-time value satisfies ChatMessage without an impure
+   // Date.now() call in the render body.
+   const [streamTimestamp] = useState(() => Date.now());
 
    // biome-ignore lint/correctness/useExhaustiveDependencies: intentional trigger on message/streaming changes
    useEffect(() => {
@@ -71,7 +76,7 @@ export function MessageList({
                message={{
                   role: "assistant",
                   content: streamingContent,
-                  timestamp: Date.now(),
+                  timestamp: streamTimestamp,
                }}
                isStreaming
                locale={locale}
