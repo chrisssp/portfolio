@@ -50,10 +50,6 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
       audio.loop = true;
       audio.volume = 0.25;
 
-      if (audio.readyState >= 3) {
-         setIsLoaded(true);
-      }
-
       const handleCanPlayThrough = () => setIsLoaded(true);
       const handleError = () => {
          setIsLoaded(false);
