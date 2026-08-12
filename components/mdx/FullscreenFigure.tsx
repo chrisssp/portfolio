@@ -123,7 +123,7 @@ export function FullscreenFigure({
                      <img
                         src={src}
                         alt={alt}
-                        className="max-w-[92vw] max-h-[86vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+                        className="max-w-[92vw] max-h-[86vh] w-auto h-auto object-contain rounded-lg"
                      />
                      {/* eslint-enable @next/next/no-img-element */}
                      {caption && (
