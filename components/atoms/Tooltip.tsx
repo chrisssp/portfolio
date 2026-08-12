@@ -7,9 +7,27 @@ import {
    useLayoutEffect,
    useRef,
    useState,
+   useSyncExternalStore,
 } from "react";
 import { createPortal } from "react-dom";
 import { Typography } from "./Typography";
+
+const TOUCH_MEDIA_QUERY = "(hover: none)";
+
+function subscribeToTouchDevice(onStoreChange: () => void) {
+   const mql = window.matchMedia(TOUCH_MEDIA_QUERY);
+   mql.addEventListener("change", onStoreChange);
+   return () => mql.removeEventListener("change", onStoreChange);
+}
+
+function getTouchDeviceSnapshot() {
+   return window.matchMedia(TOUCH_MEDIA_QUERY).matches;
+}
+
+/** Never-updating external store used to detect client-only mount (SSR-safe). */
+const subscribeToMount = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 interface TooltipProps {
    content: ReactNode;
@@ -27,18 +45,20 @@ export const Tooltip = ({
    className = "",
 }: TooltipProps) => {
    const [isVisible, setIsVisible] = useState(false);
-   const [isTouchDevice, setIsTouchDevice] = useState(false);
-   const [isMounted, setIsMounted] = useState(false);
+   const isTouchDevice = useSyncExternalStore(
+      subscribeToTouchDevice,
+      getTouchDeviceSnapshot,
+      getServerSnapshot,
+   );
+   const isMounted = useSyncExternalStore(
+      subscribeToMount,
+      getClientSnapshot,
+      getServerSnapshot,
+   );
    const triggerRef = useRef<HTMLDivElement>(null);
    const tooltipRef = useRef<HTMLDivElement>(null);
    const originalOverflow = useRef("");
    const [tooltipStyle, setTooltipStyle] = useState<React.CSSProperties>({});
-
-   // Detect touch device and confirm client mount (SSR-safe)
-   useEffect(() => {
-      setIsTouchDevice(window.matchMedia("(hover: none)").matches);
-      setIsMounted(true);
-   }, []);
 
    const show = useCallback(() => setIsVisible(true), []);
    const hide = useCallback(() => setIsVisible(false), []);

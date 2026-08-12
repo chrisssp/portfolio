@@ -1,6 +1,20 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+
+const PREFERS_REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+
+function subscribeToReducedMotion(onStoreChange: () => void) {
+   const mql = window.matchMedia(PREFERS_REDUCED_MOTION_QUERY);
+   mql.addEventListener("change", onStoreChange);
+   return () => mql.removeEventListener("change", onStoreChange);
+}
+
+function getReducedMotionSnapshot() {
+   return window.matchMedia(PREFERS_REDUCED_MOTION_QUERY).matches;
+}
+
+const getServerSnapshot = () => false;
 
 interface UseScrollRevealOptions {
    /** Fraction of the element that must be visible. Default: 0.1 */
@@ -24,17 +38,15 @@ export function useScrollReveal<T extends Element = HTMLDivElement>({
 }: UseScrollRevealOptions = {}) {
    const ref = useRef<T | null>(null);
    const [isVisible, setIsVisible] = useState(false);
+   const prefersReducedMotion = useSyncExternalStore(
+      subscribeToReducedMotion,
+      getReducedMotionSnapshot,
+      getServerSnapshot,
+   );
 
    useEffect(() => {
-      // Respect prefers-reduced-motion — mark everything as immediately visible.
-      const prefersReduced = window.matchMedia(
-         "(prefers-reduced-motion: reduce)",
-      ).matches;
-
-      if (prefersReduced) {
-         setIsVisible(true);
-         return;
-      }
+      // Respect prefers-reduced-motion — skip the observer entirely.
+      if (prefersReducedMotion) return;
 
       const element = ref.current;
       if (!element) return;
@@ -53,7 +65,8 @@ export function useScrollReveal<T extends Element = HTMLDivElement>({
 
       observer.observe(element);
       return () => observer.disconnect();
-   }, [threshold, rootMargin, triggerOnce]);
+   }, [prefersReducedMotion, threshold, rootMargin, triggerOnce]);
 
-   return [ref, isVisible] as const;
+   // Reduced-motion users see everything as already revealed.
+   return [ref, prefersReducedMotion || isVisible] as const;
 }

@@ -1,7 +1,12 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
+
+/** Never-updating external store used to detect client-only mount (SSR-safe). */
+const subscribeToMount = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 /**
  * Root not-found fallback for URLs without a [lang] prefix.
@@ -9,7 +14,11 @@ import { useEffect, useState } from "react";
  */
 export default function RootNotFound() {
    const pathname = usePathname();
-   const [mounted, setMounted] = useState(false);
+   const mounted = useSyncExternalStore(
+      subscribeToMount,
+      getClientSnapshot,
+      getServerSnapshot,
+   );
 
    const lang = pathname.startsWith("/es") ? "es" : "en";
 
@@ -31,7 +40,6 @@ export default function RootNotFound() {
 
    // biome-ignore lint/correctness/useExhaustiveDependencies: mount-only; t.title is static
    useEffect(() => {
-      setMounted(true);
       document.title = `404 — ${t.title}`;
    }, []);
 

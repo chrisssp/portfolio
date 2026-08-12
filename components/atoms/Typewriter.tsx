@@ -1,6 +1,20 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+
+const PREFERS_REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+
+function subscribeToReducedMotion(onStoreChange: () => void) {
+   const mql = window.matchMedia(PREFERS_REDUCED_MOTION_QUERY);
+   mql.addEventListener("change", onStoreChange);
+   return () => mql.removeEventListener("change", onStoreChange);
+}
+
+function getReducedMotionSnapshot() {
+   return window.matchMedia(PREFERS_REDUCED_MOTION_QUERY).matches;
+}
+
+const getServerSnapshot = () => false;
 
 interface TypewriterProps {
    /** Array of strings to cycle through */
@@ -34,26 +48,20 @@ export const Typewriter = ({
    const charIndexRef = useRef(0);
    const phaseRef = useRef<Phase>("typing");
    const wordsRef = useRef(words);
-   wordsRef.current = words; // always fresh, stable ref identity
+
+   // Keep the ref in sync with the words prop without touching it during render.
+   useEffect(() => {
+      wordsRef.current = words;
+   }, [words]);
 
    /* ── Only what React must re-render for ────────────────────────────── */
    const [displayText, setDisplayText] = useState("");
    const [showCursor, setShowCursor] = useState(true);
-   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-   /* ── 1. Detect reduced-motion preference (stable, fires once) ─────── */
-   useEffect(() => {
-      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-      setPrefersReducedMotion(mq.matches);
-      setShowCursor(!mq.matches);
-
-      const handler = (e: MediaQueryListEvent) => {
-         setPrefersReducedMotion(e.matches);
-         setShowCursor(!e.matches);
-      };
-      mq.addEventListener("change", handler);
-      return () => mq.removeEventListener("change", handler);
-   }, []);
+   const prefersReducedMotion = useSyncExternalStore(
+      subscribeToReducedMotion,
+      getReducedMotionSnapshot,
+      getServerSnapshot,
+   );
 
    /* ── 2. Typing loop (stable deps — never recreates timer) ─────────── */
    useEffect(() => {

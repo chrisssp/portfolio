@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+   useCallback,
+   useEffect,
+   useRef,
+   useState,
+   useSyncExternalStore,
+} from "react";
 import {
    MdArrowDropDown,
    MdCheck,
@@ -10,6 +16,20 @@ import {
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import { Button } from "../atoms/Button";
 import { Typography } from "../atoms/Typography";
+
+const TOUCH_MEDIA_QUERY = "(hover: none)";
+
+function subscribeToTouchDevice(onStoreChange: () => void) {
+   const mql = window.matchMedia(TOUCH_MEDIA_QUERY);
+   mql.addEventListener("change", onStoreChange);
+   return () => mql.removeEventListener("change", onStoreChange);
+}
+
+function getTouchDeviceSnapshot() {
+   return window.matchMedia(TOUCH_MEDIA_QUERY).matches;
+}
+
+const getServerSnapshot = () => false;
 
 interface SmartEmailButtonProps {
    label: string;
@@ -42,16 +62,15 @@ export const SmartEmailButton = ({
 }: SmartEmailButtonProps) => {
    const [showEmailMenu, setShowEmailMenu] = useState(false);
    const [copied, setCopied] = useState(false);
-   const [isTouchDevice, setIsTouchDevice] = useState(false);
+   const isTouchDevice = useSyncExternalStore(
+      subscribeToTouchDevice,
+      getTouchDeviceSnapshot,
+      getServerSnapshot,
+   );
    const [wrapperRect, setWrapperRect] = useState<DOMRect | null>(null);
    const wrapperRef = useRef<HTMLDivElement>(null);
    const menuRef = useRef<HTMLDivElement>(null);
    const originalOverflow = useRef("");
-
-   // Detect touch device
-   useEffect(() => {
-      setIsTouchDevice(window.matchMedia("(hover: none)").matches);
-   }, []);
 
    const hide = useCallback(() => setShowEmailMenu(false), []);
 
