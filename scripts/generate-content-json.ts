@@ -46,10 +46,69 @@ interface ContentChunk {
    languages?: { language: string; level: string }[];
 }
 
+// --- Module shapes (accessed via dynamic import, hence cast at the boundary) ---
+
+type Locale = "en" | "es";
+
+interface HeroLocale {
+   role: string;
+   description: string;
+}
+
+interface AboutEducation {
+   degree: string;
+   institution: string;
+   date: string;
+}
+
+interface AboutLanguage {
+   language: string;
+   level: string;
+}
+
+interface AboutLocale {
+   title: string;
+   p1: string;
+   p2: string;
+   philosophy: string;
+   quote: string;
+   educationTitle?: string;
+   languagesTitle?: string;
+   education?: AboutEducation[];
+   languages?: AboutLanguage[];
+}
+
+interface ExperienceItem {
+   projectId?: string;
+   company: string;
+   role: string;
+   description: string;
+   date?: string;
+   tags?: string[];
+   product?: string;
+}
+
+interface ExperienceLocale {
+   items: ExperienceItem[];
+}
+
+interface ProjectLocale {
+   title: string;
+   description: string;
+   fullDescription?: string;
+   challenge?: { description: string; solution: string };
+   ecosystem?: { items?: { title: string; description: string }[] };
+}
+
+interface ProjectModule {
+   [locale: string]: unknown;
+   data?: { techStack?: string[] };
+}
+
 // --- Import modules ---
 
 async function loadModules() {
-   const modules: Record<string, any> = {};
+   const modules: Record<string, unknown> = {};
 
    // Hero
    try {
@@ -113,14 +172,15 @@ async function loadModules() {
 
 // --- Extraction ---
 
-function extractChunks(modules: Record<string, any>): ContentChunk[] {
+function extractChunks(modules: Record<string, unknown>): ContentChunk[] {
    const chunks: ContentChunk[] = [];
    const locales = ["en", "es"] as const;
 
    // Hero
    if (modules.hero) {
+      const hero = modules.hero as Record<Locale, HeroLocale>;
       for (const locale of locales) {
-         const data = modules.hero[locale];
+         const data = hero[locale];
          if (!data) continue;
          chunks.push({
             id: `hero-${locale}`,
@@ -134,14 +194,15 @@ function extractChunks(modules: Record<string, any>): ContentChunk[] {
 
    // About
    if (modules.about) {
+      const about = modules.about as Record<Locale, AboutLocale>;
       for (const locale of locales) {
-         const data = modules.about[locale];
+         const data = about[locale];
          if (!data) continue;
          const eduText = data.education
-            ?.map((e: any) => `${e.degree} — ${e.institution} (${e.date})`)
+            ?.map((e) => `${e.degree} — ${e.institution} (${e.date})`)
             .join("; ");
          const langText = data.languages
-            ?.map((l: any) => `${l.language}: ${l.level}`)
+            ?.map((l) => `${l.language}: ${l.level}`)
             .join(", ");
 
          chunks.push({
@@ -184,8 +245,9 @@ function extractChunks(modules: Record<string, any>): ContentChunk[] {
 
    // Experience
    if (modules.experience) {
+      const experience = modules.experience as Record<Locale, ExperienceLocale>;
       for (const locale of locales) {
-         const data = modules.experience[locale];
+         const data = experience[locale];
          if (!data?.items) continue;
          for (const item of data.items) {
             chunks.push({
@@ -208,14 +270,15 @@ function extractChunks(modules: Record<string, any>): ContentChunk[] {
    for (const [key, mod] of Object.entries(modules)) {
       if (!key.startsWith("project_")) continue;
       const slug = key.replace("project_", "");
+      const projectModule = mod as ProjectModule;
 
       for (const locale of locales) {
-         const langData = mod[locale];
-         const data = mod.data;
+         const langData = projectModule[locale] as ProjectLocale | undefined;
+         const data = projectModule.data;
          if (!langData || !data) continue;
 
          const ecosystemItems =
-            langData.ecosystem?.items?.map((item: any) => ({
+            langData.ecosystem?.items?.map((item) => ({
                title: item.title,
                description: item.description,
             })) ?? [];
