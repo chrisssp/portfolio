@@ -1,5 +1,3 @@
-"use client";
-
 import { MdFilterHdr } from "react-icons/md";
 import type { Dictionary } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
@@ -32,7 +30,11 @@ export const ProjectChallenge = ({
 
          {/* Challenge & Solution columns — converge from opposite sides */}
          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
-            <AnimatedSection variant="fade-right" delay={100} duration="duration-700">
+            <AnimatedSection
+               variant="fade-right"
+               delay={100}
+               duration="duration-700"
+            >
                <div className="flex flex-col gap-4 md:gap-6">
                   <Typography variant="project">
                      {labels.challengeTitle}
@@ -43,9 +45,15 @@ export const ProjectChallenge = ({
                </div>
             </AnimatedSection>
 
-            <AnimatedSection variant="fade-left" delay={200} duration="duration-700">
+            <AnimatedSection
+               variant="fade-left"
+               delay={200}
+               duration="duration-700"
+            >
                <div className="flex flex-col gap-4 md:gap-6">
-                  <Typography variant="project">{labels.solutionTitle}</Typography>
+                  <Typography variant="project">
+                     {labels.solutionTitle}
+                  </Typography>
                   <Typography variant="body" className="opacity-90">
                      {project.challenge.solution}
                   </Typography>

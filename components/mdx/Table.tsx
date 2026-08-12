@@ -1,5 +1,3 @@
-"use client";
-
 import type {
    TableHTMLAttributes,
    TdHTMLAttributes,
@@ -11,8 +9,8 @@ export interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
    caption?: string;
 }
 
-export interface ThProps extends ThHTMLAttributes<HTMLTableCellElement> {}
-export interface TdProps extends TdHTMLAttributes<HTMLTableCellElement> {}
+export type ThProps = ThHTMLAttributes<HTMLTableCellElement>;
+export type TdProps = TdHTMLAttributes<HTMLTableCellElement>;
 
 const Table = forwardRef<HTMLTableElement, TableProps>(
    ({ caption, children, className = "", ...props }, ref) => {

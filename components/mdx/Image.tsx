@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import type { ImgHTMLAttributes } from "react";
 import { forwardRef } from "react";

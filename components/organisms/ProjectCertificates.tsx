@@ -1,5 +1,3 @@
-"use client";
-
 import { MdOpenInNew, MdWorkspacePremium } from "react-icons/md";
 import type { Dictionary } from "@/i18n/types";
 import { AnimatedSection } from "../atoms/AnimatedSection";
