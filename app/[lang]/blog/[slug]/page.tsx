@@ -36,7 +36,11 @@ export async function generateMetadata({
    const post = await getPostBySlug(slug, locale);
    if (!post || post.frontmatter.locale !== locale) return {};
 
-   const ogImage = post.frontmatter.ogImage ?? post.frontmatter.coverImage;
+   const ogImage =
+      post.frontmatter.ogImageDark ??
+      post.frontmatter.ogImage ??
+      post.frontmatter.coverImageDark ??
+      post.frontmatter.coverImage;
 
    return {
       title: post.frontmatter.title,
@@ -72,7 +76,10 @@ async function PostPage({ params }: PostPageProps) {
    const postUrl = `${SITE_URL}/${lang}/blog/${slug}`;
 
    const ogImageForJsonLd =
-      post.frontmatter.ogImage ?? post.frontmatter.coverImage;
+      post.frontmatter.ogImageDark ??
+      post.frontmatter.ogImage ??
+      post.frontmatter.coverImageDark ??
+      post.frontmatter.coverImage;
 
    const jsonLd = {
       "@context": "https://schema.org",
