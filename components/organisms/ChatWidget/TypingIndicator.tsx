@@ -5,7 +5,7 @@ import { Typography } from "@/components/atoms/Typography";
 export function TypingIndicator() {
    return (
       <div className="flex items-start mb-3">
-         <div className="max-w-[85%] rounded-2xl px-4 py-3 bg-primary/10 border border-primary/20 rounded-bl-md shadow-sm">
+         <div className="max-w-[85%] rounded-2xl px-4 py-3 bg-surface border border-subtle rounded-bl-md shadow-sm">
             <div className="flex items-center gap-1">
                <span className="sr-only">chrisssp is typing</span>
                {/* Animated dots — hidden when motion is reduced */}

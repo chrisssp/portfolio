@@ -343,6 +343,21 @@ body {
 /* Both panel and backdrop use CSS transitions managed via className toggles.
    No @keyframes needed — faster, more reliable, works on mount/unmount. */
 
+@keyframes bubble-in {
+   from {
+      opacity: 0;
+      transform: translateY(6px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+.bubble-in {
+   animation: bubble-in 250ms ease-out;
+}
+
 /* Reduced-motion overrides — !important required to override Tailwind @theme utility specificity */
 @media (prefers-reduced-motion: reduce) {
    .animate-float,
@@ -352,7 +367,8 @@ body {
    .animate-idle-zoom,
    .animate-glow,
    .animate-bounce-in,
-   .animate-bob {
+   .animate-bob,
+   .bubble-in {
       animation: none !important; /* biome-ignore lint/complexity/noImportantStyles: a11y reduced-motion override */
    }
 

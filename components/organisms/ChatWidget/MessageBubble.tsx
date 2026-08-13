@@ -8,6 +8,7 @@ import { parseAssistantContent, relocateMarkers } from "./messageParser";
 type Props = {
    message: ChatMessage;
    isStreaming?: boolean;
+   isLatest?: boolean;
    locale: Locale;
    onClose?: () => void;
    recentMarkers?: Set<string>;
@@ -16,6 +17,7 @@ type Props = {
 export function MessageBubble({
    message,
    isStreaming,
+   isLatest,
    locale,
    onClose,
    recentMarkers,
@@ -37,13 +39,15 @@ export function MessageBubble({
 
    return (
       <div
-         className={`flex flex-col ${isUser ? "items-end" : "items-start"} mb-3`}
+         className={`flex flex-col ${isUser ? "items-end" : "items-start"} mb-3 ${
+            isLatest ? "bubble-in" : ""
+         }`}
       >
          <div
             className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                isUser
                   ? "bg-primary text-primary-contrast rounded-br-md shadow-sm"
-                  : "bg-primary/10 border border-primary/20 text-body rounded-bl-md shadow-sm"
+                  : "bg-surface border border-subtle text-body rounded-bl-md shadow-sm"
             }`}
          >
             {isUser ? (
