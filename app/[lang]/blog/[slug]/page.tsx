@@ -229,6 +229,9 @@ async function PostPage({ params }: PostPageProps) {
                   <ShareButtons
                      url={postUrl}
                      title={post.frontmatter.title}
+                     shareText={
+                        post.frontmatter.shareText ?? dict.blog.shareFallback
+                     }
                      texts={{
                         share: dict.blog.share,
                         copyLink: dict.blog.copyLink,

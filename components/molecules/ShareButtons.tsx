@@ -18,10 +18,16 @@ interface ShareTexts {
 interface ShareButtonsProps {
    url: string;
    title: string;
+   shareText?: string;
    texts: ShareTexts;
 }
 
-export default function ShareButtons({ url, title, texts }: ShareButtonsProps) {
+export default function ShareButtons({
+   url,
+   title,
+   shareText,
+   texts,
+}: ShareButtonsProps) {
    const [copied, setCopied] = useState(false);
 
    const handleCopy = async () => {
@@ -40,9 +46,10 @@ export default function ShareButtons({ url, title, texts }: ShareButtonsProps) {
    };
 
    const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
-   const xShare = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+   const shareMessage = shareText ?? title;
+   const xShare = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage)}&url=${encodeURIComponent(url)}`;
    const redditShare = `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
-   const whatsappShare = `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`;
+   const whatsappShare = `https://wa.me/?text=${encodeURIComponent(`${shareMessage} ${url}`)}`;
 
    return (
       <div className="flex items-center gap-2 flex-wrap">

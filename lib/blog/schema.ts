@@ -10,6 +10,7 @@ export interface ResourceItem {
 const TranslationSchema = z.object({
    title: z.string().min(1),
    description: z.string().min(1),
+   shareText: z.string().min(1).optional(),
    tags: z.array(z.string().toLowerCase()).min(1),
    coverImage: z.string().url().or(z.string().startsWith("/")).optional(),
    coverImageDark: z.string().url().or(z.string().startsWith("/")).optional(),
@@ -48,6 +49,7 @@ export type BlogPostFrontmatter = z.infer<typeof BlogPostFrontmatterSchema>;
 export interface LocalizedBlogPostFrontmatter {
    title: string;
    description: string;
+   shareText?: string;
    tags: string[];
    date: string;
    draft: boolean;

@@ -145,6 +145,7 @@ export const es: Dictionary = {
       share: "Compartir",
       copyLink: "Copiar enlace",
       copied: "Enlace copiado",
+      shareFallback: "Mira este post:",
       shareLinkedin: "Compartir en LinkedIn",
       shareX: "Compartir en X",
       shareReddit: "Compartir en Reddit",

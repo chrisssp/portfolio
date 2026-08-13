@@ -149,6 +149,7 @@ export const getAllPosts = cache(
          const localizedFrontmatter: LocalizedBlogPostFrontmatter = {
             title: translations.title,
             description: translations.description,
+            shareText: translations.shareText,
             tags: translations.tags,
             date: frontmatter.date,
             draft: frontmatter.draft,
@@ -215,6 +216,7 @@ export const getPostBySlug = cache(
       const localizedFrontmatter: LocalizedBlogPostFrontmatter = {
          title: translations.title,
          description: translations.description,
+         shareText: translations.shareText,
          tags: translations.tags,
          date: frontmatter.date,
          draft: frontmatter.draft,

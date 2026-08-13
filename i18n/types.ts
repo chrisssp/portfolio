@@ -293,6 +293,7 @@ export interface Dictionary {
       share: string;
       copyLink: string;
       copied: string;
+      shareFallback: string;
       shareLinkedin: string;
       shareX: string;
       shareReddit: string;
