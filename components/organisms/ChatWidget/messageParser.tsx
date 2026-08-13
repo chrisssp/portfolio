@@ -14,16 +14,17 @@ import {
    GitHubButton,
    LandingButton,
    LinkedInButton,
+   PostButton,
    ProjectButton,
 } from "./ActionButtons";
 
 // --- Marker Pattern ---
 
 const MARKER_PATTERN =
-   /\[PROJECT:[^\]]+\]|\[CODE:[^\]]+\]|\[LANDING:[^\]]+\]|\[DEMO:[^\]]+\]|\[ARTICLE:[^\]]+\]|\[CERT:[^\]]+\]|\[ECOSYSTEM:[^\]]+\]|\[EXPERIENCE:[^\]]+\]|\[EMAIL\]|\[GITHUB\]|\[LINKEDIN\]|\[CV\]|\[ABOUT\]/g;
+   /\[PROJECT:[^\]]+\]|\[CODE:[^\]]+\]|\[LANDING:[^\]]+\]|\[DEMO:[^\]]+\]|\[ARTICLE:[^\]]+\]|\[POST:[^\]]+\]|\[CERT:[^\]]+\]|\[ECOSYSTEM:[^\]]+\]|\[EXPERIENCE:[^\]]+\]|\[EMAIL\]|\[GITHUB\]|\[LINKEDIN\]|\[CV\]|\[ABOUT\]/g;
 
 const SEGMENT_PATTERN =
-   /(\[PROJECT:[^\]]+\]|\[CODE:[^\]]+\]|\[LANDING:[^\]]+\]|\[DEMO:[^\]]+\]|\[ARTICLE:[^\]]+\]|\[CERT:[^\]]+\]|\[ECOSYSTEM:[^\]]+\]|\[EXPERIENCE:[^\]]+\]|\[EMAIL\]|\[GITHUB\]|\[LINKEDIN\]|\[CV\]|\[ABOUT\])/;
+   /(\[PROJECT:[^\]]+\]|\[CODE:[^\]]+\]|\[LANDING:[^\]]+\]|\[DEMO:[^\]]+\]|\[ARTICLE:[^\]]+\]|\[POST:[^\]]+\]|\[CERT:[^\]]+\]|\[ECOSYSTEM:[^\]]+\]|\[EXPERIENCE:[^\]]+\]|\[EMAIL\]|\[GITHUB\]|\[LINKEDIN\]|\[CV\]|\[ABOUT\])/;
 
 // --- Marker Relocation ---
 
@@ -186,6 +187,16 @@ export function parseAssistantContent(
             <ArticleButton
                key={`act-${actionIdx++}`}
                slug={segment.slice(9, -1)}
+            />,
+         );
+      } else if (segment.startsWith("[POST:")) {
+         if (skip(segment)) continue;
+         seenActions.add(segment);
+         actionNodes.push(
+            <PostButton
+               key={`act-${actionIdx++}`}
+               slug={segment.slice(6, -1)}
+               locale={locale}
             />,
          );
       } else if (segment.startsWith("[CERT:")) {

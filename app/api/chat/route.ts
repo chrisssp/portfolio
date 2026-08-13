@@ -36,6 +36,7 @@ interface ContentChunk {
    remote?: string;
    tags?: string[];
    projectId?: string;
+   postSlug?: string;
    certificates?: CertificateItem[];
    links?: LinkItem[];
    ecosystem?: Array<{ title: string; description: string }>;
@@ -334,6 +335,17 @@ function matchContentSmart(
                seen.add(chunkId);
             }
          }
+         // Also load related blog posts whose tags reference this project
+         for (const chunk of localeChunks) {
+            if (
+               chunk.section === "blog" &&
+               chunk.tags?.includes(slug) &&
+               !seen.has(chunk.id)
+            ) {
+               matched.push(chunk);
+               seen.add(chunk.id);
+            }
+         }
          break;
       }
 
@@ -522,6 +534,13 @@ function buildContentIndex(cache: ContentChunk[], locale: string): string {
       );
    }
 
+   const blogPosts = lc.filter((c) => c.section === "blog");
+   if (blogPosts.length > 0) {
+      parts.push(
+         `Blog: ${blogPosts.map((p) => `${p.title} (${p.postSlug})`).join(" | ")}`,
+      );
+   }
+
    return parts.join("\n");
 }
 
@@ -577,11 +596,13 @@ For education: the context contains separate entries for TSU and Ingeniería. Ea
 2. Include ONLY what user asked about or what provides a DIRECT actionable next step. Never add buttons for completeness.
 3. Never repeat a button from your immediately previous message. Max 2 action buttons per response.
 4. ONLY add [EMAIL] when user explicitly asks to contact you. ONLY add [ABOUT] when user asks about you personally. ONLY add [CV] when user asks for your resume/CV. Do NOT add these as defaults.
+5. When a blog post about the asked project/topic appears in context (section: blog), append its [POST:<postSlug>] marker at the end — still respecting the 2-button max.
 
-Available markers: [PROJECT:slug] [CODE:slug] [DEMO:slug] [LANDING:slug] [ARTICLE:slug] [CERT:slug] [ECOSYSTEM:slug:Item] [EXPERIENCE:id] [ABOUT] [EMAIL] [GITHUB] [LINKEDIN] [CV]
+Available markers: [PROJECT:slug] [CODE:slug] [DEMO:slug] [LANDING:slug] [ARTICLE:slug] [POST:slug] [CERT:slug] [ECOSYSTEM:slug:Item] [EXPERIENCE:id] [ABOUT] [EMAIL] [GITHUB] [LINKEDIN] [CV]
 
 Slugs: 7dcompass, azkali, coppel-nexus, flacks-cc, mtrpa, iapex, dabetai, puntofiel, portfolio, ratacueva
 Experience IDs: 7dcompass, azkali, coppel-nexus, mtrpa, flacks-cc
+Post slugs: iapex-ai-finds-missing-people, from-programming-with-ai-to-orchestrating, sdd-spec-driven-development
 
 ## Response Style
 - 2-3 sentences MAX. First person, markdown (**bold**, *italic*), NO emojis. Be concise — users want quick answers, not essays.
@@ -626,6 +647,7 @@ function buildSystemPrompt(
          if (c.remote) parts.push(`Type:${c.remote}`);
          if (c.tags?.length) parts.push(`#${c.tags.join(" #")}`);
          if (c.projectId) parts.push(`PID:${c.projectId}`);
+         if (c.postSlug) parts.push(`Post:${c.postSlug}`);
          if (c.certificates?.length) {
             parts.push(
                `Cert:${c.certificates.map((cert) => `${cert.title}${cert.issuer ? `(${cert.issuer})` : ""}${cert.date ? ` ${cert.date}` : ""}`).join("; ")}`,

@@ -11,7 +11,10 @@
  */
 
 import { writeFileSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { glob } from "fast-glob";
+import matter from "gray-matter";
 
 // --- Types ---
 
@@ -23,7 +26,8 @@ interface ContentChunk {
       | "education"
       | "about"
       | "hero"
-      | "skills";
+      | "skills"
+      | "blog";
    locale: "en" | "es";
    title: string;
    description: string;
@@ -36,6 +40,8 @@ interface ContentChunk {
    role?: string;
    date?: string;
    tags?: string[];
+   // Blog-specific
+   postSlug?: string;
    // About-specific
    education?: {
       institution: string;
@@ -300,6 +306,46 @@ function extractChunks(modules: Record<string, unknown>): ContentChunk[] {
    return chunks;
 }
 
+// --- Blog chunks ---
+
+interface BlogFrontmatter {
+   slug?: string;
+   draft?: boolean;
+   translations?: Record<
+      "en" | "es",
+      { title?: string; description?: string; tags?: string[] }
+   >;
+}
+
+async function extractBlogChunks(): Promise<ContentChunk[]> {
+   const chunks: ContentChunk[] = [];
+   const blogDir = resolve(import.meta.dirname, "../content/blog");
+   const files = await glob("*/index.mdx", { cwd: blogDir });
+
+   for (const file of files) {
+      const raw = await readFile(resolve(blogDir, file), "utf-8");
+      const { data } = matter(raw);
+      const fm = data as BlogFrontmatter;
+      if (!fm.slug || fm.draft) continue;
+
+      for (const locale of ["en", "es"] as const) {
+         const t = fm.translations?.[locale];
+         if (!t?.title || !t?.description) continue;
+         chunks.push({
+            id: `blog-${fm.slug}-${locale}`,
+            section: "blog",
+            locale,
+            title: t.title,
+            description: t.description,
+            tags: t.tags,
+            postSlug: fm.slug,
+         });
+      }
+   }
+
+   return chunks;
+}
+
 // --- Main ---
 
 async function main() {
@@ -307,7 +353,7 @@ async function main() {
    const modules = await loadModules();
 
    console.log("[content-gen] Extracting content chunks...");
-   const chunks = extractChunks(modules);
+   const chunks = [...extractChunks(modules), ...(await extractBlogChunks())];
 
    const outputPath = resolve(
       import.meta.dirname,

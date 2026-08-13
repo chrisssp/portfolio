@@ -8,6 +8,7 @@ import {
    MdFileDownload,
    MdFolder,
    MdLink,
+   MdMenuBook,
    MdOpenInNew,
    MdPerson,
    MdPlayArrow,
@@ -146,6 +147,15 @@ export function ArticleButton({ slug }: { slug: string }) {
       <a href={url} target="_blank" rel="noopener noreferrer" className={LINK}>
          <MdArticle className="size-4 shrink-0" />
          Article
+      </a>
+   );
+}
+
+export function PostButton({ slug, locale }: { slug: string; locale: Locale }) {
+   return (
+      <a href={`/${locale}/blog/${slug}`} className={LINK}>
+         <MdMenuBook className="size-4 shrink-0" />
+         {locale === "es" ? "Leer post" : "Read post"}
       </a>
    );
 }
