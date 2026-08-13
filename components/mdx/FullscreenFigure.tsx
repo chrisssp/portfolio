@@ -19,6 +19,7 @@ export interface FullscreenFigureProps {
    alt: string;
    caption?: string;
    children: ReactNode;
+   closeLabel?: string;
 }
 
 export function FullscreenFigure({
@@ -27,6 +28,7 @@ export function FullscreenFigure({
    alt,
    caption,
    children,
+   closeLabel = "Close",
 }: FullscreenFigureProps) {
    const [open, setOpen] = useState(false);
    const triggerRef = useRef<HTMLButtonElement>(null);
@@ -115,7 +117,7 @@ export function FullscreenFigure({
                      type="button"
                      ref={closeRef}
                      onClick={closeLightbox}
-                     aria-label="Close"
+                     aria-label={closeLabel}
                      className={`absolute top-4 right-4 ${
                         isDark
                            ? "bg-white/10 hover:bg-white/20 text-white"

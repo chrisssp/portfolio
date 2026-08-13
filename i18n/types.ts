@@ -158,6 +158,46 @@ export interface ProjectModule {
 // 2. Interfaz principal del diccionario
 // --------------------------------------------------------
 
+export interface ChatDict {
+   soundTitle: string;
+   muteSound: string;
+   enableSound: string;
+   newChat: string;
+   closeChat: string;
+   sendMessage: string;
+   inputPlaceholder: string;
+   conversationEnded: string;
+   newConversation: string;
+   chatLogLabel: string;
+   chatPanelLabel: string;
+   privacyHint: string;
+   readPost: string;
+   article: string;
+   code: string;
+   landing: string;
+   demo: string;
+   certificates: string;
+   experience: string;
+   email: string;
+   github: string;
+   linkedin: string;
+   cv: string;
+   about: string;
+}
+
+export interface UiDict {
+   openMenu: string;
+   closeTooltip: string;
+   close: string;
+   previousImage: string;
+   nextImage: string;
+}
+
+export interface MusicDict {
+   playAmbient: string;
+   pauseAmbient: string;
+}
+
 export interface Dictionary {
    nav: {
       experience: string;
@@ -307,4 +347,10 @@ export interface Dictionary {
          goToPage: string;
       };
    };
+
+   chat: ChatDict;
+
+   ui: UiDict;
+
+   music: MusicDict;
 }

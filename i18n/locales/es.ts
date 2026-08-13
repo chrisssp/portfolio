@@ -1,8 +1,10 @@
 import { about } from "../modules/about";
+import { chat } from "../modules/chat";
 import { cta } from "../modules/cta";
 import { experience } from "../modules/experience";
 import { footer } from "../modules/footer";
 import { hero } from "../modules/hero";
+import { music } from "../modules/music";
 import { nav } from "../modules/nav";
 // Projects
 import { project7dCompass } from "../modules/projects/7dcompass";
@@ -15,6 +17,7 @@ import { projectMtrpa } from "../modules/projects/mtrpa";
 import { projectPortfolio } from "../modules/projects/portfolio";
 import { projectPuntoFiel } from "../modules/projects/puntofiel";
 import { projectRataCueva } from "../modules/projects/ratacueva";
+import { ui } from "../modules/ui";
 import type { Dictionary, ProjectItem, ProjectModule } from "../types";
 
 const projectModules: ProjectModule[] = [
@@ -159,4 +162,10 @@ export const es: Dictionary = {
          goToPage: "Ir a la página {page}",
       },
    },
+
+   chat: chat.es,
+
+   ui: ui.es,
+
+   music: music.es,
 };

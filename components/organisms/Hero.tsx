@@ -76,6 +76,7 @@ export const Hero = ({ dict }: HeroProps) => {
                               content={stat.tooltip}
                               align="right"
                               direction="center"
+                              closeAriaLabel={dict.ui.closeTooltip}
                            >
                               <div className="cursor-default transition-opacity duration-200 group-hover:opacity-40 hover:!opacity-100">
                                  <span className="inline-flex items-baseline gap-1.5 px-4 py-2 rounded-full bg-surface border border-subtle text-sm leading-snug transition-all duration-200 ease-out hover:-translate-y-1 whitespace-nowrap">
@@ -186,6 +187,7 @@ export const Hero = ({ dict }: HeroProps) => {
                content={dict.hero.description}
                align="center"
                direction="down"
+               closeAriaLabel={dict.ui.closeTooltip}
             >
                <div className="relative size-70 sm:size-80 lg:size-90 rounded-full border-3 border-subtle overflow-hidden bg-page shadow-xl hover:scale-[1.02] transition-all duration-500 animate-float motion-reduce:animate-none">
                   <Image

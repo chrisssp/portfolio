@@ -110,6 +110,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   align="left"
                   direction="center"
                   className="w-full h-full"
+                  closeAriaLabel={dict.ui.closeTooltip}
                >
                   <div
                      className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 animate-float motion-reduce:animate-none"
@@ -136,6 +137,7 @@ export const AboutMe = ({ dict }: AboutMeProps) => {
                   align="left"
                   direction="center"
                   className="w-full h-full"
+                  closeAriaLabel={dict.ui.closeTooltip}
                >
                   <div
                      className="relative w-full h-full rounded-full border-3 border-subtle overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-500 animate-float motion-reduce:animate-none"

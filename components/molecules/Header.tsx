@@ -226,7 +226,7 @@ export const Header = ({
                            type="button"
                            onClick={() => setMobileMenuOpen(true)}
                            className="md:hidden flex items-center justify-center p-2 sm:p-3 bg-page border border-subtle rounded-xl text-body shadow-sm hover:bg-surface active:scale-95 transition-all cursor-pointer"
-                           aria-label="Open menu"
+                           aria-label={dict.ui.openMenu}
                         >
                            <MdMenu className="size-4 sm:size-5" />
                         </button>
@@ -402,7 +402,7 @@ export const Header = ({
                            download
                            target="_blank"
                            rel="noopener noreferrer"
-                           title="CV"
+                           title={dict.hero.actions.cv}
                            aria-label={dict.hero.actions.cv}
                            className="animate-bob motion-reduce:animate-none"
                            style={
@@ -464,8 +464,8 @@ export const Header = ({
                         </a>
                         <a
                            href={`mailto:${PROFESSIONAL_LINKS.email}`}
-                           title="Email"
-                           aria-label="Email"
+                           title={dict.hero.actions.email}
+                           aria-label={dict.hero.actions.email}
                            className="animate-bob motion-reduce:animate-none"
                            style={
                               {

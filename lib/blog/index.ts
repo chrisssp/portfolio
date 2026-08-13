@@ -4,12 +4,15 @@ import { glob } from "fast-glob";
 import GithubSlugger from "github-slugger";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
-import { cache } from "react";
+import { cache, createElement } from "react";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import type { ShikiTransformer } from "shiki";
+import MDXDiagram from "@/components/mdx/Diagram";
+import MDXImage from "@/components/mdx/Image";
 import mdxComponents from "@/components/mdx/registry";
+import { ui } from "@/i18n/modules/ui";
 import type {
    BlogPost,
    BlogPostFrontmatter,
@@ -200,7 +203,24 @@ export const getPostBySlug = cache(
 
       const { content: compiledContent } = await compileMDX({
          source: languageContent,
-         components: mdxComponents,
+         components: {
+            ...mdxComponents,
+            Diagram: (props) =>
+               createElement(MDXDiagram, {
+                  ...props,
+                  closeLabel: ui[locale].close,
+               }),
+            Image: (props) =>
+               createElement(MDXImage, {
+                  ...props,
+                  closeLabel: ui[locale].close,
+               }),
+            img: (props) =>
+               createElement(MDXImage, {
+                  ...props,
+                  closeLabel: ui[locale].close,
+               }),
+         },
          options: {
             parseFrontmatter: false,
             mdxOptions: {

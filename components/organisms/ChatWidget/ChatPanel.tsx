@@ -3,10 +3,17 @@
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MdClose, MdRefresh, MdSend } from "react-icons/md";
+import {
+   MdClose,
+   MdRefresh,
+   MdSend,
+   MdVolumeOff,
+   MdVolumeUp,
+} from "react-icons/md";
 import { Button } from "@/components/atoms/Button";
 import { Typography } from "@/components/atoms/Typography";
 import type { Locale } from "@/i18n/config";
+import { chat } from "@/i18n/modules/chat";
 import {
    type ChatMessage,
    clearHistory,
@@ -15,11 +22,15 @@ import {
    saveHistory,
    setTerminated,
 } from "./chatSession";
-import { playReceiveTone, playSendTone } from "./chatSounds";
+import {
+   isSoundEnabled,
+   playReceiveTone,
+   playSendTone,
+   setSoundEnabled,
+} from "./chatSounds";
 import { getRandomError } from "./errorMessages";
 import { getRandomGreeting } from "./greetings";
 import { MessageList } from "./MessageList";
-import { SettingsPopover } from "./SettingsPopover";
 
 type Props = {
    isOpen: boolean;
@@ -45,9 +56,16 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
    const [isLoading, setIsLoading] = useState(false);
    const [streamingContent, setStreamingContent] = useState("");
    const [terminated, setTerminatedState] = useState(() => isTerminated());
+   const [sound, setSound] = useState(isSoundEnabled);
    const abortRef = useRef<AbortController | null>(null);
    const inputRef = useRef<HTMLTextAreaElement>(null);
    const { resolvedTheme } = useTheme();
+
+   const toggleSound = () => {
+      const next = !sound;
+      setSound(next);
+      setSoundEnabled(next);
+   };
 
    // Focus input when panel opens
    useEffect(() => {
@@ -110,11 +128,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
             if (data.isTerminated) {
                const endMsg: ChatMessage = {
                   role: "assistant",
-                  content:
-                     data.content ||
-                     (locale === "es"
-                        ? "La conversación ha terminado."
-                        : "Conversation ended."),
+                  content: data.content || chat[locale].conversationEnded,
                   timestamp: Date.now(),
                };
                const finalMessages = [...newMessages, endMsg];
@@ -269,7 +283,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                md:inset-auto md:bottom-24 md:right-6 md:w-[380px] md:h-[520px] md:rounded-2xl
             `}
          role="dialog"
-         aria-label="Chat panel"
+         aria-label={chat[locale].chatPanelLabel}
       >
          {/* Header — sticky on mobile so it survives keyboard scroll */}
          <div className="sticky top-0 z-10 bg-page flex items-center justify-between px-4 py-3 border-b border-body/10">
@@ -290,15 +304,26 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                </Typography>
             </div>
             <div className="flex items-center gap-1">
-               <SettingsPopover locale={locale} />
+               <Button
+                  variant="outline"
+                  icon={sound ? <MdVolumeUp /> : <MdVolumeOff />}
+                  circle
+                  size="sm"
+                  onClick={toggleSound}
+                  aria-pressed={sound}
+                  ariaLabel={
+                     sound ? chat[locale].muteSound : chat[locale].enableSound
+                  }
+                  title={chat[locale].soundTitle}
+               />
                <Button
                   variant="outline"
                   icon={<MdRefresh />}
                   circle
                   size="sm"
                   onClick={handleClearChat}
-                  ariaLabel={locale === "es" ? "Nuevo chat" : "New chat"}
-                  title={locale === "es" ? "Nuevo chat" : "New chat"}
+                  ariaLabel={chat[locale].newChat}
+                  title={chat[locale].newChat}
                />
                <Button
                   variant="outline"
@@ -306,7 +331,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                   circle
                   size="sm"
                   onClick={onClose}
-                  ariaLabel={locale === "es" ? "Cerrar chat" : "Close chat"}
+                  ariaLabel={chat[locale].closeChat}
                />
             </div>
          </div>
@@ -325,18 +350,14 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
             <div className="absolute inset-0 bg-page/80 flex items-center justify-center z-10 rounded-2xl md:rounded-2xl">
                <div className="text-center px-6">
                   <Typography variant="body" className="mb-3">
-                     {locale === "es"
-                        ? "La conversación ha terminado."
-                        : "Conversation ended."}
+                     {chat[locale].conversationEnded}
                   </Typography>
                   <button
                      type="button"
                      onClick={handleClearChat}
                      className="px-5 py-2.5 text-sm rounded-lg bg-primary text-primary-contrast hover:opacity-90 transition-opacity cursor-pointer"
                   >
-                     {locale === "es"
-                        ? "Nueva conversación"
-                        : "New conversation"}
+                     {chat[locale].newConversation}
                   </button>
                </div>
             </div>
@@ -350,11 +371,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder={
-                     locale === "es"
-                        ? "Escribe tu mensaje..."
-                        : "Type your message..."
-                  }
+                  placeholder={chat[locale].inputPlaceholder}
                   disabled={terminated}
                   rows={1}
                   className="flex-1 resize-none rounded-xl bg-body/5 border border-subtle px-4 py-3 text-sm text-body placeholder:text-body/30 focus:outline-none focus:ring-1 focus:ring-primary/40 transition-all disabled:opacity-40"
@@ -366,7 +383,7 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                   circle
                   onClick={sendMessage}
                   disabled={!input.trim() || isLoading || terminated}
-                  ariaLabel="Send message"
+                  ariaLabel={chat[locale].sendMessage}
                />
             </div>
          </div>

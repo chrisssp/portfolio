@@ -10,15 +10,33 @@ export interface MDXImageProps
    width?: number;
    height?: number;
    caption?: string;
+   closeLabel?: string;
 }
 
 export const MDXImage = forwardRef<HTMLImageElement, MDXImageProps>(
-   ({ src, alt, width, height, caption, className = "", ...props }, ref) => {
+   (
+      {
+         src,
+         alt,
+         width,
+         height,
+         caption,
+         className = "",
+         closeLabel,
+         ...props
+      },
+      ref,
+   ) => {
       const isExternal = src.startsWith("http") || src.startsWith("//");
 
       return (
          <figure className={`my-6 ${className}`}>
-            <FullscreenFigure src={src} alt={alt} caption={caption}>
+            <FullscreenFigure
+               src={src}
+               alt={alt}
+               caption={caption}
+               closeLabel={closeLabel}
+            >
                {isExternal ? (
                   /* eslint-disable @next/next/no-img-element -- external hosts are not in images.remotePatterns and dimensions are unknown */
                   // biome-ignore lint/performance/noImgElement: external images cannot be optimized by next/image

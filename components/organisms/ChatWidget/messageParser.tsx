@@ -160,6 +160,7 @@ export function parseAssistantContent(
             <CodeButton
                key={`act-${actionIdx++}`}
                slug={segment.slice(6, -1)}
+               locale={locale}
             />,
          );
       } else if (segment.startsWith("[LANDING:")) {
@@ -169,6 +170,7 @@ export function parseAssistantContent(
             <LandingButton
                key={`act-${actionIdx++}`}
                slug={segment.slice(9, -1)}
+               locale={locale}
             />,
          );
       } else if (segment.startsWith("[DEMO:")) {
@@ -178,6 +180,7 @@ export function parseAssistantContent(
             <DemoButton
                key={`act-${actionIdx++}`}
                slug={segment.slice(6, -1)}
+               locale={locale}
             />,
          );
       } else if (segment.startsWith("[ARTICLE:")) {
@@ -187,6 +190,7 @@ export function parseAssistantContent(
             <ArticleButton
                key={`act-${actionIdx++}`}
                slug={segment.slice(9, -1)}
+               locale={locale}
             />,
          );
       } else if (segment.startsWith("[POST:")) {
@@ -241,15 +245,21 @@ export function parseAssistantContent(
       } else if (segment === "[EMAIL]") {
          if (skip(segment)) continue;
          seenActions.add(segment);
-         actionNodes.push(<EmailButton key={`act-${actionIdx++}`} />);
+         actionNodes.push(
+            <EmailButton key={`act-${actionIdx++}`} locale={locale} />,
+         );
       } else if (segment === "[GITHUB]") {
          if (skip(segment)) continue;
          seenActions.add(segment);
-         actionNodes.push(<GitHubButton key={`act-${actionIdx++}`} />);
+         actionNodes.push(
+            <GitHubButton key={`act-${actionIdx++}`} locale={locale} />,
+         );
       } else if (segment === "[LINKEDIN]") {
          if (skip(segment)) continue;
          seenActions.add(segment);
-         actionNodes.push(<LinkedInButton key={`act-${actionIdx++}`} />);
+         actionNodes.push(
+            <LinkedInButton key={`act-${actionIdx++}`} locale={locale} />,
+         );
       } else if (segment === "[CV]") {
          if (skip(segment)) continue;
          seenActions.add(segment);

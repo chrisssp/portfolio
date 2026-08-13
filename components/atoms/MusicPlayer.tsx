@@ -6,6 +6,7 @@ import { Button } from "@/components/atoms/Button";
 import { useMobileMenu } from "@/components/contexts/MobileMenuContext";
 import { useFooterVisible } from "@/components/hooks/useFooterVisible";
 import type { Locale } from "@/i18n/config";
+import { music } from "@/i18n/modules/music";
 import { Typography } from "./Typography";
 
 type Props = {
@@ -23,8 +24,6 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
    const [showTooltip, setShowTooltip] = useState(false);
 
    const isHidden = isMenuOpen || isFooterVisible;
-
-   const isSpanish = locale === "es";
 
    const currentTrack = {
       title: "Dreamy Ambient Background Music",
@@ -115,13 +114,9 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
         } as React.CSSProperties)
       : undefined;
 
-   const ariaLabel = isSpanish
-      ? isPlaying
-         ? "Pausar música ambiental"
-         : "Reproducir música ambiental"
-      : isPlaying
-        ? "Pause ambient music"
-        : "Play ambient music";
+   const ariaLabel = isPlaying
+      ? music[locale].pauseAmbient
+      : music[locale].playAmbient;
 
    return (
       <>
@@ -203,9 +198,7 @@ export const MusicPlayer = ({ locale = "en" }: Props) => {
                      weight="medium"
                      className="whitespace-nowrap"
                   >
-                     {isSpanish
-                        ? "Reproducir música ambiental"
-                        : "Play ambient music"}
+                     {music[locale].playAmbient}
                   </Typography>
                )}
             </div>

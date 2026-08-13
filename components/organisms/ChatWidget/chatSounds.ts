@@ -1,7 +1,7 @@
 /**
  * Chat sound effects using Web Audio API.
  * No external audio files needed.
- * Enabled by default; toggle stored in sessionStorage('chat-sound-enabled').
+ * Enabled by default; toggle stored in localStorage('chat-sound-enabled').
  *
  * Sounds are inspired by WhatsApp:
  * - Send: short, soft bubble-pop (~50ms)
@@ -14,7 +14,7 @@ const GAIN = 0.08;
 export function isSoundEnabled(): boolean {
    if (typeof window === "undefined") return false;
    try {
-      const stored = sessionStorage.getItem(SOUND_KEY);
+      const stored = localStorage.getItem(SOUND_KEY);
       return stored === null ? true : stored === "true";
    } catch {
       return true;
@@ -24,9 +24,9 @@ export function isSoundEnabled(): boolean {
 export function setSoundEnabled(enabled: boolean): void {
    if (typeof window === "undefined") return;
    try {
-      sessionStorage.setItem(SOUND_KEY, String(enabled));
+      localStorage.setItem(SOUND_KEY, String(enabled));
    } catch {
-      // sessionStorage unavailable
+      // localStorage unavailable
    }
 }
 

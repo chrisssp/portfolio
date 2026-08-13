@@ -23,7 +23,7 @@ export const Footer = ({ dict }: FooterProps) => {
                   href={dict.hero.actions.cvLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  title="CV"
+                  title={dict.hero.actions.cv}
                   aria-label={dict.hero.actions.cv}
                   className="animate-bob motion-reduce:animate-none"
                   style={
@@ -85,8 +85,8 @@ export const Footer = ({ dict }: FooterProps) => {
                </a>
                <a
                   href={`mailto:${PROFESSIONAL_LINKS.email}`}
-                  title="Email"
-                  aria-label="Email"
+                  title={dict.hero.actions.email}
+                  aria-label={dict.hero.actions.email}
                   className="animate-bob motion-reduce:animate-none"
                   style={
                      {

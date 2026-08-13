@@ -167,6 +167,7 @@ async function PostPage({ params }: PostPageProps) {
                         src={post.frontmatter.coverImage}
                         darkSrc={post.frontmatter.coverImageDark}
                         alt={post.frontmatter.title}
+                        closeLabel={dict.ui.close}
                      >
                         <Image
                            src={post.frontmatter.coverImage}

@@ -35,6 +35,7 @@ interface TooltipProps {
    align?: "left" | "right" | "center";
    direction?: "up" | "down" | "center";
    className?: string;
+   closeAriaLabel?: string;
 }
 
 export const Tooltip = ({
@@ -43,6 +44,7 @@ export const Tooltip = ({
    align = "center",
    direction = "up",
    className = "",
+   closeAriaLabel = "Close tooltip",
 }: TooltipProps) => {
    const [isVisible, setIsVisible] = useState(false);
    const isTouchDevice = useSyncExternalStore(
@@ -199,7 +201,7 @@ export const Tooltip = ({
                <>
                   <button
                      type="button"
-                     aria-label="Close tooltip"
+                     aria-label={closeAriaLabel}
                      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-9998"
                      onClick={hide}
                   />

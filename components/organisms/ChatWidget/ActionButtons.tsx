@@ -26,6 +26,7 @@ import {
    VALID_ECOSYSTEM_ITEMS,
 } from "@/config/projects";
 import type { Locale } from "@/i18n/config";
+import { chat } from "@/i18n/modules/chat";
 import { hero } from "@/i18n/modules/hero";
 
 // --- Helpers ---
@@ -105,18 +106,24 @@ export function ProjectButton({
    );
 }
 
-export function CodeButton({ slug }: { slug: string }) {
+export function CodeButton({ slug, locale }: { slug: string; locale: Locale }) {
    const url = PROJECT_LINKS[resolveSlug(slug)]?.github;
    if (!url) return null;
    return (
       <a href={url} target="_blank" rel="noopener noreferrer" className={LINK}>
          <MdCode className="size-4 shrink-0" />
-         Code
+         {chat[locale].code}
       </a>
    );
 }
 
-export function LandingButton({ slug }: { slug: string }) {
+export function LandingButton({
+   slug,
+   locale,
+}: {
+   slug: string;
+   locale: Locale;
+}) {
    const resolved = resolveSlug(slug);
    const url =
       PROJECT_LINKS[resolved]?.landing || PROJECT_LINKS[resolved]?.demo;
@@ -124,29 +131,35 @@ export function LandingButton({ slug }: { slug: string }) {
    return (
       <a href={url} target="_blank" rel="noopener noreferrer" className={LINK}>
          <MdOpenInNew className="size-4 shrink-0" />
-         Landing
+         {chat[locale].landing}
       </a>
    );
 }
 
-export function DemoButton({ slug }: { slug: string }) {
+export function DemoButton({ slug, locale }: { slug: string; locale: Locale }) {
    const url = PROJECT_LINKS[resolveSlug(slug)]?.video;
    if (!url) return null;
    return (
       <a href={url} target="_blank" rel="noopener noreferrer" className={LINK}>
          <MdPlayArrow className="size-4 shrink-0" />
-         Demo
+         {chat[locale].demo}
       </a>
    );
 }
 
-export function ArticleButton({ slug }: { slug: string }) {
+export function ArticleButton({
+   slug,
+   locale,
+}: {
+   slug: string;
+   locale: Locale;
+}) {
    const url = PROJECT_LINKS[resolveSlug(slug)]?.paper;
    if (!url) return null;
    return (
       <a href={url} target="_blank" rel="noopener noreferrer" className={LINK}>
          <MdArticle className="size-4 shrink-0" />
-         Article
+         {chat[locale].article}
       </a>
    );
 }
@@ -155,7 +168,7 @@ export function PostButton({ slug, locale }: { slug: string; locale: Locale }) {
    return (
       <a href={`/${locale}/blog/${slug}`} className={LINK}>
          <MdMenuBook className="size-4 shrink-0" />
-         {locale === "es" ? "Leer post" : "Read post"}
+         {chat[locale].readPost}
       </a>
    );
 }
@@ -184,7 +197,7 @@ export function CertificateButton({
          className={BTN}
       >
          <MdVerified className="size-4 shrink-0" />
-         Certificates
+         {chat[locale].certificates}
       </button>
    );
 }
@@ -252,21 +265,21 @@ export function ExperienceButton({
          className={BTN}
       >
          <MdBusinessCenter className="size-4 shrink-0" />
-         {label} Experience
+         {label} {chat[locale].experience}
       </button>
    );
 }
 
-export function EmailButton() {
+export function EmailButton({ locale }: { locale: Locale }) {
    return (
       <a href={`mailto:${PROFESSIONAL_LINKS.email}`} className={LINK}>
          <MdEmail className="size-4 shrink-0" />
-         Email
+         {chat[locale].email}
       </a>
    );
 }
 
-export function GitHubButton() {
+export function GitHubButton({ locale }: { locale: Locale }) {
    return (
       <a
          href={PROFESSIONAL_LINKS.github}
@@ -275,12 +288,12 @@ export function GitHubButton() {
          className={LINK}
       >
          <MdCode className="size-4 shrink-0" />
-         GitHub
+         {chat[locale].github}
       </a>
    );
 }
 
-export function LinkedInButton() {
+export function LinkedInButton({ locale }: { locale: Locale }) {
    return (
       <a
          href={PROFESSIONAL_LINKS.linkedin}
@@ -289,7 +302,7 @@ export function LinkedInButton() {
          className={LINK}
       >
          <MdLink className="size-4 shrink-0" />
-         LinkedIn
+         {chat[locale].linkedin}
       </a>
    );
 }
@@ -299,7 +312,7 @@ export function CVButton({ locale }: { locale: Locale }) {
    return (
       <a href={cvLink} download className={LINK}>
          <MdFileDownload className="size-4 shrink-0" />
-         CV
+         {chat[locale].cv}
       </a>
    );
 }
@@ -315,7 +328,7 @@ export function AboutButton({ locale }: { locale: Locale }) {
          className={BTN}
       >
          <MdPerson className="size-4 shrink-0" />
-         About Christian
+         {chat[locale].about}
       </button>
    );
 }

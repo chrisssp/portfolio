@@ -26,6 +26,8 @@ interface ProjectEcosystemProps {
    labels: Dictionary["projects"]["sections"];
    actions: Dictionary["projects"]["actions"];
    bg?: string;
+   previousImageLabel?: string;
+   nextImageLabel?: string;
 }
 
 export const ProjectEcosystem = ({
@@ -33,6 +35,8 @@ export const ProjectEcosystem = ({
    labels,
    actions,
    bg,
+   previousImageLabel,
+   nextImageLabel,
 }: ProjectEcosystemProps) => {
    if (!project.ecosystem) return null;
 
@@ -122,6 +126,8 @@ export const ProjectEcosystem = ({
                         reverse={index % 2 !== 0}
                         actions={itemActions}
                         imageClassName="bg-[#2196f3]"
+                        previousImageLabel={previousImageLabel}
+                        nextImageLabel={nextImageLabel}
                      />
                   </AnimatedSection>
                );

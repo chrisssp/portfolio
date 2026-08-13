@@ -14,6 +14,7 @@ interface ButtonProps {
    style?: CSSProperties;
    "aria-expanded"?: boolean;
    "aria-haspopup"?: boolean | "dialog" | "menu";
+   "aria-pressed"?: boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -32,6 +33,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
          style,
          "aria-expanded": ariaExpanded,
          "aria-haspopup": ariaHaspopup,
+         "aria-pressed": ariaPressed,
       },
       ref,
    ) => {
@@ -61,6 +63,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             aria-label={ariaLabel}
             aria-expanded={ariaExpanded}
             aria-haspopup={ariaHaspopup}
+            aria-pressed={ariaPressed}
             disabled={disabled}
             title={title}
             style={style}

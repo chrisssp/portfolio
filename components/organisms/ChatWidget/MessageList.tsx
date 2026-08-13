@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/i18n/config";
+import { chat } from "@/i18n/modules/chat";
 import type { ChatMessage } from "./chatSession";
 import { MessageBubble } from "./MessageBubble";
 import { TypingIndicator } from "./TypingIndicator";
@@ -54,11 +55,15 @@ export function MessageList({
       return new Set();
    }
 
+   // Privacy hint shows at the bottom of history until the user sends their
+   // first message, then it disappears.
+   const showPrivacyHint = !messages.some((m) => m.role === "user");
+
    return (
       <div
          className="flex-1 overflow-y-auto px-5 py-4 space-y-1 scroll-smooth"
          role="log"
-         aria-label="Chat messages"
+         aria-label={chat[locale].chatLogLabel}
       >
          {messages.map((msg, idx) => (
             <MessageBubble
@@ -86,6 +91,13 @@ export function MessageList({
 
          {/* Typing indicator when waiting for first token */}
          {isLoading && !streamingContent && <TypingIndicator />}
+
+         {/* Privacy hint — visible only before the first user message */}
+         {showPrivacyHint && (
+            <p className="pt-3 pb-1 text-center text-[11px] leading-relaxed text-body/40 select-none">
+               {chat[locale].privacyHint}
+            </p>
+         )}
 
          <div ref={bottomRef} />
       </div>

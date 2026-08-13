@@ -24,6 +24,8 @@ interface FeatureCardProps {
     * items, the single image becomes a navigable gallery. The first image in
     * the combined list is `imagePath` followed by these extras. */
    galleryImages?: string[];
+   previousImageLabel?: string;
+   nextImageLabel?: string;
 }
 
 export const FeatureCard = ({
@@ -37,6 +39,8 @@ export const FeatureCard = ({
    selectedTechs,
    onTechClick,
    galleryImages,
+   previousImageLabel = "Previous image",
+   nextImageLabel = "Next image",
 }: FeatureCardProps) => {
    const [badgeRef, badgesVisible] = useScrollReveal<HTMLDivElement>({
       threshold: 0.1,
@@ -251,7 +255,7 @@ export const FeatureCard = ({
                   <button
                      type="button"
                      onClick={goPrev}
-                     aria-label="Previous image"
+                     aria-label={previousImageLabel}
                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center justify-center size-9 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 hover:bg-black/70 hover:scale-110 transition-all duration-200 cursor-pointer"
                   >
                      <MdChevronLeft className="size-6" />
@@ -259,7 +263,7 @@ export const FeatureCard = ({
                   <button
                      type="button"
                      onClick={goNext}
-                     aria-label="Next image"
+                     aria-label={nextImageLabel}
                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 hidden lg:flex items-center justify-center size-9 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 hover:bg-black/70 hover:scale-110 transition-all duration-200 cursor-pointer"
                   >
                      <MdChevronRight className="size-6" />

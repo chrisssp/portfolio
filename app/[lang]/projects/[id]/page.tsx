@@ -106,6 +106,8 @@ export default async function ProjectPage({ params }: Props) {
                labels={dict.projects.sections}
                actions={dict.projects.actions}
                bg={hasCerts ? "bg-page" : undefined}
+               previousImageLabel={dict.ui.previousImage}
+               nextImageLabel={dict.ui.nextImage}
             />
             <CTA
                dict={dict}

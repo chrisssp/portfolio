@@ -18,6 +18,8 @@ interface ProjectCardProps {
    lang: Locale;
    selectedTechs?: string[];
    onTechClick?: (techId: string) => void;
+   previousImageLabel?: string;
+   nextImageLabel?: string;
 }
 
 export const ProjectCard = ({
@@ -27,6 +29,8 @@ export const ProjectCard = ({
    lang,
    selectedTechs,
    onTechClick,
+   previousImageLabel,
+   nextImageLabel,
 }: ProjectCardProps) => {
    const handleViewDetails = () => {
       if (typeof window === "undefined") return;
@@ -95,6 +99,8 @@ export const ProjectCard = ({
          actions={projectActions}
          selectedTechs={selectedTechs}
          onTechClick={onTechClick}
+         previousImageLabel={previousImageLabel}
+         nextImageLabel={nextImageLabel}
       />
    );
 };

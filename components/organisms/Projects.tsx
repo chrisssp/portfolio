@@ -501,6 +501,8 @@ export const Projects = ({ dict, lang }: ProjectsProps) => {
                         lang={lang}
                         selectedTechs={selections.tech}
                         onTechClick={(techId) => handleToggle("tech", techId)}
+                        previousImageLabel={dict.ui.previousImage}
+                        nextImageLabel={dict.ui.nextImage}
                      />
                   </AnimatedSection>
                ))

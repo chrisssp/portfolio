@@ -13,6 +13,7 @@ export interface MDXDiagramProps {
    width?: number;
    height?: number;
    caption?: string;
+   closeLabel?: string;
 }
 
 const emptySubscribe = () => () => {};
@@ -24,6 +25,7 @@ export function MDXDiagram({
    width,
    height,
    caption,
+   closeLabel,
 }: MDXDiagramProps) {
    const { resolvedTheme } = useTheme();
    const mounted = useSyncExternalStore(
@@ -37,7 +39,12 @@ export function MDXDiagram({
 
    return (
       <figure className="my-10 sm:my-16">
-         <FullscreenFigure src={src} alt={alt} caption={caption}>
+         <FullscreenFigure
+            src={src}
+            alt={alt}
+            caption={caption}
+            closeLabel={closeLabel}
+         >
             <Image
                src={src}
                alt={alt}
