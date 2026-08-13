@@ -10,6 +10,7 @@ import { Button } from "@/components/atoms/Button";
 import { Card } from "@/components/atoms/Card";
 import { SectionContainer } from "@/components/atoms/SectionContainer";
 import { Typography } from "@/components/atoms/Typography";
+import { FullscreenFigure } from "@/components/mdx/FullscreenFigure";
 import { BlogCard } from "@/components/molecules/BlogCard";
 import Resources from "@/components/molecules/Resources";
 import ShareButtons from "@/components/molecules/ShareButtons";
@@ -155,24 +156,30 @@ async function PostPage({ params }: PostPageProps) {
             <AnimatedSection variant="fade-up" delay={100}>
                {post.frontmatter.coverImage && (
                   <div className="relative mb-10">
-                     <Image
+                     <FullscreenFigure
                         src={post.frontmatter.coverImage}
+                        darkSrc={post.frontmatter.coverImageDark}
                         alt={post.frontmatter.title}
-                        width={1200}
-                        height={627}
-                        priority
-                        className="theme-img-light w-full h-auto rounded-2xl"
-                     />
-                     {post.frontmatter.coverImageDark && (
+                     >
                         <Image
-                           src={post.frontmatter.coverImageDark}
+                           src={post.frontmatter.coverImage}
                            alt={post.frontmatter.title}
                            width={1200}
                            height={627}
                            priority
-                           className="theme-img-dark w-full h-auto rounded-2xl"
+                           className="theme-img-light w-full h-auto rounded-2xl"
                         />
-                     )}
+                        {post.frontmatter.coverImageDark && (
+                           <Image
+                              src={post.frontmatter.coverImageDark}
+                              alt={post.frontmatter.title}
+                              width={1200}
+                              height={627}
+                              priority
+                              className="theme-img-dark w-full h-auto rounded-2xl"
+                           />
+                        )}
+                     </FullscreenFigure>
                   </div>
                )}
             </AnimatedSection>

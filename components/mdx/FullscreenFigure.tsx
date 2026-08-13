@@ -15,6 +15,7 @@ const emptySubscribe = () => () => {};
 
 export interface FullscreenFigureProps {
    src: string;
+   darkSrc?: string;
    alt: string;
    caption?: string;
    children: ReactNode;
@@ -22,6 +23,7 @@ export interface FullscreenFigureProps {
 
 export function FullscreenFigure({
    src,
+   darkSrc,
    alt,
    caption,
    children,
@@ -31,10 +33,11 @@ export function FullscreenFigure({
    const closeRef = useRef<HTMLButtonElement>(null);
    const hasOpenedRef = useRef(false);
 
-   // The diagram/image variant passed as `src` is theme-resolved upstream
-   // (light variant is designed for a light background, dark for dark). The
-   // lightbox backdrop must follow the same theme or light-mode assets get
-   // lost against a dark overlay.
+   // The lightbox backdrop must follow the asset's designed background:
+   // light-mode variants are built for a white backdrop, dark ones for a
+   // dark one. `src` is either theme-resolved upstream (diagrams) or the
+   // light variant; `darkSrc` (when present) switches the overlay to the
+   // dark variant of the same asset.
    const { resolvedTheme } = useTheme();
    const mounted = useSyncExternalStore(
       emptySubscribe,
@@ -42,6 +45,7 @@ export function FullscreenFigure({
       () => false,
    );
    const isDark = mounted && resolvedTheme === "dark";
+   const overlaySrc = isDark && darkSrc ? darkSrc : src;
 
    const openLightbox = () => setOpen(true);
    const closeLightbox = () => setOpen(false);
@@ -121,7 +125,7 @@ export function FullscreenFigure({
                      {/* eslint-disable @next/next/no-img-element -- full-resolution preview in the lightbox overlay; intentionally not next/image (per design) */}
                      {/* biome-ignore lint/performance/noImgElement: lightbox shows the original asset at full resolution */}
                      <img
-                        src={src}
+                        src={overlaySrc}
                         alt={alt}
                         className="max-w-[92vw] max-h-[86vh] w-auto h-auto object-contain rounded-lg"
                      />
