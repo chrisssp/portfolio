@@ -4,7 +4,9 @@ import { google } from "@ai-sdk/google";
 import { groq } from "@ai-sdk/groq";
 import { streamText } from "ai";
 import { type NextRequest, NextResponse } from "next/server";
+import { PROFESSIONAL_LINKS } from "@/config/links";
 import { experience } from "@/i18n/modules/experience";
+import { hero } from "@/i18n/modules/hero";
 
 // --- Types ---
 
@@ -41,6 +43,7 @@ interface ContentChunk {
    links?: LinkItem[];
    ecosystem?: Array<{ title: string; description: string }>;
    languages?: Array<{ language: string; level: string }>;
+   stats?: Array<{ value: string; label: string }>;
    education?: Array<{
       institution: string;
       degree: string;
@@ -120,6 +123,7 @@ type QueryType =
    | "about" // Asks about Christian personally
    | "contact" // Asks how to contact
    | "ecosystem" // Asks about project components/architecture
+   | "blog" // Asks about blog posts/articles
    | "general"; // Fallback
 
 const PROJECT_PATTERNS: Record<string, string[]> = {
@@ -149,6 +153,40 @@ function detectProjectSlug(query: string): string | null {
    return null;
 }
 
+// Comparison queries ("azkali vs dabetai") may mention several projects at once.
+// Returns ALL matched slugs in PROJECT_PATTERNS order (first one wins the
+// classification, but retrieval should load every project the user named).
+function detectProjectSlugs(query: string): string[] {
+   const lower = query.toLowerCase();
+   const found: string[] = [];
+   for (const [slug, patterns] of Object.entries(PROJECT_PATTERNS)) {
+      if (patterns.some((p) => lower.includes(p))) found.push(slug);
+   }
+   return found;
+}
+
+// Maps the canonical slug (PROJECT_PATTERNS key) to the chunk-id prefix used in
+// portfolio-content.json, which is derived from the i18n module FILENAME
+// (hyphens dropped, e.g. coppel-nexus → coppelnexus, flacks-cc → flacks).
+const PROJECT_CHUNK_PREFIX: Record<string, string> = {
+   "7dcompass": "7dcompass",
+   azkali: "azkali",
+   "coppel-nexus": "coppelnexus",
+   "flacks-cc": "flacks",
+   mtrpa: "mtrpa",
+   iapex: "iapex",
+   dabetai: "dabetai",
+   portfolio: "portfolio",
+   puntofiel: "puntofiel",
+   ratacueva: "ratacueva",
+};
+
+function projectChunkPrefixes(slug: string): string[] {
+   const prefixes = new Set<string>([slug, PROJECT_CHUNK_PREFIX[slug] ?? ""]);
+   prefixes.delete("");
+   return [...prefixes];
+}
+
 interface QueryClassification {
    type: QueryType;
    projectSlug?: string; // If project-specific, which one
@@ -174,6 +212,27 @@ function classifyQuery(query: string): QueryClassification {
       "teléfono",
       "phone",
       "whatsapp",
+      "linkedin",
+      "github",
+      "youtube",
+      "redes",
+      "social",
+      "cv",
+      "resume",
+      "curriculum",
+      "currículum",
+      "hoja de vida",
+      "ubicaci",
+      "ubicacion",
+      "location",
+      "dónde estás",
+      "donde estas",
+      "dónde vives",
+      "donde vives",
+      "de dónde eres",
+      "de donde eres",
+      "where are you based",
+      "based in",
    ];
    if (contactPatterns.some((p) => lower.includes(p))) {
       return { type: "contact", confidence: 1 };
@@ -187,6 +246,7 @@ function classifyQuery(query: string): QueryClassification {
       "degree",
       "university",
       "carrera",
+      "estudi",
       "estudio",
       "estudios",
       "universidad",
@@ -228,6 +288,10 @@ function classifyQuery(query: string): QueryClassification {
       "about",
       "about yourself",
       "about you",
+      "sobre christian",
+      "sobre cristian",
+      "about christian",
+      "about cristian",
       "sobre ti",
       "sobre usted",
       "quien eres",
@@ -267,6 +331,32 @@ function classifyQuery(query: string): QueryClassification {
    ];
    if (ecosystemPatterns.some((p) => lower.includes(p))) {
       return { type: "ecosystem", confidence: 1 };
+   }
+
+   // Blog posts / articles
+   const blogPatterns = [
+      "blog",
+      "artículo",
+      "articulo",
+      "article",
+      "el post",
+      "un post",
+      "post de",
+      "post sobre",
+      "escribist",
+      "escribir",
+      "escribe",
+      "wrote",
+      "writing",
+      "publicaste",
+      "publicado",
+      "published",
+      "iapex-ai-finds-missing-people",
+      "from-programming-with-ai-to-orchestrating",
+      "sdd-spec-driven-development",
+   ];
+   if (blogPatterns.some((p) => lower.includes(p))) {
+      return { type: "blog", confidence: 1 };
    }
 
    // Project general
@@ -328,47 +418,62 @@ function matchContentSmart(
 
    switch (classification.type) {
       case "project-specific": {
-         // Load only that project's chunks
-         const slug = classification.projectSlug!;
-         for (const chunk of localeChunks) {
-            if (chunk.id.startsWith(slug) && !seen.has(chunk.id)) {
-               matched.push(chunk);
-               seen.add(chunk.id);
-            }
-         }
-         // Also load the experience entry for this project (if any)
+         // Load every project the user mentioned (comparisons: "azkali vs dabetai").
+         // projectSlug carries the classified one; re-detect the full set from the query.
+         const slugs = classification.projectSlug
+            ? [
+                 classification.projectSlug,
+                 ...detectProjectSlugs(query).filter(
+                    (s) => s !== classification.projectSlug,
+                 ),
+              ]
+            : detectProjectSlugs(query);
          const experienceItems =
             locale === "en" ? experience.en.items : experience.es.items;
-         const exp = experienceItems.find((e) => e.projectId === slug);
-         if (exp) {
-            const chunkId = `exp-${exp.projectId}-${locale}`;
-            if (!seen.has(chunkId)) {
-               matched.push({
-                  id: chunkId,
-                  section: "experience",
-                  locale,
-                  title: `${exp.role} at ${exp.company}`,
-                  description: exp.description,
-                  company: exp.company,
-                  role: exp.role,
-                  date: exp.date,
-                  location: exp.location,
-                  remote: exp.remote,
-                  tags: exp.tags,
-                  projectId: exp.projectId,
-               });
-               seen.add(chunkId);
+
+         for (const slug of slugs) {
+            const prefixes = projectChunkPrefixes(slug);
+            for (const chunk of localeChunks) {
+               if (
+                  prefixes.some((p) => chunk.id.startsWith(p)) &&
+                  !seen.has(chunk.id)
+               ) {
+                  matched.push(chunk);
+                  seen.add(chunk.id);
+               }
             }
-         }
-         // Also load related blog posts whose tags reference this project
-         for (const chunk of localeChunks) {
-            if (
-               chunk.section === "blog" &&
-               chunk.tags?.includes(slug) &&
-               !seen.has(chunk.id)
-            ) {
-               matched.push(chunk);
-               seen.add(chunk.id);
+            // Also load the experience entry for this project (if any)
+            const exp = experienceItems.find((e) => e.projectId === slug);
+            if (exp) {
+               const chunkId = `exp-${exp.projectId}-${locale}`;
+               if (!seen.has(chunkId)) {
+                  matched.push({
+                     id: chunkId,
+                     section: "experience",
+                     locale,
+                     title: `${exp.role} at ${exp.company}`,
+                     description: exp.description,
+                     company: exp.company,
+                     role: exp.role,
+                     date: exp.date,
+                     location: exp.location,
+                     remote: exp.remote,
+                     tags: exp.tags,
+                     projectId: exp.projectId,
+                  });
+                  seen.add(chunkId);
+               }
+            }
+            // Also load related blog posts whose tags reference this project
+            for (const chunk of localeChunks) {
+               if (
+                  chunk.section === "blog" &&
+                  chunk.tags?.includes(slug) &&
+                  !seen.has(chunk.id)
+               ) {
+                  matched.push(chunk);
+                  seen.add(chunk.id);
+               }
             }
          }
          break;
@@ -425,10 +530,12 @@ function matchContentSmart(
       }
 
       case "about": {
-         // Load about + education (personal context)
+         // Load about + education + skills (personal context)
          for (const chunk of localeChunks) {
             if (
-               (chunk.section === "about" || chunk.section === "education") &&
+               (chunk.section === "about" ||
+                  chunk.section === "education" ||
+                  chunk.section === "skills") &&
                !seen.has(chunk.id)
             ) {
                matched.push(chunk);
@@ -456,8 +563,12 @@ function matchContentSmart(
 
          if (ecoSlug) {
             // Load specific project ecosystem
+            const prefixes = projectChunkPrefixes(ecoSlug);
             for (const chunk of localeChunks) {
-               if (chunk.id.startsWith(ecoSlug) && !seen.has(chunk.id)) {
+               if (
+                  prefixes.some((p) => chunk.id.startsWith(p)) &&
+                  !seen.has(chunk.id)
+               ) {
                   matched.push(chunk);
                   seen.add(chunk.id);
                }
@@ -479,17 +590,34 @@ function matchContentSmart(
          break;
       }
 
+      case "blog": {
+         // Load all blog post chunks (frontmatter title/description only — no body).
+         // There are only 3 posts; loading them all grounds any article question.
+         for (const chunk of localeChunks) {
+            if (chunk.section === "blog" && !seen.has(chunk.id)) {
+               matched.push(chunk);
+               seen.add(chunk.id);
+            }
+         }
+         break;
+      }
+
       default: {
-         // Fallback: about + hero (lightweight context)
+         // Fallback: hero + about + education + skills (lightweight context).
+         // Education is tiny (~350 chars) and prevents the model from inventing
+         // the user's school history when a study-related phrase slips through.
          for (const chunk of localeChunks) {
             if (
-               (chunk.section === "hero" || chunk.section === "about") &&
+               (chunk.section === "hero" ||
+                  chunk.section === "about" ||
+                  chunk.section === "education" ||
+                  chunk.section === "skills") &&
                !seen.has(chunk.id)
             ) {
                matched.push(chunk);
                seen.add(chunk.id);
             }
-            if (matched.length >= 2) break;
+            if (matched.length >= 4) break;
          }
          break;
       }
@@ -574,6 +702,20 @@ function buildContentIndex(cache: ContentChunk[], locale: string): string {
       }
       parts.push(`Technologies: ${techLines.join(" | ")}`);
    }
+
+   // Always-present contact block (~200 chars): grounds contact/social/location
+   // questions so the model never invents URLs or email addresses.
+   const heroLocale = hero[locale as "en" | "es"];
+   const cvLink = heroLocale?.actions?.cvLink;
+   const contactParts = [
+      `Email: ${PROFESSIONAL_LINKS.email}`,
+      `GitHub: ${PROFESSIONAL_LINKS.github}`,
+      `LinkedIn: ${PROFESSIONAL_LINKS.linkedin}`,
+      `YouTube: ${PROFESSIONAL_LINKS.youtube}`,
+      `Location: México (Córdoba, Veracruz)`,
+   ];
+   if (cvLink) contactParts.push(`CV: ${cvLink}`);
+   parts.push(`Contact: ${contactParts.join(" | ")}`);
 
    return parts.join("\n");
 }
@@ -669,6 +811,11 @@ function buildSystemPrompt(
 
          const parts = [`[${c.section}] ${c.title} | ${c.description}`];
          if (c.fullDescription) parts.push(`(${c.fullDescription})`);
+         if (c.section === "hero" && c.stats?.length) {
+            parts.push(
+               `Stats:${c.stats.map((s) => `${s.value} ${s.label}`).join(" | ")}`,
+            );
+         }
          if (c.techStack?.length) parts.push(`T:${c.techStack.join(",")}`);
          if (c.challenge)
             parts.push(

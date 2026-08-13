@@ -50,6 +50,13 @@ interface ContentChunk {
       achievement?: string;
    }[];
    languages?: { language: string; level: string }[];
+   stats?: { value: string; label: string }[];
+   certificates?: {
+      title: string;
+      issuer?: string;
+      date?: string;
+      filePath?: string;
+   }[];
 }
 
 // --- Module shapes (accessed via dynamic import, hence cast at the boundary) ---
@@ -59,6 +66,7 @@ type Locale = "en" | "es";
 interface HeroLocale {
    role: string;
    description: string;
+   stats?: { value: string; label: string; tooltip?: string }[];
 }
 
 interface AboutEducation {
@@ -104,11 +112,15 @@ interface ProjectLocale {
    fullDescription?: string;
    challenge?: { description: string; solution: string };
    ecosystem?: { items?: { title: string; description: string }[] };
+   certificates?: { title: string; filePath?: string }[];
 }
 
 interface ProjectModule {
    [locale: string]: unknown;
-   data?: { techStack?: string[] };
+   data?: {
+      techStack?: string[];
+      certificates?: { filePath?: string; issuer?: string; date?: string }[];
+   };
 }
 
 // --- Import modules ---
@@ -194,6 +206,7 @@ function extractChunks(modules: Record<string, unknown>): ContentChunk[] {
             locale,
             title: "Christian Serrano",
             description: `${data.role}. ${data.description}`,
+            stats: data.stats?.map(({ value, label }) => ({ value, label })),
          });
       }
    }
@@ -288,6 +301,38 @@ function extractChunks(modules: Record<string, unknown>): ContentChunk[] {
                description: item.description,
             })) ?? [];
 
+         // Merge certificates: per-locale titles (langData) enriched with the
+         // language-neutral issuer/date/filePath from data.certificates.
+         const dataCerts = data.certificates ?? [];
+         const langCerts = langData.certificates ?? [];
+         let certificates: NonNullable<ContentChunk["certificates"]> = [];
+         if (langCerts.length > 0) {
+            certificates = langCerts.map((cert, i) => {
+               const match =
+                  dataCerts.find(
+                     (d) =>
+                        d.filePath &&
+                        cert.filePath &&
+                        d.filePath === cert.filePath,
+                  ) ?? dataCerts[i];
+               return {
+                  title: cert.title,
+                  ...(cert.filePath || match?.filePath
+                     ? { filePath: cert.filePath ?? match?.filePath }
+                     : {}),
+                  ...(match?.issuer ? { issuer: match.issuer } : {}),
+                  ...(match?.date ? { date: match.date } : {}),
+               };
+            });
+         } else if (dataCerts.length > 0) {
+            certificates = dataCerts.map((d) => ({
+               title: `${d.issuer ?? "Certificate"}${d.date ? ` (${d.date})` : ""}`,
+               ...(d.filePath ? { filePath: d.filePath } : {}),
+               ...(d.issuer ? { issuer: d.issuer } : {}),
+               ...(d.date ? { date: d.date } : {}),
+            }));
+         }
+
          chunks.push({
             id: `${slug}-${locale}`,
             section: "project",
@@ -298,6 +343,7 @@ function extractChunks(modules: Record<string, unknown>): ContentChunk[] {
             techStack: data.techStack,
             challenge: langData.challenge,
             ecosystem: ecosystemItems.length > 0 ? ecosystemItems : undefined,
+            certificates: certificates.length > 0 ? certificates : undefined,
          });
       }
    }
