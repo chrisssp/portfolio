@@ -29,7 +29,7 @@ const ES: ComparisonTexts = {
    leftCaption: "personas desaparecidas\ny no localizadas\nRNPDNO · 2025",
    rightNumber: "72,000",
    rightCaption: "cuerpos sin identificar\nen morgues\nINEGI · 2019–2023",
-   gapLabel: "los que están vivos\ny nadie busca",
+   gapLabel: "los que están vivos\naún sin encontrar",
 };
 
 const EN: ComparisonTexts = {
@@ -37,7 +37,7 @@ const EN: ComparisonTexts = {
    leftCaption: "missing and\nunlocated people\nRNPDNO · 2025",
    rightNumber: "72,000",
    rightCaption: "unidentified bodies\nin morgues\nINEGI · 2019–2023",
-   gapLabel: "the ones alive\nnobody is looking for",
+   gapLabel: "the ones alive\nnot yet found",
 };
 
 function buildComparison(t: ComparisonTexts, p: Palette) {

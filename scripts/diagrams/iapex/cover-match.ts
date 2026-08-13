@@ -29,7 +29,7 @@ type MatchCoverTexts = {
 
 const ES: MatchCoverTexts = {
    title: "IAPEX",
-   subtitle: "La IA que encuentra a los que nadie busca",
+   subtitle: "La IA que te ayuda a encontrar a tu ser querido desaparecido",
    question: "¿Quién es?",
    family: "Su familia",
    match: "MATCH",
@@ -39,7 +39,7 @@ const ES: MatchCoverTexts = {
 
 const EN: MatchCoverTexts = {
    title: "IAPEX",
-   subtitle: "The AI that finds the ones nobody looks for",
+   subtitle: "The AI that helps you find your missing loved one",
    question: "Who is this?",
    family: "Their family",
    match: "MATCH",

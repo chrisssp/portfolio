@@ -22,13 +22,13 @@ type CoverTexts = {
 
 const ES: CoverTexts = {
    title: "IAPEX",
-   subtitle: "La IA que encuentra a los que nadie busca",
+   subtitle: "La IA que te ayuda a encontrar a tu ser querido desaparecido",
    tagline: "¿Quién eres?",
 };
 
 const EN: CoverTexts = {
    title: "IAPEX",
-   subtitle: "The AI that finds the ones nobody looks for",
+   subtitle: "The AI that helps you find your missing loved one",
    tagline: "Who are you?",
 };
 
