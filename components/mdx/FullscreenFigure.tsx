@@ -81,7 +81,10 @@ export function FullscreenFigure({
       <div className="relative group">
          {/* biome-ignore lint/a11y/noStaticElementInteractions: clicking the media is a pointer convenience; the expand button is the keyboard-accessible trigger */}
          {/* biome-ignore lint/a11y/useKeyWithClickEvents: the media wrapper is not focusable; keyboard access is provided by the expand button */}
-         <div onClick={openLightbox} className="cursor-zoom-in">
+         <div
+            onClick={openLightbox}
+            className="cursor-zoom-in transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.015]"
+         >
             {children}
          </div>
          <button
