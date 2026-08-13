@@ -266,7 +266,6 @@ function extractChunks(modules: Record<string, unknown>): ContentChunk[] {
                role: item.role,
                date: item.date,
                tags: item.tags,
-               techStack: item.projectId ? [item.product || ""] : undefined,
             });
          }
       }

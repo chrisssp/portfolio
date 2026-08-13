@@ -122,6 +122,33 @@ type QueryType =
    | "ecosystem" // Asks about project components/architecture
    | "general"; // Fallback
 
+const PROJECT_PATTERNS: Record<string, string[]> = {
+   "7dcompass": ["7d", "compass", "7d-compass", "seven d"],
+   azkali: ["azkali"],
+   "coppel-nexus": ["coppel", "nexus", "coppel nexus"],
+   "flacks-cc": ["flack", "flacks", "cut & connect", "barber"],
+   mtrpa: ["mtrpa", "master template", "rutas", "power app", "pepsico"],
+   iapex: ["iapex", "encuéntrame", "encuentrame"],
+   dabetai: ["dabetai", "diabetes"],
+   portfolio: [
+      "portfolio",
+      "portafolio",
+      "this site",
+      "this website",
+      "este sitio",
+   ],
+   puntofiel: ["punto", "fiel", "puntofiel"],
+   ratacueva: ["ratacueva", "rata cueva", "rata", "cueva", "gaming ecommerce"],
+};
+
+function detectProjectSlug(query: string): string | null {
+   const lower = query.toLowerCase();
+   for (const [slug, patterns] of Object.entries(PROJECT_PATTERNS)) {
+      if (patterns.some((p) => lower.includes(p))) return slug;
+   }
+   return null;
+}
+
 interface QueryClassification {
    type: QueryType;
    projectSlug?: string; // If project-specific, which one
@@ -132,35 +159,9 @@ function classifyQuery(query: string): QueryClassification {
    const lower = query.toLowerCase();
 
    // Project-specific matching (highest priority)
-   const projectPatterns: Record<string, string[]> = {
-      "7dcompass": ["7d", "compass", "7d-compass", "seven d"],
-      azkali: ["azkali"],
-      "coppel-nexus": ["coppel", "nexus", "coppel nexus"],
-      "flacks-cc": ["flack", "flacks", "cut & connect", "barber"],
-      mtrpa: ["mtrpa", "master template", "rutas", "power app", "pepsico"],
-      iapex: ["iapex", "encuéntrame", "encuentrame"],
-      dabetai: ["dabetai", "diabetes"],
-      portfolio: [
-         "portfolio",
-         "portafolio",
-         "this site",
-         "this website",
-         "este sitio",
-      ],
-      puntofiel: ["punto", "fiel", "puntofiel"],
-      ratacueva: [
-         "ratacueva",
-         "rata cueva",
-         "rata",
-         "cueva",
-         "gaming ecommerce",
-      ],
-   };
-
-   for (const [slug, patterns] of Object.entries(projectPatterns)) {
-      if (patterns.some((p) => lower.includes(p))) {
-         return { type: "project-specific", projectSlug: slug, confidence: 1 };
-      }
+   const projectSlug = detectProjectSlug(query);
+   if (projectSlug) {
+      return { type: "project-specific", projectSlug, confidence: 1 };
    }
 
    // Contact
@@ -286,6 +287,31 @@ function classifyQuery(query: string): QueryClassification {
    return { type: "general", confidence: 0.5 };
 }
 
+// Follow-up handling: a generic question right after a specific one is usually a
+// follow-up on the same topic (e.g. "¿y de qué trata?" after asking about a project).
+// The RAG would otherwise fall back to a tiny context and force the model to invent.
+function resolveClassification(
+   messages: Array<{ role: "user" | "assistant"; content: string }>,
+): QueryClassification {
+   const users = messages.filter((m) => m.role === "user");
+   const last = users[users.length - 1];
+   if (!last) return { type: "general", confidence: 0.5 };
+
+   const current = classifyQuery(last.content);
+
+   if (
+      (current.type === "general" || current.confidence < 0.7) &&
+      users.length > 1
+   ) {
+      const prior = classifyQuery(users[users.length - 2].content);
+      if (prior.type !== "general" && prior.confidence >= 0.7) {
+         return { ...prior, confidence: current.confidence };
+      }
+   }
+
+   return current;
+}
+
 // --- Smart Context Matching ---
 
 function matchContentSmart(
@@ -293,7 +319,6 @@ function matchContentSmart(
    locale: string,
    classification: QueryClassification,
 ): ContentChunk[] {
-   const lower = query.toLowerCase();
    const all = contentCache || [];
    const localeChunks = all.filter((c) => c.locale === locale);
    const matched: ContentChunk[] = [];
@@ -425,27 +450,9 @@ function matchContentSmart(
       }
 
       case "ecosystem": {
-         // Detect which project from query, load that project's ecosystem
-         const projectPatterns: Record<string, string[]> = {
-            "7dcompass": ["7d", "compass", "seven d"],
-            azkali: ["azkali"],
-            "coppel-nexus": ["coppel", "nexus"],
-            "flacks-cc": ["flack", "flacks", "barber"],
-            mtrpa: ["mtrpa", "pepsico", "rutas"],
-            iapex: ["iapex"],
-            dabetai: ["dabetai", "diabetes"],
-            portfolio: ["portfolio", "portafolio", "this site"],
-            puntofiel: ["punto", "fiel", "puntofiel"],
-            ratacueva: ["ratacueva", "rata cueva", "gaming ecommerce"],
-         };
-
-         let ecoSlug: string | null = null;
-         for (const [slug, patterns] of Object.entries(projectPatterns)) {
-            if (patterns.some((p) => lower.includes(p))) {
-               ecoSlug = slug;
-               break;
-            }
-         }
+         // Detect which project from query (or reuse a follow-up's context),
+         // then load that project's ecosystem
+         const ecoSlug = classification.projectSlug ?? detectProjectSlug(query);
 
          if (ecoSlug) {
             // Load specific project ecosystem
@@ -488,13 +495,20 @@ function matchContentSmart(
       }
    }
 
-   // Token budget: cap context to ~800 tokens (~4 chars per token)
-   const TOKEN_BUDGET = 3200; // ~800 tokens
+   // Token budget: cap context to ~1500 tokens (~4 chars per token).
+   // project-specific queries bypass the cap — one project's data is small and
+   // sending it complete prevents the model from inventing the missing pieces.
+   const TOKEN_BUDGET = 6000; // ~1500 tokens
    let totalChars = 0;
    const budgeted: ContentChunk[] = [];
    for (const chunk of matched) {
       const chunkSize = JSON.stringify(chunk).length;
-      if (totalChars + chunkSize > TOKEN_BUDGET) break;
+      if (
+         classification.type !== "project-specific" &&
+         totalChars + chunkSize > TOKEN_BUDGET
+      ) {
+         break;
+      }
       budgeted.push(chunk);
       totalChars += chunkSize;
    }
@@ -539,6 +553,26 @@ function buildContentIndex(cache: ContentChunk[], locale: string): string {
       parts.push(
          `Blog: ${blogPosts.map((p) => `${p.title} (${p.postSlug})`).join(" | ")}`,
       );
+   }
+
+   // Compact tech → projects index so "did you use X?" questions always get a
+   // grounded answer without loading every project chunk.
+   const byTech = new Map<string, string[]>();
+   for (const p of lc.filter((c) => c.section === "project")) {
+      for (const tech of p.techStack ?? []) {
+         const t = tech.trim();
+         if (!t) continue;
+         const list = byTech.get(t) ?? [];
+         if (!list.includes(p.title)) list.push(p.title);
+         byTech.set(t, list);
+      }
+   }
+   if (byTech.size > 0) {
+      const techLines: string[] = [];
+      for (const [tech, projects] of byTech) {
+         techLines.push(`${tech} → ${projects.join(", ")}`);
+      }
+      parts.push(`Technologies: ${techLines.join(" | ")}`);
    }
 
    return parts.join("\n");
@@ -776,7 +810,7 @@ export async function POST(request: NextRequest) {
 
       // Load and match content with smart context loading
       await loadContent();
-      const classification = classifyQuery(lastUserMessage.content);
+      const classification = resolveClassification(messages);
       const contextChunks = matchContentSmart(
          lastUserMessage.content,
          locale,
@@ -794,7 +828,19 @@ export async function POST(request: NextRequest) {
       // Stream response — probe Groq first, then commit
       const useGroq = await checkGroqAvailable();
       const provider = useGroq ? "groq" : "gemini";
-      console.info("[chat-api] Using provider:", provider);
+      console.info(
+         "[chat-api]",
+         JSON.stringify({
+            provider,
+            type: classification.type,
+            projectSlug: classification.projectSlug ?? null,
+            chunks: contextChunks.map((c) => c.id),
+            contextChars: contextChunks.reduce(
+               (n, c) => n + JSON.stringify(c).length,
+               0,
+            ),
+         }),
+      );
 
       const result =
          provider === "groq"
@@ -802,12 +848,14 @@ export async function POST(request: NextRequest) {
                  model: groq("llama-3.3-70b-versatile"),
                  system: systemPrompt,
                  messages: buildMessages(messages),
+                 temperature: 0.2,
                  maxOutputTokens: 600,
               })
             : streamText({
                  model: google("gemini-2.0-flash"),
                  system: systemPrompt,
                  messages: buildMessages(messages),
+                 temperature: 0.2,
                  maxOutputTokens: 600,
                  providerOptions: {
                     google: {
