@@ -245,12 +245,27 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
       // Set initial height (top stays at 0 via CSS, no sync call needed)
       panel.style.height = `${vv.height}px`;
 
+      // Some keyboards settle after the last visualViewport event; re-sync
+      // once the focus/keyboard animation has had time to finish
+      const textarea = inputRef.current;
+      let settleTimer: number | undefined;
+      const onFocus = () => {
+         window.clearTimeout(settleTimer);
+         settleTimer = window.setTimeout(sync, 350);
+      };
+      textarea?.addEventListener("focus", onFocus);
+
       vv.addEventListener("resize", sync);
       vv.addEventListener("scroll", sync);
+      // Fallback for browsers that only fire a window resize
+      window.addEventListener("resize", sync);
 
       return () => {
          vv.removeEventListener("resize", sync);
          vv.removeEventListener("scroll", sync);
+         window.removeEventListener("resize", sync);
+         textarea?.removeEventListener("focus", onFocus);
+         window.clearTimeout(settleTimer);
          panel.style.top = "";
          panel.style.height = "";
       };

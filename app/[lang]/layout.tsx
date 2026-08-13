@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
 import { GridMouseTracker } from "@/components/atoms/GridMouseTracker";
 import { MusicPlayer } from "@/components/atoms/MusicPlayer";
@@ -56,6 +56,12 @@ export const metadata: Metadata = {
       apple: "/assets/images/profile/isotipo-black-round.png",
    },
    manifest: "/manifest.webmanifest",
+};
+
+export const viewport: Viewport = {
+   // Chrome Android resizes the layout viewport to the keyboard so the fixed
+   // chat panel can sit directly above it (iOS ignores this, JS sync handles it)
+   interactiveWidget: "resizes-content",
 };
 
 type Props = {
