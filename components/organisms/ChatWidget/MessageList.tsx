@@ -33,7 +33,7 @@ export function MessageList({
    locale,
    onClose,
 }: Props) {
-   const bottomRef = useRef<HTMLDivElement>(null);
+   const scrollRef = useRef<HTMLDivElement>(null);
 
    // Streaming bubble placeholder timestamp. MessageBubble never renders the
    // timestamp, so a mount-time value satisfies ChatMessage without an impure
@@ -42,7 +42,13 @@ export function MessageList({
 
    // biome-ignore lint/correctness/useExhaustiveDependencies: intentional trigger on message/streaming changes
    useEffect(() => {
-      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+      const container = scrollRef.current;
+      if (!container) return;
+      // Instant during streaming (per-token), smooth on new messages/stream end.
+      container.scrollTo({
+         top: container.scrollHeight,
+         behavior: streamingContent ? "instant" : "smooth",
+      });
    }, [messages, streamingContent]);
 
    /** Find markers from the most recent assistant message before a given index */
@@ -61,7 +67,8 @@ export function MessageList({
 
    return (
       <div
-         className="flex-1 overflow-y-auto px-5 py-4 space-y-1 scroll-smooth"
+         ref={scrollRef}
+         className="flex-1 overflow-y-auto px-5 py-4 overscroll-contain"
          role="log"
          aria-label={chat[locale].chatLogLabel}
       >
@@ -69,6 +76,7 @@ export function MessageList({
             <MessageBubble
                key={`${msg.role}-${msg.timestamp}`}
                message={msg}
+               isLatest={idx === messages.length - 1}
                locale={locale}
                onClose={onClose}
                recentMarkers={idx > 0 ? getRecentMarkers(idx) : undefined}
@@ -84,6 +92,7 @@ export function MessageList({
                   timestamp: streamTimestamp,
                }}
                isStreaming
+               isLatest
                locale={locale}
                onClose={onClose}
             />
@@ -98,8 +107,6 @@ export function MessageList({
                {chat[locale].privacyHint}
             </p>
          )}
-
-         <div ref={bottomRef} />
       </div>
    );
 }

@@ -270,14 +270,33 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
       };
    }, [isOpen, onClose]);
 
+   // Lock body scroll while the chat is open so the page behind the panel
+   // cannot scroll (scroll chaining) once the message list hits its boundary
+   useEffect(() => {
+      if (!isOpen) return;
+
+      const prevBody = document.body.style.overflow;
+      const prevHtml = document.documentElement.style.overflow;
+      document.body.style.overflow = "hidden";
+      // iOS can still pan the page from the fixed panel when the input gains
+      // focus (body-only lock is not enough); locking the root element keeps
+      // the panel from jumping with the page while the keyboard opens
+      document.documentElement.style.overflow = "hidden";
+
+      return () => {
+         document.body.style.overflow = prevBody;
+         document.documentElement.style.overflow = prevHtml;
+      };
+   }, [isOpen]);
+
    return (
       <div
          className={`
                fixed z-[70] flex flex-col bg-page border border-body/10 shadow-2xl
-                motion-safe:transition-all motion-safe:duration-200 motion-safe:ease-out
+                 motion-safe:transition-[opacity,transform] motion-safe:duration-200 motion-safe:ease-out
                 ${isOpen ? "opacity-100 md:scale-100 md:translate-y-0" : "opacity-0 md:scale-[0.92] md:translate-y-4 pointer-events-none invisible"}
-               md:overflow-hidden
-               /* Mobile: fullscreen — visualViewport JS syncs top/height */
+                overflow-hidden
+                /* Mobile: fullscreen — visualViewport JS syncs top/height */
                top-0 inset-x-0 bottom-0
                /* Desktop: floating panel anchored to button */
                md:inset-auto md:bottom-24 md:right-6 md:w-[380px] md:h-[520px] md:rounded-2xl
@@ -325,12 +344,14 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
                   ariaLabel={chat[locale].newChat}
                   title={chat[locale].newChat}
                />
+               {/* Close — mobile only; the FAB doubles as close on desktop */}
                <Button
                   variant="outline"
                   icon={<MdClose />}
                   circle
                   size="sm"
                   onClick={onClose}
+                  className="md:hidden"
                   ariaLabel={chat[locale].closeChat}
                />
             </div>
