@@ -34,6 +34,7 @@ export function ChatWidget({ locale }: Props) {
             isOpen={isOpen}
             onClick={() => setIsOpen(!isOpen)}
             isHidden={isHidden}
+            locale={locale}
          />
          <ChatPanel
             isOpen={isOpen && !isHidden}

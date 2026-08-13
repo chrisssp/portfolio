@@ -163,6 +163,7 @@ export interface ChatDict {
    muteSound: string;
    enableSound: string;
    newChat: string;
+   openChat: string;
    closeChat: string;
    sendMessage: string;
    inputPlaceholder: string;
