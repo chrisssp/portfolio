@@ -38,6 +38,8 @@ export function relocateMarkers(text: string): string {
    });
 
    cleanText = cleanText
+      .replace(/,(\s*,)+/g, ",")
+      .replace(/,\s+/g, ", ")
       .replace(/\s*[.,;:!]\s*\.\s*$/g, ".")
       .replace(/\s*[.,;:!]\s*,\s*$/g, ",")
       .replace(/\s{2,}/g, " ")
