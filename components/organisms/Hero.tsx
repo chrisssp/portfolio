@@ -6,7 +6,6 @@ import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { MdDescription } from "react-icons/md";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import type { Dictionary } from "@/i18n/types";
-import { AnimatedSection } from "../atoms/AnimatedSection";
 import { Button } from "../atoms/Button";
 import { SectionContainer } from "../atoms/SectionContainer";
 import { Tooltip } from "../atoms/Tooltip";
@@ -25,33 +24,27 @@ export const Hero = ({ dict }: HeroProps) => {
    return (
       <SectionContainer
          className={`bg-surface transition-all duration-300 ${isMenuOpen ? "z-100" : "z-10"}`}
-         innerClassName="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16"
+         innerClassName="animate-fade-up-once flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16"
       >
          <div className="flex flex-col gap-8 md:gap-12 w-full max-w-190 order-2 lg:order-1">
             <div className="flex flex-col gap-6 md:gap-8 text-left">
                {/* Title & role — appear first */}
-               <AnimatedSection
-                  variant="fade-up"
-                  delay={100}
-                  duration="duration-700"
-               >
-                  <div className="flex flex-col gap-2 md:gap-4">
-                     <Typography
-                        variant="hero"
-                        className="hero-shimmer animate-shimmer motion-reduce:bg-none motion-reduce:text-body"
-                     >
-                        Christian Serrano
-                     </Typography>
-                     <Typewriter
-                        words={dict.hero.roles}
-                        typingSpeed={75}
-                        deletingSpeed={35}
-                        pauseDuration={2200}
-                        as="p"
-                        className="text-lg md:text-4xl lg:text-5xl leading-tight font-bold text-primary"
-                     />
-                  </div>
-               </AnimatedSection>
+               <div className="flex flex-col gap-2 md:gap-4">
+                  <Typography
+                     variant="hero"
+                     className="hero-shimmer animate-shimmer motion-reduce:bg-none motion-reduce:text-body"
+                  >
+                     Christian Serrano
+                  </Typography>
+                  <Typewriter
+                     words={dict.hero.roles}
+                     typingSpeed={75}
+                     deletingSpeed={35}
+                     pauseDuration={2200}
+                     as="p"
+                     className="text-lg md:text-4xl lg:text-5xl leading-tight font-bold text-primary"
+                  />
+               </div>
 
                {/* Stats badges — 3 rows scroll en mobile, wrap en desktop */}
                <style>{`
@@ -62,12 +55,7 @@ export const Hero = ({ dict }: HeroProps) => {
                       }
                    }
                 `}</style>
-               <AnimatedSection
-                  variant="fade-up"
-                  delay={250}
-                  duration="duration-500"
-                  className="w-full min-w-0"
-               >
+               <div className="w-full min-w-0">
                   <div className="hero-stats-scroll w-full overflow-x-auto scrollbar-hide lg:overflow-visible">
                      <div className="group grid grid-rows-3 grid-flow-col gap-2 w-max lg:w-auto lg:grid-rows-none lg:flex lg:flex-wrap lg:gap-3">
                         {dict.hero.stats.map((stat) => (
@@ -101,11 +89,11 @@ export const Hero = ({ dict }: HeroProps) => {
                         ))}
                      </div>
                   </div>
-               </AnimatedSection>
+               </div>
             </div>
 
             {/* Buttons — third */}
-            <div className="animate-fade-up-once">
+            <div>
                <div className="flex flex-wrap justify-start gap-3 md:gap-4">
                   <a
                      href={dict.hero.actions.cvLink}
@@ -177,12 +165,7 @@ export const Hero = ({ dict }: HeroProps) => {
          </div>
 
          {/* Profile image — slides in from the right on desktop */}
-         <AnimatedSection
-            variant="fade-left"
-            delay={150}
-            duration="duration-900"
-            className="order-1 lg:order-2 shrink-0"
-         >
+         <div className="order-1 lg:order-2 shrink-0">
             <Tooltip
                content={dict.hero.description}
                align="center"
@@ -200,7 +183,7 @@ export const Hero = ({ dict }: HeroProps) => {
                   />
                </div>
             </Tooltip>
-         </AnimatedSection>
+         </div>
       </SectionContainer>
    );
 };

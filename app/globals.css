@@ -368,6 +368,8 @@ body {
    .animate-glow,
    .animate-bounce-in,
    .animate-bob,
+   .animate-fade-up-once,
+   .animate-page-enter,
    .bubble-in {
       animation: none !important; /* biome-ignore lint/complexity/noImportantStyles: a11y reduced-motion override */
    }
