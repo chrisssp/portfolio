@@ -76,3 +76,23 @@ export function getRandomError(locale: "en" | "es"): string {
    const idx = Math.floor(Math.random() * pool.length);
    return pool[idx].text;
 }
+
+/**
+ * Specific message for HTTP 429 (rate limited). The user should be told to
+ * WAIT, not that something "hiccuped".
+ */
+export function getRateLimitError(locale: "en" | "es"): string {
+   return locale === "es"
+      ? "Estás enviando mensajes muy rápido. Espera un minuto y vuelve a intentarlo."
+      : "You're sending messages too quickly. Please wait a minute and try again.";
+}
+
+/**
+ * Specific message for request timeout (provider hung). Tells the user the
+ * request took too long, distinct from a generic failure.
+ */
+export function getTimeoutError(locale: "en" | "es"): string {
+   return locale === "es"
+      ? "La respuesta tardó demasiado. Intenta de nuevo en un momento."
+      : "That response took too long. Please try again in a moment.";
+}

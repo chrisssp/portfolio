@@ -28,7 +28,11 @@ import {
    playSendTone,
    setSoundEnabled,
 } from "./chatSounds";
-import { getRandomError } from "./errorMessages";
+import {
+   getRandomError,
+   getRateLimitError,
+   getTimeoutError,
+} from "./errorMessages";
 import { getRandomGreeting } from "./greetings";
 import { MessageList } from "./MessageList";
 
@@ -91,8 +95,14 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
       setStreamingContent("");
       playSendTone();
 
+      let timedOut = false;
+      let timeoutId: ReturnType<typeof setTimeout> | undefined;
       try {
          abortRef.current = new AbortController();
+         timeoutId = setTimeout(() => {
+            timedOut = true;
+            abortRef.current?.abort();
+         }, 30_000);
 
          const res = await fetch("/api/chat", {
             method: "POST",
@@ -116,7 +126,9 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
             } catch {
                // ignore parse failures
             }
-            throw new Error(errorText);
+            const err = new Error(errorText) as Error & { status?: number };
+            err.status = res.status;
+            throw err;
          }
 
          // Check if it's a non-streaming redirect response
@@ -188,16 +200,29 @@ export function ChatPanel({ isOpen, onClose, locale }: Props) {
          setMessages(finalMessages);
          saveHistory(finalMessages);
       } catch (err) {
-         if (err instanceof Error && err.name === "AbortError") return;
+         const isAbort = err instanceof Error && err.name === "AbortError";
+         if (isAbort && !timedOut) return;
+         let content: string;
+         if (isAbort && timedOut) {
+            content = getTimeoutError(locale);
+         } else if (
+            err instanceof Error &&
+            (err as { status?: number }).status === 429
+         ) {
+            content = getRateLimitError(locale);
+         } else {
+            content = getRandomError(locale);
+         }
          const errorMsg: ChatMessage = {
             role: "assistant",
-            content: getRandomError(locale),
+            content,
             timestamp: Date.now(),
          };
          const finalMessages = [...newMessages, errorMsg];
          setMessages(finalMessages);
          saveHistory(finalMessages);
       } finally {
+         clearTimeout(timeoutId);
          setIsLoading(false);
          setStreamingContent("");
       }

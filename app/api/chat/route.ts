@@ -932,31 +932,90 @@ ${contentIndex}
 ${contextText || "No specific context available. Answer based on your general portfolio knowledge."}`;
 }
 
-// --- Groq Availability Check (cached per session) ---
+// --- Groq Availability Check (cached with TTL) ---
 // We check the model endpoint directly instead of burning tokens with a probe request.
+// Successes are cached for 5 min; transient failures expire after 60s so a brief
+// outage does NOT permanently lock the lambda into Gemini for its whole life.
 
-let groqAvailablePromise: Promise<boolean> | null = null;
+let groqProbe: { available: boolean; at: number } | null = null;
+const GROQ_PROBE_OK_TTL_MS = 5 * 60_000;
+const GROQ_PROBE_FAIL_TTL_MS = 60_000;
 
 async function checkGroqAvailable(): Promise<boolean> {
-   if (groqAvailablePromise) return groqAvailablePromise;
+   if (groqProbe) {
+      const ttl = groqProbe.available
+         ? GROQ_PROBE_OK_TTL_MS
+         : GROQ_PROBE_FAIL_TTL_MS;
+      if (Date.now() - groqProbe.at < ttl) return groqProbe.available;
+   }
 
-   groqAvailablePromise = (async () => {
-      try {
-         const res = await fetch(
-            "https://api.groq.com/openai/v1/models/llama-3.3-70b-versatile",
-            {
-               headers: {
-                  Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
-               },
+   let available = false;
+   try {
+      const res = await fetch(
+         "https://api.groq.com/openai/v1/models/llama-3.3-70b-versatile",
+         {
+            headers: {
+               Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
             },
-         );
-         return res.ok;
-      } catch {
-         return false;
-      }
-   })();
+         },
+      );
+      available = res.ok;
+   } catch {
+      available = false;
+   }
 
-   return groqAvailablePromise;
+   groqProbe = { available, at: Date.now() };
+   return available;
+}
+
+// --- Streaming helper with runtime provider fallback ---
+// The probe only tells us availability up front; the actual stream can still
+// fail at request time (free-tier quota, 429, overload). If the primary
+// provider's stream errors BEFORE emitting any chunk, we transparently retry
+// with the fallback provider. Chunks already sent are never duplicated.
+
+function streamWithFallback(
+   primary: () => ReturnType<typeof streamText>,
+   fallback: (() => ReturnType<typeof streamText>) | null,
+): NextResponse {
+   const encoder = new TextEncoder();
+   const stream = new ReadableStream<Uint8Array>({
+      async start(controller) {
+         try {
+            let emitted = false;
+            try {
+               const result = await primary();
+               for await (const chunk of result.textStream) {
+                  emitted = true;
+                  controller.enqueue(encoder.encode(chunk));
+               }
+            } catch (err) {
+               if (emitted || !fallback) {
+                  controller.error(err);
+                  return;
+               }
+               console.warn(
+                  "[chat-api] Primary provider failed before streaming; falling back.",
+                  err,
+               );
+               const fbResult = await fallback();
+               for await (const chunk of fbResult.textStream) {
+                  controller.enqueue(encoder.encode(chunk));
+               }
+            }
+            controller.close();
+         } catch (err) {
+            controller.error(err);
+         }
+      },
+   });
+
+   return new NextResponse(stream, {
+      headers: {
+         "Content-Type": "text/plain; charset=utf-8",
+         "Cache-Control": "no-cache, no-transform",
+      },
+   });
 }
 
 // --- Shared streaming helper ---
@@ -1040,7 +1099,8 @@ export async function POST(request: NextRequest) {
          classification,
       );
 
-      // Stream response — probe Groq first, then commit
+      // Stream response — probe Groq first, commit to a provider, and keep the
+      // other one as a runtime fallback for when the primary stream fails.
       const useGroq = await checkGroqAvailable();
       const provider = useGroq ? "groq" : "gemini";
       console.info(
@@ -1057,46 +1117,51 @@ export async function POST(request: NextRequest) {
          }),
       );
 
-      const result =
-         provider === "groq"
-            ? streamText({
-                 model: groq("llama-3.3-70b-versatile"),
-                 system: systemPrompt,
-                 messages: buildMessages(messages),
-                 temperature: 0.2,
-                 maxOutputTokens: 600,
-              })
-            : streamText({
-                 model: google("gemini-2.0-flash"),
-                 system: systemPrompt,
-                 messages: buildMessages(messages),
-                 temperature: 0.2,
-                 maxOutputTokens: 600,
-                 providerOptions: {
-                    google: {
-                       safetySettings: [
-                          {
-                             category: "HARM_CATEGORY_HATE_SPEECH",
-                             threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                          },
-                          {
-                             category: "HARM_CATEGORY_HARASSMENT",
-                             threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                          },
-                          {
-                             category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                             threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                          },
-                          {
-                             category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-                             threshold: "BLOCK_MEDIUM_AND_ABOVE",
-                          },
-                       ],
+      const makeStream = (model: "groq" | "gemini") =>
+         streamText({
+            model:
+               model === "groq"
+                  ? groq("llama-3.3-70b-versatile")
+                  : google("gemini-2.0-flash"),
+            system: systemPrompt,
+            messages: buildMessages(messages),
+            temperature: 0.2,
+            maxOutputTokens: 600,
+            ...(model === "gemini"
+               ? {
+                    providerOptions: {
+                       google: {
+                          safetySettings: [
+                             {
+                                category: "HARM_CATEGORY_HATE_SPEECH",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                             },
+                             {
+                                category: "HARM_CATEGORY_HARASSMENT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                             },
+                             {
+                                category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                             },
+                             {
+                                category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE",
+                             },
+                          ],
+                       },
                     },
-                 },
-              });
+                 }
+               : {}),
+         });
 
-      return result.toTextStreamResponse();
+      const primaryModel = useGroq ? "groq" : "gemini";
+      const fallbackModel = useGroq ? "gemini" : null;
+
+      return streamWithFallback(
+         () => makeStream(primaryModel),
+         fallbackModel ? () => makeStream(fallbackModel) : null,
+      );
    } catch (error) {
       console.error("[chat-api] Error:", error);
       return NextResponse.json(
