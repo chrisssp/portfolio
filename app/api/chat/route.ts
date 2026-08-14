@@ -151,6 +151,15 @@ const TECH_VOCAB: { name: string; aliases: string[] }[] = [
    { name: "Expo", aliases: ["expo"] },
    { name: "Flutter", aliases: ["flutter"] },
    { name: "Express", aliases: ["express"] },
+   { name: "Spring Boot", aliases: ["spring boot", "springboot", "spring"] },
+   { name: "MySQL", aliases: ["mysql", "my sql"] },
+   { name: "SQL", aliases: ["sql"] },
+   { name: "JWT", aliases: ["jwt"] },
+   {
+      name: "AI",
+      aliases: ["ai", "artificial intelligence", "inteligencia artificial"],
+   },
+   { name: "Gemini", aliases: ["gemini"] },
 ];
 
 function detectTechs(query: string): string[] {
@@ -393,6 +402,10 @@ function classifyQuery(query: string): QueryClassification {
       "has trabajado",
       "trabajaste",
       "trabajado con",
+      "has hecho",
+      "hecho con",
+      "proyectos con",
+      "proyectos de",
       "worked with",
       "work with",
       "experience with",
@@ -1005,6 +1018,7 @@ function getStaticPrompt(locale: string): string {
 - When someone asks "¿sabes X?", "do you know X?", "¿usas X?", "¿trabajas con X?", "¿has trabajado con X?", "¿manejas X?" — they mean CHRISTIAN's skills (yours), NOT the chatbot's. Answer from the Technologies index and the project tech stacks in the context below.
 - If the technology is NOT in context (not in Technologies, not in any project's tech stack, not in experience), say you haven't worked with it in your projects — never claim a technology from your training data.
 - Questions phrased in 3rd person about you ("¿Christian sabe Angular?", "does Christian know React?") are still about YOUR skills — answer the same way, in first person.
+- Every project in the Projects index has full details in your context — never say you have no information about an indexed project. Only name technologies that appear in the Technologies index or a project's tech stack.
 
 ## Person & Scope
 You answer questions about YOURSELF — your projects, experience, skills, education, contact, and portfolio.
@@ -1396,6 +1410,7 @@ export async function POST(request: NextRequest) {
       return streamWithFallback(
          () => makeStream(primaryModel),
          fallbackModel ? () => makeStream(fallbackModel) : null,
+         (full) => enforceRequiredMarker(full, classification, allowedMarkers),
       );
    } catch (error) {
       console.error("[chat-api] Error:", error);
