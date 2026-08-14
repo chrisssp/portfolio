@@ -43,6 +43,7 @@ interface ContentChunk {
    ecosystem?: Array<{ title: string; description: string }>;
    languages?: Array<{ language: string; level: string }>;
    stats?: Array<{ value: string; label: string }>;
+   availability?: string;
    education?: Array<{
       institution: string;
       degree: string;
@@ -219,6 +220,11 @@ function buildAllowedMarkers(
          add(`[DEMO:${slug}]`);
          add(`[ARTICLE:${slug}]`);
          if (c.certificates?.length) add(`[CERT:${slug}]`);
+         if (c.ecosystem?.length) {
+            for (const item of c.ecosystem) {
+               add(`[ECOSYSTEM:${slug}:${item.title}]`);
+            }
+         }
       } else if (c.section === "experience" && c.projectId) {
          add(`[EXPERIENCE:${c.projectId}]`);
       } else if (c.section === "blog" && c.postSlug) {
@@ -363,6 +369,16 @@ function classifyQuery(query: string): QueryClassification {
       "idioma",
       "language",
       "hablas",
+      "disponible",
+      "disponibilidad",
+      "available",
+      "open to work",
+      "open-to-work",
+      "desempleado",
+      "desempleo",
+      "contratar",
+      "contrátame",
+      "hire",
    ];
    if (aboutPatterns.some((p) => lower.includes(p))) {
       return { type: "about", confidence: 1 };
@@ -574,9 +590,12 @@ function matchContentSmart(
       }
 
       case "education": {
-         // Load only education chunks
+         // Load education + about chunks (about carries availability status)
          for (const chunk of localeChunks) {
-            if (chunk.section === "education" && !seen.has(chunk.id)) {
+            if (
+               (chunk.section === "education" || chunk.section === "about") &&
+               !seen.has(chunk.id)
+            ) {
                matched.push(chunk);
                seen.add(chunk.id);
             }
@@ -811,6 +830,7 @@ You answer questions about YOURSELF — your projects, experience, skills, educa
 The context below contains EXACT tech stacks, challenges, solutions, and ecosystem items for each project. ALWAYS use them — never give generic descriptions. When describing a project, cite the specific technologies and the problem it solves from context.
 
 For education: the context contains separate entries for TSU and Ingeniería. Each has its own degree name and institution. When asked about one, use ONLY that entry's data — never mix them. When asked about both, list each separately with its exact degree name.
+- BOTH of your degrees are from the SAME institution listed in context — Universidad Tecnológica del Centro de Veracruz. NEVER invent, swap, or add a different university. Copy the institution name EXACTLY as written for every degree.
 
 ❌ WRONG (hallucinated): "PuntoFiel es un proyecto con React y Node.js"
 ✅ CORRECT (from context): "PuntoFiel es una app móvil con **React Native**, **Supabase**, **TailwindCSS**, **Zustand** y **TanStack Query**"
@@ -818,26 +838,12 @@ For education: the context contains separate entries for TSU and Ingeniería. Ea
 ❌ WRONG (mixed education): "Mi TSU es en Ingeniería en Desarrollo y Gestión de Software"
 ✅ CORRECT (from context): "Mi TSU es en **Desarrollo de Software Multiplataforma** en la Universidad Tecnológica del Centro de Veracruz"
 
-❌ WRONG (markers inline): "Trabajé en [PROJECT:azkali] y [PROJECT:mtrpa]"
-✅ CORRECT (markers at end): "Trabajé en Azkali y MTRPA." [PROJECT:azkali] [PROJECT:mtrpa]
-
-## Action Buttons (4 CRITICAL RULES)
-1. Place ALL markers at END of sentence — NEVER inline. ✅ "...page." [PROJECT:slug] | ❌ "...[PROJECT:slug]."
-2. Include ONLY what user asked about or what provides a DIRECT actionable next step. Never add buttons for completeness.
-3. Never repeat a button from your immediately previous message. Max 2 action buttons per response.
-4. ONLY add [EMAIL] when user explicitly asks to contact you. ONLY add [ABOUT] when user asks about you personally. ONLY add [CV] when user asks for your resume/CV. Do NOT add these as defaults.
-5. When a blog post about the asked project/topic appears in context (section: blog), append its [POST:<postSlug>] marker at the end — still respecting the 2-button max.
-
-Available markers: [PROJECT:slug] [CODE:slug] [DEMO:slug] [LANDING:slug] [ARTICLE:slug] [POST:slug] [CERT:slug] [ECOSYSTEM:slug:Item] [EXPERIENCE:id] [ABOUT] [EMAIL] [GITHUB] [LINKEDIN] [CV]
-
-Slugs: 7dcompass, azkali, coppel-nexus, flacks-cc, mtrpa, iapex, dabetai, puntofiel, portfolio, ratacueva
-Experience IDs: 7dcompass, azkali, coppel-nexus, mtrpa, flacks-cc
-Post slugs: iapex-ai-finds-missing-people, from-programming-with-ai-to-orchestrating, sdd-spec-driven-development
+❌ WRONG (invented second university): "TSU en la Universidad Tecnológica del Centro de Veracruz e Ingeniería en la Universidad Tecnológica de la Huasteca"
+✅ CORRECT (from context): "Mi TSU y mi Ingeniería son de la misma institución: la Universidad Tecnológica del Centro de Veracruz"
 
 ## Response Style
 - 2-3 sentences MAX. First person, markdown (**bold**, *italic*), NO emojis. Be concise — users want quick answers, not essays.
 - Look for Ecosystem items in context for project structure/component questions
-- When describing a project's components/architecture, list each component with [ECOSYSTEM:slug:Item] markers
 
 ${langInstruction}`;
 
@@ -871,6 +877,7 @@ function buildSystemPrompt(
                `Stats:${c.stats.map((s) => `${s.value} ${s.label}`).join(" | ")}`,
             );
          }
+         if (c.availability) parts.push(`Avail:${c.availability}`);
          if (c.techStack?.length) parts.push(`T:${c.techStack.join(",")}`);
          if (c.challenge)
             parts.push(
@@ -912,17 +919,24 @@ function buildSystemPrompt(
    const staticPrompt = getStaticPrompt(locale);
 
    // Option A: ground action buttons to the retrieved context.
+   // The marker vocabulary lives HERE (conditional), NOT in the static prompt,
+   // so when no markers are allowed the model never sees any [MARKER] syntax.
    const allowedMarkers = buildAllowedMarkers(contextChunks, classification);
    const markersSection =
       allowedMarkers.length > 0
-         ? `Only these markers are valid in your reply: ${allowedMarkers}
-Never write raw file paths or URLs as plain text — use the corresponding marker when the user should open them.`
-         : `Emit NO action buttons in this reply.
-Never write raw file paths or URLs as plain text.`;
+         ? `## Action Buttons (CRITICAL RULES)
+1. Place ALL markers at END of sentence — NEVER inline. ✅ "...page." [PROJECT:slug] | ❌ "...[PROJECT:slug]."
+2. Include ONLY what the user asked about. Max 2 action buttons per response. Never repeat a button from your previous message.
+3. ONLY add [EMAIL] when the user explicitly asks to contact you. ONLY [ABOUT] for personal questions. ONLY [CV] for resume/CV requests. Never add these as defaults.
+4. When describing a project's components/architecture, list each component with [ECOSYSTEM:<slug>:<Item>] using items from the allowed list.
+5. When a blog post appears in context, you may append its [POST:<postSlug>] marker (respect the 2-button max).
+
+ONLY these markers are valid in your reply — use them EXACTLY as written (copy the syntax verbatim): ${allowedMarkers}
+Never invent or modify markers, and never write raw file paths or URLs as plain text — use the corresponding marker when the user should open them.`
+         : `Emit NO action buttons in this reply. Do NOT use any [MARKER] bracket syntax at all — answer in prose only. Never write raw file paths or URLs as plain text.`;
 
    return `${staticPrompt}
 
-## Allowed Action Buttons
 ${markersSection}
 
 ## Content Index

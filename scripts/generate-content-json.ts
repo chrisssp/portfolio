@@ -51,6 +51,7 @@ interface ContentChunk {
    }[];
    languages?: { language: string; level: string }[];
    stats?: { value: string; label: string }[];
+   availability?: string;
    certificates?: {
       title: string;
       issuer?: string;
@@ -90,6 +91,7 @@ interface AboutLocale {
    languagesTitle?: string;
    education?: AboutEducation[];
    languages?: AboutLanguage[];
+   availability?: string;
 }
 
 interface ExperienceItem {
@@ -234,6 +236,7 @@ function extractChunks(modules: Record<string, unknown>): ContentChunk[] {
                .join(" "),
             education: data.education,
             languages: data.languages,
+            availability: data.availability,
          });
 
          // Education section

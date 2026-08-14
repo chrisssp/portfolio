@@ -21,9 +21,11 @@ export const about = {
       ],
       languagesTitle: "Languages",
       languages: [
-         { language: "Spanish", level: "Native" },
-         { language: "English", level: "B1+ (Intermediate — Active progress)" },
+         { language: "Español", level: "Nativo" },
+         { language: "Inglés", level: "B1+ (Intermedio — En progreso activo)" },
       ],
+      availability:
+         "University graduate. Open to work — available for new opportunities.",
       tooltipMidudev:
          "With Miguel Ángel Durán (midudev) at Talent Land 2025 in Guadalajara, Jalisco, Mexico. Undisputed reference in web ecosystem and full-stack development content for the Spanish-speaking world.",
       tooltipMouredev:
@@ -58,6 +60,8 @@ export const about = {
             level: "B1+ (Intermedio \u2014 En progreso activo)",
          },
       ],
+      availability:
+         "Egresado de la universidad. Disponible para trabajar — abierto a nuevas oportunidades.",
       tooltipMidudev:
          "Con Miguel Ángel Durán (midudev) durante Talent Land 2025 en Guadalajara, Jalisco, México. Referente indiscutible en la divulgación sobre el ecosistema web moderno y full-stack para el mundo hispano.",
       tooltipMouredev:
