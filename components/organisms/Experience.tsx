@@ -68,6 +68,7 @@ export const Experience = ({ dict }: ExperienceProps) => {
                >
                   <div
                      id={item.projectId ? `exp-${item.projectId}` : undefined}
+                     className="scroll-mt-header"
                      ref={(el) => {
                         itemRefs.current[index] = el;
                      }}
