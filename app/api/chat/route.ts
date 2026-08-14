@@ -299,6 +299,26 @@ function classifyQuery(query: string): QueryClassification {
       return { type: "contact", confidence: 1 };
    }
 
+   // Availability / employment status — checked BEFORE experience because
+   // questions like "¿Estás disponible para trabajar?" contain work stems
+   // ("trabaj") that would otherwise classify as experience and load every
+   // job entry. Availability is a personal/about topic.
+   const availabilityPatterns = [
+      "disponible",
+      "disponibilidad",
+      "available",
+      "open to work",
+      "open-to-work",
+      "desempleado",
+      "desempleo",
+      "contratar",
+      "contrátame",
+      "hire",
+   ];
+   if (availabilityPatterns.some((p) => lower.includes(p))) {
+      return { type: "about", confidence: 1 };
+   }
+
    // Education
    const educationPatterns = [
       "education",
@@ -369,16 +389,6 @@ function classifyQuery(query: string): QueryClassification {
       "idioma",
       "language",
       "hablas",
-      "disponible",
-      "disponibilidad",
-      "available",
-      "open to work",
-      "open-to-work",
-      "desempleado",
-      "desempleo",
-      "contratar",
-      "contrátame",
-      "hire",
    ];
    if (aboutPatterns.some((p) => lower.includes(p))) {
       return { type: "about", confidence: 1 };
