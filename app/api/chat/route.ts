@@ -1181,19 +1181,43 @@ async function checkGroqAvailable(): Promise<boolean> {
 // provider's stream errors BEFORE emitting any chunk, we transparently retry
 // with the fallback provider. Chunks already sent are never duplicated.
 
+// --- Output enforcement: guarantee required markers regardless of model ---
+// Prose prompt rules can be ignored; this code cannot. When the query is about
+// a specific project, ensure its [PROJECT:slug] marker is always present so the
+// reference button is never missing.
+function enforceRequiredMarker(
+   content: string,
+   classification: { type: string; projectSlug?: string | null },
+   allowedMarkers: string,
+): string {
+   if (
+      classification.type === "project-specific" &&
+      classification.projectSlug
+   ) {
+      const marker = `[PROJECT:${classification.projectSlug}]`;
+      if (allowedMarkers.includes(marker) && !content.includes(marker)) {
+         return ` [PROJECT:${classification.projectSlug}]`;
+      }
+   }
+   return "";
+}
+
 function streamWithFallback(
    primary: () => ReturnType<typeof streamText>,
    fallback: (() => ReturnType<typeof streamText>) | null,
+   onComplete?: (fullText: string) => string,
 ): NextResponse {
    const encoder = new TextEncoder();
    const stream = new ReadableStream<Uint8Array>({
       async start(controller) {
          try {
             let emitted = false;
+            let full = "";
             try {
                const result = await primary();
                for await (const chunk of result.textStream) {
                   emitted = true;
+                  full += chunk;
                   controller.enqueue(encoder.encode(chunk));
                }
             } catch (err) {
@@ -1207,9 +1231,12 @@ function streamWithFallback(
                );
                const fbResult = await fallback();
                for await (const chunk of fbResult.textStream) {
+                  full += chunk;
                   controller.enqueue(encoder.encode(chunk));
                }
             }
+            const extra = onComplete?.(full) ?? "";
+            if (extra) controller.enqueue(encoder.encode(extra));
             controller.close();
          } catch (err) {
             controller.error(err);
@@ -1296,6 +1323,7 @@ export async function POST(request: NextRequest) {
          locale,
          classification,
       );
+      const allowedMarkers = buildAllowedMarkers(contextChunks, classification);
 
       // Build system prompt
       const contentIndex = buildContentIndex(contentCache ?? [], locale);
