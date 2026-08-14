@@ -124,7 +124,58 @@ type QueryType =
    | "contact" // Asks how to contact
    | "ecosystem" // Asks about project components/architecture
    | "blog" // Asks about blog posts/articles
+   | "skills" // Asks about technologies / what Christian uses
    | "general"; // Fallback
+
+// Technologies Christian uses, for "¿sabes X?" / "do you know X?" questions.
+// Detection is alias-based (substring on the lowercased query); the skills
+// classification additionally requires a skill-context verb so a bare tech
+// mention (e.g. "el proyecto react") stays project-general.
+const TECH_VOCAB: { name: string; aliases: string[] }[] = [
+   { name: "Angular", aliases: ["angular"] },
+   { name: "React Native", aliases: ["react native", "reactnative"] },
+   { name: "React", aliases: ["react", "reactjs"] },
+   { name: "Next.js", aliases: ["next.js", "nextjs", "next js"] },
+   { name: "Node.js", aliases: ["node.js", "nodejs", "node"] },
+   { name: "TypeScript", aliases: ["typescript"] },
+   { name: "JavaScript", aliases: ["javascript", "js"] },
+   { name: "TailwindCSS", aliases: ["tailwind", "tailwindcss"] },
+   { name: "Supabase", aliases: ["supabase"] },
+   { name: "Zustand", aliases: ["zustand"] },
+   { name: "TanStack Query", aliases: ["tanstack", "react query"] },
+   { name: "Python", aliases: ["python"] },
+   { name: "Docker", aliases: ["docker"] },
+   { name: "PostgreSQL", aliases: ["postgres", "postgresql"] },
+   { name: "MongoDB", aliases: ["mongodb"] },
+   { name: "Firebase", aliases: ["firebase"] },
+   { name: "Expo", aliases: ["expo"] },
+   { name: "Flutter", aliases: ["flutter"] },
+   { name: "Express", aliases: ["express"] },
+];
+
+function detectTechs(query: string): string[] {
+   const lower = query.toLowerCase();
+   const found: string[] = [];
+   for (const entry of TECH_VOCAB) {
+      if (entry.aliases.some((a) => lower.includes(a))) found.push(entry.name);
+   }
+   return found;
+}
+
+function techMatchesStack(techName: string, stack: string[]): boolean {
+   const entry = TECH_VOCAB.find((e) => e.name === techName);
+   if (!entry) return false;
+   const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+   for (const alias of entry.aliases) {
+      const na = norm(alias);
+      if (!na) continue;
+      for (const s of stack) {
+         const ns = norm(s);
+         if (ns.includes(na) || na.includes(ns)) return true;
+      }
+   }
+   return false;
+}
 
 const PROJECT_PATTERNS: Record<string, string[]> = {
    "7dcompass": ["7d", "compass", "7d-compass", "seven d"],
@@ -319,6 +370,58 @@ function classifyQuery(query: string): QueryClassification {
       return { type: "about", confidence: 1 };
    }
 
+   // Skills / technologies — checked BEFORE experience because "¿has
+   // trabajado con Angular?" contains "trabaj" which would otherwise
+   // classify as experience. "¿Sabes X?" / "do you know X?" always refers
+   // to CHRISTIAN's skills (the chatbot's own stack), never the chatbot.
+   const skillContextPatterns = [
+      "sabes",
+      "sabe",
+      "sabrias",
+      "sabrías",
+      "conoces",
+      "conocé",
+      "conoce",
+      "dominas",
+      "dominás",
+      "domina",
+      "manejas",
+      "manejás",
+      "usas",
+      "usás",
+      "usaste",
+      "has trabajado",
+      "trabajaste",
+      "trabajado con",
+      "worked with",
+      "work with",
+      "experience with",
+      "experiencia con",
+      "experiencia en",
+      "know",
+      "knows",
+      "do you know",
+      "do you use",
+      "have you worked",
+      "have you used",
+      "con experiencia",
+      "conocimiento",
+      "habilidades",
+      "skills",
+      "stack",
+      "tecnolog",
+      "tecnologías",
+      "tecnologias",
+      "technolog",
+   ];
+   const techs = detectTechs(query);
+   if (
+      techs.length > 0 &&
+      skillContextPatterns.some((p) => lower.includes(p))
+   ) {
+      return { type: "skills", confidence: 1 };
+   }
+
    // Education
    const educationPatterns = [
       "education",
@@ -373,6 +476,8 @@ function classifyQuery(query: string): QueryClassification {
       "sobre cristian",
       "about christian",
       "about cristian",
+      "christian",
+      "cristian",
       "sobre ti",
       "sobre usted",
       "quien eres",
@@ -613,6 +718,80 @@ function matchContentSmart(
          break;
       }
 
+      case "skills": {
+         // Tech questions ("¿sabes Angular?") — load about + skills chunks,
+         // every project whose techStack contains a detected technology, and
+         // any experience entry that mentions it. This grounds the answer in
+         // real data so the model never invents "no, I don't know Angular".
+         const techs = detectTechs(query);
+         for (const chunk of localeChunks) {
+            if (
+               (chunk.section === "about" ||
+                  chunk.section === "skills" ||
+                  chunk.section === "education") &&
+               !seen.has(chunk.id)
+            ) {
+               matched.push(chunk);
+               seen.add(chunk.id);
+            }
+         }
+         // Projects matching any detected tech (techStack is lowercase in data)
+         for (const chunk of localeChunks) {
+            if (
+               chunk.section === "project" &&
+               !seen.has(chunk.id) &&
+               techs.some((t) => techMatchesStack(t, chunk.techStack ?? []))
+            ) {
+               matched.push(chunk);
+               seen.add(chunk.id);
+            }
+         }
+         // Experience entries whose description/tags mention a detected tech
+         const experienceItems =
+            locale === "en" ? experience.en.items : experience.es.items;
+         const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+         const normBlob = norm(
+            experienceItems
+               .map((e) => `${e.description} ${(e.tags ?? []).join(" ")}`)
+               .join(" "),
+         );
+         for (const exp of experienceItems) {
+            const expBlob = norm(
+               `${exp.description} ${(exp.tags ?? []).join(" ")}`,
+            );
+            const matches = techs.some((t) => {
+               const entry = TECH_VOCAB.find((e) => e.name === t);
+               return entry
+                  ? entry.aliases.some(
+                       (a) =>
+                          normBlob.includes(norm(a)) &&
+                          expBlob.includes(norm(a)),
+                    )
+                  : false;
+            });
+            if (!matches) continue;
+            const chunkId = `exp-${exp.projectId}-${locale}`;
+            if (!seen.has(chunkId)) {
+               matched.push({
+                  id: chunkId,
+                  section: "experience",
+                  locale,
+                  title: `${exp.role} at ${exp.company}`,
+                  description: exp.description,
+                  company: exp.company,
+                  role: exp.role,
+                  date: exp.date,
+                  location: exp.location,
+                  remote: exp.remote,
+                  tags: exp.tags,
+                  projectId: exp.projectId,
+               });
+               seen.add(chunkId);
+            }
+         }
+         break;
+      }
+
       case "about": {
          // Load about + education + skills (personal context)
          for (const chunk of localeChunks) {
@@ -817,11 +996,15 @@ function getStaticPrompt(locale: string): string {
          ? "Responde SIEMPRE en español. El usuario está viendo el sitio en español. Si cambia el idioma del sitio, responde en el nuevo idioma de ese momento en adelante."
          : "Always respond in English. The user is viewing the site in English. If they switch the site language, respond in the new language from that point forward.";
 
-   const staticPrompt = `## Identity & Tech Stack
+   const staticPrompt = `## Identity
 - You are **Christian Serrano** (chrisssp). This is your digital portfolio AI — your projects, your experience, your voice.
-- Built with Next.js App Router, AI SDK, Groq \`llama-3.3-70b-versatile\` (primary) + Gemini 2.0 Flash (fallback)
-- RAG: \`public/portfolio-content.json\`, keyword-match + conditional baseline
-- Source: github.com/chrisssp/portfolio | Vercel (free) | Stateless — no history saved
+- Dev handles: chrisssp, chrissp. NEVER mention variants (Chris, Cris, Cristian) — invisible fallback only.
+
+## The Chatbot vs. Christian (CRITICAL)
+- The chatbot itself runs on Next.js App Router + AI SDK (Groq llama-3.3-70b-versatile, Gemini 2.0 Flash fallback) + RAG over public/portfolio-content.json. That is plumbing — NEVER answer about the chatbot's own stack as if it were your skills.
+- When someone asks "¿sabes X?", "do you know X?", "¿usas X?", "¿trabajas con X?", "¿has trabajado con X?", "¿manejas X?" — they mean CHRISTIAN's skills (yours), NOT the chatbot's. Answer from the Technologies index and the project tech stacks in the context below.
+- If the technology is NOT in context (not in Technologies, not in any project's tech stack, not in experience), say you haven't worked with it in your projects — never claim a technology from your training data.
+- Questions phrased in 3rd person about you ("¿Christian sabe Angular?", "does Christian know React?") are still about YOUR skills — answer the same way, in first person.
 
 ## Person & Scope
 You answer questions about YOURSELF — your projects, experience, skills, education, contact, and portfolio.
