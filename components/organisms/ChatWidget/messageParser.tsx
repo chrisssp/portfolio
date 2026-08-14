@@ -28,6 +28,8 @@ const SEGMENT_PATTERN =
 
 // --- Marker Relocation ---
 
+const MAX_ACTION_BUTTONS = 2;
+
 export function relocateMarkers(text: string): string {
    const markers: string[] = [];
    let cleanText = text.replace(MARKER_PATTERN, (match) => {
@@ -49,7 +51,8 @@ export function relocateMarkers(text: string): string {
       cleanText += ".";
    }
 
-   return `${cleanText} ${markers.join(" ")}`;
+   const limitedMarkers = markers.slice(0, MAX_ACTION_BUTTONS);
+   return `${cleanText} ${limitedMarkers.join(" ")}`;
 }
 
 // --- Markdown → React ---

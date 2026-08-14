@@ -6,7 +6,6 @@ import { streamText } from "ai";
 import { type NextRequest, NextResponse } from "next/server";
 import { PROFESSIONAL_LINKS } from "@/config/links";
 import { experience } from "@/i18n/modules/experience";
-import { hero } from "@/i18n/modules/hero";
 
 // --- Types ---
 
@@ -185,6 +184,62 @@ function projectChunkPrefixes(slug: string): string[] {
    const prefixes = new Set<string>([slug, PROJECT_CHUNK_PREFIX[slug] ?? ""]);
    prefixes.delete("");
    return [...prefixes];
+}
+
+// Inverse mapping (chunk-id prefix → canonical slug) used to derive the
+// allowed action-button set from the chunks actually loaded for a request.
+const PREFIX_TO_SLUG = new Map<string, string>(
+   Object.entries(PROJECT_CHUNK_PREFIX).map(([slug, prefix]) => [prefix, slug]),
+);
+
+// Option A guardrail: the model may ONLY emit action markers that point at
+// content actually loaded in context (project/blog/experience chunks). This
+// kills the "random buttons" problem where the model buttons projects that
+// were never part of the conversation.
+function buildAllowedMarkers(
+   contextChunks: ContentChunk[],
+   classification: QueryClassification,
+): string {
+   const allowed: string[] = [];
+   const seen = new Set<string>();
+   const add = (m: string) => {
+      if (!seen.has(m)) {
+         seen.add(m);
+         allowed.push(m);
+      }
+   };
+
+   for (const c of contextChunks) {
+      if (c.section === "project") {
+         const prefix = c.id.slice(0, c.id.lastIndexOf("-"));
+         const slug = PREFIX_TO_SLUG.get(prefix) ?? prefix;
+         add(`[PROJECT:${slug}]`);
+         add(`[CODE:${slug}]`);
+         add(`[LANDING:${slug}]`);
+         add(`[DEMO:${slug}]`);
+         add(`[ARTICLE:${slug}]`);
+         if (c.certificates?.length) add(`[CERT:${slug}]`);
+      } else if (c.section === "experience" && c.projectId) {
+         add(`[EXPERIENCE:${c.projectId}]`);
+      } else if (c.section === "blog" && c.postSlug) {
+         add(`[POST:${c.postSlug}]`);
+      }
+   }
+
+   // Generic personal markers only when the query is explicitly about contact.
+   if (classification.type === "contact") {
+      for (const m of [
+         "[EMAIL]",
+         "[GITHUB]",
+         "[LINKEDIN]",
+         "[CV]",
+         "[ABOUT]",
+      ]) {
+         add(m);
+      }
+   }
+
+   return allowed.join(" ");
 }
 
 interface QueryClassification {
@@ -704,9 +759,9 @@ function buildContentIndex(cache: ContentChunk[], locale: string): string {
    }
 
    // Always-present contact block (~200 chars): grounds contact/social/location
-   // questions so the model never invents URLs or email addresses.
-   const heroLocale = hero[locale as "en" | "es"];
-   const cvLink = heroLocale?.actions?.cvLink;
+   // questions so the model never invents URLs or email addresses. The CV is
+   // deliberately NOT listed here — only the [CV] marker, so the model never
+   // echoes the raw file path in prose.
    const contactParts = [
       `Email: ${PROFESSIONAL_LINKS.email}`,
       `GitHub: ${PROFESSIONAL_LINKS.github}`,
@@ -714,7 +769,6 @@ function buildContentIndex(cache: ContentChunk[], locale: string): string {
       `YouTube: ${PROFESSIONAL_LINKS.youtube}`,
       `Location: México (Córdoba, Veracruz)`,
    ];
-   if (cvLink) contactParts.push(`CV: ${cvLink}`);
    parts.push(`Contact: ${contactParts.join(" | ")}`);
 
    return parts.join("\n");
@@ -797,6 +851,7 @@ function buildSystemPrompt(
    locale: string,
    contextChunks: ContentChunk[],
    contentIndex: string,
+   classification: QueryClassification,
 ): string {
    const contextText = contextChunks
       .map((c) => {
@@ -856,7 +911,19 @@ function buildSystemPrompt(
    // Get cached static prompt
    const staticPrompt = getStaticPrompt(locale);
 
+   // Option A: ground action buttons to the retrieved context.
+   const allowedMarkers = buildAllowedMarkers(contextChunks, classification);
+   const markersSection =
+      allowedMarkers.length > 0
+         ? `Only these markers are valid in your reply: ${allowedMarkers}
+Never write raw file paths or URLs as plain text — use the corresponding marker when the user should open them.`
+         : `Emit NO action buttons in this reply.
+Never write raw file paths or URLs as plain text.`;
+
    return `${staticPrompt}
+
+## Allowed Action Buttons
+${markersSection}
 
 ## Content Index
 ${contentIndex}
@@ -970,6 +1037,7 @@ export async function POST(request: NextRequest) {
          locale,
          contextChunks,
          contentIndex,
+         classification,
       );
 
       // Stream response — probe Groq first, then commit
