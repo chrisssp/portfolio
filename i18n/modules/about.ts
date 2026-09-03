@@ -21,10 +21,10 @@ export const about = {
       ],
       languagesTitle: "Languages",
       languages: [
-         { language: "Español", level: "Nativo" },
+         { language: "Spanish", level: "Native" },
          {
-            language: "Inglés",
-            level: "B1+ - Comunicación profesional en inglés",
+            language: "English",
+            level: "B1+ (Technical proficiency)",
          },
       ],
       availability:
@@ -57,10 +57,10 @@ export const about = {
       ],
       languagesTitle: "Idiomas",
       languages: [
-         { language: "Espa\u00f1ol", level: "Nativo" },
+         { language: "Español", level: "Nativo" },
          {
-            language: "Ingl\u00e9s",
-            level: "B1+ \u2014 Comunicación profesional en inglés",
+            language: "Inglés",
+            level: "B1+ (Competencia técnica)",
          },
       ],
       availability:

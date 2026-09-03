@@ -9,7 +9,7 @@ export const experience = {
             remote: "Remote",
             product: "7D-Compass",
             projectId: "7dcompass",
-            date: "Jan 2026 — Jun 2026",
+            date: "Jan 2026 — Aug 2026",
             tags: ["Project-based Contract"],
             description:
                "Led the evolution of 7D-Compass (Angular/Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by 95%. Implemented a centralized audit engine for $12M USD in transactions, detecting critical financial discrepancies through complex validation logic.",
@@ -71,7 +71,7 @@ export const experience = {
             remote: "Remoto",
             product: "7D-Compass",
             projectId: "7dcompass",
-            date: "Ene 2026 — Jun 2026",
+            date: "Ene 2026 — Ago 2026",
             tags: ["Contrato por proyecto"],
             description:
                "Lideré la evolución de 7D-Compass (Angular/Node.js/PostgreSQL), automatizando la conciliación de pagos y reduciendo el tiempo operativo en un 95%. Implementé un motor de auditoría centralizado para $12M USD en transacciones, detectando discrepancias financieras críticas mediante lógica de validación compleja.",
