@@ -15,7 +15,7 @@ export const hero = {
       ],
       stats: [
          {
-            value: "$5.5M",
+            value: "$12M",
             label: "construction transactions audited",
             tooltip:
                "Transactions audited and reconciled via the 7D Compass fintech platform for Seven D Construction in Chicago",
@@ -104,7 +104,7 @@ export const hero = {
       ],
       stats: [
          {
-            value: "$5.5M",
+            value: "$12M",
             label: "transacciones auditadas",
             tooltip:
                "Transacciones auditadas y conciliadas mediante la plataforma fintech 7D Compass para Seven D Construction en Chicago",

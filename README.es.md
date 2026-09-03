@@ -24,7 +24,7 @@ Portafolio profesional multilingüe de alto rendimiento construido con enfoque e
 - **Rendimiento primero:** Core Web Vitals optimizados con monitoreo en tiempo real via Vercel Speed Insights.
 - **Asistente IA integrado:** Chat interactivo que responde preguntas sobre proyectos, experiencia y tecnologías en tiempo real.
 - **UI/UX moderna:** Diseño responsivo mobile-first con modo oscuro/claro, botón de email inteligente y overlays con desenfoque contextual.
-- **Impacto de negocio:** Soluciones técnicas con métricas reales (ej. $5.5M USD conciliados, 95% de optimización de procesos).
+- **Impacto de negocio:** Soluciones técnicas con métricas reales (ej. $12M USD conciliados, 95% de optimización de procesos).
 
 ---
 

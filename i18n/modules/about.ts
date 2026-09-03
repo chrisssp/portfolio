@@ -22,7 +22,10 @@ export const about = {
       languagesTitle: "Languages",
       languages: [
          { language: "Español", level: "Nativo" },
-         { language: "Inglés", level: "B1+ (Intermedio — En progreso activo)" },
+         {
+            language: "Inglés",
+            level: "B1+ - Comunicación profesional en inglés",
+         },
       ],
       availability:
          "University graduate. Open to work — available for new opportunities.",
@@ -57,7 +60,7 @@ export const about = {
          { language: "Espa\u00f1ol", level: "Nativo" },
          {
             language: "Ingl\u00e9s",
-            level: "B1+ (Intermedio \u2014 En progreso activo)",
+            level: "B1+ \u2014 Comunicación profesional en inglés",
          },
       ],
       availability:

@@ -5,14 +5,14 @@ export const experience = {
          {
             role: "Software Engineer",
             company: "Seven D Construction",
-            location: "Chicago, IL, USA / México",
+            location: "Chicago, Illinois, USA / México",
             remote: "Remote",
             product: "7D-Compass",
             projectId: "7dcompass",
             date: "Jan 2026 — Jun 2026",
             tags: ["Project-based Contract"],
             description:
-               "Led the evolution of 7D-Compass (Angular/Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by 95%. Implemented a centralized audit engine for $5.5M USD in transactions, detecting critical financial discrepancies through complex validation logic.",
+               "Led the evolution of 7D-Compass (Angular/Node.js/PostgreSQL), automating payment reconciliation and reducing operational time by 95%. Implemented a centralized audit engine for $12M USD in transactions, detecting critical financial discrepancies through complex validation logic.",
          },
          {
             role: "Team Lead",
@@ -67,14 +67,14 @@ export const experience = {
          {
             role: "Ingeniero de software",
             company: "Seven D Construction",
-            location: "Chicago, IL, USA / México",
+            location: "Chicago, Illinois, USA / México",
             remote: "Remoto",
             product: "7D-Compass",
             projectId: "7dcompass",
             date: "Ene 2026 — Jun 2026",
             tags: ["Contrato por proyecto"],
             description:
-               "Lideré la evolución de 7D-Compass (Angular/Node.js/PostgreSQL), automatizando la conciliación de pagos y reduciendo el tiempo operativo en un 95%. Implementé un motor de auditoría centralizado para $5.5M USD en transacciones, detectando discrepancias financieras críticas mediante lógica de validación compleja.",
+               "Lideré la evolución de 7D-Compass (Angular/Node.js/PostgreSQL), automatizando la conciliación de pagos y reduciendo el tiempo operativo en un 95%. Implementé un motor de auditoría centralizado para $12M USD en transacciones, detectando discrepancias financieras críticas mediante lógica de validación compleja.",
          },
          {
             role: "Líder de equipo",

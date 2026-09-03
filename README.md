@@ -24,7 +24,7 @@ High-performance, multi-language professional portfolio built with a focus on cl
 - **Performance First:** Optimized Core Web Vitals, featuring real-time monitoring with Vercel Speed Insights.
 - **AI Portfolio Assistant:** Interactive chatbot that answers questions about projects, experience, and tech stack in real time.
 - **Modern UI/UX:** Responsive, mobile-first design with dark/light mode support, featuring a custom "Smart Email Button" and blurred context-aware overlays.
-- **Business Impact:** Showcasing technical solutions with real-world metrics (e.g., $5.5M USD reconciled, 95% process optimization).
+- **Business Impact:** Showcasing technical solutions with real-world metrics (e.g., $12M USD reconciled, 95% process optimization).
 
 ---
 
