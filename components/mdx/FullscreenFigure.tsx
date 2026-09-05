@@ -20,6 +20,7 @@ export interface FullscreenFigureProps {
    caption?: string;
    children: ReactNode;
    closeLabel?: string;
+   className?: string;
 }
 
 export function FullscreenFigure({
@@ -29,6 +30,7 @@ export function FullscreenFigure({
    caption,
    children,
    closeLabel = "Close",
+   className = "",
 }: FullscreenFigureProps) {
    const [open, setOpen] = useState(false);
    const triggerRef = useRef<HTMLButtonElement>(null);
@@ -80,7 +82,7 @@ export function FullscreenFigure({
    }, [open]);
 
    return (
-      <div className="relative group">
+      <div className={`relative group ${className}`}>
          {/* biome-ignore lint/a11y/noStaticElementInteractions: clicking the media is a pointer convenience; the expand button is the keyboard-accessible trigger */}
          {/* biome-ignore lint/a11y/useKeyWithClickEvents: the media wrapper is not focusable; keyboard access is provided by the expand button */}
          <div
