@@ -18,7 +18,7 @@ const mdxComponents: MDXComponents = {
    h2: (props) => (
       <h2
          id={props.id}
-         className="text-2xl md:text-3xl font-bold text-body mt-10 mb-4 border-b border-subtle/50 pb-2 scroll-mt-24"
+         className="text-2xl md:text-3xl font-bold text-body mt-10 mb-4 border-b border-subtle/50 pb-2 scroll-mt-24 clear-both"
          {...props}
       />
    ),

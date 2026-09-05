@@ -11,10 +11,12 @@ export interface MDXImageProps
    height?: number;
    caption?: string;
    closeLabel?: string;
-   /** Force 1:1 aspect ratio */
+   /** Force 1:1 aspect ratio and enable float alignment */
    square?: boolean;
-   /** Horizontal alignment: center (default) or left */
-   align?: "center" | "left";
+   /** Float direction for square images (text wraps around on md+) */
+   align?: "float-right" | "float-left";
+   /** Show only on mobile (< md). Pair with a float image above for desktop: mobile image appears after text in correct reading order. */
+   mobileOnly?: boolean;
 }
 
 export const MDXImage = forwardRef<HTMLImageElement, MDXImageProps>(
@@ -28,21 +30,32 @@ export const MDXImage = forwardRef<HTMLImageElement, MDXImageProps>(
          className = "",
          closeLabel,
          square,
-         align = "center",
+         align = "float-right",
+         mobileOnly = false,
          ...props
       },
       ref,
    ) => {
       const isExternal = src.startsWith("http") || src.startsWith("//");
-      const isLeft = align === "left";
+      const isFloat = !!square && !mobileOnly;
+      const isFloatRight = align === "float-right";
 
-      const alignmentClass = isLeft ? "mr-auto" : "mx-auto";
-      const sizingClass = square
-         ? `max-w-md ${alignmentClass}`
-         : `w-full ${alignmentClass}`;
+      const sizingClass = "w-full";
+
+      const figureClass = mobileOnly
+         ? `my-6 mx-auto md:hidden ${className}`
+         : isFloat
+           ? isFloatRight
+              ? `hidden md:block my-6 md:mx-0 md:max-w-xs md:float-right md:ml-6 md:mb-4 ${className}`
+              : `hidden md:block my-6 md:mx-0 md:max-w-xs md:float-left md:mr-6 md:mb-4 ${className}`
+           : `my-6 ${className}`;
+
+      const captionClass = isFloat
+         ? `mt-2 text-sm text-body/60 italic ${isFloatRight ? "text-right" : "text-left"}`
+         : "mt-2 text-sm text-body/60 italic text-center";
 
       return (
-         <figure className={`my-6 ${className}`}>
+         <figure className={figureClass}>
             <FullscreenFigure
                src={src}
                alt={alt}
@@ -77,13 +90,7 @@ export const MDXImage = forwardRef<HTMLImageElement, MDXImageProps>(
                )}
             </FullscreenFigure>
             {caption && (
-               <figcaption
-                  className={`mt-2 text-sm text-body/60 italic ${
-                     isLeft ? "text-left" : "text-center"
-                  }`}
-               >
-                  {caption}
-               </figcaption>
+               <figcaption className={captionClass}>{caption}</figcaption>
             )}
          </figure>
       );
