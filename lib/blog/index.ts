@@ -164,6 +164,7 @@ export const getAllPosts = cache(
             ogImageDark: translations.ogImageDark ?? frontmatter.ogImageDark,
             series: frontmatter.series,
             linkedin: frontmatter.linkedin,
+            relatedSlugs: frontmatter.relatedSlugs,
             resources: translations.resources,
          };
 
@@ -248,6 +249,7 @@ export const getPostBySlug = cache(
          ogImageDark: translations.ogImageDark ?? frontmatter.ogImageDark,
          series: frontmatter.series,
          linkedin: frontmatter.linkedin,
+         relatedSlugs: frontmatter.relatedSlugs,
          resources: translations.resources,
       };
 
@@ -293,9 +295,19 @@ export const getRelatedPosts = cache(
       if (!currentPost) return [];
 
       const allPosts = await getAllPosts(locale);
-      const currentTags = new Set(currentPost.frontmatter.tags);
 
-      const scored = allPosts
+      // 1. Manual overrides via relatedSlugs in frontmatter
+      if (currentPost.frontmatter.relatedSlugs?.length) {
+         const manual = currentPost.frontmatter.relatedSlugs
+            .filter((s) => s !== currentSlug)
+            .map((s) => allPosts.find((p) => p.slug === s))
+            .filter(Boolean) as BlogPostListItem[];
+         if (manual.length) return manual.slice(0, limit);
+      }
+
+      // 2. Tag-based scoring — no random fill
+      const currentTags = new Set(currentPost.frontmatter.tags);
+      return allPosts
          .filter((p) => p.slug !== currentSlug)
          .map((p) => ({
             post: p,
@@ -305,21 +317,6 @@ export const getRelatedPosts = cache(
          .sort((a, b) => b.score - a.score)
          .slice(0, limit)
          .map((s) => s.post);
-
-      // Only fill with unrelated posts if we have at least some tag matches
-      // If zero matches, show no related posts rather than random ones
-      if (scored.length > 0 && scored.length < limit) {
-         const remaining = allPosts
-            .filter(
-               (p) =>
-                  p.slug !== currentSlug &&
-                  !scored.some((s) => s.slug === p.slug),
-            )
-            .slice(0, limit - scored.length);
-         scored.push(...remaining);
-      }
-
-      return scored.slice(0, limit);
    },
 );
 

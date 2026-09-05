@@ -41,6 +41,7 @@ export const BlogPostFrontmatterSchema = z.object({
    ogImageDark: z.string().url().or(z.string().startsWith("/")).optional(),
    series: z.string().optional(),
    linkedin: z.string().url().optional(),
+   relatedSlugs: z.array(z.string()).optional(),
    readingTimeMinutes: z.number().optional(),
 });
 
@@ -60,6 +61,7 @@ export interface LocalizedBlogPostFrontmatter {
    ogImageDark?: string;
    series?: string;
    linkedin?: string;
+   relatedSlugs?: string[];
    resources?: ResourceItem[];
 }
 
