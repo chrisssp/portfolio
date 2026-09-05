@@ -306,7 +306,9 @@ export const getRelatedPosts = cache(
          .slice(0, limit)
          .map((s) => s.post);
 
-      if (scored.length < limit) {
+      // Only fill with unrelated posts if we have at least some tag matches
+      // If zero matches, show no related posts rather than random ones
+      if (scored.length > 0 && scored.length < limit) {
          const remaining = allPosts
             .filter(
                (p) =>

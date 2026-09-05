@@ -53,11 +53,18 @@ export const MDXImage = forwardRef<HTMLImageElement, MDXImageProps>(
                   /* eslint-enable @next/next/no-img-element */
                ) : (
                   <div
-                     className="relative w-full"
-                     style={{
-                        aspectRatio:
-                           width && height ? `${width}/${height}` : "16/9",
-                     }}
+                     className={`relative w-full ${
+                        width && height
+                           ? width === height
+                              ? "aspect-square"
+                              : ""
+                           : "aspect-video"
+                     }`}
+                     style={
+                        width && height && width !== height
+                           ? { aspectRatio: `${width}/${height}` }
+                           : undefined
+                     }
                   >
                      <Image
                         src={src}

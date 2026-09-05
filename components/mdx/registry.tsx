@@ -39,10 +39,16 @@ const mdxComponents: MDXComponents = {
    p: (props) => <p className="text-body/90 leading-relaxed mb-4" {...props} />,
    a: (props) => <InlineLink {...props} />,
    ul: (props) => (
-      <ul className="list-disc list-inside space-y-2 mb-4 ml-4" {...props} />
+      <ul
+         className="list-disc list-outside space-y-2 mb-4 ml-5 pl-2"
+         {...props}
+      />
    ),
    ol: (props) => (
-      <ol className="list-decimal list-inside space-y-2 mb-4 ml-4" {...props} />
+      <ol
+         className="list-decimal list-outside space-y-2 mb-4 ml-5 pl-2"
+         {...props}
+      />
    ),
    li: (props) => <li className="text-body/90 leading-relaxed" {...props} />,
    blockquote: (props) => (
