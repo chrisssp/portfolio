@@ -18,9 +18,7 @@
         bottom-left: [Associate Degree (TSU) in Multiplatform Software Development],
         bottom-right: [Cuitláhuac, Veracruz, Mexico],
       ),
-      list-items: (
-        [_Graduated 1st in Class (Final GPA: 9.82/10)_],
-      ),
+
     ),
   )
 ]

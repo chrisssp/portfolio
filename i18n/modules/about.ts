@@ -16,7 +16,6 @@ export const about = {
             institution: "Universidad Tecnol\u00f3gica del Centro de Veracruz.",
             degree: "TSU Multiplatform Software Development",
             date: "August 2024",
-            achievement: "Graduated 1st in class with a 9.82/10 GPA",
          },
       ],
       languagesTitle: "Languages",
@@ -51,8 +50,6 @@ export const about = {
             institution: "Universidad Tecnol\u00f3gica del Centro de Veracruz.",
             degree: "TSU Desarrollo de Software Multiplataforma",
             date: "Agosto 2024",
-            achievement:
-               "Graduado como 1er lugar de la generaci\u00f3n con un promedio de 9.82/10",
          },
       ],
       languagesTitle: "Idiomas",

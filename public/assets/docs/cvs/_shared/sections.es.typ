@@ -18,9 +18,7 @@
         bottom-left: [TSU en desarrollo de software multiplataforma],
         bottom-right: [Cuitláhuac, Veracruz, México],
       ),
-      list-items: (
-        [_Graduado como 1er lugar de la generación (Promedio final: 9.82/10)_],
-      ),
+
     ),
   )
 ]
