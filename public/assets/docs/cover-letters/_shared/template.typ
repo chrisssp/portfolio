@@ -7,6 +7,7 @@
   lang: "en",
   body,
 ) = {
+  let author-name = if lang == "es" { "Jorge Christian Serrano Puertos" } else { "Christian Serrano" }
   set page(
     paper: "us-letter",
     margin: (top: 1in, bottom: 0.9in, left: 1in, right: 1in),
@@ -18,7 +19,7 @@
 
   // ── Letterhead ──────────────────────────────────────────────
   align(right)[
-    #text(weight: "bold", size: 14pt)[Christian Serrano] \
+    #text(weight: "bold", size: 14pt)[#author-name] \
     #role \
     +52 271 266 73 65 \
     #link("mailto:christian.serrano.puertos@gmail.com") \
@@ -65,6 +66,6 @@
       [Best regards,]
     }
 
-    #text(weight: "bold", size: 12pt)[Christian Serrano]
+    #text(weight: "bold", size: 12pt)[#author-name]
   ]
 }

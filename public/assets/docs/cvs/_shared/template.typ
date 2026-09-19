@@ -5,6 +5,7 @@
 ]
 
 #let cv-start(title, lang, body) = {
+  let author-name = if lang == "es" { "Jorge Christian Serrano Puertos" } else { "Christian Serrano" }
   let location = if lang == "es" {
     "Córdoba, Veracruz, México · Remote-first · Disponible para cambio de residencia"
   } else {
@@ -31,7 +32,7 @@
       lang: lang,
     ),
     author-info: (
-      name: "Christian Serrano",
+      name: author-name,
       primary-info: [#title \ #contact-info],
       secondary-info: [
         #link("https://chrisssp.me")[chrisssp.me] | #link("https://linkedin.com/in/chrisssp")[linkedin.com/in/chrisssp] | #link("https://github.com/chrisssp")[github.com/chrisssp]
